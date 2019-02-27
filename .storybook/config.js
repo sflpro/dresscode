@@ -5,6 +5,7 @@ function loadStories() {
   require('../src/components/Checkbox/checkbox.story.js');
   require('../src/components/ControlsGroup/controlsGroup.story');
   require('../src/components/Tag/tag.story.js');
+  require('../src/components/TextInput/textInput.story.js');
 }
 
 configure(loadStories, module);
