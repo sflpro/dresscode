@@ -1,19 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import checkboxGroup from './checkboxGroup.css';
+import controlsGroup from './controlsGroup.css';
 
-export function CheckboxGroup({title, children}) {
+export function ControlsGroup({title, children}) {
     return (
         <div>
-            {title && <h5 className={checkboxGroup.title}>{title}</h5>}
-            <div className={checkboxGroup.wrapper}>
+            {title && <h5 className={controlsGroup.title}>{title}</h5>}
+            <div className={controlsGroup.wrapper}>
                 {children}
             </div>
         </div>
     );
 }
 
-CheckboxGroup.propTypes = {
+ControlsGroup.propTypes = {
     title:  PropTypes.string,
     children: PropTypes.oneOfType([
         PropTypes.arrayOf(PropTypes.element),
@@ -21,6 +21,6 @@ CheckboxGroup.propTypes = {
     ]).isRequired,
 };
 
-CheckboxGroup.defaultProps = {
+ControlsGroup.defaultProps = {
     title: '',
 };
