@@ -1,7 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 
 import icon from './icon.css';
-
 import icons from './svgSprite.svg';
 
 let IE = false;
@@ -20,7 +21,7 @@ if (document.documentMode) {
   req.send();
 }
 
-export function Icon({ icon: iconName }) {
+export function Icon({ name: iconName }) {
   const iconPath = IE ? '' : icons;
   return (
     <svg className={`${icon.icon}`}>
@@ -28,3 +29,7 @@ export function Icon({ icon: iconName }) {
     </svg>
   );
 }
+
+Icon.propTypes = {
+  name: PropTypes.string.isRequried,
+};

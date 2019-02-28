@@ -6,7 +6,6 @@ import { Icon } from './Icon';
 storiesOf('Icons', module)
   .add('List', () => (
     <React.Fragment>
-      <Icon icon='thick' />
-      <Icon icon='close' />
+      <Icon name='close' />
     </React.Fragment>
   ));
