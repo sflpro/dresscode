@@ -2,9 +2,9 @@ import React from 'react';
 import {State, Store} from "@sambego/storybook-state";
 import {storiesOf} from '@storybook/react';
 import {Checkbox} from '../Checkbox/Checkbox.js';
-import {CheckboxGroup} from "./CheckboxGroup";
+import {ControlsGroup} from "./ControlsGroup";
 
-storiesOf('CheckboxGroup', module).add('Group', () => {
+storiesOf('ControlsGroup', module).add('CheckboxGroup', () => {
         const store = new Store({
             first: true,
             second: true,
@@ -18,11 +18,11 @@ storiesOf('CheckboxGroup', module).add('Group', () => {
         return (
             <State store={store}>
                 {state => [
-                    <CheckboxGroup title='Կուզենայիր աշխատեիր շաբաթ և կիրակի էս Սիսթեմի վրա' key='key'>
+                    <ControlsGroup title='Կուզենայիր աշխատեիր շաբաթ և կիրակի էս Սիսթեմի վրա' key='key'>
                         <Checkbox checked={state.first} onChange={handler} label='Այո' id='first'/>
                         <Checkbox checked={state.second} onChange={handler} label='Ոչ' id='second'/>
                         <Checkbox checked={state.third} onChange={handler} label='Ճարս Ի՞նչ' id='third'/>
-                    </CheckboxGroup>
+                    </ControlsGroup>
                 ]}
             </State>
         );
