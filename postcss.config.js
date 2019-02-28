@@ -4,8 +4,10 @@ module.exports = {
       importFrom: 'src/defaults.css',
       features: {
         'nesting-rules': true,
-        'custom-properties': true,
+        'custom-properties': {
+          preserve: false,
+        },
       },
     },
   },
-}
+};
