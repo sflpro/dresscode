@@ -1,0 +1,89 @@
+:root {
+    --toggle-button-border-color: var(--default-color);
+    --toggle-button-hover-color: var(--primary-light-color);
+    --toggle-button-checked-color: var(--primary-color);
+    --toggle-button-background-color: var(--input-background-color);
+    --toggle-button-color: var(--primary-color);
+    --toggle-button-disabled-color: var(--default-color);
+    --toggle-button-font-size: var(--base-font-size);
+
+    --toggle-button-height: 24px;
+    --toggle-button-width: 40px;
+    --toggle-button-border-radius: 34px;
+
+    --toggle-button-toggle-height: 16px;
+    --toggle-button-toggle-width: 16px;
+    --toggle-button-toggle-border-radius: 34px;
+
+    --toggle-button-toggle-translateX: 16px;
+    --toggle-button-toggle-left: 4px;
+    --toggle-button-toggle-top: 4px;
+
+    --toggle-button-transition: .4s;
+
+    --toggle-button-label-distance: var(--input-label-distance);
+
+    --toggle-button-font-weight: var(--base-font-weight);
+}
+
+.wrapper {
+    display: inline-block;
+}
+
+.input {
+    display: none;
+}
+
+.label {
+    display: flex;
+    align-items: center;
+    font-size: var(--toggle-button-font-size);
+    color: var(--toggle-button-color);
+    font-weight: var(--toggle-button-font-weight);
+    position: relative;
+    cursor: pointer;
+    justify-content: space-between;
+}
+
+.toggle {
+    cursor: pointer;
+    position: relative;
+    background-color: var(--toggle-button-background-color);
+    transition: var(--toggle-button-transition);
+    border-radius: var(--toggle-button-border-radius);
+    width: var(--toggle-button-width);
+    height: var(--toggle-button-height);
+    margin-left: var(--toggle-button-label-distance);
+}
+
+.toggle:after {
+    position: absolute;
+    content: "";
+    height: var(--toggle-button-toggle-height);
+    width: var(--toggle-button-toggle-width);
+    left: var(--toggle-button-toggle-left);
+    top: var(--toggle-button-toggle-top);
+    background-color: white;
+    transition: var(--toggle-button-transition);;
+    border-radius: var(--toggle-button-toggle-border-radius);
+}
+
+.label:hover > .toggle {
+    background-color: var(--toggle-button-hover-color);
+}
+
+.checked > .toggle:after {
+    transform: translateX(var(--toggle-button-toggle-translateX));
+}
+
+.checked > .toggle, .checked:hover > .toggle {
+    background-color: var(--toggle-button-checked-color);
+}
+
+.disabled {
+    color: var(--toggle-button-disabled-color);
+}
+
+.disabled > .toggle, .disabled:hover > .toggle {
+    background-color: var(--toggle-button-disabled-color);
+}

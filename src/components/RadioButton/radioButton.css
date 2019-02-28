@@ -1,0 +1,75 @@
+:root {
+    --radio-button-border-color: var(--default-color);
+    --radio-button-hover-color: var(--primary-light-color);
+    --radio-button-checked-color: var(--primary-color);
+    --radio-button-background-color: var(--secondary-color);
+    --radio-button-color: var(--primary-color);
+    --radio-button-disabled-text-color: var(--text-disabled-color);
+    --radio-button-disabled-color: var(--default-color);
+    --radio-button-font-size: var(--base-font-size);
+
+    --radio-button-height: 24px;
+    --radio-button-width: 24px;
+    --radio-button-white-background-width: 3px;
+    --radio-button-border-radius: 12px;
+    --radio-button-border-height: 2px;
+
+    --radio-button-label-distance: var(--input-label-distance);
+
+    --radio-button-font-weight: var(--base-font-weight);
+}
+
+.wrapper {
+    display: inline-block;
+}
+
+.input {
+    display: none;
+}
+
+.label {
+    display: flex;
+    align-items: center;
+    font-size: var(--radio-button-font-size);
+    color: var(--radio-button-color);
+    font-weight: var(--radio-button-font-weight);
+    cursor: pointer;
+}
+
+.label::before {
+    content: "";
+    display: inline-block;
+    border: var(--radio-button-border-height) solid var(--radio-button-border-color);
+    border-radius: var(--radio-button-border-radius);
+    height: var(--radio-button-height);
+    width: var(--radio-button-width);
+    box-sizing: border-box;
+    position: relative;
+    margin-right: var(--radio-button-label-distance);
+}
+
+.label:hover::before {
+    border-color: var(--radio-button-hover-color);
+}
+
+.checked:hover::before {
+    border-color: var(--radio-button-checked-color);
+}
+
+.checked::before {
+    border-color: var(--radio-button-checked-color);
+    background-color: var(--radio-button-checked-color);
+    box-shadow: 0 0 0 var(--radio-button-white-background-width) var(--radio-button-background-color) inset;
+}
+
+.disabled {
+    color: var(--radio-button-disabled-text-color);
+}
+
+.disabled::before, .disabled:hover::before {
+    border-color: var(--radio-button-disabled-color);
+}
+
+.disabled.checked::before {
+    background-color: var(--radio-button-disabled-color);
+}
