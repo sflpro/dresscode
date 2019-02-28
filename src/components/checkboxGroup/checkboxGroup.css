@@ -1,0 +1,9 @@
+.wrapper > *:not(:first-child) {
+    padding-top: 16px;
+}
+
+.title {
+    display: block;
+    padding-bottom: 24px;
+}
+
