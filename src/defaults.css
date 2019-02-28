@@ -1,3 +1,19 @@
 :root {
-  --primary: #F00;
+  --primary-color: #6400dc;
+  --primary-light-color: #a266ea;
+  --default-color: #e5e5e5;
+  --disabled-color: #f1f1f1;
+  --white-color: #ffffff;
+  --text-default-color: #1d1d1d;
+  --text-disabled-color: #cccccc;
+  --success-color: #32c86d;
+  --error-color: #ff5252;
+
+  --base-font-weight: normal;
+  --base-font-family: Montserratarm;
+
+  --base-font-size: 1em;
+
+  --small-font-size: 14px;
+  --medium-font-size: 16px;
 }
