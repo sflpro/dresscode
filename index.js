@@ -1,1 +1,1 @@
-export { Button } from './lib/components/button/button';
+export { Checkbox } from './lib/components/Checkbox/Checkbox';
