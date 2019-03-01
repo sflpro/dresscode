@@ -2,14 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 
-import icon from './icon.css';
+import styles from './icon.css';
 import icons from './svgSprite.svg';
+
 
 let IE = false;
 if (document.documentMode) {
   IE = true;
   const svgElem = document.createElement("div");
-  svgElem.className = icon.svgIcons;
+  svgElem.className = styles.svgIcons;
   const body = document.querySelector('body');
 
   const req = new XMLHttpRequest();
@@ -24,7 +25,7 @@ if (document.documentMode) {
 export function Icon({ name: iconName }) {
   const iconPath = IE ? '' : icons;
   return (
-    <svg className={`${icon.icon}`}>
+    <svg className={`${styles.icon}`}>
       <use xlinkHref={`${iconPath}#${iconName}`} />
     </svg>
   );
