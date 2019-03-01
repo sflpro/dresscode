@@ -5,7 +5,7 @@ module.exports = {
             features: {
                 'nesting-rules': true,
                 'custom-properties': {
-                    preserve: false
+                    preserve: false,
                 },
             },
         },

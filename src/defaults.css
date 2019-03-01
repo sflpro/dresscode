@@ -16,4 +16,19 @@
 
   --small-font-size: 14px;
   --medium-font-size: 16px;
+
+
+  --checkbox-background-color: var(--white-color);
+  --checkbox-border-color: var(--text-disabled-color);
+  --checkbox-hover-border-color: var(--primary-light-color);
+  --checkbox-checked-background-color: var(--primary-color);
+  --checkbox-color: var(--white-color);
+  --checkbox-disabled-border-color: var(--default-color);
+  --checkbox-border-radius: 4px;
+  --checkbox-width: 24px;
+  --checkbox-height: 24px;
+
+  --label-color: var(--primary-color);
+  --label-font-size: var(--base-font-size);
+  --label-font-family: var(--base-font-family);
 }
