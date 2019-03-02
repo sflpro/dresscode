@@ -1,19 +1,37 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+
 import styles from './tag.css';
 
-
-export function Tag({ type, name, clickable, onClose, onClick }) {
+export function Tag({
+  type = 'primary',
+  name = '',
+  clickable = false,
+  onClose,
+  onClick,
+  ...props
+}) {
   const tagClasses = classNames({
     [styles.tag]: true,
     [styles[type]]: true,
   });
 
   return (
-    <span className={tagClasses} onClick={onClick}>
+    <span
+      className={tagClasses}
+      onClick={onClick}
+      {...props}
+    >
       {name}
-      {clickable && <span className={styles.closeIcon} onClick={onClose}>x</span>}
+      {clickable && (
+        <span
+          className={styles.closeIcon}
+          onClick={onClose}
+        >
+          x
+        </span>
+      )}
     </span>
   );
 }
@@ -24,12 +42,4 @@ Tag.propTypes = {
   onClose: PropTypes.func,
   onClick: PropTypes.func,
   type: PropTypes.oneOf(['primary', 'secondary']),
-};
-
-Tag.defaultProps = {
-  name: '',
-  clickable: false,
-  type: 'primary',
-  onClose: undefined,
-  onClick: undefined,
 };
