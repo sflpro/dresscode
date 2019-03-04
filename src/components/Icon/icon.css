@@ -1,0 +1,14 @@
+.icon {
+    box-sizing: border-box;
+    color: inherit;
+    display: inline-block;
+    fill: currentColor;
+    flex-shrink: 0;
+    font-size: 1em;
+    height: 1em;
+    width: 1em;
+    margin: 0;
+    overflow: hidden;
+    user-select: none;
+    -webkit-font-smoothing: antialiased;
+}
