@@ -7,9 +7,10 @@ import icons from './svgSprite.svg';
 
 export function Icon({
   name,
+  className = ''
 }) {
   return (
-    <svg className={`${styles.icon}`}>
+    <svg className={`${styles.icon} ${className}`}>
       <use xlinkHref={`${icons}#${name}`} />
     </svg>
   );

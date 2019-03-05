@@ -1,0 +1,8 @@
+.wrapper > *:not(:last-child) {
+  margin-bottom: 16px;
+}
+
+.title {
+  color: var(--text-default-color);
+  padding-bottom: 24px;
+}
