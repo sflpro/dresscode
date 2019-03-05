@@ -11,17 +11,15 @@ export function Checkbox({
   disabled = false,
   checked = false,
   onChange = undefined,
-  inputProps = {},
   ...props
 }) {
   return (
     <Label>
-       <span className={`${styles.iconWrapper} ${checked ? styles.checked : ''} ${disabled ?  styles.disabled : ''}`}
-             {...props}>
-            <Icon
-                name='checked'
-                className={styles.icon}
-            />
+       <span className={`${styles.iconWrapper} ${checked ? styles.checked : ''} ${disabled ?  styles.disabled : ''}`}>
+          <Icon
+            name='checked'
+            className={styles.icon}
+          />
        </span>
       <input
         className={styles.checkbox}
@@ -31,7 +29,7 @@ export function Checkbox({
         disabled={disabled}
         checked={checked}
         onChange={onChange}
-        {...inputProps}
+        {...props}
       />
       <span className={styles.label}>
         {label}
@@ -43,7 +41,6 @@ export function Checkbox({
 Checkbox.propTypes = {
   onChange: PropTypes.func.isRequired,
   label: PropTypes.string.isRequired,
-  inputProps: PropTypes.object,
   name: PropTypes.string,
   disabled: PropTypes.bool,
   checked: PropTypes.bool,
