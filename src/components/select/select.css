@@ -1,0 +1,32 @@
+.select {
+  height: var(--text-input-height);
+  border-radius: var(--text-input-border-radius);
+  border: var(--text-input-border-size) solid var(--text-input-border-color);
+  background-color: var(--neutral-white);
+  color: var(--text-input-color);
+  min-width: 200px;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+.nativeSelect {
+  border: 0 !important;
+  clip: rect(0 0 0 0) !important;
+  clip-path: inset(50%) !important;
+  height: 1px !important;
+  overflow: hidden !important;
+  padding: 0 !important;
+  position: absolute !important;
+  width: 1px !important;
+  white-space: nowrap !important;
+}
+
+.nativeCustomSelect {
+
+}
+
+.active,
+.nativeCustomSelect:focus {
+  border: var(--text-input-border-size) solid var(--text-input-border-color-hover);
+  outline: none;
+}

@@ -2,7 +2,11 @@
   color: var(--label-color);
   font-family: var(--label-font-family);
   font-size: var(--label-font-size);
-  margin-bottom: 8px;
-  display: block;
+  display: flex;
+  flex-flow: column nowrap;
   cursor: pointer;
+}
+
+.labelText {
+  margin-bottom: 8px;
 }
