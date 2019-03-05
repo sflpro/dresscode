@@ -1,4 +1,4 @@
-.wrapper >*:not(:last-child) {
+.wrapper > *:not(:last-child) {
   margin-bottom: 16px;
 }
 

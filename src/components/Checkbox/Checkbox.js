@@ -15,12 +15,12 @@ export function Checkbox({
 }) {
   return (
     <Label>
-       <span className={`${styles.iconWrapper} ${checked ? styles.checked : ''} ${disabled ?  styles.disabled : ''}`}>
-          <Icon
-            name='checked'
-            className={styles.icon}
-          />
-       </span>
+      <span className={`${styles.iconWrapper} ${checked ? styles.checked : ''} ${disabled ?  styles.disabled : ''}`}>
+        <Icon
+          name='checked'
+          className={styles.icon}
+        />
+      </span>
       <input
         className={styles.checkbox}
         name={name}

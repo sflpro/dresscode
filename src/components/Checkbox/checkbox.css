@@ -12,7 +12,7 @@
   vertical-align: middle;
   border: solid 2px var(--checkbox-border-color);
   background-color: var(--checkbox-background-color);
-  padding: 2px;
+  padding: 6px;
 }
 
 .iconWrapper:hover {
