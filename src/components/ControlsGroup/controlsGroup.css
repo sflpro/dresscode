@@ -3,5 +3,6 @@
 }
 
 .title {
+  color: var(--text-default-color);
   padding-bottom: 24px;
 }

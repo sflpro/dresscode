@@ -1,9 +1,7 @@
 import React from 'react';
 import { State, Store } from "@sambego/storybook-state";
 import { storiesOf } from '@storybook/react';
-
 import { Checkbox } from '../Checkbox/Checkbox.js';
-
 import { ControlsGroup } from "./ControlsGroup.js";
 
 
@@ -18,7 +16,7 @@ storiesOf('ControlsGroup', module).add('CheckboxGroup', () => {
     store.set({
       ...store.state,
       ...{
-        [target.id]: !store.state[target.id],
+        [target.name]: !store.state[target.name],
       },
     });
   }
@@ -35,16 +33,19 @@ storiesOf('ControlsGroup', module).add('CheckboxGroup', () => {
           <Checkbox
             label='Այո'
             checked={state.first}
+            name='first'
             onChange={handler}
           />
           <Checkbox
             label='Ոչ'
             checked={state.second}
+            name='second'
             onChange={handler}
           />
           <Checkbox
             label='Ճարս Ի՞նչ'
             checked={state.third}
+            name='third'
             onChange={handler}
           />
         </ControlsGroup>
