@@ -4,7 +4,7 @@ import { State, Store } from "@sambego/storybook-state";
 
 import { Select } from '.';
 
-import { Option } from '../option';
+import { Option } from '../Option';
 
 storiesOf('Select', module)
   .add('Dropdown', () => {

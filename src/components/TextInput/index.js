@@ -2,7 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-import { Label } from '../label';
+import { Label } from '../Label';
+import { Icon } from '../Icon';
 
 import styles from './textInput.css';
 
@@ -49,7 +50,10 @@ export function TextInput({
           {...props}
         />
         {icon && (
-          <span className={styles.inputIcon} />
+          <Icon
+            name={icon}
+            className={styles.icon}
+          />
         )}
       </div>
       {hasError && error && (

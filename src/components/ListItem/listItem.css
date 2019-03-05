@@ -3,10 +3,17 @@
   color: var(--text-input-color);
   display: flex;
   align-items: center;
+  justify-content: space-between;
   padding: 0 16px;
   max-height: 100%;
 }
 
 .active {
   background-color: var(--neutral-75); 
+}
+
+.icon {
+  font-size: 24px;
+  display: flex;
+  align-items: center;
 }

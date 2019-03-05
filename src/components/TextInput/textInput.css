@@ -63,16 +63,29 @@
   color: var(--text-input-disabled-color);
 }
 
-.prefix + .input {
+.prefix+.input {
   padding-left: 0;
+}
+
+.icon {
+  padding-right: 16px;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
 }
 
 .successWrapper {
   border: var(--text-input-border-size) solid var(--success-color);
+  & .icon {
+    color: var(--success-color);
+  }
 }
 
 .errorWrapper {
   border: var(--text-input-border-size) solid var(--error-color);
+  & .icon {
+    color: var(--error-color);
+  }
 }
 
 .error {

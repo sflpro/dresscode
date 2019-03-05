@@ -9,24 +9,38 @@
   cursor: pointer;
 }
 
+.select:hover {
+  border: var(--text-input-border-size) solid var(--text-input-border-color-hover);
+}
+
 .nativeSelect {
   border: 0 !important;
   clip: rect(0 0 0 0) !important;
   clip-path: inset(50%) !important;
   height: 1px !important;
-  overflow: hidden !important;
+  overflow: hidden;
+  position: absolute;
   padding: 0 !important;
-  position: absolute !important;
   width: 1px !important;
   white-space: nowrap !important;
 }
 
-.nativeCustomSelect {
-
-}
+.nativeCustomSelect {}
 
 .active,
 .nativeCustomSelect:focus {
-  border: var(--text-input-border-size) solid var(--text-input-border-color-hover);
+  border: var(--text-input-border-size) solid var(--text-input-border-color-focus);
   outline: none;
+}
+
+.icon {
+  transition: transform 0.5s; 
+}
+
+.active .icon {
+  color: var(--text-input-border-color-focus);
+}
+
+.reverseIcon {
+  transform: rotate(180deg);
 }

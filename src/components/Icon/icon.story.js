@@ -1,7 +1,11 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 
-import { Icon } from './Icon';
+import { Icon } from '.';
 
 storiesOf('Icons', module)
-  .add('List', () => <Icon name='tracker' />);
+  .add('List', () => (
+    <Icon
+      name='tracker'
+    />
+  ));

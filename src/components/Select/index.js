@@ -2,10 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-import { Label } from '../label';
-import { ListItem } from '../listItem';
-import { Dropdown } from '../dropdown';
-import { List } from '../list';
+import { Label } from '../Label';
+import { List } from '../List';
+import { ListItem } from '../ListItem';
+import { Dropdown } from '../Dropdown';
 import { isMobile } from '../../utils';
 
 import styles from './select.css';
@@ -38,6 +38,10 @@ export function Select({
     [styles.select]: true,
     [styles.active]: open,  
   });
+  const iconClasses = classNames({
+    [styles.icon]: true,
+    [styles.reverseIcon]: open,
+  });
 
   return (
     <Label
@@ -55,9 +59,11 @@ export function Select({
         <List>
           <div className={selectClasses}>
             <ListItem
+              iconClassName={iconClasses}
               label={value}
               value={value}
               onClick={onClick}
+              icon='arrow-down'
             />
           </div>
           {open && (

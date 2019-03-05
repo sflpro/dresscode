@@ -34,11 +34,13 @@ storiesOf('TextInput', module)
   )).add('Validated', () => (
     <TextInput
       value='Default text'
+      icon='check'
       isValid
     />
   )).add('Validation failed', () => (
     <TextInput
       value='Default text'
+      icon='warning'
       error='Error text'
       hasError
     />

@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
+import { Icon } from '../Icon';
+
 import styles from './listItem.css';
 
 export function ListItem({
@@ -11,7 +13,7 @@ export function ListItem({
   iconPos = 'right',
   disabled = false,
   active = false,
-  iconClassName,
+  iconClassName = '',
   onClick,
   children,
   ...props
@@ -21,27 +23,34 @@ export function ListItem({
     [styles.disabled]: disabled,
     [styles.active]: active,
   });
-
+  const listItemIconClasses = classNames({
+    [iconClassName]: true,
+    [styles.icon]: true,
+  });
+  console.log(iconClassName);
+  console.log(listItemIconClasses);
   return (
     <div
       className={listItemClasses}
       onClick={() => onClick({
-          currentTarget: {
-            value
-          }
+        currentTarget: {
+          value
+        }
       })}
       {...props}
     >
       {iconPos === 'left' && (
-        <span className={iconClassName || styles.icon}>
-          {icon}
-        </span>
+        <Icon
+          name={icon}
+          className={listItemIconClasses}
+        />
       )}
       {label}
       {iconPos === 'right' && (
-        <span className={iconClassName || styles.icon}>
-          {icon}
-        </span>
+        <Icon
+          name={icon}
+          className={listItemIconClasses}
+        />
       )}
     </div>
   );
@@ -52,7 +61,7 @@ ListItem.propTypes = {
   value: PropTypes.string,
   icon: PropTypes.string,
   iconPos: PropTypes.oneOf(['left', 'right']),
-  iconClassName: PropTypes.object,
+  iconClassName: PropTypes.string,
   onClick: PropTypes.func,
   children: PropTypes.object,
 };
