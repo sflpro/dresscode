@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 
 import styles from './label.css';
 
-
 export function Label({
   value = '',
   className,
