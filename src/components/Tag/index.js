@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
+import { Icon } from '../Icon/Icon';
+
 import styles from './tag.css';
 
 export function Tag({
@@ -25,12 +27,10 @@ export function Tag({
     >
       {name}
       {clickable && (
-        <span
+        <Icon
+          name='close'
           className={styles.closeIcon}
-          onClick={onClose}
-        >
-          x
-        </span>
+        />
       )}
     </span>
   );
