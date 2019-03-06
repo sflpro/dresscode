@@ -1,9 +1,10 @@
 import React from 'react';
 import { State, Store } from "@sambego/storybook-state";
 import { storiesOf } from '@storybook/react';
-import { Checkbox } from '../Checkbox/Checkbox.js';
-import { ControlsGroup } from "./ControlsGroup.js";
 
+import { ControlsGroup } from '.';
+
+import { Checkbox } from '../Checkbox';
 
 storiesOf('ControlsGroup', module).add('CheckboxGroup', () => {
   const store = new Store({

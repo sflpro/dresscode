@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 
 import styles from './controlsGroup.css';
 
-
 export function ControlsGroup({
   title = '',
   children,

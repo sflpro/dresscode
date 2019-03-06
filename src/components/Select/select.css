@@ -18,6 +18,13 @@
   overflow: hidden;
   position: absolute;
   outline: none;
+  border: none;
+  width: 0;
+  height: 0;
+}
+
+.nativeSelect:hover {
+  border: none;
 }
 
 .nativeCustomSelect {
