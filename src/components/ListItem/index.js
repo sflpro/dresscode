@@ -27,8 +27,7 @@ export function ListItem({
     [iconClassName]: true,
     [styles.icon]: true,
   });
-  console.log(iconClassName);
-  console.log(listItemIconClasses);
+
   return (
     <div
       className={listItemClasses}
@@ -39,14 +38,14 @@ export function ListItem({
       })}
       {...props}
     >
-      {iconPos === 'left' && (
+      {icon && iconPos === 'left' && (
         <Icon
           name={icon}
           className={listItemIconClasses}
         />
       )}
       {label}
-      {iconPos === 'right' && (
+      {icon && iconPos === 'right' && (
         <Icon
           name={icon}
           className={listItemIconClasses}

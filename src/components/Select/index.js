@@ -6,6 +6,7 @@ import { Label } from '../Label';
 import { List } from '../List';
 import { ListItem } from '../ListItem';
 import { Dropdown } from '../Dropdown';
+import { Icon } from '../Icon';
 import { isMobile } from '../../utils';
 
 import styles from './select.css';
@@ -36,11 +37,15 @@ export function Select({
   });
   const selectClasses = classNames({
     [styles.select]: true,
-    [styles.active]: open,  
+    [styles.active]: open,
   });
   const iconClasses = classNames({
     [styles.icon]: true,
     [styles.reverseIcon]: open,
+  });
+  const nativeIconClasses = classNames({
+    [styles.icon]: true,
+    [styles.nativeIcon]: true,
   });
 
   return (
@@ -55,6 +60,12 @@ export function Select({
       >
         {children}
       </select>
+      {isNativeMode && (
+        <Icon
+          name='arrow-down'
+          className={nativeIconClasses}
+        />
+      )}
       {!isNativeMode && (
         <List>
           <div className={selectClasses}>

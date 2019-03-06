@@ -7,6 +7,7 @@
   min-width: 200px;
   box-sizing: border-box;
   cursor: pointer;
+  position: relative;
 }
 
 .select:hover {
@@ -14,18 +15,22 @@
 }
 
 .nativeSelect {
-  border: 0 !important;
-  clip: rect(0 0 0 0) !important;
-  clip-path: inset(50%) !important;
-  height: 1px !important;
   overflow: hidden;
   position: absolute;
-  padding: 0 !important;
-  width: 1px !important;
-  white-space: nowrap !important;
+  outline: none;
 }
 
-.nativeCustomSelect {}
+.nativeCustomSelect {
+  appearance: none;
+  padding: 0 16px;
+}
+
+.nativeIcon {
+  font-size: 24px;
+  position: absolute;
+  right: 16px;
+  top: 20px;
+}
 
 .active,
 .nativeCustomSelect:focus {
@@ -34,7 +39,7 @@
 }
 
 .icon {
-  transition: transform 0.5s; 
+  transition: transform 0.5s;
 }
 
 .active .icon {
