@@ -22,9 +22,9 @@
 
 .checked {
   background-color: var(--checkbox-checked-background-color);
+  color: var(--checkbox-color);
   border: none;
   text-align: center;
-  color: var(--checkbox-color);
 }
 
 .icon {
@@ -35,14 +35,15 @@
   display: flex;
 }
 
-.disabled, .disabled:hover {
-  border-color: var(--checkbox-disabled-border-color);
+.disabled,
+.disabled:hover {
+  border-color: var(--text-disabled-color);
 }
 
 .checked.disabled {
-  background-color: var(--checkbox-disabled-border-color);
+  background-color: var(--text-disabled-color);
 }
 
 .label {
-    color: var(--label-color);
+  color: var(--label-color);
 }

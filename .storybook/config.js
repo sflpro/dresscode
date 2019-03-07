@@ -12,6 +12,7 @@ function loadStories() {
   require('../src/components/ControlsGroup/controlsGroup.story');
   require('../src/components/Dialog/dialog.story');
   require('../src/components/Tooltip/tooltip.story.js');
+  require('../src/components/Button/button.story');
 }
 
 configure(loadStories, module);
