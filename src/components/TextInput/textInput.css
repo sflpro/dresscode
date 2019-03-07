@@ -76,16 +76,26 @@
 
 .successWrapper {
   border: var(--text-input-border-size) solid var(--success-color);
-  & .icon {
-    color: var(--success-color);
-  }
+}
+
+.successWrapper .icon {
+  color: var(--success-color);
+}
+
+.successWrapper.inputWrapper:focus-within {
+  border: var(--text-input-border-size) solid var(--success-color);
 }
 
 .errorWrapper {
   border: var(--text-input-border-size) solid var(--error-color);
-  & .icon {
-    color: var(--error-color);
-  }
+}
+
+.errorWrapper.inputWrapper:focus-within {
+  border: var(--text-input-border-size) solid var(--error-color);
+}
+
+.errorWrapper .icon {
+  color: var(--error-color);
 }
 
 .error {

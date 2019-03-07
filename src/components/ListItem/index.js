@@ -22,6 +22,7 @@ export function ListItem({
     [styles.listItem]: true,
     [styles.disabled]: disabled,
     [styles.active]: active,
+    [styles.clickable]: onClick,
   });
   const listItemIconClasses = classNames({
     [iconClassName]: true,
@@ -33,7 +34,7 @@ export function ListItem({
       className={listItemClasses}
       onClick={() => onClick({
         currentTarget: {
-          value
+          value,
         }
       })}
       {...props}

@@ -5,6 +5,8 @@ import { State, Store } from "@sambego/storybook-state";
 import { Select } from '.';
 
 import { Option } from '../Option';
+import { ItemGroup } from '../ItemGroup';
+import { Item } from '../Item';
 
 storiesOf('Select', module)
   .add('Dropdown', () => {
@@ -12,114 +14,55 @@ storiesOf('Select', module)
       value: 'option1',
       open: false,
     });
+
+    function handleSelectChange({ currentTarget }) {
+      store.set({
+        value: currentTarget.value,
+        open: false,
+      });
+    }
+
+    function handleSelectClick() {
+      store.set({
+        open: !store.state.open,
+      });
+    }
     return (
       <State
         store={store}
       >
-        <Select
-          value={store.get('value')}
-          onClick={() => store.set({ open: !store.state.open })}
-          onChange={(e) => {
-            store.set({
-              value: e.currentTarget.value,
-              open: false,
-            });
-          }}
-        >
-          <Option
-            value='option1'
-            name='Option 1'
-            key={1}
-          />
-          <Option
-            value='option2'
-            name='Option 2'
-            key={2}
-          />
-          <Option
-            value='option3'
-            name='Option 3'
-            key={3}
-          />
-        </Select>
+        {state =>
+          <ItemGroup
+            title='Dropdown'
+            style={{ maxWidth: 300 }}
+          >
+            <Item>
+              <Select
+                label='Label'
+                value={state.value}
+                open={state.open}
+                onClick={handleSelectClick}
+                onChange={handleSelectChange}
+              >
+                <Option
+                  value='option1'
+                  name='Option 1'
+                  key={1}
+                />
+                <Option
+                  value='option2'
+                  name='Option 2'
+                  key={2}
+                />
+                <Option
+                  value='option3'
+                  name='Option 3'
+                  key={3}
+                />
+              </Select>
+            </Item>
+          </ItemGroup>
+        }
       </State>
     );
-  })
-  .add('Active dropdown', () => {
-    const store = new Store({
-      value: 'option1',
-      open: true,
-    });
-    return (
-      <State
-        store={store}
-      >
-        <Select
-          value={store.get('value')}
-          onClick={() => store.set({ open: !store.state.open })}
-          onChange={(e) => {
-            store.set({
-              value: e.currentTarget.value,
-            });
-          }}
-          open
-        >
-          <Option
-            value='option1'
-            name='Option 1'
-            key={1}
-          />
-          <Option
-            value='option2'
-            name='Option 2'
-            key={2}
-          />
-          <Option
-            value='option3'
-            name='Option 3'
-            key={3}
-          />
-        </Select>
-      </State>
-    );
-  })
-  .add('Dropdown with label', () => {
-    const store = new Store({
-      value: 'option1',
-      open: false,
-    });
-    return (
-      <State
-        store={store}
-      >
-        <Select
-          value={store.get('value')}
-          onClick={() => store.set({ open: !store.state.open })}
-          onChange={(e) => {
-            store.set({
-              value: e.currentTarget.value,
-              open: false,
-            });
-          }}
-          label='Select label'
-        >
-          <Option
-            value='option1'
-            name='Option 1'
-            key={1}
-          />
-          <Option
-            value='option2'
-            name='Option 2'
-            key={2}
-          />
-          <Option
-            value='option3'
-            name='Option 3'
-            key={3}
-          />
-        </Select>
-      </State>
-    );
-  })
-  ;
+  });

@@ -4,12 +4,15 @@ import PropTypes from 'prop-types';
 import styles from './list.css';
 
 export function List({
+  className,
+  style,
   children,
   ...props
 }) {
   return (
     <div
-      className={styles.list}
+      className={className || styles.list}
+      style={style}
       {...props}
     >
       {children}
@@ -18,5 +21,7 @@ export function List({
 }
 
 List.propTypes = {
+  className: PropTypes.string,
+  style: PropTypes.object,
   children: PropTypes.any,
 };

@@ -7,7 +7,11 @@
   min-width: 200px;
   box-sizing: border-box;
   cursor: pointer;
-  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  width: 100%;
 }
 
 .select:hover {
@@ -27,16 +31,19 @@
   border: none;
 }
 
+.nativeSelectWrapper {
+  position: relative;
+}
+
 .nativeCustomSelect {
   appearance: none;
-  padding: 0 16px;
 }
 
 .nativeIcon {
   font-size: 24px;
   position: absolute;
   right: 16px;
-  top: 20px;
+  top: 14px;
 }
 
 .active,
@@ -46,6 +53,9 @@
 }
 
 .icon {
+  font-size: 24px;
+  display: flex;
+  align-items: center;
   transition: transform 0.5s;
 }
 

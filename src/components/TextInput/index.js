@@ -20,6 +20,8 @@ export function TextInput({
   error = '',
   inputType = 'input',
   type = 'text',
+  name = '',
+  onChange = undefined,
   children,
   ...props
 }) {
@@ -46,6 +48,8 @@ export function TextInput({
           disabled={disabled}
           className={styles.input}
           placeholder={placeholder}
+          onChange={onChange}
+          name={name}
           type={type}
           {...props}
         />
@@ -76,5 +80,7 @@ TextInput.propTypes = {
   error: PropTypes.string,
   type: PropTypes.string,
   placeholder: PropTypes.string,
+  name: PropTypes.string,
+  onChange: PropTypes.func,
   children: PropTypes.any,
 };

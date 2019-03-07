@@ -1,15 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import styles from './dropdown.css';
+import styles from './item.css';
 
-export function Dropdown({
-  children = '',
+export function Item({
+  children,
   ...props
 }) {
   return (
     <div
-      className={styles.dropdown}
+      className={styles.item}
       {...props}
     >
       {children}
@@ -17,6 +17,6 @@ export function Dropdown({
   );
 }
 
-Dropdown.propTypes = {
+Item.propTypes = {
   children: PropTypes.any,
 };

@@ -5,7 +5,6 @@ import classNames from 'classnames';
 import { Label } from '../Label';
 import { List } from '../List';
 import { ListItem } from '../ListItem';
-import { Dropdown } from '../Dropdown';
 import { Icon } from '../Icon';
 import { isMobile } from '../../utils';
 
@@ -14,6 +13,7 @@ import styles from './select.css';
 export function Select({
   value = '',
   label = '',
+  name = '',
   open = false,
   onClick,
   onChange,
@@ -52,37 +52,46 @@ export function Select({
     <Label
       text={label}
     >
-      <select
-        value={value}
-        className={nativeSelectClasses}
-        onChange={onChange}
-        {...props}
-      >
-        {children}
-      </select>
-      {isNativeMode && (
-        <Icon
-          name='arrow-down'
-          className={nativeIconClasses}
-        />
-      )}
+      <div className={styles.nativeSelectWrapper}>
+        <select
+          value={value}
+          name={name}
+          className={nativeSelectClasses}
+          onChange={onChange}
+          {...props}
+        >
+          {children}
+        </select>
+        {isNativeMode && (
+          <Icon
+            name='arrow-down'
+            className={nativeIconClasses}
+          />
+        )}
+      </div>
       {!isNativeMode && (
-        <List>
-          <div className={selectClasses}>
-            <ListItem
-              iconClassName={iconClasses}
-              label={value}
-              value={value}
-              onClick={onClick}
-              icon='arrow-down'
+        <div>
+          <div
+            className={selectClasses}
+            onClick={() => onClick({
+              currentTarget: {
+                value,
+              }
+            })}
+            {...props}
+          >
+            {value}
+            <Icon
+              name='arrow-down'
+              className={iconClasses}
             />
           </div>
           {open && (
-            <Dropdown>
+            <List>
               {options}
-            </Dropdown>
+            </List>
           )}
-        </List>
+        </div>
       )}
     </Label>
   );
@@ -92,6 +101,7 @@ Select.propTypes = {
   value: PropTypes.string,
   open: PropTypes.bool,
   label: PropTypes.string,
+  name: PropTypes.string,
   onChange: PropTypes.func,
   onClick: PropTypes.func,
   children: PropTypes.any,
