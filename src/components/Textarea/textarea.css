@@ -28,13 +28,13 @@
 }
 
 .disabled {
-  border: var(--text-input-border-size) solid var(--text-input-border-disabled-color);
-  background: var(--text-input-border-disabled-color);
-  color: var(--text-input-disabled-color);
+  border: var(--text-input-border-size) solid var(--text-input-disabled-color);
+  background: var(--text-input-disabled-color);
+  color: var(--text-input-text-disabled-color);
 }
 
 .disabled:hover {
-  border: var(--text-input-border-size) solid var(--text-input-border-disabled-color);
+  border: var(--text-input-border-size) solid var(--text-input-disabled-color);
 }
 
 .successWrapper {

@@ -13,7 +13,7 @@ export function Textarea({
   className = '',
   label = '',
   rows = '3',
-  cols = '20',
+  cols = '40',
   isValid = false,
   hasError = false,
   error = '',

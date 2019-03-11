@@ -1,0 +1,5 @@
+.itemRow {
+  display: flex;
+  flex-flow: row wrap;
+  margin-bottom: 24px;
+}

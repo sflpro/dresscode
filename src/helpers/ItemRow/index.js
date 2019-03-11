@@ -1,16 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import styles from './item.css';
+import styles from './itemRow.css';
 
-export function Item({
+export function ItemRow({
   children,
   style,
   ...props
 }) {
   return (
     <div
-      className={styles.item}
+      className={styles.itemRow}
       style={style}
       {...props}
     >
@@ -19,7 +19,7 @@ export function Item({
   );
 }
 
-Item.propTypes = {
-  children: PropTypes.any,
+ItemRow.propTypes = {
   style: PropTypes.object,
+  children: PropTypes.any,
 };

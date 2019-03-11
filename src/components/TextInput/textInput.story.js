@@ -6,6 +6,7 @@ import { TextInput } from '.';
 
 import { Label } from '../Label';
 import { ItemGroup } from '../../helpers/ItemGroup';
+import { ItemRow } from '../../helpers/ItemRow';
 import { Item } from '../../helpers/Item';
 
 storiesOf('TextInput', module)
@@ -31,7 +32,6 @@ storiesOf('TextInput', module)
         {state =>
           <ItemGroup
             title='Text Input'
-            style={{ maxWidth: 300 }}
           >
             <Item>
               <Label

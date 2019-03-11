@@ -49,6 +49,17 @@
   align-items: center;
 }
 
+.circle.warning {
+  background-color: var(--error-color);
+  border: 1px solid var(--error-color);
+  color: var(--text-secondary-color);
+}
+
+.circle.warning:hover {
+  background-color: var(--error-color-dark);
+  border: 1px solid var(--error-color-dark);
+}
+
 .primary {
   background-color: var(--primary-color);
   border: 1px solid var(--primary-color);
