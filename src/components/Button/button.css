@@ -47,6 +47,7 @@
   font-size: 1em;
   display: inline-flex;
   align-items: center;
+  justify-content: center;
 }
 
 .circle.warning {
@@ -122,11 +123,11 @@
   display: flex;
 }
 
-.icon.left:not(.circle) {
+.button .icon.left {
   margin-right: 16px;
 }
 
-.icon.right:not(.circle) {
+.button  .icon.right {
   margin-left: 16px;
 }
 
