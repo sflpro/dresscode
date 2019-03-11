@@ -1,3 +1,8 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
 .wrapper > *:not(:last-child) {
   margin-bottom: 16px;
 }

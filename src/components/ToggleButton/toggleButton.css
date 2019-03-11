@@ -1,6 +1,6 @@
 :root {
     --toggle-button-border-color: var(--default-color);
-    --toggle-button-hover-color: var(--primary-light-color);
+    --toggle-button-hover-color: var(--primary-color-light);
     --toggle-button-checked-color: var(--primary-color);
     --toggle-button-background-color: var(--input-background-color);
     --toggle-button-color: var(--primary-color);

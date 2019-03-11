@@ -4,16 +4,6 @@ module.exports = {
   module: {
     rules: [
       {
-        enforce: 'pre',
-        test: /\.(js|jsx)$/,
-        loader: 'eslint-loader',
-        exclude: /(node_modules)/,
-        options: {
-          failOnWarning: true,
-          failOnError: true
-        },
-      },
-      {
         test: /\.css$/,
         include: path.resolve(__dirname, '../src'),
         loader: [

@@ -1,6 +1,6 @@
 :root {
     --radio-button-border-color: var(--default-color);
-    --radio-button-hover-color: var(--primary-light-color);
+    --radio-button-hover-color: var(--primary-color-light);
     --radio-button-checked-color: var(--primary-color);
     --radio-button-background-color: var(--secondary-color);
     --radio-button-color: var(--primary-color);

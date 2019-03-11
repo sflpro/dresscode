@@ -7,23 +7,25 @@ import styles from './controlsGroup.css';
 export function ControlsGroup({
   title = '',
   children,
+  style,
 }) {
   return (
-    <div>
+    <divs>
       {title && (
         <h5 className={styles.title}>
           {title}
         </h5>
       )}
-      <div className={styles.wrapper}>
+      <div className={styles.wrapper} style={style}>
         {children}
       </div>
-    </div>
+    </divs>
   );
 }
 
 ControlsGroup.propTypes = {
   title: PropTypes.string,
+  style: PropTypes.any,
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.element),
     PropTypes.element
