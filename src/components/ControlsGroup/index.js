@@ -10,9 +10,9 @@ export function ControlsGroup({
   return (
     <div>
       {title && (
-        <h5 className={styles.title}>
+        <h6 className={styles.title}>
           {title}
-        </h5>
+        </h6>
       )}
       <div className={styles.wrapper}>
         {children}

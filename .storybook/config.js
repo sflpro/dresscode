@@ -7,6 +7,7 @@ function loadStories() {
   require('../src/components/Tag/tag.story.js');
   require('../src/components/TextInput/textInput.story.js');
   require('../src/components/Select/select.story.js');
+  require('../src/components/Textarea/textarea.story.js');
 }
 
 configure(loadStories, module);

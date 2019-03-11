@@ -8,7 +8,7 @@ import { Option } from '../Option';
 import { ItemGroup } from '../ItemGroup';
 import { Item } from '../Item';
 
-storiesOf('Select', module)
+storiesOf('Dropdown', module)
   .add('Dropdown', () => {
     const store = new Store({
       value: 'option1',

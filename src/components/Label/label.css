@@ -3,10 +3,23 @@
   font-family: var(--label-font-family);
   font-size: var(--label-font-size);
   display: flex;
-  flex-flow: column nowrap;
+
   cursor: pointer;
 }
 
 .labelText {
   margin-bottom: 8px;
+}
+
+.error {
+  color: var(--error-color);
+}
+
+.col {
+  flex-flow: row nowrap;
+  align-items: center;
+}
+
+.row {
+  flex-flow: column nowrap;
 }

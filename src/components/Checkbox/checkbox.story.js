@@ -4,7 +4,8 @@ import { storiesOf } from '@storybook/react';
 
 import { Checkbox } from '.';
 
-import { ControlsGroup } from '../ControlsGroup';
+import { ItemGroup } from '../ItemGroup';
+import { Item } from '../Item';
 
 storiesOf('Checkbox', module)
   .add('Checkbox', () => {
@@ -26,39 +27,51 @@ storiesOf('Checkbox', module)
     return (
       <State store={store}>
         {state => [
-          <ControlsGroup key='key'>
-            <Checkbox
-              label='Ակտիվ'
-              checked={state.active}
-              name='active'
-              onChange={handler}
-            />
-            <Checkbox
-              label='Սավառել'
-              checked={state.hover}
-              name='hover'
-              onChange={handler}
-            />
-            <Checkbox
-              label='Սովորական'
-              checked={state.regular}
-              name='regular'
-              onChange={handler}
-            />
-            <Checkbox
-              label='Անաշխատունակ'
-              disabled
-              onChange={handler}
-            />
-            <Checkbox
-              label='Ակտիվ, սրանից'
-              checked
-              disabled
-              onChange={handler}
-            />
-          </ControlsGroup>
+          <ItemGroup
+            title='Checkbox'
+          >
+            <Item>
+              <Checkbox
+                label='Ակտիվ'
+                checked={state.active}
+                name='active'
+                onChange={handler}
+              />
+            </Item>
+            <Item>
+              <Checkbox
+                label='Սավառել'
+                checked={state.hover}
+                name='hover'
+                onChange={handler}
+              />
+            </Item>
+            <Item>
+              <Checkbox
+                label='Սովորական'
+                checked={state.regular}
+                name='regular'
+                onChange={handler}
+              />
+            </Item>
+            <Item>
+              <Checkbox
+                label='Անաշխատունակ'
+                disabled
+                onChange={handler}
+              />
+            </Item>
+            <Item>
+              <Checkbox
+                label='Ակտիվ, սրանից'
+                checked
+                disabled
+                onChange={handler}
+              />
+            </Item>
+          </ItemGroup>
         ]}
       </State>
     );
   }
-);
+  );

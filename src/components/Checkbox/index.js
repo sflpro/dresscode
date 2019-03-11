@@ -15,8 +15,10 @@ export function Checkbox({
   ...props
 }) {
   return (
-    <Label>
-      <span className={`${styles.iconWrapper} ${checked ? styles.checked : ''} ${disabled ?  styles.disabled : ''}`}>
+    <Label
+      display='col'
+    >
+      <span className={`${styles.iconWrapper} ${checked ? styles.checked : ''} ${disabled ? styles.disabled : ''}`}>
         <Icon
           name='checked'
           className={styles.icon}

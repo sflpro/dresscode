@@ -74,7 +74,8 @@
   align-items: center;
 }
 
-.successWrapper {
+.successWrapper,
+.successWrapper.inputWrapper:focus-within {
   border: var(--text-input-border-size) solid var(--success-color);
 }
 
@@ -82,14 +83,7 @@
   color: var(--success-color);
 }
 
-.successWrapper.inputWrapper:focus-within {
-  border: var(--text-input-border-size) solid var(--success-color);
-}
-
-.errorWrapper {
-  border: var(--text-input-border-size) solid var(--error-color);
-}
-
+.errorWrapper,
 .errorWrapper.inputWrapper:focus-within {
   border: var(--text-input-border-size) solid var(--error-color);
 }

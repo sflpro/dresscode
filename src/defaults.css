@@ -61,6 +61,8 @@
   --text-input-padding: 0 16px;
   --text-input-font-weight: var(--base-font-weight);
 
+  --textarea-padding: 16px;
+
   --list-border-radius: 8px;
   --list-item-min-height: 48px;
 
