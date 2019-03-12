@@ -5,8 +5,8 @@ import { storiesOf } from '@storybook/react';
 import { ControlsGroup } from '.';
 
 import { Checkbox } from '../Checkbox';
-import { ItemGroup } from '../ItemGroup';
-import { Item } from '../Item';
+import { ItemGroup } from '../../helpers/ItemGroup';
+import { Item } from '../../helpers/Item';
 
 storiesOf('ControlsGroup', module).add('CheckboxGroup', () => {
   const store = new Store({

@@ -1,8 +1,8 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 
-import { ItemGroup } from '../ItemGroup';
-import { Item } from '../Item';
+import { ItemGroup } from '../../helpers/ItemGroup';
+import { Item } from '../../helpers/Item';
 
 import { Tag } from '.';
 

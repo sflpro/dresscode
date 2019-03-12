@@ -4,8 +4,8 @@ import { storiesOf } from '@storybook/react';
 
 import { TextInput } from '.';
 
-import { ItemGroup } from '../ItemGroup';
-import { Item } from '../Item';
+import { ItemGroup } from '../../helpers/ItemGroup';
+import { Item } from '../../helpers/Item';
 
 storiesOf('TextInput', module)
   .add('Text Input', () => {

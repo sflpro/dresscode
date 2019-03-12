@@ -12,9 +12,3 @@
 .clickable:hover {
   background-color: var(--neutral-75); 
 }
-
-.icon {
-  font-size: 24px;
-  display: flex;
-  align-items: center;
-}

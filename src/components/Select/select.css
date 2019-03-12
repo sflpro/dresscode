@@ -53,9 +53,6 @@
 }
 
 .icon {
-  font-size: 24px;
-  display: flex;
-  align-items: center;
   transition: transform 0.5s;
 }
 

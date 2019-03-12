@@ -5,8 +5,8 @@ import { State, Store } from "@sambego/storybook-state";
 import { Select } from '.';
 
 import { Option } from '../Option';
-import { ItemGroup } from '../ItemGroup';
-import { Item } from '../Item';
+import { ItemGroup } from '../../helpers/ItemGroup';
+import { Item } from '../../helpers/Item';
 
 storiesOf('Dropdown', module)
   .add('Dropdown', () => {

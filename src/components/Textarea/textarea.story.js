@@ -4,8 +4,8 @@ import { storiesOf } from '@storybook/react';
 
 import { Textarea } from '.';
 
-import { ItemGroup } from '../ItemGroup';
-import { Item } from '../Item';
+import { ItemGroup } from '../../helpers/ItemGroup';
+import { Item } from '../../helpers/Item';
 
 storiesOf('Textarea', module)
   .add('Textarea', () => {

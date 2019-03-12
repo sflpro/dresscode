@@ -4,8 +4,8 @@ import { storiesOf } from '@storybook/react';
 
 import { Checkbox } from '.';
 
-import { ItemGroup } from '../ItemGroup';
-import { Item } from '../Item';
+import { ItemGroup } from '../../helpers/ItemGroup';
+import { Item } from '../../helpers/Item';
 
 storiesOf('Checkbox', module)
   .add('Checkbox', () => {

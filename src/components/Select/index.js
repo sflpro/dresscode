@@ -26,6 +26,7 @@ export function Select({
       label: option.props.name,
       onClick: onChange,
       active: option.props.value === value,
+      icon: option.props.value === value ? 'thick' : null,
     })
   );
 
@@ -83,6 +84,7 @@ export function Select({
             {value}
             <Icon
               name='arrow-down'
+              size={24}
               className={iconClasses}
             />
           </div>

@@ -26,7 +26,6 @@ export function ListItem({
   });
   const listItemIconClasses = classNames({
     [iconClassName]: true,
-    [styles.icon]: true,
   });
 
   return (
@@ -43,6 +42,7 @@ export function ListItem({
         <Icon
           name={icon}
           className={listItemIconClasses}
+          size={24}
         />
       )}
       {label}
@@ -50,6 +50,7 @@ export function ListItem({
         <Icon
           name={icon}
           className={listItemIconClasses}
+          size={24}
         />
       )}
     </div>

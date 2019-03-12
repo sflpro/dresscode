@@ -56,6 +56,7 @@ export function TextInput({
         {icon && (
           <Icon
             name={icon}
+            size={24}
             className={styles.icon}
           />
         )}

@@ -3,8 +3,6 @@ import PropTypes from 'prop-types';
 
 import styles from './itemGroup.css';
 
-import { Label } from '../Label';
-
 export function ItemGroup({
   title,
   children,
@@ -18,10 +16,9 @@ export function ItemGroup({
       {...props}
     >
       {title && (
-        <Label
-          text={title}
-          className={styles.title}
-        />
+        <h3>
+          {title}
+        </h3>
       )}
       {children}
     </div>

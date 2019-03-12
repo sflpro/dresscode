@@ -12,3 +12,8 @@
   user-select: none;
   -webkit-font-smoothing: antialiased;
 }
+
+.iconWrapper {
+  display: flex;
+  align-items: center;
+}
