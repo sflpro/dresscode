@@ -21,6 +21,7 @@ export function Checkbox({
       <span className={`${styles.iconWrapper} ${checked ? styles.checked : ''} ${disabled ? styles.disabled : ''}`}>
         <Icon
           name='checked'
+          size={12}
           className={styles.icon}
         />
       </span>

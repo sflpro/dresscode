@@ -12,7 +12,8 @@
   vertical-align: middle;
   border: solid 2px var(--checkbox-border-color);
   background-color: var(--checkbox-background-color);
-  padding: 6px;
+  display: flex;
+  justify-content: center;
 }
 
 .iconWrapper:hover {
@@ -31,7 +32,7 @@
 }
 
 .checked > .icon {
-  display: inline-block;
+  display: flex;
 }
 
 .disabled, .disabled:hover {

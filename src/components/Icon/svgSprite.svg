@@ -3,7 +3,7 @@
      xmlns:xlink="http://www.w3.org/1999/xlink">
   <defs>
 
-    <symbol id="checked"  viewBox="0 0 16 13">
+    <symbol id="checked"  viewBox="0 0 12 8">
         <path  d="M9.617.415L4.393 5.736 2.06 3.394a1.206 1.206 0 0 0-1.707-.002A1.206 1.206 0 0 0 .354 5.1l3.471 3.462a1 1 0 0 0 1.402.01l6.344-6.151a1.413 1.413 0 0 0 .028-2.001A1.386 1.386 0 0 0 9.617.415z"/>
     </symbol>
     <symbol id='tracker' viewBox='0 0 24 24'>
