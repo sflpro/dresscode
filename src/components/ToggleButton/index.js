@@ -1,46 +1,52 @@
 import React from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
-import { Label } from '../Label/Label';
+import { Label } from '../Label';
 
-import classes from './radioButton.css';
+import styles from './toggleButton.css';
 
-export function RadioButton({
+export function ToggleButton({
   disabled = false,
   checked = false,
   onChange,
-  value,
   label,
   name,
+  ...props
 }) {
   return (
-    <div className={classes.wrapper}>
+    <div
+      className={classNames({
+        [styles.wrapper]: true,
+        [props.className || '']: true
+      })}
+    >
       <Label
         className={classNames({
-          [classes.label]: true,
-          [classes.checked]: checked,
-          [classes.disabled]: disabled,
+          [styles.label]: true,
+          [styles.checked]: checked,
+          [styles.disabled]: disabled,
         })}
+        display='col'
       >
         <input
-          className={classes.input}
+          className={styles.input}
           disabled={disabled}
           onChange={onChange}
           checked={checked}
-          value={value}
-          type='radio'
+          type='checkbox'
           name={name}
+          {...props}
         />
-        {label}
+        <span>{label}</span>
+        <span className={styles.toggle} />
       </Label>
     </div>
   );
 }
 
-RadioButton.propTypes = {
+ToggleButton.propTypes = {
   onChange: PropTypes.func.isRequired,
   label: PropTypes.string.isRequired,
-  value: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   disabled: PropTypes.bool,
   checked: PropTypes.bool,

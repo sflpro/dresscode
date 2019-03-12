@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Icon } from "../Icon/Icon";
-import { Label } from '../Label/Label';
+
+import { Icon } from "../Icon";
+import { Label } from '../Label';
 
 import styles from './checkbox.css';
 
@@ -14,10 +15,13 @@ export function Checkbox({
   ...props
 }) {
   return (
-    <Label>
-      <span className={`${styles.iconWrapper} ${checked ? styles.checked : ''} ${disabled ?  styles.disabled : ''}`}>
+    <Label
+      display='col'
+    >
+      <span className={`${styles.iconWrapper} ${checked ? styles.checked : ''} ${disabled ? styles.disabled : ''}`}>
         <Icon
           name='checked'
+          size={12}
           className={styles.icon}
         />
       </span>
