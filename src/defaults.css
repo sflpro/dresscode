@@ -1,18 +1,26 @@
 :root {
+  --neutral-white: #FFFFFF;
+  --neutral-75: #F1F1F1;
+  --neutral-100: #E5E5E5;
+  --neutral-200: #CCCCCC;
+  --neutral-500: #7f7f7f;
+  --neutral-800: #333333;
+  --neutral-900: #1D1D1D;
+  --neutral-1000: #000000;
+
   --primary-color: #6400dc;
   --primary-color-light: #a266ea;
   --primary-color-dark: #46009a;
-
   --default-color: #e5e5e5;
   --secondary-color: #ffffff;
   --disabled-color: #f1f1f1;
   --success-color: #32c86d;
   --error-color: #ff5252;
-  
+
   --text-default-color: #1d1d1d;
   --text-primary-color: #6400dc;
   --text-secondary-color: #ffffff;
-  --text-disabled-color: #cccccc;
+  --text-disabled-color: var(--neutral-200);
 
   --base-font-weight: normal;
   --base-font-family: Montserratarm;
@@ -37,4 +45,30 @@
   --tag-height: 32px;
   --tag-border-radius: 16px;
   --tag-padding: 0 16px;
+
+  --text-input-border-color: var(--default-color);
+  --text-input-border-color-hover: var(--primary-color-light);
+  --text-input-border-color-focus: var(--primary-color);
+  --text-input-color: var(--text-default-color);
+  --text-input-border-disabled-color: var(--disabled-color);
+  --text-input-placeholder-color: var(--text-disabled-color);
+  --text-input-disabled-color: var(--text-disabled-color);
+  --text-input-font-size: var(--base-font-size);
+
+  --text-input-height: 48px;
+  --text-input-border-radius: 6px;
+  --text-input-border-size: 1px;
+  --text-input-padding: 0 16px;
+  --text-input-font-weight: var(--base-font-weight);
+
+  --textarea-padding: 16px;
+
+  --list-border-radius: 8px;
+  --list-item-min-height: 48px;
+
+  --box-shadow-10: 0 2px 4px 0 rgba(0, 0, 0, 0.15);
+  --box-shadow-50: 0 4px 8px 0 rgba(0, 0, 0, 0.15);
+  --box-shadow-100: 0 8px 16px 0 rgba(0, 0, 0, 0.15);
+  --box-shadow-300: 0 16px 24px 0 rgba(0, 0, 0, 0.15);
+  --box-shadow-500: 0 48px 56px 0 rgba(0, 0, 0, 0.15);
 }

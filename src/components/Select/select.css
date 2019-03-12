@@ -1,0 +1,65 @@
+.select {
+  height: var(--text-input-height);
+  border-radius: var(--text-input-border-radius);
+  border: var(--text-input-border-size) solid var(--text-input-border-color);
+  background-color: var(--neutral-white);
+  color: var(--text-input-color);
+  min-width: 200px;
+  box-sizing: border-box;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  width: 100%;
+}
+
+.select:hover {
+  border: var(--text-input-border-size) solid var(--text-input-border-color-hover);
+}
+
+.nativeSelect {
+  overflow: hidden;
+  position: absolute;
+  outline: none;
+  border: none;
+  width: 0;
+  height: 0;
+}
+
+.nativeSelect:hover {
+  border: none;
+}
+
+.nativeSelectWrapper {
+  position: relative;
+}
+
+.nativeCustomSelect {
+  appearance: none;
+}
+
+.nativeIcon {
+  font-size: 24px;
+  position: absolute;
+  right: 16px;
+  top: 14px;
+}
+
+.active,
+.nativeCustomSelect:focus {
+  border: var(--text-input-border-size) solid var(--text-input-border-color-focus);
+  outline: none;
+}
+
+.icon {
+  transition: transform 0.5s;
+}
+
+.active .icon {
+  color: var(--text-input-border-color-focus);
+}
+
+.reverseIcon {
+  transform: rotate(180deg);
+}

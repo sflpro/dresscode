@@ -1,0 +1,11 @@
+.group {
+  display: flex;
+  flex-flow: column nowrap;
+  padding: 16px;
+}
+
+.title {
+  color: var(--text-default-color);
+  font-size: 2em;
+  padding-bottom: 24px; 
+}
