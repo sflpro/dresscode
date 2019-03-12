@@ -6,8 +6,8 @@ import { Label } from '../Label/Label';
 import classes from './radioButton.css';
 
 export function RadioButton({
-  isDisabled = false,
-  isChecked = false,
+  disabled = false,
+  checked = false,
   onChange,
   value,
   label,
@@ -18,15 +18,15 @@ export function RadioButton({
       <Label
         className={classNames({
           [classes.label]: true,
-          [classes.checked]: isChecked,
-          [classes.disabled]: isDisabled,
+          [classes.checked]: checked,
+          [classes.disabled]: disabled,
         })}
       >
         <input
           className={classes.input}
-          disabled={isDisabled}
+          disabled={disabled}
           onChange={onChange}
-          checked={isChecked}
+          checked={checked}
           value={value}
           type='radio'
           name={name}
@@ -42,6 +42,6 @@ RadioButton.propTypes = {
   label: PropTypes.string.isRequired,
   value: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
-  isDisabled: PropTypes.bool,
-  isChecked: PropTypes.bool,
+  disabled: PropTypes.bool,
+  checked: PropTypes.bool,
 };

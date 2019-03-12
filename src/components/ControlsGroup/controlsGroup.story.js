@@ -76,14 +76,14 @@ storiesOf('ControlsGroup', module)
             key='key'
           >
             <RadioButton
-              isChecked={state.value === 'value1'}
+              checked={state.value === 'value1'}
               label='Ո՞վ աշխատի, նա կուտի'
               onChange={handler}
               name='value 1'
               value='value1'
             />
             <RadioButton
-              isChecked={state.value === 'value2'}
+              checked={state.value === 'value2'}
               label='Էշ մի սատկի գարուն կգա'
               onChange={handler}
               value='value2'
@@ -91,7 +91,7 @@ storiesOf('ControlsGroup', module)
             />
             <RadioButton
               label='Մեկ Դիզայնեռը անգամ շատա 10 պրոեկտ համար'
-              isChecked={state.value === 'value3'}
+              checked={state.value === 'value3'}
               onChange={handler}
               value='value3'
               name='tes3'
@@ -131,37 +131,37 @@ storiesOf('ControlsGroup', module)
             key='key'
           >
             <ToggleButton
-              isChecked={state.first}
+              checked={state.first}
               onChange={handler}
               label='Արագ'
               name='first'
             />
             <ToggleButton
-              isChecked={state.second}
+              checked={state.second}
               onChange={handler}
               label='Որակով'
               name='second'
             />
             <ToggleButton
               label='Արագից տաս անգամ արագ'
-              isChecked={state.third}
+              checked={state.third}
               onChange={handler}
               name='third'
             />
             <ToggleButton
-              isChecked={state.fourth}
+              checked={state.fourth}
               onChange={handler}
               label='2 Դիզայնեռ'
               name='fourth'
             />
             <ToggleButton
-              isChecked={state.fifth}
+              checked={state.fifth}
               onChange={handler}
               label='Մի հոգով'
               name='fifth'
             />
             <ToggleButton
-              isChecked={state.sixth}
+              checked={state.sixth}
               label='Շաբաթ / Կիրակի'
               onChange={handler}
               name='sixth'

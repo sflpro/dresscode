@@ -6,8 +6,8 @@ import { Label } from '../Label/Label';
 import styles from './toggleButton.css';
 
 export function ToggleButton({
-  isDisabled,
-  isChecked,
+  disabled = false,
+  checked = false,
   onChange,
   label,
   name,
@@ -17,15 +17,15 @@ export function ToggleButton({
       <Label
         className={classNames({
           [styles.label]: true,
-          [styles.checked]: isChecked,
-          [styles.disabled]: isDisabled,
+          [styles.checked]: checked,
+          [styles.disabled]: disabled,
         })}
       >
         <input
           className={styles.input}
-          disabled={isDisabled}
+          disabled={disabled}
           onChange={onChange}
-          checked={isChecked}
+          checked={checked}
           type='checkbox'
           name={name}
         />
@@ -40,11 +40,6 @@ ToggleButton.propTypes = {
   onChange: PropTypes.func.isRequired,
   label: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
-  isDisabled: PropTypes.bool,
-  isChecked: PropTypes.bool,
-};
-
-ToggleButton.defaultProps = {
-  isDisabled: false,
-  isChecked: false,
+  disabled: PropTypes.bool,
+  checked: PropTypes.bool,
 };

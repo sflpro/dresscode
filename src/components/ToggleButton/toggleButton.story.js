@@ -20,24 +20,24 @@ storiesOf('Toggle Button', module)
         value='test2'
         name='test 2'
         id='test2'
-        isChecked
+        checked
       />
       <ToggleButton
         onChange={e => e}
         label='էս մեկը չես կարա'
         value='test3'
         name='tes3'
-        isDisabled
         id='test3'
+        disabled
       />
       <ToggleButton
         onChange={e => e}
         label='էս մեկն էլ'
         value='test4'
         name='test4'
-        isDisabled
-        isChecked
         id='test4'
+        disabled
+        checked
       />
     </ControlsGroup>
   ));
