@@ -1,8 +1,8 @@
+import React from 'react';
 import { State, Store } from '@sambego/storybook-state';
 import { storiesOf } from '@storybook/react';
-import React from 'react';
 
-import { Checkbox } from '../Checkbox/Checkbox.js';
+import { Checkbox } from '../Checkbox/index.js';
 import { ControlsGroup } from './index.js';
 import { RadioButton } from '../RadioButton';
 import { ToggleButton } from '../ToggleButton';
@@ -78,21 +78,21 @@ storiesOf('ControlsGroup', module)
             <RadioButton
               isChecked={state.value === 'value1'}
               label='Ո՞վ աշխատի, նա կուտի'
-              handleChange={handler}
+              onChange={handler}
               name='value 1'
               value='value1'
             />
             <RadioButton
               isChecked={state.value === 'value2'}
               label='Էշ մի սատկի գարուն կգա'
-              handleChange={handler}
+              onChange={handler}
               value='value2'
               name='tes3'
             />
             <RadioButton
               label='Մեկ Դիզայնեռը անգամ շատա 10 պրոեկտ համար'
               isChecked={state.value === 'value3'}
-              handleChange={handler}
+              onChange={handler}
               value='value3'
               name='tes3'
             />
@@ -132,38 +132,38 @@ storiesOf('ControlsGroup', module)
           >
             <ToggleButton
               isChecked={state.first}
-              handleChange={handler}
+              onChange={handler}
               label='Արագ'
               name='first'
             />
             <ToggleButton
               isChecked={state.second}
-              handleChange={handler}
+              onChange={handler}
               label='Որակով'
               name='second'
             />
             <ToggleButton
               label='Արագից տաս անգամ արագ'
               isChecked={state.third}
-              handleChange={handler}
+              onChange={handler}
               name='third'
             />
             <ToggleButton
               isChecked={state.fourth}
-              handleChange={handler}
+              onChange={handler}
               label='2 Դիզայնեռ'
               name='fourth'
             />
             <ToggleButton
               isChecked={state.fifth}
-              handleChange={handler}
+              onChange={handler}
               label='Մի հոգով'
               name='fifth'
             />
             <ToggleButton
               isChecked={state.sixth}
-              handleChange={handler}
               label='Շաբաթ / Կիրակի'
+              onChange={handler}
               name='sixth'
             />
           </ControlsGroup>,

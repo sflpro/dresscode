@@ -1,13 +1,20 @@
+import React from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
-import React from 'react';
+import { Label } from '../Label/Label';
 
 import styles from './toggleButton.css';
 
-export function ToggleButton({ name, label, isChecked, isDisabled, handleChange }) {
+export function ToggleButton({
+  isDisabled,
+  isChecked,
+  onChange,
+  label,
+  name,
+}) {
   return (
     <div className={styles.wrapper}>
-      <label
+      <Label
         className={classNames({
           [styles.label]: true,
           [styles.checked]: isChecked,
@@ -16,21 +23,21 @@ export function ToggleButton({ name, label, isChecked, isDisabled, handleChange 
       >
         <input
           className={styles.input}
-          onChange={handleChange}
           disabled={isDisabled}
+          onChange={onChange}
           checked={isChecked}
           type='checkbox'
           name={name}
         />
         <span>{label}</span>
         <span className={styles.toggle} />
-      </label>
+      </Label>
     </div>
   );
 }
 
 ToggleButton.propTypes = {
-  handleChange: PropTypes.func.isRequired,
+  onChange: PropTypes.func.isRequired,
   label: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   isDisabled: PropTypes.bool,

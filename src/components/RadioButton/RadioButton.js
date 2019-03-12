@@ -1,47 +1,47 @@
+import React from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
-import React from 'react';
+import { Label } from '../Label/Label';
 
 import classes from './radioButton.css';
 
-export function RadioButton({ name, value, id, label, isChecked, isDisabled, handleChange }) {
+export function RadioButton({
+  isDisabled = false,
+  isChecked = false,
+  onChange,
+  value,
+  label,
+  name,
+}) {
   return (
     <div className={classes.wrapper}>
-      <input
-        className={classes.input}
-        onChange={handleChange}
-        disabled={isDisabled}
-        checked={isChecked}
-        value={value}
-        type='radio'
-        name={name}
-        id={id}
-      />
-      <label
+      <Label
         className={classNames({
           [classes.label]: true,
           [classes.checked]: isChecked,
           [classes.disabled]: isDisabled,
         })}
-        htmlFor={id}
       >
-        <span>{label}</span>
-      </label>
+        <input
+          className={classes.input}
+          disabled={isDisabled}
+          onChange={onChange}
+          checked={isChecked}
+          value={value}
+          type='radio'
+          name={name}
+        />
+        {label}
+      </Label>
     </div>
   );
 }
 
 RadioButton.propTypes = {
-  handleChange: PropTypes.func.isRequired,
+  onChange: PropTypes.func.isRequired,
   label: PropTypes.string.isRequired,
   value: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
-  id: PropTypes.string.isRequired,
   isDisabled: PropTypes.bool,
   isChecked: PropTypes.bool,
-};
-
-RadioButton.defaultProps = {
-  isDisabled: false,
-  isChecked: false,
 };
