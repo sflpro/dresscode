@@ -24,7 +24,6 @@ export function Button({
     [styles.disabled]: disabled,
   });
   const iconClasses = classNames({
-    [styles.icon]: true,
     [styles[iconPos]]: true,
   });
   const children = (
@@ -32,6 +31,7 @@ export function Button({
       {icon && iconPos === 'left' && (
         <Icon
           name={icon}
+          size={24}
           className={iconClasses}
         />
       )}
@@ -39,6 +39,7 @@ export function Button({
       {icon && iconPos === 'right' && (
         <Icon
           name={icon}
+          size={24}
           className={iconClasses}
         />
       )}

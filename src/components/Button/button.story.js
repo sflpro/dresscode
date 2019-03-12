@@ -3,9 +3,9 @@ import { storiesOf } from '@storybook/react';
 
 import { Button } from '.';
 
-import { ItemGroup } from '../ItemGroup';
-import { ItemRow } from '../ItemRow';
-import { Item } from '../Item';
+import { ItemGroup } from '../../helpers/ItemGroup';
+import { ItemRow } from '../../helpers/ItemRow';
+import { Item } from '../../helpers/Item';
 
 storiesOf('Button', module)
   .add('Primary button', () => {

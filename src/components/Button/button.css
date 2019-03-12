@@ -118,16 +118,11 @@
   cursor: auto;
 }
 
-.icon {
-  font-size: 24px;
-  display: flex;
-}
-
-.button .icon.left {
+.button .left {
   margin-right: 16px;
 }
 
-.button  .icon.right {
+.button .right {
   margin-left: 16px;
 }
 
