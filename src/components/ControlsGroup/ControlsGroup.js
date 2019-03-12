@@ -10,7 +10,7 @@ export function ControlsGroup({
   style,
 }) {
   return (
-    <divs>
+    <div>
       {title && (
         <h5 className={styles.title}>
           {title}
@@ -19,7 +19,7 @@ export function ControlsGroup({
       <div className={styles.wrapper} style={style}>
         {children}
       </div>
-    </divs>
+    </div>
   );
 }
 
