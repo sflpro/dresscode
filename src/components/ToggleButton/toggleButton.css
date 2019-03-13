@@ -1,31 +1,3 @@
-:root {
-    --toggle-button-border-color: var(--default-color);
-    --toggle-button-hover-color: var(--primary-color-light);
-    --toggle-button-checked-color: var(--primary-color);
-    --toggle-button-background-color: var(--input-background-color);
-    --toggle-button-color: var(--primary-color);
-    --toggle-button-disabled-color: var(--default-color);
-    --toggle-button-font-size: var(--base-font-size);
-
-    --toggle-button-height: 24px;
-    --toggle-button-width: 40px;
-    --toggle-button-border-radius: 34px;
-
-    --toggle-button-toggle-height: 16px;
-    --toggle-button-toggle-width: 16px;
-    --toggle-button-toggle-border-radius: 34px;
-
-    --toggle-button-toggle-translateX: 16px;
-    --toggle-button-toggle-left: 4px;
-    --toggle-button-toggle-top: 4px;
-
-    --toggle-button-transition: .4s;
-
-    --toggle-button-label-distance: var(--input-label-distance);
-
-    --toggle-button-font-weight: var(--base-font-weight);
-}
-
 .wrapper {
     display: inline-block;
 }

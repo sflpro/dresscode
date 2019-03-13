@@ -74,4 +74,49 @@
 
   --input-label-distance: 16px;
   --input-background-color: #cccccc;
+
+  --radio-button-border-color: var(--default-color);
+  --radio-button-hover-color: var(--primary-color-light);
+  --radio-button-checked-color: var(--primary-color);
+  --radio-button-background-color: var(--secondary-color);
+  --radio-button-color: var(--primary-color);
+  --radio-button-disabled-text-color: var(--text-disabled-color);
+  --radio-button-disabled-color: var(--default-color);
+  --radio-button-font-size: var(--base-font-size);
+
+  --radio-button-height: 24px;
+  --radio-button-width: 24px;
+  --radio-button-white-background-width: 3px;
+  --radio-button-border-radius: 12px;
+  --radio-button-border-height: 2px;
+
+  --radio-button-label-distance: var(--input-label-distance);
+
+  --radio-button-font-weight: var(--base-font-weight);
+
+  --toggle-button-border-color: var(--default-color);
+  --toggle-button-hover-color: var(--primary-color-light);
+  --toggle-button-checked-color: var(--primary-color);
+  --toggle-button-background-color: var(--input-background-color);
+  --toggle-button-color: var(--primary-color);
+  --toggle-button-disabled-color: var(--default-color);
+  --toggle-button-font-size: var(--base-font-size);
+
+  --toggle-button-height: 24px;
+  --toggle-button-width: 40px;
+  --toggle-button-border-radius: 34px;
+
+  --toggle-button-toggle-height: 16px;
+  --toggle-button-toggle-width: 16px;
+  --toggle-button-toggle-border-radius: 34px;
+
+  --toggle-button-toggle-translateX: 16px;
+  --toggle-button-toggle-left: 4px;
+  --toggle-button-toggle-top: 4px;
+
+  --toggle-button-transition: .4s;
+
+  --toggle-button-label-distance: var(--input-label-distance);
+
+  --toggle-button-font-weight: var(--base-font-weight);
 }
