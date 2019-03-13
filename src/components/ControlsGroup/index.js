@@ -6,6 +6,7 @@ import styles from './controlsGroup.css';
 export function ControlsGroup({
   title = '',
   children,
+  style,
 }) {
   return (
     <div>
@@ -14,7 +15,7 @@ export function ControlsGroup({
           {title}
         </h6>
       )}
-      <div className={styles.wrapper}>
+      <div className={styles.wrapper} style={style}>
         {children}
       </div>
     </div>
@@ -23,6 +24,7 @@ export function ControlsGroup({
 
 ControlsGroup.propTypes = {
   title: PropTypes.string,
+  style: PropTypes.any,
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.element),
     PropTypes.element

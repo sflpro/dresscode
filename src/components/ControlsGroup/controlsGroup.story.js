@@ -1,12 +1,13 @@
 import React from 'react';
-import { State, Store } from "@sambego/storybook-state";
+import { State, Store } from '@sambego/storybook-state';
 import { storiesOf } from '@storybook/react';
 
 import { ControlsGroup } from '.';
-
 import { Checkbox } from '../Checkbox';
 import { ItemGroup } from '../../helpers/ItemGroup';
 import { Item } from '../../helpers/Item';
+import { RadioButton } from '../RadioButton';
+import { ToggleButton } from '../ToggleButton';
 
 storiesOf('ControlsGroup', module).add('CheckboxGroup', () => {
   const store = new Store({
@@ -57,8 +58,121 @@ storiesOf('ControlsGroup', module).add('CheckboxGroup', () => {
               />
             </ControlsGroup>
           </Item>
-        </ItemGroup>
+        </ItemGroup>,
       ]}
     </State>
   );
-});
+}).add('RadioButtonGroup', () => {
+  const store = new Store({
+    value: 'value3',
+  });
+
+  function handler({ currentTarget }) {
+    store.set({ value: currentTarget.value });
+  }
+
+  return (
+    <State
+      store={store}
+    >
+      {state => [
+        <ControlsGroup
+          title='Ո՞րն է տվյալ պնդումներից ճիշտ'
+          key='key'
+        >
+          <RadioButton
+            checked={state.value === 'value1'}
+            label='Ո՞վ աշխատի, նա կուտի'
+            onChange={handler}
+            name='value 1'
+            value='value1'
+          />
+          <RadioButton
+            checked={state.value === 'value2'}
+            label='Էշ մի սատկի գարուն կգա'
+            onChange={handler}
+            value='value2'
+            name='tes3'
+          />
+          <RadioButton
+            label='Մեկ Դիզայնեռը անգամ շատա 10 պրոեկտ համար'
+            checked={state.value === 'value3'}
+            onChange={handler}
+            value='value3'
+            name='tes3'
+          />
+        </ControlsGroup>,
+      ]}
+    </State>
+  );
+})
+  .add('ToggleButtonGroup', () => {
+    const store = new Store({
+      first: true,
+      second: true,
+      third: true,
+      fourth: false,
+      fifth: true,
+      sixth: true,
+    });
+
+    function handler({ currentTarget }) {
+      store.set({
+        ...store.state,
+        ...{
+          [currentTarget.name]: !store.state[currentTarget.name],
+        },
+      });
+    }
+
+    return (
+      <State
+        store={store}
+      >
+        {state => [
+          <ControlsGroup
+            title='Պրոեկտի պարամետրեր'
+            style={{ width: '324px' }}
+            key='key'
+          >
+            <ToggleButton
+              checked={state.first}
+              onChange={handler}
+              label='Արագ'
+              name='first'
+            />
+            <ToggleButton
+              checked={state.second}
+              onChange={handler}
+              label='Որակով'
+              name='second'
+            />
+            <ToggleButton
+              label='Արագից տաս անգամ արագ'
+              checked={state.third}
+              onChange={handler}
+              name='third'
+            />
+            <ToggleButton
+              checked={state.fourth}
+              onChange={handler}
+              label='2 Դիզայնեռ'
+              name='fourth'
+            />
+            <ToggleButton
+              checked={state.fifth}
+              onChange={handler}
+              label='Մի հոգով'
+              name='fifth'
+            />
+            <ToggleButton
+              checked={state.sixth}
+              label='Շաբաթ / Կիրակի'
+              onChange={handler}
+              name='sixth'
+            />
+          </ControlsGroup>,
+        ]}
+      </State>
+    );
+  });

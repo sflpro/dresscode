@@ -1,0 +1,61 @@
+.wrapper {
+    display: inline-block;
+}
+
+.input {
+    display: none;
+}
+
+.label {
+    display: flex;
+    align-items: center;
+    font-size: var(--toggle-button-font-size);
+    color: var(--toggle-button-color);
+    font-weight: var(--toggle-button-font-weight);
+    position: relative;
+    cursor: pointer;
+    justify-content: space-between;
+}
+
+.toggle {
+    cursor: pointer;
+    position: relative;
+    background-color: var(--toggle-button-background-color);
+    transition: var(--toggle-button-transition);
+    border-radius: var(--toggle-button-border-radius);
+    width: var(--toggle-button-width);
+    height: var(--toggle-button-height);
+    margin-left: var(--toggle-button-label-distance);
+}
+
+.toggle:after {
+    position: absolute;
+    content: "";
+    height: var(--toggle-button-toggle-height);
+    width: var(--toggle-button-toggle-width);
+    left: var(--toggle-button-toggle-left);
+    top: var(--toggle-button-toggle-top);
+    background-color: white;
+    transition: var(--toggle-button-transition);;
+    border-radius: var(--toggle-button-toggle-border-radius);
+}
+
+.label:hover > .toggle {
+    background-color: var(--toggle-button-hover-color);
+}
+
+.checked > .toggle:after {
+    transform: translateX(var(--toggle-button-toggle-translateX));
+}
+
+.checked > .toggle, .checked:hover > .toggle {
+    background-color: var(--toggle-button-checked-color);
+}
+
+.disabled {
+    color: var(--toggle-button-disabled-color);
+}
+
+.disabled > .toggle, .disabled:hover > .toggle {
+    background-color: var(--toggle-button-disabled-color);
+}
