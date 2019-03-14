@@ -1,0 +1,13 @@
+.positionControl {
+  position: relative;
+  width: 100%;
+}
+
+.target {
+  width: 100%;
+}
+
+.popover {
+  position: absolute;
+  width: 100%;
+}

@@ -4,6 +4,7 @@ import classNames from 'classnames';
 
 import { Label } from '../Label';
 import { Icon } from '../Icon';
+import { isMobile } from '../../utils';
 
 import styles from './textInput.css';
 
@@ -24,6 +25,7 @@ export function TextInput({
   children,
   ...props
 }) {
+  const isNativeMode = isMobile();
   const inputWrapperClasses = classNames({
     [styles.inputWrapper]: true,
     [className]: true,
@@ -31,6 +33,10 @@ export function TextInput({
     [styles.successWrapper]: isValid,
     [styles.errorWrapper]: hasError,
   });
+  let inputType = type;
+  if (inputType === 'date' && !isNativeMode) {
+    inputType = 'text';
+  }
 
   return (
     <Label
@@ -50,7 +56,7 @@ export function TextInput({
           placeholder={placeholder}
           onChange={onChange}
           name={name}
-          type={type}
+          type={inputType}
           {...props}
         />
         {icon && (

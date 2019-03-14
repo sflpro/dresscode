@@ -5,7 +5,14 @@ module.exports = {
     rules: [
       {
         test: /\.css$/,
+        include: /node_modules/,
+        use: ['style-loader', 'css-loader'],
+
+      },
+      {
+        test: /\.css$/,
         include: path.resolve(__dirname, '../src'),
+        exclude: /node_modules/,
         loader: [
           'style-loader',
           {

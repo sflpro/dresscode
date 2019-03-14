@@ -11,7 +11,7 @@
   --primary-color: #6400dc;
   --primary-color-light: #a266ea;
   --primary-color-dark: #46009a;
-  --default-color: #e5e5e5;
+  --default-color: var(--neutral-100);
   --secondary-color: #ffffff;
   --disabled-color: #f1f1f1;
   --success-color: #32c86d;
@@ -113,10 +113,9 @@
   --toggle-button-toggle-translateX: 16px;
   --toggle-button-toggle-left: 4px;
   --toggle-button-toggle-top: 4px;
-
   --toggle-button-transition: .4s;
-
   --toggle-button-label-distance: var(--input-label-distance);
-
   --toggle-button-font-weight: var(--base-font-weight);
+
+  --date-picker-border-color: var(---default-color);
 }

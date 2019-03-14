@@ -10,6 +10,7 @@ function loadStories() {
   require('../src/components/RadioButton/radioButton.story');
   require('../src/components/ToggleButton/toggleButton.story');
   require('../src/components/ControlsGroup/controlsGroup.story');
+  require('../src/components/PositionControl/positionControl.story.js');
 }
 
 configure(loadStories, module);
