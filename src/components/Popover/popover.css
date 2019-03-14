@@ -1,4 +1,4 @@
-.positionControl {
+.popover {
   position: relative;
   width: 100%;
 }
@@ -7,7 +7,7 @@
   width: 100%;
 }
 
-.popover {
+.content {
   position: absolute;
   width: 100%;
 }

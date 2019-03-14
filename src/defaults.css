@@ -117,5 +117,5 @@
   --toggle-button-label-distance: var(--input-label-distance);
   --toggle-button-font-weight: var(--base-font-weight);
 
-  --date-picker-border-color: var(---default-color);
+  --date-picker-border-color: var(--default-color);
 }

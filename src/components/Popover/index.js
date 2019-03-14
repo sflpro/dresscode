@@ -1,10 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import styles from './positionControl.css';
+import styles from './popover.css';
 
-export class PositionControl extends React.Component {
-  popoverRef = React.createRef();
+const TRIGGER_OPTIONS = {
+  CLICK: 'click',
+  HOVER: 'hover',
+};
+
+export class Popover extends React.Component {
+  contentRef = React.createRef();
   targetRef = React.createRef();
 
   state = {
@@ -12,7 +17,7 @@ export class PositionControl extends React.Component {
   };
 
   setPopoverPosition = (targetElementPosition) => {
-    const { offsetWidth: popoverWidth, offsetHeight: popoverHeight } = this.popoverRef.current;
+    const { offsetWidth: popoverWidth, offsetHeight: popoverHeight } = this.contentRef.current;
 
     const popoverElementPosition = {
       popoverWidth,
@@ -21,8 +26,8 @@ export class PositionControl extends React.Component {
 
     const [popoverX, popoverY] = this.computePopoverPosition(targetElementPosition, popoverElementPosition);
 
-    this.popoverRef.current.style.top = `${popoverY}px`;
-    this.popoverRef.current.style.left = `${popoverX}px`;
+    this.contentRef.current.style.top = `${popoverY}px`;
+    this.contentRef.current.style.left = `${popoverX}px`;
   }
 
   computePopoverPosition = (targetElementPosition, popoverElementPosition) => {
@@ -53,8 +58,8 @@ export class PositionControl extends React.Component {
     return [calcX, calcY, position];
   }
 
-  handleElementClick = (event) => {
-    const { offsetWidth, offsetHeight, offsetLeft, offsetTop } = event.currentTarget;
+  handleClick = (event) => {
+    const { offsetWidth, offsetHeight, offsetLeft, offsetTop } = event.target;
     const targetElementPosition = {
       width: offsetWidth,
       height: offsetHeight,
@@ -74,42 +79,64 @@ export class PositionControl extends React.Component {
     });
   };
 
+  handleMouseEnter = (event) => {
+   
+  };
+
+  handleMouseLeave = (event) => {
+   
+  };
+
+  getTargetElementProps = (trigger) => {
+    const targetElementProps = {};
+    if (trigger === TRIGGER_OPTIONS.CLICK) {
+      targetElementProps.onClick = this.handleClick;
+    } else if (trigger === TRIGGER_OPTIONS.HOVER) {
+      targetElementProps.onMouseEnter = this.handleMouseEnter;
+      targetElementProps.onMouseLeave = this.handleMouseLeave;
+    }
+    return targetElementProps;
+  };
+ 
   render() {
     const {
-      popover: PopoverComponent,
+      content: ContentComponent,
+      trigger = TRIGGER_OPTIONS.CLICK,
       className,
       style,
       children,
       ...props
     } = this.props;
     const { open } = this.state;
+    const targetElementProps = this.getTargetElementProps(trigger);
 
     return (
       <div
-        className={styles.positionControl}
+        className={styles.popover}
         {...props}
       >
         <div
           className={styles.target}
           ref={this.targetRef}
+          {...targetElementProps}
         >
-          {children(this.handleElementClick)}
+          {children}
         </div>
         {open && (
           <div
-            className={styles.popover}
-            ref={this.popoverRef}
+            className={styles.content}
+            ref={this.contentRef}
           >
-            {PopoverComponent}
+            {ContentComponent}
           </div>
         )}
       </div>
     );
-  }
+  };
 }
 
-Element.propTypes = {
-  value: PropTypes.string,
-  popover: PropTypes.func,
+Popover.propTypes = {
+  content: PropTypes.object,
+  trigger: PropTypes.oneOf(Object.values(TRIGGER_OPTIONS)),
   children: PropTypes.any,
 };

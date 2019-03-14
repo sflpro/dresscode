@@ -2,7 +2,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { State, Store } from "@sambego/storybook-state";
 
-import { PositionControl } from '.';
+import { Popover } from '.';
 
 import { DatePicker } from '../DatePicker';
 import { TextInput } from '../TextInput';
@@ -37,9 +37,9 @@ storiesOf('Position Control', module)
             style={{ maxWidth: 300 }}
           >
             <Item>
-              <PositionControl
+              <Popover
                 trigger='click'
-                popover={
+                content={
                   <DatePicker
                     value={state.datePickerValue}
                     onChange={handleDatePickerChange}
@@ -47,16 +47,13 @@ storiesOf('Position Control', module)
                   />
                 }
               >
-                {onClick => (
-                  <TextInput
-                    label='Date Picker'
-                    onChange={handleDatePickerInputChange}
-                    value={state.datePickerValue}
-                    onClick={onClick}
-                    type='date'
-                  />
-                )}
-              </PositionControl>
+                <TextInput
+                  label='Date Picker'
+                  onChange={handleDatePickerInputChange}
+                  value={state.datePickerValue}
+                  type='date'
+                />
+              </Popover>
             </Item>
           </ItemGroup>
         }
