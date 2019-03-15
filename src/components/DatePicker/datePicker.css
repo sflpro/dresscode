@@ -1,3 +1,11 @@
 .datePicker {
   border: 1px solid var(--date-picker-border-color);
 }
+
+.caption {
+  display: table-caption;
+}
+
+.navbar {
+  position: absolute;
+}
