@@ -2,9 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-import { Label } from '../Label';
 import { Icon } from '../Icon';
-import { isMobile } from '../../utils';
 
 import styles from './textInput.css';
 
@@ -25,7 +23,6 @@ export function TextInput({
   children,
   ...props
 }) {
-  const isNativeMode = isMobile();
   const inputWrapperClasses = classNames({
     [styles.inputWrapper]: true,
     [className]: true,
@@ -33,16 +30,9 @@ export function TextInput({
     [styles.successWrapper]: isValid,
     [styles.errorWrapper]: hasError,
   });
-  let inputType = type;
-  if (inputType === 'date' && !isNativeMode) {
-    inputType = 'text';
-  }
 
   return (
-    <Label
-      text={label}
-      hasError={hasError}
-    >
+    <React.Fragment>
       <div className={inputWrapperClasses}>
         {prefix && (
           <span className={styles.prefix}>
@@ -56,7 +46,7 @@ export function TextInput({
           placeholder={placeholder}
           onChange={onChange}
           name={name}
-          type={inputType}
+          type={type}
           {...props}
         />
         {icon && (
@@ -72,7 +62,7 @@ export function TextInput({
           {error}
         </div>
       )}
-    </Label>
+    </React.Fragment>
   );
 }
 

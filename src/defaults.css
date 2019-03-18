@@ -118,4 +118,6 @@
   --toggle-button-font-weight: var(--base-font-weight);
 
   --date-picker-border-color: var(--default-color);
+
+  --tooltip-border-color: var(--neutral-100);
 }

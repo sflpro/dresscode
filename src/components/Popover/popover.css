@@ -1,13 +1,41 @@
 .popover {
-  position: relative;
-  width: 100%;
-}
-
-.target {
-  width: 100%;
+  display: flex;
 }
 
 .content {
+  position: fixed;
+  z-index: 99;
+}
+
+.arrow {
+  border-bottom: 6px solid var(--neutral-100);
+  color: var(--default-color);
+  border-right: 6px solid transparent;
+  border-left: 6px solid transparent;
+  border-top: none;
+  position: fixed;
+  height: 0;
+  width: 0;
+  left: 0;
+  top: 0;
+  z-index: 100;
+}
+
+.arrow:before {
+  border-bottom: 6px solid var(--neutral-white);
+  color: var(--neutral-100);
+  border-right: 6px solid transparent;
+  border-left: 6px solid transparent;
+  border-top: none;
   position: absolute;
-  width: 100%;
+  content: '';
+  height: 0;
+  width: 0;
+  left: -6px;
+  top: 1px;
+  z-index: 100;
+}
+
+.arrowTop {
+  transform: rotate(180deg);
 }

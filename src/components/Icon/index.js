@@ -30,7 +30,7 @@ export function Icon({
       }}
       {...props}
     >
-      <svg className={`${styles.icon}`}>
+      <svg className={styles.icon}>
         <use xlinkHref={`${icons}#${name}`} />
       </svg>
     </span>
@@ -39,7 +39,7 @@ export function Icon({
 }
 
 Icon.propTypes = {
-  name: PropTypes.string.isRequried,
+  name: PropTypes.string.isRequired,
   size: PropTypes.number,
   className: PropTypes.string,
   style: PropTypes.object,
