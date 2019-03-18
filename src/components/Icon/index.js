@@ -23,10 +23,10 @@ export function Icon({
   return (
     <span
       className={iconWrapperClasses}
-      style={{ 
+      style={{
         fontSize: `${size}px`,
         color,
-        ...style, 
+        ...style,
       }}
       {...props}
     >
