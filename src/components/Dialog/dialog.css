@@ -7,47 +7,40 @@
 
 .dialog {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
   z-index: 11;
-  height: 100%;
   align-items: center;
   justify-content: center;
   display: flex;
-}
-
-.overlay {
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  position: absolute;
-  background: var(--overlay-background);
+  flex-direction: column;
+  flex: 0 1 auto;
+  max-height: calc(100% - 48px);
 }
 
 .container {
+  flex-direction: column;
   background: var(--body-background);
   position: relative;
   width: 720px;
   display: flex;
   overflow-y: auto;
-  flex-direction: column;
-  flex: 0 1 auto;
-  max-height: calc(100% - 48px);
   border-radius: 8px;
+  flex: 1 1 auto;
 }
 
 @media (max-width: 720px) {
-  .content {
+  .dialog {
     width: calc(100% - 16px);
+    max-height: calc(100% - 32px);
     margin: 0 auto;
+  }
+
+  .container {
+    max-width: 100%;
   }
 }
 
 .header {
-  padding: 24px 48px 24px 24px;
+  padding: 24px 48px 0 24px;
   line-height: 36px;
   flex: 0 0 auto;
 }
@@ -66,7 +59,8 @@
 
 .content {
   flex: 1 1 auto;
-  padding: 0 24px 24px;
+  padding: 0 24px;
+  margin: 24px 0;
   overflow-y: auto;
 }
 
