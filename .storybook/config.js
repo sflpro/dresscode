@@ -2,6 +2,7 @@ import { configure } from '@storybook/react';
 
 function loadStories() {
   require('../src/components/Icon/icon.story');
+  require('../src/components/Anchor/anchor.story');
   require('../src/components/Tag/tag.story');
   require('../src/components/TextInput/textInput.story');
   require('../src/components/Textarea/textarea.story');

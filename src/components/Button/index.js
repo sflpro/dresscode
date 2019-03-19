@@ -8,19 +8,19 @@ import styles from './button.css';
 
 export function Button({
   name = '',
-  color = 'primary',
+  variant = 'primary',
+  sort = 'button',
   type = 'button',
   hasError = false,
   icon = '',
   iconPos = 'left',
   disabled = false,
-  onClick,
-  href = '',
+  as: Component = 'button',
   ...props
 }) {
   const buttonClasses = classNames({
-    [styles[color]]: true,
-    [styles[type]]: true,
+    [styles[variant]]: true,
+    [styles[sort]]: true,
     [styles.disabled]: disabled,
   });
   const iconClasses = classNames({
@@ -47,23 +47,12 @@ export function Button({
   );
 
   return (
-    href ? (
-      <a
-        href={href}
-        className={buttonClasses}
-        {...props}
-      >
-        {children}
-      </a>
-    ) : (
-        <button
-          className={buttonClasses}
-          onClick={onClick}
-          {...props}
-        >
-          {children}
-        </button>
-      )
+    <Component
+      className={buttonClasses}
+      type={type}
+      children={children}
+      {...props}
+    />
   );
 }
 
@@ -71,22 +60,26 @@ Button.propTypes = {
   name: PropTypes.string,
   icon: PropTypes.string,
   onClick: PropTypes.func,
-  color: PropTypes.oneOf([
+  variant: PropTypes.oneOf([
     'primary',
     'secondary',
     'neutral',
     'warning',
   ]),
-  type: PropTypes.oneOf([
+  sort: PropTypes.oneOf([
     'button',
     'link',
     'circle',
   ]),
+  type: PropTypes.string,
   icon: PropTypes.string,
   iconPos: PropTypes.oneOf([
     'left',
     'right',
   ]),
   disabled: PropTypes.bool,
-  href: PropTypes.string,
+  as: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.func,
+  ]),
 };

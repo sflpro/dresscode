@@ -3,38 +3,41 @@ import { storiesOf } from '@storybook/react';
 
 import { Button } from '.';
 
+import { Anchor } from '../Anchor';
 import { ItemGroup } from '../../helpers/ItemGroup';
 import { ItemRow } from '../../helpers/ItemRow';
 import { Item } from '../../helpers/Item';
 
 storiesOf('Button', module)
   .add('Primary button', () => {
+    let a = <a />
     return (
       <ItemGroup
-        title='Text Input'
+        title='Button'
       >
         <ItemRow>
           <Item>
             <Button
               name='Կոճակ'
+              type='submit'
             />
           </Item>
           <Item>
             <Button
               name='Կոճակ'
-              color='secondary'
+              variant='secondary'
             />
           </Item>
           <Item>
             <Button
               name='Կոճակ'
-              color='neutral'
+              variant='neutral'
             />
           </Item>
           <Item>
             <Button
               name='Կոճակ'
-              color='warning'
+              variant='warning'
             />
           </Item>
         </ItemRow>
@@ -48,7 +51,7 @@ storiesOf('Button', module)
           <Item>
             <Button
               name='Կոճակ'
-              color='secondary'
+              variant='secondary'
               disabled
             />
           </Item>
@@ -57,17 +60,21 @@ storiesOf('Button', module)
           <Item>
             <Button
               name='Կոճակ'
-              color='secondary'
+              variant='secondary'
+              as='a'
               type='link'
-              href='https://sflpro.com/'
               target='_blank'
+              href='https://sflpro.com/'
             />
           </Item>
           <Item>
             <Button
               name='Կոճակ'
-              color='warning'
+              variant='warning'
               type='link'
+              as={Anchor}
+              target='_blank'
+              href='https://sflpro.com/'
             />
           </Item>
           <Item>
@@ -96,7 +103,7 @@ storiesOf('Button', module)
           <Item>
             <Button
               icon='tracker'
-              color='secondary'
+              variant='secondary'
               type='circle'
             />
           </Item>
@@ -110,7 +117,7 @@ storiesOf('Button', module)
           <Item>
             <Button
               icon='tracker'
-              color='warning'
+              variant='warning'
               type='circle'
             />
           </Item>
