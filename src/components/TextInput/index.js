@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-import { Label } from '../Label';
 import { Icon } from '../Icon';
 
 import styles from './textInput.css';
@@ -33,10 +32,7 @@ export function TextInput({
   });
 
   return (
-    <Label
-      text={label}
-      hasError={hasError}
-    >
+    <React.Fragment>
       <div className={inputWrapperClasses}>
         {prefix && (
           <span className={styles.prefix}>
@@ -66,7 +62,7 @@ export function TextInput({
           {error}
         </div>
       )}
-    </Label>
+    </React.Fragment>
   );
 }
 

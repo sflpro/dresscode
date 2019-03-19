@@ -6,6 +6,7 @@ module.exports = {
       {
         test: /\.css$/,
         include: path.resolve(__dirname, '../src'),
+        exclude: /node_modules/,
         loader: [
           'style-loader',
           {

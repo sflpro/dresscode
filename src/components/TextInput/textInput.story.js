@@ -4,6 +4,7 @@ import { storiesOf } from '@storybook/react';
 
 import { TextInput } from '.';
 
+import { Label } from '../Label';
 import { ItemGroup } from '../../helpers/ItemGroup';
 import { Item } from '../../helpers/Item';
 
@@ -33,77 +34,102 @@ storiesOf('TextInput', module)
             style={{ maxWidth: 300 }}
           >
             <Item>
-              <TextInput
-                label='Label'
-                name='basic'
-                value={state.basic}
-                onChange={handleInputChange}
-              />
+              <Label
+                text='Label'
+              >
+                <TextInput
+                  name='basic'
+                  value={state.basic}
+                  onChange={handleInputChange}
+                />
+              </Label>
             </Item>
             <Item>
-              <TextInput
-                label='Label'
-                name='default'
-                value={state.default}
-                onChange={handleInputChange}
-              />
+              <Label
+                text='Label'
+              >
+                <TextInput
+                  name='default'
+                  value={state.default}
+                  onChange={handleInputChange}
+                />
+              </Label>
             </Item>
             <Item>
-              <TextInput
-                label='Label'
-                name='placeholder'
-                value={state.placeholder}
-                placeholder='Placeholder text'
-                onChange={handleInputChange}
-              />
+              <Label
+                text='Label'
+              >
+                <TextInput
+                  name='placeholder'
+                  value={state.placeholder}
+                  placeholder='Placeholder text'
+                  onChange={handleInputChange}
+                />
+              </Label>
             </Item>
             <Item>
-              <TextInput
-                label='Label'
-                name='disabled'
-                value={state.disabled}
-                onChange={handleInputChange}
-                disabled
-              />
+              <Label
+                text='Label'
+              >
+                <TextInput
+                  name='disabled'
+                  value={state.disabled}
+                  onChange={handleInputChange}
+                  disabled
+                />
+              </Label>
             </Item>
             <Item>
-              <TextInput
-                label='Password'
-                name='password'
-                value={state.password}
-                type='password'
-                onChange={handleInputChange}
-              />
+              <Label
+                text='Password'
+              >
+                <TextInput
+                  name='password'
+                  value={state.password}
+                  type='password'
+                  onChange={handleInputChange}
+                />
+              </Label>
             </Item>
             <Item>
-              <TextInput
-                label='Label'
-                name='prefix'
-                value={state.prefix}
-                prefix='+374'
-                onChange={handleInputChange}
-              />
+              <Label
+                text='Label'
+              >
+                <TextInput
+                  name='prefix'
+                  value={state.prefix}
+                  prefix='+374'
+                  onChange={handleInputChange}
+                />
+              </Label>
             </Item>
             <Item>
-              <TextInput
-                label='Success'
-                name='success'
-                value={state.success}
-                icon='check'
-                onChange={handleInputChange}
-                isValid
-              />
+              <Label
+                text='Success'
+              >
+                <TextInput
+                  name='success'
+                  value={state.success}
+                  icon='check'
+                  onChange={handleInputChange}
+                  isValid
+                />
+              </Label>
             </Item>
             <Item>
-              <TextInput
-                label='Error'
-                name='error'
-                value={state.error}
-                icon='warning'
-                error='Error text'
-                onChange={handleInputChange}
+              <Label
+                text='Error'
                 hasError
-              />
+              >
+                <TextInput
+                  name='error'
+                  value={state.error}
+                  icon='warning'
+                  error='Error text'
+                  onChange={handleInputChange}
+                  hasError
+                />
+              </Label>
             </Item>
           </ItemGroup>
         }
