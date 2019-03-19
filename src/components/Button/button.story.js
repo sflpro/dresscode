@@ -4,13 +4,23 @@ import { storiesOf } from '@storybook/react';
 import { Button } from '.';
 
 import { Anchor } from '../Anchor';
+import { Icon } from '../Icon';
+import { CircleButton } from '../CircleButton';
+import { LinkButton } from '../LinkButton';
 import { ItemGroup } from '../../helpers/ItemGroup';
 import { ItemRow } from '../../helpers/ItemRow';
 import { Item } from '../../helpers/Item';
 
 storiesOf('Button', module)
-  .add('Primary button', () => {
-    let a = <a />
+  .add('Button', () => {
+    const styles = {
+      leftIcon: {
+        marginRight: 16,
+      },
+      rightIcon: {
+        marginLeft: 16,
+      },
+    };
     return (
       <ItemGroup
         title='Button'
@@ -18,108 +28,129 @@ storiesOf('Button', module)
         <ItemRow>
           <Item>
             <Button
-              name='Կոճակ'
               type='submit'
-            />
+            >
+              Կոճակ
+            </Button>
           </Item>
           <Item>
             <Button
-              name='Կոճակ'
-              variant='secondary'
-            />
+              secondary
+            >
+              Կոճակ
+            </Button>
           </Item>
           <Item>
             <Button
-              name='Կոճակ'
-              variant='neutral'
-            />
+              neutral
+            >
+              Կոճակ
+            </Button>
           </Item>
           <Item>
             <Button
-              name='Կոճակ'
-              variant='warning'
-            />
-          </Item>
-        </ItemRow>
-        <ItemRow>
-          <Item>
-            <Button
-              name='Կոճակ'
-              disabled
-            />
-          </Item>
-          <Item>
-            <Button
-              name='Կոճակ'
-              variant='secondary'
-              disabled
-            />
+              warning
+            >
+              Կոճակ
+            </Button>
           </Item>
         </ItemRow>
         <ItemRow>
           <Item>
             <Button
-              name='Կոճակ'
-              variant='secondary'
+              disabled
+            >
+              Կոճակ
+            </Button>
+          </Item>
+          <Item>
+            <Button
+              secondary
+              disabled
+            >
+              Կոճակ
+            </Button>
+          </Item>
+        </ItemRow>
+        <ItemRow>
+          <Item>
+            <LinkButton
+              secondary
               as='a'
-              type='link'
               target='_blank'
               href='https://sflpro.com/'
-            />
+            >
+              Կոճակ
+            </LinkButton>
           </Item>
           <Item>
-            <Button
-              name='Կոճակ'
-              variant='warning'
-              type='link'
+            <LinkButton
+              warning
               as={Anchor}
               target='_blank'
               href='https://sflpro.com/'
-            />
+            >
+              Կոճակ
+            </LinkButton>
           </Item>
           <Item>
-            <Button
-              name='Կոճակ'
-              type='link'
+            <LinkButton
               disabled
-            />
+            >
+              Կոճակ
+            </LinkButton>
           </Item>
         </ItemRow>
         <ItemRow>
           <Item>
-            <Button
-              name='Կոճակ'
-              icon='tracker'
-            />
+            <Button>
+              <Icon
+                name='tracker'
+                size={24}
+                style={styles.leftIcon}
+              />
+              Կոճակ
+            </Button>
           </Item>
         </ItemRow>
         <ItemRow>
           <Item>
-            <Button
-              icon='tracker'
-              type='circle'
-            />
+            <CircleButton>
+              <Icon
+                name='tracker'
+                size={24}
+              />
+            </CircleButton>
           </Item>
           <Item>
-            <Button
-              icon='tracker'
-              variant='secondary'
-              type='circle'
-            />
+            <CircleButton
+              secondary
+            >
+              <Icon
+                name='tracker'
+                size={24}
+              />
+            </CircleButton>
           </Item>
           <Item>
-            <Button
-              icon='tracker'
-              type='circle'
+            <CircleButton
               disabled
-            />
+            >
+              <Icon
+                name='tracker'
+                size={24}
+              />
+            </CircleButton>
           </Item>
           <Item>
-            <Button
-              icon='tracker'
-              variant='warning'
-              type='circle'
-            />
+            <CircleButton
+              warning
+            >
+              <Icon
+                name='tracker'
+                size={24}
+              />
+            </CircleButton>
           </Item>
         </ItemRow>
       </ItemGroup>

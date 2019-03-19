@@ -118,14 +118,6 @@
   cursor: auto;
 }
 
-.button .left {
-  margin-right: 16px;
-}
-
-.button .right {
-  margin-left: 16px;
-}
-
 button:focus {
   outline: none;
 }
