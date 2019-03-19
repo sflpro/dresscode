@@ -3,8 +3,10 @@ import PropTypes from 'prop-types';
 
 import styles from './popover.css';
 
-import { TRIGGER_OPTIONS } from '../../utils';
-
+export const POPOVER_TRIGGER_OPTIONS = {
+  CLICK: 'click',
+  HOVER: 'hover',
+};
 export class Popover extends React.Component {
   constructor(props) {
     super(props);
@@ -240,9 +242,9 @@ export class Popover extends React.Component {
   getTargetElementProps = (trigger) => {
     const { follow } = this.props;
     const targetElementProps = {};
-    if (trigger === TRIGGER_OPTIONS.CLICK) {
+    if (trigger === POPOVER_TRIGGER_OPTIONS.CLICK) {
       targetElementProps.onClick = this.handleClick;
-    } else if (trigger === TRIGGER_OPTIONS.HOVER) {
+    } else if (trigger === POPOVER_TRIGGER_OPTIONS.HOVER) {
       targetElementProps.onMouseEnter = this.handleMouseEnter;
       targetElementProps.onMouseLeave = this.handleMouseLeave;
     }
@@ -258,7 +260,7 @@ export class Popover extends React.Component {
   render() {
     const {
       content: ContentComponent,
-      trigger = TRIGGER_OPTIONS.CLICK,
+      trigger = POPOVER_TRIGGER_OPTIONS.CLICK,
       arrow = false,
       position = 'bottom',
       follow = false,
@@ -308,6 +310,6 @@ Popover.propTypes = {
   follow: PropTypes.bool,
   gap: PropTypes.number,
   content: PropTypes.object,
-  trigger: PropTypes.oneOf(Object.values(TRIGGER_OPTIONS)),
+  trigger: PropTypes.oneOf(Object.values(POPOVER_TRIGGER_OPTIONS)),
   children: PropTypes.any,
 };

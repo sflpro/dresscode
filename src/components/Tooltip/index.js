@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 import { Popover } from '../Popover';
-import { TRIGGER_OPTIONS } from '../../utils';
 
 import styles from './tooltip.css';
 
@@ -41,7 +40,7 @@ const TooltipContent = ({
 export class Tooltip extends React.Component {
   render() {
     const {
-      trigger = TRIGGER_OPTIONS.HOVER,
+      trigger = 'hover',
       position = 'top',
       follow = false,
       arrow = true,
@@ -74,7 +73,7 @@ Tooltip.propTypes = {
   description: PropTypes.any.isRequired,
   follow: PropTypes.bool,
   arrow: PropTypes.bool,
-  trigger: PropTypes.oneOf(Object.values(TRIGGER_OPTIONS)),
+  trigger: PropTypes.string,
   position: PropTypes.oneOf(['top', 'bottom']),
   gap: PropTypes.number,
   className: PropTypes.string,

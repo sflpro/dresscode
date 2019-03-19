@@ -5,13 +5,12 @@ import classNames from 'classnames';
 import { Popover } from '../Popover';
 import { DatePicker } from '../DatePicker';
 import { TextInput } from '../TextInput';
-import { TRIGGER_OPTIONS } from '../../utils';
 
 import styles from './dateInput.css';
 
 export function DateInput({
   value,
-  trigger = TRIGGER_OPTIONS.CLICK,
+  trigger = 'click',
   onDatePickerChange,
   onDateInputChange,
   className = '',
@@ -46,7 +45,7 @@ export function DateInput({
 
 DateInput.propTypes = {
   value: PropTypes.string,
-  trigger: PropTypes.oneOf(Object.values(TRIGGER_OPTIONS)),
+  trigger: PropTypes.string,
   onDatePickerChange: PropTypes.func,
   onDateInputChange: PropTypes.func,
   style: PropTypes.object,
