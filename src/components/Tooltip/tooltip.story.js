@@ -1,61 +1,12 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { State, Store } from "@sambego/storybook-state";
 
 import { Icon } from '../Icon';
-import { Tooltip } from '../Tooltip';
+import { Tooltip } from '.';
 import { ItemGroup } from '../../helpers/ItemGroup';
 import { Item } from '../../helpers/Item';
-import { DateInput } from '../DateInput';
 
-storiesOf('Popover', module)
-  .add('Date picker', () => {
-    const store = new Store({
-      datePickerValue: '25-12-2019',
-    });
-
-    function handleDateInputChange({ target }) {
-      store.set({
-        datePickerValue: target.value,
-      });
-    }
-
-    function handleDatePickerChange(datePickerValue) {
-      store.set({
-        datePickerValue,
-      });
-    }
-
-    return (
-      <State
-        store={store}
-      >
-        {state =>
-          <ItemGroup
-            title='Dropdown'
-          >
-            <Item>
-
-              <div>
-
-                sdfdsfsdf dsfsdfsdf sadasdasdas sadasdsad dcsdfdsfsdf sdfsdfsdf sdfdsfsdf dsfsdfsdf sadasdasdas sadasdsad dcsdfdsfsdf sdfsdfsdf
-                sdfdsfsdf dsfsdfsdf sadasdasdas sadasdsad dcsdfdsfsdf sdfsdfsdf
-                sdfdsfsdf dsfsdfsdf sadasdasdas sadasdsad dcsdfdsfsdf sdfsdfsdf sdfdsfsdf dsfsdfsdf sadasdasdas sadasdsad dcsdfdsfsdf sdfsdfsdf sdfdsfsdf dsfsdfsdf sadasdasdas sadasdsad dcsdfdsfsdf sdfsdfsdf sdfdsfsdf dsfsdfsdf sadasdasdas sadasdsad dcsdfdsfsdf sdfsdfsdf sdfdsfsdf dsfsdfsdf sadasdasdas sadasdsad dcsdfdsfsdf sdfsdfsdf sdfdsfsdf dsfsdfsdf sadasdasdas sadasdsad dcsdfdsfsdf sdfsdfsdf
-                sdfdsfsdf dsfsdfsdf sadasdasdas sadasdsad dcsdfdsfsdf sdfsdfsdf
-                sdfdsfsdf dsfsdfsdf sadasdasdas sadasdsad dcsdfdsfsdf sdfsdfsdf sdfdsfsdf dsfsdfsdf sadasdasdas sadasdsad dcsdfdsfsdf sdfsdfsdf sdfdsfsdf dsfsdfsdf sadasdasdas sadasdsad dcsdfdsfsdf sdfsdfsdf sdfdsfsdf dsfsdfsdf sadasdasdas sadasdsad dcsdfdsfsdf sdfsdfsdf
-
-</div>
-              <DateInput
-                value={state.datePickerValue}
-                onDatePickerChange={handleDatePickerChange}
-                onDateInputChange={handleDateInputChange}
-              />
-            </Item>
-          </ItemGroup>
-        }
-      </State>
-    );
-  })
+storiesOf('Tooltip', module)
   .add('Tooltip', () => {
     const description = <span>Content with component <Icon name='tracker' /></span>;
     const longDescription = 'standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the l';
@@ -65,7 +16,7 @@ storiesOf('Popover', module)
       display: 'inline-block',
     };
     const fixedStyle = { ...trackerStyle, position: 'fixed' };
-    const centerStyle = { ...trackerStyle, textAlign: 'center' };
+    const leftStyle = { ...trackerStyle, left: '20%' };
     const rightAbsoluteStyle = { ...trackerStyle, position: 'absolute', right: 0 };
 
     return (
@@ -110,7 +61,10 @@ storiesOf('Popover', module)
             >
               <Icon
                 name='tracker'
-                style={{ ...fixedStyle, ...centerStyle }}
+                style={{
+                  ...fixedStyle,
+                  ...leftStyle,
+                }}
               />
             </Tooltip>
           </div>
@@ -122,7 +76,6 @@ storiesOf('Popover', module)
             <Tooltip
               title='Target position: absolute, right: 0'
               description={description}
-              // position='bottom'
             >
               <Icon
                 name='tracker'

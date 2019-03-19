@@ -10,7 +10,7 @@ function loadStories() {
   require('../src/components/RadioButton/radioButton.story');
   require('../src/components/ToggleButton/toggleButton.story');
   require('../src/components/ControlsGroup/controlsGroup.story');
-  require('../src/components/Popover/popover.story.js');
+  require('../src/components/Tooltip/tooltip.story.js');
 }
 
 configure(loadStories, module);
