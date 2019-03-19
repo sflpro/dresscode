@@ -7,6 +7,7 @@ export const POPOVER_TRIGGER_OPTIONS = {
   CLICK: 'click',
   HOVER: 'hover',
 };
+
 export class Popover extends React.Component {
   constructor(props) {
     super(props);
@@ -36,7 +37,7 @@ export class Popover extends React.Component {
     const { popover, arrow } = this.computePopoverPosition(targetElementPosition, popoverElementPosition);
     const { x: popoverX, y: popoverY, position: popoverPosition } = popover;
     const { x: arrowX, y: arrowY, position: arrowPosition, classes: arrowClasses } = arrow;
- 
+
     this.contentRef.current.style[popoverY.position] = `${popoverY.y}px`;
     this.contentRef.current.style[popoverX.position] = `${popoverX.x}px`;
     if (popoverPosition) {
@@ -92,7 +93,7 @@ export class Popover extends React.Component {
     }
     popoverX = Math.max(popoverX, 0);
 
-    return { 
+    return {
       popoverX: {
         position: positionX,
         x: popoverX,
@@ -140,7 +141,7 @@ export class Popover extends React.Component {
       }
     }
 
-    return { 
+    return {
       popoverY: {
         position: 'top',
         y: popoverY,
