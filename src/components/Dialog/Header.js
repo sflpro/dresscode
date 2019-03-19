@@ -8,15 +8,15 @@ import styles from './dialog.css';
 
 export class Header extends React.PureComponent {
   headerCancel = () => {
-    const { cancel } = this.props;
-    if (typeof cancel === 'function') {
-      cancel();
+    const { onDismiss } = this.props;
+    if (typeof onDismiss === 'function') {
+      onDismiss();
     }
   };
 
   render() {
     const {
-      cancel = null,
+      onDismiss = null,
       className = '',
       children,
       ...props
@@ -29,7 +29,7 @@ export class Header extends React.PureComponent {
 
     return (
       <div className={titleClasses} {...props}>
-        {cancel && (
+        {onDismiss && (
           <Icon
             name='close'
             size={24}
@@ -46,5 +46,5 @@ export class Header extends React.PureComponent {
 }
 
 Header.propTypes = {
-  cancel: PropTypes.func,
+  onDismiss: PropTypes.func,
 };

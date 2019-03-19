@@ -66,7 +66,7 @@ storiesOf('Dialog', module)
                 onDismiss={() => toggleDialog(false)}
               >
                 <Dialog.Header
-                  cancel={() => toggleDialog(false)}
+                  onDismiss={() => toggleDialog(false)}
                 >
                   Test Dialog Title
                 </Dialog.Header>
@@ -140,7 +140,7 @@ storiesOf('Dialog', module)
                 onDismiss={() => toggleDialog(false)}
               >
                 <Dialog.Header
-                  cancel={() => toggleDialog(false)}
+                  onDismiss={() => toggleDialog(false)}
                 >
                   Test Dialog Title
                 </Dialog.Header>
