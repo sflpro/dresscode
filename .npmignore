@@ -1,3 +1,8 @@
-src
-node_modules
 .storybook
+node_modules
+src
+.babelrc
+.eslintignore
+.eslintrc.js
+.gitignore
+postcss.config.js
