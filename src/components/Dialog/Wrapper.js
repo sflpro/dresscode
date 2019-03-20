@@ -16,6 +16,7 @@ export class Wrapper extends React.PureComponent {
   }
 
   componentWillUnmount() {
+    this.domBody.style.overflow = this.domBodyOverflow || null;
     document.removeEventListener('keydown', this.escKeyDown, false);
   }
 
@@ -25,15 +26,10 @@ export class Wrapper extends React.PureComponent {
     }
   };
 
-  showHideModal = (toggleParam) => {
-    this.domBody.style.overflow = toggleParam ? 'hidden' : this.domBodyOverflow;
-  };
-
   dismiss = () => {
     const { onDismiss } = this.props;
-    this.domBody.style.overflow = null;
-    document.removeEventListener('keydown', this.escKeyDown, false);
     if (typeof onDismiss === 'function') {
+      document.removeEventListener('keydown', this.escKeyDown, false);
       onDismiss();
     }
   };
@@ -42,9 +38,9 @@ export class Wrapper extends React.PureComponent {
     const {
       children,
       className = '',
+      onDismiss = null,
+      ...props
     } = this.props;
-
-    let open = true;
 
     const dialogClasses = classNames({
       [styles.dialog]: true,
@@ -57,7 +53,7 @@ export class Wrapper extends React.PureComponent {
           className={dialogClasses}
         >
 
-          <div className={styles.container}>
+          <div className={styles.container} {...props}>
             {children}
           </div>
         </div>
