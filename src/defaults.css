@@ -15,6 +15,7 @@
   --secondary-color: #ffffff;
   --disabled-color: #f1f1f1;
   --success-color: #32c86d;
+  --warning-color: #f8cf1c;
   --error-color: #ff5252;
 
   --text-default-color: #1d1d1d;
@@ -73,7 +74,7 @@
   --box-shadow-500: 0 48px 56px 0 rgba(0, 0, 0, 0.15);
 
   --input-label-distance: 16px;
-  --input-background-color: #cccccc;
+  --input-background-color: var(--neutral-200);
 
   --radio-button-border-color: var(--default-color);
   --radio-button-hover-color: var(--primary-color-light);
@@ -120,4 +121,17 @@
   --date-picker-border-color: var(--default-color);
 
   --tooltip-border-color: var(--neutral-100);
+
+  --popup-overlay-background: rgba(0, 0, 0, .5);
+
+  --dialog-body-background: var(--neutral-white);
+  --dialog-title-color: var(--primary-color);
+  --dialog-actions-background: var(--disabled-color);
+
+  --notification-border-default-color: var(--disabled-color);
+  --notification-border-information-color: var(--primary-color);
+  --notification-border-success-color: var(--success-color);
+  --notification-border-warning-color: var(--warning-color);
+  --notification-border-error-color: var(--error-color);
+  --notification-title-color: var(--neutral-200);
 }
