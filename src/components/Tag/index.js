@@ -28,7 +28,7 @@ export function Tag({
       {name}
       {clickable && (
         <Icon
-          name='close'
+          name='cross'
           className={styles.closeIcon}
         />
       )}

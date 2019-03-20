@@ -28,10 +28,10 @@ storiesOf('Dialog', module)
       toggleDialog(true);
     };
 
-    const toggleDialog = (toggle) => {
+    const toggleDialog = (open) => {
       store.set({
         ...store.state,
-        open: toggle,
+        open,
       });
     };
 
@@ -62,12 +62,8 @@ storiesOf('Dialog', module)
 
 
             {state.open && (
-              <Dialog.Wrapper
-                onDismiss={() => toggleDialog(false)}
-              >
-                <Dialog.Header
-                  onDismiss={() => toggleDialog(false)}
-                >
+              <Dialog onDismiss={() => toggleDialog(false)}>
+                <Dialog.Header>
                   Test Dialog Title
                 </Dialog.Header>
 
@@ -82,7 +78,7 @@ storiesOf('Dialog', module)
                   <button onClick={confirm}>Action</button>
                 </Dialog.Actions>
 
-              </Dialog.Wrapper>
+              </Dialog>
             )}
           </ItemGroup>
         }
@@ -136,12 +132,10 @@ storiesOf('Dialog', module)
             </Item>
 
             {state.open && (
-              <Dialog.Wrapper
+              <Dialog
                 onDismiss={() => toggleDialog(false)}
               >
-                <Dialog.Header
-                  onDismiss={() => toggleDialog(false)}
-                >
+                <Dialog.Header>
                   Test Dialog Title
                 </Dialog.Header>
 
@@ -149,7 +143,7 @@ storiesOf('Dialog', module)
                   {state.dialogContent}
                 </Dialog.Body>
 
-              </Dialog.Wrapper>
+              </Dialog>
             )}
 
           </ItemGroup>
@@ -204,14 +198,14 @@ storiesOf('Dialog', module)
             </Item>
 
             {state.open && (
-              <Dialog.Wrapper
+              <Dialog
                 onDismiss={() => toggleDialog(false)}
               >
                 <Dialog.Body>
                   {state.dialogContent}
                 </Dialog.Body>
 
-              </Dialog.Wrapper>
+              </Dialog>
             )}
 
           </ItemGroup>

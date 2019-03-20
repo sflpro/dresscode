@@ -122,6 +122,11 @@
 
   --tooltip-border-color: var(--neutral-100);
 
+  --popup-overlay-background: rgba(0, 0, 0, .5);
+
+  --dialog-body-background: var(--neutral-white);
+  --dialog-title-color: var(--primary-color);
+  --dialog-actions-background: var(--disabled-color);
 
   --notification-border-default-color: var(--disabled-color);
   --notification-border-information-color: var(--primary-color);

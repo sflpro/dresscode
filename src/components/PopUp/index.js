@@ -6,6 +6,19 @@ import classNames from 'classnames';
 import styles from './popUp.css';
 
 export class PopUp extends React.Component {
+  constructor(props) {
+    super(props);
+    const { overlay } = this.props;
+    this.domBody = document.querySelector('body');
+    this.domBodyOverflow = this.domBody.style.overflow;
+    if (overlay) {
+      this.domBody.style.overflow = 'hidden';
+    }
+  }
+
+  componentWillUnmount() {
+    this.domBody.style.overflow = this.domBodyOverflow || null;
+  }
 
   onDismiss = () => {
     const { onDismiss } = this.props;
@@ -44,7 +57,7 @@ export class PopUp extends React.Component {
 
     return ReactDOM.createPortal(
       renderChild,
-      document.querySelector('body'),
+      this.domBody,
     );
   }
 }
