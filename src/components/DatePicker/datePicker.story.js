@@ -2,25 +2,48 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { State, Store } from "@sambego/storybook-state";
 
+import {
+  MONTHS,
+  MONTHS_SHORT,
+  WEEKDAYS_LONG,
+  WEEKDAYS_SHORT,
+  FIRST_DAY,
+  formatDay,
+  formatMonthTitle,
+  formatWeekdayShort,
+  formatWeekdayLong,
+  getFirstDayOfWeek,
+} from './locale-example';
+
+import { DatePicker } from '../DatePicker';
 import { ItemGroup } from '../../helpers/ItemGroup';
 import { Item } from '../../helpers/Item';
-import { DateInput } from '../DateInput';
 
 storiesOf('Date picker', module)
   .add('Date picker', () => {
     const store = new Store({
-      datePickerValue: '25-12-2019',
+      datePickerValue: null,
+      monthPickerValue: new Date(),
     });
+    const localeHy = 'hy';
 
-    function handleDateInputChange({ target }) {
-      store.set({
-        datePickerValue: target.value,
-      });
-    }
+    const localeUtils = {
+      formatDay,
+      formatMonthTitle,
+      formatWeekdayShort,
+      formatWeekdayLong,
+      getFirstDayOfWeek,
+    };
 
     function handleDatePickerChange(datePickerValue) {
       store.set({
         datePickerValue,
+      });
+    }
+
+    function handleMonthPickerChange(monthPickerValue) {
+      store.set({
+        monthPickerValue,
       });
     }
 
@@ -29,17 +52,63 @@ storiesOf('Date picker', module)
         store={store}
       >
         {state =>
-          <ItemGroup
-            title='Date picker'
-          >
-            <Item>
-              <DateInput
-                value={state.datePickerValue}
-                onDatePickerChange={handleDatePickerChange}
-                onDateInputChange={handleDateInputChange}
-              />
-            </Item>
-          </ItemGroup>
+          <>
+            <ItemGroup
+              title='Date Picker'
+            >
+              <Item>
+                <DatePicker
+                  value={state.datePickerValue}
+                  onChange={handleDatePickerChange}
+                />
+              </Item>
+            </ItemGroup>
+            <ItemGroup
+              title='Month Picker'
+            >
+              <Item>
+                <DatePicker
+                  value={state.monthPickerValue}
+                  onChange={handleMonthPickerChange}
+                  view='month'
+                />
+              </Item>
+            </ItemGroup>
+            <ItemGroup
+              title='Localization'
+            >
+              <Item>
+                <DatePicker
+                  value={state.datePickerValue}
+                  onChange={handleDatePickerChange}
+                  locale={localeHy}
+                  months={MONTHS[localeHy]}
+                  monthsShort={MONTHS_SHORT[localeHy]}
+                  weekdaysLong={WEEKDAYS_LONG[localeHy]}
+                  weekdaysShort={WEEKDAYS_SHORT[localeHy]}
+                  firstDayOfWeek={FIRST_DAY[localeHy]}
+                />
+              </Item>
+              <Item>
+                <DatePicker
+                  value={state.datePickerValue}
+                  onChange={handleDatePickerChange}
+                  locale={localeHy}
+                  localeUtils={localeUtils}
+                  monthsShort={MONTHS_SHORT[localeHy]}
+                />
+              </Item>
+              <Item>
+                <DatePicker
+                  value={state.datePickerValue}
+                  onChange={handleDatePickerChange}
+                  locale={localeHy}
+                  monthsShort={MONTHS_SHORT[localeHy]}
+                  view='month'
+                />
+              </Item>
+            </ItemGroup>
+          </>
         }
       </State>
     );

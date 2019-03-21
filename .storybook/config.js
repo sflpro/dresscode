@@ -14,6 +14,7 @@ function loadStories() {
   require('../src/components/Dialog/dialog.story');
   require('../src/components/Tooltip/tooltip.story.js');
   require('../src/components/Button/button.story');
+  require('../src/components/DatePicker/datePicker.story.js');
 }
 
 configure(loadStories, module);
