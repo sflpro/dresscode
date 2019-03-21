@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import DayPicker, { LocaleUtils } from 'react-day-picker';
+import DayPicker from 'react-day-picker';
 
 import { Icon } from '../Icon';
 import { isMobile } from '../../utils';
@@ -205,17 +205,17 @@ export class DatePicker extends React.Component {
     const dayPickerDefaultClasses = DayPicker.defaultProps.classNames;
     const dayPickerClasses = {
       ...dayPickerDefaultClasses,
-      container: `${dayPickerDefaultClasses.container} ${styles.DatePicker}`,
-      wrapper: `${dayPickerDefaultClasses.wrapper} ${styles.DatePickerWrapper}`,
-      month: `${dayPickerDefaultClasses.month} ${styles.DatePickerMonth}`,
-      weekdays: `${dayPickerDefaultClasses.weekdays} ${styles.DatePickerWeekdays}`,
-      weekday: `${dayPickerDefaultClasses.weekday} ${styles.DatePickerWeekday}`,
-      weekdaysRow: `${dayPickerDefaultClasses.weekdaysRow} ${styles.DatePickerWeekdaysRow}`,
-      week: `${dayPickerDefaultClasses.week} ${styles.DatePickerWeek}`,
-      day: `${dayPickerDefaultClasses.day} ${styles.DatePickerDay}`,
-      outside: `${styles.DatePickerDayOutside}`,
-      today: `${styles.DatePickerToday}`,
-      selected: `${styles.DatePickerSelectedDay}`,
+      container: `${dayPickerDefaultClasses.container} ${styles.dayPicker}`,
+      wrapper: `${dayPickerDefaultClasses.wrapper} ${styles.dayPickerWrapper}`,
+      month: `${dayPickerDefaultClasses.month} ${styles.dayPickerMonth}`,
+      weekdays: `${dayPickerDefaultClasses.weekdays} ${styles.dayPickerWeekdays}`,
+      weekday: `${dayPickerDefaultClasses.weekday} ${styles.dayPickerWeekday}`,
+      weekdaysRow: `${dayPickerDefaultClasses.weekdaysRow} ${styles.dayPickerWeekdaysRow}`,
+      week: `${dayPickerDefaultClasses.week} ${styles.dayPickerWeek}`,
+      day: `${dayPickerDefaultClasses.day} ${styles.dayPickerDay}`,
+      outside: `${styles.dayPickerDayOutside}`,
+      today: `${styles.dayPickerToday}`,
+      selected: `${styles.dayPickerSelectedDay}`,
     };
 
     if (isNativeMode) {

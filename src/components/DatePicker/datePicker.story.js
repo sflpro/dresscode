@@ -13,7 +13,7 @@ import {
   formatWeekdayShort,
   formatWeekdayLong,
   getFirstDayOfWeek,
-} from './helper';
+} from './locale-example';
 
 import { DatePicker } from '../DatePicker';
 import { ItemGroup } from '../../helpers/ItemGroup';

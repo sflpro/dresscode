@@ -56,44 +56,44 @@
   right: 16px;
 }
 
-.DatePicker {
+.dayPicker {
   width: 100%;
 }
 
-.DatePickerWrapper {
+.dayPickerWrapper {
   padding-bottom: 7px;
 }
 
-.DatePickerWrapper:focus {
+.dayPickerWrapper:focus {
   outline: none;
 }
 
-.DatePickerMonth {
+.dayPickerMonth {
   width: 100%;
   margin: 0;
   display: flex;
   flex-flow: column nowrap;
 }
 
-.DatePickerWeekdays {
+.dayPickerWeekdays {
   border-bottom: 1px solid var(--date-picker-border-color);
   border-top: 1px solid var(--date-picker-border-color);
   margin-top: 16px;
   margin-bottom: 7px;
 }
 
-.DatePickerWeekdaysRow {
+.dayPickerWeekdaysRow {
   display: flex;
   justify-content: space-between;
   padding: 0 7px;
 }
 
-.DatePickerWeek {
+.dayPickerWeek {
   display: flex;
   padding: 0 7px;
 }
 
-.DatePickerWeekday {
+.dayPickerWeekday {
   color: var(--date-picker-weekday-color);
   font-size: 14.2px;
   padding: 11px 0;
@@ -102,7 +102,7 @@
   display: inline-block;
 }
 
-.DatePickerDay {
+.dayPickerDay {
   color: var(--date-picker-day-color);
   font-size: 16px;
   font-weight: normal;
@@ -118,31 +118,31 @@
   box-sizing: border-box;
 }
 
-.DatePickerDayOutside {
+.dayPickerDayOutside {
   color: var(--date-picker-outside-day-color);
 }
 
-.DatePickerToday {
+.dayPickerToday {
   border: solid 1px var(--primary-color);
 }
 
-.DatePickerSelectedDay {
+.dayPickerSelectedDay {
   background-color: var(--primary-color);
   color: var(--secondary-color);
 }
 
-.DatePickerDay:not(.DayPicker-Day--disabled):hover {
+.dayPickerDay:not(.DayPicker-Day--disabled):hover {
   background-color: transparent !important;
   border: 1px solid var(--primary-color-light);
 }
 
-.DatePickerDay.DatePickerSelectedDay:hover {
+.dayPickerDay.dayPickerSelectedDay:hover {
   background-color: var(--primary-color) !important;
   color: var(--secondary-color);
   border: 1px solid transparent;
 }
 
-.DatePickerDay:focus {
+.dayPickerDay:focus {
   outline: none;
 }
 
