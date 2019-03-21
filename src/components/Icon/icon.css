@@ -10,10 +10,10 @@
   margin: 0;
   overflow: hidden;
   user-select: none;
-  -webkit-font-smoothing: antialiased;
+  cursor: pointer;
 }
 
 .iconWrapper {
-  display: flex;
+  display: inline-flex;
   align-items: center;
 }
