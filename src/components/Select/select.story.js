@@ -6,6 +6,7 @@ import { Select } from '.';
 
 import { Option } from '../Option';
 import { ItemGroup } from '../../helpers/ItemGroup';
+import { ItemRow } from '../../helpers/ItemRow';
 import { Item } from '../../helpers/Item';
 
 storiesOf('Dropdown', module)
@@ -36,31 +37,33 @@ storiesOf('Dropdown', module)
             title='Dropdown'
             style={{ maxWidth: 300 }}
           >
-            <Item>
-              <Select
-                label='Label'
-                value={state.value}
-                open={state.open}
-                onClick={handleSelectClick}
-                onChange={handleSelectChange}
-              >
-                <Option
-                  value='option1'
-                  name='Option 1'
-                  key={1}
-                />
-                <Option
-                  value='option2'
-                  name='Option 2'
-                  key={2}
-                />
-                <Option
-                  value='option3'
-                  name='Option 3'
-                  key={3}
-                />
-              </Select>
-            </Item>
+            <ItemRow>
+              <Item>
+                <Select
+                  label='Label'
+                  value={state.value}
+                  open={state.open}
+                  onClick={handleSelectClick}
+                  onChange={handleSelectChange}
+                >
+                  <Option
+                    value='option1'
+                    name='Option 1'
+                    key={1}
+                  />
+                  <Option
+                    value='option2'
+                    name='Option 2'
+                    key={2}
+                  />
+                  <Option
+                    value='option3'
+                    name='Option 3'
+                    key={3}
+                  />
+                </Select>
+              </Item>
+            </ItemRow>
           </ItemGroup>
         }
       </State>

@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
 import { Icon } from "../Icon";
 import { Label } from '../Label';
@@ -14,11 +15,20 @@ export function Checkbox({
   onChange = undefined,
   ...props
 }) {
+  const checkboxClasses = classNames({
+    [styles.iconWrapper]: true,
+    [styles.checked]: checked,
+    [styles.disabled]: disabled,
+  });
+  const labelClasses = classNames({
+    [styles.label]: true,
+    [styles.disabledLabel]: disabled,
+  });
   return (
     <Label
       display='col'
     >
-      <span className={`${styles.iconWrapper} ${checked ? styles.checked : ''} ${disabled ? styles.disabled : ''}`}>
+      <span className={checkboxClasses}>
         <Icon
           name='checked'
           size={12}
@@ -35,7 +45,7 @@ export function Checkbox({
         onChange={onChange}
         {...props}
       />
-      <span className={styles.label}>
+      <span className={labelClasses}>
         {label}
       </span>
     </Label>

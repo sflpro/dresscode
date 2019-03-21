@@ -1,10 +1,11 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 
-import { ItemGroup } from '../../helpers/ItemGroup';
-import { Item } from '../../helpers/Item';
-
 import { Tag } from '.';
+
+import { ItemGroup } from '../../helpers/ItemGroup';
+import { ItemRow } from '../../helpers/ItemRow';
+import { Item } from '../../helpers/Item';
 
 storiesOf('Tag', module)
   .add('Tag', () => {
@@ -12,23 +13,25 @@ storiesOf('Tag', module)
       <ItemGroup
         title='Tag'
       >
-        <Item>
-          <Tag
-            name='Primary tag'
-          />
-        </Item>
-        <Item>
-          <Tag
-            name='Secondary tag'
-            type='secondary'
-          />
-        </Item>
-        <Item>
-          <Tag
-            name='Removable tag'
-            clickable
-          />
-        </Item>
+        <ItemRow>
+          <Item>
+            <Tag
+              name='Primary tag'
+            />
+          </Item>
+          <Item>
+            <Tag
+              name='Secondary tag'
+              type='secondary'
+            />
+          </Item>
+          <Item>
+            <Tag
+              name='Removable tag'
+              clickable
+            />
+          </Item>
+        </ItemRow>
       </ItemGroup>
     )
   });

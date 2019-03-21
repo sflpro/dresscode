@@ -11,17 +11,31 @@
   --primary-color: #6400dc;
   --primary-color-light: #a266ea;
   --primary-color-dark: #46009a;
+
+  --secondary-color: var(--neutral-white);
+
   --default-color: var(--neutral-100);
-  --secondary-color: #ffffff;
-  --disabled-color: #f1f1f1;
+  --default-color-dark: var(--neutral-200);
+
+  --disabled-color: var(--neutral-100);
+  --disabled-color-light: var(--neutral-75);
+  --disabled-color-dark: var(--neutral-200);
+
   --success-color: #32c86d;
   --warning-color: #f8cf1c;
   --error-color: #ff5252;
+  --error-color-dark: #cc4141;
 
-  --text-default-color: #1d1d1d;
-  --text-primary-color: #6400dc;
-  --text-secondary-color: #ffffff;
-  --text-disabled-color: var(--neutral-200);
+  --text-default-color: var(--neutral-900);
+  --text-primary-color: var(--primary-color);
+  --text-primary-color-dark: var(--primary-color-dark);
+  --text-secondary-color:  var(--secondary-color);
+
+  --text-disabled-color: var(--disabled-color);
+  --text-disabled-color-dark: var(--disabled-color-dark);
+
+  --text-warning-color: var(--error-color);
+  --text-warning-color-dark: var(--error-color-dark);
 
   --base-font-weight: normal;
   --base-font-family: Montserratarm;
@@ -33,8 +47,8 @@
   --checkbox-border-color: var(--text-disabled-color);
   --checkbox-hover-border-color: var(--primary-color-light);
   --checkbox-checked-background-color: var(--primary-color);
-  --checkbox-color: var(--secondary-color);
-  --checkbox-disabled-border-color: var(--default-color);
+  --checkbox-checked-color: var(--secondary-color);
+  --checkbox-padding: 6px;
   --checkbox-border-radius: 4px;
   --checkbox-width: 24px;
   --checkbox-height: 24px;
@@ -53,7 +67,9 @@
   --text-input-color: var(--text-default-color);
   --text-input-border-disabled-color: var(--disabled-color);
   --text-input-placeholder-color: var(--text-disabled-color);
-  --text-input-disabled-color: var(--text-disabled-color);
+  --text-input-disabled-color: var(--disabled-color-light);
+  --text-input-text-disabled-color: var(--disabled-color-dark);
+  --text-input-prefix-color: var(--default-color-dark);
   --text-input-font-size: var(--base-font-size);
 
   --text-input-height: 48px;
@@ -134,4 +150,10 @@
   --notification-border-warning-color: var(--warning-color);
   --notification-border-error-color: var(--error-color);
   --notification-title-color: var(--neutral-200);
+
+  --button-disabled-color: var(--default-color);
+  --button-height: 48px;
+  --button-border-radius: 24px;
+  --button-padding: 0 24px;
+  --button-circle-padding: 0 12px;
 }

@@ -4,6 +4,7 @@ import { storiesOf } from '@storybook/react';
 import { Icon } from '.';
 
 import { ItemGroup } from '../../helpers/ItemGroup';
+import { ItemRow } from '../../helpers/ItemRow';
 import { Item } from '../../helpers/Item';
 
 storiesOf('Icons', module)
