@@ -8,46 +8,78 @@ import { TextInput } from '../TextInput';
 
 import styles from './dateInput.css';
 
-export function DateInput({
-  value,
-  trigger = 'click',
-  onDatePickerChange,
-  onDateInputChange,
-  className = '',
-  style,
-  ...props
-}) {
-  const dateInputClasses = classNames({
-    [styles.dateInput]: true,
-    [className]: true,
-  });
+export class DateInput extends React.Component {
+  state = {
+    open: false,
+  };
 
-  return (
-    <Popover
-      trigger={trigger}
-      content={
-        <DatePicker
-          value={value}
-          onChange={onDatePickerChange}
+  handleTargetEvent = (open) => {
+    this.setState({
+      open,
+    });
+  };
+
+  handleDatePickerChange = (value) => {
+    const { onDatePickerChange } = this.props;
+    this.setState(prevState => ({
+      open: !prevState.open,
+    }));
+
+    onDatePickerChange(value);
+  };
+
+  render() {
+    const {
+      value,
+      trigger = 'click',
+      readOnly = true,
+      onDatePickerChange,
+      onDateInputChange,
+      className = '',
+      style,
+      ...props
+    } = this.props;
+    const { open } = this.state;
+
+    const dateInputClasses = classNames({
+      [styles.dateInput]: true,
+      [className]: true,
+    });
+
+    return (
+      <Popover
+        trigger={trigger}
+        content={
+          <DatePicker
+            value={value}
+            onChange={this.handleDatePickerChange}
+          />
+        }
+        onTargetEvent={this.handleTargetEvent}
+        open={open}
+        gap={8}
+        contentRelative
+        arrow
+      >
+        <TextInput
+          onChange={onDateInputChange}
+          className={dateInputClasses}
+          value={value.toLocaleDateString()}
+          readOnly
+          style={style}
+          {...props}
         />
-      }
-    >
-      <TextInput
-        onChange={onDateInputChange}
-        className={dateInputClasses}
-        value={value}
-        style={style}
-        {...props}
-      />
-    </Popover>
-  );
+      </Popover>
+    );
+  }
 }
 
 DateInput.propTypes = {
-  value: PropTypes.string,
+  value: PropTypes.instanceOf(Date),
   trigger: PropTypes.string,
   onDatePickerChange: PropTypes.func,
   onDateInputChange: PropTypes.func,
+  readOnly: PropTypes.bool,
   style: PropTypes.object,
   children: PropTypes.any,
 };

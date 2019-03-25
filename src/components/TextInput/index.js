@@ -10,6 +10,7 @@ export function TextInput({
   value = '',
   placeholder = '',
   disabled = false,
+  readOnly = false,
   className = '',
   label = '',
   icon = '',
@@ -47,6 +48,7 @@ export function TextInput({
           onChange={onChange}
           name={name}
           type={type}
+          readOnly
           {...props}
         />
         {icon && (
@@ -69,6 +71,7 @@ export function TextInput({
 TextInput.propTypes = {
   value: PropTypes.string,
   disabled: PropTypes.bool,
+  readOnly: PropTypes.bool,
   label: PropTypes.string,
   icon: PropTypes.string,
   prefix: PropTypes.string,

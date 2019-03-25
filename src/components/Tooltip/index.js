@@ -38,6 +38,16 @@ const TooltipContent = ({
 }
 
 export class Tooltip extends React.Component {
+  state = {
+    open: false,
+  };
+
+  handleTargetEvent = (open) => {
+    this.setState({
+      open,
+    });
+  };
+
   render() {
     const {
       trigger = 'hover',
@@ -48,9 +58,11 @@ export class Tooltip extends React.Component {
       children,
       ...props
     } = this.props;
+    const { open } = this.state;
 
     return (
       <Popover
+        onTargetEvent={this.handleTargetEvent}
         position={position}
         trigger={trigger}
         gap={gap}
@@ -61,6 +73,7 @@ export class Tooltip extends React.Component {
         }
         follow={follow}
         arrow={arrow}
+        open={open}
       >
         {children}
       </Popover>

@@ -27,8 +27,9 @@ storiesOf('Tooltip', module)
           <div>
             Lorem Ipsum is simply dummy text of the printing and typesetting industry.
             <Tooltip
-              title='Position: top'
+              title='Position: top, trigger: click'
               description={longDescription}
+              trigger='click'
             >
               <Icon
                 name='tracker'
