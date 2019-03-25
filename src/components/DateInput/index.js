@@ -5,6 +5,7 @@ import classNames from 'classnames';
 import { Popover } from '../Popover';
 import { DatePicker } from '../DatePicker';
 import { TextInput } from '../TextInput';
+import { isMobile } from '../../utils';
 
 import styles from './dateInput.css';
 
@@ -46,30 +47,43 @@ export class DateInput extends React.Component {
       [className]: true,
     });
 
+    const isNativeMode = isMobile();
+
     return (
-      <Popover
-        trigger={trigger}
-        content={
-          <DatePicker
-            value={value}
-            onChange={this.handleDatePickerChange}
+      !isNativeMode ? (
+        <Popover
+          trigger={trigger}
+          content={
+            <DatePicker
+              value={value}
+              onChange={this.handleDatePickerChange}
+            />
+          }
+          onTargetEvent={this.handleTargetEvent}
+          open={open}
+          gap={8}
+          contentRelative
+          arrow
+        >
+          <TextInput
+            onChange={onDateInputChange}
+            className={dateInputClasses}
+            value={value.toLocaleDateString()}
+            readOnly
+            style={style}
+            {...props}
           />
-        }
-        onTargetEvent={this.handleTargetEvent}
-        open={open}
-        gap={8}
-        contentRelative
-        arrow
-      >
-        <TextInput
-          onChange={onDateInputChange}
-          className={dateInputClasses}
-          value={value.toLocaleDateString()}
-          readOnly
-          style={style}
-          {...props}
-        />
-      </Popover>
+        </Popover>
+      ) : (
+          <TextInput
+            onChange={onDateInputChange}
+            className={dateInputClasses}
+            value={value.toLocaleDateString()}
+            type='date'
+            style={style}
+            {...props}
+          />
+        )
     );
   }
 }

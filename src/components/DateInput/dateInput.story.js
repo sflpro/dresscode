@@ -28,6 +28,7 @@ storiesOf('Date input', module)
         {state =>
           <ItemGroup
             title='Date Input'
+            style={{ maxWidth: 300 }}
           >
             <Item>
               <DateInput
