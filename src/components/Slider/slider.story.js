@@ -3,10 +3,11 @@ import { storiesOf } from '@storybook/react';
 import React from 'react';
 
 import { ItemGroup } from '../../helpers/ItemGroup';
-import { SliderControl } from '../SliderControl';
 import { ItemRow } from '../../helpers/ItemRow';
 import { Item } from '../../helpers/Item';
+import { Control } from '../Control';
 import { Slider } from './index';
+import { Icon } from '../Icon';
 
 storiesOf('Slider', module)
   .add('Slider', () => {
@@ -36,33 +37,35 @@ storiesOf('Slider', module)
             <ItemRow>
               <Item style={{ width: '40%' }}>
                 <Slider onChange={handler} min={5} step={5}>
-                  <SliderControl name='test1' value={state.test1} icon='tracker' />
+                  <Control name='test1' value={state.test1} icon={<Icon name='tracker' />} />
                 </Slider>
               </Item>
             </ItemRow>
             <ItemRow>
               <Item style={{ width: '40%' }}>
                 <Slider onChange={handler} step={5}>
-                  <SliderControl name='test3' value={state.test3} icon={<span>O</span>} />
+                  <Control name='test3' value={state.test3} icon={<span>O</span>} />
                 </Slider>
               </Item>
             </ItemRow>
             <ItemRow>
               <Item style={{ width: '40%' }}>
                 <Slider onChange={handler} step={3}>
-                  <SliderControl name='test2' value={state.test2} />
+                  <Control name='test2' value={state.test2} icon={<Icon name='triangle' />} />
                 </Slider>
               </Item>
             </ItemRow>
             <ItemRow>
               <Item style={{ width: '40%' }}>
                 <Slider onChange={handler}>
-                  <SliderControl
+                  <Control
+                    icon={<Icon name='triangle' />}
                     value={state.min1}
                     max={state.max1}
                     name='min1'
                   />
-                  <SliderControl
+                  <Control
+                    icon={<Icon name='triangle' />}
                     value={state.max1}
                     min={state.min1}
                     name='max1'
@@ -73,17 +76,17 @@ storiesOf('Slider', module)
             <ItemRow>
               <Item style={{ width: '40%' }}>
                 <Slider onChange={handler}>
-                  <SliderControl
+                  <Control
+                    icon={<Icon name='warning' />}
                     value={state.min2}
                     max={state.max2}
-                    icon='warning'
                     name='min2'
                   />
-                  <SliderControl
+                  <Control
+                    icon={<Icon name='eye' />}
                     value={state.max2}
                     min={state.min2}
                     name='max2'
-                    icon='eye'
                   />
                 </Slider>
               </Item>

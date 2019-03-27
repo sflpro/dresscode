@@ -3,11 +3,10 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 import { SliderContext } from '../Slider';
-import { Icon } from '../Icon';
 
-import styles from './sliderControl.css';
+import styles from './control.css';
 
-export class SliderControl extends React.Component {
+export class Control extends React.Component {
   static contextType = SliderContext;
 
   constructor(props, context) {
@@ -180,28 +179,23 @@ export class SliderControl extends React.Component {
         style={sliderStyles}
         role='presentation'
       >
-        {typeof icon === 'string' ? (
-          <Icon name={icon} className={styles.controlSvg} />
-        ) : (
-          icon
-        )}
+        {icon}
         <input type='hidden' name={name} value={value} />
       </span>
     );
   }
 }
 
-SliderControl.propTypes = {
+Control.propTypes = {
   value: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
+  icon: PropTypes.any.isRequired,
   className: PropTypes.string,
   min: PropTypes.number,
   max: PropTypes.number,
-  icon: PropTypes.any,
 };
 
-SliderControl.defaultProps = {
-  icon: 'slider-icon',
+Control.defaultProps = {
   min: undefined,
   max: undefined,
   className: '',

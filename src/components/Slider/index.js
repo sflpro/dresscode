@@ -174,7 +174,7 @@ export class Slider extends React.Component {
               max,
             }}
           >
-            {Array.isArray(children) ? children.slice(0, 2).filter(child => child.type.name === 'SliderControl') : children}
+            {children}
           </SliderContext.Provider>
         </div>
       </div>
