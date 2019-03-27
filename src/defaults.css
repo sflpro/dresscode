@@ -117,7 +117,7 @@
   --toggle-button-font-size: var(--base-font-size);
   --toggle-button-height: 24px;
   --toggle-button-width: 40px;
-  
+
   --toggle-button-border-radius: 34px;
   --toggle-button-toggle-height: 16px;
   --toggle-button-toggle-width: 16px;
@@ -157,4 +157,19 @@
   --date-picker-day-color: var(--neutral-900);
   --date-picker-month-color: var(--primary-color);
   --date-picker-selected-month-color: var(--neutral-white);
+
+  --slider-animation-duration: 0.2s;
+  --slider-background-color: var(--default-color);
+  --slider-line-color: var(--primary-color);
+  --slider-height: 4px;
+  --slider-width: 100%;
+  --slider-margin: 0 8px;
+  --slider-border-radius: 4px;
+  --slider-line-height: 4px;
+  --slider-line-border-radius: 4px;
+  --slider-line-animation-duration: var(--slider-animation-duration);
+  --slider-control-border: 0 0 2px rgba(0, 0, 0, 0.3);
+  --slider-control-color: var(--primary-color);
+  --slider-control-size: 16px;
+  --slider-control-top: 3px;
 }
