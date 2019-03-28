@@ -1,0 +1,14 @@
+.control {
+    transition: left var(--slider-animation-duration) ease-out;
+    font-size: var(--slider-control-size);
+    color: var(--slider-control-color);
+    top: var(--slider-control-top);
+    position: absolute;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.controlSvg {
+    filter: drop-shadow(var(--slider-control-border));
+    stroke: white;
+}

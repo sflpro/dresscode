@@ -16,6 +16,7 @@ function loadStories() {
   require('../src/components/Tooltip/tooltip.story.js');
   require('../src/components/Button/button.story');
   require('../src/components/DatePicker/datePicker.story.js');
+  require('../src/components/Slider/slider.story');
 }
 
 configure(loadStories, module);

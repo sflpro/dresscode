@@ -1,0 +1,23 @@
+.wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.slider {
+    background-color: var(--slider-background-color);
+    display: inline-block;
+    position: relative;
+    border-radius: var(--slider-border-radius);
+    cursor: pointer;
+    margin: var(--slider-margin);
+    width: var(--slider-width);
+    height: var(--slider-height);
+}
+
+.sliderLine {
+    position: absolute;
+    height: var(--slider-line-height);
+    border-radius: var(--slider-line-border-radius);
+    background-color: var(--slider-line-color);
+    transition: left var(--slider-line-animation-duration) ease-out, width var(--slider-line-animation-duration) ease-out;
+}
