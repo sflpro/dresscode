@@ -1,7 +1,7 @@
 import { configure } from '@storybook/react';
 
 function loadStories() {
-  require('../src/components/ColorScheme/colorScheme.story.js');
+  require('../src/helpers/ColorScheme/colorScheme.story.js');
   require('../src/components/Icon/icon.story');
   require('../src/components/Anchor/anchor.story');
   require('../src/components/Tag/tag.story');

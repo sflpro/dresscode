@@ -6,39 +6,33 @@ import styles from './colorScheme.css';
 
 export function ColorScheme({
   text = '',
-  bgColor = '',
-  secondaryBgColor = '',
-  borderColor = '',
-  textColor = '',
+  name='',
   className = '',
+  bgClassName = '',
+  secondaryName = '',
+  secondaryClassName = '',
   ...props
 }) {
   const colorSchemeClasses = classNames({
     [className]: true,
     [styles.colorScheme]: true,
+    [styles[bgClassName]]: true,
+    [styles.secondaryBackground]: secondaryClassName,
   });
 
-  let style = {
-    border: `1px solid ${borderColor}`,
-    color: textColor,
-  };
-
-  if(secondaryBgColor) {
-    style.background = `linear-gradient(248deg, ${secondaryBgColor}, ${bgColor})`
-  } else {
-    style.backgroundColor = bgColor;
-  }
+  const secondaryClasses = classNames({
+    [styles.secondaryColor]: secondaryClassName,
+  });
 
   return (
     <div
       className={colorSchemeClasses}
-      style={style}
       {...props}
     >
       <div className={styles.textColor}>
         <div>
-          {bgColor}
-          {secondaryBgColor ? <span className={styles.secondaryColor}>{secondaryBgColor}</span> : ""}
+          {name}
+          {secondaryClassName ? <span className={secondaryClasses}>{secondaryName}</span> : ""}
         </div>
       </div>
       <div className={styles.textType}>
@@ -50,8 +44,8 @@ export function ColorScheme({
 
 ColorScheme.propTypes = {
   text: PropTypes.string,
-  bgColor: PropTypes.string,
-  borderColor: PropTypes.string,
-  textColor: PropTypes.string,
-  className: PropTypes.string,
+  name: PropTypes.string,
+  bgClassName: PropTypes.string,
+  secondaryName: PropTypes.string,
+  secondaryClassName: PropTypes.string,
 };

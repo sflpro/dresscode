@@ -1,10 +1,10 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 
-import { ColorScheme } from '.';
 import { ItemGroup } from '../../helpers/ItemGroup';
 import { ItemRow } from '../../helpers/ItemRow';
 import { Item } from '../../helpers/Item';
+import { ColorScheme } from '../../helpers/ColorScheme';
 
 storiesOf('Color Scheme', module)
   .add('Color Scheme', () => {
@@ -17,27 +17,24 @@ storiesOf('Color Scheme', module)
             <Item>
               <ColorScheme
                 text='P1'
-                bgColor='#6400DC'
-                borderColor='#6400DC'
-                textColor='#FFFFFF'
+                name='#6400DC'
+                bgClassName='violet-300'
               >
               </ColorScheme>
             </Item>
             <Item>
               <ColorScheme
                 text='P2'
-                bgColor='#7F7F7F'
-                borderColor='#7F7F7F'
-                textColor='#FFFFFF'
+                name='#7F7F7F'
+                bgClassName='neutral-500'
               >
               </ColorScheme>
             </Item>
             <Item>
               <ColorScheme
                 text='Neutral White'
-                bgColor='#FFFFFF'
-                borderColor='#979797'
-                textColor='#1D1D1D'
+                name='#FFFFFF'
+                bgClassName='neutral-white'
               >
               </ColorScheme>
             </Item>
@@ -50,10 +47,10 @@ storiesOf('Color Scheme', module)
             <Item>
               <ColorScheme
                 text='S1'
-                bgColor='#6400DC'
-                secondaryBgColor='#8133E0'
-                borderColor='#6400DC'
-                textColor='#FFFFFF'
+                name='#6400DC'
+                bgClassName='violet-300'
+                secondaryName='#8133E0'
+                secondaryClassName='secondaryColor'
               >
               </ColorScheme>
             </Item>
@@ -66,27 +63,24 @@ storiesOf('Color Scheme', module)
             <Item>
               <ColorScheme
                 text='R300'
-                bgColor='#FF5252'
-                borderColor='#FF5252'
-                textColor='#FFFFFF'
+                name='#FF5252'
+                bgClassName='red-300'
               >
               </ColorScheme>
             </Item>
             <Item>
               <ColorScheme
                 text='Y300'
-                bgColor='#F7D210'
-                borderColor='#F7D210'
-                textColor='#FFFFFF'
+                name='#F7D210'
+                bgClassName='yellow-300'
               >
               </ColorScheme>
             </Item>
             <Item>
               <ColorScheme
                 text='G300'
-                bgColor='#32C86D'
-                borderColor='#32C86D'
-                textColor='#FFFFFF'
+                name='#32C86D'
+                bgClassName='green-300'
               >
               </ColorScheme>
             </Item>
@@ -104,9 +98,8 @@ storiesOf('Color Scheme', module)
                 <Item>
                   <ColorScheme
                     text='Neutral White'
-                    bgColor='#FFFFFF'
-                    borderColor='#FFFFFF'
-                    textColor='#1D1D1D'
+                    name='#FFFFFF'
+                    bgClassName='neutral-white'
                   >
                   </ColorScheme>
                 </Item>
@@ -115,9 +108,8 @@ storiesOf('Color Scheme', module)
                 <Item>
                   <ColorScheme
                     text='Neutral 75'
-                    bgColor='#F1F1F1'
-                    borderColor='#F1F1F1'
-                    textColor='#1D1D1D'
+                    name='#F1F1F1'
+                    bgClassName='neutral-75'
                   >
                   </ColorScheme>
                 </Item>
@@ -126,9 +118,8 @@ storiesOf('Color Scheme', module)
                 <Item>
                   <ColorScheme
                     text='Neutral 100'
-                    bgColor='#E5E5E5'
-                    borderColor='#E5E5E5'
-                    textColor='#1D1D1D'
+                    name='#E5E5E5'
+                    bgClassName='neutral-100'
                   >
                   </ColorScheme>
                 </Item>
@@ -137,9 +128,8 @@ storiesOf('Color Scheme', module)
                 <Item>
                   <ColorScheme
                     text='Neutral 200'
-                    bgColor='#CCCCCC'
-                    borderColor='#CCCCCC'
-                    textColor='#FFFFFF'
+                    name='#CCCCCC'
+                    bgClassName='neutral-200'
                   >
                   </ColorScheme>
                 </Item>
@@ -148,9 +138,8 @@ storiesOf('Color Scheme', module)
                 <Item>
                   <ColorScheme
                     text='Neutral 500'
-                    bgColor='#7F7F7F'
-                    borderColor='#7F7F7F'
-                    textColor='#FFFFFF'
+                    name='#7F7F7F'
+                    bgClassName='neutral-500'
                   >
                   </ColorScheme>
                 </Item>
@@ -159,9 +148,8 @@ storiesOf('Color Scheme', module)
                 <Item>
                   <ColorScheme
                     text='Neutral 800'
-                    bgColor='#333333'
-                    borderColor='#333333'
-                    textColor='#FFFFFF'
+                    name='#333333'
+                    bgClassName='neutral-800'
                   >
                   </ColorScheme>
                 </Item>
@@ -170,9 +158,8 @@ storiesOf('Color Scheme', module)
                 <Item>
                   <ColorScheme
                     text='Neutral 900'
-                    bgColor='#1D1D1D'
-                    borderColor='#1D1D1D'
-                    textColor='#FFFFFF'
+                    name='#1D1D1D'
+                    bgClassName='neutral-900'
                   >
                   </ColorScheme>
                 </Item>
@@ -181,9 +168,8 @@ storiesOf('Color Scheme', module)
                 <Item>
                   <ColorScheme
                     text='Neutral 1000'
-                    bgColor='#000000'
-                    borderColor='#000000'
-                    textColor='#FFFFFF'
+                    name='#000000'
+                    bgClassName='neutral-1000'
                   >
                   </ColorScheme>
                 </Item>
@@ -196,9 +182,8 @@ storiesOf('Color Scheme', module)
                 <Item>
                   <ColorScheme
                     text='R50'
-                    bgColor='#FFEEEE'
-                    borderColor='#FFEEEE'
-                    textColor='#868687'
+                    name='#FFEEEE'
+                    bgClassName='red-50'
                   >
                   </ColorScheme>
                 </Item>
@@ -207,9 +192,8 @@ storiesOf('Color Scheme', module)
                 <Item>
                   <ColorScheme
                     text='R75'
-                    bgColor='#FFB3B3'
-                    borderColor='#FFB3B3'
-                    textColor='#FFFFFF'
+                    name='#FFB3B3'
+                    bgClassName='red-75'
                   >
                   </ColorScheme>
                 </Item>
@@ -218,9 +202,8 @@ storiesOf('Color Scheme', module)
                 <Item>
                   <ColorScheme
                     text='R100'
-                    bgColor='#FF8585'
-                    borderColor='#FF8585'
-                    textColor='#FFFFFF'
+                    name='#FF8585'
+                    bgClassName='red-100'
                   >
                   </ColorScheme>
                 </Item>
@@ -229,9 +212,8 @@ storiesOf('Color Scheme', module)
                 <Item>
                   <ColorScheme
                     text='R300'
-                    bgColor='#FF5252'
-                    borderColor='#FF5252'
-                    textColor='#FFFFFF'
+                    name='#FF5252'
+                    bgClassName='red-300'
                   >
                   </ColorScheme>
                 </Item>
@@ -240,9 +222,8 @@ storiesOf('Color Scheme', module)
                 <Item>
                   <ColorScheme
                     text='R400'
-                    bgColor='#CC4141'
-                    borderColor='#CC4141'
-                    textColor='#FFFFFF'
+                    name='#CC4141'
+                    bgClassName='red-400'
                   >
                   </ColorScheme>
                 </Item>
@@ -251,9 +232,8 @@ storiesOf('Color Scheme', module)
                 <Item>
                   <ColorScheme
                     text='R500'
-                    bgColor='#8F2D2D'
-                    borderColor='#8F2D2D'
-                    textColor='#FFFFFF'
+                    name='#8F2D2D'
+                    bgClassName='red-500'
                   >
                   </ColorScheme>
                 </Item>
@@ -266,9 +246,8 @@ storiesOf('Color Scheme', module)
                 <Item>
                   <ColorScheme
                     text='G50'
-                    bgColor='#EBFAF1'
-                    borderColor='#EBFAF1'
-                    textColor='#868687'
+                    name='#EBFAF1'
+                    bgClassName='green-50'
                   >
                   </ColorScheme>
                 </Item>
@@ -277,9 +256,8 @@ storiesOf('Color Scheme', module)
                 <Item>
                   <ColorScheme
                     text='G75'
-                    bgColor='#A7EFC2'
-                    borderColor='#A7EFC2'
-                    textColor='#FFFFFF'
+                    name='#A7EFC2'
+                    bgClassName='green-75'
                   >
                   </ColorScheme>
                 </Item>
@@ -288,9 +266,8 @@ storiesOf('Color Scheme', module)
                 <Item>
                   <ColorScheme
                     text='G100'
-                    bgColor='#6FDE9A'
-                    borderColor='#6FDE9A'
-                    textColor='#FFFFFF'
+                    name='#6FDE9A'
+                    bgClassName='green-100'
                   >
                   </ColorScheme>
                 </Item>
@@ -299,9 +276,8 @@ storiesOf('Color Scheme', module)
                 <Item>
                   <ColorScheme
                     text='G300'
-                    bgColor='#32C86D'
-                    borderColor='#32C86D'
-                    textColor='#FFFFFF'
+                    name='#32C86D'
+                    bgClassName='green-300'
                   >
                   </ColorScheme>
                 </Item>
@@ -310,9 +286,8 @@ storiesOf('Color Scheme', module)
                 <Item>
                   <ColorScheme
                     text='G400'
-                    bgColor='#28A057'
-                    borderColor='#28A057'
-                    textColor='#FFFFFF'
+                    name='#28A057'
+                    bgClassName='green-400'
                   >
                   </ColorScheme>
                 </Item>
@@ -321,9 +296,8 @@ storiesOf('Color Scheme', module)
                 <Item>
                   <ColorScheme
                     text='G500'
-                    bgColor='#0D7837'
-                    borderColor='#0D7837'
-                    textColor='#FFFFFF'
+                    name='#0D7837'
+                    bgClassName='green-500'
                   >
                   </ColorScheme>
                 </Item>
@@ -336,9 +310,8 @@ storiesOf('Color Scheme', module)
                 <Item>
                   <ColorScheme
                     text='Y50'
-                    bgColor='#FFF8D6'
-                    borderColor='#FFF8D6'
-                    textColor='#868687'
+                    name='#FFF8D6'
+                    bgClassName='yellow-50'
                   >
                   </ColorScheme>
                 </Item>
@@ -347,9 +320,8 @@ storiesOf('Color Scheme', module)
                 <Item>
                   <ColorScheme
                     text='Y75'
-                    bgColor='#FDEDA4'
-                    borderColor='#FDEDA4'
-                    textColor='#FFFFFF'
+                    name='#FDEDA4'
+                    bgClassName='yellow-75'
                   >
                   </ColorScheme>
                 </Item>
@@ -358,9 +330,8 @@ storiesOf('Color Scheme', module)
                 <Item>
                   <ColorScheme
                     text='Y100'
-                    bgColor='#FBE277'
-                    borderColor='#FBE277'
-                    textColor='#FFFFFF'
+                    name='#FBE277'
+                    bgClassName='yellow-100'
                   >
                   </ColorScheme>
                 </Item>
@@ -369,9 +340,8 @@ storiesOf('Color Scheme', module)
                 <Item>
                   <ColorScheme
                     text='Y300'
-                    bgColor='#F7D210'
-                    borderColor='#F7D210'
-                    textColor='#FFFFFF'
+                    name='#F7D210'
+                    bgClassName='yellow-300'
                   >
                   </ColorScheme>
                 </Item>
@@ -380,9 +350,8 @@ storiesOf('Color Scheme', module)
                 <Item>
                   <ColorScheme
                     text='Y400'
-                    bgColor='#D5AD00'
-                    borderColor='#D5AD00'
-                    textColor='#FFFFFF'
+                    name='#D5AD00'
+                    bgClassName='yellow-400'
                   >
                   </ColorScheme>
                 </Item>
@@ -391,9 +360,8 @@ storiesOf('Color Scheme', module)
                 <Item>
                   <ColorScheme
                     text='Y500'
-                    bgColor='#B99600'
-                    borderColor='#B99600'
-                    textColor='#FFFFFF'
+                    name='#B99600'
+                    bgClassName='yellow-500'
                   >
                   </ColorScheme>
                 </Item>
@@ -406,9 +374,8 @@ storiesOf('Color Scheme', module)
                 <Item>
                   <ColorScheme
                     text='V50'
-                    bgColor='#E6D2FF'
-                    borderColor='#E6D2FF'
-                    textColor='#FFFFFF'
+                    name='#E6D2FF'
+                    bgClassName='violet-50'
                   >
                   </ColorScheme>
                 </Item>
@@ -417,9 +384,8 @@ storiesOf('Color Scheme', module)
                 <Item>
                   <ColorScheme
                     text='V75'
-                    bgColor='#CDA5FF'
-                    borderColor='#CDA5FF'
-                    textColor='#FFFFFF'
+                    name='#CDA5FF'
+                    bgClassName='violet-75'
                   >
                   </ColorScheme>
                 </Item>
@@ -428,9 +394,8 @@ storiesOf('Color Scheme', module)
                 <Item>
                   <ColorScheme
                     text='V100'
-                    bgColor='#A266EA'
-                    borderColor='#A266EA'
-                    textColor='#FFFFFF'
+                    name='#A266EA'
+                    bgClassName='violet-100'
                   >
                   </ColorScheme>
                 </Item>
@@ -439,9 +404,8 @@ storiesOf('Color Scheme', module)
                 <Item>
                   <ColorScheme
                     text='V300'
-                    bgColor='#6400DC'
-                    borderColor='#6400DC'
-                    textColor='#FFFFFF'
+                    name='#6400DC'
+                    bgClassName='violet-300'
                   >
                   </ColorScheme>
                 </Item>
@@ -450,9 +414,8 @@ storiesOf('Color Scheme', module)
                 <Item>
                   <ColorScheme
                     text='V400'
-                    bgColor='#46009A'
-                    borderColor='#46009A'
-                    textColor='#FFFFFF'
+                    name='#46009A'
+                    bgClassName='violet-400'
                   >
                   </ColorScheme>
                 </Item>
@@ -461,9 +424,8 @@ storiesOf('Color Scheme', module)
                 <Item>
                   <ColorScheme
                     text='V500'
-                    bgColor='#23004D'
-                    borderColor='#23004D'
-                    textColor='#FFFFFF'
+                    name='#23004D'
+                    bgClassName='violet-500'
                   >
                   </ColorScheme>
                 </Item>
