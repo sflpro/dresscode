@@ -33,6 +33,7 @@
 }
 
 .input {
+  background-color: var(--neutral-white);
   padding: var(--text-input-padding);
   color: var(--text-input-color);
   font-size: var(--text-input-font-size);
@@ -69,6 +70,7 @@
 
 .icon {
   padding-right: 16px;
+  color: var(--primary-color);
 }
 
 .successWrapper,

@@ -2,8 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-import { Icon } from '../Icon';
-
 import styles from './textInput.css';
 
 export function TextInput({
@@ -13,7 +11,7 @@ export function TextInput({
   readOnly = false,
   className = '',
   label = '',
-  icon = '',
+  icon = null,
   prefix = '',
   isValid = false,
   hasError = false,
@@ -48,15 +46,13 @@ export function TextInput({
           onChange={onChange}
           name={name}
           type={type}
-          readOnly
+          readOnly={readOnly}
           {...props}
         />
         {icon && (
-          <Icon
-            name={icon}
-            size={24}
-            className={styles.icon}
-          />
+          <div className={styles.icon}>
+            {icon}
+          </div>
         )}
       </div>
       {hasError && error && (
@@ -73,7 +69,7 @@ TextInput.propTypes = {
   disabled: PropTypes.bool,
   readOnly: PropTypes.bool,
   label: PropTypes.string,
-  icon: PropTypes.string,
+  icon: PropTypes.any,
   prefix: PropTypes.string,
   isValid: PropTypes.bool,
   hasError: PropTypes.bool,

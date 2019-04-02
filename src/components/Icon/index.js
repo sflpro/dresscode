@@ -12,6 +12,7 @@ export function Icon({
   size = 16,
   className = '',
   color,
+  onClick = null,
   style,
   ...props
 }) {
@@ -28,6 +29,7 @@ export function Icon({
         color,
         ...style,
       }}
+      onClick={onClick}
       {...props}
     >
       <svg className={styles.icon}>
@@ -41,6 +43,8 @@ export function Icon({
 Icon.propTypes = {
   name: PropTypes.string.isRequired,
   size: PropTypes.number,
+  color: PropTypes.string,
+  onClick: PropTypes.func,
   className: PropTypes.string,
   style: PropTypes.object,
 };
