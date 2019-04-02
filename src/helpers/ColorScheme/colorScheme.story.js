@@ -48,9 +48,8 @@ storiesOf('Color Scheme', module)
               <ColorScheme
                 text='S1'
                 name='#6400DC'
-                bgClassName='violet-300'
                 secondaryName='#8133E0'
-                secondaryClassName='secondaryColor'
+                secondaryClassName='violet-300-gradient'
               >
               </ColorScheme>
             </Item>

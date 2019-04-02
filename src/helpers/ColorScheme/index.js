@@ -16,8 +16,8 @@ export function ColorScheme({
   const colorSchemeClasses = classNames({
     [className]: true,
     [styles.colorScheme]: true,
-    [styles[bgClassName]]: true,
-    [styles.secondaryBackground]: secondaryClassName,
+    [styles[bgClassName]]: bgClassName,
+    [styles[secondaryClassName]]: secondaryClassName,
   });
 
   const secondaryClasses = classNames({
@@ -32,7 +32,11 @@ export function ColorScheme({
       <div className={styles.textColor}>
         <div>
           {name}
-          {secondaryClassName ? <span className={secondaryClasses}>{secondaryName}</span> : ""}
+          {secondaryClassName ? (
+            <span className={secondaryClasses}>
+              {secondaryName}
+            </span>
+          ) : ''}
         </div>
       </div>
       <div className={styles.textType}>
