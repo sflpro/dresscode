@@ -1,6 +1,6 @@
 .colorScheme {
-  width: 200px;
-  height: 80px;
+  width: 168px;
+  height: 48px;
   border-radius: 5px;
   font-family: Roboto, sans-serif;
   font-weight: bold;
@@ -8,20 +8,21 @@
   font-stretch: normal;
   line-height: normal;
   letter-spacing: normal;
+  padding: 16px;
 }
 
 .textColor {
   font-size: 16px;
-  padding: 16px 16px 0 16px;
 }
 
 .textType {
   font-size: 8px;
-  margin: 0 16px 0 16px;
+  margin-top: 3px;
 }
 
-.secondaryColor {
-  float: right;
+.textBlock {
+    display: flex;
+    justify-content: space-between;
 }
 
 /*-----------Neutral-----------*/

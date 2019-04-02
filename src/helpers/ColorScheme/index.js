@@ -20,20 +20,18 @@ export function ColorScheme({
     [styles[secondaryClassName]]: secondaryClassName,
   });
 
-  const secondaryClasses = classNames({
-    [styles.secondaryColor]: secondaryClassName,
-  });
-
   return (
     <div
       className={colorSchemeClasses}
       {...props}
     >
       <div className={styles.textColor}>
-        <div>
-          {name}
+        <div className={styles.textBlock}>
+          <span>
+            {name}
+          </span>
           {secondaryClassName ? (
-            <span className={secondaryClasses}>
+            <span>
               {secondaryName}
             </span>
           ) : ''}
