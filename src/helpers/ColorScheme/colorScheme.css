@@ -1,0 +1,169 @@
+.colorScheme {
+  width: 168px;
+  height: 48px;
+  border-radius: 5px;
+  font-family: Roboto, sans-serif;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  padding: 16px;
+}
+
+.textColor {
+  font-size: 16px;
+}
+
+.textType {
+  font-size: 8px;
+  margin-top: 3px;
+}
+
+.textBlock {
+    display: flex;
+    justify-content: space-between;
+}
+
+/*-----------Neutral-----------*/
+.neutral-white {
+  background-color: var(--neutral-white);
+  color: var(--neutral-900);
+}
+.neutral-75 {
+  background-color: var(--neutral-75);
+  color: var(--neutral-900);
+}
+.neutral-100 {
+  background-color: var(--neutral-100);
+  color: var(--neutral-900);
+}
+.neutral-200 {
+  background-color: var(--neutral-200);
+  color: var(--neutral-white);
+}
+.neutral-500 {
+  background-color: var(--neutral-500);
+  color: var(--neutral-white);
+}
+.neutral-800 {
+  background-color: var(--neutral-800);
+  color: var(--neutral-white);
+}
+.neutral-900 {
+  background-color: var(--neutral-900);
+  color: var(--neutral-white);
+}
+.neutral-1000 {
+  background-color: var(--neutral-1000);
+  color: var(--neutral-white);
+}
+
+/*-----------Red-----------*/
+.red-50 {
+  background-color: var(--red-50);
+  color: var(--neutral-500);
+}
+.red-75 {
+  background-color: var(--red-75);
+  color: var(--neutral-white);
+}
+.red-100 {
+  background-color: var(--red-100);
+  color: var(--neutral-white);
+}
+.red-300 {
+  background-color: var(--red-300);
+  color: var(--neutral-white);
+}
+.red-400 {
+  background-color: var(--red-400);
+  color: var(--neutral-white);
+}
+.red-500 {
+  background-color: var(--red-500);
+  color: var(--neutral-white);
+}
+
+/*-----------Green-----------*/
+.green-50 {
+  background-color: var(--green-50);
+  color: var(--neutral-500);
+}
+.green-75 {
+  background-color: var(--green-75);
+  color: var(--neutral-white);
+}
+.green-100 {
+  background-color: var(--green-100);
+  color: var(--neutral-white);
+}
+.green-300 {
+  background-color: var(--green-300);
+  color: var(--neutral-white);
+}
+.green-400 {
+  background-color: var(--green-400);
+  color: var(--neutral-white);
+}
+.green-500 {
+  background-color: var(--green-500);
+  color: var(--neutral-white);
+}
+
+
+/*-----------Yellow-----------*/
+.yellow-50 {
+  background-color: var(--yellow-50);
+  color: var(--neutral-500);
+}
+.yellow-75 {
+  background-color: var(--yellow-75);
+  color: var(--neutral-white);
+}
+.yellow-100 {
+  background-color: var(--yellow-100);
+  color: var(--neutral-white);
+}
+.yellow-300 {
+  background-color: var(--yellow-300);
+  color: var(--neutral-white);
+}
+.yellow-400 {
+  background-color: var(--yellow-400);
+  color: var(--neutral-white);
+}
+.yellow-500 {
+  background-color: var(--yellow-500);
+  color: var(--neutral-white);
+}
+
+/*-----------Violet-----------*/
+.violet-50 {
+  background-color: var(--violet-50);
+  color: var(--neutral-white);
+}
+.violet-75 {
+  background-color: var(--violet-75);
+  color: var(--neutral-white);
+}
+.violet-100 {
+  background-color: var(--violet-100);
+  color: var(--neutral-white);
+}
+.violet-300 {
+  background-color: var(--violet-300);
+  color: var(--neutral-white);
+}
+.violet-400 {
+  background-color: var(--violet-400);
+  color: var(--neutral-white);
+}
+.violet-500 {
+  background-color: var(--violet-500);
+  color: var(--neutral-white);
+}
+.violet-300-gradient {
+  background: linear-gradient(248deg, var(--violet-300-gradient), var(--violet-300));
+  color: var(--neutral-white);
+}

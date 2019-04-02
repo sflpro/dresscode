@@ -1,16 +1,7 @@
 :root {
-  --neutral-white: #FFFFFF;
-  --neutral-75: #F1F1F1;
-  --neutral-100: #E5E5E5;
-  --neutral-200: #CCCCCC;
-  --neutral-500: #7f7f7f;
-  --neutral-800: #333333;
-  --neutral-900: #1D1D1D;
-  --neutral-1000: #000000;
-
-  --primary-color: #6400dc;
-  --primary-color-light: #a266ea;
-  --primary-color-dark: #46009a;
+  --primary-color: var(--violet-300);
+  --primary-color-light: var(--violet-100);
+  --primary-color-dark: var(--violet-400);
 
   --secondary-color: var(--neutral-white);
 
@@ -21,10 +12,10 @@
   --disabled-color-light: var(--neutral-75);
   --disabled-color-dark: var(--neutral-200);
 
-  --success-color: #32c86d;
-  --warning-color: #f8cf1c;
-  --error-color: #ff5252;
-  --error-color-dark: #cc4141;
+  --success-color: var(--green-300);
+  --warning-color: var(--yellow-300);
+  --error-color: var(--red-300);
+  --error-color-dark: var(--red-400);
 
   --text-default-color: var(--neutral-900);
   --text-primary-color: var(--primary-color);
@@ -83,11 +74,11 @@
   --list-border-radius: 8px;
   --list-item-min-height: 48px;
 
-  --box-shadow-10: 0 2px 4px 0 rgba(0, 0, 0, 0.15);
-  --box-shadow-50: 0 4px 8px 0 rgba(0, 0, 0, 0.15);
-  --box-shadow-100: 0 8px 16px 0 rgba(0, 0, 0, 0.15);
-  --box-shadow-300: 0 16px 24px 0 rgba(0, 0, 0, 0.15);
-  --box-shadow-500: 0 48px 56px 0 rgba(0, 0, 0, 0.15);
+  --box-shadow-10: 0 2px 4px 0 var(--neutral-1000-opacity-15);
+  --box-shadow-50: 0 4px 8px 0 var(--neutral-1000-opacity-15);
+  --box-shadow-100: 0 8px 16px 0 var(--neutral-1000-opacity-15);
+  --box-shadow-300: 0 16px 24px 0 var(--neutral-1000-opacity-15);
+  --box-shadow-500: 0 48px 56px 0 var(--neutral-1000-opacity-15);
 
   --input-label-distance: 16px;
   --input-background-color: var(--neutral-200);
@@ -132,7 +123,7 @@
 
   --tooltip-border-color: var(--neutral-100);
 
-  --popup-overlay-background: rgba(0, 0, 0, .5);
+  --popup-overlay-background: var(--neutral-1000-opacity-50);
 
   --dialog-body-background: var(--neutral-white);
   --dialog-title-color: var(--primary-color);
@@ -168,7 +159,7 @@
   --slider-line-height: 4px;
   --slider-line-border-radius: 4px;
   --slider-line-animation-duration: var(--slider-animation-duration);
-  --slider-control-border: 0 0 2px rgba(0, 0, 0, 0.3);
+  --slider-control-border: 0 0 2px var(--neutral-1000-opacity-30);
   --slider-control-color: var(--primary-color);
   --slider-control-size: 16px;
   --slider-control-top: 3px;
