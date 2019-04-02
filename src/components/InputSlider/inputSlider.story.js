@@ -5,12 +5,12 @@ import React from 'react';
 import { ItemGroup } from '../../helpers/ItemGroup';
 import { ItemRow } from '../../helpers/ItemRow';
 import { Item } from '../../helpers/Item';
+import { InputSlider } from './index';
 import { Control } from '../Control';
-import { Slider } from './index';
 import { Icon } from '../Icon';
 
-storiesOf('Slider', module)
-  .add('Slider', () => {
+storiesOf('Input Slider', module)
+  .add('Input Slider', () => {
     const store = new Store({
       test1: 75,
       test2: 36,
@@ -36,21 +36,21 @@ storiesOf('Slider', module)
           <ItemGroup>
             <ItemRow>
               <Item style={{ width: '40%' }}>
-                <Slider onChange={handler} min={5} step={5}>
+                <InputSlider onChange={handler} min={5} step={5}>
                   <Control name='test1' value={state.test1} icon={<Icon name='tracker' />} />
-                </Slider>
+                </InputSlider>
               </Item>
             </ItemRow>
             <ItemRow>
               <Item style={{ width: '40%' }}>
-                <Slider onChange={handler} step={5}>
+                <InputSlider onChange={handler} step={5}>
                   <Control name='test3' value={state.test3} icon={<span>O</span>} />
-                </Slider>
+                </InputSlider>
               </Item>
             </ItemRow>
             <ItemRow>
               <Item style={{ width: '40%' }}>
-                <Slider onChange={handler} step={3}>
+                <InputSlider onChange={handler} step={3}>
                   <Control
                     name='test2'
                     value={state.test2}
@@ -64,12 +64,12 @@ storiesOf('Slider', module)
                       />
                     }
                   />
-                </Slider>
+                </InputSlider>
               </Item>
             </ItemRow>
             <ItemRow>
               <Item style={{ width: '40%' }}>
-                <Slider onChange={handler}>
+                <InputSlider onChange={handler}>
                   <Control
                     icon={
                       <Icon
@@ -98,12 +98,12 @@ storiesOf('Slider', module)
                     min={state.min1}
                     name='max1'
                   />
-                </Slider>
+                </InputSlider>
               </Item>
             </ItemRow>
             <ItemRow>
               <Item style={{ width: '40%' }}>
-                <Slider onChange={handler}>
+                <InputSlider onChange={handler} separator='/'>
                   <Control
                     icon={<Icon name='warning' />}
                     value={state.min2}
@@ -116,7 +116,7 @@ storiesOf('Slider', module)
                     min={state.min2}
                     name='max2'
                   />
-                </Slider>
+                </InputSlider>
               </Item>
             </ItemRow>
           </ItemGroup>

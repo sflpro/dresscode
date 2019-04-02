@@ -7,8 +7,3 @@
     cursor: pointer;
     z-index: 1;
 }
-
-.controlSvg {
-    filter: drop-shadow(var(--slider-control-border));
-    stroke: white;
-}
