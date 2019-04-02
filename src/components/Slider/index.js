@@ -76,6 +76,25 @@ export class Slider extends React.Component {
     }
   };
 
+  onChange = ({ name, value }) => {
+    const { onChange, distance } = this.props;
+    const { controls } = this.state;
+
+    const [minControl, maxControl] = Object.values(controls);
+
+    if (maxControl) {
+      if (name === minControl.name && value === maxControl.value) {
+        onChange({ name, value: value - distance });
+        return;
+      } else if (name === maxControl.name && value === minControl.value) {
+        onChange({ name, value: value + distance });
+        return;
+      }
+    }
+
+    onChange({ name, value });
+  };
+
   getSliderLineStyles() {
     const { controls } = this.state;
     const [minControl, maxControl] = Object.values(controls);
@@ -122,7 +141,14 @@ export class Slider extends React.Component {
   }
 
   setControlInfo = ({ name, value, left }) => {
-    this.setState(prevState => ({ controls: { ...prevState.controls, [name]: { name, value, left } } }));
+    this.setState(prevState => ({ controls: { ...prevState.controls, [name]: { name, value, left } } }), () => {
+      const { onControlChange } = this.props;
+      const { controls } = this.state;
+
+      if (onControlChange) {
+        onControlChange(Object.values(controls));
+      }
+    });
   };
 
   setSliderRef = (ref) => {
@@ -138,7 +164,7 @@ export class Slider extends React.Component {
   }
 
   render() {
-    const { className, children, step, min, max, onChange, distance } = this.props;
+    const { className, children, step, min, max, distance } = this.props;
     const { wrapperElementWidth, maxStepsCount } = this.state;
 
     const sliderLineStyles = this.getSliderLineStyles();
@@ -165,10 +191,10 @@ export class Slider extends React.Component {
               getStepFromValue: this.getStepFromValue,
               getStepFromEvent: this.getStepFromEvent,
               setControlInfo: this.setControlInfo,
+              onChange: this.onChange,
               wrapperElementWidth,
               maxStepsCount,
               distance,
-              onChange,
               step,
               min,
               max,
@@ -184,6 +210,7 @@ export class Slider extends React.Component {
 
 Slider.propTypes = {
   onChange: PropTypes.func.isRequired,
+  onControlChange: PropTypes.func,
   distance: PropTypes.number,
   step: PropTypes.number,
   min: PropTypes.number,
