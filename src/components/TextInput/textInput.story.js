@@ -30,7 +30,6 @@ storiesOf('TextInput', module)
     }
 
     function handleDatePickerChange(datePickerValue) {
-      console.log(datePickerValue);
       store.set({
         datePickerValue,
       });

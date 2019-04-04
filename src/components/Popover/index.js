@@ -38,6 +38,7 @@ export class Popover extends React.Component {
     const { open } = this.props;
     if (open !== prevOpen && open) {
       this.setPopoverPosition(this.targetElementPosition);
+      this.contentRef.current.addEventListener('mousedown', this.handleContentClick);
     }
   }
 
@@ -213,16 +214,18 @@ export class Popover extends React.Component {
 
   handleClick = (event) => {
     this.handleMouseEnter(event);
+    document.addEventListener('mousedown', this.handleClickLeave);
   };
 
   handleClickLeave = (event) => {
     this.handleMouseLeave(event);
+    document.removeEventListener('mousedown', this.handleClickLeave);
   };
 
   handleMouseEnter = (event) => {
     const { follow = false, open, trigger = POPOVER_TRIGGER_OPTIONS.CLICK, onTargetEvent, contentRelative } = this.props;
     let target = trigger === POPOVER_TRIGGER_OPTIONS.HOVER ? event.target : event.currentTarget;
-    if (contentRelative) { 
+    if (contentRelative) {
       target = this.targetRef.current;
     }
     let { offsetWidth, offsetHeight, offsetLeft, offsetTop } = this.getElementOffset(target, false);
@@ -274,8 +277,12 @@ export class Popover extends React.Component {
     return targetElementProps;
   };
 
-  handlePopoverClick = (e) => (
-    e.preventDefault()
+  handlePopoverClick = event => (
+    event.preventDefault()
+  );
+
+  handleContentClick = event => (
+    event.stopPropagation()
   );
 
   render() {
@@ -311,9 +318,9 @@ export class Popover extends React.Component {
           {...this.targetElementProps}
         >
           {typeof children === 'function' ? children({
-            onClick: this.handleClick,
-            onMouseEnter: this.handleMouseEnter,
-            onMouseLeave: this.handleMouseLeave,
+            setOnClick: this.handleClick,
+            setOnMouseEnter: this.handleMouseEnter,
+            setOnMouseLeave: this.handleMouseLeave,
           }) : children}
         </div>
         {open && (

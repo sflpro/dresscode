@@ -164,7 +164,7 @@ export class DateInput extends React.Component {
     };
   };
 
-  handleDateInputBlur = (e) => {
+  handleDateInputBlur = (event) => {
     this.focused = false;
     const { currentValue } = this.state;
 
@@ -186,13 +186,13 @@ export class DateInput extends React.Component {
     }
   };
 
-  handleDateInputFocus = (e) => (
+  handleDateInputFocus = (event) => (
     event.target.select()
   );
 
-  handleDateInputChange = (e) => {
+  handleDateInputChange = (event) => {
     const { onDateInputChange, format = DEFAULT_FORMAT, view } = this.props;
-    const { value } = e.target;
+    const { value } = event.target;
 
     this.focused = true;
 
@@ -220,14 +220,14 @@ export class DateInput extends React.Component {
     }
   };
 
-  handleNativeDateInputChange = (e) => {
+  handleNativeDateInputChange = (event) => {
     const { onDateInputChange } = this.props;
-    onDateInputChange(new Date(e.target.value));
+    onDateInputChange(new Date(event.target.value));
   };
 
-  handleDatePickerIconClick = (e, onClick) => {
-    e.preventDefault();
-    onClick(e);
+  handleDatePickerIconClick = (event, onClick) => {
+    event.preventDefault();
+    onClick(event);
   };
 
   render() {
@@ -269,7 +269,7 @@ export class DateInput extends React.Component {
           gap={8}
           contentRelative
         >
-          {({ onClick }) => (
+          {({ setOnClick }) => (
             <TextInput
               onChange={this.handleDateInputChange}
               onFocus={this.handleDateInputFocus}
@@ -280,7 +280,7 @@ export class DateInput extends React.Component {
                 <Icon
                   name='date'
                   size={24}
-                  onClick={e => this.handleDatePickerIconClick(e, onClick)}
+                  onClick={e => this.handleDatePickerIconClick(e, setOnClick)}
                 />
               }
               hasError={hasError}
