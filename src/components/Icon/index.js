@@ -41,6 +41,8 @@ export function Icon({
 Icon.propTypes = {
   name: PropTypes.string.isRequired,
   size: PropTypes.number,
+  color: PropTypes.string,
+  onClick: PropTypes.func,
   className: PropTypes.string,
   style: PropTypes.object,
 };

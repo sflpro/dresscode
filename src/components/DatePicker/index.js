@@ -4,7 +4,6 @@ import classNames from 'classnames';
 import DayPicker from 'react-day-picker';
 
 import { Icon } from '../Icon';
-import { isMobile } from '../../utils';
 
 import 'style-loader!css-loader?modules=false!react-day-picker/lib/style.css';
 import styles from './datePicker.css';
@@ -193,7 +192,6 @@ export class DatePicker extends React.Component {
     } = this.props;
     const { localeUtils = null } = this.props;
     const { view, year } = this.state;
-    const isNativeMode = isMobile();
 
     const selectedDay = value || new Date();
 
@@ -217,10 +215,6 @@ export class DatePicker extends React.Component {
       today: `${styles.dayPickerToday}`,
       selected: `${styles.dayPickerSelectedDay}`,
     };
-
-    if (isNativeMode) {
-      return null;
-    }
 
     return (
       <div
