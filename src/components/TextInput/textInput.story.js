@@ -1,5 +1,5 @@
 import React from 'react';
-import { State, Store } from "@sambego/storybook-state";
+import { State, Store } from '@sambego/storybook-state';
 import { storiesOf } from '@storybook/react';
 
 import { TextInput } from '.';
@@ -190,12 +190,12 @@ storiesOf('TextInput', module)
                     <TextInput
                       name='success'
                       value={state.success}
-                      icon={
+                      icon={(
                         <Icon
                           name='check'
                           size={24}
                         />
-                      }
+                      )}
                       onChange={handleInputChange}
                       isValid
                     />
@@ -209,12 +209,12 @@ storiesOf('TextInput', module)
                     <TextInput
                       name='error'
                       value={state.error}
-                      icon={
+                      icon={(
                         <Icon
                           name='warning'
                           size={24}
                         />
-                      }
+                      )}
                       error='Error text'
                       onChange={handleInputChange}
                       hasError
@@ -226,5 +226,5 @@ storiesOf('TextInput', module)
           </>
         )}
       </State>
-    )
+    );
   });

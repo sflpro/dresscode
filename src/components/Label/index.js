@@ -8,7 +8,7 @@ export function Label({
   text = '',
   hasError = false,
   display = 'row',
-  className,
+  className = '',
   children,
   ...props
 }) {
@@ -37,5 +37,6 @@ Label.propTypes = {
   text: PropTypes.string,
   display: PropTypes.oneOf(['row', 'col']),
   hasError: PropTypes.bool,
+  className: PropTypes.string,
   children: PropTypes.any,
 };

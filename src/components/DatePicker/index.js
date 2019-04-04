@@ -48,6 +48,7 @@ const DatePickerCaption = ({
       <div
         className={captionWrapperClasses}
         onClick={onViewChange}
+        role='presentation'
       >
         {view === VIEW_TYPES.DAY && (
           formatMonthTitle({ selectedDay, locale, localeUtils, months })
@@ -58,6 +59,15 @@ const DatePickerCaption = ({
       </div>
     </div>
   );
+};
+
+DatePickerCaption.propTypes = {
+  selectedDay: PropTypes.instanceOf(Date),
+  onViewChange: PropTypes.func,
+  view: PropTypes.oneOf(Object.values(VIEW_TYPES)),
+  localeUtils: PropTypes.object,
+  locale: PropTypes.string,
+  months: PropTypes.array,
 };
 
 const DatePickerNavBar = ({
@@ -92,6 +102,11 @@ const DatePickerNavBar = ({
   );
 };
 
+DatePickerNavBar.propTypes = {
+  onPreviousClick: PropTypes.func,
+  onNextClick: PropTypes.func,
+};
+
 const MonthPicker = ({
   selectedDay,
   captionElement,
@@ -124,6 +139,7 @@ const MonthPicker = ({
                 className={monthClasses}
                 onClick={() => onMonthClick(monthIndex, selectedDay)}
                 key={monthIndex}
+                role='presentation'
               >
                 {month}
               </div>
@@ -133,6 +149,15 @@ const MonthPicker = ({
       </div>
     </div>
   );
+};
+
+MonthPicker.propTypes = {
+  selectedDay: PropTypes.instanceOf(Date),
+  captionElement: PropTypes.any,
+  navbarElement: PropTypes.any,
+  monthsShort: PropTypes.array,
+  onMonthClick: PropTypes.func,
+  style: PropTypes.object,
 };
 
 export class DatePicker extends React.Component {
@@ -249,7 +274,7 @@ export class DatePicker extends React.Component {
         {view === VIEW_TYPES.MONTH && (
           <MonthPicker
             selectedDay={selectedDay}
-            captionElement={
+            captionElement={(
               <DatePickerCaption
                 selectedDay={new Date(selectedDay.setFullYear(year))}
                 view={view}
@@ -257,13 +282,13 @@ export class DatePicker extends React.Component {
                 months={months}
                 localeUtils={localeUtils}
               />
-            }
-            navbarElement={
+            )}
+            navbarElement={(
               <DatePickerNavBar
                 onPreviousClick={() => this.handlePreviousYearClick(year)}
                 onNextClick={() => this.handleNextYearClick(year)}
               />
-            }
+            )}
             onMonthClick={this.handleMonthClick}
             monthsShort={monthsShort}
             style={style}
@@ -292,4 +317,6 @@ DatePicker.propTypes = {
   view: PropTypes.oneOf(Object.values(VIEW_TYPES)),
   monthsShort: PropTypes.array,
   onChange: PropTypes.func,
+  className: PropTypes.string,
+  style: PropTypes.object,
 };

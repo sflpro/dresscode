@@ -1,5 +1,5 @@
 import React from 'react';
-import { State, Store } from "@sambego/storybook-state";
+import { State, Store } from '@sambego/storybook-state';
 import { storiesOf } from '@storybook/react';
 
 import { Checkbox } from '.';
@@ -80,9 +80,8 @@ storiesOf('Checkbox', module)
                 />
               </Item>
             </ItemRow>
-          </ItemGroup>
+          </ItemGroup>,
         ]}
       </State>
     );
-  }
-  );
+  });

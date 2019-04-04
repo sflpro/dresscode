@@ -10,7 +10,6 @@ export function TextInput({
   disabled = false,
   readOnly = false,
   className = '',
-  label = '',
   icon = null,
   prefix = '',
   isValid = false,
@@ -77,6 +76,7 @@ TextInput.propTypes = {
   type: PropTypes.string,
   placeholder: PropTypes.string,
   name: PropTypes.string,
+  className: PropTypes.string,
   onChange: PropTypes.func,
   children: PropTypes.any,
 };

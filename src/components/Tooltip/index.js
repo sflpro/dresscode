@@ -10,7 +10,6 @@ const TooltipContent = ({
   title = '',
   description,
   className = '',
-  follow = false,
   style,
   ...props
 }) => {
@@ -35,7 +34,14 @@ const TooltipContent = ({
       </div>
     </div>
   );
-}
+};
+
+TooltipContent.propTypes = {
+  description: PropTypes.any.isRequired,
+  title: PropTypes.string,
+  className: PropTypes.string,
+  style: PropTypes.object,
+};
 
 export class Tooltip extends React.Component {
   state = {
@@ -50,10 +56,10 @@ export class Tooltip extends React.Component {
 
   render() {
     const {
-      trigger = 'hover',
-      position = 'top',
-      follow = false,
-      arrow = true,
+      trigger,
+      position,
+      follow,
+      arrow,
       gap = follow ? 10 : 0,
       children,
       ...props
@@ -66,11 +72,11 @@ export class Tooltip extends React.Component {
         position={position}
         trigger={trigger}
         gap={gap}
-        content={
+        content={(
           <TooltipContent
             {...props}
           />
-        }
+        )}
         follow={follow}
         arrow={arrow}
         open={open}
@@ -82,8 +88,8 @@ export class Tooltip extends React.Component {
 }
 
 Tooltip.propTypes = {
-  title: PropTypes.string,
   description: PropTypes.any.isRequired,
+  title: PropTypes.string,
   follow: PropTypes.bool,
   arrow: PropTypes.bool,
   trigger: PropTypes.string,
@@ -92,4 +98,16 @@ Tooltip.propTypes = {
   className: PropTypes.string,
   style: PropTypes.object,
   children: PropTypes.any,
+};
+
+Tooltip.defaultProps = {
+  title: '',
+  follow: false,
+  arrow: true,
+  trigger: 'hover',
+  position: 'top',
+  gap: 0,
+  className: '',
+  style: null,
+  children: null,
 };

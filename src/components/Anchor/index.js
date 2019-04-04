@@ -34,6 +34,7 @@ export function Anchor({
 
 Anchor.propTypes = {
   href: PropTypes.string.isRequired,
+  className: PropTypes.string,
   target: PropTypes.string,
   style: PropTypes.object,
   onClick: PropTypes.func,

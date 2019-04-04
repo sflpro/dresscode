@@ -9,7 +9,6 @@ export const Body = ({
   children,
   ...props
 }) => {
-
   const dialogClasses = classNames({
     [styles.content]: true,
     [className]: true,
@@ -26,4 +25,5 @@ export const Body = ({
 
 Body.propTypes = {
   className: PropTypes.string,
+  children: PropTypes.any,
 };

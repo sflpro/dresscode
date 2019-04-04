@@ -1,5 +1,5 @@
 import React from 'react';
-import { State, Store } from "@sambego/storybook-state";
+import { State, Store } from '@sambego/storybook-state';
 import { storiesOf } from '@storybook/react';
 
 import { Textarea } from '.';
@@ -27,7 +27,7 @@ storiesOf('Textarea', module)
       <State
         store={store}
       >
-        {state =>
+        {state => (
           <ItemGroup
             title='Textarea'
             style={{ maxWidth: 400 }}
@@ -78,7 +78,7 @@ storiesOf('Textarea', module)
               </Item>
             </ItemRow>
           </ItemGroup>
-        }
+        )}
       </State>
-    )
+    );
   });

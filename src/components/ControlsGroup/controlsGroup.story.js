@@ -3,6 +3,7 @@ import { State, Store } from '@sambego/storybook-state';
 import { storiesOf } from '@storybook/react';
 
 import { ControlsGroup } from '.';
+
 import { Checkbox } from '../Checkbox';
 import { ItemGroup } from '../../helpers/ItemGroup';
 import { Item } from '../../helpers/Item';

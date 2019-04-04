@@ -27,6 +27,6 @@ ControlsGroup.propTypes = {
   style: PropTypes.any,
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.element),
-    PropTypes.element
+    PropTypes.element,
   ]).isRequired,
 };

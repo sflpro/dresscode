@@ -23,6 +23,7 @@ export function Tag({
     <span
       className={tagClasses}
       onClick={onClick}
+      role='presentation'
       {...props}
     >
       {name}
