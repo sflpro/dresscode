@@ -12,7 +12,6 @@ export function Icon({
   size = 16,
   className = '',
   color,
-  onClick = null,
   style,
   ...props
 }) {
@@ -29,7 +28,6 @@ export function Icon({
         color,
         ...style,
       }}
-      onClick={onClick}
       {...props}
     >
       <svg className={styles.icon}>

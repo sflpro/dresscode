@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import formatDate from 'date-fns/format';
-import isValiDDate from 'date-fns/is_valid';
+import isValidDate from 'date-fns/is_valid';
 
 import { Icon } from '../Icon';
 import { Popover } from '../Popover';
@@ -45,7 +45,7 @@ export class DateInput extends React.Component {
 
     this.state = {
       open: false,
-      currentValue: isValiDDate(value) ? formatDate(value, format, { locale }) : value,
+      currentValue: isValidDate(value) ? formatDate(value, format, { locale }) : value,
       hasError: false,
       error: null,
     };
