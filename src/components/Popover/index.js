@@ -151,7 +151,10 @@ export class Popover extends React.Component {
     if (position === 'bottom') {
       arrowY = pTop + height + gap + 1;
       popoverY = arrowY + arrowHeight;
-      if (window.innerHeight - popoverY < popoverHeight && (pTop - arrowHeight + gap - popoverHeight > 0)) {
+      if (
+        window.innerHeight - popoverY < popoverHeight
+        && (pTop - arrowHeight + gap - popoverHeight > 0)
+      ) {
         arrowY = pTop - (arrowHeight + gap) - 1;
         popoverY = arrowY - popoverHeight + 1;
         if (!follow) {
@@ -193,8 +196,15 @@ export class Popover extends React.Component {
       arrowPosition = 'fixed';
     }
 
-    const { popoverX, arrowX } = this.computeHorizontalPosition(targetElementPosition, popoverElementPosition, contentRelative);
-    const { popoverY, arrowY, arrowClasses } = this.computeVerticalPosition(targetElementPosition, popoverElementPosition);
+    const {
+      popoverX,
+      arrowX,
+    } = this.computeHorizontalPosition(targetElementPosition, popoverElementPosition, contentRelative);
+    const {
+      popoverY,
+      arrowY,
+      arrowClasses,
+    } = this.computeVerticalPosition(targetElementPosition, popoverElementPosition);
 
     const popover = {
       x: popoverX,

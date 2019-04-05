@@ -39,7 +39,6 @@ export class Dialog extends React.PureComponent {
     const {
       children,
       className = '',
-      onDismiss = null,
       ...props
     } = this.props;
 
@@ -72,6 +71,12 @@ Dialog.propTypes = {
   className: PropTypes.string,
   onDismiss: PropTypes.func,
   children: PropTypes.any,
+};
+
+Dialog.defaultProps = {
+  className: '',
+  onDismiss: null,
+  children: null,
 };
 
 Dialog.Header = Header;

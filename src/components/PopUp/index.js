@@ -33,7 +33,6 @@ export class PopUp extends React.Component {
       className = '',
       position = '',
       overlay = false,
-      onDismiss = null,
       ...props
     } = this.props;
 
@@ -78,4 +77,12 @@ PopUp.propTypes = {
     'bottom-end',
   ]),
   children: PropTypes.any,
+};
+
+PopUp.defaultProps = {
+  className: '',
+  onDismiss: null,
+  overlay: false,
+  position: '',
+  children: null,
 };
