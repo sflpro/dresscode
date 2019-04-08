@@ -1,89 +1,115 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import {State, Store} from "@sambego/storybook-state";
 
+import { Notification } from './';
 import { ItemGroup } from '../../helpers/ItemGroup';
 import { Item } from '../../helpers/Item';
 
-import { Info, Warning, Error } from './Test';
-import {NotificationFrame} from "../NotificationFrame";
-import {Notification} from "./index";
-import {Button} from "../Button";
-
 storiesOf('Notification', module)
-  .add('Notifications', () => {
-    const store = new Store({
-      notification: [],
-    });
+  .add('Notifications', () => (
+    <React.Fragment>
+      <ItemGroup
+        title='Large Notifications'
+      >
+        <Item>
+          <Notification
+            status='information'
+            message='Information Notification'
+            title='Information'
+            dismiss
+          />
+          <Notification
+            status='warning'
+            message='Warning Notification'
+            title='Warning'
+            dismiss
+          />
+          <Notification
+            status='error'
+            message='Error Notification'
+            title='Error'
+          />
+          <Notification
+            status='success'
+            message='Success Notification'
+            dismiss
+          />
+        </Item>
+      </ItemGroup>
+      <div style={{ display: 'flex' }}>
 
-    const showNotification = (notificationType) => {
-      const notification = Array.from(new Set([...store.state.notification, notificationType]));
-      store.set({
-        ...store.state,
-        notification: notification,
-      });
-    };
-
-    return (
-        <State
-            store={store}
+        <ItemGroup
+          title='Alert Notifications'
         >
-          {state => (
-            <ItemGroup
-                title='Large Notifications'
-            >
-              {state.notification.includes('information') && (
-                <Notification>
-                  <NotificationFrame
-                      status='information'
-                      message='Information Notification'
-                      title='Information'
-                    />
-                </Notification>
-              )}
+          <Item>
+            <Notification
+              status='information'
+              message='Information Notification'
+              title='Information'
+              type='alert'
+              dismiss
+            />
+            <Notification
+              status='warning'
+              message='Warning Notification'
+              title='Warning'
+              type='alert'
+              dismiss
+            />
+            <Notification
+              status='error'
+              message='Error Notification'
+              title='Error'
+              type='alert'
+              dismiss
+            />
+            <Notification
+              status='success'
+              message='Success Notification'
+              type='alert'
+              dismiss
+            />
+          </Item>
+        </ItemGroup>
 
+        <ItemGroup
+          title='Light Alert Notifications'
+        >
+          <Item>
+            <Notification
+              status='information'
+              message='Information Notification'
+              title='Information'
+              type='alert'
+              theme='light'
+              dismiss
+            />
+            <Notification
+              status='warning'
+              message='Warning Notification'
+              title='Warning'
+              type='alert'
+              theme='light'
+              dismiss
+            />
+            <Notification
+              status='error'
+              message='Error Notification'
+              title='Error'
+              type='alert'
+              theme='light'
+            />
+            <Notification
 
-              {state.notification.includes('warning') && (
-                <Notification>
-                  <NotificationFrame
-                    status='warning'
-                    message='Warning Notification'
-                    title='Warning'
-                    dismiss
-                  />
-                </Notification>
-              )}
+              status='success'
+              message='Success Notification'
+              type='alert'
+              theme='light'
+              dismiss
+            />
+          </Item>
+        </ItemGroup>
+      </div>
 
-              <Item>
-                <Button onClick={() => showNotification('information')}>
-                  Information
-                </Button>
-              </Item>
-
-
-              <Item>
-                <Button onClick={() => showNotification('warning')}>
-                  Information
-                </Button>
-              </Item>
-<br />
-<br />
-<br />
-<br />
-<br />
-              <Item>
-                <Info/>
-              </Item>
-              <br/>
-              <Item>
-                <Warning/>
-              </Item>
-              <br/>
-              <Item>
-                <Error/>
-              </Item>
-            </ItemGroup>
-          )}
-        </State>
-    )
-  });
+    </React.Fragment>
+  ));
