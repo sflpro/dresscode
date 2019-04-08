@@ -2,9 +2,69 @@ import React, { useState } from 'react';
 
 import { Button } from '../Button';
 import { NotificationFrame } from '.';
-import { Notification } from '../Notification';
+import { Notification } from '../NotificationFrame';
 
-export const Test = () => {
+export const Warning = () => {
+  const [notifications, setNotifications] = useState(0);
+
+  const onChangeNotificationCount = () => {
+    const newNotifications = notifications + 1;
+    setNotifications(newNotifications);
+  };
+
+  return (
+    <React.Fragment>
+      <Button
+          neutral
+          onClick={onChangeNotificationCount}
+      >
+        Warning
+      </Button>
+      {notifications > 0 && (
+        <NotificationFrame>
+          <Notification
+            status='warning'
+            message={`${notifications} - Warning Notification`}
+            title='Warning'
+            dismiss
+          />
+        </NotificationFrame>
+      )}
+    </React.Fragment>
+  );
+};
+
+export const Error = () => {
+  const [notifications, setNotifications] = useState(0);
+
+  const onChangeNotificationCount = () => {
+    const newNotifications = notifications + 1;
+    setNotifications(newNotifications);
+  };
+
+  return (
+    <React.Fragment>
+      <Button
+          warning
+          onClick={onChangeNotificationCount}
+      >
+        Error
+      </Button>
+      {notifications > 0 && (
+        <NotificationFrame>
+          <Notification
+            status='error'
+            message={`${notifications} - Error Notification`}
+            title='Error'
+            dismiss
+          />
+        </NotificationFrame>
+      )}
+    </React.Fragment>
+  );
+};
+
+export const Info = () => {
   const [notifications, setNotifications] = useState(0);
 
   const onChangeNotificationCount = () => {
@@ -15,75 +75,18 @@ export const Test = () => {
   return (
     <React.Fragment>
       <Button onClick={onChangeNotificationCount}>
-        Test 1
+        Information
       </Button>
       {notifications > 0 && (
         <NotificationFrame>
           <Notification
             status='information'
-            message='Information Notification'
+            message={`${notifications} - Information Notification`}
             title='Information'
             dismiss
           />
         </NotificationFrame>
       )}
-      {notifications}
-    </React.Fragment>
-  );
-};
-
-export const Test2 = () => {
-  const [notifications, setNotifications] = useState(0);
-
-  const onChangeNotificationCount = () => {
-    const newNotifications = notifications + 1;
-    setNotifications(newNotifications);
-  };
-
-  return (
-    <React.Fragment>
-      <Button onClick={onChangeNotificationCount}>
-        Test 2
-      </Button>
-      {notifications > 0 && (
-        <NotificationFrame>
-          <Notification
-            status='warning'
-            message='Warning Notification'
-            title='Warning'
-            dismiss
-          />
-        </NotificationFrame>
-      )}
-      {notifications}
-    </React.Fragment>
-  );
-};
-
-export const Test3 = () => {
-  const [notifications, setNotifications] = useState(0);
-
-  const onChangeNotificationCount = () => {
-    const newNotifications = notifications + 1;
-    setNotifications(newNotifications);
-  };
-
-  return (
-    <React.Fragment>
-      <Button onClick={onChangeNotificationCount}>
-        Test 3
-      </Button>
-      {notifications > 0 && (
-        <NotificationFrame>
-          <Notification
-            status='warning'
-            message='Warning Notification'
-            title='Warning'
-            dismiss
-          />
-        </NotificationFrame>
-      )}
-      {notifications}
     </React.Fragment>
   );
 };
