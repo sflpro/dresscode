@@ -4,7 +4,7 @@ import { storiesOf } from '@storybook/react';
 import { ItemGroup } from '../../helpers/ItemGroup';
 import { Item } from '../../helpers/Item';
 
-import { Test, Test2, Test3 } from './Test';
+import { Info, Warning, Error } from './Test';
 
 storiesOf('Notification', module)
   .add('Notifications Frame', () => (
@@ -12,15 +12,15 @@ storiesOf('Notification', module)
       title='Large Notifications'
     >
       <Item>
-        <Test />
+        <Info />
       </Item>
       <br />
       <Item>
-        <Test2 />
+        <Warning />
       </Item>
       <br />
       <Item>
-        <Test3 />
+        <Error />
       </Item>
     </ItemGroup>
   ));
