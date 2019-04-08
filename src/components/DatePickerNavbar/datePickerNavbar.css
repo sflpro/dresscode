@@ -1,0 +1,27 @@
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+}
+
+.navbarIcon {
+  color: var(--primary-color);
+  text-align: center;
+  position: absolute;
+  padding: 8px;
+  border: 1px solid transparent;
+  box-sizing: border-box;
+  border-radius: 4px;
+}
+
+.navbarIcon:hover {
+  border: 1px solid var(--primary-color-light);
+}
+
+.navbarIcon.left {
+  left: 16px;
+}
+
+.navbarIcon.right {
+  right: 16px;
+}
