@@ -43,11 +43,24 @@ export class DatePicker extends React.Component {
 
     const { value } = this.props;
 
+    this.year = value.getFullYear();
+  
     this.state = {
       view: VIEW_TYPES.DAY,
-      year: new Date(value).getFullYear(),
+      year: this.year,
     };
   }
+
+  handleDayCaptionClick = (event, view) => {
+    const date = new Date(event.target.textContent);
+
+    if (this.year !== date.getFullYear()) {
+      this.year = date.getFullYear();
+      this.handleYearClick(this.year, view);
+    } else {
+      this.handleViewChange(view);
+    }
+  };
 
   handleViewChange = (view) => {
     this.setState({
@@ -67,23 +80,30 @@ export class DatePicker extends React.Component {
     this.handleViewChange(VIEW_TYPES.DAY);
   };
 
-  handleYearClick = (year) => {
+  handleYearClick = (year, view) => {
+    this.year = year;
     this.setState({
       year,
     }, () => {
-      this.handleViewChange(VIEW_TYPES.MONTH);
+      this.handleViewChange(view);
     });
   };
 
   handlePreviousYearClick = (year, step = 1) => {
+    const nextYear = year - step;
+
+    this.year = nextYear;
     this.setState({
-      year: year - step,
+      year: nextYear,
     });
   };
 
   handleNextYearClick = (year, step = 1) => {
+    const nextYear = year + step;
+
+    this.year = nextYear;
     this.setState({
-      year: year + step,
+      year: nextYear,
     });
   };
 
@@ -132,7 +152,6 @@ export class DatePicker extends React.Component {
       selected: `${styles.dayPickerSelectedDay}`,
     };
 
-    const selectedYear = selectedDay.getFullYear();
     const years = getYearsRange(year);
 
     return (
@@ -144,7 +163,7 @@ export class DatePicker extends React.Component {
             classNames={dayPickerClasses}
             captionElement={({ date }) => (
               <DatePickerCaption
-                onClick={() => this.handleViewChange(VIEW_TYPES.YEAR)}
+                onClick={event => this.handleDayCaptionClick(event, VIEW_TYPES.YEAR)}
               >
                 {formatMonthTitle({ date, locale, localeUtils, months })}
               </DatePickerCaption>
@@ -168,7 +187,7 @@ export class DatePicker extends React.Component {
             selectedMonth={selectedDay.getMonth()}
             captionElement={(
               <DatePickerCaption
-                className={styles.monthCaption}
+                onClick={() => this.handleViewChange(VIEW_TYPES.YEAR)}
               >
                 {year}
               </DatePickerCaption>
@@ -179,14 +198,14 @@ export class DatePicker extends React.Component {
                 onNextClick={() => this.handleNextYearClick(year)}
               />
             )}
-            onClick={(month) => this.handleMonthClick(month, selectedDay)}
+            onClick={month => this.handleMonthClick(month, selectedDay)}
             months={monthsShort}
             style={style}
           />
         )}
         {view === VIEW_TYPES.YEAR && (
           <YearPicker
-            selectedYear={selectedYear}
+            selectedYear={this.year}
             captionElement={(
               <DatePickerCaption
                 onClick={() => this.handleViewChange(VIEW_TYPES.MONTH)}
@@ -200,9 +219,9 @@ export class DatePicker extends React.Component {
                 onNextClick={() => this.handleNextYearClick(year, DEFAULT_YEARS_COUNT)}
               />
             )}
-            onClick={this.handleYearClick}
+            onClick={nextYear => this.handleYearClick(nextYear, VIEW_TYPES.MONTH)}
             years={years}
-            style={style}  
+            style={style}
           />
         )}
       </div>

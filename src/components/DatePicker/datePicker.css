@@ -95,8 +95,3 @@
 .dayPickerDay:focus {
   outline: none;
 }
-
-.monthCaption:hover {
-  border: 1px solid transparent;
-  cursor: default;
-}
