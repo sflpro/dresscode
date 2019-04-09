@@ -28,13 +28,13 @@ export function Icon({
         color,
         ...style,
       }}
+      role='presentation'
       {...props}
     >
       <svg className={styles.icon}>
         <use xlinkHref={`${icons}#${name}`} />
       </svg>
     </span>
-
   );
 }
 
@@ -42,7 +42,6 @@ Icon.propTypes = {
   name: PropTypes.string.isRequired,
   size: PropTypes.number,
   color: PropTypes.string,
-  onClick: PropTypes.func,
   className: PropTypes.string,
   style: PropTypes.object,
 };

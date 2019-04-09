@@ -20,7 +20,7 @@ export function Select({
   children,
   ...props
 }) {
-  const options = React.Children.map(children, option =>
+  const options = React.Children.map(children, option => (
     React.cloneElement(<ListItem />, {
       value: option.props.value,
       label: option.props.name,
@@ -28,7 +28,7 @@ export function Select({
       active: option.props.value === value,
       icon: option.props.value === value ? 'thick' : null,
     })
-  );
+  ));
 
   const isNativeMode = isMobile();
   const nativeSelectClasses = classNames({
@@ -77,8 +77,9 @@ export function Select({
             onClick={() => onClick({
               currentTarget: {
                 value,
-              }
+              },
             })}
+            role='presentation'
             {...props}
           >
             {value}

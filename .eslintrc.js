@@ -23,12 +23,8 @@ module.exports = {
     "no-plusplus": "off",
     "no-continue": "off",
     "no-case-declarations": "off",
-    "jsx-a11y/label-has-for": [ 2, {
-      "components": [ "Label" ],
-      "required": {
-        "every": [ "id" ]
-      }
-    }],
+    "jsx-a11y/label-has-for": false,
+    "jsx-a11y/label-has-associated-control": false,
     "import/prefer-default-export": "off",
     "no-console": "off",
     "react/no-danger": "off",
@@ -39,6 +35,11 @@ module.exports = {
       "ExportDeclaration": { "multiline": true, "minProperties": 6, "consistent": true }
     }],
     "no-param-reassign": ["error", { "props": false }],
-    "jsx-a11y/accessible-emoji": false
+    "jsx-a11y/accessible-emoji": false,
+    "react/require-default-props": false,
+    "react/no-array-index-key": false,'max-len': ["error", 120, 2, {
+      'ignoreUrls': true,
+      'ignoreComments': false
+    }]
   }
 };

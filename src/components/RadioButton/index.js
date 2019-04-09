@@ -8,6 +8,7 @@ import styles from './radioButton.css';
 export function RadioButton({
   disabled = false,
   checked = false,
+  className = '',
   onChange,
   value,
   label,
@@ -18,7 +19,7 @@ export function RadioButton({
     <div
       className={classNames({
         [styles.wrapper]: true,
-        [props.className || '']: true
+        [className]: true,
       })}
     >
       <Label
@@ -50,6 +51,7 @@ RadioButton.propTypes = {
   label: PropTypes.string.isRequired,
   value: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
+  className: PropTypes.string,
   disabled: PropTypes.bool,
   checked: PropTypes.bool,
 };

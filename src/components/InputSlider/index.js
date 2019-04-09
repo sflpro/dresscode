@@ -40,15 +40,15 @@ export class InputSlider extends React.Component {
       event.preventDefault();
     }
 
-   if (onKeyPress) {
-     onKeyPress(event);
-   }
+    if (onKeyPress) {
+      onKeyPress(event);
+    }
   };
 
   onChange = (event) => {
     const { inputProps: { onChange } } = this.props;
 
-    const { currentTarget: { value }} = event;
+    const { currentTarget: { value } } = event;
 
     this.setState({ value });
 
@@ -75,7 +75,7 @@ export class InputSlider extends React.Component {
       } else {
         const separatorIndexes = [];
 
-        for(let i = 0; i < valueWithoutSpaces.length;i++) {
+        for (let i = 0; i < valueWithoutSpaces.length; i++) {
           if (valueWithoutSpaces[i] === separator) {
             separatorIndexes.push(i);
           }
@@ -85,20 +85,20 @@ export class InputSlider extends React.Component {
 
         switch (separatorIndexes.length) {
           case 3:
-            separatorIndex = separatorIndexes[1];
+            [, separatorIndex] = separatorIndexes;
             break;
 
           case 2:
             if (separatorIndexes[0] === 0) {
-              separatorIndex = separatorIndexes[1];
+              [, separatorIndex] = separatorIndexes;
             } else {
-              separatorIndex = separatorIndexes[0];
+              [separatorIndex] = separatorIndexes;
             }
             break;
 
           default:
           case 1:
-            separatorIndex = separatorIndexes[0];
+            [separatorIndex] = separatorIndexes;
             break;
         }
 
@@ -215,6 +215,7 @@ InputSlider.propTypes = {
   step: PropTypes.number,
   min: PropTypes.number,
   max: PropTypes.number,
+  children: PropTypes.any,
 };
 
 InputSlider.defaultProps = {

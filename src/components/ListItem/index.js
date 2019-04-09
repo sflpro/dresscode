@@ -34,8 +34,9 @@ export function ListItem({
       onClick={() => onClick({
         currentTarget: {
           value,
-        }
+        },
       })}
+      role='presentation'
       {...props}
     >
       {icon && iconPos === 'left' && (
@@ -64,5 +65,7 @@ ListItem.propTypes = {
   iconPos: PropTypes.oneOf(['left', 'right']),
   iconClassName: PropTypes.string,
   onClick: PropTypes.func,
+  disabled: PropTypes.bool,
+  active: PropTypes.bool,
   children: PropTypes.object,
 };

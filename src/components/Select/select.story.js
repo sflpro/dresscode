@@ -1,6 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { State, Store } from "@sambego/storybook-state";
+import { State, Store } from '@sambego/storybook-state';
 
 import { Select } from '.';
 
@@ -32,7 +32,7 @@ storiesOf('Dropdown', module)
       <State
         store={store}
       >
-        {state =>
+        {state => (
           <ItemGroup
             title='Dropdown'
             style={{ maxWidth: 300 }}
@@ -65,7 +65,7 @@ storiesOf('Dropdown', module)
               </Item>
             </ItemRow>
           </ItemGroup>
-        }
+        )}
       </State>
     );
   });

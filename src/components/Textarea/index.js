@@ -66,6 +66,7 @@ Textarea.propTypes = {
   error: PropTypes.string,
   placeholder: PropTypes.string,
   name: PropTypes.string,
+  className: PropTypes.string,
   onChange: PropTypes.func,
   children: PropTypes.any,
 };

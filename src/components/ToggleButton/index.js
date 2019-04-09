@@ -8,6 +8,7 @@ import styles from './toggleButton.css';
 export function ToggleButton({
   disabled = false,
   checked = false,
+  className = '',
   onChange,
   label,
   name,
@@ -17,7 +18,7 @@ export function ToggleButton({
     <div
       className={classNames({
         [styles.wrapper]: true,
-        [props.className || '']: true
+        [className]: true,
       })}
     >
       <Label
@@ -50,4 +51,5 @@ ToggleButton.propTypes = {
   name: PropTypes.string.isRequired,
   disabled: PropTypes.bool,
   checked: PropTypes.bool,
+  className: PropTypes.string,
 };

@@ -76,6 +76,6 @@ export const formatWeekdayLong = (i, locale) => (
   WEEKDAYS_SHORT[locale][i]
 );
 
-export const getFirstDayOfWeek = (locale) => (
+export const getFirstDayOfWeek = locale => (
   FIRST_DAY[locale]
 );

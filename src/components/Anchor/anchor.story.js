@@ -8,20 +8,18 @@ import { ItemRow } from '../../helpers/ItemRow';
 import { Item } from '../../helpers/Item';
 
 storiesOf('Anchor', module)
-  .add('Anchor', () => {
-    return (
-      <ItemGroup
-        title='Anchor'
-      >
-        <ItemRow>
-          <Item>
-            <Anchor
-              href='https://sflpro.com/'
-            >
-              Link
-            </Anchor>
-          </Item>
-        </ItemRow>
-      </ItemGroup>
-    )
-  });
+  .add('Anchor', () => (
+    <ItemGroup
+      title='Anchor'
+    >
+      <ItemRow>
+        <Item>
+          <Anchor
+            href='https://sflpro.com/'
+          >
+            Link
+          </Anchor>
+        </Item>
+      </ItemRow>
+    </ItemGroup>
+  ));

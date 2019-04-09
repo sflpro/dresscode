@@ -32,9 +32,10 @@ export function Button({
       className={buttonClasses}
       type={type}
       style={style}
-      children={children}
       {...props}
-    />
+    >
+      {children}
+    </Component>
   );
 }
 
@@ -55,4 +56,7 @@ Button.propTypes = {
   neutral: PropTypes.bool,
   warning: PropTypes.bool,
   onClick: PropTypes.func,
+  className: PropTypes.string,
+  style: PropTypes.object,
+  children: PropTypes.any,
 };

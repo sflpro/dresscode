@@ -2,7 +2,7 @@ import React from 'react';
 import { State, Store } from '@sambego/storybook-state';
 import { storiesOf } from '@storybook/react';
 
-import { Dialog } from './';
+import { Dialog } from '.';
 
 import { ItemGroup } from '../../helpers/ItemGroup';
 import { Item } from '../../helpers/Item';
@@ -19,6 +19,13 @@ storiesOf('Dialog', module)
       shortContent: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum',
     };
 
+    const toggleDialog = (open) => {
+      store.set({
+        ...store.state,
+        open,
+      });
+    };
+
     const openWithContent = (contentType) => {
       const dialogContent = content[contentType] || content.shortContent;
       store.set({
@@ -26,13 +33,6 @@ storiesOf('Dialog', module)
         dialogContent,
       });
       toggleDialog(true);
-    };
-
-    const toggleDialog = (open) => {
-      store.set({
-        ...store.state,
-        open,
-      });
     };
 
     const confirm = () => {
@@ -44,7 +44,9 @@ storiesOf('Dialog', module)
       <State
         store={store}
       >
-        {state =>
+        {state => (
+
+
           <ItemGroup
             title='With HEADER and FOOTER'
           >
@@ -53,35 +55,29 @@ storiesOf('Dialog', module)
                 Open Dialog
               </button>
             </Item>
-
             <Item>
               <button onClick={() => openWithContent('longContent')}>
                 Open Dialog With Long Content
               </button>
             </Item>
-
-
             {state.open && (
               <Dialog onDismiss={() => toggleDialog(false)}>
                 <Dialog.Header>
                   Test Dialog Title
                 </Dialog.Header>
-
                 <Dialog.Body>
                   {state.dialogContent}
                 </Dialog.Body>
-
                 <Dialog.Actions>
                   <button onClick={() => toggleDialog(false)}>
                     Cancel
                   </button>
                   <button onClick={confirm}>Action</button>
                 </Dialog.Actions>
-
               </Dialog>
             )}
           </ItemGroup>
-        }
+        )}
       </State>
     );
   })
