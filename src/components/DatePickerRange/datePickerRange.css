@@ -1,16 +1,26 @@
-.datePicker {
+.rangeDatePicker {
   border: 1px solid var(--date-picker-border-color);
   box-shadow: var(--box-shadow-100);
-  width: 364px;
+  width: 728px;
   padding-top: 16px;
+  position: relative;
+}
+
+.disabled {
+  height: 380px;
 }
 
 .dayPicker {
   width: 100%;
 }
 
+.disabled .dayPicker {
+  opacity: 0.4;
+  pointer-events: none;
+}
+
 .dayPickerWrapper {
-  padding-bottom: 7px;
+  padding-bottom: 15px;
 }
 
 .dayPickerWrapper:focus {
@@ -75,10 +85,6 @@
   color: var(--date-picker-outside-day-color);
 }
 
-.dayPickerToday {
-  border: solid 1px var(--primary-color);
-}
-
 .dayPickerSelectedDay {
   background-color: var(--primary-color);
   color: var(--secondary-color);
@@ -99,21 +105,29 @@
   outline: none;
 }
 
-.range {
-  width: 728px;
-}
-
-.range .dayPickerDayOutside,
-.range .dayPickerSelectedDay.dayPickerDayOutside,
-.range .dayPickerSelectedDay.dayPickerDayOutside:hover {
+.dayPickerDayOutside,
+.dayPickerSelectedDay.dayPickerDayOutside,
+.dayPickerSelectedDay.dayPickerDayOutside:hover {
   background-color: transparent !important;
   cursor: default;
   border: none !important;
 }
 
-.range .dayPickerSelectedDay:not(.dayPickerDayOutside):not(.start):not(.end),
-.range .dayPickerSelectedDay:not(.dayPickerDayOutside):not(.start):not(.end):hover {
+.dayPickerSelectedDay:not(.dayPickerDayOutside):not(.start):not(.end),
+.dayPickerSelectedDay:not(.dayPickerDayOutside):not(.start):not(.end):hover {
   border: 1px solid var(--primary-color-light);
-  color: var(--date-picker-day-color);
-  background-color: transparent !important;
+  background-color: var(--primary-color-light) !important;
+}
+
+.picker {
+  position: absolute;
+  top: 16px;
+}
+
+.picker.from {
+  left: 0;
+}
+
+.picker.to {
+  right: 0;
 }

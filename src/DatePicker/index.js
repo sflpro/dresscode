@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import DayPicker from 'react-day-picker';
 
-import { DEFAULT_YEARS_COUNT, VIEW_TYPES, MONTHS_SHORT, MONTHS, getYearsRange } from './constants';
+import { DEFAULT_YEARS_COUNT, VIEW_TYPES, MONTHS_SHORT, MONTHS } from './constants';
+import { getYearsRange, formatMonthTitle } from './helpers';
 
 import { DatePickerCaption } from '../DatePickerCaption';
 import { DatePickerNavbar } from '../DatePickerNavbar';
@@ -27,21 +28,6 @@ const formatMonthTitle = ({
   return (
     `${months[date.getMonth()]} ${date.getFullYear()}`
   );
-};
-
-MonthPicker.propTypes = {
-  /** Instance of Date, value of month picker */
-  selectedDay: PropTypes.instanceOf(Date),
-  /** String or JSX or Element, caption element */
-  captionElement: PropTypes.any,
-  /** String or JSX or Element, navbar element */
-  navbarElement: PropTypes.any,
-  /** Array of strings, short names of months in right order */
-  monthsShort: PropTypes.array,
-  /** Function, will be called when month is selected */
-  onMonthClick: PropTypes.func,
-  /** Object, styles that will be added to month picker */
-  style: PropTypes.object,
 };
 
 export class DatePicker extends React.Component {
@@ -80,7 +66,8 @@ export class DatePicker extends React.Component {
     onChange(day);
   };
 
-  handleMonthClick = (month, selectedDay) => {
+  handleMonthClick = (month) => {
+    const { value: selectedDay } = this.props;
     const { year } = this.state;
     const day = new Date(new Date(selectedDay).setMonth(month)).setFullYear(year);
     this.handleDayClick(new Date(day));
