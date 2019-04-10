@@ -7,7 +7,7 @@ import { Item } from '../../helpers/Item';
 import { Info, Warning, Error } from './Test';
 
 storiesOf('Notification', module)
-  .add('Notifications Frame', () => (
+  .add('Notifications', () => (
     <ItemGroup
       title='Large Notifications'
     >
