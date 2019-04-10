@@ -10,7 +10,6 @@ export function TextInput({
   disabled = false,
   readOnly = false,
   className = '',
-  label = '',
   icon = null,
   prefix = '',
   isValid = false,
@@ -19,6 +18,8 @@ export function TextInput({
   type = 'text',
   name = '',
   onChange = undefined,
+  style = {},
+  setRef,
   children,
   ...props
 }) {
@@ -32,7 +33,7 @@ export function TextInput({
 
   return (
     <React.Fragment>
-      <div className={inputWrapperClasses}>
+      <div className={inputWrapperClasses} style={style}>
         {prefix && (
           <span className={styles.prefix}>
             {prefix}
@@ -47,6 +48,7 @@ export function TextInput({
           name={name}
           type={type}
           readOnly={readOnly}
+          ref={setRef}
           {...props}
         />
         {icon && (
@@ -68,7 +70,8 @@ TextInput.propTypes = {
   value: PropTypes.string,
   disabled: PropTypes.bool,
   readOnly: PropTypes.bool,
-  label: PropTypes.string,
+  className: PropTypes.string,
+  style: PropTypes.object,
   icon: PropTypes.any,
   prefix: PropTypes.string,
   isValid: PropTypes.bool,
@@ -79,4 +82,5 @@ TextInput.propTypes = {
   name: PropTypes.string,
   onChange: PropTypes.func,
   children: PropTypes.any,
+  setRef: PropTypes.func,
 };

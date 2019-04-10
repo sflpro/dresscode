@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 import styles from './dialog.css';
@@ -20,4 +21,9 @@ export const Header = ({
       </h2>
     </div>
   );
+};
+
+Header.propTypes = {
+  className: PropTypes.string,
+  children: PropTypes.any,
 };

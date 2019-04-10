@@ -33,7 +33,6 @@ export class PopUp extends React.Component {
       className = '',
       position = '',
       overlay = false,
-      onDismiss = null,
       ...props
     } = this.props;
 
@@ -49,11 +48,16 @@ export class PopUp extends React.Component {
         className={popUpClasses}
         {...props}
       >
-        {overlay && (<div className={styles.overlay} onClick={this.onDismiss} />)}
+        {overlay && (
+          <div
+            className={styles.overlay}
+            onClick={this.onDismiss}
+            role='presentation'
+          />
+        )}
         {children}
       </div>
     );
-
 
     return ReactDOM.createPortal(
       renderChild,
@@ -72,4 +76,13 @@ PopUp.propTypes = {
     'bottom-start',
     'bottom-end',
   ]),
+  children: PropTypes.any,
+};
+
+PopUp.defaultProps = {
+  className: '',
+  onDismiss: null,
+  overlay: false,
+  position: '',
+  children: null,
 };

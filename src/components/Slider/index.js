@@ -86,7 +86,9 @@ export class Slider extends React.Component {
       if (name === minControl.name && value === maxControl.value) {
         onChange({ name, value: value - distance });
         return;
-      } else if (name === maxControl.name && value === minControl.value) {
+      }
+
+      if (name === maxControl.name && value === minControl.value) {
         onChange({ name, value: value + distance });
         return;
       }
@@ -94,6 +96,14 @@ export class Slider extends React.Component {
 
     onChange({ name, value });
   };
+
+  onResize() {
+    if (this.slider) {
+      setTimeout(() => {
+        this.setWrapperParams(this.slider);
+      }, 0);
+    }
+  }
 
   getSliderLineStyles() {
     const { controls } = this.state;
@@ -155,14 +165,6 @@ export class Slider extends React.Component {
     this.slider = ref;
   };
 
-  onResize() {
-    if (this.slider) {
-      setTimeout(() => {
-        this.setWrapperParams(this.slider);
-      }, 0);
-    }
-  }
-
   render() {
     const { className, children, step, min, max, distance } = this.props;
     const { wrapperElementWidth, maxStepsCount } = this.state;
@@ -177,6 +179,7 @@ export class Slider extends React.Component {
     return (
       <div className={styles.wrapper}>
         <div
+          role='presentation'
           onTouchEnd={this.onSliderClick}
           onClick={this.onSliderClick}
           className={sliderClassName}
@@ -215,6 +218,8 @@ Slider.propTypes = {
   step: PropTypes.number,
   min: PropTypes.number,
   max: PropTypes.number,
+  className: PropTypes.string,
+  children: PropTypes.any,
 };
 
 Slider.defaultProps = {
@@ -222,4 +227,6 @@ Slider.defaultProps = {
   step: 1,
   min: 0,
   max: 100,
+  className: '',
+  children: null,
 };

@@ -2,13 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-import { PopUp } from '../PopUp';
 import { Body } from './Body';
 import { Header } from './Header';
 import { Actions } from './Actions';
 
-import styles from './dialog.css';
+import { PopUp } from '../PopUp';
 import { Icon } from '../Icon';
+
+import styles from './dialog.css';
 
 export class Dialog extends React.PureComponent {
   constructor(props) {
@@ -28,7 +29,7 @@ export class Dialog extends React.PureComponent {
     }
   };
 
-  escKeyDown = event => {
+  escKeyDown = (event) => {
     if (event.keyCode === 27) {
       this.dismiss();
     }
@@ -38,7 +39,6 @@ export class Dialog extends React.PureComponent {
     const {
       children,
       className = '',
-      onDismiss = null,
       ...props
     } = this.props;
 
@@ -70,8 +70,14 @@ export class Dialog extends React.PureComponent {
 Dialog.propTypes = {
   className: PropTypes.string,
   onDismiss: PropTypes.func,
+  children: PropTypes.any,
 };
 
+Dialog.defaultProps = {
+  className: '',
+  onDismiss: null,
+  children: null,
+};
 
 Dialog.Header = Header;
 Dialog.Body = Body;

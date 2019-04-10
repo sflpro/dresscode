@@ -5,11 +5,10 @@ import classNames from 'classnames';
 import styles from './dialog.css';
 
 export const Actions = ({
-  children,
   className = '',
+  children,
   ...props
 }) => {
-
   const actionClasses = classNames({
     [styles.actions]: true,
     [className]: true,
@@ -18,9 +17,10 @@ export const Actions = ({
     <div className={actionClasses} {...props}>
       {children}
     </div>
-  )
+  );
 };
 
 Actions.propTypes = {
   className: PropTypes.string,
+  children: PropTypes.any,
 };

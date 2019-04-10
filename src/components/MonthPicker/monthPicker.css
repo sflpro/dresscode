@@ -1,0 +1,31 @@
+.monthPickerMonth {
+  color: var(--date-picker-month-color);
+  background-color: transparent;
+  border: 1px solid transparent;
+  height: 100px;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin: 1px;
+  flex: 0 0 calc(25% - 2px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.monthPickerMonth:hover {
+  border: 1px solid var(--primary-color-light);
+}
+
+.monthPickerMonth.active {
+  background-color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+  color: var(--date-picker-selected-month-color);
+  font-family: Montserratarm;
+  font-size: 20px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.5;
+  letter-spacing: normal;
+}

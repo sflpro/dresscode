@@ -68,14 +68,14 @@ export const formatMonthTitle = (d, locale = 'hy') => (
   `${MONTHS[locale][d.getMonth()]} ${d.getFullYear()}`
 );
 
-export const formatWeekdayShort = (i, locale) => (
+export const formatWeekdayShort = (i, locale = 'hy') => (
   WEEKDAYS_SHORT[locale][i]
 );
 
-export const formatWeekdayLong = (i, locale) => (
+export const formatWeekdayLong = (i, locale = 'hy') => (
   WEEKDAYS_SHORT[locale][i]
 );
 
-export const getFirstDayOfWeek = (locale) => (
+export const getFirstDayOfWeek = (locale = 'hy') => (
   FIRST_DAY[locale]
 );

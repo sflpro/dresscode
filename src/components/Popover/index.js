@@ -94,7 +94,11 @@ export class Popover extends React.Component {
     };
   };
 
-  computeHorizontalPosition = (targetElementPosition, popoverElementPosition, contentRelative = false) => {
+  computeHorizontalPosition = (
+    targetElementPosition,
+    popoverElementPosition,
+    contentRelative = false,
+  ) => {
     let arrowWidth = 0;
     let positionX = 'left';
     if (this.arrowRef.current) {
@@ -147,7 +151,10 @@ export class Popover extends React.Component {
     if (position === 'bottom') {
       arrowY = pTop + height + gap + 1;
       popoverY = arrowY + arrowHeight;
-      if (window.innerHeight - popoverY < popoverHeight && (pTop - arrowHeight + gap - popoverHeight > 0)) {
+      if (
+        window.innerHeight - popoverY < popoverHeight
+        && (pTop - arrowHeight + gap - popoverHeight > 0)
+      ) {
         arrowY = pTop - (arrowHeight + gap) - 1;
         popoverY = arrowY - popoverHeight + 1;
         if (!follow) {
@@ -160,10 +167,8 @@ export class Popover extends React.Component {
       if (popoverY < 0) {
         arrowY = pTop + height + gap + 1;
         popoverY = arrowY + arrowHeight;
-      } else {
-        if (!follow) {
-          arrowClasses = styles.arrowTop;
-        }
+      } else if (!follow) {
+        arrowClasses = styles.arrowTop;
       }
     }
 
@@ -176,7 +181,7 @@ export class Popover extends React.Component {
         position: 'top',
         y: arrowY,
       },
-      arrowClasses
+      arrowClasses,
     };
   };
 
@@ -187,11 +192,19 @@ export class Popover extends React.Component {
     let arrowPosition;
 
     if (follow) {
-      popoverPosition = arrowPosition = 'fixed';
+      popoverPosition = 'fixed';
+      arrowPosition = 'fixed';
     }
 
-    const { popoverX, arrowX } = this.computeHorizontalPosition(targetElementPosition, popoverElementPosition, contentRelative);
-    const { popoverY, arrowY, arrowClasses } = this.computeVerticalPosition(targetElementPosition, popoverElementPosition);
+    const {
+      popoverX,
+      arrowX,
+    } = this.computeHorizontalPosition(targetElementPosition, popoverElementPosition, contentRelative);
+    const {
+      popoverY,
+      arrowY,
+      arrowClasses,
+    } = this.computeVerticalPosition(targetElementPosition, popoverElementPosition);
 
     const popover = {
       x: popoverX,
@@ -223,7 +236,7 @@ export class Popover extends React.Component {
   };
 
   handleMouseEnter = (event) => {
-    const { follow = false, open, trigger = POPOVER_TRIGGER_OPTIONS.CLICK, onTargetEvent, contentRelative } = this.props;
+    const { follow, open, trigger, onTargetEvent, contentRelative } = this.props;
     let target = trigger === POPOVER_TRIGGER_OPTIONS.HOVER ? event.target : event.currentTarget;
     if (contentRelative) {
       target = this.targetRef.current;
@@ -253,7 +266,7 @@ export class Popover extends React.Component {
     }
   };
 
-  handleMouseLeave = (event) => {
+  handleMouseLeave = () => {
     const { onTargetEvent } = this.props;
     onTargetEvent(false);
     document.removeEventListener('scroll', this.handleMouseLeave);
@@ -288,12 +301,12 @@ export class Popover extends React.Component {
   render() {
     const {
       content: ContentComponent,
-      trigger = POPOVER_TRIGGER_OPTIONS.CLICK,
-      arrow = false,
-      position = 'bottom',
-      follow = false,
-      open = false,
-      className = '',
+      trigger,
+      arrow,
+      position,
+      follow,
+      open,
+      className,
       onTargetEvent,
       contentRelative,
       style,
@@ -310,6 +323,7 @@ export class Popover extends React.Component {
       <div
         className={popoverStyles}
         onClick={this.handlePopoverClick}
+        role='presentation'
         {...props}
       >
         <div
@@ -341,18 +355,33 @@ export class Popover extends React.Component {
         )}
       </div>
     );
-  };
+  }
 }
 
 Popover.propTypes = {
   onTargetEvent: PropTypes.func.isRequired,
+  content: PropTypes.object.isRequired,
   position: PropTypes.oneOf(['top', 'bottom']),
   arrow: PropTypes.bool,
   follow: PropTypes.bool,
   gap: PropTypes.number,
-  content: PropTypes.object,
   contentRelative: PropTypes.bool,
   open: PropTypes.bool,
   trigger: PropTypes.oneOf(Object.values(POPOVER_TRIGGER_OPTIONS)),
+  className: PropTypes.string,
+  style: PropTypes.object,
   children: PropTypes.any,
+};
+
+Popover.defaultProps = {
+  position: 'bottom',
+  arrow: false,
+  follow: false,
+  gap: 0,
+  contentRelative: false,
+  open: false,
+  trigger: POPOVER_TRIGGER_OPTIONS.CLICK,
+  className: '',
+  style: null,
+  children: null,
 };

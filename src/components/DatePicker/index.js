@@ -3,149 +3,64 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import DayPicker from 'react-day-picker';
 
-import { Icon } from '../Icon';
+import { DEFAULT_YEARS_COUNT, VIEW_TYPES, MONTHS_SHORT, MONTHS, getYearsRange } from './constants';
+
+import { MonthPicker } from '../MonthPicker';
+import { YearPicker } from '../YearPicker';
+import { DatePickerCaption } from '../DatePickerCaption';
+import { DatePickerNavbar } from '../DatePickerNavbar';
 
 import 'style-loader!css-loader?modules=false!react-day-picker/lib/style.css';
 import styles from './datePicker.css';
 
-const VIEW_TYPES = {
-  DAY: 'day',
-  MONTH: 'month',
-};
-const MONTHS_SHORT = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-
 const formatMonthTitle = ({
-  selectedDay,
+  date,
   locale = 'en',
-  localeUtils,
+  localeUtils = null,
   months = MONTHS,
 }) => {
   if (localeUtils) {
-    return localeUtils.formatMonthTitle(selectedDay, locale);
+    return localeUtils.formatMonthTitle(date, locale);
   }
 
   return (
-    `${months[selectedDay.getMonth()]} ${selectedDay.getFullYear()}`
+    `${months[date.getMonth()]} ${date.getFullYear()}`
   );
 };
 
-const DatePickerCaption = ({
-  selectedDay = new Date(),
-  onViewChange = null,
-  view = VIEW_TYPES.DAY,
-  localeUtils,
-  locale,
-  months,
-}) => {
-  const captionWrapperClasses = classNames({
-    [styles.captionWrapper]: true,
-    [styles[view]]: true,
-  });
-
-  return (
-    <div className={styles.caption}>
-      <div
-        className={captionWrapperClasses}
-        onClick={onViewChange}
-      >
-        {view === VIEW_TYPES.DAY && (
-          formatMonthTitle({ selectedDay, locale, localeUtils, months })
-        )}
-        {view === VIEW_TYPES.MONTH && (
-          selectedDay.getFullYear()
-        )}
-      </div>
-    </div>
-  );
-};
-
-const DatePickerNavBar = ({
-  onPreviousClick,
-  onNextClick,
-}) => {
-  const leftIconStyles = classNames({
-    [styles.navbarIcon]: true,
-    [styles.left]: true,
-  });
-  const rightIconStyles = classNames({
-    [styles.navbarIcon]: true,
-    [styles.right]: true,
-  });
-  return (
-    <div
-      className={styles.navbar}
-    >
-      <Icon
-        name='arrow-left'
-        size={24}
-        className={leftIconStyles}
-        onClick={() => onPreviousClick()}
-      />
-      <Icon
-        name='arrow-right'
-        size={24}
-        className={rightIconStyles}
-        onClick={() => onNextClick()}
-      />
-    </div>
-  );
-};
-
-const MonthPicker = ({
-  selectedDay,
-  captionElement,
-  navbarElement,
-  monthsShort,
-  onMonthClick,
-  style,
-  ...props
-}) => {
-  const selectedMonth = selectedDay.getMonth();
-
-  return (
-    <div
-      className={styles.MonthPicker}
-      style={style}
-      {...props}
-    >
-      {navbarElement}
-      <div className={styles.MonthPickerMonths}>
-        {captionElement}
-        <div className={styles.MonthPickerBody}>
-          {monthsShort.map((month, monthIndex) => {
-            const monthClasses = classNames({
-              [styles.MonthPickerMonth]: true,
-              [styles.active]: monthIndex === selectedMonth,
-            });
-
-            return (
-              <div
-                className={monthClasses}
-                onClick={() => onMonthClick(monthIndex, selectedDay)}
-                key={monthIndex}
-              >
-                {month}
-              </div>
-            );
-          })}
-        </div>
-      </div>
-    </div>
-  );
+MonthPicker.propTypes = {
+  selectedDay: PropTypes.instanceOf(Date),
+  captionElement: PropTypes.any,
+  navbarElement: PropTypes.any,
+  monthsShort: PropTypes.array,
+  onMonthClick: PropTypes.func,
+  style: PropTypes.object,
 };
 
 export class DatePicker extends React.Component {
   constructor(props) {
     super(props);
 
-    const { view = VIEW_TYPES.DAY, value } = this.props;
+    const { value } = this.props;
 
+    this.year = value.getFullYear();
+  
     this.state = {
-      view,
-      year: (value || new Date()).getFullYear(),
+      view: VIEW_TYPES.DAY,
+      year: this.year,
     };
   }
+
+  handleDayCaptionClick = (event, view) => {
+    const date = new Date(event.target.textContent);
+
+    if (this.year !== date.getFullYear()) {
+      this.year = date.getFullYear();
+      this.handleYearClick(this.year, view);
+    } else {
+      this.handleViewChange(view);
+    }
+  };
 
   handleViewChange = (view) => {
     this.setState({
@@ -159,41 +74,61 @@ export class DatePicker extends React.Component {
   };
 
   handleMonthClick = (month, selectedDay) => {
-    const { view } = this.props;
-    const day = new Date(selectedDay).setMonth(month);
+    const { year } = this.state;
+    const day = new Date(new Date(selectedDay).setMonth(month)).setFullYear(year);
     this.handleDayClick(new Date(day));
-    if (view !== VIEW_TYPES.MONTH) {
-      this.handleViewChange(VIEW_TYPES.DAY);
-    }
+    this.handleViewChange(VIEW_TYPES.DAY);
   };
 
-  handlePreviousYearClick = (year) => {
+  handleYearClick = (year, view) => {
+    this.year = year;
     this.setState({
-      year: year - 1,
+      year,
+    }, () => {
+      this.handleViewChange(view);
     });
   };
 
-  handleNextYearClick = (year) => {
+  handlePreviousYearClick = (year, step = 1) => {
+    const nextYear = year - step;
+
+    this.year = nextYear;
     this.setState({
-      year: year + 1,
+      year: nextYear,
+    });
+  };
+
+  handleNextYearClick = (year, step = 1) => {
+    const nextYear = year + step;
+
+    this.year = nextYear;
+    this.setState({
+      year: nextYear,
     });
   };
 
   render() {
     const {
-      value,
-      locale = 'en',
-      monthsShort = MONTHS_SHORT,
-      months = MONTHS,
-      className = '',
+      value: selectedDay,
+      locale,
+      monthsShort,
+      months,
+      showOutsideDays,
+      localeUtils,
+      className,
       style,
       onChange,
       ...props
     } = this.props;
-    const { localeUtils = null } = this.props;
     const { view, year } = this.state;
 
-    const selectedDay = value || new Date();
+    let otherProps = props;
+    if (localeUtils) {
+      otherProps = {
+        ...otherProps,
+        localeUtils,
+      };
+    }
 
     const datePickerClasses = classNames({
       [styles.datePicker]: true,
@@ -205,6 +140,7 @@ export class DatePicker extends React.Component {
       ...dayPickerDefaultClasses,
       container: `${dayPickerDefaultClasses.container} ${styles.dayPicker}`,
       wrapper: `${dayPickerDefaultClasses.wrapper} ${styles.dayPickerWrapper}`,
+      months: `${dayPickerDefaultClasses.months} ${styles.dayPickerMonths}`,
       month: `${dayPickerDefaultClasses.month} ${styles.dayPickerMonth}`,
       weekdays: `${dayPickerDefaultClasses.weekdays} ${styles.dayPickerWeekdays}`,
       weekday: `${dayPickerDefaultClasses.weekday} ${styles.dayPickerWeekday}`,
@@ -216,6 +152,8 @@ export class DatePicker extends React.Component {
       selected: `${styles.dayPickerSelectedDay}`,
     };
 
+    const years = getYearsRange(year);
+
     return (
       <div
         className={datePickerClasses}
@@ -225,49 +163,65 @@ export class DatePicker extends React.Component {
             classNames={dayPickerClasses}
             captionElement={({ date }) => (
               <DatePickerCaption
-                selectedDay={date}
-                onViewChange={() => this.handleViewChange(VIEW_TYPES.MONTH)}
-                view={view}
-                locale={locale}
-                months={months}
-                localeUtils={localeUtils}
-              />
+                onClick={event => this.handleDayCaptionClick(event, VIEW_TYPES.YEAR)}
+              >
+                {formatMonthTitle({ date, locale, localeUtils, months })}
+              </DatePickerCaption>
             )}
             navbarElement={
-              <DatePickerNavBar />
+              <DatePickerNavbar />
             }
             onDayClick={this.handleDayClick}
+            onDayMouseEnter={this.handleDayMouseEnter}
             selectedDays={selectedDay}
             month={selectedDay}
-            showOutsideDays
             locale={locale}
+            showOutsideDays={showOutsideDays}
             style={style}
             months={months}
-            {...props}
+            {...otherProps}
           />
         )}
         {view === VIEW_TYPES.MONTH && (
           <MonthPicker
-            selectedDay={selectedDay}
-            captionElement={
+            selectedMonth={selectedDay.getMonth()}
+            captionElement={(
               <DatePickerCaption
-                selectedDay={new Date(selectedDay.setFullYear(year))}
-                view={view}
-                locale={locale}
-                months={months}
-                localeUtils={localeUtils}
-              />
-            }
-            navbarElement={
-              <DatePickerNavBar
+                onClick={() => this.handleViewChange(VIEW_TYPES.YEAR)}
+              >
+                {year}
+              </DatePickerCaption>
+            )}
+            navbarElement={(
+              <DatePickerNavbar
                 onPreviousClick={() => this.handlePreviousYearClick(year)}
                 onNextClick={() => this.handleNextYearClick(year)}
               />
-            }
-            onMonthClick={this.handleMonthClick}
-            monthsShort={monthsShort}
+            )}
+            onClick={month => this.handleMonthClick(month, selectedDay)}
+            months={monthsShort}
             style={style}
-            {...props}
+          />
+        )}
+        {view === VIEW_TYPES.YEAR && (
+          <YearPicker
+            selectedYear={this.year}
+            captionElement={(
+              <DatePickerCaption
+                onClick={() => this.handleViewChange(VIEW_TYPES.MONTH)}
+              >
+                {`${years[0]} - ${years[DEFAULT_YEARS_COUNT - 1]}`}
+              </DatePickerCaption>
+            )}
+            navbarElement={(
+              <DatePickerNavbar
+                onPreviousClick={() => this.handlePreviousYearClick(year, DEFAULT_YEARS_COUNT)}
+                onNextClick={() => this.handleNextYearClick(year, DEFAULT_YEARS_COUNT)}
+              />
+            )}
+            onClick={nextYear => this.handleYearClick(nextYear, VIEW_TYPES.MONTH)}
+            years={years}
+            style={style}
           />
         )}
       </div>
@@ -276,7 +230,7 @@ export class DatePicker extends React.Component {
 }
 
 DatePicker.propTypes = {
-  value: PropTypes.instanceOf(Date),
+  value: PropTypes.instanceOf(Date).isRequired,
   locale: PropTypes.string,
   localeUtils: PropTypes.shape({
     formatDay: PropTypes.func.isRequired,
@@ -286,10 +240,21 @@ DatePicker.propTypes = {
     getFirstDayOfWeek: PropTypes.func.isRequired,
   }),
   months: PropTypes.array,
-  weekdaysLong: PropTypes.array,
   weekdaysShort: PropTypes.array,
-  firstDayOfWeek: PropTypes.number,
-  view: PropTypes.oneOf(Object.values(VIEW_TYPES)),
   monthsShort: PropTypes.array,
+  showOutsideDays: PropTypes.bool,
   onChange: PropTypes.func,
+  className: PropTypes.string,
+  style: PropTypes.object,
+};
+
+DatePicker.defaultProps = {
+  locale: 'en',
+  localeUtils: null,
+  months: MONTHS,
+  monthsShort: MONTHS_SHORT,
+  showOutsideDays: false,
+  onChange: null,
+  className: '',
+  style: null,
 };

@@ -1,0 +1,23 @@
+.caption {
+  color: var(--primary-color);
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+}
+
+.captionWrapper {
+  display: inline-block;
+  cursor: pointer;
+  padding: 8px 16px;
+  border: 1px solid transparent;
+  box-sizing: border-box;
+  border-radius: 4px;
+}
+
+.captionWrapper:hover {
+  border: 1px solid var(--primary-color-light);
+}

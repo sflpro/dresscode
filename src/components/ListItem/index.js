@@ -11,6 +11,7 @@ export function ListItem({
   label = '',
   icon = '',
   iconPos = 'right',
+  iconStyle = {},
   disabled = false,
   active = false,
   iconClassName = '',
@@ -30,12 +31,9 @@ export function ListItem({
 
   return (
     <div
+      onClick={event => onClick({ value, event })}
       className={listItemClasses}
-      onClick={() => onClick({
-        currentTarget: {
-          value,
-        }
-      })}
+      role='presentation'
       {...props}
     >
       {icon && iconPos === 'left' && (
@@ -45,11 +43,12 @@ export function ListItem({
           size={24}
         />
       )}
-      {label}
+      <span>{label}</span>
       {icon && iconPos === 'right' && (
         <Icon
-          name={icon}
           className={listItemIconClasses}
+          style={iconStyle}
+          name={icon}
           size={24}
         />
       )}
@@ -65,4 +64,7 @@ ListItem.propTypes = {
   iconClassName: PropTypes.string,
   onClick: PropTypes.func,
   children: PropTypes.object,
+  iconStyle: PropTypes.object,
+  disabled: PropTypes.bool,
+  active: PropTypes.bool,
 };

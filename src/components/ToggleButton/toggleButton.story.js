@@ -1,12 +1,13 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 
+import { ToggleButton } from '.';
+
 import { ControlsGroup } from '../ControlsGroup';
-import { ToggleButton } from './index';
 
 storiesOf('Toggle Button', module)
   .add('Toggle Button', () => (
-    <ControlsGroup style={{width: '324px'}}>
+    <ControlsGroup style={{ width: '324px' }}>
       <ToggleButton
         onChange={e => e}
         label='Այ էս մեկը'

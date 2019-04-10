@@ -10,8 +10,8 @@ export function Option({
 }) {
   return (
     <option
-      value={value}
       className={styles.option}
+      value={value}
       {...props}
     >
       {name}
