@@ -6,30 +6,26 @@
   font-family: var(--base-font-family);
   display: inline-flex;
   align-items: center;
+  overflow: hidden;
+  box-sizing: border-box;
+}
 
-  &:hover {
-    cursor: pointer;
-  }
+.text {
+  overflow:hidden;
+  white-space:nowrap;
+  text-overflow: ellipsis;
 }
 
 .primary {
   background-color: var(--primary-color);
   border: 1px solid var(--primary-color);
   color: var(--text-secondary-color);
-
-  &:hover {
-    background-color: var(--primary-color-dark);
-  }
 }
 
 .secondary {
   background-color: var(--secondary-color);
   border: 1px solid var(--primary-color);
   color: var(--text-primary-color);
-
-  &:hover {
-    border-color: var(--primary-color-dark);
-  }
 }
 
 .closeIcon {

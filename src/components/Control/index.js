@@ -117,6 +117,26 @@ export class Control extends React.Component {
     }
   };
 
+  getLeftPosition(step) {
+    const { wrapperElementWidth, maxStepsCount } = this.context;
+    const { currentStep } = (this.state || {});
+
+    const stepWidth = wrapperElementWidth / maxStepsCount;
+
+    return (step || currentStep) * stepWidth - this.controlWidth / 2;
+  }
+
+  getCurrentValue() {
+    const { getValueFromStep } = this.context;
+    const { currentStep } = this.state;
+
+    return getValueFromStep({ currentStep, min: this.min, max: this.max });
+  }
+
+  setControlRef = (ref) => {
+    this.control = ref;
+  };
+
   emitChange() {
     const { setControlInfo } = this.context;
     const { value, name } = this.props;
@@ -138,25 +158,6 @@ export class Control extends React.Component {
     document.removeEventListener('touchend', this.onMouseUp, true);
     document.removeEventListener('mouseup', this.onMouseUp, true);
   }
-
-  getLeftPosition(step) {
-    const { wrapperElementWidth, maxStepsCount } = this.context;
-
-    const stepWidth = wrapperElementWidth / maxStepsCount;
-
-    return (step || this.state.currentStep) * stepWidth - this.controlWidth / 2;
-  }
-
-  getCurrentValue() {
-    const { getValueFromStep } = this.context;
-    const { currentStep } = this.state;
-
-    return getValueFromStep({ currentStep, min: this.min, max: this.max });
-  }
-
-  setControlRef = (ref) => {
-    this.control = ref;
-  };
 
   render() {
     const { className, value, name, icon } = this.props;
@@ -191,6 +192,8 @@ Control.propTypes = {
   name: PropTypes.string.isRequired,
   icon: PropTypes.any.isRequired,
   className: PropTypes.string,
+  onDragStart: PropTypes.func,
+  onDragEnd: PropTypes.func,
   min: PropTypes.number,
   max: PropTypes.number,
 };

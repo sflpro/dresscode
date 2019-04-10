@@ -1,5 +1,5 @@
 .select {
-  height: var(--text-input-height);
+  min-height: var(--text-input-height);
   border-radius: var(--text-input-border-radius);
   border: var(--text-input-border-size) solid var(--text-input-border-color);
   background-color: var(--neutral-white);
@@ -9,9 +9,10 @@
   cursor: pointer;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 0 16px;
   width: 100%;
+  padding: 0 48px 0 16px;
+  position: relative;
+  flex-wrap: wrap;
 }
 
 .select:hover {
@@ -54,6 +55,9 @@
 
 .icon {
   transition: transform 0.5s;
+  position: absolute;
+  right: 12px;
+  top: 12px;
 }
 
 .active .icon {
@@ -62,4 +66,68 @@
 
 .reverseIcon {
   transform: rotate(180deg);
+}
+
+.wrapper {
+  position: relative;
+  width: inherit;
+}
+
+.label {
+  width: 100%;
+}
+
+.labelOpen {
+  position: relative;
+  z-index: 10;
+
+  & .list {
+    z-index: 4;
+  }
+}
+
+.listIcon {
+  margin-left: 8px;
+}
+
+.input {
+  min-width: 80px;
+  margin-top: 4px;
+  height: 32px;
+  border: none;
+  flex: 1;
+}
+
+.tag {
+  position: relative;
+  margin: 4px;
+}
+
+.contentWrapper {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  margin: 4px -4px;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.list {
+  background-color: var(--neutral-white);
+  position: absolute;
+  width: 100%;
+}
+
+.emptyState {
+  padding: 16px;
+  display: block;
+  color: var(--text-input-placeholder-color);
+  font-size: 0.8em;
 }
