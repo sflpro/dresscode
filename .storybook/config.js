@@ -19,7 +19,6 @@ function loadStories() {
   require('../src/Tag/tag.story');
   require('../src/components/Notification/notification.story');
   require('../src/components/NotificationFrame/notificationFrame.story');
-
 }
 
 configure(loadStories, module);

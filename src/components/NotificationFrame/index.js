@@ -4,7 +4,7 @@ import classNames from 'classnames';
 
 import { Icon } from '../Icon';
 
-import styles from './notification.css';
+import styles from './notificationFrame.css';
 
 const NOTIFICATION_THEMES = {
   LIGHT: 'light',
@@ -18,7 +18,7 @@ const ICON_TYPE = {
   error: 'cross-circle'
 };
 
-export class Notification extends React.PureComponent {
+export class NotificationFrame extends React.PureComponent {
   render() {
     const {
       dismiss = false,
@@ -32,8 +32,8 @@ export class Notification extends React.PureComponent {
     } = this.props;
 
     const notificationClasses = classNames({
-      [styles.notification]: true,
-      [styles[`notification-${type}`]]: true,
+      [styles.notificationFrame]: true,
+      [styles[`notificationFrame-${type}`]]: true,
       [styles[`theme-${theme}`]]: true,
       [styles[status]]: true,
       [className]: true

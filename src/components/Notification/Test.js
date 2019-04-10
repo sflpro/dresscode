@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 
 import { Button } from '../Button';
-import { NotificationFrame } from '.';
-import { Notification } from '../NotificationFrame';
+import { Notification } from '.';
+import { NotificationFrame } from '../NotificationFrame';
 
 export const Warning = () => {
   const [notifications, setNotifications] = useState(0);
@@ -21,14 +21,14 @@ export const Warning = () => {
         Warning
       </Button>
       {notifications > 0 && (
-        <NotificationFrame>
-          <Notification
+        <Notification>
+          <NotificationFrame
             status='warning'
             message={`${notifications} - Warning Notification`}
             title='Warning'
             dismiss
           />
-        </NotificationFrame>
+        </Notification>
       )}
     </React.Fragment>
   );
@@ -51,14 +51,14 @@ export const Error = () => {
         Error
       </Button>
       {notifications > 0 && (
-        <NotificationFrame>
-          <Notification
+        <Notification>
+          <NotificationFrame
             status='error'
             message={`${notifications} - Error Notification`}
             title='Error'
             dismiss
           />
-        </NotificationFrame>
+        </Notification>
       )}
     </React.Fragment>
   );
@@ -78,14 +78,14 @@ export const Info = () => {
         Information
       </Button>
       {notifications > 0 && (
-        <NotificationFrame>
-          <Notification
+        <Notification>
+          <NotificationFrame
             status='information'
             message={`${notifications} - Information Notification`}
             title='Information'
             dismiss
           />
-        </NotificationFrame>
+        </Notification>
       )}
     </React.Fragment>
   );

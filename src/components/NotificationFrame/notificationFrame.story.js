@@ -1,35 +1,35 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 
-import { Notification } from './';
+import { NotificationFrame } from './';
 import { ItemGroup } from '../../helpers/ItemGroup';
 import { Item } from '../../helpers/Item';
 
 storiesOf('Notification', module)
-  .add('Notifications', () => (
+  .add('Notifications Frame', () => (
     <React.Fragment>
       <ItemGroup
-        title='Large Notifications'
+        title='Large Notification'
       >
         <Item>
-          <Notification
+          <NotificationFrame
             status='information'
             message='Information Notification'
             title='Information'
             dismiss
           />
-          <Notification
+          <NotificationFrame
             status='warning'
             message='Warning Notification'
             title='Warning'
             dismiss
           />
-          <Notification
+          <NotificationFrame
             status='error'
             message='Error Notification'
             title='Error'
           />
-          <Notification
+          <NotificationFrame
             status='success'
             message='Success Notification'
             dismiss
@@ -42,28 +42,28 @@ storiesOf('Notification', module)
           title='Alert Notifications'
         >
           <Item>
-            <Notification
+            <NotificationFrame
               status='information'
               message='Information Notification'
               title='Information'
               type='alert'
               dismiss
             />
-            <Notification
+            <NotificationFrame
               status='warning'
               message='Warning Notification'
               title='Warning'
               type='alert'
               dismiss
             />
-            <Notification
+            <NotificationFrame
               status='error'
               message='Error Notification'
               title='Error'
               type='alert'
               dismiss
             />
-            <Notification
+            <NotificationFrame
               status='success'
               message='Success Notification'
               type='alert'
@@ -76,7 +76,7 @@ storiesOf('Notification', module)
           title='Light Alert Notifications'
         >
           <Item>
-            <Notification
+            <NotificationFrame
               status='information'
               message='Information Notification'
               title='Information'
@@ -84,7 +84,7 @@ storiesOf('Notification', module)
               theme='light'
               dismiss
             />
-            <Notification
+            <NotificationFrame
               status='warning'
               message='Warning Notification'
               title='Warning'
@@ -92,14 +92,14 @@ storiesOf('Notification', module)
               theme='light'
               dismiss
             />
-            <Notification
+            <NotificationFrame
               status='error'
               message='Error Notification'
               title='Error'
               type='alert'
               theme='light'
             />
-            <Notification
+            <NotificationFrame
 
               status='success'
               message='Success Notification'

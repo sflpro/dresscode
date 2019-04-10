@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import styles from './notificationFrame.css';
+import styles from './notification.css';
 
 class NotificationStack {
   static instance;
@@ -72,7 +72,7 @@ const NotificationContainer = () => {
   );
 };
 
-export class NotificationFrame extends React.Component {
+export class Notification extends React.Component {
   nItems = {};
 
   removeTimeout = {};
