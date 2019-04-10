@@ -17,8 +17,6 @@ storiesOf('Notification', module)
     });
 
     const showNotification = (notificationType) => {
-      console.log(store)
-
       const notification = Array.from(new Set([...store.state.notification, notificationType]));
       store.set({
         ...store.state,
