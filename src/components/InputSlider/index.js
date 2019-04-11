@@ -28,7 +28,11 @@ export class InputSlider extends React.Component {
 
     const isRange = Array.isArray(children) && children.length === 2;
 
-    if (!/^\d+$/.test(event.key) && (!isRange || (!separator.includes(event.key) && event.key !== ' ')) && event.key !== '-') {
+    if (
+      !/^\d+$/.test(event.key)
+      && event.key !== '-'
+      && (!isRange || (!separator.includes(event.key) && event.key !== ' '))
+    ) {
       event.preventDefault();
     }
 
@@ -36,7 +40,12 @@ export class InputSlider extends React.Component {
       event.preventDefault();
     }
 
-    if (isRange && separator === '-' && event.key === separator && (value.match(new RegExp(separator, 'g')) || []).length === 3) {
+    if (
+      isRange
+      && separator === '-'
+      && event.key === separator
+      && (value.match(new RegExp(separator, 'g')) || []).length === 3
+    ) {
       event.preventDefault();
     }
 
