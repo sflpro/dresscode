@@ -52,7 +52,7 @@
   outline: none;
 }
 
-.input:placeholder {
+.input::placeholder {
   color: var(--text-input-placeholder-color);
 }
 

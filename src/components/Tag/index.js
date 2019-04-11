@@ -12,25 +12,31 @@ export function Tag({
   clickable = false,
   onClose,
   onClick,
+  className = '',
   ...props
 }) {
   const tagClasses = classNames({
     [styles.tag]: true,
     [styles[type]]: true,
+    [className]: true,
   });
 
   return (
     <span
       className={tagClasses}
+      role='presentation'
       onClick={onClick}
       role='presentation'
       {...props}
     >
-      {name}
+      <span className={styles.text}>
+        {name}
+      </span>
       {clickable && (
         <Icon
-          name='cross'
           className={styles.closeIcon}
+          onClick={onClose}
+          name='cross'
         />
       )}
     </span>
@@ -38,9 +44,10 @@ export function Tag({
 }
 
 Tag.propTypes = {
-  name: PropTypes.string,
+  type: PropTypes.oneOf(['primary', 'secondary']),
+  className: PropTypes.string,
   clickable: PropTypes.bool,
   onClose: PropTypes.func,
   onClick: PropTypes.func,
-  type: PropTypes.oneOf(['primary', 'secondary']),
+  name: PropTypes.string,
 };
