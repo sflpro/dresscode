@@ -5,3 +5,6 @@ export { Select } from './lib/components/Select';
 export { Tag } from './lib/components/Tag';
 export { Textarea } from './lib/components/Textarea';
 export { TextInput } from './lib/components/TextInput';
+export { Button } from './lib/components/Button';
+export { ToggleButton } from './lib/components/ToggleButton';
+export { Label } from './lib/components/Label';

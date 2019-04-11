@@ -62,6 +62,7 @@
   --text-input-text-disabled-color: var(--disabled-color-dark);
   --text-input-prefix-color: var(--default-color-dark);
   --text-input-font-size: var(--base-font-size);
+  --text-input-background-color: var(--neutral-white);
 
   --text-input-height: 48px;
   --text-input-border-radius: 6px;
@@ -81,7 +82,6 @@
   --box-shadow-500: 0 48px 56px 0 var(--neutral-1000-opacity-15);
 
   --input-label-distance: 16px;
-  --input-background-color: var(--neutral-200);
 
   --radio-button-border-color: var(--default-color);
   --radio-button-hover-color: var(--primary-color-light);
@@ -102,17 +102,17 @@
   --toggle-button-border-color: var(--default-color);
   --toggle-button-hover-color: var(--primary-color-light);
   --toggle-button-checked-color: var(--primary-color);
-  --toggle-button-background-color: var(--input-background-color);
+  --toggle-button-background-color: var(--neutral-200);
   --toggle-button-color: var(--primary-color);
   --toggle-button-disabled-color: var(--default-color);
   --toggle-button-font-size: var(--base-font-size);
   --toggle-button-height: 24px;
   --toggle-button-width: 40px;
 
-  --toggle-button-border-radius: 34px;
+  --toggle-button-border-radius: 12px;
   --toggle-button-toggle-height: 16px;
   --toggle-button-toggle-width: 16px;
-  --toggle-button-toggle-border-radius: 34px;
+  --toggle-button-toggle-border-radius: 12px;
 
   --toggle-button-toggle-translateX: 16px;
   --toggle-button-toggle-left: 4px;
