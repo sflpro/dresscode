@@ -26,7 +26,6 @@ export function Tag({
       className={tagClasses}
       role='presentation'
       onClick={onClick}
-      role='presentation'
       {...props}
     >
       <span className={styles.text}>

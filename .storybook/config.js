@@ -6,6 +6,7 @@ function loadStories() {
   require('../src/components/Anchor/anchor.story');
   require('../src/components/Tag/tag.story');
   require('../src/components/TextInput/textInput.story');
+  require('../src/components/CardInput/cardInput.story');
   require('../src/components/Textarea/textarea.story');
   require('../src/components/Select/select.story');
   require('../src/components/Checkbox/checkbox.story');
