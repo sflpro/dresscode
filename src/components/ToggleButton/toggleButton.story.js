@@ -5,7 +5,7 @@ import { ToggleButton } from '.';
 
 import { ControlsGroup } from '../ControlsGroup';
 
-storiesOf('Toggle Button', module)
+storiesOf('Form controls', module)
   .add('Toggle Button', () => (
     <ControlsGroup style={{ width: '324px' }}>
       <ToggleButton

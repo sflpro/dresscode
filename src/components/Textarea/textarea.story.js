@@ -8,7 +8,7 @@ import { ItemGroup } from '../../helpers/ItemGroup';
 import { ItemRow } from '../../helpers/ItemRow';
 import { Item } from '../../helpers/Item';
 
-storiesOf('Textarea', module)
+storiesOf('Form controls', module)
   .add('Textarea', () => {
     const store = new Store({
       disabled: 'Disabled text',

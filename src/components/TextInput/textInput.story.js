@@ -11,7 +11,7 @@ import { ItemGroup } from '../../helpers/ItemGroup';
 import { ItemRow } from '../../helpers/ItemRow';
 import { Item } from '../../helpers/Item';
 
-storiesOf('TextInput', module)
+storiesOf('Form controls', module)
   .add('Text Input', () => {
     const store = new Store({
       default: 'Default text',

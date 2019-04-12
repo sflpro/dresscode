@@ -9,7 +9,7 @@ import { InputSlider } from './index';
 import { Control } from '../Control';
 import { Icon } from '../Icon';
 
-storiesOf('Input Slider', module)
+storiesOf('Form controls', module)
   .add('Input Slider', () => {
     const store = new Store({
       test1: 75,

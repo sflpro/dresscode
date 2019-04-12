@@ -9,7 +9,7 @@ import { Control } from '../Control';
 import { Slider } from './index';
 import { Icon } from '../Icon';
 
-storiesOf('Slider', module)
+storiesOf('Form controls', module)
   .add('Slider', () => {
     const store = new Store({
       test1: 75,

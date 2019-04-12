@@ -8,7 +8,7 @@ import { Item } from '../../helpers/Item';
 import { Label } from '../Label';
 import { CardInput } from '.';
 
-storiesOf('CardInput', module)
+storiesOf('Form controls', module)
   .add('Card Input', () => {
     const store = new Store({
       notDetected: '1234567891234567',
