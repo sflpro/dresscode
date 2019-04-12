@@ -20,6 +20,7 @@ export class Popover extends React.Component {
     this.arrowRef = React.createRef();
 
     this.targetElementProps = {};
+
     if (typeof children !== 'function') {
       this.targetElementProps = this.getTargetElementProps(trigger);
     }
@@ -27,15 +28,18 @@ export class Popover extends React.Component {
 
   componentDidMount() {
     const { open } = this.props;
+
     if (open) {
       this.setPopoverPosition(this.targetElementPosition);
     }
+
     document.addEventListener('scroll', this.handleMouseLeave);
   }
 
   componentDidUpdate(prevProps) {
     const { open: prevOpen } = prevProps;
     const { open } = this.props;
+
     if (open !== prevOpen && open) {
       this.setPopoverPosition(this.targetElementPosition);
       this.contentRef.current.addEventListener('mousedown', this.handleContentClick);
@@ -60,6 +64,7 @@ export class Popover extends React.Component {
 
     this.contentRef.current.style[popoverY.position] = `${popoverY.y}px`;
     this.contentRef.current.style[popoverX.position] = `${popoverX.x}px`;
+
     if (popoverPosition) {
       this.contentRef.current.style.position = popoverPosition;
     }
@@ -67,9 +72,11 @@ export class Popover extends React.Component {
     if (this.arrowRef.current) {
       this.arrowRef.current.style[arrowY.position] = `${arrowY.y}px`;
       this.arrowRef.current.style[arrowX.position] = `${arrowX.x}px`;
+
       if (arrowPosition) {
         this.arrowRef.current.style.position = arrowPosition;
       }
+
       if (arrowClasses) {
         this.arrowRef.current.classList.add(arrowClasses);
       }
@@ -101,6 +108,7 @@ export class Popover extends React.Component {
   ) => {
     let arrowWidth = 0;
     let positionX = 'left';
+
     if (this.arrowRef.current) {
       arrowWidth = this.arrowRef.current.offsetWidth;
     }
@@ -138,6 +146,7 @@ export class Popover extends React.Component {
   computeVerticalPosition = (targetElementPosition, popoverElementPosition) => {
     const { follow, gap = 0, position = 'bottom' } = this.props;
     let arrowHeight = 0;
+
     if (this.arrowRef.current) {
       arrowHeight = this.arrowRef.current.offsetHeight;
     }
@@ -148,15 +157,18 @@ export class Popover extends React.Component {
     let arrowY;
     let popoverY;
     let arrowClasses = '';
+
     if (position === 'bottom') {
       arrowY = pTop + height + gap + 1;
       popoverY = arrowY + arrowHeight;
+
       if (
         window.innerHeight - popoverY < popoverHeight
         && (pTop - arrowHeight + gap - popoverHeight > 0)
       ) {
         arrowY = pTop - (arrowHeight + gap) - 1;
         popoverY = arrowY - popoverHeight + 1;
+
         if (!follow) {
           arrowClasses = styles.arrowY;
         }
@@ -164,6 +176,7 @@ export class Popover extends React.Component {
     } else {
       arrowY = pTop - (arrowHeight + gap) - 1;
       popoverY = arrowY - popoverHeight + 1;
+
       if (popoverY < 0) {
         arrowY = pTop + height + gap + 1;
         popoverY = arrowY + arrowHeight;
@@ -238,9 +251,11 @@ export class Popover extends React.Component {
   handleMouseEnter = (event) => {
     const { follow, open, trigger, onTargetEvent, contentRelative } = this.props;
     let target = trigger === POPOVER_TRIGGER_OPTIONS.HOVER ? event.target : event.currentTarget;
+
     if (contentRelative) {
       target = this.targetRef.current;
     }
+
     let { offsetWidth, offsetHeight, offsetLeft, offsetTop } = this.getElementOffset(target, false);
 
     if (follow) {
@@ -268,6 +283,7 @@ export class Popover extends React.Component {
 
   handleMouseLeave = () => {
     const { onTargetEvent } = this.props;
+
     onTargetEvent(false);
     document.removeEventListener('scroll', this.handleMouseLeave);
   };
@@ -275,6 +291,7 @@ export class Popover extends React.Component {
   getTargetElementProps = (trigger) => {
     const { follow } = this.props;
     const targetElementProps = {};
+
     if (trigger === POPOVER_TRIGGER_OPTIONS.CLICK) {
       targetElementProps.onClick = this.handleClick;
     } else if (trigger === POPOVER_TRIGGER_OPTIONS.HOVER) {

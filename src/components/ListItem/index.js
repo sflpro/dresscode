@@ -68,3 +68,16 @@ ListItem.propTypes = {
   disabled: PropTypes.bool,
   active: PropTypes.bool,
 };
+
+ListItem.defaultProps = {
+  value: '',
+  label: '',
+  icon: '',
+  iconPos: 'right',
+  iconStyle: {},
+  disabled: false,
+  active: false,
+  iconClassName: '',
+  onClick: undefined,
+  children: null,
+};

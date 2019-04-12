@@ -1,14 +1,15 @@
 import React from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
+
 import { Label } from '../Label';
 
 import styles from './toggleButton.css';
 
 export function ToggleButton({
-  disabled = false,
-  checked = false,
-  className = '',
+  disabled,
+  checked,
+  className,
   onChange,
   label,
   name,
@@ -52,4 +53,10 @@ ToggleButton.propTypes = {
   disabled: PropTypes.bool,
   checked: PropTypes.bool,
   className: PropTypes.string,
+};
+
+ToggleButton.defaultProps = {
+  disabled: false,
+  checked: false,
+  className: '',
 };

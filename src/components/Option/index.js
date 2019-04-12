@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import styles from './option.css';
 
 export function Option({
-  value = '',
+  value,
   name,
   ...props
 }) {
@@ -22,4 +22,9 @@ export function Option({
 Option.propTypes = {
   value: PropTypes.string,
   name: PropTypes.string,
+};
+
+Option.defaultProps = {
+  value: '',
+  name: '',
 };

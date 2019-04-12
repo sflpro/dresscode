@@ -16,6 +16,8 @@ const VALID_DATE_FORMAT = 'YYYY-MM-DD';
 
 const DEFAULT_FORMAT = 'DD/MM/YYYY';
 
+const DEFAULT_LOCALE = 'en';
+
 const DATE_FORMATS = [
   'DD.MM.YYYY',
   'DD.MM.YY',
@@ -41,7 +43,7 @@ export class DateInput extends React.Component {
   constructor(props) {
     super(props);
 
-    const { value, locale = 'en', format = DEFAULT_FORMAT } = this.props;
+    const { value, locale, format } = this.props;
 
     this.state = {
       open: false,
@@ -54,22 +56,7 @@ export class DateInput extends React.Component {
     this.hasError = false;
   }
 
-  handleTargetEvent = (open) => {
-    this.setState({
-      open,
-    });
-  };
-
-  handleDatePickerChange = (value) => {
-    const { onDatePickerChange } = this.props;
-    this.setState(prevState => ({
-      open: !prevState.open,
-    }));
-
-    onDatePickerChange(value);
-  };
-
-  validateFormat = (dateString, format) => {
+  static validateFormat = (dateString, format) => {
     let date = {
       d: null,
       m: null,
@@ -164,7 +151,23 @@ export class DateInput extends React.Component {
     };
   };
 
-  handleDateInputBlur = (event) => {
+  handleTargetEvent = (open) => {
+    this.setState({
+      open,
+    });
+  };
+
+  handleDatePickerChange = (value) => {
+    const { onDatePickerChange } = this.props;
+
+    this.setState(prevState => ({
+      open: !prevState.open,
+    }));
+
+    onDatePickerChange(value);
+  };
+
+  handleDateInputBlur = () => {
     this.focused = false;
     const { currentValue } = this.state;
 
@@ -191,12 +194,12 @@ export class DateInput extends React.Component {
   );
 
   handleDateInputChange = (event) => {
-    const { onDateInputChange, format = DEFAULT_FORMAT, view } = this.props;
+    const { onDateInputChange, format, view } = this.props;
     const { value } = event.target;
 
     this.focused = true;
 
-    const { valid, error, date: { y, d, m } } = this.validateFormat(value, format);
+    const { valid, error, date: { y, d, m } } = DateInput.validateFormat(value, format);
 
     if (!valid) {
       this.error = error;
@@ -232,14 +235,14 @@ export class DateInput extends React.Component {
 
   render() {
     const {
-      value,
-      trigger = 'click',
       onDatePickerChange,
       onDateInputChange,
-      view = 'day',
-      className = '',
-      locale = 'en',
-      format = DEFAULT_FORMAT,
+      value,
+      format,
+      className,
+      locale,
+      trigger,
+      view,
       style,
       ...props
     } = this.props;
@@ -291,33 +294,45 @@ export class DateInput extends React.Component {
           )}
         </Popover>
       ) : (
-          <TextInput
-            onChange={this.handleNativeDateInputChange}
-            className={dateInputClasses}
-            value={formatDate(value, VALID_DATE_FORMAT)}
-            type='date'
-            icon={
-              <Icon
-                name='date'
-                size={24}
-              />
-            }
-            style={style}
-            {...props}
-          />
-        )
+        <TextInput
+          onChange={this.handleNativeDateInputChange}
+          className={dateInputClasses}
+          value={formatDate(value, VALID_DATE_FORMAT)}
+          type='date'
+          icon={
+            <Icon
+              name='date'
+              size={24}
+            />
+          }
+          style={style}
+          {...props}
+        />
+      )
     );
   }
 }
 
 DateInput.propTypes = {
+  onDatePickerChange: PropTypes.func.isRequired,
+  onDateInputChange: PropTypes.func.isRequired,
   value: PropTypes.instanceOf(Date),
   format: PropTypes.oneOf(DATE_FORMATS),
+  className: PropTypes.string,
   locale: PropTypes.string,
   trigger: PropTypes.string,
   view: PropTypes.string,
-  onDatePickerChange: PropTypes.func,
-  onDateInputChange: PropTypes.func,
   style: PropTypes.object,
   children: PropTypes.any,
+};
+
+DateInput.defaultProps = {
+  value: undefined,
+  format: DEFAULT_FORMAT,
+  className: '',
+  locale: DEFAULT_LOCALE,
+  trigger: 'click',
+  children: null,
+  view: 'day',
+  style: {},
 };

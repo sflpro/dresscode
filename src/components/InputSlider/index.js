@@ -236,4 +236,5 @@ InputSlider.defaultProps = {
   step: 1,
   min: 0,
   max: 100,
+  children: null,
 };

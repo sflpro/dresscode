@@ -7,18 +7,18 @@ import { Label } from '../Label';
 import styles from './textarea.css';
 
 export function Textarea({
-  value = '',
-  placeholder = '',
-  disabled = false,
-  className = '',
-  label = '',
-  rows = '3',
-  cols = '40',
-  isValid = false,
-  hasError = false,
-  error = '',
-  name = '',
-  onChange = undefined,
+  value,
+  placeholder,
+  disabled,
+  className,
+  label,
+  rows,
+  cols,
+  isValid,
+  hasError,
+  error,
+  name,
+  onChange,
   children,
   ...props
 }) {
@@ -69,4 +69,20 @@ Textarea.propTypes = {
   className: PropTypes.string,
   onChange: PropTypes.func,
   children: PropTypes.any,
+};
+
+Textarea.defaultProps = {
+  value: '',
+  placeholder: '',
+  disabled: false,
+  className: '',
+  label: '',
+  rows: '3',
+  cols: '40',
+  isValid: false,
+  hasError: false,
+  error: '',
+  name: '',
+  onChange: undefined,
+  children: null,
 };

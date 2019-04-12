@@ -9,8 +9,10 @@ export class PopUp extends React.Component {
   constructor(props) {
     super(props);
     const { overlay } = this.props;
+
     this.domBody = document.querySelector('body');
     this.domBodyOverflow = this.domBody.style.overflow;
+
     if (overlay) {
       this.domBody.style.overflow = 'hidden';
     }
@@ -22,6 +24,7 @@ export class PopUp extends React.Component {
 
   onDismiss = () => {
     const { onDismiss } = this.props;
+
     if (typeof onDismiss === 'function') {
       onDismiss();
     }
@@ -30,9 +33,9 @@ export class PopUp extends React.Component {
   render() {
     const {
       children,
-      className = '',
-      position = '',
-      overlay = false,
+      className,
+      position,
+      overlay,
       ...props
     } = this.props;
 

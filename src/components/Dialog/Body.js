@@ -5,7 +5,7 @@ import classNames from 'classnames';
 import styles from './dialog.css';
 
 export const Body = ({
-  className = '',
+  className,
   children,
   ...props
 }) => {
@@ -26,4 +26,9 @@ export const Body = ({
 Body.propTypes = {
   className: PropTypes.string,
   children: PropTypes.any,
+};
+
+Body.defaultProps = {
+  className: '',
+  children: null,
 };

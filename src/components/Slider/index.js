@@ -223,6 +223,7 @@ Slider.propTypes = {
 };
 
 Slider.defaultProps = {
+  onControlChange: undefined,
   distance: 1,
   step: 1,
   min: 0,

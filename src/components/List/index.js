@@ -30,3 +30,9 @@ List.propTypes = {
   style: PropTypes.object,
   children: PropTypes.any,
 };
+
+List.defaultProps = {
+  className: '',
+  style: {},
+  children: null,
+};
