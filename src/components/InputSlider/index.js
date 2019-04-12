@@ -163,7 +163,7 @@ export class InputSlider extends React.Component {
       }
     }
 
-    nextState.value = (nextState.maxControl
+    nextState.value = (nextState.maxControl && nextState.maxControl.value
       ? `${nextState.minControl.value} ${separator} ${nextState.maxControl.value}`
       : nextState.minControl.value).toString();
 

@@ -9,8 +9,8 @@ import { ItemRow } from '../../helpers/ItemRow';
 import { Item } from '../../helpers/Item';
 import { Option } from '../Option';
 
-storiesOf('Dropdown', module)
-  .add('Dropdown', () => {
+storiesOf('Form controls', module)
+  .add('Select', () => {
     const store = new Store({
       value1: 'option1',
       isOpen1: false,
@@ -38,7 +38,7 @@ storiesOf('Dropdown', module)
       <State store={store}>
         {state => (
           <ItemGroup
-            title='Dropdown'
+            title='Select'
           >
             <ItemRow>
               <Item>
@@ -81,7 +81,7 @@ storiesOf('Dropdown', module)
                   />
                   <Option
                     value='option4'
-                    name='Pi Եվ ինձ լսելով՝ Կարող են ասել. «Գժվե՞լ է, ի՜նչ է». Իսկ ես էլ կասեմ. «Այո՛, գժվե՜լ եմ, Ինչո՞ւ չգժվել»:'
+                    name='Pi Եվ ինձ լսելով՝ Կարող են ասել. «Գժվե՞լ է, ի՜նչ է». «Այո՛, գժվե՜լ եմ, Ինչո՞ւ չգժվել»:'
                   />
                   <Option
                     value='option2'

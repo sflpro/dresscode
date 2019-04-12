@@ -8,7 +8,7 @@ import { ItemGroup } from '../../helpers/ItemGroup';
 import { ItemRow } from '../../helpers/ItemRow';
 import { Item } from '../../helpers/Item';
 
-storiesOf('Checkbox', module)
+storiesOf('Form controls', module)
   .add('Checkbox', () => {
     const store = new Store({
       active: true,

@@ -4,7 +4,7 @@ import { storiesOf } from '@storybook/react';
 import { ControlsGroup } from '../ControlsGroup';
 import { RadioButton } from './index';
 
-storiesOf('Radio Button', module)
+storiesOf('Form controls', module)
   .add('Radio Button', () => (
     <ControlsGroup>
       <RadioButton
