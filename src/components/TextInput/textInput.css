@@ -2,7 +2,7 @@
   height: var(--text-input-height);
   border-radius: var(--text-input-border-radius);
   border: var(--text-input-border-size) solid var(--text-input-border-color);
-  background-color: var(--neutral-white);
+  background-color: var(--text-input-background-color);
   display: flex;
   align-items: center;
   min-width: 200px;
@@ -33,7 +33,7 @@
 }
 
 .input {
-  background-color: var(--neutral-white);
+  background-color: var(--text-input-background-color);
   padding: var(--text-input-padding);
   color: var(--text-input-color);
   font-size: var(--text-input-font-size);
