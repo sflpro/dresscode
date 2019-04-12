@@ -8,11 +8,11 @@ import { Label } from '../Label';
 import styles from './checkbox.css';
 
 export function Checkbox({
-  name = '',
-  label = '',
-  disabled = false,
-  checked = false,
-  onChange = undefined,
+  onChange,
+  label,
+  name,
+  disabled,
+  checked,
   ...props
 }) {
   const checkboxClasses = classNames({
@@ -24,6 +24,7 @@ export function Checkbox({
     [styles.label]: true,
     [styles.disabledLabel]: disabled,
   });
+
   return (
     <Label
       display='col'
@@ -58,4 +59,10 @@ Checkbox.propTypes = {
   name: PropTypes.string,
   disabled: PropTypes.bool,
   checked: PropTypes.bool,
+};
+
+Checkbox.defaultProps = {
+  name: '',
+  disabled: false,
+  checked: false,
 };

@@ -43,9 +43,9 @@ export class CardInput extends React.Component {
   };
 
   static defaultProps = {
-    onKeyPress: () => {},
-    onKeyDown: () => {},
-    onChange: () => {},
+    onKeyPress: undefined,
+    onKeyDown: undefined,
+    onChange: undefined,
     value: '',
     name: '',
   };

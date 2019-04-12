@@ -5,7 +5,7 @@ import classNames from 'classnames';
 import styles from './dialog.css';
 
 export const Header = ({
-  className = '',
+  className,
   children,
   ...props
 }) => {
@@ -26,4 +26,9 @@ export const Header = ({
 Header.propTypes = {
   className: PropTypes.string,
   children: PropTypes.any,
+};
+
+Header.defaultProps = {
+  className: '',
+  children: null,
 };

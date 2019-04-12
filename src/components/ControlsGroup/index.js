@@ -4,9 +4,9 @@ import PropTypes from 'prop-types';
 import styles from './controlsGroup.css';
 
 export function ControlsGroup({
-  title = '',
-  children,
+  title,
   style,
+  children,
 }) {
   return (
     <div>
@@ -29,4 +29,9 @@ ControlsGroup.propTypes = {
     PropTypes.arrayOf(PropTypes.element),
     PropTypes.element,
   ]).isRequired,
+};
+
+ControlsGroup.defaultProps = {
+  title: '',
+  style: {},
 };

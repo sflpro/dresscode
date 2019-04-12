@@ -7,12 +7,12 @@ import { Icon } from '../Icon';
 import styles from './tag.css';
 
 export function Tag({
-  type = 'primary',
-  name = '',
-  clickable = false,
+  type,
+  name,
+  clickable,
   onClose,
   onClick,
-  className = '',
+  className,
   ...props
 }) {
   const tagClasses = classNames({
@@ -49,4 +49,13 @@ Tag.propTypes = {
   onClose: PropTypes.func,
   onClick: PropTypes.func,
   name: PropTypes.string,
+};
+
+Tag.defaultProps = {
+  type: 'primary',
+  name: '',
+  clickable: false,
+  onClose: undefined,
+  onClick: undefined,
+  className: '',
 };

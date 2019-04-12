@@ -1,14 +1,15 @@
 import React from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
+
 import { Label } from '../Label';
 
 import styles from './radioButton.css';
 
 export function RadioButton({
-  disabled = false,
-  checked = false,
-  className = '',
+  className,
+  disabled,
+  checked,
   onChange,
   value,
   label,
@@ -54,4 +55,10 @@ RadioButton.propTypes = {
   className: PropTypes.string,
   disabled: PropTypes.bool,
   checked: PropTypes.bool,
+};
+
+RadioButton.defaultProps = {
+  className: '',
+  disabled: false,
+  checked: false,
 };

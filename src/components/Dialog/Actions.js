@@ -5,7 +5,7 @@ import classNames from 'classnames';
 import styles from './dialog.css';
 
 export const Actions = ({
-  className = '',
+  className,
   children,
   ...props
 }) => {
@@ -23,4 +23,9 @@ export const Actions = ({
 Actions.propTypes = {
   className: PropTypes.string,
   children: PropTypes.any,
+};
+
+Actions.defaultProps = {
+  className: '',
+  children: null,
 };

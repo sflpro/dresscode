@@ -12,8 +12,7 @@ import { Icon } from '../Icon';
 import styles from './dialog.css';
 
 export class Dialog extends React.PureComponent {
-  constructor(props) {
-    super(props);
+  componentDidMount() {
     document.addEventListener('keydown', this.escKeyDown, false);
   }
 
@@ -38,7 +37,7 @@ export class Dialog extends React.PureComponent {
   render() {
     const {
       children,
-      className = '',
+      className,
       ...props
     } = this.props;
 
@@ -75,7 +74,7 @@ Dialog.propTypes = {
 
 Dialog.defaultProps = {
   className: '',
-  onDismiss: null,
+  onDismiss: undefined,
   children: null,
 };
 

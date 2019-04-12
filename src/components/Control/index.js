@@ -199,6 +199,8 @@ Control.propTypes = {
 };
 
 Control.defaultProps = {
+  onDragStart: undefined,
+  onDragEnd: undefined,
   min: undefined,
   max: undefined,
   className: '',

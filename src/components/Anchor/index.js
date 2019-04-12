@@ -6,10 +6,10 @@ import styles from './anchor.css';
 
 export function Anchor({
   href,
-  className = '',
-  target = '_blank',
-  onClick,
+  className,
+  target,
   style,
+  onClick,
   children,
   ...props
 }) {
@@ -38,6 +38,13 @@ Anchor.propTypes = {
   target: PropTypes.string,
   style: PropTypes.object,
   onClick: PropTypes.func,
-  classes: PropTypes.string,
   children: PropTypes.any,
+};
+
+Anchor.defaultProps = {
+  className: '',
+  target: '_blank',
+  style: {},
+  onClick: undefined,
+  children: null,
 };

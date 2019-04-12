@@ -36,7 +36,6 @@ module.exports = {
     }],
     "no-param-reassign": ["error", { "props": false }],
     "jsx-a11y/accessible-emoji": false,
-    "react/require-default-props": false,
     "react/no-array-index-key": false,
     "max-len": ["error", 120, 2, {
       'ignoreUrls': true,

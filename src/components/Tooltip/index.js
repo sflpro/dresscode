@@ -7,9 +7,9 @@ import { Popover } from '../Popover';
 import styles from './tooltip.css';
 
 const TooltipContent = ({
-  title = '',
   description,
-  className = '',
+  title,
+  className,
   style,
   ...props
 }) => {
@@ -41,6 +41,12 @@ TooltipContent.propTypes = {
   title: PropTypes.string,
   className: PropTypes.string,
   style: PropTypes.object,
+};
+
+TooltipContent.defaultProps = {
+  title: '',
+  className: '',
+  style: {},
 };
 
 export class Tooltip extends React.Component {

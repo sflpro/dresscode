@@ -5,10 +5,10 @@ import classNames from 'classnames';
 import styles from './label.css';
 
 export function Label({
-  text = '',
-  hasError = false,
-  display = 'row',
-  className = '',
+  text,
+  display,
+  hasError,
+  className,
   children,
   ...props
 }) {
@@ -18,6 +18,7 @@ export function Label({
     [styles[display]]: true,
     [styles.error]: hasError,
   });
+
   return (
     <label
       className={labelClasses}
@@ -39,4 +40,12 @@ Label.propTypes = {
   hasError: PropTypes.bool,
   className: PropTypes.string,
   children: PropTypes.any,
+};
+
+Label.defaultProps = {
+  text: '',
+  display: 'row',
+  hasError: false,
+  className: '',
+  children: null,
 };

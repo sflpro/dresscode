@@ -313,25 +313,24 @@ export class Select extends React.Component {
 
 Select.propTypes = {
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
+  onChange: PropTypes.func,
+  onClick: PropTypes.func,
   placeholder: PropTypes.string,
   multiple: PropTypes.bool,
-  onChange: PropTypes.func,
+  open: PropTypes.bool,
   label: PropTypes.string,
-  onClick: PropTypes.func,
   children: PropTypes.any,
   name: PropTypes.string,
-  open: PropTypes.bool,
 };
 
 Select.defaultProps = {
-  onChange: () => {
-  },
-  onClick: () => {
-  },
+  value: '',
+  onChange: undefined,
+  onClick: undefined,
   placeholder: '',
   multiple: false,
   open: false,
-  value: '',
   label: '',
+  children: null,
   name: '',
 };

@@ -9,8 +9,8 @@ import icons from './svgSprite.svg';
 
 export function Icon({
   name,
-  size = 16,
-  className = '',
+  size,
+  className,
   color,
   style,
   ...props
@@ -41,7 +41,14 @@ export function Icon({
 Icon.propTypes = {
   name: PropTypes.string.isRequired,
   size: PropTypes.number,
-  color: PropTypes.string,
   className: PropTypes.string,
+  color: PropTypes.string,
   style: PropTypes.object,
+};
+
+Icon.defaultProps = {
+  size: 16,
+  className: '',
+  color: '',
+  style: {},
 };

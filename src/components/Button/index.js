@@ -5,15 +5,15 @@ import classNames from 'classnames';
 import styles from './button.css';
 
 export function Button({
-  variant = 'button',
-  type = 'button',
-  as: Component = 'button',
-  disabled = false,
-  primary = true,
-  secondary = false,
-  neutral = false,
-  warning = false,
-  className = '',
+  variant,
+  type,
+  as: Component,
+  disabled,
+  primary,
+  secondary,
+  neutral,
+  warning,
+  className,
   style,
   children,
   ...props
@@ -46,11 +46,11 @@ Button.propTypes = {
     'circle',
   ]),
   type: PropTypes.string,
-  disabled: PropTypes.bool,
   as: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.func,
   ]),
+  disabled: PropTypes.bool,
   primary: PropTypes.bool,
   secondary: PropTypes.bool,
   neutral: PropTypes.bool,
@@ -59,4 +59,19 @@ Button.propTypes = {
   className: PropTypes.string,
   style: PropTypes.object,
   children: PropTypes.any,
+};
+
+Button.defaultProps = {
+  variant: 'button',
+  type: 'button',
+  as: 'button',
+  disabled: false,
+  primary: true,
+  secondary: false,
+  neutral: false,
+  warning: false,
+  onClick: undefined,
+  className: '',
+  style: {},
+  children: null,
 };
