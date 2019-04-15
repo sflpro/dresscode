@@ -4,13 +4,11 @@ import { State, Store } from '@sambego/storybook-state';
 
 import { Select } from '.';
 
+import { Option } from '../Option';
+import { Label } from '../Label';
 import { ItemGroup } from '../../helpers/ItemGroup';
 import { ItemRow } from '../../helpers/ItemRow';
 import { Item } from '../../helpers/Item';
-import { Option } from '../Option';
-import { Label } from '../Label';
-
-import styles from "../TextInput/textInput.css";
 
 storiesOf('Form controls', module)
   .add('Select', () => {
@@ -46,7 +44,7 @@ storiesOf('Form controls', module)
             <ItemRow>
               <Item>
                 <Label>
-                  <span className={styles.label}>Label</span>
+                  Label
                   <Select
                     onChange={handleSelectChange1}
                     onClick={handleSelectClick1}
@@ -72,7 +70,7 @@ storiesOf('Form controls', module)
             <ItemRow>
               <Item style={{ width: '375px' }}>
                 <Label>
-                  <span className={styles.label}>Label</span>
+                  Label
                   <Select
                     onChange={handleSelectChange2}
                     onClick={handleSelectClick2}

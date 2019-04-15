@@ -4,7 +4,7 @@ import { storiesOf } from '@storybook/react';
 import { ToggleButton } from '.';
 
 import { ControlsGroup } from '../ControlsGroup';
-import {Label} from "../Label";
+import { Label } from '../Label';
 
 storiesOf('Form controls', module)
   .add('Toggle Button', () => (

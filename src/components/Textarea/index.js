@@ -53,8 +53,6 @@ Textarea.propTypes = {
   value: PropTypes.string,
   /** Boolean, whether textarea is disabled */
   disabled: PropTypes.bool,
-  /** String, label of textarea */
-  label: PropTypes.string,
   /** Number, rows of textarea */
   rows: PropTypes.number,
   /** Number, cols of textarea */

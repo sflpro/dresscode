@@ -5,11 +5,11 @@ import { storiesOf } from '@storybook/react';
 import { ControlsGroup } from '.';
 
 import { Checkbox } from '../Checkbox';
+import { Label } from '../Label';
 import { ItemGroup } from '../../helpers/ItemGroup';
 import { Item } from '../../helpers/Item';
 import { RadioButton } from '../RadioButton';
 import { ToggleButton } from '../ToggleButton';
-import {Label} from "../Label";
 
 storiesOf('Form controls', module)
   .add('CheckboxGroup', () => {

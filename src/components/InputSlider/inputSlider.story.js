@@ -2,12 +2,13 @@ import { State, Store } from '@sambego/storybook-state';
 import { storiesOf } from '@storybook/react';
 import React from 'react';
 
+import { InputSlider } from './index';
+
+import { Control } from '../Control';
+import { Icon } from '../Icon';
 import { ItemGroup } from '../../helpers/ItemGroup';
 import { ItemRow } from '../../helpers/ItemRow';
 import { Item } from '../../helpers/Item';
-import { InputSlider } from './index';
-import { Control } from '../Control';
-import { Icon } from '../Icon';
 
 storiesOf('Form controls', module)
   .add('Input Slider', () => {

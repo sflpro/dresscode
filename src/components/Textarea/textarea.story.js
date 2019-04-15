@@ -3,13 +3,10 @@ import { State, Store } from '@sambego/storybook-state';
 import { storiesOf } from '@storybook/react';
 
 import { Textarea } from '.';
-
+import { Label } from '../Label';
 import { ItemGroup } from '../../helpers/ItemGroup';
 import { ItemRow } from '../../helpers/ItemRow';
 import { Item } from '../../helpers/Item';
-import {Label} from "../Label";
-
-import styles from "../TextInput/textInput.css";
 
 storiesOf('Form controls', module)
   .add('Textarea', () => {
@@ -38,7 +35,7 @@ storiesOf('Form controls', module)
             <ItemRow>
               <Item>
                 <Label>
-                  <span className={styles.label}>Label</span>
+                  Label
                   <Textarea
                     name='basic'
                     value={state.basic}
@@ -50,7 +47,7 @@ storiesOf('Form controls', module)
             <ItemRow>
               <Item>
                 <Label>
-                  <span className={styles.label}>Label</span>
+                  Label
                   <Textarea
                     name='placeholder'
                     value={state.placeholder}
@@ -63,7 +60,7 @@ storiesOf('Form controls', module)
             <ItemRow>
               <Item>
                 <Label>
-                  <span className={styles.label}>Label</span>
+                  Label
                   <Textarea
                     name='disabled'
                     value={state.disabled}
@@ -78,7 +75,7 @@ storiesOf('Form controls', module)
                 <Label
                   hasError
                 >
-                  <span className={styles.label}>Error</span>
+                  Error
                   <Textarea
                     name='error'
                     value={state.error}

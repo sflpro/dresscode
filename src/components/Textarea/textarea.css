@@ -6,11 +6,11 @@
   font-size: var(--text-input-font-size);
   font-family: var(--base-font-family);
   font-weight: var(--text-input-font-weight);
-  border-radius: var(--text-input-border-radius);
   padding: var(--textarea-padding);
   letter-spacing: normal;
   line-height: 1.5em;
   box-sizing: border-box;
+  margin-top: var(--input-margin-top);
 }
 
 .textarea:focus {
@@ -51,8 +51,4 @@
   color: var(--error-color);
   margin-top: 8px;
   font-size: 0.8em;
-}
-
-.label {
-  margin-bottom: 8px;
 }

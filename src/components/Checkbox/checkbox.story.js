@@ -4,10 +4,10 @@ import { storiesOf } from '@storybook/react';
 
 import { Checkbox } from '.';
 
+import { Label } from '../Label';
 import { ItemGroup } from '../../helpers/ItemGroup';
 import { ItemRow } from '../../helpers/ItemRow';
 import { Item } from '../../helpers/Item';
-import {Label} from "../Label";
 
 storiesOf('Form controls', module)
   .add('Checkbox', () => {

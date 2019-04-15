@@ -1,9 +1,10 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 
-import { ControlsGroup } from '../ControlsGroup';
 import { RadioButton } from './index';
-import {Label} from "../Label";
+
+import { ControlsGroup } from '../ControlsGroup';
+import { Label } from '../Label';
 
 storiesOf('Form controls', module)
   .add('Radio Button', () => (

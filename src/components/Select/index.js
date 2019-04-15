@@ -5,7 +5,6 @@ import classNames from 'classnames';
 import { TextInput } from '../TextInput';
 import { isMobile } from '../../utils';
 import { ListItem } from '../ListItem';
-import { Label } from '../Label';
 import { List } from '../List';
 import { Icon } from '../Icon';
 import { Tag } from '../Tag';
@@ -255,7 +254,11 @@ export class Select extends React.Component {
 
     return (
       <div className={styles.wrapper}>
-        <div className={labelClasses} onClick={this.onClick}>
+        <div
+          className={labelClasses}
+          role='presentation'
+          onClick={this.onClick}
+        >
           <div className={styles.nativeSelectWrapper}>
             <select
               onChange={this.handleNativeChange}
