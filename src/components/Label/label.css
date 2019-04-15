@@ -11,6 +11,10 @@
   margin-bottom: 8px;
 }
 
+.groupElements {
+  justify-content: space-between;
+}
+
 .error {
   color: var(--error-color);
 }
@@ -22,4 +26,13 @@
 
 .row {
   flex-flow: column nowrap;
+}
+
+.disabled,
+.disabled:hover {
+  color: var(--text-disabled-color);
+}
+
+.successWrapper {
+  color: var(--success-color);
 }

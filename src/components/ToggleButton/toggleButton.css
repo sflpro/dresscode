@@ -14,7 +14,6 @@
     font-weight: var(--toggle-button-font-weight);
     position: relative;
     cursor: pointer;
-    justify-content: space-between;
 }
 
 .toggle {

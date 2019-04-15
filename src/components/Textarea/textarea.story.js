@@ -7,6 +7,7 @@ import { Textarea } from '.';
 import { ItemGroup } from '../../helpers/ItemGroup';
 import { ItemRow } from '../../helpers/ItemRow';
 import { Item } from '../../helpers/Item';
+import {Label} from "../Label";
 
 storiesOf('Form controls', module)
   .add('Textarea', () => {
@@ -34,47 +35,57 @@ storiesOf('Form controls', module)
           >
             <ItemRow>
               <Item>
-                <Textarea
-                  label='Label'
-                  name='basic'
-                  value={state.basic}
-                  onChange={handleTextareaChange}
-                />
+                <Label>
+                  Label
+                  <Textarea
+                    name='basic'
+                    value={state.basic}
+                    onChange={handleTextareaChange}
+                  />
+                </Label>
               </Item>
             </ItemRow>
             <ItemRow>
               <Item>
-                <Textarea
-                  label='Label'
-                  name='placeholder'
-                  value={state.placeholder}
-                  placeholder='Placeholder text'
-                  onChange={handleTextareaChange}
-                />
+                <Label>
+                  Label
+                  <Textarea
+                    name='placeholder'
+                    value={state.placeholder}
+                    placeholder='Placeholder text'
+                    onChange={handleTextareaChange}
+                  />
+                </Label>
               </Item>
             </ItemRow>
             <ItemRow>
               <Item>
-                <Textarea
-                  label='Label'
-                  name='disabled'
-                  value={state.disabled}
-                  onChange={handleTextareaChange}
-                  disabled
-                />
+                <Label>
+                  Label
+                  <Textarea
+                    name='disabled'
+                    value={state.disabled}
+                    onChange={handleTextareaChange}
+                    disabled
+                  />
+                </Label>
               </Item>
             </ItemRow>
             <ItemRow>
               <Item>
-                <Textarea
-                  label='Error'
-                  name='error'
-                  value={state.error}
-                  icon='warning'
-                  error='Error text'
-                  onChange={handleTextareaChange}
+                <Label
                   hasError
-                />
+                >
+                  Error
+                  <Textarea
+                    name='error'
+                    value={state.error}
+                    icon='warning'
+                    error='Error text'
+                    onChange={handleTextareaChange}
+                    hasError
+                  />
+                </Label>
               </Item>
             </ItemRow>
           </ItemGroup>

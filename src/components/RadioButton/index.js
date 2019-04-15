@@ -2,8 +2,6 @@ import React from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 
-import { Label } from '../Label';
-
 import styles from './radioButton.css';
 
 export function RadioButton({
@@ -12,7 +10,6 @@ export function RadioButton({
   checked,
   onChange,
   value,
-  label,
   name,
   ...props
 }) {
@@ -23,13 +20,12 @@ export function RadioButton({
         [className]: true,
       })}
     >
-      <Label
+      <span
         className={classNames({
           [styles.label]: true,
           [styles.checked]: checked,
           [styles.disabled]: disabled,
         })}
-        display='col'
       >
         <input
           className={styles.input}
@@ -41,8 +37,7 @@ export function RadioButton({
           name={name}
           {...props}
         />
-        {label}
-      </Label>
+      </span>
     </div>
   );
 }
@@ -50,8 +45,6 @@ export function RadioButton({
 RadioButton.propTypes = {
   /** Function, called when input value is changed */
   onChange: PropTypes.func.isRequired,
-  /** String, text of label */
-  label: PropTypes.string.isRequired,
   /** String, value of input */
   value: PropTypes.string.isRequired,
   /** String, text of input */

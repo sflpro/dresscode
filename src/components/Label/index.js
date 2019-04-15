@@ -8,6 +8,8 @@ export function Label({
   text,
   display,
   hasError,
+  disabled,
+  isValid,
   className,
   children,
   ...props
@@ -17,6 +19,8 @@ export function Label({
     [className]: true,
     [styles[display]]: true,
     [styles.error]: hasError,
+    [styles.successWrapper]: isValid,
+    [styles.disabled]: disabled,
   });
 
   return (
@@ -41,6 +45,10 @@ Label.propTypes = {
   display: PropTypes.oneOf(['row', 'col']),
   /** Boolean, whether label must be rendered with error styles */
   hasError: PropTypes.bool,
+  /** Boolean, whether label must be rendered with disabled styles */
+  disabled: PropTypes.bool,
+  /** Boolean, whether label must be rendered with success styles */
+  isValid: PropTypes.bool,
   /** String, className that will be added to label */
   className: PropTypes.string,
   /** String or JSX or Element, content of label */
@@ -51,6 +59,8 @@ Label.defaultProps = {
   text: '',
   display: 'row',
   hasError: false,
+  disabled: false,
+  isValid: false,
   className: '',
   children: null,
 };

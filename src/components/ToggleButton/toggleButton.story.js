@@ -4,37 +4,56 @@ import { storiesOf } from '@storybook/react';
 import { ToggleButton } from '.';
 
 import { ControlsGroup } from '../ControlsGroup';
+import {Label} from "../Label";
 
 storiesOf('Form controls', module)
   .add('Toggle Button', () => (
     <ControlsGroup style={{ width: '324px' }}>
-      <ToggleButton
-        onChange={e => e}
-        label='Այ էս մեկը'
-        name='test 1'
-        value='test1'
-      />
-      <ToggleButton
-        onChange={e => e}
-        label='Համարյա էս մեկը'
-        value='test2'
-        name='test 2'
-        checked
-      />
-      <ToggleButton
-        onChange={e => e}
-        label='էս մեկը չես կարա'
-        value='test3'
-        name='tes3'
+      <Label
+        display='col'
+      >
+        Այ էս մեկը
+        <ToggleButton
+          onChange={e => e}
+          name='test 1'
+          value='test1'
+        />
+      </Label>
+      <Label
+        display='col'
+      >
+        Համարյա էս մեկը
+        <ToggleButton
+          onChange={e => e}
+          value='test2'
+          name='test 2'
+          checked
+        />
+      </Label>
+      <Label
+        display='col'
         disabled
-      />
-      <ToggleButton
-        onChange={e => e}
-        label='էս մեկն էլ'
-        value='test4'
-        name='test4'
+      >
+        էս մեկը չես կարա
+        <ToggleButton
+          onChange={e => e}
+          value='test3'
+          name='tes3'
+          disabled
+        />
+      </Label>
+      <Label
+        display='col'
         disabled
-        checked
-      />
+      >
+        էս մեկն էլ
+        <ToggleButton
+          onChange={e => e}
+          value='test4'
+          name='test4'
+          disabled
+          checked
+        />
+      </Label>
     </ControlsGroup>
   ));
