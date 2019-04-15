@@ -1,15 +1,21 @@
-import { DEFAULT_YEARS_COUNT } from './constants';
+import { DEFAULT_YEARS_COUNT, MONTHS } from './constants';
 
 export const getYearsRange = (
   selectedYear,
-  yearsCount = DEFAULT_YEARS_COUNT
+  yearsCount = DEFAULT_YEARS_COUNT,
 ) => {
   const currentYear = new Date().getFullYear();
-  const rest = (currentYear - selectedYear) % yearsCount;
-  const order = Math.ceil((currentYear - selectedYear) / yearsCount);
-  const index = rest > 0 ? order : order + 1;
+  let diff;
+  if (selectedYear > currentYear) {
+    diff = currentYear - yearsCount - selectedYear;
+  } else {
+    diff = currentYear - selectedYear;
+  }
 
-  return Array(yearsCount).fill(0).map((e, i) => i + 1 + currentYear - yearsCount * index);
+  const order = Math.floor(Math.abs(diff) / yearsCount);
+  const sign = currentYear - selectedYear >= 0 ? 1 : -1;
+
+  return Array(yearsCount).fill(0).map((e, i) => i + 1 + (currentYear - yearsCount) - sign * order * yearsCount);
 };
 
 export const formatMonthTitle = ({
