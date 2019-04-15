@@ -7,7 +7,6 @@
   align-items: center;
   min-width: 200px;
   box-sizing: border-box;
-  margin-top: 8px;
 }
 
 .inputWrapper:hover(:not(.input:focus-within)) {
@@ -96,4 +95,8 @@
   color: var(--error-color);
   margin-top: 8px;
   font-size: 0.8em;
+}
+
+.label {
+  margin-bottom: 8px;
 }

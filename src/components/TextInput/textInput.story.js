@@ -11,6 +11,8 @@ import { ItemGroup } from '../../helpers/ItemGroup';
 import { ItemRow } from '../../helpers/ItemRow';
 import { Item } from '../../helpers/Item';
 
+import styles from './textInput.css';
+
 storiesOf('Form controls', module)
   .add('Text Input', () => {
     const store = new Store({
@@ -65,7 +67,7 @@ storiesOf('Form controls', module)
               <ItemRow>
                 <Item>
                   <Label>
-                    Label
+                    <span className={styles.label}>Label</span>
                     <TextInput
                       name='basic'
                       value={state.basic}
@@ -74,9 +76,8 @@ storiesOf('Form controls', module)
                   </Label>
                 </Item>
                 <Item>
-                  <Label
-                    text='Label'
-                  >
+                  <Label>
+                    <span className={styles.label}>Label</span>
                     <TextInput
                       name='default'
                       value={state.default}
@@ -88,7 +89,7 @@ storiesOf('Form controls', module)
               <ItemRow>
                 <Item>
                   <Label>
-                    Label
+                    <span className={styles.label}>Label</span>
                     <TextInput
                       name='placeholder'
                       value={state.placeholder}
@@ -99,7 +100,7 @@ storiesOf('Form controls', module)
                 </Item>
                 <Item>
                   <Label>
-                    Label
+                    <span className={styles.label}>Label</span>
                     <TextInput
                       name='disabled'
                       value={state.disabled}
@@ -116,7 +117,7 @@ storiesOf('Form controls', module)
               <ItemRow>
                 <Item>
                   <Label>
-                    Password
+                    <span className={styles.label}>Password</span>
                     <TextInput
                       name='password'
                       value={state.password}
@@ -133,7 +134,7 @@ storiesOf('Form controls', module)
               <ItemRow>
                 <Item>
                   <Label>
-                    Date picker
+                    <span className={styles.label}>Date picker</span>
                     <DateInput
                       value={state.datePickerValue}
                       onDatePickerChange={handleDatePickerChange}
@@ -143,7 +144,7 @@ storiesOf('Form controls', module)
                 </Item>
                 <Item>
                   <Label>
-                    Month picker
+                    <span className={styles.label}>Month picker</span>
                     <DateInput
                       value={state.monthPickerValue}
                       onDatePickerChange={handleMonthPickerChange}
@@ -161,7 +162,7 @@ storiesOf('Form controls', module)
               <ItemRow>
                 <Item>
                   <Label>
-                    Label
+                    <span className={styles.label}>Label</span>
                     <TextInput
                       name='prefix'
                       value={state.prefix}
@@ -180,7 +181,7 @@ storiesOf('Form controls', module)
                   <Label
                     isValid
                   >
-                    Success
+                    <span className={styles.label}>Success</span>
                     <TextInput
                       name='success'
                       value={state.success}
@@ -199,7 +200,7 @@ storiesOf('Form controls', module)
                   <Label
                     hasError
                   >
-                    Error
+                    <span className={styles.label}>Error</span>
                     <TextInput
                       name='error'
                       value={state.error}

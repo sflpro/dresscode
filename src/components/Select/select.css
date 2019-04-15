@@ -13,7 +13,6 @@
   padding: 0 48px 0 16px;
   position: relative;
   flex-wrap: wrap;
-  margin-top: 8px;
 }
 
 .select:hover {
@@ -131,4 +130,8 @@
   display: block;
   color: var(--text-input-placeholder-color);
   font-size: 0.8em;
+}
+
+.label {
+  margin-bottom: 8px;
 }

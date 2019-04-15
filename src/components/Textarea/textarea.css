@@ -11,7 +11,6 @@
   letter-spacing: normal;
   line-height: 1.5em;
   box-sizing: border-box;
-  margin-top: 8px;
 }
 
 .textarea:focus {
@@ -52,4 +51,8 @@
   color: var(--error-color);
   margin-top: 8px;
   font-size: 0.8em;
+}
+
+.label {
+  margin-bottom: 8px;
 }

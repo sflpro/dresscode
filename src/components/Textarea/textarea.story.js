@@ -9,6 +9,8 @@ import { ItemRow } from '../../helpers/ItemRow';
 import { Item } from '../../helpers/Item';
 import {Label} from "../Label";
 
+import styles from "../TextInput/textInput.css";
+
 storiesOf('Form controls', module)
   .add('Textarea', () => {
     const store = new Store({
@@ -36,7 +38,7 @@ storiesOf('Form controls', module)
             <ItemRow>
               <Item>
                 <Label>
-                  Label
+                  <span className={styles.label}>Label</span>
                   <Textarea
                     name='basic'
                     value={state.basic}
@@ -48,7 +50,7 @@ storiesOf('Form controls', module)
             <ItemRow>
               <Item>
                 <Label>
-                  Label
+                  <span className={styles.label}>Label</span>
                   <Textarea
                     name='placeholder'
                     value={state.placeholder}
@@ -61,7 +63,7 @@ storiesOf('Form controls', module)
             <ItemRow>
               <Item>
                 <Label>
-                  Label
+                  <span className={styles.label}>Label</span>
                   <Textarea
                     name='disabled'
                     value={state.disabled}
@@ -76,7 +78,7 @@ storiesOf('Form controls', module)
                 <Label
                   hasError
                 >
-                  Error
+                  <span className={styles.label}>Error</span>
                   <Textarea
                     name='error'
                     value={state.error}

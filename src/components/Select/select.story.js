@@ -8,6 +8,9 @@ import { ItemGroup } from '../../helpers/ItemGroup';
 import { ItemRow } from '../../helpers/ItemRow';
 import { Item } from '../../helpers/Item';
 import { Option } from '../Option';
+import { Label } from '../Label';
+
+import styles from "../TextInput/textInput.css";
 
 storiesOf('Form controls', module)
   .add('Select', () => {
@@ -42,56 +45,60 @@ storiesOf('Form controls', module)
           >
             <ItemRow>
               <Item>
-                <Select
-                  onChange={handleSelectChange1}
-                  onClick={handleSelectClick1}
-                  value={state.value1}
-                  open={state.isOpen1}
-                  label='Label'
-                >
-                  <Option
-                    value='option1'
-                    name='Option 1'
-                  />
-                  <Option
-                    value='option2'
-                    name='Option 2'
-                  />
-                  <Option
-                    value='option3'
-                    name='Option 3'
-                  />
-                </Select>
+                <Label>
+                  <span className={styles.label}>Label</span>
+                  <Select
+                    onChange={handleSelectChange1}
+                    onClick={handleSelectClick1}
+                    value={state.value1}
+                    open={state.isOpen1}
+                  >
+                    <Option
+                      value='option1'
+                      name='Option 1'
+                    />
+                    <Option
+                      value='option2'
+                      name='Option 2'
+                    />
+                    <Option
+                      value='option3'
+                      name='Option 3'
+                    />
+                  </Select>
+                </Label>
               </Item>
             </ItemRow>
             <ItemRow>
               <Item style={{ width: '375px' }}>
-                <Select
-                  onChange={handleSelectChange2}
-                  onClick={handleSelectClick2}
-                  value={state.value2}
-                  open={state.isOpen2}
-                  placeholder='Տեքստ'
-                  label='Label'
-                  multiple
-                >
-                  <Option
-                    value='option1'
-                    name='Pit 1'
-                  />
-                  <Option
-                    value='option4'
-                    name='Pi Եվ ինձ լսելով՝ Կարող են ասել. «Գժվե՞լ է, ի՜նչ է». «Այո՛, գժվե՜լ եմ, Ինչո՞ւ չգժվել»:'
-                  />
-                  <Option
-                    value='option2'
-                    name='Pita 2'
-                  />
-                  <Option
-                    value='option3'
-                    name='Pitak 3'
-                  />
-                </Select>
+                <Label>
+                  <span className={styles.label}>Label</span>
+                  <Select
+                    onChange={handleSelectChange2}
+                    onClick={handleSelectClick2}
+                    value={state.value2}
+                    open={state.isOpen2}
+                    placeholder='Տեքստ'
+                    multiple
+                  >
+                    <Option
+                      value='option1'
+                      name='Pit 1'
+                    />
+                    <Option
+                      value='option4'
+                      name='Pi Եվ ինձ լսելով՝ Կարող են ասել. «Գժվե՞լ է, ի՜նչ է». «Այո՛, գժվե՜լ եմ, Ինչո՞ւ չգժվել»:'
+                    />
+                    <Option
+                      value='option2'
+                      name='Pita 2'
+                    />
+                    <Option
+                      value='option3'
+                      name='Pitak 3'
+                    />
+                  </Select>
+                </Label>
               </Item>
             </ItemRow>
           </ItemGroup>

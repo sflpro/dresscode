@@ -5,7 +5,6 @@ import classNames from 'classnames';
 import styles from './label.css';
 
 export function Label({
-  text,
   display,
   hasError,
   disabled,
@@ -28,19 +27,12 @@ export function Label({
       className={labelClasses}
       {...props}
     >
-      {text && (
-        <span className={styles.labelText}>
-          {text}
-        </span>
-      )}
       {children}
     </label>
   );
 }
 
 Label.propTypes = {
-  /** String, text of label */
-  text: PropTypes.string,
   /** String, decides if text is next to input or on top of */
   display: PropTypes.oneOf(['row', 'col']),
   /** Boolean, whether label must be rendered with error styles */
@@ -56,7 +48,6 @@ Label.propTypes = {
 };
 
 Label.defaultProps = {
-  text: '',
   display: 'row',
   hasError: false,
   disabled: false,
