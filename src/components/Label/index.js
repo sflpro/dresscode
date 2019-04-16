@@ -18,7 +18,7 @@ export function Label({
     [className]: true,
     [styles[display]]: true,
     [styles.error]: hasError,
-    [styles.successWrapper]: isValid,
+    [styles.success]: isValid,
     [styles.disabled]: disabled,
   });
 

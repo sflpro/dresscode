@@ -2,7 +2,7 @@ import { State, Store } from '@sambego/storybook-state';
 import { storiesOf } from '@storybook/react';
 import React from 'react';
 
-import { InputSlider } from './index';
+import { InputSlider } from '.';
 
 import { Control } from '../Control';
 import { Icon } from '../Icon';

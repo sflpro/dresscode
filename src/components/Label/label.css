@@ -11,10 +11,6 @@
   margin-bottom: 8px;
 }
 
-.groupElements {
-  justify-content: space-between;
-}
-
 .error {
   color: var(--error-color);
 }
@@ -33,6 +29,6 @@
   color: var(--text-disabled-color);
 }
 
-.successWrapper {
+.success {
   color: var(--success-color);
 }

@@ -168,7 +168,7 @@ storiesOf('Form controls', module)
           >
             <Label
               display='col'
-              groupElements
+              style={{ justifyContent: 'space-between' }}
             >
               Արագ
               <ToggleButton
@@ -179,7 +179,7 @@ storiesOf('Form controls', module)
             </Label>
             <Label
               display='col'
-              groupElements
+              style={{ justifyContent: 'space-between' }}
             >
               Որակով
               <ToggleButton
@@ -190,7 +190,7 @@ storiesOf('Form controls', module)
             </Label>
             <Label
               display='col'
-              groupElements
+              style={{ justifyContent: 'space-between' }}
             >
               Արագից տաս անգամ արագ
               <ToggleButton
@@ -201,7 +201,7 @@ storiesOf('Form controls', module)
             </Label>
             <Label
               display='col'
-              groupElements
+              style={{ justifyContent: 'space-between' }}
             >
               2 Դիզայնեռ
               <ToggleButton
@@ -212,7 +212,7 @@ storiesOf('Form controls', module)
             </Label>
             <Label
               display='col'
-              groupElements
+              style={{ justifyContent: 'space-between' }}
             >
               Մի հոգով
               <ToggleButton
@@ -223,7 +223,7 @@ storiesOf('Form controls', module)
             </Label>
             <Label
               display='col'
-              groupElements
+              style={{ justifyContent: 'space-between' }}
             >
               Շաբաթ / Կիրակի
               <ToggleButton
