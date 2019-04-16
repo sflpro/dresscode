@@ -7,9 +7,9 @@ import { TextInput } from '.';
 import { DateInput } from '../DateInput';
 import { Icon } from '../Icon';
 import { Label } from '../Label';
-import { ItemGroup } from '../../helpers/ItemGroup';
-import { ItemRow } from '../../helpers/ItemRow';
-import { Item } from '../../helpers/Item';
+import { ItemGroup } from '../helpers/ItemGroup';
+import { ItemRow } from '../helpers/ItemRow';
+import { Item } from '../helpers/Item';
 
 storiesOf('Form controls', module)
   .add('Text Input', () => {

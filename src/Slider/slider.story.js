@@ -6,9 +6,9 @@ import { Slider } from './index';
 
 import { Control } from '../Control';
 import { Icon } from '../Icon';
-import { ItemGroup } from '../../helpers/ItemGroup';
-import { ItemRow } from '../../helpers/ItemRow';
-import { Item } from '../../helpers/Item';
+import { ItemGroup } from '../helpers/ItemGroup';
+import { ItemRow } from '../helpers/ItemRow';
+import { Item } from '../helpers/Item';
 
 storiesOf('Form controls', module)
   .add('Slider', () => {

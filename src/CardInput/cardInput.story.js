@@ -5,9 +5,9 @@ import { State, Store } from '@sambego/storybook-state';
 import { CardInput } from '.';
 
 import { Label } from '../Label';
-import { ItemGroup } from '../../helpers/ItemGroup';
-import { ItemRow } from '../../helpers/ItemRow';
-import { Item } from '../../helpers/Item';
+import { ItemGroup } from '../helpers/ItemGroup';
+import { ItemRow } from '../helpers/ItemRow';
+import { Item } from '../helpers/Item';
 
 storiesOf('Form controls', module)
   .add('Card Input', () => {

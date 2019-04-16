@@ -3,8 +3,8 @@ import { storiesOf } from '@storybook/react';
 
 import { Icon } from '.';
 
-import { ItemGroup } from '../../helpers/ItemGroup';
-import { Item } from '../../helpers/Item';
+import { ItemGroup } from '../helpers/ItemGroup';
+import { Item } from '../helpers/Item';
 
 storiesOf('Icons', module)
   .add('List', () => (

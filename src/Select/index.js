@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 import { TextInput } from '../TextInput';
-import { isMobile } from '../../utils';
+import { isMobile } from '../utils';
 import { ListItem } from '../ListItem';
 import { List } from '../List';
 import { Icon } from '../Icon';

@@ -8,7 +8,7 @@ import { Icon } from '../Icon';
 import { Popover } from '../Popover';
 import { DatePicker } from '../DatePicker';
 import { TextInput } from '../TextInput';
-import { isMobile } from '../../utils';
+import { isMobile } from '../utils';
 
 import styles from './dateInput.css';
 

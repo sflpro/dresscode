@@ -6,9 +6,9 @@ import { Select } from '.';
 
 import { Option } from '../Option';
 import { Label } from '../Label';
-import { ItemGroup } from '../../helpers/ItemGroup';
-import { ItemRow } from '../../helpers/ItemRow';
-import { Item } from '../../helpers/Item';
+import { ItemGroup } from '../helpers/ItemGroup';
+import { ItemRow } from '../helpers/ItemRow';
+import { Item } from '../helpers/Item';
 
 storiesOf('Form controls', module)
   .add('Select', () => {
