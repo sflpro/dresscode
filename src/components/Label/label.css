@@ -23,3 +23,12 @@
 .row {
   flex-flow: column nowrap;
 }
+
+.disabled,
+.disabled:hover {
+  color: var(--text-disabled-color);
+}
+
+.success {
+  color: var(--success-color);
+}

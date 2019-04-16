@@ -5,7 +5,6 @@ import classNames from 'classnames';
 import { TextInput } from '../TextInput';
 import { isMobile } from '../../utils';
 import { ListItem } from '../ListItem';
-import { Label } from '../Label';
 import { List } from '../List';
 import { Icon } from '../Icon';
 import { Tag } from '../Tag';
@@ -222,7 +221,6 @@ export class Select extends React.Component {
       multiple,
       open,
       value,
-      label,
       name,
       onClick,
       onChange,
@@ -256,7 +254,11 @@ export class Select extends React.Component {
 
     return (
       <div className={styles.wrapper}>
-        <Label text={label} className={labelClasses} onClick={this.onClick}>
+        <div
+          className={labelClasses}
+          role='presentation'
+          onClick={this.onClick}
+        >
           <div className={styles.nativeSelectWrapper}>
             <select
               onChange={this.handleNativeChange}
@@ -298,7 +300,7 @@ export class Select extends React.Component {
               </div>
             </React.Fragment>
           )}
-        </Label>
+        </div>
         {open && (
           <div
             className={styles.overlay}
@@ -324,8 +326,6 @@ Select.propTypes = {
   multiple: PropTypes.bool,
   /** Boolean, whether options are shown */
   open: PropTypes.bool,
-  /** String, label of select */
-  label: PropTypes.string,
   /** Elements, content of select tag */
   children: PropTypes.any,
   /** String, name of select */
@@ -339,7 +339,6 @@ Select.defaultProps = {
   placeholder: '',
   multiple: false,
   open: false,
-  label: '',
   children: null,
   name: '',
 };

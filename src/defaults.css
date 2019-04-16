@@ -28,6 +28,8 @@
   --text-warning-color: var(--error-color);
   --text-warning-color-dark: var(--error-color-dark);
 
+  --input-margin-top: 8px;
+
   --base-font-weight: normal;
   --base-font-family: Montserratarm;
   --base-font-size: 1em;

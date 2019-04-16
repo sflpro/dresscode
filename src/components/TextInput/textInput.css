@@ -7,6 +7,7 @@
   align-items: center;
   min-width: 200px;
   box-sizing: border-box;
+  margin-top: var(--input-margin-top);
 }
 
 .inputWrapper:hover(:not(.input:focus-within)) {

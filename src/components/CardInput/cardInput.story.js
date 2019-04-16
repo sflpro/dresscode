@@ -2,11 +2,12 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { State, Store } from '@sambego/storybook-state';
 
+import { CardInput } from '.';
+
+import { Label } from '../Label';
 import { ItemGroup } from '../../helpers/ItemGroup';
 import { ItemRow } from '../../helpers/ItemRow';
 import { Item } from '../../helpers/Item';
-import { Label } from '../Label';
-import { CardInput } from '.';
 
 storiesOf('Form controls', module)
   .add('Card Input', () => {
@@ -36,9 +37,8 @@ storiesOf('Form controls', module)
           >
             <ItemRow>
               <Item>
-                <Label
-                  text='Empty'
-                >
+                <Label>
+                  Empty
                   <CardInput
                     onChange={handleInputChange}
                     value={state.empty}
@@ -49,9 +49,8 @@ storiesOf('Form controls', module)
             </ItemRow>
             <ItemRow>
               <Item>
-                <Label
-                  text='Not Detected'
-                >
+                <Label>
+                  Not Detected
                   <CardInput
                     onChange={handleInputChange}
                     value={state.notDetected}
@@ -62,9 +61,8 @@ storiesOf('Form controls', module)
             </ItemRow>
             <ItemRow>
               <Item>
-                <Label
-                  text='Visa'
-                >
+                <Label>
+                  Visa
                   <CardInput
                     onChange={handleInputChange}
                     value={state.visa}
@@ -75,9 +73,8 @@ storiesOf('Form controls', module)
             </ItemRow>
             <ItemRow>
               <Item>
-                <Label
-                  text='MasterCard'
-                >
+                <Label>
+                  MasterCard
                   <CardInput
                     onChange={handleInputChange}
                     value={state.masterCard}

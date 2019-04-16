@@ -3,8 +3,6 @@ import PropTypes from 'prop-types';
 
 import { TextInput } from '../TextInput';
 
-import styles from './cardInput.css';
-
 import masterCard from './icons/master.svg';
 import empty from './icons/empty.svg';
 import visa from './icons/visa.svg';
@@ -33,27 +31,6 @@ export class CardInput extends React.Component {
 
     return value;
   }
-
-  static propTypes = {
-    /** Function, will be called when input is focused and any key pressed */
-    onKeyPress: PropTypes.func,
-    /** Function, will be called when input is focused and any key pressed down */
-    onKeyDown: PropTypes.func,
-    /** Function, will be called when input value changed */
-    onChange: PropTypes.func,
-    /** String, value of input */
-    value: PropTypes.string,
-    /** String, name of input */
-    name: PropTypes.string,
-  };
-
-  static defaultProps = {
-    onKeyPress: undefined,
-    onKeyDown: undefined,
-    onChange: undefined,
-    value: '',
-    name: '',
-  };
 
   constructor(props) {
     super(props);
@@ -183,22 +160,42 @@ export class CardInput extends React.Component {
     const { cardType, value } = this.state;
 
     return (
-      <div className={styles.wrapper}>
-        <TextInput
-          {...this.props}
-          placeholder='____ ____ ____ ____'
-          onKeyPress={this.onKeyPress}
-          onKeyDown={this.onKeyDown}
-          setRef={this.setInputRef}
-          onChange={this.onChange}
-          value={value}
-        />
-        <img
-          src={cardTypes[cardType]}
-          className={styles.icon}
-          alt='card-icon'
-        />
-      </div>
+      <TextInput
+        {...this.props}
+        placeholder='____ ____ ____ ____'
+        onKeyPress={this.onKeyPress}
+        onKeyDown={this.onKeyDown}
+        setRef={this.setInputRef}
+        onChange={this.onChange}
+        icon={(
+          <img
+            src={cardTypes[cardType]}
+            alt='card-icon'
+          />
+        )}
+        value={value}
+      />
     );
   }
 }
+
+CardInput.propTypes = {
+  /** Function, will be called when input is focused and any key pressed */
+  onKeyPress: PropTypes.func,
+  /** Function, will be called when input is focused and any key pressed down */
+  onKeyDown: PropTypes.func,
+  /** Function, will be called when input value changed */
+  onChange: PropTypes.func,
+  /** String, value of input */
+  value: PropTypes.string,
+  /** String, name of input */
+  name: PropTypes.string,
+};
+
+CardInput.defaultProps = {
+  onKeyPress: undefined,
+  onKeyDown: undefined,
+  onChange: undefined,
+  value: '',
+  name: '',
+};

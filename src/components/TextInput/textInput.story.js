@@ -64,9 +64,8 @@ storiesOf('Form controls', module)
             >
               <ItemRow>
                 <Item>
-                  <Label
-                    text='Label'
-                  >
+                  <Label>
+                    Label
                     <TextInput
                       name='basic'
                       value={state.basic}
@@ -75,9 +74,8 @@ storiesOf('Form controls', module)
                   </Label>
                 </Item>
                 <Item>
-                  <Label
-                    text='Label'
-                  >
+                  <Label>
+                    Label
                     <TextInput
                       name='default'
                       value={state.default}
@@ -88,9 +86,8 @@ storiesOf('Form controls', module)
               </ItemRow>
               <ItemRow>
                 <Item>
-                  <Label
-                    text='Label'
-                  >
+                  <Label>
+                    Label
                     <TextInput
                       name='placeholder'
                       value={state.placeholder}
@@ -100,9 +97,8 @@ storiesOf('Form controls', module)
                   </Label>
                 </Item>
                 <Item>
-                  <Label
-                    text='Label'
-                  >
+                  <Label>
+                    Label
                     <TextInput
                       name='disabled'
                       value={state.disabled}
@@ -118,9 +114,8 @@ storiesOf('Form controls', module)
             >
               <ItemRow>
                 <Item>
-                  <Label
-                    text='Password'
-                  >
+                  <Label>
+                    Password
                     <TextInput
                       name='password'
                       value={state.password}
@@ -136,9 +131,8 @@ storiesOf('Form controls', module)
             >
               <ItemRow>
                 <Item>
-                  <Label
-                    text='Date picker'
-                  >
+                  <Label>
+                    Date picker
                     <DateInput
                       value={state.datePickerValue}
                       onDatePickerChange={handleDatePickerChange}
@@ -147,9 +141,8 @@ storiesOf('Form controls', module)
                   </Label>
                 </Item>
                 <Item>
-                  <Label
-                    text='Month picker'
-                  >
+                  <Label>
+                    Month picker
                     <DateInput
                       value={state.monthPickerValue}
                       onDatePickerChange={handleMonthPickerChange}
@@ -166,9 +159,8 @@ storiesOf('Form controls', module)
             >
               <ItemRow>
                 <Item>
-                  <Label
-                    text='Label'
-                  >
+                  <Label>
+                    Label
                     <TextInput
                       name='prefix'
                       value={state.prefix}
@@ -185,8 +177,9 @@ storiesOf('Form controls', module)
               <ItemRow>
                 <Item>
                   <Label
-                    text='Success'
+                    isValid
                   >
+                    Success
                     <TextInput
                       name='success'
                       value={state.success}
@@ -203,9 +196,9 @@ storiesOf('Form controls', module)
                 </Item>
                 <Item>
                   <Label
-                    text='Error'
                     hasError
                   >
+                    Error
                     <TextInput
                       name='error'
                       value={state.error}

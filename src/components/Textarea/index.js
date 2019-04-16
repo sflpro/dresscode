@@ -2,8 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-import { Label } from '../Label';
-
 import styles from './textarea.css';
 
 export function Textarea({
@@ -11,7 +9,6 @@ export function Textarea({
   placeholder,
   disabled,
   className,
-  label,
   rows,
   cols,
   isValid,
@@ -30,10 +27,7 @@ export function Textarea({
   });
 
   return (
-    <Label
-      text={label}
-      hasError={hasError}
-    >
+    <React.Fragment>
       <textarea
         rows={rows}
         cols={cols}
@@ -50,7 +44,7 @@ export function Textarea({
           {error}
         </div>
       )}
-    </Label>
+    </React.Fragment>
   );
 }
 
@@ -59,8 +53,6 @@ Textarea.propTypes = {
   value: PropTypes.string,
   /** Boolean, whether textarea is disabled */
   disabled: PropTypes.bool,
-  /** String, label of textarea */
-  label: PropTypes.string,
   /** Number, rows of textarea */
   rows: PropTypes.number,
   /** Number, cols of textarea */
@@ -86,9 +78,8 @@ Textarea.defaultProps = {
   placeholder: '',
   disabled: false,
   className: '',
-  label: '',
-  rows: '3',
-  cols: '40',
+  rows: 3,
+  cols: 40,
   isValid: false,
   hasError: false,
   error: '',

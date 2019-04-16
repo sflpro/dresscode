@@ -5,6 +5,7 @@ import { storiesOf } from '@storybook/react';
 import { ControlsGroup } from '.';
 
 import { Checkbox } from '../Checkbox';
+import { Label } from '../Label';
 import { ItemGroup } from '../../helpers/ItemGroup';
 import { Item } from '../../helpers/Item';
 import { RadioButton } from '../RadioButton';
@@ -40,24 +41,39 @@ storiesOf('Form controls', module)
                 title='Կուզենայիր աշխատեիր շաբաթ և կիրակի էս Սիսթեմի վրա'
                 key='key'
               >
-                <Checkbox
-                  label='Այո'
-                  checked={state.first}
-                  name='first'
-                  onChange={handler}
-                />
-                <Checkbox
-                  label='Ոչ'
-                  checked={state.second}
-                  name='second'
-                  onChange={handler}
-                />
-                <Checkbox
-                  label='Ճարս Ի՞նչ'
-                  checked={state.third}
-                  name='third'
-                  onChange={handler}
-                />
+                <Label
+                  display='col'
+                >
+                  <Checkbox
+                    checked={state.first}
+                    name='first'
+                    value='Այո'
+                    onChange={handler}
+                  />
+                  Այո
+                </Label>
+                <Label
+                  display='col'
+                >
+                  <Checkbox
+                    checked={state.second}
+                    name='second'
+                    value='Ոչ'
+                    onChange={handler}
+                  />
+                  Ոչ
+                </Label>
+                <Label
+                  display='col'
+                >
+                  <Checkbox
+                    checked={state.third}
+                    name='third'
+                    value='Ճարս Ի՞նչ'
+                    onChange={handler}
+                  />
+                  Ճարս Ի՞նչ
+                </Label>
               </ControlsGroup>
             </Item>
           </ItemGroup>,
@@ -83,27 +99,39 @@ storiesOf('Form controls', module)
             title='Ո՞րն է տվյալ պնդումներից ճիշտ'
             key='key'
           >
-            <RadioButton
-              checked={state.value === 'value1'}
-              label='Ո՞վ աշխատի, նա կուտի'
-              onChange={handler}
-              name='value 1'
-              value='value1'
-            />
-            <RadioButton
-              checked={state.value === 'value2'}
-              label='Էշ մի սատկի գարուն կգա'
-              onChange={handler}
-              value='value2'
-              name='tes3'
-            />
-            <RadioButton
-              label='Մեկ Դիզայնեռը անգամ շատա 10 պրոեկտ համար'
-              checked={state.value === 'value3'}
-              onChange={handler}
-              value='value3'
-              name='tes3'
-            />
+            <Label
+              display='col'
+            >
+              <RadioButton
+                checked={state.value === 'value1'}
+                onChange={handler}
+                name='value 1'
+                value='value1'
+              />
+              Ո՞վ աշխատի, նա կուտի
+            </Label>
+            <Label
+              display='col'
+            >
+              <RadioButton
+                checked={state.value === 'value2'}
+                onChange={handler}
+                value='value2'
+                name='tes3'
+              />
+              Էշ մի սատկի գարուն կգա
+            </Label>
+            <Label
+              display='col'
+            >
+              <RadioButton
+                checked={state.value === 'value3'}
+                onChange={handler}
+                value='value3'
+                name='tes3'
+              />
+              Մեկ Դիզայնեռը անգամ շատա 10 պրոեկտ համար
+            </Label>
           </ControlsGroup>,
         ]}
       </State>
@@ -138,42 +166,72 @@ storiesOf('Form controls', module)
             style={{ width: '324px' }}
             key='key'
           >
-            <ToggleButton
-              checked={state.first}
-              onChange={handler}
-              label='Արագ'
-              name='first'
-            />
-            <ToggleButton
-              checked={state.second}
-              onChange={handler}
-              label='Որակով'
-              name='second'
-            />
-            <ToggleButton
-              label='Արագից տաս անգամ արագ'
-              checked={state.third}
-              onChange={handler}
-              name='third'
-            />
-            <ToggleButton
-              checked={state.fourth}
-              onChange={handler}
-              label='2 Դիզայնեռ'
-              name='fourth'
-            />
-            <ToggleButton
-              checked={state.fifth}
-              onChange={handler}
-              label='Մի հոգով'
-              name='fifth'
-            />
-            <ToggleButton
-              checked={state.sixth}
-              label='Շաբաթ / Կիրակի'
-              onChange={handler}
-              name='sixth'
-            />
+            <Label
+              display='col'
+              style={{ justifyContent: 'space-between' }}
+            >
+              Արագ
+              <ToggleButton
+                checked={state.first}
+                onChange={handler}
+                name='first'
+              />
+            </Label>
+            <Label
+              display='col'
+              style={{ justifyContent: 'space-between' }}
+            >
+              Որակով
+              <ToggleButton
+                checked={state.second}
+                onChange={handler}
+                name='second'
+              />
+            </Label>
+            <Label
+              display='col'
+              style={{ justifyContent: 'space-between' }}
+            >
+              Արագից տաս անգամ արագ
+              <ToggleButton
+                checked={state.third}
+                onChange={handler}
+                name='third'
+              />
+            </Label>
+            <Label
+              display='col'
+              style={{ justifyContent: 'space-between' }}
+            >
+              2 Դիզայնեռ
+              <ToggleButton
+                checked={state.fourth}
+                onChange={handler}
+                name='fourth'
+              />
+            </Label>
+            <Label
+              display='col'
+              style={{ justifyContent: 'space-between' }}
+            >
+              Մի հոգով
+              <ToggleButton
+                checked={state.fifth}
+                onChange={handler}
+                name='fifth'
+              />
+            </Label>
+            <Label
+              display='col'
+              style={{ justifyContent: 'space-between' }}
+            >
+              Շաբաթ / Կիրակի
+              <ToggleButton
+                checked={state.sixth}
+                onChange={handler}
+                name='sixth'
+              />
+            </Label>
           </ControlsGroup>,
         ]}
       </State>
