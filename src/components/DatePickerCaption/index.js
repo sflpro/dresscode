@@ -30,7 +30,16 @@ export function DatePickerCaption({
 }
 
 DatePickerCaption.propTypes = {
+  /** String, className that will be added to div that is wrapping content */
   className: PropTypes.string,
+  /** Object, styles that will be added to div that is wrapping content */
   style: PropTypes.object,
+  /** String or JSX or Element, content of caption */
   children: PropTypes.any,
+};
+
+DatePickerCaption.defaultProps = {
+  className: '',
+  style: {},
+  children: null,
 };

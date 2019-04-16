@@ -37,9 +37,13 @@ const TooltipContent = ({
 };
 
 TooltipContent.propTypes = {
+  /** String, JSX or Element, content of tooltip */
   description: PropTypes.any.isRequired,
+  /** String, title of tooltip */
   title: PropTypes.string,
+  /** String, className that will be added to wrapper div */
   className: PropTypes.string,
+  /** Object, styles that will be added to wrapper div */
   style: PropTypes.object,
 };
 
@@ -94,15 +98,25 @@ export class Tooltip extends React.Component {
 }
 
 Tooltip.propTypes = {
+  /** String, JSX or Element, content of tooltip */
   description: PropTypes.any.isRequired,
+  /** String, title of tooltip */
   title: PropTypes.string,
-  follow: PropTypes.bool,
-  arrow: PropTypes.bool,
-  trigger: PropTypes.string,
-  position: PropTypes.oneOf(['top', 'bottom']),
-  gap: PropTypes.number,
+  /** String, className that will be added to wrapper div */
   className: PropTypes.string,
+  /** Object, styles that will be added to wrapper div */
   style: PropTypes.object,
+  /** Boolean, whether tooltip must move with mouse */
+  follow: PropTypes.bool,
+  /** Boolean, whether tooltip has arrow */
+  arrow: PropTypes.bool,
+  /** String, which action triggers tooltip to be shown */
+  trigger: PropTypes.string,
+  /** String, where tooltip must be shown */
+  position: PropTypes.oneOf(['top', 'bottom']),
+  /** Number, distance between arrow(popover) and target */
+  gap: PropTypes.number,
+  /** JSX or Element, target */
   children: PropTypes.any,
 };
 

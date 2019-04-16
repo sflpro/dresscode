@@ -23,8 +23,11 @@ export function ControlsGroup({
 }
 
 ControlsGroup.propTypes = {
+  /** String, title of group */
   title: PropTypes.string,
+  /** Object, style that will be passed to wrapper div */
   style: PropTypes.any,
+  /** String or JSX or Element, content of group */
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.element),
     PropTypes.element,

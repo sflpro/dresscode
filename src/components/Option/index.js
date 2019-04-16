@@ -20,7 +20,9 @@ export function Option({
 }
 
 Option.propTypes = {
+  /** String, value of option */
   value: PropTypes.string,
+  /** String, name of option */
   name: PropTypes.string,
 };
 

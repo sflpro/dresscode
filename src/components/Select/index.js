@@ -312,14 +312,23 @@ export class Select extends React.Component {
 }
 
 Select.propTypes = {
+  /** String or array, value of select */
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
+  /** Function, called when select value is changed */
   onChange: PropTypes.func,
+  /** Function, called when select is clicked or options are closed, input is focused and key is pressed */
   onClick: PropTypes.func,
+  /** String, placeholder of search input or value if value is empty */
   placeholder: PropTypes.string,
+  /** Boolean, whether multiple options can be selected */
   multiple: PropTypes.bool,
+  /** Boolean, whether options are shown */
   open: PropTypes.bool,
+  /** String, label of select */
   label: PropTypes.string,
+  /** Elements, content of select tag */
   children: PropTypes.any,
+  /** String, name of select */
   name: PropTypes.string,
 };
 

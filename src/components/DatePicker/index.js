@@ -5,10 +5,11 @@ import DayPicker from 'react-day-picker';
 
 import { DEFAULT_YEARS_COUNT, VIEW_TYPES, MONTHS_SHORT, MONTHS, getYearsRange } from './constants';
 
-import { MonthPicker } from '../MonthPicker';
-import { YearPicker } from '../YearPicker';
 import { DatePickerCaption } from '../DatePickerCaption';
 import { DatePickerNavbar } from '../DatePickerNavbar';
+import { WEEKDAYS_SHORT } from './locale-example';
+import { MonthPicker } from '../MonthPicker';
+import { YearPicker } from '../YearPicker';
 
 import 'style-loader!css-loader?modules=false!react-day-picker/lib/style.css';
 import styles from './datePicker.css';
@@ -29,11 +30,17 @@ const formatMonthTitle = ({
 };
 
 MonthPicker.propTypes = {
+  /** Instance of Date, value of month picker */
   selectedDay: PropTypes.instanceOf(Date),
+  /** String or JSX or Element, caption element */
   captionElement: PropTypes.any,
+  /** String or JSX or Element, navbar element */
   navbarElement: PropTypes.any,
+  /** Array of strings, short names of months in right order */
   monthsShort: PropTypes.array,
+  /** Function, will be called when month is selected */
   onMonthClick: PropTypes.func,
+  /** Object, styles that will be added to month picker */
   style: PropTypes.object,
 };
 
@@ -44,7 +51,7 @@ export class DatePicker extends React.Component {
     const { value } = this.props;
 
     this.year = value.getFullYear();
-  
+
     this.state = {
       view: VIEW_TYPES.DAY,
       year: this.year,
@@ -230,8 +237,11 @@ export class DatePicker extends React.Component {
 }
 
 DatePicker.propTypes = {
+  /** Instance of Date, value of date picker */
   value: PropTypes.instanceOf(Date).isRequired,
+  /** String, language of date picker */
   locale: PropTypes.string,
+  /** Object, utils to format date value for given language */
   localeUtils: PropTypes.shape({
     formatDay: PropTypes.func.isRequired,
     formatMonthTitle: PropTypes.func.isRequired,
@@ -239,12 +249,19 @@ DatePicker.propTypes = {
     formatWeekdayShort: PropTypes.func.isRequired,
     getFirstDayOfWeek: PropTypes.func.isRequired,
   }),
+  /** Array of strings, months names */
   months: PropTypes.array,
+  /** Array of strings, weekdays short names */
   weekdaysShort: PropTypes.array,
+  /** Array of strings, months short names */
   monthsShort: PropTypes.array,
+  /** Boolean, show days that are not from previous and next months */
   showOutsideDays: PropTypes.bool,
+  /** Function, will be called when date picker value is changed */
   onChange: PropTypes.func,
+  /** String, className that will be added to wrapper div element */
   className: PropTypes.string,
+  /** Object, styles that will be added to date picker */
   style: PropTypes.object,
 };
 
@@ -253,6 +270,7 @@ DatePicker.defaultProps = {
   localeUtils: null,
   months: MONTHS,
   monthsShort: MONTHS_SHORT,
+  weekdaysShort: WEEKDAYS_SHORT,
   showOutsideDays: false,
   onChange: null,
   className: '',

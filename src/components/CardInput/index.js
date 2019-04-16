@@ -5,10 +5,10 @@ import { TextInput } from '../TextInput';
 
 import styles from './cardInput.css';
 
-import masterCard from './master.svg';
-import empty from './empty.svg';
-import visa from './visa.svg';
-import arca from './arca.svg';
+import masterCard from './icons/master.svg';
+import empty from './icons/empty.svg';
+import visa from './icons/visa.svg';
+import arca from './icons/arca.svg';
 
 const cardTypes = {
   masterCard,
@@ -35,10 +35,15 @@ export class CardInput extends React.Component {
   }
 
   static propTypes = {
+    /** Function, will be called when input is focused and any key pressed */
     onKeyPress: PropTypes.func,
+    /** Function, will be called when input is focused and any key pressed down */
     onKeyDown: PropTypes.func,
+    /** Function, will be called when input value changed */
     onChange: PropTypes.func,
+    /** String, value of input */
     value: PropTypes.string,
+    /** String, name of input */
     name: PropTypes.string,
   };
 

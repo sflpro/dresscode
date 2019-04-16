@@ -54,10 +54,15 @@ export function Checkbox({
 }
 
 Checkbox.propTypes = {
+  /** Function, will be called when checkbox value changed */
   onChange: PropTypes.func.isRequired,
+  /** String, label of checkbox */
   label: PropTypes.string.isRequired,
+  /** String, name of checkbox */
   name: PropTypes.string,
+  /** Boolean, describe whether checkbox is disabled */
   disabled: PropTypes.bool,
+  /** Boolean, describe whether checkbox is checked */
   checked: PropTypes.bool,
 };
 

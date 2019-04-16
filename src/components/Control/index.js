@@ -188,13 +188,21 @@ export class Control extends React.Component {
 }
 
 Control.propTypes = {
+  /** Number, value of control */
   value: PropTypes.number.isRequired,
+  /** String, name of control */
   name: PropTypes.string.isRequired,
+  /** String or JSX or Element, icon element */
   icon: PropTypes.any.isRequired,
+  /** String, classname that will be passed to wrapper span element */
   className: PropTypes.string,
+  /** Function, will be called when control is held and started to move */
   onDragStart: PropTypes.func,
+  /** Function, will be called when control is stopped moving and is not held */
   onDragEnd: PropTypes.func,
+  /** Number, min value of control if not passed will get from Slider Component */
   min: PropTypes.number,
+  /** Number, max value of control if not passed will get from Slider Component */
   max: PropTypes.number,
 };
 

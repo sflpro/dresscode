@@ -36,10 +36,11 @@ export function DatePickerNavbar({
       />
     </div>
   );
-};
+}
 
 DatePickerNavbar.propTypes = {
-  onPreviousClick: PropTypes.func,
-  onNextClick: PropTypes.func,
+  /** Function, will be called when clicked on "previous" icon */
+  onPreviousClick: PropTypes.func.isRequired,
+  /** Function, will be called when clicked on "next" icon */
+  onNextClick: PropTypes.func.isRequired,
 };
-

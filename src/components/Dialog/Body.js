@@ -24,7 +24,9 @@ export const Body = ({
 };
 
 Body.propTypes = {
+  /** String, className that will be added to wrapper div */
   className: PropTypes.string,
+  /** String or JSX or Element, content of body */
   children: PropTypes.any,
 };
 

@@ -20,7 +20,6 @@ export function TextInput({
   onChange,
   style,
   setRef,
-  children,
   ...props
 }) {
   const inputWrapperClasses = classNames({
@@ -67,22 +66,36 @@ export function TextInput({
 }
 
 TextInput.propTypes = {
+  /** String, value of textarea */
   value: PropTypes.string,
+  /** Boolean, whether textarea is disabled */
   disabled: PropTypes.bool,
+  /** Boolean, whether input is readOnly */
   readOnly: PropTypes.bool,
+  /** String, className that will be added to wrapper div */
   className: PropTypes.string,
+  /** Object, styles that will be added to wrapper div */
   style: PropTypes.object,
+  /** String, JSX or Element, icon that will be shown on input */
   icon: PropTypes.any,
+  /** String, string that will be added at start of input */
   prefix: PropTypes.string,
+  /** Boolean, whether value of textarea is valid */
   isValid: PropTypes.bool,
+  /** Boolean, whether value of textarea has error */
   hasError: PropTypes.bool,
+  /** String, error message that will be shown if textarea has error */
   error: PropTypes.string,
+  /** String, type of input */
   type: PropTypes.string,
+  /** String, placeholder of input */
   placeholder: PropTypes.string,
+  /** String, name of input */
   name: PropTypes.string,
+  /** Function, will be called when input value will be changed */
   onChange: PropTypes.func,
+  /** Function, will add ref to input */
   setRef: PropTypes.func,
-  children: PropTypes.any,
 };
 
 TextInput.defaultProps = {
@@ -101,5 +114,4 @@ TextInput.defaultProps = {
   onChange: undefined,
   style: {},
   setRef: undefined,
-  children: null,
 };

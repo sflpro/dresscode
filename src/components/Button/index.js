@@ -16,6 +16,7 @@ export function Button({
   className,
   style,
   children,
+  onClick,
   ...props
 }) {
   const buttonClasses = classNames({
@@ -32,7 +33,9 @@ export function Button({
       className={buttonClasses}
       type={type}
       style={style}
+      disabled={disabled}
       {...props}
+      onClick={disabled ? undefined : onClick}
     >
       {children}
     </Component>
@@ -40,24 +43,36 @@ export function Button({
 }
 
 Button.propTypes = {
+  /** String, decide how button will be represented, can be 'button', 'link' or 'circle' */
   variant: PropTypes.oneOf([
     'button',
     'link',
     'circle',
   ]),
+  /** String, type of button */
   type: PropTypes.string,
+  /** String or function, valid html element or React component that will be used to create this element */
   as: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.func,
   ]),
+  /** Boolean, indicating whether the element should render as disabled */
   disabled: PropTypes.bool,
+  /** Boolean, indicating whether the element should render with primary color */
   primary: PropTypes.bool,
+  /** Boolean, indicating whether the element should render with secondary color */
   secondary: PropTypes.bool,
+  /** Boolean, indicating whether the element should render with neutral color */
   neutral: PropTypes.bool,
+  /** Boolean, indicating whether the element should render with warning color */
   warning: PropTypes.bool,
+  /** Function, will be called when element is clicked */
   onClick: PropTypes.func,
+  /** String, className that will be added to element */
   className: PropTypes.string,
+  /** Object, styles that will be added to element */
   style: PropTypes.object,
+  /** String or JSX or Element, content of element */
   children: PropTypes.any,
 };
 
