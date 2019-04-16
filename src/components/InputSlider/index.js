@@ -215,15 +215,25 @@ export class InputSlider extends React.Component {
 }
 
 InputSlider.propTypes = {
+  /** Function, will be called when value of input is changed */
   onChange: PropTypes.func.isRequired,
+  /** Object, props that will be passed to input */
   inputProps: PropTypes.object,
+  /** String, character that will separate range input values */
   separator: PropTypes.string,
+  /** String, className that will be added to wrapper div */
   className: PropTypes.string,
+  /** Number, min difference of range input values */
   distance: PropTypes.number,
+  /** Object, styles that will be added to wrapper div */
   style: PropTypes.object,
+  /** Number, amount of change per step */
   step: PropTypes.number,
+  /** Number, min value of input */
   min: PropTypes.number,
+  /** Number, max value of input */
   max: PropTypes.number,
+  /** Control element(s), controls that will be added to slider */
   children: PropTypes.any,
 };
 

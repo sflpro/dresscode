@@ -47,11 +47,17 @@ export function ToggleButton({
 }
 
 ToggleButton.propTypes = {
+  /** Function, will be called when toggle value will be changed */
   onChange: PropTypes.func.isRequired,
+  /** String, label of toggle button */
   label: PropTypes.string.isRequired,
+  /** String, name of toggle button */
   name: PropTypes.string.isRequired,
+  /** Boolean, whether toggle is disabled */
   disabled: PropTypes.bool,
+  /** Boolean, whether toggle is on */
   checked: PropTypes.bool,
+  /** String, className that will be added to wrapper div */
   className: PropTypes.string,
 };
 

@@ -144,7 +144,7 @@ export class Popover extends React.Component {
   };
 
   computeVerticalPosition = (targetElementPosition, popoverElementPosition) => {
-    const { follow, gap = 0, position = 'bottom' } = this.props;
+    const { follow, gap, position } = this.props;
     let arrowHeight = 0;
 
     if (this.arrowRef.current) {
@@ -341,6 +341,7 @@ export class Popover extends React.Component {
         className={popoverStyles}
         onClick={this.handlePopoverClick}
         role='presentation'
+        style={style}
         {...props}
       >
         <div
@@ -376,17 +377,29 @@ export class Popover extends React.Component {
 }
 
 Popover.propTypes = {
+  /** Function, will be called when mouse leave from target element and if clicked outside */
   onTargetEvent: PropTypes.func.isRequired,
-  content: PropTypes.object.isRequired,
+  /** String or JSX or Element, content of popover */
+  content: PropTypes.any.isRequired,
+  /** String, position of popover related to target */
   position: PropTypes.oneOf(['top', 'bottom']),
+  /** Boolean, whether popover has arrow */
   arrow: PropTypes.bool,
+  /** Boolean, whether popover must move with mouse */
   follow: PropTypes.bool,
+  /** Number, distance between arrow(popover) and target */
   gap: PropTypes.number,
+  /** Boolean, popover is opened from left of target if this prop is true else from center */
   contentRelative: PropTypes.bool,
+  /** Boolean, whether popover must be displayed */
   open: PropTypes.bool,
+  /** String, what action triggers popover to be displayed(click or hover) */
   trigger: PropTypes.oneOf(Object.values(POPOVER_TRIGGER_OPTIONS)),
+  /** String, className that is added to wrapper div */
   className: PropTypes.string,
+  /** Object, styles that is added to wrapper div */
   style: PropTypes.object,
+  /** Element or function, target element of popup or function that renders target element */
   children: PropTypes.any,
 };
 

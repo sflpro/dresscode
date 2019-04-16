@@ -314,16 +314,24 @@ export class DateInput extends React.Component {
 }
 
 DateInput.propTypes = {
+  /** Function, will be called when date is selected */
   onDatePickerChange: PropTypes.func.isRequired,
+  /** Function, will be called when input value is changed */
   onDateInputChange: PropTypes.func.isRequired,
+  /** Instance of Date, input value */
   value: PropTypes.instanceOf(Date),
+  /** String, format of date */
   format: PropTypes.oneOf(DATE_FORMATS),
+  /** String, className that will be added to input */
   className: PropTypes.string,
+  /** String, language of input */
   locale: PropTypes.string,
+  /** String, action that is opening date picker */
   trigger: PropTypes.string,
+  /** String, decide which view of date picker must be shown(day, month, year) */
   view: PropTypes.string,
+  /** Object, styles that will be passed to input */
   style: PropTypes.object,
-  children: PropTypes.any,
 };
 
 DateInput.defaultProps = {
@@ -332,7 +340,6 @@ DateInput.defaultProps = {
   className: '',
   locale: DEFAULT_LOCALE,
   trigger: 'click',
-  children: null,
   view: 'day',
   style: {},
 };

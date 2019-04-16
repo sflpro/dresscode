@@ -19,7 +19,6 @@ export function Textarea({
   error,
   name,
   onChange,
-  children,
   ...props
 }) {
   const textareaClasses = classNames({
@@ -56,19 +55,30 @@ export function Textarea({
 }
 
 Textarea.propTypes = {
+  /** String, value of textarea */
   value: PropTypes.string,
+  /** Boolean, whether textarea is disabled */
   disabled: PropTypes.bool,
+  /** String, label of textarea */
   label: PropTypes.string,
+  /** Number, rows of textarea */
   rows: PropTypes.number,
+  /** Number, cols of textarea */
   cols: PropTypes.number,
+  /** Boolean, whether value of textarea is valid */
   isValid: PropTypes.bool,
+  /** Boolean, whether value of textarea has error */
   hasError: PropTypes.bool,
+  /** String, error message that will be shown if textarea has error */
   error: PropTypes.string,
+  /** String, placeholder of textarea */
   placeholder: PropTypes.string,
+  /** String, name of textarea */
   name: PropTypes.string,
+  /** String, className that will be added to textarea */
   className: PropTypes.string,
+  /** Function, will be called when value of textarea will be changed */
   onChange: PropTypes.func,
-  children: PropTypes.any,
 };
 
 Textarea.defaultProps = {
@@ -84,5 +94,4 @@ Textarea.defaultProps = {
   error: '',
   name: '',
   onChange: undefined,
-  children: null,
 };

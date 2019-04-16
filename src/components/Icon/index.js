@@ -39,10 +39,15 @@ export function Icon({
 }
 
 Icon.propTypes = {
+  /** String, name of icon from sprite */
   name: PropTypes.string.isRequired,
+  /** Number, size of icon in pixels */
   size: PropTypes.number,
+  /** String, className that will be added to wrapper span */
   className: PropTypes.string,
+  /** String, color of icon */
   color: PropTypes.string,
+  /** Object, styles that will be added to wrapper span */
   style: PropTypes.object,
 };
 

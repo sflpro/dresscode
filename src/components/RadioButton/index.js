@@ -48,12 +48,19 @@ export function RadioButton({
 }
 
 RadioButton.propTypes = {
+  /** Function, called when input value is changed */
   onChange: PropTypes.func.isRequired,
+  /** String, text of label */
   label: PropTypes.string.isRequired,
+  /** String, value of input */
   value: PropTypes.string.isRequired,
+  /** String, text of input */
   name: PropTypes.string.isRequired,
+  /** String, className that is added to wrapper div */
   className: PropTypes.string,
+  /** Boolean, weather input is disabled */
   disabled: PropTypes.bool,
+  /** Boolean, weather input is checked */
   checked: PropTypes.bool,
 };
 

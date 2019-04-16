@@ -212,13 +212,21 @@ export class Slider extends React.Component {
 }
 
 Slider.propTypes = {
+  /** Function, called when slider value is changed */
   onChange: PropTypes.func.isRequired,
+  /** Function, called when control value is changed */
   onControlChange: PropTypes.func,
+  /** Number, min difference between controls values */
   distance: PropTypes.number,
+  /** Number, amount of change per step */
   step: PropTypes.number,
+  /** Number, min value of input */
   min: PropTypes.number,
+  /** Number, max value of input */
   max: PropTypes.number,
+  /** String, className that will be added to target div */
   className: PropTypes.string,
+  /** Control Element(s), content of slider */
   children: PropTypes.any,
 };
 

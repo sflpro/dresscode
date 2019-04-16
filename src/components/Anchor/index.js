@@ -33,11 +33,17 @@ export function Anchor({
 }
 
 Anchor.propTypes = {
+  /** String, location that will be moved after click */
   href: PropTypes.string.isRequired,
+  /** String, className that will be added to anchor */
   className: PropTypes.string,
+  /** String, target of anchor */
   target: PropTypes.string,
+  /** Object, styles that will be added to anchor */
   style: PropTypes.object,
+  /** Function, function that will be called after anchor click */
   onClick: PropTypes.func,
+  /** String or JSX or Element, content of anchor element */
   children: PropTypes.any,
 };
 

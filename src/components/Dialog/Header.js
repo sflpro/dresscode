@@ -24,7 +24,9 @@ export const Header = ({
 };
 
 Header.propTypes = {
+  /** String, className that will be added to wrapper div */
   className: PropTypes.string,
+  /** String or JSX or Element, content of header */
   children: PropTypes.any,
 };
 

@@ -70,15 +70,20 @@ export class PopUp extends React.Component {
 }
 
 PopUp.propTypes = {
+  /** String, className that is added to wrapper div */
   className: PropTypes.string,
+  /** Function, called when overlay is clicked */
   onDismiss: PropTypes.func,
+  /** Boolean, whether popup has overlay */
   overlay: PropTypes.bool,
+  /** String, position of popup */
   position: PropTypes.oneOf([
     'top-start',
     'top-end',
     'bottom-start',
     'bottom-end',
   ]),
+  /** String or JSX or Element, position of popup */
   children: PropTypes.any,
 };
 

@@ -67,8 +67,11 @@ export class Dialog extends React.PureComponent {
 }
 
 Dialog.propTypes = {
+  /** String, className that will be added to wrapper div */
   className: PropTypes.string,
+  /** Function, will be called when cross icon or outside of dialog is clicked */
   onDismiss: PropTypes.func,
+  /** String or JSX or Element, content of dialog */
   children: PropTypes.any,
 };
 

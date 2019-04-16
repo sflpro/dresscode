@@ -43,11 +43,17 @@ export function Tag({
 }
 
 Tag.propTypes = {
+  /** String, tag colors */
   type: PropTypes.oneOf(['primary', 'secondary']),
+  /** String, className that will be added to wrapper div */
   className: PropTypes.string,
+  /** Boolean, whether tag has close icon */
   clickable: PropTypes.bool,
+  /** Function, will be called when clicked on close icon */
   onClose: PropTypes.func,
+  /** Function, that will be called when clicked on tag */
   onClick: PropTypes.func,
+  /** String, text content of tag */
   name: PropTypes.string,
 };
 

@@ -21,7 +21,9 @@ export const Actions = ({
 };
 
 Actions.propTypes = {
+  /** String, className that will be added to wrapper div */
   className: PropTypes.string,
+  /** String or JSX or Element, content of actions */
   children: PropTypes.any,
 };
 
