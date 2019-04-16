@@ -2,7 +2,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { State, Store } from '@sambego/storybook-state';
 
-import { DatePickerRange } from '.';
+import { DateRangePicker } from '.';
 
 import { ItemGroup } from '../../helpers/ItemGroup';
 import { Item } from '../../helpers/Item';
@@ -29,7 +29,7 @@ storiesOf('Date range picker', module)
               title='Date Picker Range'
             >
               <Item>
-                <DatePickerRange
+                <DateRangePicker
                   value={state.datePickerValue}
                   onChange={handleRangeDatePickerChange}
                   numberOfMonths={2}
