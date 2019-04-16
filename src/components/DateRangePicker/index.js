@@ -11,14 +11,14 @@ import { DatePickerCaption } from '../DatePickerCaption';
 import { DatePickerNavbar } from '../DatePickerNavbar';
 
 import 'style-loader!css-loader?modules=false!react-day-picker/lib/style.css';
-import styles from './datePickerRange.css';
+import styles from './dateRangePicker.css';
 
 const RANGE_PICKER_PARTS = {
   FROM: 'from',
   TO: 'to',
 };
 
-export class DatePickerRange extends React.Component {
+export class DateRangePicker extends React.Component {
   constructor(props) {
     super(props);
 
@@ -343,7 +343,7 @@ export class DatePickerRange extends React.Component {
   }
 }
 
-DatePickerRange.propTypes = {
+DateRangePicker.propTypes = {
   from: PropTypes.instanceOf(Date),
   to: PropTypes.instanceOf(Date),
   enteredTo: PropTypes.instanceOf(Date),
@@ -356,7 +356,6 @@ DatePickerRange.propTypes = {
     getFirstDayOfWeek: PropTypes.func.isRequired,
   }),
   months: PropTypes.array,
-  weekdaysShort: PropTypes.array,
   monthsShort: PropTypes.array,
   showOutsideDays: PropTypes.bool,
   onChange: PropTypes.func,
@@ -364,7 +363,7 @@ DatePickerRange.propTypes = {
   style: PropTypes.object,
 };
 
-DatePickerRange.defaultProps = {
+DateRangePicker.defaultProps = {
   from: null,
   to: null,
   enteredTo: null,

@@ -241,8 +241,6 @@ DatePicker.propTypes = {
   }),
   /** Array of strings, months names */
   months: PropTypes.array,
-  /** Array of strings, weekdays short names */
-  weekdaysShort: PropTypes.array,
   /** Array of strings, months short names */
   monthsShort: PropTypes.array,
   /** Boolean, show days that are not from previous and next months */
@@ -260,7 +258,6 @@ DatePicker.defaultProps = {
   localeUtils: null,
   months: MONTHS,
   monthsShort: MONTHS_SHORT,
-  weekdaysShort: WEEKDAYS_SHORT,
   showOutsideDays: false,
   onChange: null,
   className: '',

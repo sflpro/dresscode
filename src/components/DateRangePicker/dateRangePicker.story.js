@@ -3,11 +3,12 @@ import { storiesOf } from '@storybook/react';
 import { State, Store } from '@sambego/storybook-state';
 
 import { DatePickerRange } from '.';
+
 import { ItemGroup } from '../../helpers/ItemGroup';
 import { Item } from '../../helpers/Item';
 
-storiesOf('Date picker Range', module)
-  .add('Date picker range', () => {
+storiesOf('Date range picker', module)
+  .add('Date range picker', () => {
     const store = new Store({
       from: null,
       to: null,
