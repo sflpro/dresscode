@@ -21,7 +21,6 @@ storiesOf('Form controls', module)
       monthPickerValue: new Date(),
       from: new Date(),
       to: new Date(),
-      enteredTo: new Date(),
     });
 
     function handleInputChange({ target }) {
@@ -157,7 +156,6 @@ storiesOf('Form controls', module)
                       onDateInputChange={handleDateRangeInputChange}
                       from={state.from}
                       to={state.to}
-                      enteredTo={state.enteredTo}
                     />
                   </Label>
                 </Item>

@@ -22,21 +22,20 @@ export class DateRangePicker extends React.Component {
   constructor(props) {
     super(props);
 
-    const { from, to, enteredTo } = this.props;
+    const { from, to } = this.props;
 
     this.state = {
       view: VIEW_TYPES.DAY,
+      enteredTo: to,
       year: {
         from: (from || new Date()).getFullYear(),
         to: (to || new Date()).getFullYear(),
-        enteredTo: (enteredTo || new Date()).getFullYear(),
       },
     };
 
     this.initialProps = {
       from,
       to,
-      enteredTo,
     };
 
     this.selectedPicker = null;
@@ -95,10 +94,13 @@ export class DateRangePicker extends React.Component {
   handleDayClick = (day) => {
     const { onChange, from, to } = this.props;
     if (!day) {
-      onChange({
-        from: null,
-        to: null,
+      this.setState({
         enteredTo: null,
+      }, () => {
+        onChange({
+          from: null,
+          to: null,
+        });
       });
       return;
     }
@@ -109,23 +111,29 @@ export class DateRangePicker extends React.Component {
     }
 
     if (this.isSelectingFirstDay(from, to, day)) {
-      onChange({
-        from: day,
-        to: null,
+      this.setState({
         enteredTo: null,
+      }, () => {
+        onChange({
+          from: day,
+          to: null,
+        });
       });
     } else {
-      onChange({
-        to: day,
+      this.setState({
         enteredTo: day,
+      }, () => {
+        onChange({
+          to: day,
+        });
       });
     }
   };
 
   handleDayMouseEnter = (day) => {
-    const { from, to, onChange } = this.props;
+    const { from, to } = this.props;
     if (!this.isSelectingFirstDay(from, to, day)) {
-      onChange({
+      this.setState({
         enteredTo: day,
       });
     }
@@ -201,7 +209,6 @@ export class DateRangePicker extends React.Component {
     const {
       from,
       to,
-      enteredTo,
       locale,
       monthsShort,
       months,
@@ -212,7 +219,7 @@ export class DateRangePicker extends React.Component {
       onChange,
       ...props
     } = this.props;
-    const { view, year } = this.state;
+    const { view, year, enteredTo } = this.state;
 
     let otherProps = props;
     if (localeUtils) {
@@ -344,10 +351,13 @@ export class DateRangePicker extends React.Component {
 }
 
 DateRangePicker.propTypes = {
-  from: PropTypes.instanceOf(Date),
-  to: PropTypes.instanceOf(Date),
-  enteredTo: PropTypes.instanceOf(Date),
+  /** Instance of Date, date range picker from value */
+  from: PropTypes.instanceOf(Date).isRequired,
+  /** Instance of Date, date range picker to value */
+  to: PropTypes.instanceOf(Date).isRequired,
+  /** String, language of date picker */
   locale: PropTypes.string,
+  /** Object, utils to format date value for given language */
   localeUtils: PropTypes.shape({
     formatDay: PropTypes.func.isRequired,
     formatMonthTitle: PropTypes.func.isRequired,
@@ -355,18 +365,21 @@ DateRangePicker.propTypes = {
     formatWeekdayShort: PropTypes.func.isRequired,
     getFirstDayOfWeek: PropTypes.func.isRequired,
   }),
+  /** Array of strings, months names */
   months: PropTypes.array,
+  /** Array of strings, months short names */
   monthsShort: PropTypes.array,
+  /** Boolean, show days that are not from previous and next months */
   showOutsideDays: PropTypes.bool,
+  /** Function, will be called when date picker value is changed */
   onChange: PropTypes.func,
+  /** String, className that will be added to wrapper div element */
   className: PropTypes.string,
+  /** Object, styles that will be added to date picker */
   style: PropTypes.object,
 };
 
 DateRangePicker.defaultProps = {
-  from: null,
-  to: null,
-  enteredTo: null,
   locale: 'en',
   localeUtils: null,
   months: MONTHS,

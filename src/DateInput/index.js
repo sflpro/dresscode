@@ -206,7 +206,7 @@ DateInput.propTypes = {
   /** Function, will be called when input value is changed */
   onDateInputChange: PropTypes.func.isRequired,
   /** Instance of Date, input value */
-  value: PropTypes.instanceOf(Date),
+  value: PropTypes.instanceOf(Date).isRequired,
   /** String, format of date */
   format: PropTypes.oneOf(DATE_FORMATS),
   /** String, className that will be added to input */
@@ -222,7 +222,6 @@ DateInput.propTypes = {
 };
 
 DateInput.defaultProps = {
-  value: undefined,
   format: DEFAULT_FORMAT,
   className: '',
   locale: DEFAULT_LOCALE,

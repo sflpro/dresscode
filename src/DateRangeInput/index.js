@@ -15,7 +15,7 @@ import {
 } from '../DatePicker/constants';
 import { validateFormat } from '../DatePicker/helpers';
 import { TextInput } from '../TextInput';
-import { isMobile } from '../../utils';
+import { isMobile } from '../utils';
 
 import styles from './dateRangeInput.css';
 
@@ -61,7 +61,6 @@ export class DateRangeInput extends React.Component {
 
     if (picker === 'from') {
       if (to && to < value) {
-        rangeValues.enteredTo = value;
         rangeValues.to = value;
       };
     } else {
@@ -228,7 +227,6 @@ export class DateRangeInput extends React.Component {
       onDateInputChange,
       from,
       to,
-      enteredTo,
       format,
       className,
       locale,
@@ -259,7 +257,6 @@ export class DateRangeInput extends React.Component {
               numberOfMonths={2}
               from={from}
               to={to}
-              enteredTo={enteredTo}
               locale={locale}
             />
           )}
@@ -368,27 +365,30 @@ export class DateRangeInput extends React.Component {
 }
 
 DateRangeInput.propTypes = {
+  /** Function, will be called when date is selected */
   onDatePickerChange: PropTypes.func.isRequired,
+  /** Function, will be called when input value is changed */
   onDateInputChange: PropTypes.func.isRequired,
-  from: PropTypes.instanceOf(Date),
-  to: PropTypes.instanceOf(Date),
-  enteredTo: PropTypes.instanceOf(Date),
+  /** Instance of Date, date range picker from value */
+  from: PropTypes.instanceOf(Date).isRequired,
+  /** Instance of Date, date range picker to value */
+  to: PropTypes.instanceOf(Date).isRequired,
+  /** String, format of date */
   format: PropTypes.oneOf(DATE_FORMATS),
+  /** String, className that will be added to input */
   className: PropTypes.string,
+  /** String, language of input */
   locale: PropTypes.string,
+  /** String, action that is opening date picker */
   trigger: PropTypes.string,
+  /** Object, styles that will be passed to input */
   style: PropTypes.object,
-  children: PropTypes.any,
 };
 
 DateRangeInput.defaultProps = {
-  from: null,
-  to: null,
-  enteredTo: null,
   format: DEFAULT_FORMAT,
   className: '',
   locale: DEFAULT_LOCALE,
   trigger: 'click',
   style: {},
-  children: null,
 };

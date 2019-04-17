@@ -8,7 +8,6 @@ import { getYearsRange, formatMonthTitle } from './helpers';
 
 import { DatePickerCaption } from '../DatePickerCaption';
 import { DatePickerNavbar } from '../DatePickerNavbar';
-import { WEEKDAYS_SHORT } from './locale-example';
 import { MonthPicker } from '../MonthPicker';
 import { YearPicker } from '../YearPicker';
 
