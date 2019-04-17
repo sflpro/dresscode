@@ -63,24 +63,27 @@
 }
 
 .primary {
-  background-color: var(--primary-color);
-  border: 1px solid var(--primary-color);
-  color: var(--text-secondary-color);
+  background-color: var(--button-primary-background-color);
+  border: 1px solid var(--button-primary-border-color);
+  color: var(--button-primary-text-color);
 }
 
 .primary:hover {
-  background-color: var(--primary-color-dark);
+  background-color: var(--button-primary-background-color-hover);
+  border: 1px solid var(--button-primary-border-color-hover);
+  color: var(--button-primary-text-color-hover)
 }
 
 .secondary {
-  background-color: var(--secondary-color);
-  border: 1px solid var(--primary-color);
-  color: var(--text-primary-color);
+  background-color: var(--button-secondary-background-color);
+  border: 1px solid var(--button-secondary-border-color);
+  color: var(--button-secondary-text-color);
 }
 
 .secondary:hover {
-  border-color: var(--primary-color-dark);
-  color: var(--primary-color-dark);
+  background-color: var(--button-secondary-background-color-hover);
+  border: 1px solid var(--button-secondary-border-color-hover);
+  color: var(--button-secondary-text-color-hover);
 }
 
 .neutral {
