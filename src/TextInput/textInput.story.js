@@ -5,6 +5,7 @@ import { storiesOf } from '@storybook/react';
 import { TextInput } from '.';
 
 import { DateInput } from '../DateInput';
+import { DateRangeInput } from '../DateRangeInput';
 import { Icon } from '../Icon';
 import { Label } from '../Label';
 import { ItemGroup } from '../helpers/ItemGroup';
@@ -18,6 +19,9 @@ storiesOf('Form controls', module)
       disabled: 'Disabled text',
       datePickerValue: new Date(),
       monthPickerValue: new Date(),
+      from: new Date(),
+      to: new Date(),
+      enteredTo: new Date(),
     });
 
     function handleInputChange({ target }) {
@@ -41,15 +45,17 @@ storiesOf('Form controls', module)
       });
     }
 
-    function handleMonthPickerChange(monthPickerValue) {
+    function handleDateRangePickerChange(date) {
       store.set({
-        monthPickerValue,
+        ...store.state,
+        ...date,
       });
     }
 
-    function handleMonthInputChange(monthPickerValue) {
+    function handleDateRangeInputChange(date) {
       store.set({
-        monthPickerValue,
+        ...store.state,
+        ...date,
       });
     }
 
@@ -140,15 +146,18 @@ storiesOf('Form controls', module)
                     />
                   </Label>
                 </Item>
+              </ItemRow>
+              <ItemRow>
                 <Item>
-                  <Label>
-                    Month picker
-                    <DateInput
-                      value={state.monthPickerValue}
-                      onDatePickerChange={handleMonthPickerChange}
-                      onDateInputChange={handleMonthInputChange}
-                      format='MM/YYYY'
-                      view='month'
+                  <Label
+                    text='Date range picker'
+                  >
+                    <DateRangeInput
+                      onDatePickerChange={handleDateRangePickerChange}
+                      onDateInputChange={handleDateRangeInputChange}
+                      from={state.from}
+                      to={state.to}
+                      enteredTo={state.enteredTo}
                     />
                   </Label>
                 </Item>

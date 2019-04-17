@@ -30,7 +30,6 @@ storiesOf('Date range picker', module)
             >
               <Item>
                 <DateRangePicker
-                  value={state.datePickerValue}
                   onChange={handleRangeDatePickerChange}
                   numberOfMonths={2}
                   from={state.from}

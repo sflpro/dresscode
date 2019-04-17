@@ -19,7 +19,7 @@ export function TextInput({
   name,
   onChange,
   style,
-  setRef,
+  forwardedRef,
   ...props
 }) {
   const inputWrapperClasses = classNames({
@@ -47,7 +47,7 @@ export function TextInput({
           name={name}
           type={type}
           readOnly={readOnly}
-          ref={setRef}
+          ref={forwardedRef}
           {...props}
         />
         {icon && (
@@ -95,7 +95,7 @@ TextInput.propTypes = {
   /** Function, will be called when input value will be changed */
   onChange: PropTypes.func,
   /** Function, will add ref to input */
-  setRef: PropTypes.func,
+  forwardedRef: PropTypes.func,
 };
 
 TextInput.defaultProps = {
@@ -113,5 +113,5 @@ TextInput.defaultProps = {
   name: '',
   onChange: undefined,
   style: {},
-  setRef: undefined,
+  forwardedRef: undefined,
 };

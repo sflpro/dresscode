@@ -35,3 +35,30 @@ export const VIEW_TYPES = {
   MONTH: 'month',
   YEAR: 'year',
 };
+
+export const DATE_FORMATS = [
+  'DD.MM.YYYY',
+  'DD.MM.YY',
+  'D.MM.YYYY',
+  'D.MM.YY',
+  'DD/MM/YYYY',
+  'DD/MM/YY',
+  'D/MM/YYYY',
+  'D/MM/YY',
+  'DD-MM-YYYY',
+  'D-MM-YYYY',
+  'DD-MM-YYYY',
+  'DD-MM-YY',
+  'MM.YY',
+  'MM.YYYY',
+  'MM/YY',
+  'MM/YYYY',
+  'MM-YY',
+  'MM-YYYY',
+];
+
+export const VALID_DATE_FORMAT = 'YYYY-MM-DD';
+
+export const DEFAULT_FORMAT = 'DD/MM/YYYY';
+
+export const DEFAULT_LOCALE = 'en';

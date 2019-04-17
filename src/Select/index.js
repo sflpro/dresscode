@@ -105,7 +105,7 @@ export class Select extends React.Component {
           <TextInput
             onKeyPress={this.handleInputKeyPress}
             onChange={this.handleSearchChange}
-            setRef={this.setInputRef}
+            forwardedRef={this.setInputRef}
             placeholder={placeholder}
             className={styles.input}
             value={search}
