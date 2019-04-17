@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-import '../../polyfills/svgPoyfill';
+import '../polyfills/svgPoyfill';
 
 import styles from './icon.css';
 import icons from './svgSprite.svg';

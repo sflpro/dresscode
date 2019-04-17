@@ -4,9 +4,9 @@ import { storiesOf } from '@storybook/react';
 
 import { Textarea } from '.';
 import { Label } from '../Label';
-import { ItemGroup } from '../../helpers/ItemGroup';
-import { ItemRow } from '../../helpers/ItemRow';
-import { Item } from '../../helpers/Item';
+import { ItemGroup } from '../helpers/ItemGroup';
+import { ItemRow } from '../helpers/ItemRow';
+import { Item } from '../helpers/Item';
 
 storiesOf('Form controls', module)
   .add('Textarea', () => {

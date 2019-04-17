@@ -4,8 +4,8 @@ import { storiesOf } from '@storybook/react';
 import { Tooltip } from '.';
 
 import { Icon } from '../Icon';
-import { ItemGroup } from '../../helpers/ItemGroup';
-import { Item } from '../../helpers/Item';
+import { ItemGroup } from '../helpers/ItemGroup';
+import { Item } from '../helpers/Item';
 
 storiesOf('Tooltip', module)
   .add('Tooltip', () => {

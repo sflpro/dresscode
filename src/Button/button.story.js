@@ -7,9 +7,9 @@ import { Anchor } from '../Anchor';
 import { Icon } from '../Icon';
 import { CircleButton } from '../CircleButton';
 import { LinkButton } from '../LinkButton';
-import { ItemGroup } from '../../helpers/ItemGroup';
-import { ItemRow } from '../../helpers/ItemRow';
-import { Item } from '../../helpers/Item';
+import { ItemGroup } from '../helpers/ItemGroup';
+import { ItemRow } from '../helpers/ItemRow';
+import { Item } from '../helpers/Item';
 
 storiesOf('Button', module)
   .add('Button', () => {

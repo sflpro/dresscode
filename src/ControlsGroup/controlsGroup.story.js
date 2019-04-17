@@ -6,8 +6,8 @@ import { ControlsGroup } from '.';
 
 import { Checkbox } from '../Checkbox';
 import { Label } from '../Label';
-import { ItemGroup } from '../../helpers/ItemGroup';
-import { Item } from '../../helpers/Item';
+import { ItemGroup } from '../helpers/ItemGroup';
+import { Item } from '../helpers/Item';
 import { RadioButton } from '../RadioButton';
 import { ToggleButton } from '../ToggleButton';
 

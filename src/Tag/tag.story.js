@@ -3,9 +3,9 @@ import { storiesOf } from '@storybook/react';
 
 import { Tag } from '.';
 
-import { ItemGroup } from '../../helpers/ItemGroup';
-import { ItemRow } from '../../helpers/ItemRow';
-import { Item } from '../../helpers/Item';
+import { ItemGroup } from '../helpers/ItemGroup';
+import { ItemRow } from '../helpers/ItemRow';
+import { Item } from '../helpers/Item';
 
 storiesOf('Tag', module)
   .add('Tag', () => (
