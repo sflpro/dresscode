@@ -144,6 +144,20 @@
   --button-padding: 0 24px;
   --button-circle-padding: 0 12px;
 
+  --button-primary-background-color: var(--primary-color);
+  --button-primary-background-color-hover: var(--primary-color-dark);
+  --button-primary-border-color: var(--primary-color);
+  --button-primary-border-color-hover: var(--primary-color);
+  --button-primary-text-color: var(--text-secondary-color);
+  --button-primary-text-color-hover: var(--text-secondary-color);
+
+  --button-secondary-background-color: var(--secondary-color);
+  --button-secondary-background-color-hover: var(--secondary-color);
+  --button-secondary-border-color: var(--primary-color);
+  --button-secondary-border-color-hover: var(--primary-color-dark);
+  --button-secondary-text-color: var(--text-primary-color);
+  --button-secondary-text-color-hover: var(--primary-color-dark);
+
   --date-picker-border-color: var(--default-color);
   --date-picker-weekday-color: var(--neutral-500);
   --date-picker-outside-day-color: var(--neutral-200);
