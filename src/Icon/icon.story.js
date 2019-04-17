@@ -100,6 +100,30 @@ storiesOf('Icons', module)
             size={24}
           />
         </Item>
+        <Item>
+          <Icon
+            name='facebook'
+            size={24}
+          />
+        </Item>
+        <Item>
+          <Icon
+            name='instagram'
+            size={24}
+          />
+        </Item>
+        <Item>
+          <Icon
+            name='linkedin'
+            size={24}
+          />
+        </Item>
+        <Item>
+          <Icon
+            name='twitter'
+            size={24}
+          />
+        </Item>
       </ItemGroup>
     </>
   ));
