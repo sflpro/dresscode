@@ -84,19 +84,19 @@ storiesOf('Form controls/Select', module)
                   >
                     <Option
                       value='option1'
-                      name='Pit 1'
-                    />
-                    <Option
-                      value='option4'
-                      name='Pi Եվ ինձ լսելով՝ Կարող են ասել. «Գժվե՞լ է, ի՜նչ է». «Այո՛, գժվե՜լ եմ, Ինչո՞ւ չգժվել»:'
+                      name='Option 1'
                     />
                     <Option
                       value='option2'
-                      name='Pita 2'
+                      name='Option 2'
                     />
                     <Option
                       value='option3'
-                      name='Pitak 3'
+                      name='Option 3'
+                    />
+                    <Option
+                      value='option4'
+                      name='Option 4'
                     />
                   </Select>
                 </Label>
@@ -111,19 +111,19 @@ storiesOf('Form controls/Select', module)
     <Select>
       <Option
         value='option1'
-        name='Pit 1'
-      />
-      <Option
-        value='option4'
-        name='Pi Եվ ինձ լսելով՝ Կարող են ասել. «Գժվե՞լ է, ի՜նչ է». «Այո՛, գժվե՜լ եմ, Ինչո՞ւ չգժվել»:'
+        name='Option 1'
       />
       <Option
         value='option2'
-        name='Pita 2'
+        name='Option 2'
       />
       <Option
         value='option3'
-        name='Pitak 3'
+        name='Option 3'
+      />
+      <Option
+        value='option4'
+        name='Option 4'
       />
     </Select>
   ), InfoStoryConfig);

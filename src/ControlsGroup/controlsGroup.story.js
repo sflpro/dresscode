@@ -41,7 +41,7 @@ storiesOf('Form controls/CheckboxGroup', module)
           >
             <Item>
               <ControlsGroup
-                title='Կուզենայիր աշխատեիր շաբաթ և կիրակի էս Սիսթեմի վրա'
+                title='Question'
                 key='key'
               >
                 <Label
@@ -50,10 +50,10 @@ storiesOf('Form controls/CheckboxGroup', module)
                   <Checkbox
                     checked={state.first}
                     name='first'
-                    value='Այո'
+                    value='Option 1'
                     onChange={handler}
                   />
-                  Այո
+                  Option 1
                 </Label>
                 <Label
                   display='col'
@@ -61,10 +61,10 @@ storiesOf('Form controls/CheckboxGroup', module)
                   <Checkbox
                     checked={state.second}
                     name='second'
-                    value='Ոչ'
+                    value='Option 2'
                     onChange={handler}
                   />
-                  Ոչ
+                  Option 2
                 </Label>
                 <Label
                   display='col'
@@ -72,10 +72,10 @@ storiesOf('Form controls/CheckboxGroup', module)
                   <Checkbox
                     checked={state.third}
                     name='third'
-                    value='Ճարս Ի՞նչ'
+                    value='Option 3'
                     onChange={handler}
                   />
-                  Ճարս Ի՞նչ
+                  Option 3
                 </Label>
               </ControlsGroup>
             </Item>
@@ -86,23 +86,38 @@ storiesOf('Form controls/CheckboxGroup', module)
   })
   .add('CheckboxGroup', () => (
     <ControlsGroup
-      title='Կուզենայիր աշխատեիր շաբաթ և կիրակի էս Սիսթեմի վրա'
+      title='Question'
       key='key'
     >
-      <Checkbox
-        label='Այո'
-        checked
-        name='first'
-      />
-      <Checkbox
-        label='Ոչ'
-        name='second'
-      />
-      <Checkbox
-        label='Ճարս Ի՞նչ'
-        checked
-        name='third'
-      />
+      <Label
+        display='col'
+      >
+        <Checkbox
+          checked
+          name='first'
+          value='Option 1'
+        />
+        Option 1
+      </Label>
+      <Label
+        display='col'
+      >
+        <Checkbox
+          checked
+          name='second'
+          value='Option 2'
+        />
+        Option 2
+      </Label>
+      <Label
+        display='col'
+      >
+        <Checkbox
+          name='third'
+          value='Option 3'
+        />
+        Option 3
+      </Label>
     </ControlsGroup>
   ), InfoStoryConfig);
 
@@ -126,7 +141,7 @@ storiesOf('Form controls/RadioButtonGroup', module)
           >
             <Item>
               <ControlsGroup
-                title='Ո՞րն է տվյալ պնդումներից ճիշտ'
+                title='Gender'
                 key='key'
               >
                 <Label
@@ -138,7 +153,7 @@ storiesOf('Form controls/RadioButtonGroup', module)
                     name='value 1'
                     value='value1'
                   />
-                  Ո՞վ աշխատի, նա կուտի
+                  Male
                 </Label>
                 <Label
                   display='col'
@@ -149,7 +164,7 @@ storiesOf('Form controls/RadioButtonGroup', module)
                     value='value2'
                     name='tes3'
                   />
-                  Էշ մի սատկի գարուն կգա
+                  Female
                 </Label>
                 <Label
                   display='col'
@@ -160,7 +175,7 @@ storiesOf('Form controls/RadioButtonGroup', module)
                     value='value3'
                     name='tes3'
                   />
-                  Մեկ Դիզայնեռը անգամ շատա 10 պրոեկտ համար
+                  Other
                 </Label>
               </ControlsGroup>
             </Item>
@@ -171,25 +186,37 @@ storiesOf('Form controls/RadioButtonGroup', module)
   })
   .add('RadioButtonGroup', () => (
     <ControlsGroup
-      title='Ո՞րն է տվյալ պնդումներից ճիշտ'
+      title='Gender'
       key='key'
     >
-      <RadioButton
-        label='Ո՞վ աշխատի, նա կուտի'
-        name='value 1'
-        value='value1'
-      />
-      <RadioButton
-        label='Էշ մի սատկի գարուն կգա'
-        value='value2'
-        name='tes3'
-      />
-      <RadioButton
-        label='Մեկ Դիզայնեռը անգամ շատա 10 պրոեկտ համար'
-        value='value3'
-        name='tes3'
-        checked
-      />
+      <Label
+        display='col'
+      >
+        <RadioButton
+          name='value 1'
+          value='value1'
+        />
+        Male
+      </Label>
+      <Label
+        display='col'
+      >
+        <RadioButton
+          value='value2'
+          name='tes3'
+        />
+        Female
+      </Label>
+      <Label
+        display='col'
+      >
+        <RadioButton
+          checked
+          value='value3'
+          name='tes3'
+        />
+        Other
+      </Label>
     </ControlsGroup>
   ), InfoStoryConfig);
 
@@ -223,7 +250,7 @@ storiesOf('Form controls/ToggleButtonGroup', module)
           >
             <Item>
               <ControlsGroup
-                title='Պրոեկտի պարամետրեր'
+                title='Project Settings'
                 style={{ width: '324px' }}
                 key='key'
               >
@@ -231,7 +258,7 @@ storiesOf('Form controls/ToggleButtonGroup', module)
                   display='col'
                   style={{ justifyContent: 'space-between' }}
                 >
-                  Արագ
+                  Option 1
                   <ToggleButton
                     checked={state.first}
                     onChange={handler}
@@ -242,7 +269,7 @@ storiesOf('Form controls/ToggleButtonGroup', module)
                   display='col'
                   style={{ justifyContent: 'space-between' }}
                 >
-                  Որակով
+                  Option 2
                   <ToggleButton
                     checked={state.second}
                     onChange={handler}
@@ -253,7 +280,7 @@ storiesOf('Form controls/ToggleButtonGroup', module)
                   display='col'
                   style={{ justifyContent: 'space-between' }}
                 >
-                  Արագից տաս անգամ արագ
+                  Option 3
                   <ToggleButton
                     checked={state.third}
                     onChange={handler}
@@ -264,7 +291,7 @@ storiesOf('Form controls/ToggleButtonGroup', module)
                   display='col'
                   style={{ justifyContent: 'space-between' }}
                 >
-                  2 Դիզայնեռ
+                  Option 4
                   <ToggleButton
                     checked={state.fourth}
                     onChange={handler}
@@ -275,7 +302,7 @@ storiesOf('Form controls/ToggleButtonGroup', module)
                   display='col'
                   style={{ justifyContent: 'space-between' }}
                 >
-                  Մի հոգով
+                  Option 5
                   <ToggleButton
                     checked={state.fifth}
                     onChange={handler}
@@ -286,7 +313,7 @@ storiesOf('Form controls/ToggleButtonGroup', module)
                   display='col'
                   style={{ justifyContent: 'space-between' }}
                 >
-                  Շաբաթ / Կիրակի
+                  Option 6
                   <ToggleButton
                     checked={state.sixth}
                     onChange={handler}
@@ -302,37 +329,67 @@ storiesOf('Form controls/ToggleButtonGroup', module)
   })
   .add('ToggleButtonGroup', () => (
     <ControlsGroup
-      title='Պրոեկտի պարամետրեր'
+      title='Project Settings'
       style={{ width: '324px' }}
     >
-      <ToggleButton
-        checked
-        label='Արագ'
-        name='first'
-      />
-      <ToggleButton
-        checked
-        label='Որակով'
-        name='second'
-      />
-      <ToggleButton
-        label='Արագից տաս անգամ արագ'
-        checked
-        name='third'
-      />
-      <ToggleButton
-        label='2 Դիզայնեռ'
-        name='fourth'
-      />
-      <ToggleButton
-        checked
-        label='Մի հոգով'
-        name='fifth'
-      />
-      <ToggleButton
-        checked
-        label='Շաբաթ / Կիրակի'
-        name='sixth'
-      />
+      <Label
+        display='col'
+        style={{ justifyContent: 'space-between' }}
+      >
+        Option 1
+        <ToggleButton
+          checked
+          name='first'
+        />
+      </Label>
+      <Label
+        display='col'
+        style={{ justifyContent: 'space-between' }}
+      >
+        Option 2
+        <ToggleButton
+          checked
+          name='second'
+        />
+      </Label>
+      <Label
+        display='col'
+        style={{ justifyContent: 'space-between' }}
+      >
+        Option 3
+        <ToggleButton
+          name='third'
+        />
+      </Label>
+      <Label
+        display='col'
+        style={{ justifyContent: 'space-between' }}
+      >
+        Option4
+        <ToggleButton
+          checked
+          name='fourth'
+        />
+      </Label>
+      <Label
+        display='col'
+        style={{ justifyContent: 'space-between' }}
+      >
+        Option 5
+        <ToggleButton
+          checked
+          name='fifth'
+        />
+      </Label>
+      <Label
+        display='col'
+        style={{ justifyContent: 'space-between' }}
+      >
+        Option 6
+        <ToggleButton
+          checked
+          name='sixth'
+        />
+      </Label>
     </ControlsGroup>
   ), InfoStoryConfig);
