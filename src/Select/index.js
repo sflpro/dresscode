@@ -3,11 +3,12 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 import { TextInput } from '../TextInput';
-import { isMobile } from '../utils';
 import { ListItem } from '../ListItem';
 import { List } from '../List';
 import { Icon } from '../Icon';
 import { Tag } from '../Tag';
+
+import { isMobile } from '../utils';
 
 import styles from './select.css';
 

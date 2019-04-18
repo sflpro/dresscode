@@ -5,8 +5,9 @@ import { Tag } from '.';
 
 import { ItemGroup } from '../helpers/ItemGroup';
 import { ItemRow } from '../helpers/ItemRow';
-import { InfoStoryConfig } from '../configs';
 import { Item } from '../helpers/Item';
+
+import { InfoStoryConfig } from '../configs';
 
 storiesOf('Tag', module)
   .add('Examples', () => (

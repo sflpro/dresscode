@@ -4,12 +4,14 @@ import { State, Store } from '@sambego/storybook-state';
 
 import { Select } from '.';
 
-import { ItemGroup } from '../helpers/ItemGroup';
-import { ItemRow } from '../helpers/ItemRow';
-import { InfoStoryConfig } from '../configs';
-import { Item } from '../helpers/Item';
 import { Option } from '../Option';
 import { Label } from '../Label';
+
+import { ItemGroup } from '../helpers/ItemGroup';
+import { ItemRow } from '../helpers/ItemRow';
+import { Item } from '../helpers/Item';
+
+import { InfoStoryConfig } from '../configs';
 
 storiesOf('Form controls/Select', module)
   .add('Examples', () => {

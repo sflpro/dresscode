@@ -90,3 +90,21 @@ Button.defaultProps = {
   style: {},
   children: null,
 };
+
+export function LinkButton(props) {
+  return (
+    <Button
+      {...props}
+      variant='link'
+    />
+  );
+}
+
+export function CircleButton(props) {
+  return (
+    <Button
+      {...props}
+      variant='circle'
+    />
+  );
+}

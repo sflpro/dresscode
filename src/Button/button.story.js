@@ -1,16 +1,16 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 
-import { Button } from '.';
+import { Button, CircleButton, LinkButton } from '.';
 
-import { ItemGroup } from '../helpers/ItemGroup';
-import { CircleButton } from '../CircleButton';
-import { ItemRow } from '../helpers/ItemRow';
-import { InfoStoryConfig } from '../configs';
-import { LinkButton } from '../LinkButton';
-import { Item } from '../helpers/Item';
 import { Anchor } from '../Anchor';
 import { Icon } from '../Icon';
+
+import { ItemGroup } from '../helpers/ItemGroup';
+import { ItemRow } from '../helpers/ItemRow';
+import { Item } from '../helpers/Item';
+
+import { InfoStoryConfig } from '../configs';
 
 const styles = {
   leftIcon: {

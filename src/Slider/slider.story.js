@@ -4,12 +4,14 @@ import React from 'react';
 
 import { Slider } from '.';
 
-import { ItemGroup } from '../helpers/ItemGroup';
-import { ItemRow } from '../helpers/ItemRow';
-import { InfoStoryConfig } from '../configs';
-import { Item } from '../helpers/Item';
 import { Control } from '../Control';
 import { Icon } from '../Icon';
+
+import { ItemGroup } from '../helpers/ItemGroup';
+import { ItemRow } from '../helpers/ItemRow';
+import { Item } from '../helpers/Item';
+
+import { InfoStoryConfig } from '../configs';
 
 storiesOf('Form controls/Slider', module)
   .add('Examples', () => {

@@ -4,8 +4,9 @@ import { storiesOf } from '@storybook/react';
 import { Icon } from '.';
 
 import { ItemGroup } from '../helpers/ItemGroup';
-import { InfoStoryConfig } from '../configs';
 import { Item } from '../helpers/Item';
+
+import { InfoStoryConfig } from '../configs';
 
 storiesOf('Icons', module)
   .add('Examples', () => (

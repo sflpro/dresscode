@@ -4,13 +4,15 @@ import { State, Store } from '@sambego/storybook-state';
 
 import { ControlsGroup } from '.';
 
-import { ItemGroup } from '../helpers/ItemGroup';
 import { ToggleButton } from '../ToggleButton';
 import { RadioButton } from '../RadioButton';
-import { InfoStoryConfig } from '../configs';
-import { Item } from '../helpers/Item';
 import { Checkbox } from '../Checkbox';
 import { Label } from '../Label';
+
+import { ItemGroup } from '../helpers/ItemGroup';
+import { Item } from '../helpers/Item';
+
+import { InfoStoryConfig } from '../configs';
 
 storiesOf('Form controls/CheckboxGroup', module)
   .add('Examples', () => {

@@ -4,9 +4,8 @@ import { State, Store } from '@sambego/storybook-state';
 
 import { TextInput } from '.';
 
-import { DateRangeInput } from '../DateRangeInput';
-import { CardInput } from '../CardInput';
 import { DateInput } from '../DateInput';
+import { CardInput } from '../CardInput';
 import { Label } from '../Label';
 import { Icon } from '../Icon';
 

@@ -25,8 +25,8 @@ function handler({ target }) {
   });
 }
 
-storiesOf('Form controls', module)
-  .add('Radio Button', () => (
+storiesOf('Form controls/Radio Button', module)
+  .add('Examples', () => (
     <State store={store}>
       {state => (
         <ItemGroup

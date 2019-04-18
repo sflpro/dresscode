@@ -28,8 +28,8 @@ function handler({ target }) {
   });
 }
 
-storiesOf('Form controls', module)
-  .add('Toggle Button', () => (
+storiesOf('Form controls/Toggle Button', module)
+  .add('Examples', () => (
     <State store={store}>
       {state => (
         <ItemGroup
