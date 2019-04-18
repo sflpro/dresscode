@@ -7,8 +7,10 @@ import { ItemGroup } from '../helpers/ItemGroup';
 import { ItemRow } from '../helpers/ItemRow';
 import { Item } from '../helpers/Item';
 
+import { InfoStoryConfig } from '../configs';
+
 storiesOf('Tag', module)
-  .add('Tag', () => (
+  .add('Examples', () => (
     <ItemGroup
       title='Tag'
     >
@@ -32,4 +34,10 @@ storiesOf('Tag', module)
         </Item>
       </ItemRow>
     </ItemGroup>
-  ));
+  ))
+  .add('Tag', () => (
+    <Tag
+      name='Removable tag'
+      clickable
+    />
+  ), InfoStoryConfig);

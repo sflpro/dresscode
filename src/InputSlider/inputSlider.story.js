@@ -6,12 +6,15 @@ import { InputSlider } from '.';
 
 import { Control } from '../Control';
 import { Icon } from '../Icon';
+
 import { ItemGroup } from '../helpers/ItemGroup';
 import { ItemRow } from '../helpers/ItemRow';
 import { Item } from '../helpers/Item';
 
-storiesOf('Form controls', module)
-  .add('Input Slider', () => {
+import { InfoStoryConfig } from '../configs';
+
+storiesOf('Form controls/Input Slider', module)
+  .add('Examples', () => {
     const store = new Store({
       test1: 75,
       test2: 36,
@@ -147,4 +150,36 @@ storiesOf('Form controls', module)
         )}
       </State>
     );
-  });
+  })
+  .add('Input Slider', () => (
+    <InputSlider onChange={params => params}>
+      <Control
+        icon={(
+          <Icon
+            name='triangle'
+            style={{
+              filter: 'drop-shadow(0 0 2px rgba(0, 0, 0, 0.3))',
+              stroke: 'white',
+            }}
+          />
+        )}
+        value={15}
+        max={37}
+        name='min2'
+      />
+      <Control
+        icon={(
+          <Icon
+            name='triangle'
+            style={{
+              filter: 'drop-shadow(0 0 2px rgba(0, 0, 0, 0.3))',
+              stroke: 'white',
+            }}
+          />
+        )}
+        value={37}
+        min={15}
+        name='max2'
+      />
+    </InputSlider>
+  ), InfoStoryConfig);

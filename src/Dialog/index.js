@@ -38,6 +38,8 @@ export class Dialog extends React.PureComponent {
     const {
       children,
       className,
+      overlay,
+      open,
       ...props
     } = this.props;
 
@@ -46,8 +48,12 @@ export class Dialog extends React.PureComponent {
       [className]: true,
     });
 
+    if (!open) {
+      return null;
+    }
+
     return (
-      <PopUp overlay onDismiss={this.dismiss}>
+      <PopUp overlay={overlay} onDismiss={this.dismiss}>
         <div
           className={dialogClasses}
         >
@@ -67,18 +73,23 @@ export class Dialog extends React.PureComponent {
 }
 
 Dialog.propTypes = {
+  /** Boolean, whether dialog is open */
+  open: PropTypes.bool.isRequired,
   /** String, className that will be added to wrapper div */
   className: PropTypes.string,
   /** Function, will be called when cross icon or outside of dialog is clicked */
   onDismiss: PropTypes.func,
   /** String or JSX or Element, content of dialog */
   children: PropTypes.any,
+  /** Boolean, whether has overlay */
+  overlay: PropTypes.bool,
 };
 
 Dialog.defaultProps = {
   className: '',
   onDismiss: undefined,
   children: null,
+  overlay: true,
 };
 
 Dialog.Header = Header;

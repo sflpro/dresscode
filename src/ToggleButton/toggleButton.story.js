@@ -4,10 +4,13 @@ import { State, Store } from '@sambego/storybook-state';
 
 import { ToggleButton } from '.';
 
+import { Label } from '../Label';
+
 import { ItemGroup } from '../helpers/ItemGroup';
 import { ItemRow } from '../helpers/ItemRow';
 import { Item } from '../helpers/Item';
-import { Label } from '../Label';
+
+import { InfoStoryConfig } from '../configs';
 
 const store = new Store({
   example1: false,
@@ -25,8 +28,8 @@ function handler({ target }) {
   });
 }
 
-storiesOf('Form controls', module)
-  .add('Toggle Button', () => (
+storiesOf('Form controls/Toggle Button', module)
+  .add('Examples', () => (
     <State store={store}>
       {state => (
         <ItemGroup
@@ -103,4 +106,7 @@ storiesOf('Form controls', module)
         </ItemGroup>
       )}
     </State>
-  ));
+  ))
+  .add('Toggle Button', () => (
+    <ToggleButton />
+  ), InfoStoryConfig);

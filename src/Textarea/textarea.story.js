@@ -1,15 +1,19 @@
 import React from 'react';
-import { State, Store } from '@sambego/storybook-state';
 import { storiesOf } from '@storybook/react';
+import { State, Store } from '@sambego/storybook-state';
 
 import { Textarea } from '.';
+
 import { Label } from '../Label';
+
 import { ItemGroup } from '../helpers/ItemGroup';
 import { ItemRow } from '../helpers/ItemRow';
 import { Item } from '../helpers/Item';
 
-storiesOf('Form controls', module)
-  .add('Textarea', () => {
+import { InfoStoryConfig } from '../configs';
+
+storiesOf('Form controls/Textarea', module)
+  .add('Examples', () => {
     const store = new Store({
       disabled: 'Disabled text',
     });
@@ -91,4 +95,7 @@ storiesOf('Form controls', module)
         )}
       </State>
     );
-  });
+  })
+  .add('Textarea', () => (
+    <Textarea />
+  ), InfoStoryConfig);

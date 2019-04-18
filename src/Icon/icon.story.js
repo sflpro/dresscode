@@ -6,8 +6,10 @@ import { Icon } from '.';
 import { ItemGroup } from '../helpers/ItemGroup';
 import { Item } from '../helpers/Item';
 
+import { InfoStoryConfig } from '../configs';
+
 storiesOf('Icons', module)
-  .add('List', () => (
+  .add('Examples', () => (
     <>
       <ItemGroup
         title='Icon sizes'
@@ -126,4 +128,9 @@ storiesOf('Icons', module)
         </Item>
       </ItemGroup>
     </>
-  ));
+  ))
+  .add('Icon', () => (
+    <Icon
+      name='tracker'
+    />
+  ), InfoStoryConfig);

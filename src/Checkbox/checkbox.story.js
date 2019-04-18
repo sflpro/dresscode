@@ -1,16 +1,19 @@
 import React from 'react';
-import { State, Store } from '@sambego/storybook-state';
 import { storiesOf } from '@storybook/react';
+import { State, Store } from '@sambego/storybook-state';
 
 import { Checkbox } from '.';
 
 import { Label } from '../Label';
+
 import { ItemGroup } from '../helpers/ItemGroup';
 import { ItemRow } from '../helpers/ItemRow';
 import { Item } from '../helpers/Item';
 
-storiesOf('Form controls', module)
-  .add('Checkbox', () => {
+import { InfoStoryConfig } from '../configs';
+
+storiesOf('Form controls/Checkbox', module)
+  .add('Examples', () => {
     const store = new Store({
       active: true,
       hover: false,
@@ -112,4 +115,7 @@ storiesOf('Form controls', module)
         ]}
       </State>
     );
-  });
+  })
+  .add('Checkbox', () => (
+    <Checkbox />
+  ), InfoStoryConfig);

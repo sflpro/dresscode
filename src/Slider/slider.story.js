@@ -2,16 +2,19 @@ import { State, Store } from '@sambego/storybook-state';
 import { storiesOf } from '@storybook/react';
 import React from 'react';
 
-import { Slider } from './index';
+import { Slider } from '.';
 
 import { Control } from '../Control';
 import { Icon } from '../Icon';
+
 import { ItemGroup } from '../helpers/ItemGroup';
 import { ItemRow } from '../helpers/ItemRow';
 import { Item } from '../helpers/Item';
 
-storiesOf('Form controls', module)
-  .add('Slider', () => {
+import { InfoStoryConfig } from '../configs';
+
+storiesOf('Form controls/Slider', module)
+  .add('Examples', () => {
     const store = new Store({
       test1: 75,
       test2: 36,
@@ -124,4 +127,36 @@ storiesOf('Form controls', module)
         )}
       </State>
     );
-  });
+  })
+  .add('Slider', () => (
+    <Slider onChange={params => params}>
+      <Control
+        icon={(
+          <Icon
+            name='triangle'
+            style={{
+              filter: 'drop-shadow(0 0 2px rgba(0, 0, 0, 0.3))',
+              stroke: 'white',
+            }}
+          />
+        )}
+        value={16}
+        max={74}
+        name='min'
+      />
+      <Control
+        icon={(
+          <Icon
+            name='triangle'
+            style={{
+              filter: 'drop-shadow(0 0 2px rgba(0, 0, 0, 0.3))',
+              stroke: 'white',
+            }}
+          />
+        )}
+        value={74}
+        min={16}
+        name='max'
+      />
+    </Slider>
+  ), InfoStoryConfig);

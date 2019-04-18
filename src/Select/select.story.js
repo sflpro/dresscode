@@ -6,12 +6,15 @@ import { Select } from '.';
 
 import { Option } from '../Option';
 import { Label } from '../Label';
+
 import { ItemGroup } from '../helpers/ItemGroup';
 import { ItemRow } from '../helpers/ItemRow';
 import { Item } from '../helpers/Item';
 
-storiesOf('Form controls', module)
-  .add('Select', () => {
+import { InfoStoryConfig } from '../configs';
+
+storiesOf('Form controls/Select', module)
+  .add('Examples', () => {
     const store = new Store({
       value1: 'option1',
       isOpen1: false,
@@ -103,4 +106,24 @@ storiesOf('Form controls', module)
         )}
       </State>
     );
-  });
+  })
+  .add('Select', () => (
+    <Select>
+      <Option
+        value='option1'
+        name='Pit 1'
+      />
+      <Option
+        value='option4'
+        name='Pi Եվ ինձ լսելով՝ Կարող են ասել. «Գժվե՞լ է, ի՜նչ է». «Այո՛, գժվե՜լ եմ, Ինչո՞ւ չգժվել»:'
+      />
+      <Option
+        value='option2'
+        name='Pita 2'
+      />
+      <Option
+        value='option3'
+        name='Pitak 3'
+      />
+    </Select>
+  ), InfoStoryConfig);
