@@ -95,44 +95,50 @@ storiesOf('Form controls', module)
         store={store}
       >
         {state => [
-          <ControlsGroup
-            title='Ո՞րն է տվյալ պնդումներից ճիշտ'
-            key='key'
+          <ItemGroup
+            title='Radio button group'
           >
-            <Label
-              display='col'
-            >
-              <RadioButton
-                checked={state.value === 'value1'}
-                onChange={handler}
-                name='value 1'
-                value='value1'
-              />
-              Ո՞վ աշխատի, նա կուտի
-            </Label>
-            <Label
-              display='col'
-            >
-              <RadioButton
-                checked={state.value === 'value2'}
-                onChange={handler}
-                value='value2'
-                name='tes3'
-              />
-              Էշ մի սատկի գարուն կգա
-            </Label>
-            <Label
-              display='col'
-            >
-              <RadioButton
-                checked={state.value === 'value3'}
-                onChange={handler}
-                value='value3'
-                name='tes3'
-              />
-              Մեկ Դիզայնեռը անգամ շատա 10 պրոեկտ համար
-            </Label>
-          </ControlsGroup>,
+            <Item>
+              <ControlsGroup
+                title='Ո՞րն է տվյալ պնդումներից ճիշտ'
+                key='key'
+              >
+                <Label
+                  display='col'
+                >
+                  <RadioButton
+                    checked={state.value === 'value1'}
+                    onChange={handler}
+                    name='value 1'
+                    value='value1'
+                  />
+                  Ո՞վ աշխատի, նա կուտի
+                </Label>
+                <Label
+                  display='col'
+                >
+                  <RadioButton
+                    checked={state.value === 'value2'}
+                    onChange={handler}
+                    value='value2'
+                    name='tes3'
+                  />
+                  Էշ մի սատկի գարուն կգա
+                </Label>
+                <Label
+                  display='col'
+                >
+                  <RadioButton
+                    checked={state.value === 'value3'}
+                    onChange={handler}
+                    value='value3'
+                    name='tes3'
+                  />
+                  Մեկ Դիզայնեռը անգամ շատա 10 պրոեկտ համար
+                </Label>
+              </ControlsGroup>
+            </Item>
+          </ItemGroup>,
         ]}
       </State>
     );
@@ -161,78 +167,84 @@ storiesOf('Form controls', module)
         store={store}
       >
         {state => [
-          <ControlsGroup
-            title='Պրոեկտի պարամետրեր'
-            style={{ width: '324px' }}
-            key='key'
+          <ItemGroup
+            title='Toggle button group'
           >
-            <Label
-              display='col'
-              style={{ justifyContent: 'space-between' }}
-            >
-              Արագ
-              <ToggleButton
-                checked={state.first}
-                onChange={handler}
-                name='first'
-              />
-            </Label>
-            <Label
-              display='col'
-              style={{ justifyContent: 'space-between' }}
-            >
-              Որակով
-              <ToggleButton
-                checked={state.second}
-                onChange={handler}
-                name='second'
-              />
-            </Label>
-            <Label
-              display='col'
-              style={{ justifyContent: 'space-between' }}
-            >
-              Արագից տաս անգամ արագ
-              <ToggleButton
-                checked={state.third}
-                onChange={handler}
-                name='third'
-              />
-            </Label>
-            <Label
-              display='col'
-              style={{ justifyContent: 'space-between' }}
-            >
-              2 Դիզայնեռ
-              <ToggleButton
-                checked={state.fourth}
-                onChange={handler}
-                name='fourth'
-              />
-            </Label>
-            <Label
-              display='col'
-              style={{ justifyContent: 'space-between' }}
-            >
-              Մի հոգով
-              <ToggleButton
-                checked={state.fifth}
-                onChange={handler}
-                name='fifth'
-              />
-            </Label>
-            <Label
-              display='col'
-              style={{ justifyContent: 'space-between' }}
-            >
-              Շաբաթ / Կիրակի
-              <ToggleButton
-                checked={state.sixth}
-                onChange={handler}
-                name='sixth'
-              />
-            </Label>
-          </ControlsGroup>,
+            <Item>
+              <ControlsGroup
+                title='Պրոեկտի պարամետրեր'
+                style={{ width: '324px' }}
+                key='key'
+              >
+                <Label
+                  display='col'
+                  style={{ justifyContent: 'space-between' }}
+                >
+                  Արագ
+                  <ToggleButton
+                    checked={state.first}
+                    onChange={handler}
+                    name='first'
+                  />
+                </Label>
+                <Label
+                  display='col'
+                  style={{ justifyContent: 'space-between' }}
+                >
+                  Որակով
+                  <ToggleButton
+                    checked={state.second}
+                    onChange={handler}
+                    name='second'
+                  />
+                </Label>
+                <Label
+                  display='col'
+                  style={{ justifyContent: 'space-between' }}
+                >
+                  Արագից տաս անգամ արագ
+                  <ToggleButton
+                    checked={state.third}
+                    onChange={handler}
+                    name='third'
+                  />
+                </Label>
+                <Label
+                  display='col'
+                  style={{ justifyContent: 'space-between' }}
+                >
+                  2 Դիզայնեռ
+                  <ToggleButton
+                    checked={state.fourth}
+                    onChange={handler}
+                    name='fourth'
+                  />
+                </Label>
+                <Label
+                  display='col'
+                  style={{ justifyContent: 'space-between' }}
+                >
+                  Մի հոգով
+                  <ToggleButton
+                    checked={state.fifth}
+                    onChange={handler}
+                    name='fifth'
+                  />
+                </Label>
+                <Label
+                  display='col'
+                  style={{ justifyContent: 'space-between' }}
+                >
+                  Շաբաթ / Կիրակի
+                  <ToggleButton
+                    checked={state.sixth}
+                    onChange={handler}
+                    name='sixth'
+                  />
+                </Label>
+              </ControlsGroup>
+            </Item>
+          </ItemGroup>,
         ]}
       </State>
     );

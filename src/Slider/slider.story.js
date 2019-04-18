@@ -34,7 +34,7 @@ storiesOf('Form controls', module)
         store={store}
       >
         {state => (
-          <ItemGroup>
+          <ItemGroup title='Slider'>
             <ItemRow>
               <Item style={{ width: '40%' }}>
                 <Slider onChange={handler} min={5} step={5}>
