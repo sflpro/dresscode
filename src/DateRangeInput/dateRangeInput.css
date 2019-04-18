@@ -1,0 +1,16 @@
+.dateRangeInputWrapper {
+  display: flex;
+}
+
+.seperator {
+  margin: 15px 8px 0;
+}
+
+.dateRangeInput {
+  width: 200px;
+}
+
+.dateRangeInput input {
+  -webkit-appearance: textfield;
+  -moz-appearance: textfield;
+}

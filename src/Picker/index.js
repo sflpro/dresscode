@@ -1,18 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
 import styles from './picker.css';
 
 export function Picker({
   captionElement,
   navbarElement,
+  className = '',
   style,
   children,
   ...props
 }) {
+  const pickerClasses = classNames({
+    [styles.picker]: true,
+    [className]: true,
+  });
   return (
     <div
-      className={styles.picker}
+      className={pickerClasses}
       style={style}
       {...props}
     >
@@ -30,6 +36,7 @@ export function Picker({
 Picker.propTypes = {
   captionElement: PropTypes.any,
   navbarElement: PropTypes.any,
+  className: PropTypes.string,
   style: PropTypes.object,
   children: PropTypes.any,
 };

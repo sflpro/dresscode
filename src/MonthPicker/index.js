@@ -9,8 +9,8 @@ import styles from './monthPicker.css';
 export function MonthPicker({
   selectedMonth,
   months,
-  onClick = null,
-  style = null,
+  onClick,
+  style,
   ...props
 }) {
   return (
@@ -40,8 +40,16 @@ export function MonthPicker({
 }
 
 MonthPicker.propTypes = {
-  selectedMonth: PropTypes.number,
-  months: PropTypes.array,
-  onClick: PropTypes.func,
+  /** Number, index of selected month */
+  selectedMonth: PropTypes.instanceOf(Date).isRequired,
+  /** Array of strings, names of months in right order */
+  months: PropTypes.array.isRequired,
+  /** Function, will be called when month is selected */
+  onClick: PropTypes.func.isRequired,
+  /** Object, styles that will be added to month picker */
   style: PropTypes.object,
+};
+
+MonthPicker.defaultProps = {
+  style: null,
 };

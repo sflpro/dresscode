@@ -1,6 +1,4 @@
-.dateInput::-webkit-inner-spin-button,
-.dateInput::-webkit-outer-spin-button,
-.dateInput::-webkit-calendar-picker-indicator {
-  display: none;
-  -webkit-appearance: none;
+.dateInput input {
+  -webkit-appearance: textfield;
+  -moz-appearance: textfield;
 }

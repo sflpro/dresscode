@@ -1,5 +1,7 @@
 .picker {
+  background-color: var(--neutral-white);
   position: relative;
+  width: 364px;
 }
 
 .pickerContainer {

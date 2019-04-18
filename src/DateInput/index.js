@@ -7,37 +7,17 @@ import isValidDate from 'date-fns/is_valid';
 import { Icon } from '../Icon';
 import { Popover } from '../Popover';
 import { DatePicker } from '../DatePicker';
+import {
+  DATE_FORMATS,
+  VALID_DATE_FORMAT,
+  DEFAULT_FORMAT,
+  DEFAULT_LOCALE,
+} from '../DatePicker/constants';
+import { validateFormat } from '../DatePicker/helpers';
 import { TextInput } from '../TextInput';
 import { isMobile } from '../utils';
 
 import styles from './dateInput.css';
-
-const VALID_DATE_FORMAT = 'YYYY-MM-DD';
-
-const DEFAULT_FORMAT = 'DD/MM/YYYY';
-
-const DEFAULT_LOCALE = 'en';
-
-const DATE_FORMATS = [
-  'DD.MM.YYYY',
-  'DD.MM.YY',
-  'D.MM.YYYY',
-  'D.MM.YY',
-  'DD/MM/YYYY',
-  'DD/MM/YY',
-  'D/MM/YYYY',
-  'D/MM/YY',
-  'DD-MM-YYYY',
-  'D-MM-YYYY',
-  'DD-MM-YYYY',
-  'DD-MM-YY',
-  'MM.YY',
-  'MM.YYYY',
-  'MM/YY',
-  'MM/YYYY',
-  'MM-YY',
-  'MM-YYYY',
-];
 
 export class DateInput extends React.Component {
   constructor(props) {
@@ -55,101 +35,6 @@ export class DateInput extends React.Component {
     this.error = null;
     this.hasError = false;
   }
-
-  static validateFormat = (dateString, format) => {
-    let date = {
-      d: null,
-      m: null,
-      y: null,
-    };
-
-    if (!DATE_FORMATS.includes(format)) {
-      return {
-        valid: false,
-        error: 'Wrong format',
-        date,
-      };
-    }
-
-    let seperator;
-    if (dateString.indexOf('/') > -1) {
-      seperator = '/';
-    } else if (dateString.indexOf('-') > -1) {
-      seperator = '-';
-    } else if (dateString.indexOf('.') > -1) {
-      seperator = '.';
-    }
-
-    if (!seperator || format.indexOf(seperator) === -1) {
-      return {
-        valid: false,
-        error: 'Wrong seperator',
-        date,
-      };
-    }
-
-    const dateComponents = dateString.split(seperator);
-    const formatComponents = format.split(seperator);
-
-    if (dateComponents.length !== formatComponents.length) {
-      return {
-        valid: false,
-        error: 'Wrong format',
-        date,
-      };
-    }
-
-    let valid;
-    for (let i = 0; i < formatComponents.length; i++) {
-      const formatComponent = formatComponents[i];
-      const dateComponent = dateComponents[i];
-
-      switch (formatComponent) {
-        case 'DD': {
-          valid = (dateComponent.length === 2 || (dateComponent.length === 1 && Number(dateComponent) < 9))
-            && Number(dateComponent) <= 31;
-          date.d = dateComponent;
-          break;
-        }
-        case 'D': {
-          valid = (dateComponent.length === 2 || (dateComponent.length === 1 && Number(dateComponent) < 9))
-            && Number(dateComponent) <= 31;
-          date.d = dateComponent;
-          break;
-        }
-        case 'MM': {
-          valid = (dateComponent.length === 2 || dateComponent.length === 1 && Number(dateComponent) < 9)
-            && Number(dateComponent) >= 1 && Number(dateComponent) <= 12;
-          date.m = dateComponent;
-          break;
-        }
-        case 'YY': {
-          valid = dateComponent.length === 2;
-          date.y = dateComponent;
-          break;
-        }
-        case 'YYYY': {
-          valid = dateComponent.length === 4;
-          date.y = dateComponent;
-          break;
-        }
-        default: {
-          valid = false;
-          break;
-        }
-      }
-
-      if (!valid) {
-        break;
-      }
-    }
-
-    return {
-      valid,
-      error: valid ? '' : 'Wrong date',
-      date,
-    };
-  };
 
   handleTargetEvent = (open) => {
     this.setState({
@@ -199,7 +84,7 @@ export class DateInput extends React.Component {
 
     this.focused = true;
 
-    const { valid, error, date: { y, d, m } } = DateInput.validateFormat(value, format);
+    const { valid, error, date: { y, d, m } } = validateFormat(value, format);
 
     if (!valid) {
       this.error = error;
@@ -305,6 +190,8 @@ export class DateInput extends React.Component {
               size={24}
             />
           }
+          hasError={hasError}
+          error={error}
           style={style}
           {...props}
         />
@@ -319,7 +206,7 @@ DateInput.propTypes = {
   /** Function, will be called when input value is changed */
   onDateInputChange: PropTypes.func.isRequired,
   /** Instance of Date, input value */
-  value: PropTypes.instanceOf(Date),
+  value: PropTypes.instanceOf(Date).isRequired,
   /** String, format of date */
   format: PropTypes.oneOf(DATE_FORMATS),
   /** String, className that will be added to input */
@@ -335,7 +222,6 @@ DateInput.propTypes = {
 };
 
 DateInput.defaultProps = {
-  value: undefined,
   format: DEFAULT_FORMAT,
   className: '',
   locale: DEFAULT_LOCALE,

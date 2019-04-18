@@ -36,11 +36,29 @@ export const VIEW_TYPES = {
   YEAR: 'year',
 };
 
-export const getYearsRange = (selectedYear, yearsCount = DEFAULT_YEARS_COUNT) => {
-  const currentYear = new Date().getFullYear();
-  const rest = (currentYear - selectedYear) % yearsCount;
-  const order = Math.ceil((currentYear - selectedYear) / yearsCount);
-  const index =  rest > 0 ? order : order + 1;
+export const DATE_FORMATS = [
+  'DD.MM.YYYY',
+  'DD.MM.YY',
+  'D.MM.YYYY',
+  'D.MM.YY',
+  'DD/MM/YYYY',
+  'DD/MM/YY',
+  'D/MM/YYYY',
+  'D/MM/YY',
+  'DD-MM-YYYY',
+  'D-MM-YYYY',
+  'DD-MM-YYYY',
+  'DD-MM-YY',
+  'MM.YY',
+  'MM.YYYY',
+  'MM/YY',
+  'MM/YYYY',
+  'MM-YY',
+  'MM-YYYY',
+];
 
-  return Array(yearsCount).fill(0).map((e, i)=> i + 1 + currentYear - yearsCount * index);
-};
+export const VALID_DATE_FORMAT = 'YYYY-MM-DD';
+
+export const DEFAULT_FORMAT = 'DD/MM/YYYY';
+
+export const DEFAULT_LOCALE = 'en';
