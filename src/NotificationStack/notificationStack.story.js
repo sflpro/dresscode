@@ -2,12 +2,20 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { State, Store } from '@sambego/storybook-state';
 
-import { ItemGroup } from '../../helpers/ItemGroup';
-import { Item } from '../../helpers/Item';
+import { NotificationStack } from '.';
 
-import { NotificationFrame } from '../NotificationFrame';
-import { Notification } from './index';
+import { Notification } from '../Notification';
+import { ItemGroup } from '../helpers/ItemGroup';
+import { Item } from '../helpers/Item';
 import { Button } from '../Button';
+import { Icon } from '../Icon';
+
+const ICON_TYPE = {
+  information: 'transaction',
+  success: 'check',
+  warning: 'warning',
+  error: 'cross-circle',
+};
 
 storiesOf('Notification', module)
   .add('Notifications', () => {
@@ -26,15 +34,29 @@ storiesOf('Notification', module)
         {state => (
           <ItemGroup title='Large Notifications'>
             {state.notification
-              && (
-                <Notification>
-                  <NotificationFrame
-                    status={state.notification}
-                    message={`${state.notification} notification`}
-                    title={state.notification}
+            && (
+              <NotificationStack
+                duration={30}
+                dismiss={(
+                  <Icon
+                    name='cross'
+                    size={24}
                   />
-                </Notification>
-              )
+                )}
+              >
+                <Notification
+                  status={state.notification}
+                  message={`${state.notification} notification`}
+                  title={state.notification}
+                  icon={(
+                    <Icon
+                      size={24}
+                      name={ICON_TYPE[state.notification]}
+                    />
+                  )}
+                />
+              </NotificationStack>
+            )
             }
 
             <Item>

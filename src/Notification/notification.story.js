@@ -1,9 +1,11 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 
-import { NotificationFrame } from './';
-import { ItemGroup } from '../../helpers/ItemGroup';
-import { Item } from '../../helpers/Item';
+import { Notification } from '.';
+
+import { Icon } from '../Icon';
+import { ItemGroup } from '../helpers/ItemGroup';
+import { Item } from '../helpers/Item';
 
 storiesOf('Notification', module)
   .add('Notifications Frame', () => (
@@ -12,27 +14,48 @@ storiesOf('Notification', module)
         title='Large Notification'
       >
         <Item>
-          <NotificationFrame
+          <Notification
             status='information'
             message='Information Notification'
             title='Information'
-            dismiss
+            icon={(
+              <Icon
+                name='transaction'
+                size={24}
+              />
+            )}
           />
-          <NotificationFrame
+          <Notification
             status='warning'
             message='Warning Notification'
             title='Warning'
-            dismiss
+            icon={(
+              <Icon
+                name='warning'
+                size={24}
+              />
+            )}
           />
-          <NotificationFrame
+          <Notification
             status='error'
             message='Error Notification'
             title='Error'
+            icon={(
+              <Icon
+                name='cross-circle'
+                size={24}
+              />
+            )}
           />
-          <NotificationFrame
+          <Notification
             status='success'
             message='Success Notification'
-            dismiss
+            icon={(
+              <Icon
+                name='check'
+                size={24}
+              />
+            )}
           />
         </Item>
       </ItemGroup>
@@ -42,32 +65,28 @@ storiesOf('Notification', module)
           title='Alert Notifications'
         >
           <Item>
-            <NotificationFrame
+            <Notification
               status='information'
               message='Information Notification'
               title='Information'
               type='alert'
-              dismiss
             />
-            <NotificationFrame
+            <Notification
               status='warning'
               message='Warning Notification'
               title='Warning'
               type='alert'
-              dismiss
             />
-            <NotificationFrame
+            <Notification
               status='error'
               message='Error Notification'
               title='Error'
               type='alert'
-              dismiss
             />
-            <NotificationFrame
+            <Notification
               status='success'
               message='Success Notification'
               type='alert'
-              dismiss
             />
           </Item>
         </ItemGroup>
@@ -76,36 +95,33 @@ storiesOf('Notification', module)
           title='Light Alert Notifications'
         >
           <Item>
-            <NotificationFrame
+            <Notification
               status='information'
               message='Information Notification'
               title='Information'
               type='alert'
               theme='light'
-              dismiss
             />
-            <NotificationFrame
+            <Notification
               status='warning'
               message='Warning Notification'
               title='Warning'
               type='alert'
               theme='light'
-              dismiss
             />
-            <NotificationFrame
+            <Notification
               status='error'
               message='Error Notification'
               title='Error'
               type='alert'
               theme='light'
             />
-            <NotificationFrame
+            <Notification
 
               status='success'
               message='Success Notification'
               type='alert'
               theme='light'
-              dismiss
             />
           </Item>
         </ItemGroup>
