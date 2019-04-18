@@ -4,10 +4,11 @@ import { storiesOf } from '@storybook/react';
 import { Icon } from '.';
 
 import { ItemGroup } from '../helpers/ItemGroup';
+import { InfoStoryConfig } from '../configs';
 import { Item } from '../helpers/Item';
 
 storiesOf('Icons', module)
-  .add('List', () => (
+  .add('Examples', () => (
     <>
       <ItemGroup
         title='Icon sizes'
@@ -126,4 +127,9 @@ storiesOf('Icons', module)
         </Item>
       </ItemGroup>
     </>
-  ));
+  ))
+  .add('Icon', () => (
+    <Icon
+      name='tracker'
+    />
+  ), InfoStoryConfig);

@@ -8,6 +8,7 @@
   min-width: 200px;
   box-sizing: border-box;
   margin-top: var(--input-margin-top);
+  position: relative;
 }
 
 .inputWrapper:hover(:not(.input:focus-within)) {

@@ -4,10 +4,13 @@ import { Store, State } from '@sambego/storybook-state';
 
 import { RadioButton } from '.';
 
+import { Label } from '../Label';
+
 import { ItemGroup } from '../helpers/ItemGroup';
 import { ItemRow } from '../helpers/ItemRow';
 import { Item } from '../helpers/Item';
-import { Label } from '../Label';
+
+import { InfoStoryConfig } from '../configs';
 
 const store = new Store({
   radio: 'radio4',
@@ -96,4 +99,7 @@ storiesOf('Form controls', module)
         </ItemGroup>
       )}
     </State>
-  ));
+  ))
+  .add('Radio Button', () => (
+    <RadioButton />
+  ), InfoStoryConfig);

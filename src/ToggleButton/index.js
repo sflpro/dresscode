@@ -43,9 +43,9 @@ export function ToggleButton({
 
 ToggleButton.propTypes = {
   /** Function, will be called when toggle value will be changed */
-  onChange: PropTypes.func.isRequired,
+  onChange: PropTypes.func,
   /** String, name of toggle button */
-  name: PropTypes.string.isRequired,
+  name: PropTypes.string,
   /** Boolean, whether toggle is disabled */
   disabled: PropTypes.bool,
   /** Boolean, whether toggle is on */
@@ -55,6 +55,8 @@ ToggleButton.propTypes = {
 };
 
 ToggleButton.defaultProps = {
+  onChange: undefined,
+  name: '',
   disabled: false,
   checked: false,
   className: '',

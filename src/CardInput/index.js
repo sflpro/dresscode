@@ -98,7 +98,9 @@ export class CardInput extends React.Component {
       event.preventDefault();
     }
 
-    onKeyDown(event);
+    if (onKeyDown) {
+      onKeyDown(event);
+    }
   };
 
   onChange = (event) => {
@@ -153,7 +155,10 @@ export class CardInput extends React.Component {
     const { name, onChange } = this.props;
 
     this.updateCaretPosition();
-    onChange({ name, value: value.replace(/ /g, '') });
+
+    if (onChange) {
+      onChange({ name, value: value.replace(/ /g, '') });
+    }
   }
 
   render() {

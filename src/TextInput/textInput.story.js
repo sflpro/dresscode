@@ -1,24 +1,34 @@
 import React from 'react';
-import { State, Store } from '@sambego/storybook-state';
 import { storiesOf } from '@storybook/react';
+import { State, Store } from '@sambego/storybook-state';
 
 import { TextInput } from '.';
 
-import { DateInput } from '../DateInput';
 import { DateRangeInput } from '../DateRangeInput';
-import { Icon } from '../Icon';
+import { CardInput } from '../CardInput';
+import { DateInput } from '../DateInput';
 import { Label } from '../Label';
+import { Icon } from '../Icon';
+
 import { ItemGroup } from '../helpers/ItemGroup';
 import { ItemRow } from '../helpers/ItemRow';
 import { Item } from '../helpers/Item';
 
-storiesOf('Form controls', module)
-  .add('Text Input', () => {
+import { InfoStoryConfig } from '../configs';
+
+storiesOf('Form controls/Input', module)
+  .add('Examples', () => {
     const store = new Store({
       default: 'Default text',
       disabled: 'Disabled text',
       datePickerValue: new Date(),
       monthPickerValue: new Date(),
+      prefix: '',
+      success: '',
+      notDetected: '1234567891234567',
+      masterCard: '5234567891234567',
+      visa: '4234567891234567',
+      empty: '',
       from: new Date(),
       to: new Date(),
     });
@@ -223,8 +233,69 @@ storiesOf('Form controls', module)
                 </Item>
               </ItemRow>
             </ItemGroup>
+            <ItemGroup
+              title='Card input states'
+            >
+              <ItemRow>
+                <Item>
+                  <Label
+                    text='Empty'
+                  >
+                    <CardInput
+                      onChange={handleInputChange}
+                      value={state.empty}
+                      name='empty'
+                    />
+                  </Label>
+                </Item>
+                <Item>
+                  <Label
+                    text='Not Detected'
+                  >
+                    <CardInput
+                      onChange={handleInputChange}
+                      value={state.notDetected}
+                      name='notDetected'
+                    />
+                  </Label>
+                </Item>
+              </ItemRow>
+              <ItemRow>
+                <Item>
+                  <Label
+                    text='Visa'
+                  >
+                    <CardInput
+                      onChange={handleInputChange}
+                      value={state.visa}
+                      name='visa'
+                    />
+                  </Label>
+                </Item>
+                <Item>
+                  <Label
+                    text='MasterCard'
+                  >
+                    <CardInput
+                      onChange={handleInputChange}
+                      value={state.masterCard}
+                      name='masterCard'
+                    />
+                  </Label>
+                </Item>
+              </ItemRow>
+            </ItemGroup>
           </>
         )}
       </State>
     );
-  });
+  })
+  .add('Text Input', () => (
+    <TextInput />
+  ), InfoStoryConfig)
+  .add('Password Input', () => (
+    <TextInput type='password' />
+  ), InfoStoryConfig)
+  .add('Card Input', () => (
+    <CardInput />
+  ), InfoStoryConfig);

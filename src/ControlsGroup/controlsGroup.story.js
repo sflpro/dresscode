@@ -1,18 +1,19 @@
 import React from 'react';
-import { State, Store } from '@sambego/storybook-state';
 import { storiesOf } from '@storybook/react';
+import { State, Store } from '@sambego/storybook-state';
 
 import { ControlsGroup } from '.';
 
+import { ItemGroup } from '../helpers/ItemGroup';
+import { ToggleButton } from '../ToggleButton';
+import { RadioButton } from '../RadioButton';
+import { InfoStoryConfig } from '../configs';
+import { Item } from '../helpers/Item';
 import { Checkbox } from '../Checkbox';
 import { Label } from '../Label';
-import { ItemGroup } from '../helpers/ItemGroup';
-import { Item } from '../helpers/Item';
-import { RadioButton } from '../RadioButton';
-import { ToggleButton } from '../ToggleButton';
 
-storiesOf('Form controls', module)
-  .add('CheckboxGroup', () => {
+storiesOf('Form controls/CheckboxGroup', module)
+  .add('Examples', () => {
     const store = new Store({
       first: true,
       second: true,
@@ -81,7 +82,30 @@ storiesOf('Form controls', module)
       </State>
     );
   })
-  .add('RadioButtonGroup', () => {
+  .add('CheckboxGroup', () => (
+    <ControlsGroup
+      title='Կուզենայիր աշխատեիր շաբաթ և կիրակի էս Սիսթեմի վրա'
+      key='key'
+    >
+      <Checkbox
+        label='Այո'
+        checked
+        name='first'
+      />
+      <Checkbox
+        label='Ոչ'
+        name='second'
+      />
+      <Checkbox
+        label='Ճարս Ի՞նչ'
+        checked
+        name='third'
+      />
+    </ControlsGroup>
+  ), InfoStoryConfig);
+
+storiesOf('Form controls/RadioButtonGroup', module)
+  .add('Examples', () => {
     const store = new Store({
       value: 'value3',
     });
@@ -143,7 +167,32 @@ storiesOf('Form controls', module)
       </State>
     );
   })
-  .add('ToggleButtonGroup', () => {
+  .add('RadioButtonGroup', () => (
+    <ControlsGroup
+      title='Ո՞րն է տվյալ պնդումներից ճիշտ'
+      key='key'
+    >
+      <RadioButton
+        label='Ո՞վ աշխատի, նա կուտի'
+        name='value 1'
+        value='value1'
+      />
+      <RadioButton
+        label='Էշ մի սատկի գարուն կգա'
+        value='value2'
+        name='tes3'
+      />
+      <RadioButton
+        label='Մեկ Դիզայնեռը անգամ շատա 10 պրոեկտ համար'
+        value='value3'
+        name='tes3'
+        checked
+      />
+    </ControlsGroup>
+  ), InfoStoryConfig);
+
+storiesOf('Form controls/ToggleButtonGroup', module)
+  .add('Examples', () => {
     const store = new Store({
       first: true,
       second: true,
@@ -248,4 +297,40 @@ storiesOf('Form controls', module)
         ]}
       </State>
     );
-  });
+  })
+  .add('ToggleButtonGroup', () => (
+    <ControlsGroup
+      title='Պրոեկտի պարամետրեր'
+      style={{ width: '324px' }}
+    >
+      <ToggleButton
+        checked
+        label='Արագ'
+        name='first'
+      />
+      <ToggleButton
+        checked
+        label='Որակով'
+        name='second'
+      />
+      <ToggleButton
+        label='Արագից տաս անգամ արագ'
+        checked
+        name='third'
+      />
+      <ToggleButton
+        label='2 Դիզայնեռ'
+        name='fourth'
+      />
+      <ToggleButton
+        checked
+        label='Մի հոգով'
+        name='fifth'
+      />
+      <ToggleButton
+        checked
+        label='Շաբաթ / Կիրակի'
+        name='sixth'
+      />
+    </ControlsGroup>
+  ), InfoStoryConfig);
