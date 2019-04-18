@@ -165,8 +165,11 @@ export class NotificationStack extends React.Component {
 }
 
 NotificationStack.propTypes = {
+  /** String or JSX or Element, content of notification */
   children: PropTypes.any,
+  /** String or JSX or Element, will be added for calling dismiss function */
   dismiss: PropTypes.any,
+  /** Number of seconds to display notification duration */
   duration: PropTypes.number,
 };
 

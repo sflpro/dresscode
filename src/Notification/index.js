@@ -67,12 +67,19 @@ export class Notification extends React.PureComponent {
 }
 
 Notification.propTypes = {
+  /** String, className that will be added to wrapper div */
   className: PropTypes.string,
+  /** Node, message that will be render */
   message: PropTypes.node,
+  /** String, title that will be render */
   title: PropTypes.string,
+  /** OneOf, status that will be show one of statuses */
   status: PropTypes.oneOf(['information', 'success', 'warning', 'error']),
+  /** OneOf, type of notification */
   type: PropTypes.oneOf(['message', 'alert']),
+  /** OneOf, theme for notification type of "alert" */
   theme: PropTypes.oneOf(Object.values(NOTIFICATION_THEMES)),
+  /** String, JSX or Element, icon that will be shown on input */
   icon: PropTypes.any,
 };
 
