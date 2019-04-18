@@ -20,6 +20,10 @@ export function ItemRow({
 }
 
 ItemRow.propTypes = {
+  children: PropTypes.any.isRequired,
   style: PropTypes.object,
-  children: PropTypes.any,
+};
+
+ItemRow.defaultProps = {
+  style: undefined,
 };

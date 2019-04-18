@@ -43,6 +43,8 @@ Label.propTypes = {
   isValid: PropTypes.bool,
   /** String, className that will be added to label */
   className: PropTypes.string,
+  /** Object, styles that will be added to label */
+  style: PropTypes.string,
   /** String or JSX or Element, content of label */
   children: PropTypes.any,
 };
@@ -53,5 +55,6 @@ Label.defaultProps = {
   disabled: false,
   isValid: false,
   className: '',
+  style: undefined,
   children: null,
 };

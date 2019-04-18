@@ -8,16 +8,18 @@ export function ToggleButton({
   disabled,
   checked,
   className,
-  onChange,
-  name,
+  style,
   ...props
 }) {
+  const wrapperClasses = classNames({
+    [styles.wrapper]: true,
+    [className]: true,
+  });
+
   return (
     <div
-      className={classNames({
-        [styles.wrapper]: true,
-        [className]: true,
-      })}
+      className={wrapperClasses}
+      style={style}
     >
       <span
         className={classNames({
@@ -29,10 +31,8 @@ export function ToggleButton({
         <input
           className={styles.input}
           disabled={disabled}
-          onChange={onChange}
           checked={checked}
           type='checkbox'
-          name={name}
           {...props}
         />
         <span className={styles.toggle} />
@@ -52,6 +52,8 @@ ToggleButton.propTypes = {
   checked: PropTypes.bool,
   /** String, className that will be added to wrapper div */
   className: PropTypes.string,
+  /** Object, style that will be added to wrapper div */
+  style: PropTypes.object,
 };
 
 ToggleButton.defaultProps = {
@@ -60,4 +62,5 @@ ToggleButton.defaultProps = {
   disabled: false,
   checked: false,
   className: '',
+  style: undefined,
 };

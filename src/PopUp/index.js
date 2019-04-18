@@ -83,6 +83,8 @@ PopUp.propTypes = {
     'bottom-start',
     'bottom-end',
   ]),
+  /** Object, style that will be added to wrapper div */
+  style: PropTypes.object,
   /** String or JSX or Element, position of popup */
   children: PropTypes.any,
 };
@@ -92,5 +94,6 @@ PopUp.defaultProps = {
   onDismiss: null,
   overlay: false,
   position: '',
+  style: undefined,
   children: null,
 };

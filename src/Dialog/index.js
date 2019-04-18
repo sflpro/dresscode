@@ -39,6 +39,7 @@ export class Dialog extends React.PureComponent {
       children,
       className,
       open,
+      style,
       ...props
     } = this.props;
 
@@ -52,11 +53,18 @@ export class Dialog extends React.PureComponent {
     }
 
     return (
-      <PopUp overlay onDismiss={this.dismiss}>
+      <PopUp
+        onDismiss={this.dismiss}
+        overlay
+      >
         <div
           className={dialogClasses}
+          style={style}
         >
-          <div className={styles.container} {...props}>
+          <div
+            className={styles.container}
+            {...props}
+          >
             <Icon
               name='cross'
               size={24}
@@ -80,12 +88,15 @@ Dialog.propTypes = {
   onDismiss: PropTypes.func,
   /** String or JSX or Element, content of dialog */
   children: PropTypes.any,
+  /** Object, styles that will be added to wrapper div */
+  style: PropTypes.any,
 };
 
 Dialog.defaultProps = {
   className: '',
   onDismiss: undefined,
   children: null,
+  style: undefined,
 };
 
 Dialog.Header = Header;

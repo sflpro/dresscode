@@ -7,18 +7,20 @@ import { Icon } from '../Icon';
 import styles from './listItem.css';
 
 export function ListItem({
-  value = '',
-  label = '',
-  icon = '',
-  iconPos = 'right',
-  iconStyle = {},
-  disabled = false,
-  active = false,
-  iconClassName = '',
+  value,
+  label,
+  icon,
+  iconPos,
+  iconStyle,
+  disabled,
+  active,
+  iconClassName,
   onClick,
+  className,
   ...props
 }) {
   const listItemClasses = classNames({
+    [className]: true,
     [styles.listItem]: true,
     [styles.disabled]: disabled,
     [styles.active]: active,
@@ -35,7 +37,6 @@ export function ListItem({
           event.preventDefault();
           return;
         }
-
         onClick({ value, event });
       }}
       className={listItemClasses}
@@ -81,6 +82,10 @@ ListItem.propTypes = {
   disabled: PropTypes.bool,
   /** Boolean, whether list item render as active */
   active: PropTypes.bool,
+  /** Object, styles that will be added to list item */
+  style: PropTypes.object,
+  /** String, className that will be added to list item */
+  className: PropTypes.string,
 };
 
 ListItem.defaultProps = {
@@ -88,9 +93,11 @@ ListItem.defaultProps = {
   label: '',
   icon: '',
   iconPos: 'right',
-  iconStyle: {},
+  iconStyle: undefined,
   disabled: false,
   active: false,
   iconClassName: '',
   onClick: undefined,
+  style: undefined,
+  className: '',
 };

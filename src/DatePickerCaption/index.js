@@ -5,8 +5,7 @@ import classNames from 'classnames';
 import styles from './datePickerCaption.css';
 
 export function DatePickerCaption({
-  className = '',
-  style = null,
+  className,
   children,
   ...props
 }) {
@@ -20,7 +19,6 @@ export function DatePickerCaption({
       <div
         className={captionWrapperClasses}
         role='presentation'
-        style={style}
         {...props}
       >
         {children}
@@ -40,6 +38,6 @@ DatePickerCaption.propTypes = {
 
 DatePickerCaption.defaultProps = {
   className: '',
-  style: {},
+  style: null,
   children: null,
 };

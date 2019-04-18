@@ -14,7 +14,6 @@ export function Button({
   neutral,
   warning,
   className,
-  style,
   children,
   onClick,
   ...props
@@ -32,7 +31,6 @@ export function Button({
     <Component
       className={buttonClasses}
       type={type}
-      style={style}
       disabled={disabled}
       {...props}
       onClick={disabled ? undefined : onClick}
@@ -70,7 +68,7 @@ Button.propTypes = {
   onClick: PropTypes.func,
   /** String, className that will be added to element */
   className: PropTypes.string,
-  /** Object, styles that will be added to element */
+  /** Object, style that will be added to element */
   style: PropTypes.object,
   /** String or JSX or Element, content of element */
   children: PropTypes.any,

@@ -263,5 +263,5 @@ DatePicker.defaultProps = {
   showOutsideDays: false,
   onChange: null,
   className: '',
-  style: null,
+  style: undefined,
 };

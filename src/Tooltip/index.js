@@ -10,7 +10,6 @@ const TooltipContent = ({
   description,
   title,
   className,
-  style,
   ...props
 }) => {
   const tooltipClasses = classNames({
@@ -21,7 +20,6 @@ const TooltipContent = ({
   return (
     <div
       className={tooltipClasses}
-      style={style}
       {...props}
     >
       {title && (
@@ -50,7 +48,7 @@ TooltipContent.propTypes = {
 TooltipContent.defaultProps = {
   title: '',
   className: '',
-  style: {},
+  style: undefined,
 };
 
 export class Tooltip extends React.Component {
@@ -128,6 +126,6 @@ Tooltip.defaultProps = {
   position: 'top',
   gap: 0,
   className: '',
-  style: null,
+  style: undefined,
   children: null,
 };

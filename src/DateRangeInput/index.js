@@ -281,7 +281,6 @@ export class DateRangeInput extends React.Component {
                   )}
                   hasError={hasError.from}
                   error={error.from}
-                  style={style}
                   {...props}
                 />
               </div>
@@ -304,7 +303,6 @@ export class DateRangeInput extends React.Component {
                   )}
                   hasError={hasError.to}
                   error={error.to}
-                  style={style}
                   {...props}
                 />
               </div>
@@ -329,12 +327,11 @@ export class DateRangeInput extends React.Component {
               hasError={hasError.from}
               error={error.from}
               forwardedRef={ref => this.setNativeInputRef(ref, 'from')}
-              style={style}
               {...props}
             />
           </div>
           <span className={styles.seperator}>
-              -
+            -
           </span>
           <div>
             <TextInput
@@ -352,7 +349,6 @@ export class DateRangeInput extends React.Component {
               hasError={hasError.to}
               error={error.to}
               forwardedRef={ref => this.setNativeInputRef(ref, 'to')}
-              style={style}
               {...props}
             />
           </div>
@@ -388,5 +384,5 @@ DateRangeInput.defaultProps = {
   className: '',
   locale: DEFAULT_LOCALE,
   trigger: 'click',
-  style: {},
+  style: undefined,
 };

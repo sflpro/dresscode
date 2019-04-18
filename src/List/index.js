@@ -36,6 +36,6 @@ List.propTypes = {
 
 List.defaultProps = {
   className: '',
-  style: {},
+  style: undefined,
   children: null,
 };

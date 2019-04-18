@@ -126,7 +126,6 @@ export class DateInput extends React.Component {
       locale,
       trigger,
       view,
-      style,
       ...props
     } = this.props;
     const { open, currentValue, hasError, error } = this.state;
@@ -171,7 +170,6 @@ export class DateInput extends React.Component {
               )}
               hasError={hasError}
               error={error}
-              style={style}
               {...props}
             />
           )}
@@ -190,7 +188,6 @@ export class DateInput extends React.Component {
           )}
           hasError={hasError}
           error={error}
-          style={style}
           {...props}
         />
       )
@@ -225,5 +222,5 @@ DateInput.defaultProps = {
   locale: DEFAULT_LOCALE,
   trigger: 'click',
   view: 'day',
-  style: {},
+  style: undefined,
 };

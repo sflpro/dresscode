@@ -26,7 +26,12 @@ export function ItemGroup({
 }
 
 ItemGroup.propTypes = {
+  children: PropTypes.any.isRequired,
   title: PropTypes.string,
   style: PropTypes.object,
-  children: PropTypes.any,
+};
+
+ItemGroup.defaultProps = {
+  title: '',
+  style: undefined,
 };

@@ -5,17 +5,12 @@ import classNames from 'classnames';
 import styles from './textarea.css';
 
 export function Textarea({
-  value,
-  placeholder,
   disabled,
   className,
-  rows,
-  cols,
   isValid,
   hasError,
   error,
   name,
-  onChange,
   ...props
 }) {
   const textareaClasses = classNames({
@@ -29,14 +24,8 @@ export function Textarea({
   return (
     <React.Fragment>
       <textarea
-        rows={rows}
-        cols={cols}
-        value={value}
         disabled={disabled}
         className={textareaClasses}
-        placeholder={placeholder}
-        onChange={onChange}
-        name={name}
         {...props}
       />
       {hasError && error && (
@@ -71,6 +60,8 @@ Textarea.propTypes = {
   className: PropTypes.string,
   /** Function, will be called when value of textarea will be changed */
   onChange: PropTypes.func,
+  /** Object, style that will be added to textarea */
+  style: PropTypes.object,
 };
 
 Textarea.defaultProps = {
@@ -85,4 +76,5 @@ Textarea.defaultProps = {
   error: '',
   name: '',
   onChange: undefined,
+  style: undefined,
 };

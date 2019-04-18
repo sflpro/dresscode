@@ -167,7 +167,6 @@ export class CardInput extends React.Component {
     return (
       <TextInput
         {...this.props}
-        placeholder='____ ____ ____ ____'
         onKeyPress={this.onKeyPress}
         onKeyDown={this.onKeyDown}
         forwardedRef={this.setInputRef}
@@ -195,6 +194,12 @@ CardInput.propTypes = {
   value: PropTypes.string,
   /** String, name of input */
   name: PropTypes.string,
+  /** String, placeholder of input */
+  placeholder: PropTypes.string,
+  /** String, className that will be passed to input */
+  className: PropTypes.string,
+  /** Object, style that will be passed to input */
+  style: PropTypes.string,
 };
 
 CardInput.defaultProps = {
@@ -203,4 +208,7 @@ CardInput.defaultProps = {
   onChange: undefined,
   value: '',
   name: '',
+  placeholder: '____ ____ ____ ____',
+  className: '',
+  style: undefined,
 };

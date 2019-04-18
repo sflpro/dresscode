@@ -6,7 +6,7 @@ import styles from './colorScheme.css';
 
 export function ColorScheme({
   text = '',
-  name='',
+  name = '',
   className = '',
   bgClassName = '',
   secondaryName = '',
@@ -50,4 +50,16 @@ ColorScheme.propTypes = {
   bgClassName: PropTypes.string,
   secondaryName: PropTypes.string,
   secondaryClassName: PropTypes.string,
+  className: PropTypes.string,
+  style: PropTypes.object,
+};
+
+ColorScheme.defaultProps = {
+  text: '',
+  name: '',
+  bgClassName: '',
+  secondaryName: '',
+  secondaryClassName: '',
+  className: '',
+  style: undefined,
 };
