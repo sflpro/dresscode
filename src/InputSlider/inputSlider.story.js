@@ -34,7 +34,7 @@ storiesOf('Form controls', module)
         store={store}
       >
         {state => (
-          <ItemGroup>
+          <ItemGroup title='Input Slider'>
             <ItemRow>
               <Item style={{ width: '40%' }}>
                 <InputSlider
