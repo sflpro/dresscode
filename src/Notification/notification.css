@@ -98,7 +98,7 @@
     padding-right: 16px;
   }
 
-  &.informationFrame {
+  &.information {
     border-color: var(--notification-information-color);
     background: var(--notification-information-color);
     color: var(--notification-light-text-color);
