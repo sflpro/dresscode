@@ -41,7 +41,7 @@ storiesOf('Form controls/Toggle Button', module)
                 style={{ justifyContent: 'space-between' }}
                 display='col'
               >
-                Այ էս մեկը
+                Option 1
                 <ToggleButton
                   checked={state.example1}
                   onChange={handler}
@@ -57,7 +57,7 @@ storiesOf('Form controls/Toggle Button', module)
                 style={{ justifyContent: 'space-between' }}
                 display='col'
               >
-                Համարյա էս մեկը
+                Option 2
                 <ToggleButton
                   checked={state.example2}
                   onChange={handler}
@@ -74,7 +74,7 @@ storiesOf('Form controls/Toggle Button', module)
                 display='col'
                 disabled
               >
-                էս մեկը չես կարա
+                Disabled
                 <ToggleButton
                   checked={state.example3}
                   onChange={handler}
@@ -92,7 +92,7 @@ storiesOf('Form controls/Toggle Button', module)
                 display='col'
                 disabled
               >
-                էս մեկն էլ
+                Active Disabled
                 <ToggleButton
                   checked={state.example4}
                   onChange={handler}

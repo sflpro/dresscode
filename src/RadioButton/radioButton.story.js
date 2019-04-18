@@ -43,7 +43,7 @@ storiesOf('Form controls/Radio Button', module)
                   value='radio1'
                   name='radio'
                 />
-                Այ էս մեկը
+                Option 1
               </Label>
             </Item>
           </ItemRow>
@@ -58,7 +58,7 @@ storiesOf('Form controls/Radio Button', module)
                   value='radio2'
                   name='radio'
                 />
-                Համարյա էս մեկը
+                Option 2
               </Label>
             </Item>
           </ItemRow>
@@ -75,7 +75,7 @@ storiesOf('Form controls/Radio Button', module)
                   name='radio'
                   disabled
                 />
-                էս մեկը չես կարա
+                Disabled
               </Label>
             </Item>
           </ItemRow>
@@ -92,7 +92,7 @@ storiesOf('Form controls/Radio Button', module)
                   name='radio'
                   disabled
                 />
-                էս մեկն էլ
+                Active Disabled
               </Label>
             </Item>
           </ItemRow>

@@ -41,12 +41,12 @@ storiesOf('Form controls/Checkbox', module)
                   display='col'
                 >
                   <Checkbox
-                    value='Ակտիվ'
+                    value='active'
                     checked={state.active}
                     name='active'
                     onChange={handler}
                   />
-                  Ակտիվ
+                  Active
                 </Label>
               </Item>
             </ItemRow>
@@ -56,27 +56,12 @@ storiesOf('Form controls/Checkbox', module)
                   display='col'
                 >
                   <Checkbox
-                    value='Սավառել'
+                    value='hover'
                     checked={state.hover}
                     name='hover'
                     onChange={handler}
                   />
-                  Սավառել
-                </Label>
-              </Item>
-            </ItemRow>
-            <ItemRow>
-              <Item>
-                <Label
-                  display='col'
-                >
-                  <Checkbox
-                    value='Սովորական'
-                    checked={state.regular}
-                    name='regular'
-                    onChange={handler}
-                  />
-                  Սովորական
+                  Hover
                 </Label>
               </Item>
             </ItemRow>
@@ -87,11 +72,11 @@ storiesOf('Form controls/Checkbox', module)
                   disabled
                 >
                   <Checkbox
-                    value='Անաշխատունակ'
+                    value='disabled'
                     disabled
                     onChange={handler}
                   />
-                  Անաշխատունակ
+                  Disabled
                 </Label>
               </Item>
             </ItemRow>
@@ -102,12 +87,12 @@ storiesOf('Form controls/Checkbox', module)
                   disabled
                 >
                   <Checkbox
-                    value='Ակտիվ, սրանից'
+                    value='active disabled'
                     checked
                     disabled
                     onChange={handler}
                   />
-                  Ակտիվ, սրանից
+                  Active Disabled
                 </Label>
               </Item>
             </ItemRow>

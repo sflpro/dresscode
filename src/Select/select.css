@@ -21,6 +21,7 @@
 }
 
 .nativeSelect {
+  visibility: hidden;
   overflow: hidden;
   position: absolute;
   outline: none;
