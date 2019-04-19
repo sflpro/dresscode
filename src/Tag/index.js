@@ -58,10 +58,10 @@ Tag.propTypes = {
 };
 
 Tag.defaultProps = {
-  type: 'primary',
   name: '',
   clickable: false,
   onClose: undefined,
   onClick: undefined,
   className: '',
+  type: 'primary',
 };

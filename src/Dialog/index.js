@@ -38,7 +38,6 @@ export class Dialog extends React.PureComponent {
     const {
       children,
       className,
-      overlay,
       open,
       ...props
     } = this.props;
@@ -53,7 +52,7 @@ export class Dialog extends React.PureComponent {
     }
 
     return (
-      <PopUp overlay={overlay} onDismiss={this.dismiss}>
+      <PopUp overlay onDismiss={this.dismiss}>
         <div
           className={dialogClasses}
         >
@@ -81,15 +80,12 @@ Dialog.propTypes = {
   onDismiss: PropTypes.func,
   /** String or JSX or Element, content of dialog */
   children: PropTypes.any,
-  /** Boolean, whether has overlay */
-  overlay: PropTypes.bool,
 };
 
 Dialog.defaultProps = {
   className: '',
   onDismiss: undefined,
   children: null,
-  overlay: true,
 };
 
 Dialog.Header = Header;

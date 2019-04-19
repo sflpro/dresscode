@@ -2,6 +2,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
+import { text } from '@storybook/addon-knobs';
 
 import { Button, CircleButton, LinkButton } from '.';
 
@@ -264,8 +265,8 @@ storiesOf('Button', module)
   ))
   .add('Button', () => (
     <Button
-      type='submit'
+      as={text('as', 'button')}
     >
-      Primary
+      {text('children', 'Primary')}
     </Button>
   ), InfoStoryConfig);

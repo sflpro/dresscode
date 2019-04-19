@@ -1,6 +1,7 @@
 import { State, Store } from '@sambego/storybook-state';
 import { storiesOf } from '@storybook/react';
 import React from 'react';
+import { number } from '@storybook/addon-knobs';
 
 import { Slider } from '.';
 
@@ -58,7 +59,7 @@ storiesOf('Form controls/Slider', module)
                   <Control
                     name='test2'
                     value={state.test2}
-                    icon={
+                    icon={(
                       <Icon
                         name='triangle'
                         style={{
@@ -66,7 +67,7 @@ storiesOf('Form controls/Slider', module)
                           stroke: 'white',
                         }}
                       />
-                    }
+                    )}
                   />
                 </Slider>
               </Item>
@@ -75,7 +76,7 @@ storiesOf('Form controls/Slider', module)
               <Item style={{ width: '40%' }}>
                 <Slider onChange={handler}>
                   <Control
-                    icon={
+                    icon={(
                       <Icon
                         name='triangle'
                         style={{
@@ -83,13 +84,13 @@ storiesOf('Form controls/Slider', module)
                           stroke: 'white',
                         }}
                       />
-                    }
+                    )}
                     value={state.min1}
                     max={state.max1}
                     name='min1'
                   />
                   <Control
-                    icon={
+                    icon={(
                       <Icon
                         name='triangle'
                         style={{
@@ -97,7 +98,7 @@ storiesOf('Form controls/Slider', module)
                           stroke: 'white',
                         }}
                       />
-                    }
+                    )}
                     value={state.max1}
                     min={state.min1}
                     name='max1'
@@ -128,35 +129,40 @@ storiesOf('Form controls/Slider', module)
       </State>
     );
   })
-  .add('Slider', () => (
-    <Slider onChange={params => params}>
-      <Control
-        icon={(
-          <Icon
-            name='triangle'
-            style={{
-              filter: 'drop-shadow(0 0 2px rgba(0, 0, 0, 0.3))',
-              stroke: 'white',
-            }}
-          />
-        )}
-        value={16}
-        max={74}
-        name='min'
-      />
-      <Control
-        icon={(
-          <Icon
-            name='triangle'
-            style={{
-              filter: 'drop-shadow(0 0 2px rgba(0, 0, 0, 0.3))',
-              stroke: 'white',
-            }}
-          />
-        )}
-        value={74}
-        min={16}
-        name='max'
-      />
-    </Slider>
-  ), InfoStoryConfig);
+  .add('Slider', () => {
+    const control1Value = number('control1Value', 16);
+    const control2Value = number('control2Value', 74);
+
+    return (
+      <Slider onChange={params => params}>
+        <Control
+          icon={(
+            <Icon
+              name='triangle'
+              style={{
+                filter: 'drop-shadow(0 0 2px rgba(0, 0, 0, 0.3))',
+                stroke: 'white',
+              }}
+            />
+          )}
+          value={control1Value}
+          max={control2Value}
+          name='min'
+        />
+        <Control
+          icon={(
+            <Icon
+              name='triangle'
+              style={{
+                filter: 'drop-shadow(0 0 2px rgba(0, 0, 0, 0.3))',
+                stroke: 'white',
+              }}
+            />
+          )}
+          value={control2Value}
+          min={control1Value}
+          name='max'
+        />
+      </Slider>
+    )
+  }, InfoStoryConfig);

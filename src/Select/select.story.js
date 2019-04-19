@@ -1,6 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { State, Store } from '@sambego/storybook-state';
+import { object } from '@storybook/addon-knobs';
 
 import { Select } from '.';
 
@@ -108,7 +109,7 @@ storiesOf('Form controls/Select', module)
     );
   })
   .add('Select', () => (
-    <Select>
+    <Select value={object('value')}>
       <Option
         value='option1'
         name='Option 1'

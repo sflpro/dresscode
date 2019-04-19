@@ -1,6 +1,7 @@
 import { State, Store } from '@sambego/storybook-state';
 import { storiesOf } from '@storybook/react';
 import React from 'react';
+import { number } from '@storybook/addon-knobs';
 
 import { InputSlider } from '.';
 
@@ -151,35 +152,40 @@ storiesOf('Form controls/Input Slider', module)
       </State>
     );
   })
-  .add('Input Slider', () => (
-    <InputSlider onChange={params => params}>
-      <Control
-        icon={(
-          <Icon
-            name='triangle'
-            style={{
-              filter: 'drop-shadow(0 0 2px rgba(0, 0, 0, 0.3))',
-              stroke: 'white',
-            }}
-          />
-        )}
-        value={15}
-        max={37}
-        name='min2'
-      />
-      <Control
-        icon={(
-          <Icon
-            name='triangle'
-            style={{
-              filter: 'drop-shadow(0 0 2px rgba(0, 0, 0, 0.3))',
-              stroke: 'white',
-            }}
-          />
-        )}
-        value={37}
-        min={15}
-        name='max2'
-      />
-    </InputSlider>
-  ), InfoStoryConfig);
+  .add('Input Slider', () => {
+    const control1Value = number('control1Value', 15);
+    const control2Value = number('control2Value', 37);
+
+    return (
+      <InputSlider onChange={params => params}>
+        <Control
+          icon={(
+            <Icon
+              name='triangle'
+              style={{
+                filter: 'drop-shadow(0 0 2px rgba(0, 0, 0, 0.3))',
+                stroke: 'white',
+              }}
+            />
+          )}
+          value={control1Value}
+          max={control2Value}
+          name='min'
+        />
+        <Control
+          icon={(
+            <Icon
+              name='triangle'
+              style={{
+                filter: 'drop-shadow(0 0 2px rgba(0, 0, 0, 0.3))',
+                stroke: 'white',
+              }}
+            />
+          )}
+          value={control2Value}
+          min={control1Value}
+          name='max'
+        />
+      </InputSlider>
+    );
+  }, InfoStoryConfig);
