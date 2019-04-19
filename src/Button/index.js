@@ -77,7 +77,6 @@ Button.propTypes = {
 };
 
 Button.defaultProps = {
-  variant: 'button',
   type: 'button',
   as: 'button',
   disabled: false,
@@ -87,8 +86,9 @@ Button.defaultProps = {
   warning: false,
   onClick: undefined,
   className: '',
-  style: {},
+  style: undefined,
   children: null,
+  variant: 'button',
 };
 
 export function LinkButton(props) {

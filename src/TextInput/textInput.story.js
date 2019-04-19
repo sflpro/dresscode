@@ -4,6 +4,7 @@ import { State, Store } from '@sambego/storybook-state';
 
 import { TextInput } from '.';
 
+import { DateRangeInput } from '../DateRangeInput';
 import { DateInput } from '../DateInput';
 import { CardInput } from '../CardInput';
 import { Label } from '../Label';
@@ -294,7 +295,4 @@ storiesOf('Form controls/Input', module)
   ), InfoStoryConfig)
   .add('Password Input', () => (
     <TextInput type='password' />
-  ), InfoStoryConfig)
-  .add('Card Input', () => (
-    <CardInput />
   ), InfoStoryConfig);
