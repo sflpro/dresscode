@@ -1,0 +1,150 @@
+.notification {
+  font-family: 'Montserrat', sans-serif;
+  border-radius: 5px;
+  margin-top: 8px;
+  border-width: 1px;
+  border-style: solid;
+  position: relative;
+  z-index: auto;
+  display: flex;
+}
+
+.closeBtn {
+  align-self: flex-start;
+  cursor: pointer;
+}
+
+.content {
+  flex: 1 auto;
+}
+
+.title {
+  display: block;
+  font-size: 11px;
+  padding-bottom: 8px;
+  color: var(--notification-title-color);
+}
+
+.message {
+  font-size: 1em;
+  height: 24px;
+  line-height: 24px;
+}
+
+.icon {
+  & > * {
+    height: 100%;
+  }
+}
+
+.action {
+
+}
+
+.notification-message {
+  &.theme-default {
+    border-color: var(--notification-border-default-color);
+    border-left-width: 4px;
+    padding: 16px 16px 16px 24px;
+    width: 480px;
+    background: #ffffff;
+    box-shadow: var(--box-shadow-300);
+
+    & .icon {
+      padding-right: 24px;
+    }
+
+    &.information {
+      border-left-color: var(--notification-information-color);
+
+      & .icon {
+        color: var(--notification-information-color);
+      }
+    }
+
+    &.success {
+      border-left-color: var(--notification-success-color);
+
+      & .icon {
+        color: var(--notification-success-color);
+      }
+    }
+
+    &.warning {
+      border-left-color: var(--notification-warning-color);
+
+      & .icon {
+        color: var(--notification-warning-color);
+      }
+    }
+
+    &.error {
+      border-left-color: var(--notification-error-color);
+
+      & .icon {
+        color: var(--notification-error-color);
+      }
+    }
+  }
+}
+
+.notification-alert {
+  border-color: var(--notification-border-default-color);
+  padding: 16px 12px;
+  width: 352px;
+  background: #ffffff;
+
+  & .title {
+    display: none;
+  }
+
+  & .icon {
+    padding-right: 16px;
+  }
+
+  &.information {
+    border-color: var(--notification-information-color);
+    background: var(--notification-information-color);
+    color: var(--notification-light-text-color);
+  }
+
+  &.success {
+    border-color: var(--notification-success-color);
+    background: var(--notification-success-color);
+    color: var(--notification-light-text-color);
+  }
+
+  &.warning {
+    border-color: var(--notification-warning-color);
+    background: var(--notification-warning-color);
+    color: var(--notification-default-text-color);
+  }
+
+  &.error {
+    border-color: var(--notification-error-color);
+    background: var(--notification-error-color);
+    color: var(--notification-light-text-color);
+  }
+
+  &.theme-light {
+    &.information {
+      background: var(--notification-information-light-background);
+      color: var(--notification-default-text-color);
+    }
+
+    &.success {
+      background: var(--notification-success-light-background);
+      color: var(--notification-success-color);
+    }
+
+    &.warning {
+      background: var(--notification-warning-light-background);
+      color: var(--notification-default-text-color);
+    }
+
+    &.error {
+      background: var(--notification-error-light-background);
+      color: var(--notification-error-color);
+    }
+  }
+}

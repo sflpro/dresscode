@@ -17,6 +17,8 @@ function loadStories() {
   require('../src/Tooltip/tooltip.story.js');
   require('../src/Dialog/dialog.story');
   require('../src/Tag/tag.story');
+  require('../src/Notification/notification.story');
+  require('../src/NotificationStack/notificationStack.story');
 }
 
 configure(loadStories, module);

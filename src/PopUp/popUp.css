@@ -8,11 +8,14 @@
   align-items: center;
   justify-content: center;
   display: flex;
+  flex-direction: column;
 }
 
 .top-end {
   top: 0;
   right: 0;
+  left: auto;
+  bottom: auto;
 }
 
 .top-start {

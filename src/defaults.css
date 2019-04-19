@@ -131,12 +131,18 @@
   --dialog-title-color: var(--primary-color);
   --dialog-actions-background: var(--disabled-color);
 
-  --notification-border-default-color: var(--disabled-color);
-  --notification-border-information-color: var(--primary-color);
-  --notification-border-success-color: var(--success-color);
-  --notification-border-warning-color: var(--warning-color);
-  --notification-border-error-color: var(--error-color);
+  --notification-border-default-color: var(--neutral-100);
+  --notification-information-color: var(--primary-color);
+  --notification-success-color: var(--green-300);
+  --notification-warning-color: var(--yellow-300);
+  --notification-error-color: var(--error-color);
   --notification-title-color: var(--neutral-200);
+  --notification-default-text-color: var(--neutral-900);
+  --notification-light-text-color: var(--neutral-white);
+  --notification-information-light-background: var(--violet-50);
+  --notification-success-light-background: var(--green-50);
+  --notification-error-light-background: var(--red-50);
+  --notification-warning-light-background: var(--yellow-50);
 
   --button-disabled-color: var(--default-color);
   --button-height: 48px;

@@ -1,0 +1,9 @@
+.notification-list {
+  position: fixed;
+  top:40px;
+  right: 24px;
+}
+
+.notificationItem {
+  position: relative;
+}
