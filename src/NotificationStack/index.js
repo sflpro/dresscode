@@ -108,9 +108,7 @@ export class NotificationStack extends React.Component {
     }, duration);
   };
 
-  onDismiss = (index) => {
-    this.removeFromStack(index);
-  };
+  onDismiss = index => () => this.removeFromStack(index);
 
   addNewNotification = () => {
     const { nItems } = this.state;
@@ -123,40 +121,41 @@ export class NotificationStack extends React.Component {
 
   setNotificationItems = () => {
     const { nItems } = this.state;
-    const { dismiss } = this.props;
     this.notificationItems = Object.entries(nItems).map(([key, item]) => (
       <div
         className={styles.notificationItem}
         key={key}
       >
-        {dismiss && (
-          <span
-            role='presentation'
-            onClick={() => this.onDismiss(key)}
-            className={styles.dismiss}
-          >
-            {dismiss}
-          </span>
-        )}
         {item.value}
       </div>
     ));
   };
 
+  getNotificationItems = () => this.notificationItems.map((item) => {
+    const { onDismiss } = this;
+    const { children: itemChildren } = item.props;
+    return (
+      <React.Fragment key={item.key}>
+        {itemChildren(onDismiss(item.key), item.key)}
+      </React.Fragment>
+    );
+  });
+
   render() {
     this.setNotificationItems();
     this.getDomElem();
-    const { notificationItems } = this;
+    const { getNotificationItems } = this;
+
     if (this.container && this.domChild && this.domWrapper) {
       return ReactDOM.createPortal(
-        notificationItems,
+        getNotificationItems(),
         this.domWrapper,
       );
     }
     return ReactDOM.createPortal(
       (
         <div className={`${styles['notification-list']} notification-list`}>
-          {notificationItems}
+          {getNotificationItems()}
         </div>
       ),
       document.querySelector('body'),
@@ -167,14 +166,11 @@ export class NotificationStack extends React.Component {
 NotificationStack.propTypes = {
   /** String or JSX or Element, content of notification */
   children: PropTypes.any,
-  /** String or JSX or Element, will be added for calling dismiss function */
-  dismiss: PropTypes.any,
   /** Number of seconds to display notification duration */
   duration: PropTypes.number,
 };
 
 NotificationStack.defaultProps = {
   children: null,
-  dismiss: null,
   duration: 10,
 };

@@ -13,13 +13,14 @@ const NOTIFICATION_THEMES = {
 export class Notification extends React.PureComponent {
   render() {
     const {
-      message,
       className,
       title,
       status,
       type,
       theme,
       icon,
+      action,
+      children,
       ...props
     } = this.props;
 
@@ -53,14 +54,21 @@ export class Notification extends React.PureComponent {
               {title}
             </span>
           )}
-          {message && (
+          {children && (
             <div
               className={styles.message}
             >
-              {message}
+              {children}
             </div>
           )}
         </div>
+        {action && (
+          <span
+            className={styles.action}
+          >
+            {action}
+          </span>
+        )}
       </div>
     );
   }
@@ -70,7 +78,7 @@ Notification.propTypes = {
   /** String, className that will be added to wrapper div */
   className: PropTypes.string,
   /** Node, message that will be render */
-  message: PropTypes.node,
+  children: PropTypes.any,
   /** String, title that will be render */
   title: PropTypes.string,
   /** OneOf, status that will be show one of statuses */
@@ -79,16 +87,19 @@ Notification.propTypes = {
   type: PropTypes.oneOf(['message', 'alert']),
   /** OneOf, theme for notification type of "alert" */
   theme: PropTypes.oneOf(Object.values(NOTIFICATION_THEMES)),
-  /** String, JSX or Element, icon that will be shown on input */
+  /** String, JSX or Element, icon that will be shown on notification popup left side */
   icon: PropTypes.any,
+  /** String, JSX or Element, icon that will be show on notification popup top right side */
+  action: PropTypes.any,
 };
 
 Notification.defaultProps = {
   className: '',
-  message: null,
+  children: null,
   title: '',
   status: 'information',
   type: 'message',
   theme: 'default',
-  icon: null,
+  icon: undefined,
+  action: undefined,
 };

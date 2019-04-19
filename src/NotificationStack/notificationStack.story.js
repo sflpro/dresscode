@@ -36,25 +36,31 @@ storiesOf('Notification', module)
             {state.notification
             && (
               <NotificationStack
-                duration={30}
-                dismiss={(
-                  <Icon
-                    name='cross'
-                    size={24}
-                  />
-                )}
+                duration={5}
               >
-                <Notification
-                  status={state.notification}
-                  message={`${state.notification} notification`}
-                  title={state.notification}
-                  icon={(
-                    <Icon
-                      size={24}
-                      name={ICON_TYPE[state.notification]}
-                    />
-                  )}
-                />
+                {dismiss => (
+                  <Notification
+                    status={state.notification}
+                    title={state.notification}
+                    icon={(
+                      <Icon
+                        size={24}
+                        name={ICON_TYPE[state.notification]}
+                      />
+                    )}
+                    action={(
+                      <Icon
+                        size={24}
+                        name='cross'
+                        onClick={dismiss}
+                      />
+                    )}
+                  >
+                    {state.notification}
+                    {' '}
+                    notification
+                  </Notification>
+                )}
               </NotificationStack>
             )
             }

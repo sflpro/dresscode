@@ -4,13 +4,6 @@
   right: 24px;
 }
 
-.dismiss {
-  position: absolute;
-  right: 16px;
-  top: 16px;
-  z-index: 1;
-}
-
 .notificationItem {
   position: relative;
 }

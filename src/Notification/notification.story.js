@@ -16,7 +16,6 @@ storiesOf('Notification', module)
         <Item>
           <Notification
             status='information'
-            message='Information Notification'
             title='Information'
             icon={(
               <Icon
@@ -24,10 +23,18 @@ storiesOf('Notification', module)
                 size={24}
               />
             )}
-          />
+            action={(
+              <Icon
+                name='cross'
+                size={24}
+              />
+            )}
+          >
+            Information Notification
+          </Notification>
+
           <Notification
             status='warning'
-            message='Warning Notification'
             title='Warning'
             icon={(
               <Icon
@@ -35,10 +42,11 @@ storiesOf('Notification', module)
                 size={24}
               />
             )}
-          />
+          >
+            Warning Notification
+          </Notification>
           <Notification
             status='error'
-            message='Error Notification'
             title='Error'
             icon={(
               <Icon
@@ -46,17 +54,20 @@ storiesOf('Notification', module)
                 size={24}
               />
             )}
-          />
+          >
+            Error Notification
+          </Notification>
           <Notification
             status='success'
-            message='Success Notification'
             icon={(
               <Icon
                 name='check'
                 size={24}
               />
             )}
-          />
+          >
+            Success Notification
+          </Notification>
         </Item>
       </ItemGroup>
       <div style={{ display: 'flex' }}>
@@ -67,27 +78,46 @@ storiesOf('Notification', module)
           <Item>
             <Notification
               status='information'
-              message='Information Notification'
               title='Information'
               type='alert'
-            />
+              action={(
+                <Icon
+                  name='cross'
+                  size={24}
+                />
+              )}
+            >
+              Information Notification
+            </Notification>
+
             <Notification
               status='warning'
-              message='Warning Notification'
               title='Warning'
               type='alert'
-            />
+              action={(
+                <Icon
+                  name='cross'
+                  size={24}
+                />
+              )}
+            >
+              Warning Notification
+            </Notification>
+
             <Notification
               status='error'
-              message='Error Notification'
               title='Error'
               type='alert'
-            />
+            >
+              Error Notification
+            </Notification>
+
             <Notification
               status='success'
-              message='Success Notification'
               type='alert'
-            />
+            >
+              Success Notification
+            </Notification>
           </Item>
         </ItemGroup>
 
@@ -97,32 +127,35 @@ storiesOf('Notification', module)
           <Item>
             <Notification
               status='information'
-              message='Information Notification'
               title='Information'
               type='alert'
               theme='light'
-            />
+            >
+              Information Notification
+            </Notification>
             <Notification
               status='warning'
-              message='Warning Notification'
               title='Warning'
               type='alert'
               theme='light'
-            />
+            >
+              Warning Notification
+            </Notification>
             <Notification
               status='error'
-              message='Error Notification'
               title='Error'
               type='alert'
               theme='light'
-            />
+            >
+              Error Notification
+            </Notification>
             <Notification
-
               status='success'
-              message='Success Notification'
               type='alert'
               theme='light'
-            />
+            >
+              Success Notification
+            </Notification>
           </Item>
         </ItemGroup>
       </div>

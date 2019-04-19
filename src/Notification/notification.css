@@ -37,6 +37,10 @@
   }
 }
 
+.action {
+
+}
+
 .notification-message {
   &.theme-default {
     border-color: var(--notification-border-default-color);
