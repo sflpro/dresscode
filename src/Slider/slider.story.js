@@ -164,5 +164,5 @@ storiesOf('Form controls/Slider', module)
           name='max'
         />
       </Slider>
-    )
+    );
   }, InfoStoryConfig);

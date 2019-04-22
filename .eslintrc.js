@@ -40,6 +40,13 @@ module.exports = {
     "max-len": ["error", 120, 2, {
       'ignoreUrls': true,
       'ignoreComments': false
-    }]
+    }],
+    "import/no-webpack-loader-syntax": "off",
+    'import/no-unresolved': [
+      2,
+      {
+        ignore: ['style-loader!css-loader*']
+      }
+    ]
   }
 };

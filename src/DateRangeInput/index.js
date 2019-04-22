@@ -57,16 +57,14 @@ export class DateRangeInput extends React.Component {
 
   getRangeUpdatedValues = ({ picker, value }) => {
     const { from, to } = this.props;
-    let rangeValues = {};
+    const rangeValues = {};
 
     if (picker === 'from') {
       if (to && to < value) {
         rangeValues.to = value;
-      };
-    } else {
-      if (from && from > value) {
-        rangeValues.from = value;
-      };
+      }
+    } else if (from && from > value) {
+      rangeValues.from = value;
     }
 
     return rangeValues;
@@ -149,7 +147,7 @@ export class DateRangeInput extends React.Component {
     }
   };
 
-  handleDateInputFocus = (event) => (
+  handleDateInputFocus = event => (
     event.target.select()
   );
 
@@ -190,7 +188,7 @@ export class DateRangeInput extends React.Component {
         },
       }), () => {
         onDateInputChange({
-          [selectedPicker]: new Date(`${y}-${m}-${d}`)
+          [selectedPicker]: new Date(`${y}-${m}-${d}`),
         });
       });
     }
@@ -274,13 +272,13 @@ export class DateRangeInput extends React.Component {
                   onBlur={() => this.handleDateInputBlur('from')}
                   className={dateRangeInputClasses}
                   value={inputValues.from}
-                  icon={
+                  icon={(
                     <Icon
                       name='date'
                       size={24}
                       onClick={e => this.handleDatePickerIconClick(e, setOnClick)}
                     />
-                  }
+                  )}
                   hasError={hasError.from}
                   error={error.from}
                   style={style}
@@ -297,13 +295,13 @@ export class DateRangeInput extends React.Component {
                   onBlur={() => this.handleDateInputBlur('to')}
                   className={dateRangeInputClasses}
                   value={inputValues.to}
-                  icon={
+                  icon={(
                     <Icon
                       name='date'
                       size={24}
                       onClick={e => this.handleDatePickerIconClick(e, setOnClick)}
                     />
-                  }
+                  )}
                   hasError={hasError.to}
                   error={error.to}
                   style={style}
@@ -314,52 +312,52 @@ export class DateRangeInput extends React.Component {
           )}
         </Popover>
       ) : (
-          <div className={styles.dateRangeInputWrapper}>
-            <div>
-              <TextInput
-                onChange={event => this.handleNativeDateInputChange(event, 'from')}
-                onBlur={() => this.handleNativeDateInputBlur('from')}
-                className={dateRangeInputClasses}
-                value={formatDate(from, VALID_DATE_FORMAT)}
-                type='date'
-                icon={
-                  <Icon
-                    name='date'
-                    size={24}
-                  />
-                }
-                hasError={hasError.from}
-                error={error.from}
-                forwardedRef={(ref) => this.setNativeInputRef(ref, 'from')}
-                style={style}
-                {...props}
-              />
-            </div>
-            <span className={styles.seperator}>
-              -
-            </span>
-            <div>
-              <TextInput
-                onChange={event => this.handleNativeDateInputChange(event, 'to')}
-                onBlur={() => this.handleNativeDateInputBlur('to')}
-                className={dateRangeInputClasses}
-                value={formatDate(to, VALID_DATE_FORMAT)}
-                type='date'
-                icon={
-                  <Icon
-                    name='date'
-                    size={24}
-                  />
-                }
-                hasError={hasError.to}
-                error={error.to}
-                forwardedRef={(ref) => this.setNativeInputRef(ref, 'to')}
-                style={style}
-                {...props}
-              />
-            </div>
+        <div className={styles.dateRangeInputWrapper}>
+          <div>
+            <TextInput
+              onChange={event => this.handleNativeDateInputChange(event, 'from')}
+              onBlur={() => this.handleNativeDateInputBlur('from')}
+              className={dateRangeInputClasses}
+              value={formatDate(from, VALID_DATE_FORMAT)}
+              type='date'
+              icon={(
+                <Icon
+                  name='date'
+                  size={24}
+                />
+              )}
+              hasError={hasError.from}
+              error={error.from}
+              forwardedRef={ref => this.setNativeInputRef(ref, 'from')}
+              style={style}
+              {...props}
+            />
           </div>
-        )
+          <span className={styles.seperator}>
+              -
+          </span>
+          <div>
+            <TextInput
+              onChange={event => this.handleNativeDateInputChange(event, 'to')}
+              onBlur={() => this.handleNativeDateInputBlur('to')}
+              className={dateRangeInputClasses}
+              value={formatDate(to, VALID_DATE_FORMAT)}
+              type='date'
+              icon={(
+                <Icon
+                  name='date'
+                  size={24}
+                />
+              )}
+              hasError={hasError.to}
+              error={error.to}
+              forwardedRef={ref => this.setNativeInputRef(ref, 'to')}
+              style={style}
+              {...props}
+            />
+          </div>
+        </div>
+      )
     );
   }
 }

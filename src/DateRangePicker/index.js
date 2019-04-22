@@ -335,7 +335,9 @@ export class DateRangePicker extends React.Component {
             )}
             navbarElement={(
               <DatePickerNavbar
-                onPreviousClick={() => this.handlePreviousYearClick(year[this.selectedPicker], DEFAULT_YEARS_COUNT, false)}
+                onPreviousClick={() => (
+                  this.handlePreviousYearClick(year[this.selectedPicker], DEFAULT_YEARS_COUNT, false)
+                )}
                 onNextClick={() => this.handleNextYearClick(year[this.selectedPicker], DEFAULT_YEARS_COUNT, false)}
               />
             )}

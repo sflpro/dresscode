@@ -2,7 +2,6 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { withInfo } from '@storybook/addon-info';
 import { State, Store } from '@sambego/storybook-state';
-import { boolean } from '@storybook/addon-knobs';
 
 import { Dialog } from '.';
 
@@ -66,7 +65,6 @@ storiesOf('Dialog', module)
     };
 
     const confirm1 = () => {
-      alert('Confirmed');
       toggleDialog1(false);
     };
 

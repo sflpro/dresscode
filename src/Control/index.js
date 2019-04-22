@@ -36,11 +36,13 @@ export class Control extends React.Component {
     const nextLeft = this.getLeftPosition();
 
     if (nextStep !== currentStep) {
-      this.setState({ currentStep: nextStep, left: this.getLeftPosition(nextStep) });
+      this.setParamsInState({ currentStep: nextStep, left: this.getLeftPosition(nextStep) });
+      // this.setState({ currentStep: nextStep, left: this.getLeftPosition(nextStep) });
     }
 
     if (nextLeft !== left) {
-      this.setState({ left: nextLeft });
+      this.setParamsInState({ left: nextLeft });
+      // this.setState({ left: nextLeft });
     }
 
     if (left !== prevState.left) {
@@ -65,6 +67,10 @@ export class Control extends React.Component {
 
     return max || sliderMax;
   }
+
+  setParamsInState = (stateParams) => {
+    this.setState(stateParams);
+  };
 
   onMouseMove = (event) => {
     if (event.type === 'mousemove') {

@@ -249,7 +249,13 @@ export class Popover extends React.Component {
   };
 
   handleMouseEnter = (event) => {
-    const { follow = false, open, trigger = POPOVER_TRIGGER_OPTIONS.CLICK, onTargetEvent, contentRelative } = this.props;
+    const {
+      follow,
+      open,
+      trigger,
+      onTargetEvent,
+      contentRelative,
+    } = this.props;
     let target = trigger === POPOVER_TRIGGER_OPTIONS.HOVER ? event.target : event.currentTarget;
 
     if (contentRelative) {

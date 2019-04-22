@@ -57,13 +57,11 @@ export class DateInput extends React.Component {
     const { currentValue } = this.state;
 
     if (!currentValue) {
-      const { value } = this.props;
       this.hasError = false;
       this.error = null;
       this.setState({
         hasError: this.hasError,
         error: this.error,
-        value,
       });
     } else {
       this.setState({
@@ -74,7 +72,7 @@ export class DateInput extends React.Component {
     }
   };
 
-  handleDateInputFocus = (event) => (
+  handleDateInputFocus = event => (
     event.target.select()
   );
 
@@ -144,14 +142,14 @@ export class DateInput extends React.Component {
       !isNativeMode ? (
         <Popover
           trigger={trigger}
-          content={
+          content={(
             <DatePicker
               value={value}
               onChange={this.handleDatePickerChange}
               locale={locale}
               view={view}
             />
-          }
+          )}
           onTargetEvent={this.handleTargetEvent}
           open={open}
           gap={8}
@@ -164,13 +162,13 @@ export class DateInput extends React.Component {
               onBlur={this.handleDateInputBlur}
               className={dateInputClasses}
               value={this.focused || this.hasError ? currentValue : formatDate(value, format)}
-              icon={
+              icon={(
                 <Icon
                   name='date'
                   size={24}
                   onClick={e => this.handleDatePickerIconClick(e, setOnClick)}
                 />
-              }
+              )}
               hasError={hasError}
               error={error}
               style={style}
@@ -184,12 +182,12 @@ export class DateInput extends React.Component {
           className={dateInputClasses}
           value={formatDate(value, VALID_DATE_FORMAT)}
           type='date'
-          icon={
+          icon={(
             <Icon
               name='date'
               size={24}
             />
-          }
+          )}
           hasError={hasError}
           error={error}
           style={style}

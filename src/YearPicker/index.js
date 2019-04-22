@@ -45,3 +45,9 @@ YearPicker.propTypes = {
   onClick: PropTypes.func,
   style: PropTypes.object,
 };
+
+YearPicker.defaultProps = {
+  selectedYear: null,
+  onClick: undefined,
+  style: null,
+};
