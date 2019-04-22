@@ -128,7 +128,13 @@ export class DateInput extends React.Component {
       view,
       ...props
     } = this.props;
-    const { open, currentValue, hasError, error } = this.state;
+
+    const {
+      open,
+      currentValue,
+      hasError,
+      error,
+    } = this.state;
 
     const dateInputClasses = classNames({
       [styles.dateInput]: true,

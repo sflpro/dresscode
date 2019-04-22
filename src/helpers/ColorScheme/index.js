@@ -5,12 +5,12 @@ import classNames from 'classnames';
 import styles from './colorScheme.css';
 
 export function ColorScheme({
-  text = '',
-  name = '',
-  className = '',
-  bgClassName = '',
-  secondaryName = '',
-  secondaryClassName = '',
+  text,
+  name,
+  className,
+  bgClassName,
+  secondaryName,
+  secondaryClassName,
   ...props
 }) {
   const colorSchemeClasses = classNames({

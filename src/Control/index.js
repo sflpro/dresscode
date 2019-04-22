@@ -162,10 +162,19 @@ export class Control extends React.Component {
   }
 
   render() {
-    const { className, value, name, icon, style, ...props } = this.props;
+    const {
+      className,
+      value,
+      name,
+      icon,
+      style,
+      ...props
+    } = this.props;
     const { left } = this.state;
 
-    const controlClassNames = { [styles.control]: true };
+    const controlClassNames = {
+      [styles.control]: true,
+    };
 
     if (className) {
       controlClassNames[className] = true;

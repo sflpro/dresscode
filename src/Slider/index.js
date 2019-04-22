@@ -166,8 +166,20 @@ export class Slider extends React.Component {
   };
 
   render() {
-    const { className, children, step, min, max, distance, ...props } = this.props;
-    const { wrapperElementWidth, maxStepsCount } = this.state;
+    const {
+      className,
+      children,
+      step,
+      min,
+      max,
+      distance,
+      ...props
+    } = this.props;
+
+    const {
+      wrapperElementWidth,
+      maxStepsCount,
+    } = this.state;
 
     const sliderLineStyles = this.getSliderLineStyles();
 
