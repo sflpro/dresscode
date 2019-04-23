@@ -95,7 +95,7 @@ export const validateFormat = (dateString, format) => {
         break;
       }
       case 'MM': {
-        valid = (dateComponent.length === 2 || dateComponent.length === 1 && Number(dateComponent) < 9)
+        valid = (dateComponent.length === 2 || (dateComponent.length === 1 && Number(dateComponent) < 9))
           && Number(dateComponent) >= 1 && Number(dateComponent) <= 12;
         date.m = dateComponent;
         break;

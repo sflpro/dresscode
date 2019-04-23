@@ -7,7 +7,7 @@ import styles from './picker.css';
 export function Picker({
   captionElement,
   navbarElement,
-  className = '',
+  className,
   style,
   children,
   ...props
@@ -39,4 +39,12 @@ Picker.propTypes = {
   className: PropTypes.string,
   style: PropTypes.object,
   children: PropTypes.any,
+};
+
+Picker.defaultProps = {
+  captionElement: null,
+  navbarElement: null,
+  className: '',
+  style: undefined,
+  children: null,
 };

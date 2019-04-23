@@ -36,10 +36,12 @@ export class Control extends React.Component {
     const nextLeft = this.getLeftPosition();
 
     if (nextStep !== currentStep) {
+      // eslint-disable-next-line react/no-did-update-set-state
       this.setState({ currentStep: nextStep, left: this.getLeftPosition(nextStep) });
     }
 
     if (nextLeft !== left) {
+      // eslint-disable-next-line react/no-did-update-set-state
       this.setState({ left: nextLeft });
     }
 

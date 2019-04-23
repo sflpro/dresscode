@@ -1,4 +1,4 @@
-(function (doc) {
+((doc) => {
   const App = {};
   App.ajax = (loopObj, callback) => {
     const request = new XMLHttpRequest();
@@ -52,6 +52,6 @@
     }
   };
 
-  /MSIE|Trident/.test(navigator.userAgent) &&
-  doc.addEventListener('DOMContentLoaded', () => App.init());
+  return /MSIE|Trident/.test(navigator.userAgent)
+    && doc.addEventListener('DOMContentLoaded', () => App.init());
 })(document);

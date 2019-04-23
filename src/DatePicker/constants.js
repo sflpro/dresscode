@@ -12,7 +12,7 @@ export const MONTHS_SHORT = [
   'Sep',
   'Oct',
   'Nov',
-  'Dec'
+  'Dec',
 ];
 
 export const MONTHS = [
