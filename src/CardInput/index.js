@@ -170,7 +170,7 @@ export class CardInput extends React.Component {
         placeholder='____ ____ ____ ____'
         onKeyPress={this.onKeyPress}
         onKeyDown={this.onKeyDown}
-        setRef={this.setInputRef}
+        forwardedRef={this.setInputRef}
         onChange={this.onChange}
         icon={(
           <img
