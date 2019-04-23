@@ -13,6 +13,7 @@ import { Icon } from '../Icon';
 import { ItemGroup } from '../helpers/ItemGroup';
 import { ItemRow } from '../helpers/ItemRow';
 import { Item } from '../helpers/Item';
+import { ImportInstruction } from '../helpers/ImportInstruction';
 
 import { InfoStoryConfig } from '../configs';
 
@@ -292,7 +293,19 @@ storiesOf('Form controls/Input', module)
   })
   .add('Text Input', () => (
     <TextInput />
-  ), InfoStoryConfig)
+  ), {
+    ...InfoStoryConfig,
+    info: {
+      ...InfoStoryConfig.info,
+      text: <ImportInstruction text='TextInput' />,
+    },
+  })
   .add('Password Input', () => (
     <TextInput type='password' />
-  ), InfoStoryConfig);
+  ), {
+    ...InfoStoryConfig,
+    info: {
+      ...InfoStoryConfig.info,
+      text: <ImportInstruction text='TextInput' />,
+    },
+  });

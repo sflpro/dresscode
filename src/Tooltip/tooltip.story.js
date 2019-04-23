@@ -8,6 +8,7 @@ import { Icon } from '../Icon';
 
 import { ItemGroup } from '../helpers/ItemGroup';
 import { Item } from '../helpers/Item';
+import { ImportInstruction } from '../helpers/ImportInstruction';
 
 import { InfoStoryConfig } from '../configs';
 
@@ -183,4 +184,10 @@ storiesOf('Tooltip', module)
         {text2}
       </div>
     );
-  }, InfoStoryConfig);
+  }, {
+    ...InfoStoryConfig,
+    info: {
+      ...InfoStoryConfig.info,
+      text: <ImportInstruction text='Tooltip' />,
+    },
+  });

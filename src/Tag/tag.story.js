@@ -6,6 +6,7 @@ import { Tag } from '.';
 import { ItemGroup } from '../helpers/ItemGroup';
 import { ItemRow } from '../helpers/ItemRow';
 import { Item } from '../helpers/Item';
+import { ImportInstruction } from '../helpers/ImportInstruction';
 
 import { InfoStoryConfig } from '../configs';
 
@@ -40,4 +41,10 @@ storiesOf('Tag', module)
       name='Removable tag'
       clickable
     />
-  ), InfoStoryConfig);
+  ), {
+    ...InfoStoryConfig,
+    info: {
+      ...InfoStoryConfig.info,
+      text: <ImportInstruction text='Tag' />,
+    },
+  });

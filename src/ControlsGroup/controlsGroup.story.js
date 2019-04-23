@@ -12,6 +12,7 @@ import { Label } from '../Label';
 
 import { ItemGroup } from '../helpers/ItemGroup';
 import { Item } from '../helpers/Item';
+import { ImportInstruction } from '../helpers/ImportInstruction';
 
 import { InfoStoryConfig } from '../configs';
 
@@ -143,7 +144,13 @@ storiesOf('Form controls/CheckboxGroup', module)
         </Label>
       </ControlsGroup>
     );
-  }, InfoStoryConfig);
+  }, {
+    ...InfoStoryConfig,
+    info: {
+      ...InfoStoryConfig.info,
+      text: <ImportInstruction text='ControlsGroup' />,
+    },
+  });
 
 storiesOf('Form controls/RadioButtonGroup', module)
   .add('Examples', () => {
@@ -267,7 +274,13 @@ storiesOf('Form controls/RadioButtonGroup', module)
         </Label>
       </ControlsGroup>
     );
-  }, InfoStoryConfig);
+  }, {
+    ...InfoStoryConfig,
+    info: {
+      ...InfoStoryConfig.info,
+      text: <ImportInstruction text='ControlsGroup' />,
+    },
+  });
 
 storiesOf('Form controls/ToggleButtonGroup', module)
   .add('Examples', () => {
@@ -432,4 +445,10 @@ storiesOf('Form controls/ToggleButtonGroup', module)
         </Label>
       </ControlsGroup>
     );
-  }, InfoStoryConfig);
+  }, {
+    ...InfoStoryConfig,
+    info: {
+      ...InfoStoryConfig.info,
+      text: <ImportInstruction text='ControlsGroup' />,
+    },
+  });

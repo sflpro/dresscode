@@ -9,6 +9,7 @@ import { Label } from '../Label';
 import { ItemGroup } from '../helpers/ItemGroup';
 import { ItemRow } from '../helpers/ItemRow';
 import { Item } from '../helpers/Item';
+import { ImportInstruction } from '../helpers/ImportInstruction';
 
 import { InfoStoryConfig } from '../configs';
 
@@ -103,4 +104,10 @@ storiesOf('Form controls/Checkbox', module)
   })
   .add('Checkbox', () => (
     <Checkbox />
-  ), InfoStoryConfig);
+  ), {
+    ...InfoStoryConfig,
+    info: {
+      ...InfoStoryConfig.info,
+      text: <ImportInstruction text='Checkbox' />,
+    },
+  });

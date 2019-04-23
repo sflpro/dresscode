@@ -9,6 +9,7 @@ import { Label } from '../Label';
 import { ItemGroup } from '../helpers/ItemGroup';
 import { ItemRow } from '../helpers/ItemRow';
 import { Item } from '../helpers/Item';
+import { ImportInstruction } from '../helpers/ImportInstruction';
 
 import { InfoStoryConfig } from '../configs';
 
@@ -102,4 +103,10 @@ storiesOf('Form controls/Radio Button', module)
   ))
   .add('Radio Button', () => (
     <RadioButton />
-  ), InfoStoryConfig);
+  ), {
+    ...InfoStoryConfig,
+    info: {
+      ...InfoStoryConfig.info,
+      text: <ImportInstruction text='RadioButton' />,
+    },
+  });

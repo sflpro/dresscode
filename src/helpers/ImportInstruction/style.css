@@ -1,0 +1,15 @@
+.ImportInstruction {
+  margin-bottom: 20px;
+}
+
+.keyword {
+  color: #07a;
+}
+
+.string {
+  color: #690;
+}
+
+.importBlock {
+  font-size: 14px;
+}

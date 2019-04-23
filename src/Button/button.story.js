@@ -11,6 +11,7 @@ import { Icon } from '../Icon';
 import { ItemGroup } from '../helpers/ItemGroup';
 import { ItemRow } from '../helpers/ItemRow';
 import { Item } from '../helpers/Item';
+import { ImportInstruction } from '../helpers/ImportInstruction';
 
 import { InfoStoryConfig } from '../configs';
 
@@ -269,4 +270,10 @@ storiesOf('Button', module)
     >
       {text('children', 'Primary')}
     </Button>
-  ), InfoStoryConfig);
+  ), {
+    ...InfoStoryConfig,
+    info: {
+      ...InfoStoryConfig.info,
+      text: <ImportInstruction text='Button' />,
+    },
+  });
