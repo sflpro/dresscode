@@ -6,6 +6,7 @@ import { Dialog } from '.';
 
 import { ItemGroup } from '../helpers/ItemGroup';
 import { Item } from '../helpers/Item';
+import { ImportInstruction } from '../helpers/ImportInstruction';
 
 import { InfoStoryConfig } from '../configs';
 
@@ -260,4 +261,10 @@ storiesOf('Dialog', module)
         </button>
       </Dialog.Actions>
     </Dialog>
-  ), InfoStoryConfig);
+  ), {
+    ...InfoStoryConfig,
+    info: {
+      ...InfoStoryConfig.info,
+      text: <ImportInstruction componentName='Dialog' />,
+    },
+  });

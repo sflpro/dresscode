@@ -11,6 +11,7 @@ import { Label } from '../Label';
 import { ItemGroup } from '../helpers/ItemGroup';
 import { ItemRow } from '../helpers/ItemRow';
 import { Item } from '../helpers/Item';
+import { ImportInstruction } from '../helpers/ImportInstruction';
 
 import { InfoStoryConfig } from '../configs';
 
@@ -127,4 +128,10 @@ storiesOf('Form controls/Select', module)
         name='Option 4'
       />
     </Select>
-  ), InfoStoryConfig);
+  ), {
+    ...InfoStoryConfig,
+    info: {
+      ...InfoStoryConfig.info,
+      text: <ImportInstruction componentName='Select' />,
+    },
+  });

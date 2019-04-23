@@ -9,6 +9,7 @@ import { Label } from '../Label';
 import { ItemGroup } from '../helpers/ItemGroup';
 import { ItemRow } from '../helpers/ItemRow';
 import { Item } from '../helpers/Item';
+import { ImportInstruction } from '../helpers/ImportInstruction';
 
 import { InfoStoryConfig } from '../configs';
 
@@ -98,4 +99,10 @@ storiesOf('Form controls/Textarea', module)
   })
   .add('Textarea', () => (
     <Textarea />
-  ), InfoStoryConfig);
+  ), {
+    ...InfoStoryConfig,
+    info: {
+      ...InfoStoryConfig.info,
+      text: <ImportInstruction componentName='Textarea' />,
+    },
+  });
