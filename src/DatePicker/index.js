@@ -164,9 +164,12 @@ export class DatePicker extends React.Component {
                 {formatMonthTitle({ date, locale, localeUtils, months })}
               </DatePickerCaption>
             )}
-            navbarElement={
-              <DatePickerNavbar />
-            }
+            navbarElement={({ onPreviousClick, onNextClick }) => (
+              <DatePickerNavbar
+                onPreviousClick={onPreviousClick}
+                onNextClick={onNextClick}
+              />
+            )}
             onDayClick={this.handleDayClick}
             onDayMouseEnter={this.handleDayMouseEnter}
             selectedDays={selectedDay}

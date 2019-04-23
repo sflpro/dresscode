@@ -36,7 +36,7 @@ storiesOf('Form controls/CheckboxGroup', module)
       <State
         store={store}
       >
-        {state => [
+        {state => (
           <ItemGroup
             title='Checkbox group'
           >
@@ -80,8 +80,8 @@ storiesOf('Form controls/CheckboxGroup', module)
                 </Label>
               </ControlsGroup>
             </Item>
-          </ItemGroup>,
-        ]}
+          </ItemGroup>
+        )}
       </State>
     );
   })
@@ -159,7 +159,7 @@ storiesOf('Form controls/RadioButtonGroup', module)
       <State
         store={store}
       >
-        {state => [
+        {state => (
           <ItemGroup
             title='Radio button group'
           >
@@ -203,8 +203,8 @@ storiesOf('Form controls/RadioButtonGroup', module)
                 </Label>
               </ControlsGroup>
             </Item>
-          </ItemGroup>,
-        ]}
+          </ItemGroup>
+        )}
       </State>
     );
   })
@@ -293,7 +293,7 @@ storiesOf('Form controls/ToggleButtonGroup', module)
       <State
         store={store}
       >
-        {state => [
+        {state => (
           <ItemGroup
             title='Toggle button group'
           >
@@ -371,8 +371,8 @@ storiesOf('Form controls/ToggleButtonGroup', module)
                 </Label>
               </ControlsGroup>
             </Item>
-          </ItemGroup>,
-        ]}
+          </ItemGroup>
+        )}
       </State>
     );
   })

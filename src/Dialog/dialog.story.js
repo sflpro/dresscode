@@ -1,6 +1,5 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { withInfo } from '@storybook/addon-info';
 import { State, Store } from '@sambego/storybook-state';
 
 import { Dialog } from '.';
@@ -205,7 +204,7 @@ storiesOf('Dialog', module)
         store={store3}
         key={3}
       >
-        {withInfo({ inline: true, header: false })(state => (
+        {state => (
           <ItemGroup
             title='Dialog Without HEADER and FOOTER'
           >
@@ -234,7 +233,7 @@ storiesOf('Dialog', module)
               </Dialog.Body>
             </Dialog>
           </ItemGroup>
-        ))}
+        )}
       </State>,
     ];
   })

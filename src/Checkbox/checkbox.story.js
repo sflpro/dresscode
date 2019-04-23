@@ -31,7 +31,7 @@ storiesOf('Form controls/Checkbox', module)
 
     return (
       <State store={store}>
-        {state => [
+        {state => (
           <ItemGroup
             title='Checkbox'
           >
@@ -96,8 +96,8 @@ storiesOf('Form controls/Checkbox', module)
                 </Label>
               </Item>
             </ItemRow>
-          </ItemGroup>,
-        ]}
+          </ItemGroup>
+        )}
       </State>
     );
   })
