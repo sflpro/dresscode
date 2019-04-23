@@ -147,6 +147,6 @@ storiesOf('Icons', module)
     ...InfoStoryConfig,
     info: {
       ...InfoStoryConfig.info,
-      text: <ImportInstruction text='Icon' />,
+      text: <ImportInstruction componentName='Icon' />,
     },
   });

@@ -193,6 +193,6 @@ storiesOf('Form controls/Input Slider', module)
     ...InfoStoryConfig,
     info: {
       ...InfoStoryConfig.info,
-      text: <ImportInstruction text='InputSlider' />,
+      text: <ImportInstruction componentName='InputSlider' />,
     },
   });

@@ -266,6 +266,6 @@ storiesOf('Dialog', module)
     ...InfoStoryConfig,
     info: {
       ...InfoStoryConfig.info,
-      text: <ImportInstruction text='Dialog' />,
+      text: <ImportInstruction componentName='Dialog' />,
     },
   });

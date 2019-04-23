@@ -132,6 +132,6 @@ storiesOf('Form controls/Select', module)
     ...InfoStoryConfig,
     info: {
       ...InfoStoryConfig.info,
-      text: <ImportInstruction text='Select' />,
+      text: <ImportInstruction componentName='Select' />,
     },
   });

@@ -107,6 +107,6 @@ storiesOf('Form controls/Radio Button', module)
     ...InfoStoryConfig,
     info: {
       ...InfoStoryConfig.info,
-      text: <ImportInstruction text='RadioButton' />,
+      text: <ImportInstruction componentName='RadioButton' />,
     },
   });

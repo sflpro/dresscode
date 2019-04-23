@@ -188,6 +188,6 @@ storiesOf('Tooltip', module)
     ...InfoStoryConfig,
     info: {
       ...InfoStoryConfig.info,
-      text: <ImportInstruction text='Tooltip' />,
+      text: <ImportInstruction componentName='Tooltip' />,
     },
   });

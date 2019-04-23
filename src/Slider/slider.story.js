@@ -170,6 +170,6 @@ storiesOf('Form controls/Slider', module)
     ...InfoStoryConfig,
     info: {
       ...InfoStoryConfig.info,
-      text: <ImportInstruction text='Slider' />,
+      text: <ImportInstruction componentName='Slider' />,
     },
   });

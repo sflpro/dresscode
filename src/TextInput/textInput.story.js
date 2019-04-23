@@ -297,7 +297,7 @@ storiesOf('Form controls/Input', module)
     ...InfoStoryConfig,
     info: {
       ...InfoStoryConfig.info,
-      text: <ImportInstruction text='TextInput' />,
+      text: <ImportInstruction componentName='TextInput' />,
     },
   })
   .add('Password Input', () => (
@@ -306,6 +306,6 @@ storiesOf('Form controls/Input', module)
     ...InfoStoryConfig,
     info: {
       ...InfoStoryConfig.info,
-      text: <ImportInstruction text='TextInput' />,
+      text: <ImportInstruction componentName='TextInput' />,
     },
   });

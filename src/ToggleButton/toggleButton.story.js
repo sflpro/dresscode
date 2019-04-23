@@ -114,6 +114,6 @@ storiesOf('Form controls/Toggle Button', module)
     ...InfoStoryConfig,
     info: {
       ...InfoStoryConfig.info,
-      text: <ImportInstruction text='ToggleButton' />,
+      text: <ImportInstruction componentName='ToggleButton' />,
     },
   });

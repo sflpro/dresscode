@@ -274,6 +274,6 @@ storiesOf('Button', module)
     ...InfoStoryConfig,
     info: {
       ...InfoStoryConfig.info,
-      text: <ImportInstruction text='Button' />,
+      text: <ImportInstruction componentName='Button' />,
     },
   });

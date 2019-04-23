@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import styles from './style.css';
 
 export function ImportInstructionItem({
-  text,
+  componentName,
   prefix,
   ...props
 }) {
@@ -16,12 +16,12 @@ export function ImportInstructionItem({
       <span className={styles.keyword}>
           import&nbsp;
       </span>
-      {`{ ${text} } `}
+      {`{ ${componentName} } `}
       <span className={styles.keyword}>
         from&nbsp;
       </span>
       <span className={styles.string}>
-        {prefix ? `'@sfl/ui-library/lib/${text}'`
+        {prefix ? `'@sfl/ui-library/lib/${componentName}'`
           : '\'@sfl/ui-library\''
         }
       </span>
@@ -30,17 +30,17 @@ export function ImportInstructionItem({
 }
 
 ImportInstructionItem.propTypes = {
-  text: PropTypes.string,
+  componentName: PropTypes.string,
   prefix: PropTypes.bool,
 };
 
 ImportInstructionItem.defaultProps = {
-  text: '',
+  componentName: '',
   prefix: true,
 };
 
 export function ImportInstruction({
-  text,
+  componentName,
   ...props
 }) {
   return (
@@ -49,17 +49,17 @@ export function ImportInstruction({
       {...props}
     >
       <h1>Usage</h1>
-      <ImportInstructionItem text={text} />
+      <ImportInstructionItem componentName={componentName} />
       <h3>OR</h3>
-      <ImportInstructionItem text={text} prefix={false} />
+      <ImportInstructionItem componentName={componentName} prefix={false} />
     </div>
   );
 }
 
 ImportInstruction.propTypes = {
-  text: PropTypes.string,
+  componentName: PropTypes.string,
 };
 
 ImportInstruction.defaultProps = {
-  text: '',
+  componentName: '',
 };

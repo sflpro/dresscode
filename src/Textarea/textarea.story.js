@@ -103,6 +103,6 @@ storiesOf('Form controls/Textarea', module)
     ...InfoStoryConfig,
     info: {
       ...InfoStoryConfig.info,
-      text: <ImportInstruction text='Textarea' />,
+      text: <ImportInstruction componentName='Textarea' />,
     },
   });

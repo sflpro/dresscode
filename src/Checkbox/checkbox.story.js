@@ -108,6 +108,6 @@ storiesOf('Form controls/Checkbox', module)
     ...InfoStoryConfig,
     info: {
       ...InfoStoryConfig.info,
-      text: <ImportInstruction text='Checkbox' />,
+      text: <ImportInstruction componentName='Checkbox' />,
     },
   });

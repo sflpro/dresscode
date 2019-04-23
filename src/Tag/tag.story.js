@@ -45,6 +45,6 @@ storiesOf('Tag', module)
     ...InfoStoryConfig,
     info: {
       ...InfoStoryConfig.info,
-      text: <ImportInstruction text='Tag' />,
+      text: <ImportInstruction componentName='Tag' />,
     },
   });

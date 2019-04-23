@@ -148,7 +148,7 @@ storiesOf('Form controls/CheckboxGroup', module)
     ...InfoStoryConfig,
     info: {
       ...InfoStoryConfig.info,
-      text: <ImportInstruction text='ControlsGroup' />,
+      text: <ImportInstruction componentName='ControlsGroup' />,
     },
   });
 
@@ -278,7 +278,7 @@ storiesOf('Form controls/RadioButtonGroup', module)
     ...InfoStoryConfig,
     info: {
       ...InfoStoryConfig.info,
-      text: <ImportInstruction text='ControlsGroup' />,
+      text: <ImportInstruction componentName='ControlsGroup' />,
     },
   });
 
@@ -449,6 +449,6 @@ storiesOf('Form controls/ToggleButtonGroup', module)
     ...InfoStoryConfig,
     info: {
       ...InfoStoryConfig.info,
-      text: <ImportInstruction text='ControlsGroup' />,
+      text: <ImportInstruction componentName='ControlsGroup' />,
     },
   });
