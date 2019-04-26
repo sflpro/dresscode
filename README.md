@@ -1,10 +1,5 @@
 # @SFL Modern React UI library
 
-[build]
-[![Version][version-badge]][package]
-[![MIT License][license-badge]][license]
-[![Small size][size-badge]][build-min]
-
 ## Installation
 
 #### using npm
