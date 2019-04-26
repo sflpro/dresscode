@@ -1,5 +1,9 @@
 # @SFL Modern React UI library
 
+[![GitHub release](https://img.shields.io/github/release/banqr-io/banqr-ui-common.svg)](https://github.com/banqr-io/banqr-ui-common/releases)
+[![Build status](https://travis-ci.org/banqr-io/banqr-ui-common.svg?branch=master)](https://github.com/banqr-io/banqr-ui-common)
+[![Gzipped size](http://img.badgesize.io/https://unpkg.com/banqr-io/banqr-ui-common?compression=gzip)](https://unpkg.com/banqr-io/banqr-ui-common)
+
 ## Installation
 
 ```sh
