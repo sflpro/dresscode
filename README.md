@@ -2,8 +2,10 @@
 
 ## Installation
 
-#### using npm
+```sh
+// with npm
 npm install @sfl/ui-library
+```
 
 ## Usage
 
