@@ -24,6 +24,10 @@ import { Icon } from '@sfl/ui-library/lib/Icon';
 import { Button } from '@sfl/ui-library/lib/Button';
 ```
 
+## Documentation
+
+Documentation of this library can be found at https://sfl-ui-libary.com
+
 ## Components
 
 - **Icons**
@@ -44,7 +48,8 @@ import { Button } from '@sfl/ui-library/lib/Button';
 - **Tag**
 - **Notifications**
 
-## Documentation
+## Demo
 
-Documentation of this library can be found at https://sfl-ui-libary.com
+ https://sfl-ui-libary.com
 
+## License
