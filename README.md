@@ -22,23 +22,23 @@ import { Button } from '@sfl/ui-library/lib/Button';
 
 ## Components
 
-- Icons
-- Button
-- Input
-- Textarea
-- Select
-- Checkbox
-- Radio Button
-- Toggle Button
-- Slider
-- Input Slider
-- Checkbox Group
-- Radio Button Group
-- Toggle Button Group
-- Tooltip
-- Dialog
-- Tag
-- Notifications
+- **Icons**
+- **Button**
+- **Input**
+- **Textarea**
+- **Select**
+- **Checkbox**
+- **Radio Button**
+- **Toggle Button**
+- **Slider**
+- **Input Slider**
+- **Checkbox Group**
+- **Radio Button Group**
+- **Toggle Button Group**
+- **Tooltip**
+- **Dialog**
+- **Tag**
+- **Notifications**
 
 ## Documentation
 
