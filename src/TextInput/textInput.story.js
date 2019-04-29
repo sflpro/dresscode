@@ -6,7 +6,6 @@ import { TextInput } from '.';
 
 import { DateRangeInput } from '../DateRangeInput';
 import { DateInput } from '../DateInput';
-import { DateRangeInput } from '../DateRangeInput';
 import { CardInput } from '../CardInput';
 import { Label } from '../Label';
 import { Icon } from '../Icon';

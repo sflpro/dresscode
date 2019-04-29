@@ -76,8 +76,10 @@ export class Select extends React.Component {
             key={value}
           />
         )) : (
-            <span className={styles.emptyState}>Ոչինչ չի գտնվել</span>
-          )}
+          <span className={styles.emptyState}>
+            Ոչինչ չի գտնվել
+          </span>
+        )}
       </List>
     );
   }

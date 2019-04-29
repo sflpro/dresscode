@@ -58,7 +58,5 @@ YearPicker.defaultProps = {
 };
 
 YearPicker.defaultProps = {
-  selectedYear: null,
-  onClick: undefined,
   style: null,
 };
