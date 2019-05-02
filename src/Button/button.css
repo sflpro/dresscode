@@ -94,6 +94,7 @@
 
 .neutral:hover {
   background-color: var(--default-color-dark);
+  border: 1px solid var(--default-color-dark);
 }
 
 .disabled {
