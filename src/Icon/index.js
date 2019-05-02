@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 import { svgPolyfill } from '../polyfills/svgPoyfill';
+import { isIE } from '../helpers/isIE';
 
 import styles from './icon.css';
 import icons from './svgSprite.svg';
@@ -22,7 +23,7 @@ export function Icon({
     [className]: true,
   });
 
-  const iconPath = document.documentMode ? '' : icons;
+  const iconPath = isIE() ? '' : icons;
 
   return (
     <span
