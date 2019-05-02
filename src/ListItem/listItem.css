@@ -1,10 +1,10 @@
 .listItem {
-  min-height: var(--list-item-min-height);
+  min-height: calc(var(--list-item-min-height) - 16px);
   color: var(--text-input-color);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 16px;
+  padding: 8px 16px;
   max-height: 100%;
 }
 
