@@ -1,3 +1,1 @@
-export function isIE() {
-  return /MSIE|Trident/.test(navigator.userAgent);
-}
+export const isIE = /MSIE|Trident/.test(navigator.userAgent);

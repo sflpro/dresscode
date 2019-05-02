@@ -36,5 +36,9 @@ export const svgPolyfill = (doc, iconPath) => {
     });
   };
 
-  return isIE() && doc.addEventListener('DOMContentLoaded', () => App.init());
+  if (isIE) {
+    doc.addEventListener('DOMContentLoaded', App.init());
+    return '';
+  }
+  return iconPath;
 };

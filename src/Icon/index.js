@@ -3,12 +3,11 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 import { svgPolyfill } from '../polyfills/svgPoyfill';
-import { isIE } from '../helpers/isIE';
 
 import styles from './icon.css';
 import icons from './svgSprite.svg';
 
-svgPolyfill(document, icons);
+const iconPath = svgPolyfill(document, icons);
 
 export function Icon({
   name,
@@ -22,8 +21,6 @@ export function Icon({
     [styles.iconWrapper]: true,
     [className]: true,
   });
-
-  const iconPath = isIE() ? '' : icons;
 
   return (
     <span
