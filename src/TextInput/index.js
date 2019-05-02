@@ -38,18 +38,20 @@ export function TextInput({
             {prefix}
           </span>
         )}
-        <input
-          value={value}
-          disabled={disabled}
-          className={styles.input}
-          placeholder={placeholder}
-          onChange={onChange}
-          name={name}
-          type={type}
-          readOnly={readOnly}
-          ref={forwardedRef}
-          {...props}
-        />
+        <div className={styles.inputBlock}>
+          <input
+            value={value}
+            disabled={disabled}
+            className={styles.input}
+            placeholder={placeholder}
+            onChange={onChange}
+            name={name}
+            type={type}
+            readOnly={readOnly}
+            ref={forwardedRef}
+            {...props}
+          />
+        </div>
         {icon && (
           <div className={styles.icon}>
             {icon}
