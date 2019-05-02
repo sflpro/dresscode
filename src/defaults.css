@@ -38,7 +38,7 @@
 
   --checkbox-background-color: var(--secondary-color);
   --checkbox-border-color: var(--text-disabled-color);
-  --checkbox-hover-border-color: var(--primary-color-light);
+  --checkbox-border-color-hover: var(--primary-color-light);
   --checkbox-checked-background-color: var(--primary-color);
   --checkbox-checked-color: var(--secondary-color);
   --checkbox-padding: 6px;
