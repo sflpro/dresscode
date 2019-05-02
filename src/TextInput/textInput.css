@@ -34,6 +34,10 @@
   transition: all .5s ease-out;
 }
 
+.inputBlock {
+  height: 100%;
+}
+
 .input {
   background-color: var(--text-input-background-color);
   padding: var(--text-input-padding);
