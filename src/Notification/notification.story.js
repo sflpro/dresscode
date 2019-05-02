@@ -32,7 +32,6 @@ storiesOf('Notification', module)
           >
             Information Notification
           </Notification>
-
           <Notification
             status='warning'
             title='Warning'
@@ -78,8 +77,13 @@ storiesOf('Notification', module)
           <Item>
             <Notification
               status='information'
-              title='Information'
               type='alert'
+              icon={(
+                <Icon
+                  name='transaction'
+                  size={24}
+                />
+              )}
               action={(
                 <Icon
                   name='cross'
@@ -92,8 +96,13 @@ storiesOf('Notification', module)
 
             <Notification
               status='warning'
-              title='Warning'
               type='alert'
+              icon={(
+                <Icon
+                  name='warning'
+                  size={24}
+                />
+              )}
               action={(
                 <Icon
                   name='cross'
@@ -106,8 +115,19 @@ storiesOf('Notification', module)
 
             <Notification
               status='error'
-              title='Error'
               type='alert'
+              icon={(
+                <Icon
+                  name='cross-circle'
+                  size={24}
+                />
+              )}
+              action={(
+                <Icon
+                  name='cross'
+                  size={24}
+                />
+              )}
             >
               Error Notification
             </Notification>
@@ -115,6 +135,18 @@ storiesOf('Notification', module)
             <Notification
               status='success'
               type='alert'
+              icon={(
+                <Icon
+                  name='check'
+                  size={24}
+                />
+              )}
+              action={(
+                <Icon
+                  name='cross'
+                  size={24}
+                />
+              )}
             >
               Success Notification
             </Notification>
@@ -127,25 +159,58 @@ storiesOf('Notification', module)
           <Item>
             <Notification
               status='information'
-              title='Information'
               type='alert'
               theme='light'
+              icon={(
+                <Icon
+                  name='transaction'
+                  size={24}
+                />
+              )}
+              action={(
+                <Icon
+                  name='cross'
+                  size={24}
+                />
+              )}
             >
               Information Notification
             </Notification>
             <Notification
               status='warning'
-              title='Warning'
               type='alert'
               theme='light'
+              icon={(
+                <Icon
+                  name='warning'
+                  size={24}
+                />
+              )}
+              action={(
+                <Icon
+                  name='cross'
+                  size={24}
+                />
+              )}
             >
               Warning Notification
             </Notification>
             <Notification
               status='error'
-              title='Error'
               type='alert'
               theme='light'
+              icon={(
+                <Icon
+                  name='cross-circle'
+                  size={24}
+                />
+              )}
+              action={(
+                <Icon
+                  name='cross'
+                  size={24}
+                />
+              )}
             >
               Error Notification
             </Notification>
@@ -153,6 +218,18 @@ storiesOf('Notification', module)
               status='success'
               type='alert'
               theme='light'
+              icon={(
+                <Icon
+                  name='check'
+                  size={24}
+                />
+              )}
+              action={(
+                <Icon
+                  name='cross'
+                  size={24}
+                />
+              )}
             >
               Success Notification
             </Notification>
