@@ -42,6 +42,8 @@ export class ListItem extends React.Component {
       [styles.disabled]: disabled,
       [styles.active]: active,
       [styles.clickable]: onClick,
+      [styles.leftSpace]: !icon && iconPos === 'left',
+      [styles.rightSpace]: !icon && iconPos === 'right',
     });
     const listItemIconClasses = classNames({
       [iconClassName]: true,
