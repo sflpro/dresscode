@@ -163,6 +163,13 @@
   --button-secondary-text-color: var(--text-primary-color);
   --button-secondary-text-color-hover: var(--primary-color-dark);
 
+  --button-neutral-background-color: var(--default-color);
+  --button-neutral-background-color-hover: var(--default-color-dark);
+  --button-neutral-border-color: var(--default-color);
+  --button-neutral-border-color-hover: var(--default-color-dark);
+  --button-neutral-text-color: var(--text-primary-color);
+  --button-neutral-text-color-hover: var(--text-secondary-color);
+
   --date-picker-border-color: var(--default-color);
   --date-picker-weekday-color: var(--neutral-500);
   --date-picker-outside-day-color: var(--neutral-200);

@@ -87,14 +87,14 @@
 }
 
 .neutral {
-  background-color: var(--default-color);
-  border: 1px solid var(--default-color);
-  color: var(--text-primary-color);
+  background-color: var(--button-neutral-background-color);
+  border: 1px solid var(--button-neutral-border-color);
+  color: var(--button-neutral-text-color);
 }
 
 .neutral:hover {
-  background-color: var(--default-color-dark);
-  border: 1px solid var(--default-color-dark);
+  background-color: var(--button-neutral-background-color-hover);
+  border: 1px solid var(--button-neutral-border-color-hover);
 }
 
 .disabled {
