@@ -12,7 +12,6 @@ import { ItemGroup } from '../helpers/ItemGroup';
 import { ItemRow } from '../helpers/ItemRow';
 import { Item } from '../helpers/Item';
 import { ImportInstruction } from '../helpers/ImportInstruction';
-import { Button } from '../Button';
 
 import { InfoStoryConfig } from '../configs';
 

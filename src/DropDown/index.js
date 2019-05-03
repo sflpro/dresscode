@@ -123,7 +123,6 @@ export class DropDown extends React.Component {
         </div>
       </React.Fragment>
     );
-
   }
 }
 
