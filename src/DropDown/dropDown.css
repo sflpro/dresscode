@@ -1,0 +1,55 @@
+.dropDown {
+  box-sizing: border-box;
+  cursor: pointer;
+  display: flex;
+  width: 100%;
+  position: relative;
+  justify-content: space-between;
+
+  &.active {
+    z-index: 2;
+  }
+}
+
+.dropDownWrapper {
+  width: 100%;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  cursor: default;
+}
+
+.list {
+  position: absolute;
+  z-index: 2;
+}
+
+.selectName {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: inline-block;
+}
+
+.iconWrapper {
+  padding-left: 8px;
+  display: flex;
+}
+
+.icon {
+  transition: transform 0.3s;
+}
+
+.reverseIcon {
+  transform: rotate(180deg);
+}
+
+.listIcon {
+  padding-left: 8px;
+}

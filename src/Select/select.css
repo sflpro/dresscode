@@ -56,7 +56,7 @@
 }
 
 .icon {
-  transition: transform 0.5s;
+  transition: transform 0.3s;
   position: absolute;
   right: 12px;
   top: 12px;
@@ -130,18 +130,13 @@
   width: 100%;
   height: 100%;
   z-index: 1;
+  cursor: default;
 }
 
 .list {
   background-color: var(--neutral-white);
   position: absolute;
   width: 100%;
-
-  &.selectListFullWidth {
-    min-width: 100%;
-    width: auto;
-    white-space: nowrap;
-  }
 }
 
 .emptyState {
@@ -151,17 +146,3 @@
   font-size: 0.8em;
 }
 
-.selectElem {
-  width: 100%;
-  & .contentWrapper {
-    display: block;
-    margin: 0;
-    flex-wrap: nowrap;
-    padding-right: 16px;
-    text-align: left;
-  }
-
-  & .icon {
-    color: inherit;
-  }
-}

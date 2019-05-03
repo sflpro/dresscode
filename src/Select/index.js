@@ -291,12 +291,12 @@ export class Select extends React.Component {
         >
           <div className={styles.nativeSelectWrapper}>
             <select
+              onChange={this.handleNativeChange}
               className={nativeSelectClasses}
               multiple={multiple}
               value={value}
               name={name}
               {...props}
-              onChange={this.handleNativeChange}
             >
               {children}
             </select>

@@ -1,7 +1,7 @@
 .list {
   box-shadow: var(--box-shadow-100);
   border: solid 1px var(--neutral-75);
-  background-color: var(--color-netural);
+  background-color: var(--neutral-white);
   border-radius: var(--list-border-radius);
   margin-top: 8px;
 }
