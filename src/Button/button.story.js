@@ -190,7 +190,7 @@ storiesOf('Button', module)
           </Item>
           <Item>
             <CircleButton
-              disabled
+              neutral
             >
               <Icon
                 name='tracker'
@@ -201,6 +201,33 @@ storiesOf('Button', module)
           <Item>
             <CircleButton
               warning
+            >
+              <Icon
+                name='tracker'
+                size={24}
+              />
+            </CircleButton>
+          </Item>
+        </ItemRow>
+      </ItemGroup>
+      <ItemGroup
+        title='Disabled Circle Button'
+      >
+        <ItemRow>
+          <Item>
+            <CircleButton
+              disabled
+            >
+              <Icon
+                name='tracker'
+                size={24}
+              />
+            </CircleButton>
+          </Item>
+          <Item>
+            <CircleButton
+              secondary
+              disabled
             >
               <Icon
                 name='tracker'

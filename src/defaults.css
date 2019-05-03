@@ -152,7 +152,7 @@
   --button-primary-background-color: var(--primary-color);
   --button-primary-background-color-hover: var(--primary-color-dark);
   --button-primary-border-color: var(--primary-color);
-  --button-primary-border-color-hover: var(--primary-color);
+  --button-primary-border-color-hover: var(--primary-color-dark);
   --button-primary-text-color: var(--text-secondary-color);
   --button-primary-text-color-hover: var(--text-secondary-color);
 
@@ -162,6 +162,13 @@
   --button-secondary-border-color-hover: var(--primary-color-dark);
   --button-secondary-text-color: var(--text-primary-color);
   --button-secondary-text-color-hover: var(--primary-color-dark);
+
+  --button-neutral-background-color: var(--default-color);
+  --button-neutral-background-color-hover: var(--default-color-dark);
+  --button-neutral-border-color: var(--default-color);
+  --button-neutral-border-color-hover: var(--default-color-dark);
+  --button-neutral-text-color: var(--text-primary-color);
+  --button-neutral-text-color-hover: var(--text-secondary-color);
 
   --date-picker-border-color: var(--default-color);
   --date-picker-weekday-color: var(--neutral-500);
