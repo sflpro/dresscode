@@ -58,7 +58,6 @@
   --text-input-border-color-hover: var(--primary-color-light);
   --text-input-border-color-focus: var(--primary-color);
   --text-input-color: var(--text-default-color);
-  --text-input-border-disabled-color: var(--disabled-color);
   --text-input-placeholder-color: var(--text-disabled-color);
   --text-input-disabled-color: var(--disabled-color-light);
   --text-input-text-disabled-color: var(--disabled-color-dark);
