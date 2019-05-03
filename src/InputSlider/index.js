@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 import { TextInput } from '../TextInput';
 import { Slider } from '../Slider';
 
+import styles from './inputSlider.css';
+
 export class InputSlider extends React.Component {
   constructor(props) {
     super(props);
@@ -206,7 +208,11 @@ export class InputSlider extends React.Component {
           hasError={hasError}
           value={value}
         />
-        <Slider {...props} onControlChange={this.setMinMax}>
+        <Slider
+          {...props}
+          onControlChange={this.setMinMax}
+          className={styles.inputSlider}
+        >
           {children}
         </Slider>
       </div>
