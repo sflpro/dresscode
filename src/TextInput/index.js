@@ -38,6 +38,7 @@ export function TextInput({
             {prefix}
           </span>
         )}
+
         <input
           value={value}
           disabled={disabled}

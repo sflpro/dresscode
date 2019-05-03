@@ -73,3 +73,8 @@
   align-items: center;
   justify-content: flex-end;
 }
+
+.actions button {
+  margin: 0 0 0 16px;
+  width: 147px;
+}

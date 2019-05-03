@@ -4,7 +4,10 @@ import { State, Store } from '@sambego/storybook-state';
 
 import { Dialog } from '.';
 
+import { Button } from '../Button';
+
 import { ItemGroup } from '../helpers/ItemGroup';
+import { ItemRow } from '../helpers/ItemRow';
 import { Item } from '../helpers/Item';
 import { ImportInstruction } from '../helpers/ImportInstruction';
 
@@ -119,22 +122,26 @@ storiesOf('Dialog', module)
           <ItemGroup
             title='With HEADER and FOOTER'
           >
-            <Item>
-              <button
-                onClick={openWithContent1}
-                type='button'
-              >
-                Open Dialog
-              </button>
-            </Item>
-            <Item>
-              <button
-                onClick={() => openWithContent1('longContent')}
-                type='button'
-              >
-                Open Dialog With Long Content
-              </button>
-            </Item>
+            <ItemRow>
+              <Item>
+                <Button
+                  onClick={openWithContent1}
+                  primary
+                >
+                  Open Dialog
+                </Button>
+              </Item>
+            </ItemRow>
+            <ItemRow>
+              <Item>
+                <Button
+                  onClick={() => openWithContent1('longContent')}
+                  primary
+                >
+                  Open Dialog With Long Content
+                </Button>
+              </Item>
+            </ItemRow>
             <Dialog
               onDismiss={() => toggleDialog1(false)}
               open={state.open}
@@ -146,18 +153,18 @@ storiesOf('Dialog', module)
                 {state.dialogContent}
               </Dialog.Body>
               <Dialog.Actions>
-                <button
+                <Button
                   onClick={() => toggleDialog1(false)}
-                  type='button'
+                  secondary
                 >
                   Cancel
-                </button>
-                <button
+                </Button>
+                <Button
                   onClick={confirm1}
-                  type='button'
+                  primary
                 >
                   Action
-                </button>
+                </Button>
               </Dialog.Actions>
             </Dialog>
           </ItemGroup>
@@ -171,22 +178,26 @@ storiesOf('Dialog', module)
           <ItemGroup
             title='Dialog With HEADER'
           >
-            <Item>
-              <button
-                onClick={openWithContent2}
-                type='button'
-              >
-                Open Dialog
-              </button>
-            </Item>
-            <Item>
-              <button
-                onClick={() => openWithContent2('longContent')}
-                type='button'
-              >
-                Open Dialog With Long Content
-              </button>
-            </Item>
+            <ItemRow>
+              <Item>
+                <Button
+                  onClick={openWithContent2}
+                  primary
+                >
+                  Open Dialog
+                </Button>
+              </Item>
+            </ItemRow>
+            <ItemRow>
+              <Item>
+                <Button
+                  onClick={() => openWithContent2('longContent')}
+                  primary
+                >
+                  Open Dialog With Long Content
+                </Button>
+              </Item>
+            </ItemRow>
             <Dialog
               onDismiss={() => toggleDialog2(false)}
               open={state.open}
@@ -209,22 +220,26 @@ storiesOf('Dialog', module)
           <ItemGroup
             title='Dialog Without HEADER and FOOTER'
           >
-            <Item>
-              <button
-                onClick={openWithContent3}
-                type='button'
-              >
-                Open Dialog
-              </button>
-            </Item>
-            <Item>
-              <button
-                onClick={() => openWithContent3('longContent')}
-                type='button'
-              >
-                Open Dialog With Long Content
-              </button>
-            </Item>
+            <ItemRow>
+              <Item>
+                <Button
+                  onClick={openWithContent3}
+                  primary
+                >
+                  Open Dialog
+                </Button>
+              </Item>
+            </ItemRow>
+            <ItemRow>
+              <Item>
+                <Button
+                  onClick={() => openWithContent3('longContent')}
+                  primary
+                >
+                  Open Dialog With Long Content
+                </Button>
+              </Item>
+            </ItemRow>
             <Dialog
               onDismiss={() => toggleDialog3(false)}
               open={state.open}
@@ -249,16 +264,16 @@ storiesOf('Dialog', module)
         {content.longContent}
       </Dialog.Body>
       <Dialog.Actions>
-        <button
-          type='button'
+        <Button
+          secondary
         >
           Cancel
-        </button>
-        <button
-          type='button'
+        </Button>
+        <Button
+          primary
         >
           Action
-        </button>
+        </Button>
       </Dialog.Actions>
     </Dialog>
   ), {

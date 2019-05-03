@@ -1,5 +1,5 @@
 .listItem {
-  min-height: var(--list-item-min-height);
+  min-height: calc(var(--list-item-min-height) - 16px);
   color: var(--text-input-color);
   display: flex;
   align-items: center;

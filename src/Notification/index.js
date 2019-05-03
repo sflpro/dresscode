@@ -32,6 +32,11 @@ export class Notification extends React.PureComponent {
       [className]: true,
     });
 
+    const contentClasses = classNames({
+      [styles.content]: true,
+      [styles.withoutTitle]: title === '',
+    });
+
     return (
       <div
         className={notificationClasses}
@@ -45,7 +50,7 @@ export class Notification extends React.PureComponent {
           </span>
         )}
         <div
-          className={styles.content}
+          className={contentClasses}
         >
           {title && (
             <span
