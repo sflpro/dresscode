@@ -2,10 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-import '../polyfills/svgPoyfill';
+import { svgPolyfill } from '../polyfills/svgPoyfill';
 
 import styles from './icon.css';
 import icons from './svgSprite.svg';
+
+const iconPath = svgPolyfill(document, icons);
 
 export function Icon({
   name,
@@ -32,7 +34,7 @@ export function Icon({
       {...props}
     >
       <svg className={styles.icon}>
-        <use xlinkHref={`${icons}#${name}`} />
+        <use xlinkHref={`${iconPath}#${name}`} />
       </svg>
     </span>
   );
