@@ -18,6 +18,11 @@
   flex: 1 auto;
 }
 
+.withoutTitle {
+  display: flex;
+  align-items: center;
+}
+
 .title {
   display: block;
   font-size: 11px;
@@ -90,9 +95,10 @@
 
 .notification-alert {
   border-color: var(--notification-border-default-color);
-  padding: 16px 12px;
+  padding: calc(12px - 1px) 12px;
   width: 352px;
   background: #ffffff;
+  height: 24px;
 
   & .title {
     display: none;
@@ -132,6 +138,11 @@
       color: var(--notification-default-text-color);
     }
 
+    &.information .icon,
+    &.information .action {
+       color: var(--notification-information-color);
+    }
+
     &.success {
       background: var(--notification-success-light-background);
       color: var(--notification-success-color);
@@ -140,6 +151,11 @@
     &.warning {
       background: var(--notification-warning-light-background);
       color: var(--notification-default-text-color);
+    }
+
+    &.warning .icon,
+    &.warning .action {
+       color: var(--notification-warning-color);
     }
 
     &.error {

@@ -38,7 +38,7 @@
 
   --checkbox-background-color: var(--secondary-color);
   --checkbox-border-color: var(--text-disabled-color);
-  --checkbox-hover-border-color: var(--primary-color-light);
+  --checkbox-border-color-hover: var(--primary-color-light);
   --checkbox-checked-background-color: var(--primary-color);
   --checkbox-checked-color: var(--secondary-color);
   --checkbox-padding: 6px;
@@ -172,7 +172,7 @@
   --date-picker-selected-month-color: var(--neutral-white);
   --date-picker-border-radius: 5px;
 
-  --slider-animation-duration: 0.2s;
+  --slider-animation-duration: 0.1s;
   --slider-background-color: var(--default-color);
   --slider-line-color: var(--primary-color);
   --slider-height: 4px;
@@ -185,5 +185,5 @@
   --slider-control-border: 0 0 2px var(--neutral-1000-opacity-30);
   --slider-control-color: var(--primary-color);
   --slider-control-size: 16px;
-  --slider-control-top: 3px;
+  --slider-control-top: 4px;
 }
