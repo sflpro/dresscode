@@ -9,7 +9,6 @@ import { Icon } from '../Icon';
 import styles from './dropDown.css';
 
 export class DropDown extends React.Component {
-
   childOptions = [];
 
   componentDidMount() {

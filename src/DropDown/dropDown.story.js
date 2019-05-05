@@ -4,8 +4,6 @@ import { State, Store } from '@sambego/storybook-state';
 
 import { DropDown } from '.';
 
-import { Label } from '../Label';
-
 import { ItemGroup } from '../helpers/ItemGroup';
 import { ItemRow } from '../helpers/ItemRow';
 import { Item } from '../helpers/Item';
@@ -25,7 +23,7 @@ storiesOf('Drop Down', module)
     }
 
     function onClickTest() {
-      alert();
+      console.log('onClickTest');
     }
 
     return (
@@ -72,10 +70,7 @@ storiesOf('Drop Down', module)
       <div>
         Option 1
       </div>
-      <span
-        role='presentation'
-        onClick={() => alert()}
-      >
+      <span>
         Option 2
       </span>
       <a href='/#'>
