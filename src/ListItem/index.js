@@ -99,9 +99,9 @@ ListItem.propTypes = {
   disabled: PropTypes.bool,
   /** Boolean, whether list item render as active */
   active: PropTypes.bool,
-  /** Object, styles that will be added to list item */
-  style: PropTypes.object,
   /** String, className that will be added to list item */
+  className: PropTypes.string,
+  /** String, className that will be added to wrapper div */
   className: PropTypes.string,
 };
 
@@ -115,6 +115,6 @@ ListItem.defaultProps = {
   active: false,
   iconClassName: '',
   onClick: undefined,
-  style: undefined,
+  className: '',
   className: '',
 };

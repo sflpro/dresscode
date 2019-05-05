@@ -55,7 +55,7 @@ export class Select extends React.Component {
   getOptions() {
     const {
       value: propValue,
-      Elem,
+      button,
       multiple,
     } = this.props;
     const { search } = this.state;
@@ -70,7 +70,7 @@ export class Select extends React.Component {
 
     const listClasses = classNames({
       [styles.list]: true,
-      [styles.selectListFullWidth]: Elem && !multiple,
+      [styles.selectListFullWidth]: button && !multiple,
     });
 
     return (
@@ -181,8 +181,8 @@ export class Select extends React.Component {
   };
 
   selectingElement = () => {
-    const { Elem, multiple } = this.props;
-    return Elem && !multiple ? Elem : 'div';
+    const { button, multiple } = this.props;
+    return button && !multiple ? button : 'div';
   };
 
   handleSelectChange(optionValue, closeOptions = true) {
@@ -243,8 +243,8 @@ export class Select extends React.Component {
       onChange,
       className,
       children,
-      Elem,
-      elemProps,
+      button,
+      buttonProps,
       ...props
     } = this.props;
 
@@ -253,13 +253,13 @@ export class Select extends React.Component {
     const nativeSelectClasses = classNames({
       [className]: true,
       [styles.select]: true,
-      [styles.nativeSelect]: !isNativeMode || Elem,
+      [styles.nativeSelect]: !isNativeMode || button,
       [styles.nativeCustomSelect]: isNativeMode,
     });
     const selectClasses = classNames({
       [className]: true,
-      [styles.select]: !Elem || multiple,
-      [styles.selectElem]: !!Elem && !multiple,
+      [styles.select]: !button || multiple,
+      [styles.selectElem]: !!button && !multiple,
       [styles.active]: open,
     });
     const iconClasses = classNames({
@@ -300,20 +300,20 @@ export class Select extends React.Component {
             >
               {children}
             </select>
-            {isNativeMode && !Elem && (
+            {isNativeMode && !button && (
               <Icon
                 className={nativeIconClasses}
                 name='arrow-down'
               />
             )}
           </div>
-          {(!isNativeMode || Elem) && (
+          {(!isNativeMode || button) && (
             <React.Fragment>
               <SelectingElement
                 onClick={!multiple ? this.onClick : undefined}
                 className={selectClasses}
                 role='presentation'
-                {...elemProps}
+                {...buttonProps}
                 {...props}
               >
                 <div className={contentWrapperClasses}>
@@ -363,12 +363,10 @@ Select.propTypes = {
   name: PropTypes.string,
   /** String, classname that will be added to select */
   className: PropTypes.string,
-  /** Object, style that will be added to select */
-  style: PropTypes.object,
   /** Element for showing select */
-  Elem: PropTypes.any,
+  button: PropTypes.any,
   /** Element properties */
-  elemProps: PropTypes.object,
+  buttonProps: PropTypes.object,
 };
 
 Select.defaultProps = {
@@ -380,8 +378,7 @@ Select.defaultProps = {
   open: false,
   children: null,
   name: '',
+  button: undefined,
+  buttonProps: undefined,
   className: '',
-  style: undefined,
-  Elem: undefined,
-  elemProps: undefined,
 };

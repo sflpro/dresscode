@@ -12,6 +12,7 @@ import { ItemGroup } from '../helpers/ItemGroup';
 import { ItemRow } from '../helpers/ItemRow';
 import { Item } from '../helpers/Item';
 import { ImportInstruction } from '../helpers/ImportInstruction';
+import { Button } from '../Button';
 
 import { InfoStoryConfig } from '../configs';
 
@@ -22,6 +23,8 @@ storiesOf('Form controls/Select', module)
       isOpen1: false,
       value2: ['option1', 'option2', 'option4'],
       isOpen2: false,
+      value3: 'option3',
+      isOpen3: false,
     });
 
     function handleSelectChange1(value1, isOpen1) {
@@ -38,6 +41,14 @@ storiesOf('Form controls/Select', module)
 
     function handleSelectClick2() {
       store.set({ isOpen2: !store.state.isOpen2 });
+    }
+
+    function handleSelectChange3(value3, isOpen3) {
+      store.set({ isOpen3, value3 });
+    }
+
+    function handleSelectClick3() {
+      store.set({ isOpen3: !store.state.isOpen3 });
     }
 
     return (
@@ -74,6 +85,39 @@ storiesOf('Form controls/Select', module)
                 </div>
               </Item>
             </ItemRow>
+            <ItemRow>
+              <Item>
+                <div style={{ width: '250px' }}>
+                  <Label>
+                    Label
+                    <Select
+                      onChange={handleSelectChange3}
+                      onClick={handleSelectClick3}
+                      value={state.value3}
+                      open={state.isOpen3}
+                      button={Button}
+                      buttonProps={{
+                        secondary: true,
+                      }}
+                    >
+                      <Option
+                        value='option1'
+                        name='Option 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1'
+                      />
+                      <Option
+                        value='option2'
+                        name='Option 2'
+                      />
+                      <Option
+                        value='option3'
+                        name='3'
+                      />
+                    </Select>
+                  </Label>
+                </div>
+              </Item>
+            </ItemRow>
+
             <ItemRow>
               <Item style={{ width: '375px' }}>
                 <Label>

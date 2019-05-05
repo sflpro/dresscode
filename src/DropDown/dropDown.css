@@ -30,6 +30,29 @@
   z-index: 2;
 }
 
+.listItem {
+  padding: 0;
+
+  & > * {
+    min-height: var(--list-item-min-height);
+    color: var(--text-input-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 16px;
+    max-height: 100%;
+    width: 100%;
+  }
+
+  &.listItemActive {
+    padding-right: 16px;
+
+    & > * {
+      padding-right: 0;
+    }
+  }
+}
+
 .selectName {
   white-space: nowrap;
   overflow: hidden;
@@ -51,5 +74,6 @@
 }
 
 .listIcon {
-  padding-left: 8px;
+  padding: 0 0 0 8px;
+  width: auto;
 }

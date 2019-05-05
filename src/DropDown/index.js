@@ -9,82 +9,54 @@ import { Icon } from '../Icon';
 import styles from './dropDown.css';
 
 export class DropDown extends React.Component {
-  constructor(props) {
-    super(props);
 
-    const { children, value } = this.props;
+  childOptions = [];
 
-    this.childOptions = React.Children.map(children, option => ({
-      value: option.props.value,
-      name: option.props.name,
-    }));
-
-    const selected = this.childOptions.find(option => option.value === value);
-
-    this.state = {
-      selected,
-    };
+  componentDidMount() {
+    const { children } = this.props;
+    this.childOptions = React.Children.map(children, (option) => {
+      const { type: Component, props: optionProps } = option;
+      return {
+        value: optionProps.value,
+        label: (<Component {...optionProps}>{optionProps.children}</Component>),
+      };
+    });
   }
 
   getOptions() {
-    const {
-      value: propValue,
-    } = this.props;
     const options = this.childOptions;
 
     return (
       <List className={styles.list}>
-        {options.length > 0 && options.map(({ name, value }) => (
+        {options.length > 0 && options.map(({ label, value }, index) => (
           <ListItem
-            icon={propValue.includes(value) ? 'thick' : null}
-            onClick={this.handleCustomChange}
+            className={styles.listItem}
             iconClassName={styles.listIcon}
+            onClick={this.onClick}
             value={value}
-            label={name}
-            key={value}
+            label={label}
+            key={value || index}
           />
         ))}
       </List>
     );
   }
 
-  handleCustomChange = ({ value, event }) => {
-    event.preventDefault();
-    event.stopPropagation();
-    this.handleSelectChange(value, false);
-  };
-
-  onClick = (event) => {
+  onClick = ({ event }) => {
     const { onClick } = this.props;
     event.preventDefault();
     event.stopPropagation();
-    onClick();
+    onClick(event);
   };
-
-  handleSelectChange(optionValue, closeOptions = true) {
-    const { onChange } = this.props;
-    const selected = this.childOptions.find(option => option.value === optionValue);
-
-    this.setState(
-      { selected },
-      () => {
-        onChange(optionValue, closeOptions);
-      },
-    );
-  }
 
   render() {
     const {
       open,
-      value,
-      name,
       children,
       button: Button,
-      elemProps,
+      label,
       ...props
     } = this.props;
-    const { selected } = this.state;
-    console.log(selected);
 
     const options = this.getOptions();
 
@@ -108,7 +80,7 @@ export class DropDown extends React.Component {
             {...props}
           >
             <span className={styles.selectName}>
-              {selected.name}
+              {label}
             </span>
             <span className={styles.iconWrapper}>
               <Icon
@@ -119,7 +91,13 @@ export class DropDown extends React.Component {
             </span>
           </Button>
           {open && options}
-          {open && (<div className={styles.overlay} />)}
+          {open && (
+            <div
+              role='presentation'
+              onClick={event => this.onClick({ event })}
+              className={styles.overlay}
+            />
+          )}
         </div>
       </React.Fragment>
     );
@@ -127,30 +105,21 @@ export class DropDown extends React.Component {
 }
 
 DropDown.propTypes = {
-  /** String, value item */
-  value: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
-  /** Function, called when select value is changed */
-  onChange: PropTypes.func,
-  /** Function, called when select is clicked or options are closed, input is focused and key is pressed */
+  /** Function, called when dropdown is clicked or items are closed */
   onClick: PropTypes.func,
   /** Boolean, whether options are shown */
   open: PropTypes.bool,
-  /** Elements, content of select tag */
+  /** Elements, content of dropdown tag */
   children: PropTypes.any,
-  /** String, name of select */
-  name: PropTypes.string,
-  /** Element for showing select */
+  /** Element for showing dropdown button */
   button: PropTypes.any.isRequired,
-  /** Element properties */
-  elemProps: PropTypes.object,
+  /** String, label for dropdown button */
+  label: PropTypes.string,
 };
 
 DropDown.defaultProps = {
-  value: '',
-  onChange: undefined,
   onClick: undefined,
   open: false,
   children: null,
-  name: '',
-  elemProps: undefined,
+  label: undefined,
 };
