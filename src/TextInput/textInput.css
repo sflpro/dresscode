@@ -12,7 +12,7 @@
   position: relative;
 }
 
-.inputWrapper:hover(:not(.input:focus-within)) {
+.inputWrapper:not(.disabled):not(.errorWrapper):not(.successWrapper):hover {
   border: var(--text-input-border-size) solid var(--text-input-border-color-hover);
 }
 
@@ -25,10 +25,6 @@
 .disabled .input {
   background: var(--text-input-disabled-color);
   color: var(--text-input-text-disabled-color);
-}
-
-.disabled:hover {
-  border: var(--text-input-border-size) solid var(--text-input-disabled-color);
 }
 
 .inputWrapper:focus-within {
