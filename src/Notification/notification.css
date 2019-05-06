@@ -18,7 +18,7 @@
   flex: 1 auto;
 }
 
-.withoutTitle {
+.withoutTitle .message {
   display: flex;
   align-items: center;
 }
@@ -32,8 +32,8 @@
 
 .message {
   font-size: 1em;
-  height: 24px;
   line-height: 24px;
+  height: 100%;
 }
 
 .icon {
@@ -93,12 +93,18 @@
   }
 }
 
+.notification-alert .action {
+  display: flex;
+  align-items: center;
+}
+
 .notification-alert {
   border-color: var(--notification-border-default-color);
-  padding: calc(12px - 1px) 12px;
+  padding: 12px;
+  box-sizing: border-box;
   width: 352px;
   background: #ffffff;
-  height: 24px;
+  min-height: 24px;
 
   & .title {
     display: none;
