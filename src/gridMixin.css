@@ -1,0 +1,12 @@
+@define-mixin grid-container {
+  max-width: 1200px;
+}
+
+@define-mixin grid-column $size, $offset: 0, $padding: 8px {
+  width: calc(($size + $offset) * 100%);
+  padding-left: calc($offset * 100% + $padding);
+  padding-right: $padding;
+  padding-top: $padding;
+  padding-bottom: $padding;
+  float: left;
+}

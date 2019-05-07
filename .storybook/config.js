@@ -19,6 +19,7 @@ function loadStories() {
   require('../src/Tag/tag.story');
   require('../src/Notification/notification.story');
   require('../src/NotificationStack/notificationStack.story');
+  require('../src/helpers/Grid/grid.story');
 }
 
 configure(loadStories, module);
