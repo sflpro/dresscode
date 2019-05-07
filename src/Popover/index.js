@@ -332,7 +332,6 @@ export class Popover extends React.Component {
       className,
       onTargetEvent,
       contentRelative,
-      style,
       children,
       ...props
     } = this.props;
@@ -347,7 +346,6 @@ export class Popover extends React.Component {
         className={popoverStyles}
         onClick={this.handlePopoverClick}
         role='presentation'
-        style={style}
         {...props}
       >
         <div
@@ -418,6 +416,6 @@ Popover.defaultProps = {
   open: false,
   trigger: POPOVER_TRIGGER_OPTIONS.CLICK,
   className: '',
-  style: null,
+  style: undefined,
   children: null,
 };

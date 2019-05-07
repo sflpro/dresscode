@@ -11,7 +11,6 @@ export function Tag({
   name,
   clickable,
   onClose,
-  onClick,
   className,
   ...props
 }) {
@@ -25,7 +24,6 @@ export function Tag({
     <span
       className={tagClasses}
       role='presentation'
-      onClick={onClick}
       {...props}
     >
       <span className={styles.text}>
@@ -55,13 +53,16 @@ Tag.propTypes = {
   onClick: PropTypes.func,
   /** String, text content of tag */
   name: PropTypes.string,
+  /** Object, style that will be added to tag */
+  style: PropTypes.object,
 };
 
 Tag.defaultProps = {
+  type: 'primary',
   name: '',
   clickable: false,
   onClose: undefined,
   onClick: undefined,
   className: '',
-  type: 'primary',
+  style: undefined,
 };

@@ -76,7 +76,9 @@ export class Select extends React.Component {
             key={value}
           />
         )) : (
-          <span className={styles.emptyState}>Ոչինչ չի գտնվել</span>
+          <span className={styles.emptyState}>
+            Ոչինչ չի գտնվել
+          </span>
         )}
       </List>
     );
@@ -225,6 +227,7 @@ export class Select extends React.Component {
       name,
       onClick,
       onChange,
+      className,
       children,
       ...props
     } = this.props;
@@ -232,11 +235,13 @@ export class Select extends React.Component {
     const isNativeMode = isMobile() && !multiple;
 
     const nativeSelectClasses = classNames({
+      [className]: true,
       [styles.select]: true,
       [styles.nativeSelect]: !isNativeMode,
       [styles.nativeCustomSelect]: isNativeMode,
     });
     const selectClasses = classNames({
+      [className]: true,
       [styles.select]: true,
       [styles.active]: open,
     });
@@ -262,12 +267,12 @@ export class Select extends React.Component {
         >
           <div className={styles.nativeSelectWrapper}>
             <select
-              onChange={this.handleNativeChange}
               className={nativeSelectClasses}
               multiple={multiple}
               value={value}
               name={name}
               {...props}
+              onChange={this.handleNativeChange}
             >
               {children}
             </select>
@@ -281,10 +286,10 @@ export class Select extends React.Component {
           {!isNativeMode && (
             <React.Fragment>
               <div
+                {...props}
                 onClick={!multiple ? this.onClick : undefined}
                 className={selectClasses}
                 role='presentation'
-                {...props}
               >
                 <div className={styles.contentWrapper}>
                   {this.getContent()}
@@ -331,6 +336,10 @@ Select.propTypes = {
   children: PropTypes.any,
   /** String, name of select */
   name: PropTypes.string,
+  /** String, classname that will be added to select */
+  className: PropTypes.string,
+  /** Object, style that will be added to select */
+  style: PropTypes.object,
 };
 
 Select.defaultProps = {
@@ -342,4 +351,6 @@ Select.defaultProps = {
   open: false,
   children: null,
   name: '',
+  className: '',
+  style: undefined,
 };

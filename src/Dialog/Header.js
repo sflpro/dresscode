@@ -15,7 +15,10 @@ export const Header = ({
   });
 
   return (
-    <div className={titleClasses} {...props}>
+    <div
+      className={titleClasses}
+      {...props}
+    >
       <h2 className={styles.title}>
         {children}
       </h2>
@@ -26,11 +29,14 @@ export const Header = ({
 Header.propTypes = {
   /** String, className that will be added to wrapper div */
   className: PropTypes.string,
+  /** Object, styles that will be added to wrapper div */
+  style: PropTypes.string,
   /** String or JSX or Element, content of header */
   children: PropTypes.any,
 };
 
 Header.defaultProps = {
   className: '',
+  style: undefined,
   children: null,
 };

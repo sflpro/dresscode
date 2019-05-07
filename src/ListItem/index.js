@@ -6,60 +6,76 @@ import { Icon } from '../Icon';
 
 import styles from './listItem.css';
 
-export function ListItem({
-  value = '',
-  label = '',
-  icon = '',
-  iconPos = 'right',
-  iconStyle = {},
-  disabled = false,
-  active = false,
-  iconClassName = '',
-  onClick,
-  ...props
-}) {
-  const listItemClasses = classNames({
-    [styles.listItem]: true,
-    [styles.disabled]: disabled,
-    [styles.active]: active,
-    [styles.clickable]: onClick,
-  });
-  const listItemIconClasses = classNames({
-    [iconClassName]: true,
-  });
+export class ListItem extends React.Component {
+  handleOnClick = (event) => {
+    const {
+      onClick,
+      disabled,
+      value,
+    } = this.props;
 
-  return (
-    <div
-      onClick={(event) => {
-        if (disabled) {
-          event.preventDefault();
-          return;
-        }
+    if (disabled) {
+      event.preventDefault();
+      return;
+    }
+    onClick({ value, event });
+  }
 
-        onClick({ value, event });
-      }}
-      className={listItemClasses}
-      role='presentation'
-      {...props}
-    >
-      {icon && iconPos === 'left' && (
-        <Icon
-          name={icon}
-          className={listItemIconClasses}
-          size={24}
-        />
-      )}
-      <span>{label}</span>
-      {icon && iconPos === 'right' && (
-        <Icon
-          className={listItemIconClasses}
-          style={iconStyle}
-          name={icon}
-          size={24}
-        />
-      )}
-    </div>
-  );
+  render() {
+    const {
+      value,
+      label,
+      icon,
+      iconPos,
+      iconStyle,
+      disabled,
+      active,
+      iconClassName,
+      onClick,
+      className,
+      ...props
+    } = this.props;
+
+    const listItemClasses = classNames({
+      [className]: true,
+      [styles.listItem]: true,
+      [styles.disabled]: disabled,
+      [styles.active]: active,
+      [styles.clickable]: onClick,
+    });
+    const listItemIconClasses = classNames({
+      [iconClassName]: true,
+    });
+
+
+    return (
+      <div
+        onClick={this.handleOnClick}
+        className={listItemClasses}
+        role='presentation'
+        {...props}
+      >
+        {icon && iconPos === 'left' && (
+          <Icon
+            name={icon}
+            className={listItemIconClasses}
+            size={24}
+          />
+        )}
+        <span>
+          {label}
+        </span>
+        {icon && iconPos === 'right' && (
+          <Icon
+            className={listItemIconClasses}
+            style={iconStyle}
+            name={icon}
+            size={24}
+          />
+        )}
+      </div>
+    );
+  }
 }
 
 ListItem.propTypes = {
@@ -81,6 +97,10 @@ ListItem.propTypes = {
   disabled: PropTypes.bool,
   /** Boolean, whether list item render as active */
   active: PropTypes.bool,
+  /** Object, styles that will be added to list item */
+  style: PropTypes.object,
+  /** String, className that will be added to list item */
+  className: PropTypes.string,
 };
 
 ListItem.defaultProps = {
@@ -88,9 +108,11 @@ ListItem.defaultProps = {
   label: '',
   icon: '',
   iconPos: 'right',
-  iconStyle: {},
+  iconStyle: undefined,
   disabled: false,
   active: false,
   iconClassName: '',
   onClick: undefined,
+  style: undefined,
+  className: '',
 };

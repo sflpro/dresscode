@@ -5,19 +5,13 @@ import classNames from 'classnames';
 import styles from './textInput.css';
 
 export function TextInput({
-  value,
-  placeholder,
   disabled,
-  readOnly,
   className,
   icon,
   prefix,
   isValid,
   hasError,
   error,
-  type,
-  name,
-  onChange,
   style,
   forwardedRef,
   ...props
@@ -32,21 +26,18 @@ export function TextInput({
 
   return (
     <React.Fragment>
-      <div className={inputWrapperClasses} style={style}>
+      <div
+        className={inputWrapperClasses}
+        style={style}
+      >
         {prefix && (
           <span className={styles.prefix}>
             {prefix}
           </span>
         )}
         <input
-          value={value}
           disabled={disabled}
           className={styles.input}
-          placeholder={placeholder}
-          onChange={onChange}
-          name={name}
-          type={type}
-          readOnly={readOnly}
           ref={forwardedRef}
           {...props}
         />
@@ -66,9 +57,9 @@ export function TextInput({
 }
 
 TextInput.propTypes = {
-  /** String, value of textarea */
+  /** String, value of text input */
   value: PropTypes.string,
-  /** Boolean, whether textarea is disabled */
+  /** Boolean, whether text input is disabled */
   disabled: PropTypes.bool,
   /** Boolean, whether input is readOnly */
   readOnly: PropTypes.bool,
@@ -80,11 +71,11 @@ TextInput.propTypes = {
   icon: PropTypes.any,
   /** String, string that will be added at start of input */
   prefix: PropTypes.string,
-  /** Boolean, whether value of textarea is valid */
+  /** Boolean, whether value of text input is valid */
   isValid: PropTypes.bool,
-  /** Boolean, whether value of textarea has error */
+  /** Boolean, whether value of text input has error */
   hasError: PropTypes.bool,
-  /** String, error message that will be shown if textarea has error */
+  /** String, error message that will be shown if text input has error */
   error: PropTypes.string,
   /** String, type of input */
   type: PropTypes.string,
@@ -112,6 +103,6 @@ TextInput.defaultProps = {
   type: 'text',
   name: '',
   onChange: undefined,
-  style: {},
+  style: undefined,
   forwardedRef: undefined,
 };

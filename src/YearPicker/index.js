@@ -10,7 +10,7 @@ export function YearPicker({
   selectedYear,
   years,
   onClick,
-  style = null,
+  style,
   ...props
 }) {
   return (
@@ -40,14 +40,23 @@ export function YearPicker({
 }
 
 YearPicker.propTypes = {
+  /** Array of numbers, selected year containing range */
   years: PropTypes.array.isRequired,
-  selectedYear: PropTypes.number,
-  onClick: PropTypes.func,
+  /** Number, value of selected year */
+  selectedYear: PropTypes.number.isRequired,
+  /** Function, will be called when year is selected */
+  onClick: PropTypes.func.isRequired,
+  /** Object, styles that will be added to year picker wrapper */
   style: PropTypes.object,
+  /** String, className that will be added to year picker wrapper */
+  className: PropTypes.string,
 };
 
 YearPicker.defaultProps = {
-  selectedYear: null,
-  onClick: undefined,
+  style: undefined,
+  className: '',
+};
+
+YearPicker.defaultProps = {
   style: null,
 };

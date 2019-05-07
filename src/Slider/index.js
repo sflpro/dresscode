@@ -166,8 +166,20 @@ export class Slider extends React.Component {
   };
 
   render() {
-    const { className, children, step, min, max, distance } = this.props;
-    const { wrapperElementWidth, maxStepsCount } = this.state;
+    const {
+      className,
+      children,
+      step,
+      min,
+      max,
+      distance,
+      ...props
+    } = this.props;
+
+    const {
+      wrapperElementWidth,
+      maxStepsCount,
+    } = this.state;
 
     const sliderLineStyles = this.getSliderLineStyles();
 
@@ -179,6 +191,7 @@ export class Slider extends React.Component {
     return (
       <div className={styles.wrapper}>
         <div
+          {...props}
           role='presentation'
           onTouchEnd={this.onSliderClick}
           onClick={this.onSliderClick}
@@ -226,6 +239,8 @@ Slider.propTypes = {
   max: PropTypes.number,
   /** String, className that will be added to target div */
   className: PropTypes.string,
+  /** Object, style that will be added to target div */
+  style: PropTypes.object,
   /** Control Element(s), content of slider */
   children: PropTypes.any,
 };
@@ -237,5 +252,6 @@ Slider.defaultProps = {
   min: 0,
   max: 100,
   className: '',
+  style: undefined,
   children: null,
 };

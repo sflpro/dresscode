@@ -8,7 +8,6 @@ export function Picker({
   captionElement,
   navbarElement,
   className,
-  style,
   children,
   ...props
 }) {
@@ -19,7 +18,6 @@ export function Picker({
   return (
     <div
       className={pickerClasses}
-      style={style}
       {...props}
     >
       {navbarElement}
@@ -34,17 +32,19 @@ export function Picker({
 }
 
 Picker.propTypes = {
-  captionElement: PropTypes.any,
-  navbarElement: PropTypes.any,
-  className: PropTypes.string,
+  /** String or JSX or Element, caption of picker element */
+  captionElement: PropTypes.any.isRequired,
+  /** String or JSX or Element, navbar of picker element */
+  navbarElement: PropTypes.any.isRequired,
+  /** String or JSX or Element, content of picker element */
+  children: PropTypes.any.isRequired,
+  /** Object, styles that will be added to month picker */
   style: PropTypes.object,
-  children: PropTypes.any,
+  /** String, className that will be added to month picker */
+  className: PropTypes.string,
 };
 
 Picker.defaultProps = {
-  captionElement: null,
-  navbarElement: null,
   className: '',
   style: undefined,
-  children: null,
 };

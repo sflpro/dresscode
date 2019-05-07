@@ -8,9 +8,7 @@ export function RadioButton({
   className,
   disabled,
   checked,
-  onChange,
-  value,
-  name,
+  style,
   ...props
 }) {
   return (
@@ -19,6 +17,7 @@ export function RadioButton({
         [styles.wrapper]: true,
         [className]: true,
       })}
+      style={style}
     >
       <span
         className={classNames({
@@ -30,11 +29,8 @@ export function RadioButton({
         <input
           className={styles.input}
           disabled={disabled}
-          onChange={onChange}
           checked={checked}
-          value={value}
           type='radio'
-          name={name}
           {...props}
         />
       </span>
@@ -56,6 +52,8 @@ RadioButton.propTypes = {
   disabled: PropTypes.bool,
   /** Boolean, weather input is checked */
   checked: PropTypes.bool,
+  /** Object, style that will be added to wrapper span element */
+  style: PropTypes.object,
 };
 
 RadioButton.defaultProps = {
@@ -65,4 +63,5 @@ RadioButton.defaultProps = {
   name: '',
   disabled: false,
   checked: false,
+  style: undefined,
 };

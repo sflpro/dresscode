@@ -162,19 +162,32 @@ export class Control extends React.Component {
   }
 
   render() {
-    const { className, value, name, icon } = this.props;
+    const {
+      className,
+      value,
+      name,
+      icon,
+      style,
+      ...props
+    } = this.props;
     const { left } = this.state;
 
-    const controlClassNames = { [styles.control]: true };
+    const controlClassNames = {
+      [styles.control]: true,
+    };
 
     if (className) {
       controlClassNames[className] = true;
     }
 
-    const sliderStyles = { left: `${left}px` };
+    const sliderStyles = {
+      ...style,
+      left: `${left}px`,
+    };
 
     return (
       <span
+        {...props}
         className={classNames(controlClassNames)}
         onTouchStart={this.onMouseDown}
         onMouseDown={this.onMouseDown}
@@ -196,8 +209,6 @@ Control.propTypes = {
   name: PropTypes.string.isRequired,
   /** String or JSX or Element, icon element */
   icon: PropTypes.any.isRequired,
-  /** String, classname that will be passed to wrapper span element */
-  className: PropTypes.string,
   /** Function, will be called when control is held and started to move */
   onDragStart: PropTypes.func,
   /** Function, will be called when control is stopped moving and is not held */
@@ -206,6 +217,10 @@ Control.propTypes = {
   min: PropTypes.number,
   /** Number, max value of control if not passed will get from Slider Component */
   max: PropTypes.number,
+  /** String, classname that will be passed to wrapper span element */
+  className: PropTypes.string,
+  /** Object, style that will be added to wrapper span element */
+  style: PropTypes.object,
 };
 
 Control.defaultProps = {
@@ -214,4 +229,5 @@ Control.defaultProps = {
   min: undefined,
   max: undefined,
   className: '',
+  style: undefined,
 };

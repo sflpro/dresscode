@@ -7,14 +7,14 @@ import { Icon } from '../Icon';
 import styles from './checkbox.css';
 
 export function Checkbox({
-  onChange,
-  value,
-  name,
   disabled,
   checked,
+  className,
+  style,
   ...props
 }) {
   const checkboxClasses = classNames({
+    [className]: true,
     [styles.iconWrapper]: true,
     [styles.checked]: checked,
     [styles.disabled]: disabled,
@@ -22,7 +22,10 @@ export function Checkbox({
 
   return (
     <React.Fragment>
-      <span className={checkboxClasses}>
+      <span
+        className={checkboxClasses}
+        style={style}
+      >
         <Icon
           name='checked'
           size={12}
@@ -30,12 +33,9 @@ export function Checkbox({
         />
         <input
           className={styles.checkbox}
-          name={name}
           type='checkbox'
-          value={value}
           disabled={disabled}
           checked={checked}
-          onChange={onChange}
           {...props}
         />
       </span>
@@ -54,6 +54,10 @@ Checkbox.propTypes = {
   disabled: PropTypes.bool,
   /** Boolean, describe whether checkbox is checked */
   checked: PropTypes.bool,
+  /** String, classname that will be passed to wrapper span element */
+  className: PropTypes.string,
+  /** Object, style that will be added to wrapper span element */
+  style: PropTypes.bool,
 };
 
 Checkbox.defaultProps = {
@@ -62,4 +66,6 @@ Checkbox.defaultProps = {
   name: '',
   disabled: false,
   checked: false,
+  className: '',
+  style: undefined,
 };

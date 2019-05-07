@@ -10,7 +10,6 @@ export function MonthPicker({
   selectedMonth,
   months,
   onClick,
-  style,
   ...props
 }) {
   return (
@@ -28,7 +27,6 @@ export function MonthPicker({
             className={monthClasses}
             onClick={() => onClick(monthIndex)}
             key={monthIndex}
-            style={style}
             role='presentation'
           >
             {month}
@@ -41,15 +39,18 @@ export function MonthPicker({
 
 MonthPicker.propTypes = {
   /** Number, index of selected month */
-  selectedMonth: PropTypes.instanceOf(Date).isRequired,
+  selectedMonth: PropTypes.number.isRequired,
   /** Array of strings, names of months in right order */
   months: PropTypes.array.isRequired,
   /** Function, will be called when month is selected */
   onClick: PropTypes.func.isRequired,
-  /** Object, styles that will be added to month picker */
+  /** Object, styles that will be added to month picker wrapper */
   style: PropTypes.object,
+  /** String, className that will be added to month picker wrapper */
+  className: PropTypes.string,
 };
 
 MonthPicker.defaultProps = {
-  style: null,
+  style: undefined,
+  className: '',
 };

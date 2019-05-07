@@ -14,7 +14,10 @@ export const Actions = ({
     [className]: true,
   });
   return (
-    <div className={actionClasses} {...props}>
+    <div
+      className={actionClasses}
+      {...props}
+    >
       {children}
     </div>
   );
@@ -23,11 +26,14 @@ export const Actions = ({
 Actions.propTypes = {
   /** String, className that will be added to wrapper div */
   className: PropTypes.string,
+  /** Object, styles that will be added to wrapper div */
+  style: PropTypes.string,
   /** String or JSX or Element, content of actions */
   children: PropTypes.any,
 };
 
 Actions.defaultProps = {
   className: '',
+  style: undefined,
   children: null,
 };
