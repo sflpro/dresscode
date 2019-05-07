@@ -15,7 +15,6 @@
 
 .textarea:focus {
   border-color: var(--text-input-border-color-focus);
-  transition: all .5s ease-out;
   outline: none;
 }
 

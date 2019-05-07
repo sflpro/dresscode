@@ -43,6 +43,15 @@ storiesOf('Form controls/Input', module)
       });
     }
 
+    function handleCardInputChange(target) {
+      store.set({
+        ...store.state,
+        ...{
+          [target.name]: target.value,
+        },
+      });
+    }
+
     function handleDatePickerChange(datePickerValue) {
       store.set({
         datePickerValue,
@@ -243,7 +252,7 @@ storiesOf('Form controls/Input', module)
                     text='Empty'
                   >
                     <CardInput
-                      onChange={handleInputChange}
+                      onChange={handleCardInputChange}
                       value={state.empty}
                       name='empty'
                     />
@@ -254,7 +263,7 @@ storiesOf('Form controls/Input', module)
                     text='Not Detected'
                   >
                     <CardInput
-                      onChange={handleInputChange}
+                      onChange={handleCardInputChange}
                       value={state.notDetected}
                       name='notDetected'
                     />
@@ -267,7 +276,7 @@ storiesOf('Form controls/Input', module)
                     text='Visa'
                   >
                     <CardInput
-                      onChange={handleInputChange}
+                      onChange={handleCardInputChange}
                       value={state.visa}
                       name='visa'
                     />
@@ -278,7 +287,7 @@ storiesOf('Form controls/Input', module)
                     text='MasterCard'
                   >
                     <CardInput
-                      onChange={handleInputChange}
+                      onChange={handleCardInputChange}
                       value={state.masterCard}
                       name='masterCard'
                     />

@@ -26,6 +26,7 @@ export function Textarea({
       <textarea
         disabled={disabled}
         className={textareaClasses}
+        name={name}
         {...props}
       />
       {hasError && error && (
