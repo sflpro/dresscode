@@ -225,4 +225,13 @@
   --line-height-scale-5: var(--line-height);
   --line-height-scale-6: var(--line-height);
   --line-height-scale-7: var(--line-height);
+
+  --table-background-color: var(--neutral-white);
+  --table-header-column-color: var(--neutral-500);
+  --table-column-color: var(--neutral-900);
+  --table-row-odd-background-color: var(--neutral-75);
+  --table-row-hover-color: var(--violet-50);
+  --table-row-expanded-icon-background-color: var(--red-100);
+  --table-row-icon-background-color: var(--primary-color);
+  --table-row-icon-color: var(--neutral-white);
 }

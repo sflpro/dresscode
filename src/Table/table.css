@@ -1,0 +1,105 @@
+.table {
+  background-color: var(--table-background-color);
+  display: flex;
+  flex-flow: column nowrap;
+  border-radius: 8px;
+}
+
+.fullWidth {
+  width: 100%;
+}
+
+.tableHead {
+
+}
+
+.tableBody {
+
+}
+
+.tableRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  height: 48px;
+  overflow: hidden;
+}
+
+.tableRowExpanded {
+  height: auto;
+  transition: height 0.25s ease-in;
+  overflow: visible;
+}
+
+.tableRowWrapper {
+  position: relative;
+}
+
+.tableRowOverlay {
+  height: 48px;
+  background-color: transparent;
+  position: absolute;
+  width: 100%;
+  z-index: 1;
+}
+
+.tableBody .tableRowWrapper:nth-child(2n+1) .tableRowOverlay {
+  background-color: var(--table-row-odd-background-color);
+}
+
+.tableBody .tableRowWrapperHover:hover .tableRowOverlay {
+  background-color: var(--table-row-hover-color) !important;
+}
+
+.tableRowIcon {
+  color: var(--table-row-icon-color);
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  border-radius: 12px;
+  justify-content: center;
+  left: -11px;
+  top: 12px;
+  z-index: 2;
+}
+
+.arrow-up {
+  background-color: var(--table-row-expanded-icon-background-color);
+}
+
+.arrow-down {
+  background-color: var(--table-row-icon-background-color);
+}
+
+.tableColumn {
+  color: var(--table-column-color);
+  flex: 1;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  z-index: 2;
+  font-family: Montserratarm;
+  font-size: 12.8px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.5;
+  letter-spacing: normal;
+}
+
+.tableHeadColumn {
+  color: var(--table-header-column-color);
+  font-weight: bold;
+}
+
+.tableHeadColumn.invisibleColumn {
+  display: none;
+}
+
+.invisibleColumn {
+  justify-content: space-between;
+}
+
+.sortableIcon {
+  margin-right: 8px;
+}
