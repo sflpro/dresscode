@@ -1,7 +1,6 @@
 .gridContainer {
-  @mixin grid-container;
+  @mixin grid-container 1920px;
   border: 1px solid var(--neutral-500);
-  /*display: flex;*/
   border-radius: 6px;
 }
 
@@ -24,35 +23,28 @@
 
 .gridWrapper2 {
   @mixin grid-column .5;
-  box-sizing: border-box;
 }
 
 .gridWrapper3 {
   @mixin grid-column 1;
-  box-sizing: border-box;
 }
 
 .gridWrapper4 {
   @mixin grid-column 1/3, 1/3;
-  box-sizing: border-box;
 }
 
 .gridWrapper5 {
 @mixin grid-column 1/3, 2/3;
-  box-sizing: border-box;
 }
 
 .gridWrapper6 {
   @mixin grid-column 1/4, .5;
-  box-sizing: border-box;
 }
 
 .gridWrapper7 {
   @mixin grid-column 1/4, 1/4;
-  box-sizing: border-box;
 }
 
 .gridWrapper8 {
   @mixin grid-column 1/4, 3/4;
-  box-sizing: border-box;
 }

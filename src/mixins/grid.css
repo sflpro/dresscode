@@ -1,5 +1,5 @@
-@define-mixin grid-container {
-  max-width: 1200px;
+@define-mixin grid-container $size, $padding: 0 {
+  max-width: $size;
 }
 
 @define-mixin grid-column $size, $offset: 0, $padding: 8px {
@@ -9,4 +9,5 @@
   padding-top: $padding;
   padding-bottom: $padding;
   float: left;
+  box-sizing: border-box;
 }
