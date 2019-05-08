@@ -101,8 +101,6 @@ ListItem.propTypes = {
   active: PropTypes.bool,
   /** String, className that will be added to list item */
   className: PropTypes.string,
-  /** String, className that will be added to wrapper div */
-  className: PropTypes.string,
 };
 
 ListItem.defaultProps = {
@@ -115,6 +113,5 @@ ListItem.defaultProps = {
   active: false,
   iconClassName: '',
   onClick: undefined,
-  className: '',
   className: '',
 };
