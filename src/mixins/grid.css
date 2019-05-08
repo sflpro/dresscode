@@ -1,0 +1,48 @@
+@define-mixin grid-container $max-size: var(--grid-container-max-size) {
+  max-width: $max-size;
+  padding: 0 var(--grid-container-padding);
+
+  @media (--small) {
+    padding: 0 var(--grid-container-small-padding);
+  }
+
+  @media (--medium) {
+    padding: 0 var(--grid-container-medium-padding);
+  }
+
+  @media (--large) {
+    padding: 0 var(--grid-container-large-padding);
+  }
+
+  @media (--xlarge) {
+    padding: 0 var(--grid-container-xlarge-padding);
+  }
+}
+
+@define-mixin grid-column $size, $offset: 0 {
+  width: calc(($size + $offset) * 100%);
+  padding-left: calc($offset * 100% + var(--grid-column-padding));
+  padding-right: var(--grid-column-padding);
+  float: left;
+  box-sizing: border-box;
+
+  @media (--small) {
+    padding-left: calc($offset * 100% + var(--grid-column-small-padding));
+    padding-right: var(--grid-column-small-padding);
+  }
+
+  @media (--medium) {
+    padding-left: calc($offset * 100% + var(--grid-column-medium-padding));
+    padding-right: var(--grid-column-medium-padding);
+  }
+
+  @media (--large) {
+    padding-left: calc($offset * 100% + var(--grid-column-large-padding));
+    padding-right: var(--grid-column-large-padding);
+  }
+
+  @media (--xlarge) {
+    padding-left: calc($offset * 100% + var(--grid-column-xlarge-padding));
+    padding-right: var(--grid-column-xlarge-padding);
+  }
+}
