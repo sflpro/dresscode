@@ -1,13 +1,13 @@
 module.exports = {
   plugins: {
     'postcss-mixins': {
-      mixinsFiles: 'src/gridMixin.css',
+      mixinsFiles: 'src/mixins/grid.css',
     },
     'postcss-preset-env': {
       importFrom: [
         'src/colorScheme.css',
         'src/defaults.css',
-        'src/customMedia.css',
+        'src/mixins/customMedia.css',
       ],
       features: {
         'nesting-rules': true,
