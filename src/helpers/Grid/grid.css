@@ -20,15 +20,15 @@
   @mixin grid-column 1/4;
 
   @media (--medium) {
-    @mixin grid-column 1/4, 0, var(--grid-column-medium-padding);
+    @mixin grid-column 1/4;
   }
 
   @media (--large) {
-    @mixin grid-column 1/4, 0, var(--grid-column-large-padding);
+    @mixin grid-column 1/4;
   }
 
   @media (--xlarge) {
-    @mixin grid-column 1/4, 0, var(--grid-column-xlarge-padding);
+    @mixin grid-column 1/4;
   }
 }
 

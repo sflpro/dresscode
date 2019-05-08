@@ -195,7 +195,12 @@
 
   --grid-container-max-size: 1200px;
   --grid-container-padding: 8px;
-  --grid-column-offset: 0;
+  --grid-container-small-padding: 8px;
+  --grid-container-medium-padding: 8px;
+  --grid-container-large-padding: 12px;
+  --grid-container-xlarge-padding: 12px;
+
+  --grid-column-padding: 8px;
   --grid-column-small-padding: 8px;
   --grid-column-medium-padding: 8px;
   --grid-column-large-padding: 12px;

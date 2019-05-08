@@ -1,34 +1,48 @@
-@define-mixin grid-container $max-size: var(--grid-container-max-size), $padding: var(--grid-container-padding) {
+@define-mixin grid-container $max-size: var(--grid-container-max-size) {
   max-width: $max-size;
-  padding: 0 $padding;
-}
+  padding: 0 var(--grid-container-padding);
 
-@define-mixin grid-column
-  $size,
-  $offset: var(--grid-column-offset),
-  $small-padding: var(--grid-column-small-padding),
-  $medium-padding: var(--grid-column-medium-padding),
-  $large-padding: var(--grid-column-large-padding) ,
-  $xlarge-padding: var(--grid-column-xlarge-padding) ,
-{
-  width: calc(($size + $offset) * 100%);
-  padding-left: calc($offset * 100% + $small-padding);
-  padding-right: $small-padding;
-  float: left;
-  box-sizing: border-box;
+  @media (--small) {
+    padding: 0 var(--grid-container-small-padding);
+  }
 
   @media (--medium) {
-    padding-left: calc($offset * 100% + $medium-padding);
-    padding-right: $medium-padding;
+    padding: 0 var(--grid-container-medium-padding);
   }
 
   @media (--large) {
-    padding-left: calc($offset * 100% + $large-padding);
-    padding-right: $large-padding;
+    padding: 0 var(--grid-container-large-padding);
   }
 
   @media (--xlarge) {
-    padding-left: calc($offset * 100% + $xlarge-padding);
-    padding-right: $xlarge-padding;
+    padding: 0 var(--grid-container-xlarge-padding);
+  }
+}
+
+@define-mixin grid-column $size, $offset: 0 {
+  width: calc(($size + $offset) * 100%);
+  padding-left: calc($offset * 100% + var(--grid-column-padding));
+  padding-right: var(--grid-column-padding);
+  float: left;
+  box-sizing: border-box;
+
+  @media (--small) {
+    padding-left: calc($offset * 100% + var(--grid-column-small-padding));
+    padding-right: var(--grid-column-small-padding);
+  }
+
+  @media (--medium) {
+    padding-left: calc($offset * 100% + var(--grid-column-medium-padding));
+    padding-right: var(--grid-column-medium-padding);
+  }
+
+  @media (--large) {
+    padding-left: calc($offset * 100% + var(--grid-column-large-padding));
+    padding-right: var(--grid-column-large-padding);
+  }
+
+  @media (--xlarge) {
+    padding-left: calc($offset * 100% + var(--grid-column-xlarge-padding));
+    padding-right: var(--grid-column-xlarge-padding);
   }
 }
