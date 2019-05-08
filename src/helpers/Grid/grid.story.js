@@ -9,6 +9,47 @@ storiesOf('Grids', module)
   .add('Examples', () => (
     <>
       <ItemGroup
+        title='Instruction'
+      >
+        <h4>In postcss.config.js add postcss-mixins</h4>
+        <pre style={{ color: 'green' }}>
+          {`
+            module.exports = {
+              plugins: {
+                'postcss-mixins': {
+                  mixinsFiles: 'src/mixins/grid.css',
+                }
+              }
+            
+            },`
+          }
+        </pre>
+      </ItemGroup>
+      <ItemGroup
+        title='Usage'
+      >
+        <h4>In your CSS file add </h4>
+        <pre style={{ color: 'green' }}>
+          {`
+            .block {
+                @mixin grid-container;
+            }`
+          }
+        </pre>
+        <pre style={{ color: 'green' }}>
+          {`
+            .element {
+                @mixin grid-column 1/3;
+            }`
+          }
+        </pre>
+      </ItemGroup>
+      <ItemGroup
+        title=''
+      >
+        <h1>Examples</h1>
+      </ItemGroup>
+      <ItemGroup
         title='Grid 1/3'
       >
         <div className={styles.gridContainer}>

@@ -1,5 +1,5 @@
 .gridContainer {
-  @mixin grid-container 1920px;
+  @mixin grid-container;
   border: 1px solid var(--neutral-500);
   border-radius: 6px;
 }
@@ -17,8 +17,19 @@
 }
 
 .gridWrapper1 {
-  @mixin grid-column 1/3;
-  box-sizing: border-box;
+  @mixin grid-column 1/4;
+
+  @media (--medium) {
+    @mixin grid-column 1/4, 0, var(--grid-column-medium-padding);
+  }
+
+  @media (--large) {
+    @mixin grid-column 1/4, 0, var(--grid-column-large-padding);
+  }
+
+  @media (--xlarge) {
+    @mixin grid-column 1/4, 0, var(--grid-column-xlarge-padding);
+  }
 }
 
 .gridWrapper2 {

@@ -192,4 +192,12 @@
   --slider-control-color: var(--primary-color);
   --slider-control-size: 16px;
   --slider-control-top: 4px;
+
+  --grid-container-max-size: 1200px;
+  --grid-container-padding: 8px;
+  --grid-column-offset: 0;
+  --grid-column-small-padding: 8px;
+  --grid-column-medium-padding: 8px;
+  --grid-column-large-padding: 12px;
+  --grid-column-xlarge-padding: 12px;
 }
