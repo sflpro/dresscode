@@ -7,7 +7,7 @@ module.exports = {
       importFrom: [
         'src/colorScheme.css',
         'src/defaults.css',
-        'src/mixins/customMedia.css',
+        'src/customMedia.css',
       ],
       features: {
         'nesting-rules': true,
