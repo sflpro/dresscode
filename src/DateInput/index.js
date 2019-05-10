@@ -44,9 +44,13 @@ export class DateInput extends React.Component {
 
   handleDatePickerChange = (value) => {
     const { onDatePickerChange } = this.props;
+    this.hasError = false;
+    this.error = null;
 
     this.setState(prevState => ({
       open: !prevState.open,
+      hasError: this.hasError,
+      error: this.error,
     }));
 
     onDatePickerChange(value);
