@@ -1,7 +1,10 @@
 module.exports = {
   plugins: {
     'postcss-mixins': {
-      mixinsFiles: 'src/mixins/grid.css',
+      mixinsFiles: [
+        'src/mixins/grid.css',
+        'src/mixins/typography.css',
+      ],
     },
     'postcss-preset-env': {
       importFrom: [

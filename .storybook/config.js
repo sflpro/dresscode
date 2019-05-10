@@ -20,6 +20,7 @@ function loadStories() {
   require('../src/Notification/notification.story');
   require('../src/NotificationStack/notificationStack.story');
   require('../src/helpers/Grid/grid.story');
+  require('../src/helpers/Typography/typography.story');
 }
 
 configure(loadStories, module);
