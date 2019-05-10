@@ -159,6 +159,13 @@
   text-align: center;
   position: relative;
   z-index: 2;
+
+  @media (--small) {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+  }
 }
 
 .tablePageRange {
@@ -171,6 +178,9 @@
   font-stretch: normal;
   line-height: 1.5;
   letter-spacing: normal;
+  @media (--small) {
+    margin-bottom: 0;
+  }
 }
 
 .tablePages {
