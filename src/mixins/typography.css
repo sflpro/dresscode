@@ -1,43 +1,43 @@
 @define-mixin heading-1 {
-  font-size: var(--font-size-heading-1);
-  line-height: var(--line-height-heading-1);
+  font-size: var(--font-size-scale-1);
+  line-height: var(--line-height-scale-1);
 }
 
 @define-mixin heading-2 {
-  font-size: var(--font-size-heading-2);
-  line-height: var(--line-height-heading-2);
+  font-size: var(--font-size-scale-2);
+  line-height: var(--line-height-scale-2);
 }
 
 @define-mixin heading-3 {
-  font-size: var(--font-size-heading-3);
-  line-height: var(--line-height-heading-3);
+  font-size: var(--font-size-scale-3);
+  line-height: var(--line-height-scale-3);
 }
 
 @define-mixin heading-4 {
-  font-size: var(--font-size-heading-4);
-  line-height: var(--line-height-heading-4);
+  font-size: var(--font-size-scale-4);
+  line-height: var(--line-height-scale-4);
 }
 
 @define-mixin heading-5 {
-  font-size: var(--font-size-heading-5);
-  line-height: var(--line-height-heading-5);
+  font-size: var(--font-size-scale-5);
+  line-height: var(--line-height-scale-5);
 }
 
 @define-mixin paragraph {
-  font-size: var(--font-size-paragraph);
-  line-height: var(--line-height-paragraph);
+  font-size: var(--font-size-scale-6);
+  line-height: var(--line-height-scale-6);
 }
 
 @define-mixin paragraph-small {
-  font-size: var(--font-size-paragraph-small);
-  line-height: var(--line-height-paragraph-small);
+  font-size: var(--font-size-scale-7);
+  line-height: var(--line-height-scale-7);
 }
 
 :global(.font-base) {
-  font-size: var(--font-size-small);
-  font-family: Roboto, sans-serif;
+  font-size: var(--font-size);
+  font-family: var(--font-family);
 
   @media (--small) {
-    font-size: var(--font-size);
+    font-size: var(--font-size-large);
   }
 }

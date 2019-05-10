@@ -1,7 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 
-import styles from './typographyStory.css';
+import styles from './typography.css';
 import { ItemGroup } from '../ItemGroup';
 
 storiesOf('Typography', module)
