@@ -1,0 +1,43 @@
+@define-mixin font-scale-1 {
+  font-size: var(--font-size-scale-1);
+  line-height: var(--line-height-scale-1);
+}
+
+@define-mixin font-scale-2 {
+  font-size: var(--font-size-scale-2);
+  line-height: var(--line-height-scale-2);
+}
+
+@define-mixin font-scale-3 {
+  font-size: var(--font-size-scale-3);
+  line-height: var(--line-height-scale-3);
+}
+
+@define-mixin font-scale-4 {
+  font-size: var(--font-size-scale-4);
+  line-height: var(--line-height-scale-4);
+}
+
+@define-mixin font-scale-5 {
+  font-size: var(--font-size-scale-5);
+  line-height: var(--line-height-scale-5);
+}
+
+@define-mixin font-scale-6 {
+  font-size: var(--font-size-scale-6);
+  line-height: var(--line-height-scale-6);
+}
+
+@define-mixin font-scale-7 {
+  font-size: var(--font-size-scale-7);
+  line-height: var(--line-height-scale-7);
+}
+
+:global(.font-base) {
+  font-size: var(--font-size);
+  font-family: var(--font-family);
+
+  @media (--small) {
+    font-size: var(--font-size-large);
+  }
+}

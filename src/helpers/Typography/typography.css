@@ -1,0 +1,29 @@
+@import '../../mixins/typography.css';
+
+.h1 {
+  @mixin font-scale-1;
+}
+
+.h2 {
+  @mixin font-scale-2;
+}
+
+.h3 {
+  @mixin font-scale-3;
+}
+
+.h4 {
+  @mixin font-scale-4;
+}
+
+.h5 {
+  @mixin font-scale-5;
+}
+
+.paragraph {
+  @mixin font-scale-6;
+}
+
+.paragraphSmall {
+  @mixin font-scale-7;
+}
