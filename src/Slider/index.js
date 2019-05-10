@@ -167,6 +167,7 @@ export class Slider extends React.Component {
 
   render() {
     const {
+      onControlChange,
       className,
       children,
       step,
