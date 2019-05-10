@@ -85,9 +85,26 @@ export class DateRangeInput extends React.Component {
     const { to } = date;
 
     if (to) {
-      this.setState({
+      this.hasError = {
+        from: false,
+        to: false,
+      };
+      this.error = {
+        from: null,
+        to: null,
+      };
+
+      this.setState(prevState => ({
         open: false,
-      });
+        hasError: {
+          ...prevState.hasError,
+          ...this.hasError,
+        },
+        error: {
+          ...prevState.error,
+          ...this.error,
+        },
+      }));
     }
     onDatePickerChange(date);
   };
@@ -366,7 +383,7 @@ DateRangeInput.propTypes = {
   /** Instance of Date, date range picker from value */
   from: PropTypes.instanceOf(Date).isRequired,
   /** Instance of Date, date range picker to value */
-  to: PropTypes.instanceOf(Date).isRequired,
+  to: PropTypes.instanceOf(Date),
   /** String, format of date */
   format: PropTypes.oneOf(DATE_FORMATS),
   /** String, className that will be added to input */
@@ -380,6 +397,7 @@ DateRangeInput.propTypes = {
 };
 
 DateRangeInput.defaultProps = {
+  to: undefined,
   format: DEFAULT_FORMAT,
   className: '',
   locale: DEFAULT_LOCALE,

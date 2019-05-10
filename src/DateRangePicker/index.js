@@ -356,7 +356,7 @@ DateRangePicker.propTypes = {
   /** Instance of Date, date range picker from value */
   from: PropTypes.instanceOf(Date).isRequired,
   /** Instance of Date, date range picker to value */
-  to: PropTypes.instanceOf(Date).isRequired,
+  to: PropTypes.instanceOf(Date),
   /** String, language of date picker */
   locale: PropTypes.string,
   /** Object, utils to format date value for given language */
@@ -382,6 +382,7 @@ DateRangePicker.propTypes = {
 };
 
 DateRangePicker.defaultProps = {
+  to: undefined,
   locale: 'en',
   localeUtils: null,
   months: MONTHS,
