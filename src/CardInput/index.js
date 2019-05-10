@@ -130,6 +130,8 @@ export class CardInput extends React.Component {
 
     if (firstDigit === 4) {
       nextCardType = 'visa';
+    } else if (firstDigit === 9) {
+      nextCardType = 'arca';
     } else if (
       (firstTwoDigit > 50 && firstTwoDigit < 56)
       || (firstFourDigit > 2220 && firstFourDigit < 2721)
