@@ -58,6 +58,8 @@ export class Table extends React.Component {
 
   render() {
     const {
+      sortOptions,
+      onTableSort,
       className,
       children,
       ...props
@@ -69,6 +71,11 @@ export class Table extends React.Component {
       [className]: true,
     });
 
+    const sortableColumn = columns.find(column => column.sortable);
+    if (sortableColumn && !sortOptions.prop) {
+      sortOptions.column = sortableColumn.id;
+    }
+
     return (
       <div
         className={tableClasses}
@@ -79,6 +86,8 @@ export class Table extends React.Component {
           value={{
             columns,
             gutters: this.gutters,
+            sortOptions,
+            onTableSort,
           }}
         >
           {children}
@@ -90,11 +99,18 @@ export class Table extends React.Component {
 
 Table.propTypes = {
   children: PropTypes.any.isRequired,
+  sortOptions: PropTypes.object,
+  onTableSort: PropTypes.func,
   className: PropTypes.string,
   style: PropTypes.object,
 };
 
 Table.defaultProps = {
+  sortOptions: {
+    direction: 'DESC',
+    prop: null,
+  },
+  onTableSort: undefined,
   className: '',
   style: undefined,
 };

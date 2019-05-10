@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 import { TableContext } from '.';
+import { SORTING_DIRECTIONS } from './constants';
 
 import { Icon } from '../Icon';
 
@@ -10,6 +11,24 @@ import styles from './table.css';
 
 export class TableColumn extends React.Component {
   static contextType = TableContext;
+
+  handleSorting = (id) => {
+    const {
+      sortOptions: { direction, prop },
+      onTableSort,
+    } = this.context;
+    if (prop !== id) {
+      onTableSort({
+        direction,
+        prop: id,
+      });
+    } else {
+      onTableSort({
+        direction: SORTING_DIRECTIONS.DESC === direction ? SORTING_DIRECTIONS.ASC : SORTING_DIRECTIONS.DESC,
+        prop,
+      });
+    }
+  };
 
   render() {
     const {
@@ -35,6 +54,7 @@ export class TableColumn extends React.Component {
       gutters: {
         column: columnGutter,
       },
+      sortOptions,
     } = this.context;
 
     const headColumn = columns.find(column => column.id === id);
@@ -50,9 +70,10 @@ export class TableColumn extends React.Component {
     }
 
     const tableColumnClasses = classNames({
+      [styles.tableColumn]: true,
       [styles.tableHeadColumn]: head,
       [styles.invisibleColumn]: !visible,
-      [styles.tableColumn]: true,
+      [styles.tableSortableColumn]: sortable,
       [className]: true,
     });
 
@@ -62,6 +83,11 @@ export class TableColumn extends React.Component {
       paddingLeft: columnGutter,
       paddingRight: columnGutter,
     };
+
+    const sortableIconClasses = classNames({
+      [styles.sortableIcon]: true,
+      [styles.sortableReverseIcon]: sortable && sortOptions.direction === SORTING_DIRECTIONS.DESC,
+    });
 
     if (width) {
       tableColumnStyle.width = width;
@@ -80,12 +106,14 @@ export class TableColumn extends React.Component {
         className={tableColumnClasses}
         style={tableColumnStyle}
         ref={forwardedRef}
+        role='presentation'
         {...props}
+        onClick={head && sortable ? () => this.handleSorting(id) : undefined}
       >
-        {sortable && (
+        {head && sortable && sortOptions.prop === id && (
           <Icon
             name='sorting'
-            className={styles.sortableIcon}
+            className={sortableIconClasses}
           />
         )}
         {!visible && (

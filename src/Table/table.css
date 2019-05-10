@@ -96,12 +96,21 @@
   display: none;
 }
 
+.tableSortableColumn {
+  cursor: pointer;
+}
+
 .invisibleColumn {
   justify-content: space-between;
 }
 
 .sortableIcon {
   margin-right: 8px;
+  transition: transform 0.4s;
+}
+
+.sortableReverseIcon {
+  transform: rotate(180deg);
 }
 
 .tableCaption {
