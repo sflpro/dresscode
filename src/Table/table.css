@@ -1,8 +1,8 @@
 .table {
-  background-color: var(--table-background-color);
+  border-radius: var(--table-border-radius);
+  box-shadow: var(--box-shadow-10);
   display: flex;
   flex-flow: column nowrap;
-  border-radius: 8px;
 }
 
 .fullWidth {
@@ -10,11 +10,11 @@
 }
 
 .tableHead {
-
+  background-color: var(--table-head-background-color);
 }
 
 .tableBody {
-
+  background-color: var(--table-body-background-color);
 }
 
 .tableRow {
@@ -102,4 +102,99 @@
 
 .sortableIcon {
   margin-right: 8px;
+}
+
+.tableCaption {
+  color: var(--table-caption-color);
+  background-color: var(--table-caption-background-color);
+  border-top-right-radius: var(--table-border-radius);
+  border-top-left-radius: var(--table-border-radius);
+  padding: 16px 16px 16px 24px;
+  display: flex;
+  justify-content: space-between;
+  font-family: Montserratarm;
+  font-size: 17.5px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.5;
+  letter-spacing: normal;
+}
+
+.tableCaptionIcon {
+  color: var(--table-caption-icon-color);
+  margin-left: 16px;
+}
+
+.tableFooter {
+  background-color: var(--table-footer-background-color);
+  border-top: var(--table-footer-border);
+  border-bottom-right-radius: var(--table-border-radius);
+  border-bottom-left-radius: var(--table-border-radius);
+  position: relative;
+  padding: 16px;
+}
+
+.tableFooterOverlay {
+  background-color: var(--table-footer-overlay-background-color);
+  position: absolute;
+  opacity: 0.28;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+}
+
+.tablePagination {
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+.tablePageRange {
+  color: var(--table-pagination-range-color);
+  margin-bottom: 16px;
+  font-family: Montserratarm;
+  font-size: 14px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.5;
+  letter-spacing: normal;
+}
+
+.tablePages {
+  border: 1px solid var(--table-pagination-border-color);
+  border-radius: var(--table-pagination-border-radius);
+  display: inline-flex;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.tablePageNumber {
+  border-right: 1px solid var(--table-pagination-border-color);
+  background-color: var(--table-pagination-background-color);
+  padding: 8px 12px;
+
+}
+
+.tablePageNumber:last-child {
+  border-right: none;
+  border-top-right-radius: var(--table-pagination-border-radius);
+  border-bottom-right-radius: var(--table-pagination-border-radius);
+}
+
+.tablePageNumber:first-child {
+  border-top-left-radius: var(--table-pagination-border-radius);
+  border-bottom-left-radius: var(--table-pagination-border-radius);
+}
+
+.tablePageNumberSelected {
+  font-weight: bold;
+  color: var(--table-pagination-selected-color);
+}
+
+.tablePageNumberClickable {
+  cursor: pointer;
 }

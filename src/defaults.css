@@ -226,7 +226,8 @@
   --line-height-scale-6: var(--line-height);
   --line-height-scale-7: var(--line-height);
 
-  --table-background-color: var(--neutral-white);
+  --table-head-background-color: var(--neutral-white);
+  --table-body-background-color: var(--neutral-white);
   --table-header-column-color: var(--neutral-500);
   --table-column-color: var(--neutral-900);
   --table-row-odd-background-color: var(--neutral-75);
@@ -234,4 +235,16 @@
   --table-row-expanded-icon-background-color: var(--red-100);
   --table-row-icon-background-color: var(--primary-color);
   --table-row-icon-color: var(--neutral-white);
+  --table-caption-color: var(--neutral-900);
+  --table-caption-icon-color: var(--neutral-500);
+  --table-caption-background-color: var(--neutral-white);
+  --table-footer-background-color: var(--neutral-white);
+  --table-footer-overlay-background-color: var(--neutral-75);
+  --table-footer-border: 1px solid var(--neutral-75);
+  --table-pagination-border-color: var(--primary-color-light);
+  --table-pagination-background-color: var(--neutral-white);
+  --table-pagination-range-color: var(--neutral-500);
+  --table-pagination-selected-color: var(--primary-color-light);
+  --table-pagination-border-radius: 4px;
+  --table-border-radius: 8px;
 }

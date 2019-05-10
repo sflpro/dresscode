@@ -6,7 +6,6 @@ import styles from './table.css';
 
 export function TableBody({
   className,
-  style,
   children,
   ...props
 }) {
@@ -18,7 +17,6 @@ export function TableBody({
   return (
     <div
       className={tableBodyClasses}
-      style={style}
       {...props}
     >
       {children}
