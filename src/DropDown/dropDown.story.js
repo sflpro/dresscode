@@ -9,6 +9,7 @@ import { ItemRow } from '../helpers/ItemRow';
 import { Item } from '../helpers/Item';
 import { ImportInstruction } from '../helpers/ImportInstruction';
 import { Button } from '../Button';
+import { Icon } from '../Icon';
 
 import { InfoStoryConfig } from '../configs';
 
@@ -37,22 +38,35 @@ storiesOf('Drop Down', module)
                 <div style={{ width: '250px' }}>
                   <DropDown
                     onClick={handleSelectClick}
-                    button={Button}
                     open={state.isOpen}
-                    label='Menu button'
                   >
-                    <div>
-                      Option 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
-                    </div>
-                    <span
-                      role='presentation'
-                      onClick={onClickTest}
-                    >
+                    <DropDown.Toggle>
+                      <Button>
+                        Toggle
+                        <Icon
+                          name='arrow-down'
+                          size={24}
+                        />
+                      </Button>
+                    </DropDown.Toggle>
+
+                    <DropDown.List>
+                      <span>
+                        Option 1
+                      </span>
+                      <span
+                        role='presentation'
+                        onClick={onClickTest}
+                      >
                       Option 2 - onClick handler
-                    </span>
-                    <span>
-                      Option 3
-                    </span>
+                      </span>
+                      <a
+                        href='/#'
+                        target='_blank'
+                      >
+                        Option 3
+                      </a>
+                    </DropDown.List>
                   </DropDown>
                 </div>
               </Item>
@@ -63,19 +77,28 @@ storiesOf('Drop Down', module)
     );
   })
   .add('Drop Down', () => (
-    <DropDown
-      label='Dropdown menu'
-      button={Button}
-    >
-      <div>
-        Option 1
-      </div>
-      <span>
-        Option 2
-      </span>
-      <a href='/#'>
-        Option 3
-      </a>
+    <DropDown>
+      <DropDown.Toggle>
+        <Button>
+          Toggle
+          <Icon
+            name='arrow-down'
+            size={24}
+          />
+        </Button>
+      </DropDown.Toggle>
+
+      <DropDown.List>
+        <span>
+          Option 1
+        </span>
+        <span>
+          Option 2
+        </span>
+        <span>
+          Option 3
+        </span>
+      </DropDown.List>
     </DropDown>
   ), {
     ...InfoStoryConfig,

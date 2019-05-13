@@ -18,8 +18,10 @@ export class ListItem extends React.Component {
       event.preventDefault();
       return;
     }
-    onClick({ value, event });
-  }
+    if (typeof onClick === 'function') {
+      onClick({ value, event });
+    }
+  };
 
   render() {
     const {
@@ -81,8 +83,8 @@ export class ListItem extends React.Component {
 }
 
 ListItem.propTypes = {
-  /** String, text of list item */
-  label: PropTypes.string,
+  /** String or JSX element, text of list item */
+  label: PropTypes.any,
   /** String, value that will be passed to onClick handler */
   value: PropTypes.string,
   /** String, name of icon of list item */
