@@ -18,8 +18,10 @@ export class ListItem extends React.Component {
       event.preventDefault();
       return;
     }
-    onClick({ value, event });
-  }
+    if (typeof onClick === 'function') {
+      onClick({ value, event });
+    }
+  };
 
   render() {
     const {
@@ -42,6 +44,8 @@ export class ListItem extends React.Component {
       [styles.disabled]: disabled,
       [styles.active]: active,
       [styles.clickable]: onClick,
+      [styles.leftSpace]: !icon && iconPos === 'left',
+      [styles.rightSpace]: !icon && iconPos === 'right',
     });
     const listItemIconClasses = classNames({
       [iconClassName]: true,
@@ -79,8 +83,8 @@ export class ListItem extends React.Component {
 }
 
 ListItem.propTypes = {
-  /** String, text of list item */
-  label: PropTypes.string,
+  /** String or JSX element, text of list item */
+  label: PropTypes.any,
   /** String, value that will be passed to onClick handler */
   value: PropTypes.string,
   /** String, name of icon of list item */
@@ -97,8 +101,6 @@ ListItem.propTypes = {
   disabled: PropTypes.bool,
   /** Boolean, whether list item render as active */
   active: PropTypes.bool,
-  /** Object, styles that will be added to list item */
-  style: PropTypes.object,
   /** String, className that will be added to list item */
   className: PropTypes.string,
 };
@@ -113,6 +115,5 @@ ListItem.defaultProps = {
   active: false,
   iconClassName: '',
   onClick: undefined,
-  style: undefined,
   className: '',
 };

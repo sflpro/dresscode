@@ -53,7 +53,11 @@ export class Select extends React.Component {
   };
 
   getOptions() {
-    const { value: propValue } = this.props;
+    const {
+      value: propValue,
+      button,
+      multiple,
+    } = this.props;
     const { search } = this.state;
 
     let options = this.childOptions;
@@ -64,8 +68,13 @@ export class Select extends React.Component {
       options = options.filter(({ name }) => name.toLowerCase().includes(lowerCaseSearch));
     }
 
+    const listClasses = classNames({
+      [styles.list]: true,
+      [styles.selectListFullWidth]: button && !multiple,
+    });
+
     return (
-      <List className={styles.list}>
+      <List className={listClasses}>
         {options.length > 0 ? options.map(({ name, value }) => (
           <ListItem
             icon={propValue.includes(value) ? 'thick' : null}
@@ -171,6 +180,11 @@ export class Select extends React.Component {
     }
   };
 
+  selectingElement = () => {
+    const { button, multiple } = this.props;
+    return button && !multiple ? button : 'div';
+  };
+
   handleSelectChange(optionValue, closeOptions = true) {
     const { multiple, value, onChange } = this.props;
     const { selected } = this.state;
@@ -229,6 +243,8 @@ export class Select extends React.Component {
       onChange,
       className,
       children,
+      button,
+      buttonProps,
       ...props
     } = this.props;
 
@@ -237,12 +253,13 @@ export class Select extends React.Component {
     const nativeSelectClasses = classNames({
       [className]: true,
       [styles.select]: true,
-      [styles.nativeSelect]: !isNativeMode,
+      [styles.nativeSelect]: !isNativeMode || button,
       [styles.nativeCustomSelect]: isNativeMode,
     });
     const selectClasses = classNames({
       [className]: true,
-      [styles.select]: true,
+      [styles.select]: !button || multiple,
+      [styles.selectElem]: !!button && !multiple,
       [styles.active]: open,
     });
     const iconClasses = classNames({
@@ -258,6 +275,13 @@ export class Select extends React.Component {
       [styles.labelOpen]: open,
     });
 
+    const contentWrapperClasses = classNames({
+      [styles.contentWrapper]: true,
+      [styles.contentWrapperSingle]: !multiple,
+    });
+
+    const SelectingElement = this.selectingElement();
+
     return (
       <div className={styles.wrapper}>
         <div
@@ -267,31 +291,32 @@ export class Select extends React.Component {
         >
           <div className={styles.nativeSelectWrapper}>
             <select
+              onChange={this.handleNativeChange}
               className={nativeSelectClasses}
               multiple={multiple}
               value={value}
               name={name}
               {...props}
-              onChange={this.handleNativeChange}
             >
               {children}
             </select>
-            {isNativeMode && (
+            {isNativeMode && !button && (
               <Icon
                 className={nativeIconClasses}
                 name='arrow-down'
               />
             )}
           </div>
-          {!isNativeMode && (
+          {(!isNativeMode || button) && (
             <React.Fragment>
-              <div
-                {...props}
+              <SelectingElement
                 onClick={!multiple ? this.onClick : undefined}
                 className={selectClasses}
                 role='presentation'
+                {...buttonProps}
+                {...props}
               >
-                <div className={styles.contentWrapper}>
+                <div className={contentWrapperClasses}>
                   {this.getContent()}
                 </div>
                 <Icon
@@ -300,7 +325,7 @@ export class Select extends React.Component {
                   name='arrow-down'
                   size={24}
                 />
-              </div>
+              </SelectingElement>
               <div>
                 {open && this.getOptions()}
               </div>
@@ -338,8 +363,10 @@ Select.propTypes = {
   name: PropTypes.string,
   /** String, classname that will be added to select */
   className: PropTypes.string,
-  /** Object, style that will be added to select */
-  style: PropTypes.object,
+  /** Element for showing select */
+  button: PropTypes.any,
+  /** Element properties */
+  buttonProps: PropTypes.object,
 };
 
 Select.defaultProps = {
@@ -351,6 +378,7 @@ Select.defaultProps = {
   open: false,
   children: null,
   name: '',
+  button: undefined,
+  buttonProps: undefined,
   className: '',
-  style: undefined,
 };

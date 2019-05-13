@@ -1,17 +1,20 @@
 .list {
   box-shadow: var(--box-shadow-100);
   border: solid 1px var(--neutral-75);
-  background-color: var(--color-netural);
+  background-color: var(--neutral-white);
   border-radius: var(--list-border-radius);
   margin-top: 8px;
+
+  & > * {
+    &:first-child {
+      border-top-left-radius: var(--list-border-radius);
+      border-top-right-radius: var(--list-border-radius);
+    }
+
+    &:last-child {
+      border-bottom-left-radius: var(--list-border-radius);
+      border-bottom-right-radius: var(--list-border-radius);
+    }
+  }
 }
 
-.list > *:first-child {
-  border-top-left-radius: calc(var(--list-border-radius) - 3px);
-  border-top-right-radius: calc(var(--list-border-radius) - 3px);
-}
-
-.list > *:last-child {
-  border-bottom-left-radius: calc(var(--list-border-radius) - 3px);
-  border-bottom-right-radius: calc(var(--list-border-radius) - 3px);
-}

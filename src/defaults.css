@@ -74,7 +74,7 @@
   --textarea-padding: 16px;
 
   --list-border-radius: 8px;
-  --list-item-min-height: 48px;
+  --list-item-min-height: 24px;
 
   --box-shadow-10: 0 2px 4px 0 var(--neutral-1000-opacity-15);
   --box-shadow-50: 0 4px 8px 0 var(--neutral-1000-opacity-15);
