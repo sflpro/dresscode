@@ -85,6 +85,9 @@
   font-stretch: normal;
   line-height: 1.5;
   letter-spacing: normal;
+  white-space: nowrap; 
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .tableHeadColumn {
@@ -216,4 +219,11 @@
 
 .tablePageNumberClickable {
   cursor: pointer;
+}
+
+.ellipsisColumn,
+.ellipsisColumn > div {
+  white-space: nowrap; 
+  overflow: hidden;
+  text-overflow: ellipsis;
 }

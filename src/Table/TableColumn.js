@@ -6,11 +6,54 @@ import { TableContext } from '.';
 import { SORTING_DIRECTIONS } from './constants';
 
 import { Icon } from '../Icon';
+import { Tooltip } from '../Tooltip';
 
 import styles from './table.css';
 
 export class TableColumn extends React.Component {
   static contextType = TableContext;
+
+  state = {
+    isEllipsis: false,
+    renderTooltip: false,
+  };
+
+  componentDidMount() {
+    const { width } = this.columnChildrenRef.getBoundingClientRect();
+    this.columnChildrenWidth = width;
+
+    this.isEllipsisActive();
+
+    this.setState({
+      renderTooltip: true,
+    });
+  }
+
+  componentDidUpdate() {
+    this.isEllipsisActive();
+  }
+
+  isEllipsisActive = () => {
+    const { isEllipsis } = this.state;
+    const { width } = this.tableColumnRef.getBoundingClientRect();
+    const {
+      gutters: {
+        column: columnGutter,
+      },
+    } = this.context;
+
+    if (width - 2 * columnGutter < this.columnChildrenWidth) {
+      if (!isEllipsis) {
+        this.setState({
+          isEllipsis: true,
+        });
+      }
+    } else if (isEllipsis) {
+      this.setState({
+        isEllipsis: false,
+      });
+    }
+  };
 
   handleSorting = (id) => {
     const {
@@ -30,6 +73,14 @@ export class TableColumn extends React.Component {
     }
   };
 
+  setRef = (ref) => {
+    this.tableColumnRef = ref;
+  };
+
+  setChildrenRef = (ref) => {
+    this.columnChildrenRef = ref;
+  };
+
   render() {
     const {
       id,
@@ -38,13 +89,14 @@ export class TableColumn extends React.Component {
       priority: propsPriority,
       minWidth: propsMinWidth,
       sortable,
-      forwardedRef,
       head,
       className,
       style,
       children,
       ...props
     } = this.props;
+
+    const { isEllipsis, renderTooltip } = this.state;
 
     let visible = propsVisible;
     let priority = propsPriority;
@@ -105,10 +157,12 @@ export class TableColumn extends React.Component {
       <div
         className={tableColumnClasses}
         style={tableColumnStyle}
-        ref={forwardedRef}
+        ref={this.setRef}
         role='presentation'
         {...props}
         onClick={head && sortable ? () => this.handleSorting(id) : undefined}
+        onMouseOver={!head ? this.isEllipsisActive : undefined}
+        onFocus={() => { }}
       >
         {head && sortable && sortOptions.prop === id && (
           <Icon
@@ -123,7 +177,19 @@ export class TableColumn extends React.Component {
             {headColumn.children}
           </span>
         )}
-        {children}
+        {renderTooltip && isEllipsis ? (
+          <Tooltip
+            description={children}
+            popoverClassName={styles.ellipsisColumn}
+            trigger='hover'
+          >
+            {children}
+          </Tooltip>
+        ) : (
+          <span ref={this.setChildrenRef}>
+            {children}
+          </span>
+        )}
       </div>
     );
   }
@@ -140,7 +206,6 @@ TableColumn.propTypes = {
   minWidth: PropTypes.number,
   width: PropTypes.number,
   sortable: PropTypes.bool,
-  forwardedRef: PropTypes.any,
   children: PropTypes.any,
   className: PropTypes.string,
   style: PropTypes.object,
@@ -153,7 +218,6 @@ TableColumn.defaultProps = {
   minWidth: 1,
   width: undefined,
   sortable: false,
-  forwardedRef: undefined,
   children: '',
   className: '',
   style: undefined,

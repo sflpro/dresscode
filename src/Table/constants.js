@@ -94,7 +94,7 @@ export const ROWS = [
     columns: {
       firstName: {
         id: 'firstName',
-        children: 'asery',
+        children: 'asery dsfsdfdsfdsf dsgsdgfdgfdg dfgdfgfdg sdfsdseredf sdfdsfsdf',
       },
       lastName: {
         id: 'lastName',
