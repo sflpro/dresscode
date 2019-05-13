@@ -25,8 +25,11 @@ export function TableBody({
 }
 
 TableBody.propTypes = {
+  /** String or JSX or Element, content of element */
   children: PropTypes.any.isRequired,
+  /** String, className that will be added to table body div */
   className: PropTypes.string,
+  /** Object, styles that will be added to table body div */
   style: PropTypes.object,
 };
 

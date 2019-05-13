@@ -125,10 +125,15 @@ export class TableRow extends React.Component {
 }
 
 TableRow.propTypes = {
+  /** String or JSX or Element, content of element */
   children: PropTypes.any.isRequired,
+  /** Boolean, indicating element relation with table head */
   head: PropTypes.bool,
+  /** Boolean, indicating the element highlighting possibility on hover */
   hover: PropTypes.bool,
+  /** String, className that will be added to table div */
   className: PropTypes.string,
+  /** Object, styles that will be added to table div */
   style: PropTypes.object,
 };
 

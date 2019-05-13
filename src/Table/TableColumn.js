@@ -196,18 +196,28 @@ export class TableColumn extends React.Component {
 }
 
 TableColumn.propTypes = {
+  /**  String or Number, column unique identifier */
   id: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
   ]).isRequired,
+  /** Number, specifies column priority in table */
   priority: PropTypes.number,
+  /** Number, specifies column visibility on collapsed wiew */
   visible: PropTypes.bool,
+  /** Boolean, indicating element relation with table head */
   head: PropTypes.bool,
+  /** Number, specifies column min width in px */
   minWidth: PropTypes.number,
+  /** Number, specifies column width in px */
   width: PropTypes.number,
+  /** Boolean, indicate the possibility that table can be sorted by this column */
   sortable: PropTypes.bool,
+  /** String or JSX or Element, content of element */
   children: PropTypes.any,
+  /** String, className that will be added to table div */
   className: PropTypes.string,
+  /** Object, styles that will be added to table div */
   style: PropTypes.object,
 };
 

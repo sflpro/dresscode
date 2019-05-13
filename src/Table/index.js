@@ -98,10 +98,15 @@ export class Table extends React.Component {
 }
 
 Table.propTypes = {
+  /** String or JSX or Element, content of element */
   children: PropTypes.any.isRequired,
+  /** Object, table sorting direction and the column id which should be displayed as sorted */
   sortOptions: PropTypes.object,
+  /** Function, will be called when clicked on head sortable columns */
   onTableSort: PropTypes.func,
+  /** String, className that will be added to table div */
   className: PropTypes.string,
+  /** Object, styles that will be added to table div */
   style: PropTypes.object,
 };
 

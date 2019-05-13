@@ -129,12 +129,19 @@ export class TablePagination extends React.Component {
 }
 
 TablePagination.propTypes = {
+  /** Number, selected page number */
   page: PropTypes.number.isRequired,
+  /** Number, total count of items */
   total: PropTypes.number.isRequired,
+  /** Function, the method to call when a page is clicked. */
   onPageClick: PropTypes.func.isRequired,
+  /** Number, count of items per page */
   pageCount: PropTypes.number,
+  /** Number, count of selected page sibilings which will be shown */
   pageSibilingCount: PropTypes.number,
+  /** String, className that will be added to wrapper div */
   className: PropTypes.string,
+  /** Object, styles that will be added to wrapper div */
   style: PropTypes.object,
 };
 

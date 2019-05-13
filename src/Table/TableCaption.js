@@ -29,9 +29,13 @@ export function TableCaption({
 }
 
 TableCaption.propTypes = {
+  /** String, caption title */
   title: PropTypes.string.isRequired,
+  /** String or JSX or Element, caption icon element */
   icon: PropTypes.any,
+  /** String, className that will be added to table div */
   className: PropTypes.string,
+  /** Object, styles that will be added to table div */
   style: PropTypes.object,
 };
 
