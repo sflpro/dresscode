@@ -8,7 +8,7 @@ import { Icon } from '../Icon';
 
 import styles from './table.css';
 
-const ELIPSIS = '...';
+const PAGES_GAP = '...';
 
 export class TablePagination extends React.Component {
   static contextType = TableContext;
@@ -51,12 +51,12 @@ export class TablePagination extends React.Component {
       lastPageNumbers = [];
     } else if (page < 4) {
       firstPageNumbers = this.createRange(1, 5);
-      mainPageNumbers = [ELIPSIS];
+      mainPageNumbers = [PAGES_GAP];
     } else if (page > lastPage - (pageSibilingCount * 2 + 1)) {
-      mainPageNumbers = [ELIPSIS];
+      mainPageNumbers = [PAGES_GAP];
       lastPageNumbers = this.createRange(lastPage - 4, lastPage);
     } else {
-      mainPageNumbers = [ELIPSIS, ...this.createRange(page - 1, page + 1), ELIPSIS];
+      mainPageNumbers = [PAGES_GAP, ...this.createRange(page - 1, page + 1), PAGES_GAP];
     }
 
     const pageNumbers = [
@@ -77,13 +77,13 @@ export class TablePagination extends React.Component {
           const selectedPageClasses = classNames({
             [styles.tablePageNumber]: true,
             [styles.tablePageNumberSelected]: pageNumber === page,
-            [styles.tablePageNumberClickable]: pageNumber !== ELIPSIS,
+            [styles.tablePageNumberClickable]: pageNumber !== PAGES_GAP,
           });
 
           return (
             <div
               className={selectedPageClasses}
-              onClick={pageNumber !== ELIPSIS ? () => onPageClick(pageNumber) : null}
+              onClick={pageNumber !== PAGES_GAP ? () => onPageClick(pageNumber) : null}
               role='presentation'
               key={index}
             >

@@ -2,8 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-import { Icon } from '../Icon';
-
 import styles from './table.css';
 
 export function TableCaption({
@@ -40,13 +38,7 @@ TableCaption.propTypes = {
 };
 
 TableCaption.defaultProps = {
-  icon: (
-    <Icon
-      name='more'
-      size={24}
-      className={styles.tableCaptionIcon}
-    />
-  ),
+  icon: null,
   className: '',
   style: undefined,
 };

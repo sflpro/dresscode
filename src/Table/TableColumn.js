@@ -14,7 +14,7 @@ export class TableColumn extends React.Component {
   static contextType = TableContext;
 
   state = {
-    isEllipsis: false,
+    didOverflow: false,
     renderTooltip: false,
   };
 
@@ -22,7 +22,7 @@ export class TableColumn extends React.Component {
     const { width } = this.columnChildrenRef.getBoundingClientRect();
     this.columnChildrenWidth = width;
 
-    this.isEllipsisActive();
+    this.checkTextOverflow();
 
     this.setState({
       renderTooltip: true,
@@ -30,11 +30,11 @@ export class TableColumn extends React.Component {
   }
 
   componentDidUpdate() {
-    this.isEllipsisActive();
+    this.checkTextOverflow();
   }
 
-  isEllipsisActive = () => {
-    const { isEllipsis } = this.state;
+  checkTextOverflow = () => {
+    const { didOverflow } = this.state;
     const { width } = this.tableColumnRef.getBoundingClientRect();
     const {
       gutters: {
@@ -43,14 +43,14 @@ export class TableColumn extends React.Component {
     } = this.context;
 
     if (width - 2 * columnGutter < this.columnChildrenWidth) {
-      if (!isEllipsis) {
+      if (!didOverflow) {
         this.setState({
-          isEllipsis: true,
+          didOverflow: true,
         });
       }
-    } else if (isEllipsis) {
+    } else if (didOverflow) {
       this.setState({
-        isEllipsis: false,
+        didOverflow: false,
       });
     }
   };
@@ -96,7 +96,7 @@ export class TableColumn extends React.Component {
       ...props
     } = this.props;
 
-    const { isEllipsis, renderTooltip } = this.state;
+    const { didOverflow, renderTooltip } = this.state;
 
     let visible = propsVisible;
     let priority = propsPriority;
@@ -161,7 +161,7 @@ export class TableColumn extends React.Component {
         role='presentation'
         {...props}
         onClick={head && sortable ? () => this.handleSorting(id) : undefined}
-        onMouseOver={!head ? this.isEllipsisActive : undefined}
+        onMouseOver={!head ? this.checkTextOverflow : undefined}
         onFocus={() => { }}
       >
         {head && sortable && sortOptions.prop === id && (
@@ -177,7 +177,7 @@ export class TableColumn extends React.Component {
             {headColumn.children}
           </span>
         )}
-        {renderTooltip && isEllipsis ? (
+        {renderTooltip && didOverflow ? (
           <Tooltip
             description={children}
             popoverClassName={styles.ellipsisColumn}
