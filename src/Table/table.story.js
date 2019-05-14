@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/react';
 import { State, Store } from '@sambego/storybook-state';
 
 import { Table } from '.';
-import { COLUMNS, ROWS, SORTING_DIRECTIONS } from './constants';
+import { COLUMNS, ROWS, SORTING_DIRECTIONS } from './storyData';
 import { TableHead } from './TableHead';
 import { TableColumn } from './TableColumn';
 import { TableRow } from './TableRow';

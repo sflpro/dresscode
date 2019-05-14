@@ -3,13 +3,16 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 import { TableContext } from '.';
-import { SORTING_DIRECTIONS } from './constants';
 
 import { Icon } from '../Icon';
 import { Tooltip } from '../Tooltip';
 
 import styles from './table.css';
 
+export const SORTING_DIRECTIONS = {
+  ASC: 'asc',
+  DESC: 'desc',
+};
 export class TableColumn extends React.Component {
   static contextType = TableContext;
 
