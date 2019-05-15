@@ -21,6 +21,7 @@ function loadStories() {
   require('../src/Notification/notification.story');
   require('../src/NotificationStack/notificationStack.story');
   require('../src/Table/table.story');
+  require('../src/Form/form.story');
   require('../src/helpers/Grid/grid.story');
   require('../src/helpers/Typography/typography.story');
 }
