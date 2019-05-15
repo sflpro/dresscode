@@ -56,7 +56,8 @@ storiesOf('Data Table', module)
     return (
       <State store={store}>
         {(state) => {
-          const rows = state.sortedRows.slice(pageCount * (state.page - 1), total < pageCount * state.page ? total : pageCount * state.page);
+          const rows = state.sortedRows.slice(pageCount * (state.page - 1),
+            total < pageCount * state.page ? total : pageCount * state.page);
           return (
             <ItemGroup
               title='Data Table'
