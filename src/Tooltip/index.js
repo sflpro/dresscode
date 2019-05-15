@@ -69,6 +69,7 @@ export class Tooltip extends React.Component {
       follow,
       arrow,
       gap = follow ? 10 : 0,
+      popoverClassName,
       children,
       ...props
     } = this.props;
@@ -77,6 +78,7 @@ export class Tooltip extends React.Component {
     return (
       <Popover
         onTargetEvent={this.handleTargetEvent}
+        className={popoverClassName}
         position={position}
         trigger={trigger}
         gap={gap}
@@ -100,10 +102,7 @@ Tooltip.propTypes = {
   description: PropTypes.any.isRequired,
   /** String, title of tooltip */
   title: PropTypes.string,
-  /** String, className that will be added to wrapper div */
-  className: PropTypes.string,
-  /** Object, styles that will be added to wrapper div */
-  style: PropTypes.object,
+
   /** Boolean, whether tooltip must move with mouse */
   follow: PropTypes.bool,
   /** Boolean, whether tooltip has arrow */
@@ -114,6 +113,14 @@ Tooltip.propTypes = {
   position: PropTypes.oneOf(['top', 'bottom']),
   /** Number, distance between arrow(popover) and target */
   gap: PropTypes.number,
+  /** String, className that will be added to wrapper div */
+  className: PropTypes.string,
+  /** String, className that will be added to popover component */
+  popoverClassName: PropTypes.string,
+  /** Object, styles that will be added to wrapper div */
+  style: PropTypes.object,
+  /** Boolean, whether popover must be displayed */
+  popoverOpen: PropTypes.bool,
   /** JSX or Element, target */
   children: PropTypes.any,
 };
@@ -126,6 +133,8 @@ Tooltip.defaultProps = {
   position: 'top',
   gap: 0,
   className: '',
+  popoverClassName: '',
+  popoverOpen: undefined,
   style: undefined,
   children: null,
 };

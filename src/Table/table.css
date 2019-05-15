@@ -1,0 +1,229 @@
+.table {
+  border-radius: var(--table-border-radius);
+  box-shadow: var(--box-shadow-10);
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.fullWidth {
+  width: 100%;
+}
+
+.tableHead {
+  background-color: var(--table-head-background-color);
+}
+
+.tableBody {
+  background-color: var(--table-body-background-color);
+}
+
+.tableRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  height: 48px;
+  overflow: hidden;
+}
+
+.tableRowExpanded {
+  height: auto;
+  transition: height 0.25s ease-in;
+  overflow: visible;
+}
+
+.tableRowWrapper {
+  position: relative;
+}
+
+.tableRowOverlay {
+  height: 48px;
+  background-color: transparent;
+  position: absolute;
+  width: 100%;
+  z-index: 1;
+}
+
+.tableBody .tableRowWrapper:nth-child(2n+1) .tableRowOverlay {
+  background-color: var(--table-row-odd-background-color);
+}
+
+.tableBody .tableRowWrapperHover:hover .tableRowOverlay {
+  background-color: var(--table-row-hover-color) !important;
+}
+
+.tableRowIcon {
+  color: var(--table-row-icon-color);
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  border-radius: 12px;
+  justify-content: center;
+  left: -11px;
+  top: 12px;
+  z-index: 2;
+}
+
+.arrow-up {
+  background-color: var(--table-row-expanded-icon-background-color);
+}
+
+.arrow-down {
+  background-color: var(--table-row-icon-background-color);
+}
+
+.tableColumn {
+  color: var(--table-column-color);
+  flex: 1;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  z-index: 2;
+  font-family: Montserratarm;
+  font-size: 12.8px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.5;
+  letter-spacing: normal;
+  white-space: nowrap; 
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.tableHeadColumn {
+  color: var(--table-header-column-color);
+  font-weight: bold;
+}
+
+.tableHeadColumn.invisibleColumn {
+  display: none;
+}
+
+.tableSortableColumn {
+  cursor: pointer;
+}
+
+.invisibleColumn {
+  justify-content: space-between;
+}
+
+.sortableIcon {
+  margin-right: 8px;
+  transition: transform 0.4s;
+}
+
+.sortableReverseIcon {
+  transform: rotate(180deg);
+}
+
+.tableCaption {
+  color: var(--table-caption-color);
+  background-color: var(--table-caption-background-color);
+  border-top-right-radius: var(--table-border-radius);
+  border-top-left-radius: var(--table-border-radius);
+  padding: 16px 16px 16px 24px;
+  display: flex;
+  justify-content: space-between;
+  font-family: Montserratarm;
+  font-size: 17.5px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.5;
+  letter-spacing: normal;
+}
+
+.tableCaptionIcon {
+  color: var(--table-caption-icon-color);
+  margin-left: 16px;
+}
+
+.tableFooter {
+  background-color: var(--table-footer-background-color);
+  border-top: var(--table-footer-border);
+  border-bottom-right-radius: var(--table-border-radius);
+  border-bottom-left-radius: var(--table-border-radius);
+  position: relative;
+  padding: 16px;
+}
+
+.tableFooterOverlay {
+  background-color: var(--table-footer-overlay-background-color);
+  position: absolute;
+  opacity: 0.28;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+}
+
+.tablePagination {
+  text-align: center;
+  position: relative;
+  z-index: 2;
+
+  @media (--small) {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.tablePageRange {
+  color: var(--table-pagination-range-color);
+  margin-bottom: 16px;
+  font-family: Montserratarm;
+  font-size: 14px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.5;
+  letter-spacing: normal;
+  @media (--small) {
+    margin-bottom: 0;
+  }
+}
+
+.tablePages {
+  border: 1px solid var(--table-pagination-border-color);
+  border-radius: var(--table-pagination-border-radius);
+  display: inline-flex;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.tablePageNumber {
+  border-right: 1px solid var(--table-pagination-border-color);
+  background-color: var(--table-pagination-background-color);
+  padding: 8px 12px;
+
+}
+
+.tablePageNumber:last-child {
+  border-right: none;
+  border-top-right-radius: var(--table-pagination-border-radius);
+  border-bottom-right-radius: var(--table-pagination-border-radius);
+}
+
+.tablePageNumber:first-child {
+  border-top-left-radius: var(--table-pagination-border-radius);
+  border-bottom-left-radius: var(--table-pagination-border-radius);
+}
+
+.tablePageNumberSelected {
+  font-weight: bold;
+  color: var(--table-pagination-selected-color);
+}
+
+.tablePageNumberClickable {
+  cursor: pointer;
+}
+
+.ellipsisColumn,
+.ellipsisColumn > div {
+  white-space: nowrap; 
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
