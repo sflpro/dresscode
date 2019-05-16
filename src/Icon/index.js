@@ -15,6 +15,7 @@ export function Icon({
   className,
   color,
   style,
+  path,
   ...props
 }) {
   const iconWrapperClasses = classNames({
@@ -34,7 +35,7 @@ export function Icon({
       {...props}
     >
       <svg className={styles.icon}>
-        <use xlinkHref={`${iconPath}#${name}`} />
+        <use xlinkHref={`${path}${iconPath}#${name}`} />
       </svg>
     </span>
   );
@@ -51,6 +52,8 @@ Icon.propTypes = {
   color: PropTypes.string,
   /** Object, styles that will be added to wrapper span */
   style: PropTypes.object,
+  /** String, path of icons sprite */
+  path: PropTypes.string,
 };
 
 Icon.defaultProps = {
@@ -58,4 +61,5 @@ Icon.defaultProps = {
   className: '',
   color: '',
   style: {},
+  path: '',
 };

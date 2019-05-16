@@ -31,10 +31,6 @@
   --input-margin-top: 8px;
 
   --base-font-weight: normal;
-  --base-font-family: Montserratarm;
-  --base-font-size: 1em;
-  --small-font-size: 14px;
-  --medium-font-size: 16px;
 
   --checkbox-background-color: var(--secondary-color);
   --checkbox-border-color: var(--text-disabled-color);
@@ -47,8 +43,6 @@
   --checkbox-height: 24px;
 
   --label-color: var(--primary-color);
-  --label-font-size: var(--base-font-size);
-  --label-font-family: var(--base-font-family);
 
   --tag-height: 32px;
   --tag-border-radius: 16px;
@@ -62,7 +56,6 @@
   --text-input-disabled-color: var(--disabled-color-light);
   --text-input-text-disabled-color: var(--disabled-color-dark);
   --text-input-prefix-color: var(--default-color-dark);
-  --text-input-font-size: var(--base-font-size);
   --text-input-background-color: var(--neutral-white);
 
   --text-input-height: 48px;
@@ -91,7 +84,6 @@
   --radio-button-color: var(--primary-color);
   --radio-button-disabled-text-color: var(--text-disabled-color);
   --radio-button-disabled-color: var(--default-color);
-  --radio-button-font-size: var(--base-font-size);
   --radio-button-height: 24px;
   --radio-button-width: 24px;
   --radio-button-white-background-width: 3px;
@@ -106,7 +98,6 @@
   --toggle-button-background-color: var(--neutral-200);
   --toggle-button-color: var(--primary-color);
   --toggle-button-disabled-color: var(--default-color);
-  --toggle-button-font-size: var(--base-font-size);
   --toggle-button-height: 24px;
   --toggle-button-width: 40px;
 

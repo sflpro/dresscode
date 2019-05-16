@@ -8,13 +8,8 @@
 }
 
 .title {
+  @mixin font-scale-5;
   color: var(--text-default-color);
   padding-bottom: 24px;
-  font-family: Montserratarm;
-  font-size: 20px;
-  font-weight: normal;
-  font-style: normal;
-  line-height: 1.5;
-  letter-spacing: normal;
   margin: 0;
 }

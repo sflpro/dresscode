@@ -73,20 +73,14 @@
 }
 
 .tableColumn {
+  @mixin font-scale-7;
   color: var(--table-column-color);
   flex: 1;
   height: 48px;
   display: flex;
   align-items: center;
   z-index: 2;
-  font-family: Montserratarm;
-  font-size: 12.8px;
-  font-weight: normal;
-  font-style: normal;
-  font-stretch: normal;
-  line-height: 1.5;
-  letter-spacing: normal;
-  white-space: nowrap; 
+  white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
@@ -120,6 +114,7 @@
 }
 
 .tableCaption {
+  @mixin font-scale-5;
   color: var(--table-caption-color);
   background-color: var(--table-caption-background-color);
   border-top-right-radius: var(--table-border-radius);
@@ -127,13 +122,6 @@
   padding: 16px 16px 16px 24px;
   display: flex;
   justify-content: space-between;
-  font-family: Montserratarm;
-  font-size: 17.5px;
-  font-weight: normal;
-  font-style: normal;
-  font-stretch: normal;
-  line-height: 1.5;
-  letter-spacing: normal;
 }
 
 .tableCaptionIcon {
@@ -175,15 +163,9 @@
 }
 
 .tablePageRange {
+  @mixin font-scale-7;
   color: var(--table-pagination-range-color);
   margin-bottom: 16px;
-  font-family: Montserratarm;
-  font-size: 14px;
-  font-weight: normal;
-  font-style: normal;
-  font-stretch: normal;
-  line-height: 1.5;
-  letter-spacing: normal;
   @media (--small) {
     margin-bottom: 0;
   }
@@ -231,7 +213,7 @@
 
 .ellipsisColumn,
 .ellipsisColumn > div {
-  white-space: nowrap; 
+  white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }

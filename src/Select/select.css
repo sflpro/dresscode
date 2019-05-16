@@ -43,7 +43,7 @@
 }
 
 .nativeIcon {
-  font-size: 24px;
+  @mixin font-scale-4;
   position: absolute;
   right: 16px;
   top: 14px;
@@ -145,10 +145,10 @@
 }
 
 .emptyState {
+  @mixin font-scale-7;
   padding: 16px;
   display: block;
   color: var(--text-input-placeholder-color);
-  font-size: 0.8em;
 }
 
 .selectElem {
