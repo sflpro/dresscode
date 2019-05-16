@@ -104,6 +104,7 @@
 }
 
 .invisibleColumn {
+  border-bottom: 1px solid var(--table-column-border-color);
   justify-content: space-between;
 }
 
