@@ -60,7 +60,8 @@
   justify-content: center;
   left: -11px;
   top: 12px;
-  z-index: 2;
+  z-index: 3;
+  cursor: pointer;
 }
 
 .arrow-up {
@@ -197,8 +198,13 @@
 .tablePageNumber {
   border-right: 1px solid var(--table-pagination-border-color);
   background-color: var(--table-pagination-background-color);
-  padding: 8px 12px;
-
+  padding: 8px;
+  cursor: pointer;
+  min-width: 16px;
+  min-height: 16px;
+  align-items: center;
+  display: flex;
+  justify-content: center;
 }
 
 .tablePageNumber:last-child {
