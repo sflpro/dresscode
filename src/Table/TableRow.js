@@ -47,7 +47,7 @@ export class TableRow extends React.Component {
 
   isExpandable = columns => (
     columns.findIndex(column => column.visible === false) !== -1
-  )
+  );
 
   handleExpandedChange = () => {
     this.setState(prevState => ({
