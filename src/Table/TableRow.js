@@ -61,7 +61,6 @@ export class TableRow extends React.Component {
       head,
       className,
       children,
-      style,
       ...props
     } = this.props;
 
@@ -69,10 +68,6 @@ export class TableRow extends React.Component {
       expanded,
       expandable,
     } = this.state;
-
-    const {
-      gutters: { row: rowGutter },
-    } = this.context;
 
     const tableRowClasses = classNames({
       [styles.tableRow]: true,
@@ -84,12 +79,6 @@ export class TableRow extends React.Component {
       [styles.tableRowWrapper]: true,
       [styles.tableRowWrapperHover]: hover,
     });
-
-    const tableRowStyle = {
-      ...style,
-      paddingLeft: rowGutter,
-      paddingRight: rowGutter,
-    };
 
     const iconName = expanded ? 'arrow-up' : 'arrow-down';
     const iconClasses = classNames({
@@ -114,7 +103,6 @@ export class TableRow extends React.Component {
         <div
           ref={this.rowRef}
           className={tableRowClasses}
-          style={tableRowStyle}
           {...props}
         >
           {children}
