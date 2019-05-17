@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 import { TableContext } from '.';
+import { dynamicSort } from './ResizeTable';
 
 import { Icon } from '../Icon';
 import { Tooltip } from '../Tooltip';
@@ -70,7 +71,8 @@ export class TableColumn extends React.Component {
       });
     } else {
       onTableSort({
-        direction: SORTING_DIRECTIONS.DESC === direction ? SORTING_DIRECTIONS.ASC : SORTING_DIRECTIONS.DESC,
+        direction: SORTING_DIRECTIONS.DESC === direction
+          ? SORTING_DIRECTIONS.ASC : SORTING_DIRECTIONS.DESC,
         prop,
       });
     }
@@ -108,6 +110,7 @@ export class TableColumn extends React.Component {
       columns,
       gutters: {
         column: columnGutter,
+        row: rowGutter,
       },
       sortOptions,
     } = this.context;
@@ -124,6 +127,9 @@ export class TableColumn extends React.Component {
       minWidth = headColumnMinWidth;
     }
 
+    const visibleColumns = columns.filter(column => column.visible)
+      .sort(dynamicSort({ column: 'priority' }));
+
     const tableColumnClasses = classNames({
       [styles.tableColumn]: true,
       [styles.tableHeadColumn]: head,
@@ -138,6 +144,14 @@ export class TableColumn extends React.Component {
       paddingLeft: columnGutter,
       paddingRight: columnGutter,
     };
+
+    if (visibleColumns[0].id === id) {
+      tableColumnStyle.paddingLeft += rowGutter;
+    }
+
+    if (visibleColumns[visibleColumns.length - 1].id === id) {
+      tableColumnStyle.paddingRight += rowGutter;
+    }
 
     const sortableIconClasses = classNames({
       [styles.sortableIcon]: true,
