@@ -1,5 +1,4 @@
 .notification {
-  font-family: 'Montserrat', sans-serif;
   border-radius: 5px;
   margin-top: 8px;
   border-width: 1px;
@@ -24,15 +23,14 @@
 }
 
 .title {
+  @mixin font-scale-7;
   display: block;
-  font-size: 11px;
   padding-bottom: 8px;
   color: var(--notification-title-color);
 }
 
 .message {
-  font-size: 1em;
-  line-height: 24px;
+  @mixin font-scale-6;
   height: 100%;
 }
 

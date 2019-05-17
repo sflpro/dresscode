@@ -40,6 +40,7 @@ export class Dialog extends React.PureComponent {
       className,
       open,
       style,
+      onDismiss,
       ...props
     } = this.props;
 

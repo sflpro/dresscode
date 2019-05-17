@@ -18,14 +18,8 @@
 }
 
 .yearPickerYear.active {
+  @mixin font-scale-5;
   background-color: var(--primary-color);
   border: 1px solid var(--primary-color);
   color: var(--date-picker-selected-month-color);
-  font-family: Montserratarm;
-  font-size: 20px;
-  font-weight: normal;
-  font-style: normal;
-  font-stretch: normal;
-  line-height: 1.5;
-  letter-spacing: normal;
 }

@@ -1,14 +1,10 @@
 .textarea {
+  @mixin font-scale-6;
   border-radius: var(--text-input-border-radius);
   border: var(--text-input-border-size) solid var(--text-input-border-color);
   background-color: var(--neutral-white);
   color: var(--text-input-color);
-  font-size: var(--text-input-font-size);
-  font-family: var(--base-font-family);
-  font-weight: var(--text-input-font-weight);
   padding: var(--textarea-padding);
-  letter-spacing: normal;
-  line-height: 1.5em;
   box-sizing: border-box;
   margin-top: var(--input-margin-top);
 }
@@ -47,7 +43,7 @@
 }
 
 .error {
+  @mixin font-scale-7;
   color: var(--error-color);
   margin-top: 8px;
-  font-size: 0.8em;
 }

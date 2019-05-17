@@ -1,9 +1,8 @@
 .tag {
+  @mixin font-scale-7;
   height: var(--tag-height);
   border-radius: var(--tag-border-radius);
   padding: var(--tag-padding);
-  font-size: 0.8em;
-  font-family: var(--base-font-family);
   display: inline-flex;
   align-items: center;
   overflow: hidden;
