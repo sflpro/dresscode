@@ -230,6 +230,7 @@
   --table-body-background-color: var(--neutral-white);
   --table-header-column-color: var(--neutral-500);
   --table-column-color: var(--neutral-900);
+  --table-column-border-color: var(--neutral-75);
   --table-row-odd-background-color: var(--neutral-75);
   --table-row-hover-color: var(--violet-50);
   --table-row-expanded-icon-background-color: var(--red-100);
