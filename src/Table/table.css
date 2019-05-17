@@ -91,7 +91,8 @@
   text-overflow: ellipsis;
 }
 
-.tableHeadColumn {
+.tableHeadColumn,
+.tableHeadColumnForInvisibleColumn {
   color: var(--table-header-column-color);
   font-weight: bold;
 }
@@ -109,12 +110,12 @@
   justify-content: space-between;
 }
 
-.sortableIcon {
+.sortIcon {
   margin-right: 8px;
   transition: transform 0.4s;
 }
 
-.sortableReverseIcon {
+.sortReverseIcon {
   transform: rotate(180deg);
 }
 

@@ -86,6 +86,97 @@ export class TableColumn extends React.Component {
     this.columnChildrenRef = ref;
   };
 
+  renderColumnContent = ({ children }) => {
+    const { didOverflow, renderTooltip } = this.state;
+    return (
+      renderTooltip && didOverflow ? (
+        <Tooltip
+          description={children}
+          popoverClassName={styles.ellipsisColumn}
+          trigger='hover'
+        >
+          {children}
+        </Tooltip>
+      ) : (
+        <span ref={this.setChildrenRef}>
+          {children}
+        </span>
+      )
+    );
+  };
+
+  renderHeadColumn = ({
+    id,
+    headColumn: { sortable },
+    sortIconClasses,
+    setRef = true,
+    children,
+    ...props
+  }) => {
+    const {
+      sortOptions,
+    } = this.context;
+
+    return (
+      <div
+        ref={setRef ? this.setRef : undefined}
+        role='presentation'
+        {...props}
+        onClick={sortable ? () => this.handleSorting(id) : undefined}
+      >
+        {sortable && sortOptions.prop === id && (
+          <Icon
+            name='sorting'
+            className={sortIconClasses}
+          />
+        )}
+        {this.renderColumnContent({ children })}
+      </div>
+    );
+  };
+
+  renderColumn = ({
+    children,
+    visible,
+    headColumn,
+    className,
+    style,
+    ...props
+  }) => {
+    const tableColumnClasses = classNames({
+      [className]: true,
+      [styles.invisibleColumn]: !visible,
+    });
+
+    const invisibleHeadColumnClasses = classNames({
+      [className]: true,
+      [styles.tableHeadColumnForInvisibleColumn]: !visible,
+    });
+
+    return (
+      <div
+        ref={this.setRef}
+        role='presentation'
+        className={tableColumnClasses}
+        style={style}
+        {...props}
+        onMouseOver={this.checkTextOverflow}
+        onFocus={() => { }}
+      >
+        {!visible && (
+          this.renderHeadColumn({
+            children: headColumn.children,
+            setRef: false,
+            headColumn,
+            className: invisibleHeadColumnClasses,
+            ...props,
+          })
+        )}
+        {this.renderColumnContent({ children })}
+      </div>
+    );
+  };
+
   render() {
     const {
       id,
@@ -97,11 +188,8 @@ export class TableColumn extends React.Component {
       head,
       className,
       style,
-      children,
       ...props
     } = this.props;
-
-    const { didOverflow, renderTooltip } = this.state;
 
     let visible = propsVisible;
     let priority = propsPriority;
@@ -133,7 +221,6 @@ export class TableColumn extends React.Component {
     const tableColumnClasses = classNames({
       [styles.tableColumn]: true,
       [styles.tableHeadColumn]: head,
-      [styles.invisibleColumn]: !visible,
       [styles.tableSortableColumn]: sortable,
       [className]: true,
     });
@@ -153,9 +240,9 @@ export class TableColumn extends React.Component {
       tableColumnStyle.paddingRight += rowGutter;
     }
 
-    const sortableIconClasses = classNames({
-      [styles.sortableIcon]: true,
-      [styles.sortableReverseIcon]: sortable && sortOptions.direction === SORTING_DIRECTIONS.DESC,
+    const sortIconClasses = classNames({
+      [styles.sortIcon]: true,
+      [styles.sortReverseIcon]: headColumn.sortable && sortOptions.direction === SORTING_DIRECTIONS.DESC,
     });
 
     if (width) {
@@ -170,45 +257,21 @@ export class TableColumn extends React.Component {
       tableColumnStyle.flex = `0 0 calc(100% - ${2 * columnGutter}px)`;
     }
 
-    return (
-      <div
-        className={tableColumnClasses}
-        style={tableColumnStyle}
-        ref={this.setRef}
-        role='presentation'
-        {...props}
-        onClick={head && sortable ? () => this.handleSorting(id) : undefined}
-        onMouseOver={!head ? this.checkTextOverflow : undefined}
-        onFocus={() => { }}
-      >
-        {head && sortable && sortOptions.prop === id && (
-          <Icon
-            name='sorting'
-            className={sortableIconClasses}
-          />
-        )}
-        {!visible && (
-          <span
-            className={styles.headColumn}
-          >
-            {headColumn.children}
-          </span>
-        )}
-        {renderTooltip && didOverflow ? (
-          <Tooltip
-            description={children}
-            popoverClassName={styles.ellipsisColumn}
-            trigger='hover'
-          >
-            {children}
-          </Tooltip>
-        ) : (
-          <span ref={this.setChildrenRef}>
-            {children}
-          </span>
-        )}
-      </div>
-    );
+    const columnProps = {
+      className: tableColumnClasses,
+      style: tableColumnStyle,
+      id,
+      sortIconClasses,
+      headColumn,
+      visible,
+      ...props,
+    };
+
+    if (head) {
+      return this.renderHeadColumn(columnProps);
+    }
+
+    return this.renderColumn(columnProps);
   }
 }
 
