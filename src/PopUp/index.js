@@ -36,6 +36,7 @@ export class PopUp extends React.Component {
       className,
       position,
       overlay,
+      onDismiss,
       ...props
     } = this.props;
 
@@ -82,6 +83,7 @@ PopUp.propTypes = {
     'top-end',
     'bottom-start',
     'bottom-end',
+    '',
   ]),
   /** Object, style that will be added to wrapper div */
   style: PropTypes.object,
