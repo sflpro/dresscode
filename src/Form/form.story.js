@@ -3,11 +3,14 @@ import { storiesOf } from '@storybook/react';
 import * as Yup from 'yup';
 
 import { Form } from '.';
-import { FormButton } from './FormButton';
 
+import { Error } from '../Error';
+import { Button } from '../Button';
 import { TextInput } from '../TextInput';
 import { Label } from '../Label';
 import { WithValidation } from '../WithValidation';
+import { WithFormFeedback } from '../WithFormFeedback';
+import { WithErrorFeedback } from '../WithErrorFeedback';
 
 import { ItemGroup } from '../helpers/ItemGroup';
 import { ItemRow } from '../helpers/ItemRow';
@@ -40,14 +43,30 @@ storiesOf('Form', module)
                 <WithValidation
                   component={TextInput}
                   name='email'
+                  disabledWhileSubmitting
                 />
               </Label>
-              <FormButton
-                type='submit'
-                style={{ marginTop: 16 }}
+              <WithErrorFeedback
+                name='email'
               >
-                Submit
-              </FormButton>
+                {({ error }) => (
+                  error ? (
+                    <Error>
+                      {error}
+                    </Error>
+                  ) : null)}
+              </WithErrorFeedback>
+              <WithFormFeedback>
+                {({ isSubmitting }) => (
+                  <Button
+                    type='submit'
+                    disabled={isSubmitting}
+                    style={{ marginTop: 16 }}
+                  >
+                    Submit
+                  </Button>
+                )}
+              </WithFormFeedback>
             </Form>
           </Item>
         </ItemRow>

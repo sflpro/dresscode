@@ -1,0 +1,5 @@
+.error {
+  color: var(--error-color);
+  margin-top: 8px;
+  font-size: 0.8em;
+}

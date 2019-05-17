@@ -10,6 +10,7 @@ export class WithValidation extends React.Component {
     const {
       name,
       component: Component,
+      disabledWhileSubmitting,
       ...props
     } = this.props;
 
@@ -18,6 +19,7 @@ export class WithValidation extends React.Component {
       handleBlur,
       values,
       errors,
+      isSubmitting,
     } = this.context;
 
     return (
@@ -26,7 +28,7 @@ export class WithValidation extends React.Component {
         onChange={handleChange}
         onBlur={handleBlur}
         value={values[name]}
-        error={errors[name]}
+        disabled={disabledWhileSubmitting ? isSubmitting : null}
         hasError={!!errors[name]}
         {...props}
       />
@@ -39,6 +41,10 @@ WithValidation.propTypes = {
   name: PropTypes.string.isRequired,
   /** JSX or Element, child element */
   component: PropTypes.any.isRequired,
+  /** Boolean, if true add disabled property to component while submitting */
+  disabledWhileSubmitting: PropTypes.bool,
 };
 
-WithValidation.defaultProps = {};
+WithValidation.defaultProps = {
+  disabledWhileSubmitting: false,
+};

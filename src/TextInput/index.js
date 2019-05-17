@@ -11,7 +11,6 @@ export function TextInput({
   prefix,
   isValid,
   hasError,
-  error,
   style,
   forwardedRef,
   ...props
@@ -23,36 +22,28 @@ export function TextInput({
     [styles.successWrapper]: isValid,
     [styles.errorWrapper]: hasError,
   });
-
   return (
-    <React.Fragment>
-      <div
-        className={inputWrapperClasses}
-        style={style}
-      >
-        {prefix && (
-          <span className={styles.prefix}>
-            {prefix}
-          </span>
-        )}
-        <input
-          disabled={disabled}
-          className={styles.input}
-          ref={forwardedRef}
-          {...props}
-        />
-        {icon && (
-          <div className={styles.icon}>
-            {icon}
-          </div>
-        )}
-      </div>
-      {hasError && error && (
-        <div className={styles.error}>
-          {error}
+    <div
+      className={inputWrapperClasses}
+      style={style}
+    >
+      {prefix && (
+        <span className={styles.prefix}>
+          {prefix}
+        </span>
+      )}
+      <input
+        disabled={disabled}
+        className={styles.input}
+        ref={forwardedRef}
+        {...props}
+      />
+      {icon && (
+        <div className={styles.icon}>
+          {icon}
         </div>
       )}
-    </React.Fragment>
+    </div>
   );
 }
 
@@ -75,8 +66,6 @@ TextInput.propTypes = {
   isValid: PropTypes.bool,
   /** Boolean, whether value of text input has error */
   hasError: PropTypes.bool,
-  /** String, error message that will be shown if text input has error */
-  error: PropTypes.string,
   /** String, type of input */
   type: PropTypes.string,
   /** String, placeholder of input */
@@ -99,7 +88,6 @@ TextInput.defaultProps = {
   prefix: '',
   isValid: false,
   hasError: false,
-  error: '',
   type: 'text',
   name: '',
   onChange: undefined,
