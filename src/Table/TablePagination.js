@@ -67,10 +67,13 @@ export class TablePagination extends React.Component {
 
     return (
       <div className={styles.tablePages}>
-        <div className={styles.tablePageNumber}>
+        <div
+          className={styles.tablePageNumber}
+          onClick={page !== 1 ? () => onPageClick(page - 1) : null}
+          role='presentation'
+        >
           <Icon
             name='arrow-left'
-            onClick={page !== 1 ? () => onPageClick(page - 1) : null}
           />
         </div>
         {pageNumbers.map((pageNumber, index) => {
@@ -91,10 +94,13 @@ export class TablePagination extends React.Component {
             </div>
           );
         })}
-        <div className={styles.tablePageNumber}>
+        <div
+          onClick={page !== lastPage ? () => onPageClick(page + 1) : null}
+          className={styles.tablePageNumber}
+          role='presentation'
+        >
           <Icon
             name='arrow-right'
-            onClick={page !== lastPage ? () => onPageClick(page + 1) : null}
           />
         </div>
       </div>
