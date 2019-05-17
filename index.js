@@ -1,4 +1,4 @@
-export { Button } from './lib/Button';
+export { Button, CircleButton, LinkButton } from './lib/Button';
 export { CardInput } from './lib/CardInput';
 export { Checkbox } from './lib/Checkbox';
 export { Control } from './lib/Control';
@@ -25,8 +25,8 @@ export { Popover } from './lib/Popover';
 export { PopUp } from './lib/PopUp';
 export { RadioButton } from './lib/RadioButton';
 export { Select } from './lib/Select';
-export { Slider } from './lib/Slider';
-export { Table } from './lib/Table';
+export { Slider, SliderContext } from './lib/Slider';
+export { Table, TableContext } from './lib/Table';
 export { Tag } from './lib/Tag';
 export { Textarea } from './lib/Textarea';
 export { TextInput } from './lib/TextInput';
