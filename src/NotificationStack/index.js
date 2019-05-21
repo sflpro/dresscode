@@ -116,7 +116,9 @@ export class NotificationStack extends React.Component {
     const { notification, index } = this.notificationStack.setStack(children, duration);
     nItems[index] = notification;
     this.setState({ nItems });
-    this.removeFromDuration(index, notification.duration);
+    if (duration) {
+      this.removeFromDuration(index, notification.duration);
+    }
   };
 
   setNotificationItems = () => {
@@ -172,5 +174,5 @@ NotificationStack.propTypes = {
 
 NotificationStack.defaultProps = {
   children: null,
-  duration: 10,
+  duration: undefined,
 };

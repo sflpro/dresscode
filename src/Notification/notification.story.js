@@ -13,7 +13,7 @@ storiesOf('Notification', module)
       <ItemGroup
         title='Large Notification'
       >
-        <Item>
+        <Item style={{ width: '480px' }}>
           <Notification
             status='information'
             title='Information'
@@ -74,7 +74,7 @@ storiesOf('Notification', module)
         <ItemGroup
           title='Alert Notifications'
         >
-          <Item>
+          <Item style={{ width: '352px' }}>
             <Notification
               status='information'
               type='alert'
@@ -156,7 +156,7 @@ storiesOf('Notification', module)
         <ItemGroup
           title='Light Alert Notifications'
         >
-          <Item>
+          <Item style={{ width: '352PX' }}>
             <Notification
               status='information'
               type='alert'

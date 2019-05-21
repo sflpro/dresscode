@@ -35,11 +35,10 @@ storiesOf('Notification', module)
           <ItemGroup title='Large Notifications'>
             {state.notification
             && (
-              <NotificationStack
-                duration={5}
-              >
+              <NotificationStack>
                 {dismiss => (
                   <Notification
+                    style={{ width: '480px' }}
                     status={state.notification}
                     title={state.notification}
                     icon={(
