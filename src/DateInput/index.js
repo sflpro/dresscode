@@ -27,7 +27,7 @@ export class DateInput extends React.Component {
 
     this.state = {
       open: false,
-      currentValue: isValidDate(value) ? formatDate(value, format, { locale }) : value,
+      // currentValue: isValidDate(value) ? formatDate(value, format, { locale }) : value,
       hasError: false,
       error: null,
     };
@@ -170,7 +170,7 @@ export class DateInput extends React.Component {
               onFocus={this.handleDateInputFocus}
               onBlur={this.handleDateInputBlur}
               className={dateInputClasses}
-              value={this.focused || this.hasError ? currentValue : formatDate(value, format)}
+              value={this.focused || this.hasError ? currentValue : value ? formatDate(value, format) : ''}
               icon={(
                 <Icon
                   name='date'
@@ -211,7 +211,7 @@ DateInput.propTypes = {
   /** Function, will be called when input value is changed */
   onDateInputChange: PropTypes.func.isRequired,
   /** Instance of Date, input value */
-  value: PropTypes.instanceOf(Date).isRequired,
+  value: PropTypes.instanceOf(Date),
   /** String, format of date */
   format: PropTypes.oneOf(DATE_FORMATS),
   /** String, className that will be added to input */
@@ -233,4 +233,5 @@ DateInput.defaultProps = {
   trigger: 'click',
   view: 'day',
   style: undefined,
+  value: undefined,
 };
