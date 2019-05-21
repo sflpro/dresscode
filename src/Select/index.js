@@ -21,7 +21,7 @@ export class Select extends React.Component {
 
     this.childOptions = React.Children.map(children, option => ({
       value: option.props.value,
-      name: option.props.name,
+      name: option.props.children,
     }));
 
     if (multiple) {
@@ -44,7 +44,7 @@ export class Select extends React.Component {
 
     this.childOptions = React.Children.map(children, option => ({
       value: option.props.value,
-      name: option.props.name,
+      name: option.props.children,
     }));
   }
 

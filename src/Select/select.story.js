@@ -28,7 +28,10 @@ storiesOf('Form controls/Select', module)
     });
 
     function handleSelectChange1(value1, isOpen1) {
-      store.set({ isOpen1, value1 });
+      store.set({
+        isOpen1,
+        value1,
+      });
     }
 
     function handleSelectClick1() {
@@ -36,7 +39,10 @@ storiesOf('Form controls/Select', module)
     }
 
     function handleSelectChange2(value2, isOpen2) {
-      store.set({ isOpen2, value2 });
+      store.set({
+        isOpen2,
+        value2,
+      });
     }
 
     function handleSelectClick2() {
@@ -44,7 +50,10 @@ storiesOf('Form controls/Select', module)
     }
 
     function handleSelectChange3(value3, isOpen3) {
-      store.set({ isOpen3, value3 });
+      store.set({
+        isOpen3,
+        value3,
+      });
     }
 
     function handleSelectClick3() {
@@ -61,25 +70,22 @@ storiesOf('Form controls/Select', module)
               <Item>
                 <div style={{ width: '250px' }}>
                   <Label>
-                    Label
+                    Label 1
                     <Select
                       onChange={handleSelectChange1}
                       onClick={handleSelectClick1}
                       value={state.value1}
                       open={state.isOpen1}
                     >
-                      <Option
-                        value='option1'
-                        name='Option 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1'
-                      />
-                      <Option
-                        value='option2'
-                        name='Option 2'
-                      />
-                      <Option
-                        value='option3'
-                        name='Option 3'
-                      />
+                      <Option value='option1'>
+                        Lorem Ipsum is simply dummy text of the printing and typesetting
+                      </Option>
+                      <Option value='option2'>
+                        Option 2
+                      </Option>
+                      <Option value='option3'>
+                        Option 3
+                      </Option>
                     </Select>
                   </Label>
                 </div>
@@ -89,7 +95,7 @@ storiesOf('Form controls/Select', module)
               <Item>
                 <div style={{ width: '250px' }}>
                   <Label>
-                    Label
+                    Label 2
                     <Select
                       onChange={handleSelectChange3}
                       onClick={handleSelectClick3}
@@ -100,18 +106,16 @@ storiesOf('Form controls/Select', module)
                         secondary: true,
                       }}
                     >
-                      <Option
-                        value='option1'
-                        name='Option 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1'
-                      />
-                      <Option
-                        value='option2'
-                        name='Option 2'
-                      />
-                      <Option
-                        value='option3'
-                        name='3'
-                      />
+                      <Option value='option1'>
+                        Lorem Ipsum is simply dummy text of the printing and typesetting
+                      </Option>
+
+                      <Option value='option2'>
+                        Option 2
+                      </Option>
+                      <Option value='option3'>
+                        3
+                      </Option>
                     </Select>
                   </Label>
                 </div>
@@ -121,7 +125,7 @@ storiesOf('Form controls/Select', module)
             <ItemRow>
               <Item style={{ width: '375px' }}>
                 <Label>
-                  Label
+                  MultiSelect Label
                   <Select
                     onChange={handleSelectChange2}
                     onClick={handleSelectClick2}
@@ -130,30 +134,24 @@ storiesOf('Form controls/Select', module)
                     placeholder='Type Option'
                     multiple
                   >
-                    <Option
-                      value='option1'
-                      name='Option 1'
-                    />
-                    <Option
-                      value='option2'
-                      name='Option 2'
-                    />
-                    <Option
-                      value='option3'
-                      name='Option 3'
-                    />
-                    <Option
-                      value='option4'
-                      name='Option 4'
-                    />
-                    <Option
-                      value='option5'
-                      name='Option 5'
-                    />
-                    <Option
-                      value='option6'
-                      name='Option 6'
-                    />
+                    <Option value='option1'>
+                      Option 1
+                    </Option>
+                    <Option value='option2'>
+                      Option 2
+                    </Option>
+                    <Option value='option3'>
+                      Option 3
+                    </Option>
+                    <Option value='option4'>
+                      Option 4
+                    </Option>
+                    <Option value='option5'>
+                      Option 5
+                    </Option>
+                    <Option value='option6'>
+                      Option 6
+                    </Option>
                   </Select>
                 </Label>
               </Item>
