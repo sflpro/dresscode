@@ -17,6 +17,7 @@ export function Form({
   validateOnBlur,
   validateOnChange,
   validationSchema,
+  forwardedRef,
   children,
   ...props
 }) {
@@ -40,6 +41,7 @@ export function Form({
           {...props}
           onSubmit={formikProps.handleSubmit}
           onReset={formikProps.handleReset}
+          ref={forwardedRef}
         >
           <FormContext.Provider
             value={formikProps}
@@ -77,6 +79,8 @@ Form.propTypes = {
   validateOnChange: PropTypes.bool,
   /** Function or Yup Scema, A Yup schema or a function that returns a Yup schema. */
   validationSchema: PropTypes.any,
+  /** Object, ref which will be passed to form tag */
+  forwardedRef: PropTypes.object,
   /** String or JSX or Element, content of element */
   children: PropTypes.any,
 };
@@ -92,5 +96,6 @@ Form.defaultProps = {
   validateOnBlur: true,
   validateOnChange: true,
   validationSchema: undefined,
+  forwardedRef: undefined,
   children: undefined,
 };

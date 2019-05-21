@@ -19,8 +19,9 @@ export class DatePicker extends React.Component {
     super(props);
 
     const { value } = this.props;
+    const yearDate = value || new Date();
 
-    this.year = value.getFullYear();
+    this.year = yearDate.getFullYear();
 
     this.state = {
       view: VIEW_TYPES.DAY,
@@ -230,7 +231,7 @@ export class DatePicker extends React.Component {
 
 DatePicker.propTypes = {
   /** Instance of Date, value of date picker */
-  value: PropTypes.instanceOf(Date).isRequired,
+  value: PropTypes.instanceOf(Date),
   /** String, language of date picker */
   locale: PropTypes.string,
   /** Object, utils to format date value for given language */
@@ -264,4 +265,5 @@ DatePicker.defaultProps = {
   onChange: null,
   className: '',
   style: undefined,
+  value: undefined,
 };
