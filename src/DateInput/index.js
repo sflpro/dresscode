@@ -27,7 +27,7 @@ export class DateInput extends React.Component {
 
     this.state = {
       open: false,
-      // currentValue: isValidDate(value) ? formatDate(value, format, { locale }) : value,
+      currentValue: value ? isValidDate(value) ? formatDate(value, format, { locale }) : value : undefined,
       hasError: false,
       error: null,
     };
@@ -188,7 +188,7 @@ export class DateInput extends React.Component {
         <TextInput
           onChange={this.handleNativeDateInputChange}
           className={dateInputClasses}
-          value={formatDate(value, VALID_DATE_FORMAT)}
+          value={value ? formatDate(value, VALID_DATE_FORMAT) : ''}
           type='date'
           icon={(
             <Icon

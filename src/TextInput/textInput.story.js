@@ -22,7 +22,7 @@ storiesOf('Form controls/Input', module)
     const store = new Store({
       default: 'Default text',
       disabled: 'Disabled text',
-      datePickerValue: null,
+      datePickerValue: new Date(),
       monthPickerValue: new Date(),
       prefix: '',
       success: '',
