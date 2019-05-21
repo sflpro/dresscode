@@ -42,11 +42,5 @@ module.exports = {
       'ignoreComments': false
     }],
     "import/no-webpack-loader-syntax": "off",
-    'import/no-unresolved': [
-      2,
-      {
-        ignore: ['style-loader!css-loader*']
-      }
-    ]
   }
 };
