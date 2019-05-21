@@ -10,7 +10,7 @@ import { YearPicker } from '../YearPicker';
 import { DatePickerCaption } from '../DatePickerCaption';
 import { DatePickerNavbar } from '../DatePickerNavbar';
 
-import 'style-loader!css-loader?modules=false!react-day-picker/lib/style.css';
+import '!style-loader!css-loader!react-day-picker/lib/style.css';
 import styles from './dateRangePicker.css';
 
 const RANGE_PICKER_PARTS = {
