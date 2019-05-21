@@ -31,7 +31,6 @@
 
 .message {
   @mixin font-scale-6;
-  height: 100%;
 }
 
 .icon {
@@ -49,7 +48,6 @@
     border-color: var(--notification-border-default-color);
     border-left-width: 4px;
     padding: 16px 16px 16px 24px;
-    width: 480px;
     background: #ffffff;
     box-shadow: var(--box-shadow-300);
 
@@ -100,7 +98,7 @@
   border-color: var(--notification-border-default-color);
   padding: 12px;
   box-sizing: border-box;
-  width: 352px;
+  width: 100%;
   background: #ffffff;
   min-height: 24px;
 

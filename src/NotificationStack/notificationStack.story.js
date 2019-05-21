@@ -35,31 +35,31 @@ storiesOf('Notification', module)
           <ItemGroup title='Large Notifications'>
             {state.notification
             && (
-              <NotificationStack
-                duration={5}
-              >
+              <NotificationStack>
                 {dismiss => (
-                  <Notification
-                    status={state.notification}
-                    title={state.notification}
-                    icon={(
-                      <Icon
-                        size={24}
-                        name={ICON_TYPE[state.notification]}
-                      />
-                    )}
-                    action={(
-                      <Icon
-                        size={24}
-                        name='cross'
-                        onClick={dismiss}
-                      />
-                    )}
-                  >
-                    {state.notification}
-                    {' '}
-                    notification
-                  </Notification>
+                  <div style={{ width: '480px' }}>
+                    <Notification
+                      status={state.notification}
+                      title={state.notification}
+                      icon={(
+                        <Icon
+                          size={24}
+                          name={ICON_TYPE[state.notification]}
+                        />
+                      )}
+                      action={(
+                        <Icon
+                          size={24}
+                          name='cross'
+                          onClick={dismiss}
+                        />
+                      )}
+                    >
+                      {state.notification}
+                      {' '}
+                      notification
+                    </Notification>
+                  </div>
                 )}
               </NotificationStack>
             )
