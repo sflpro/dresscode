@@ -41,3 +41,7 @@
 .arrowTop {
   transform: rotate(180deg);
 }
+
+.target {
+  width: 100%;
+}

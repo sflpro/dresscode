@@ -10,6 +10,7 @@
   min-width: 200px;
   box-sizing: border-box;
   position: relative;
+  width: 100%;
 }
 
 .inputWrapper:not(.disabled):not(.errorWrapper):not(.successWrapper):hover {
