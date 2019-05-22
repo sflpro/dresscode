@@ -40,14 +40,31 @@
 
 .input {
   @mixin font-scale-6;
-  background-color: transparent;
   color: var(--text-input-color);
   border-radius: var(--text-input-border-radius);
+  background-color: transparent;
   height: 100%;
   width: 100%;
   border: none;
   box-sizing: border-box;
   min-width: 0;
+}
+
+.input:-webkit-autofill,
+.input:-webkit-autofill:hover,
+.input:-webkit-autofill:focus,
+.input:-webkit-autofill:active {
+  box-shadow: 0 0 0 30px var(--text-input-background-color) inset;
+  color: var(--text-input-color) !important;
+  background-color: transparent !important;
+  background-image: none !important;
+}
+
+.disabled .input:-webkit-autofill {
+  box-shadow: 0 0 0 30px var(--text-input-disabled-color) inset;
+  color: var(--text-input-text-disabled-color) !important;
+  background-color: transparent !important;
+  background-image: none !important;
 }
 
 .input:focus {
@@ -89,10 +106,4 @@
 
 .errorWrapper .icon {
   color: var(--error-color);
-}
-
-.error {
-  @mixin font-scale-7;
-  color: var(--error-color);
-  margin-top: 8px;
 }
