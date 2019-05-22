@@ -16,15 +16,15 @@
 }
 
 .primary {
-  background-color: var(--primary-color);
-  border: 1px solid var(--primary-color);
-  color: var(--text-secondary-color);
+  background-color: var(--tag-primary-color);
+  border: 1px solid var(--tag-primary-color);
+  color: var(--tag-secondary-color);
 }
 
 .secondary {
-  background-color: var(--secondary-color);
-  border: 1px solid var(--primary-color);
-  color: var(--text-primary-color);
+  background-color: var(--tag-secondary-color);
+  border: 1px solid var(--tag-primary-color);
+  color: var(--tag-primary-color);
 }
 
 .closeIcon {

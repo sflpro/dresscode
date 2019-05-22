@@ -81,7 +81,7 @@
 
 .dayPickerSelectedDay {
   background-color: var(--primary-color);
-  color: var(--secondary-color);
+  color: var(--date-picker-selected-color);
 }
 
 .dayPickerDay:not(.DayPicker-Day--disabled):hover {
@@ -91,7 +91,7 @@
 
 .dayPickerDay.dayPickerSelectedDay:hover {
   background-color: var(--primary-color) !important;
-  color: var(--secondary-color);
+  color: var(--date-picker-selected-color);
   border: 1px solid transparent;
 }
 

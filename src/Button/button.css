@@ -108,7 +108,7 @@
 }
 
 .disabled.secondary {
-  background-color: var(--secondary-color);
+  background-color: var(--button-secondary-background-color);
   border: 1px solid var(--text-disabled-color);
   color: var(--text-disabled-color);
   cursor: auto;
