@@ -32,11 +32,11 @@
 
   --base-font-weight: normal;
 
-  --checkbox-background-color: var(--secondary-color);
+  --checkbox-background-color: var(--neutral-white);
   --checkbox-border-color: var(--text-disabled-color);
   --checkbox-border-color-hover: var(--primary-color-light);
   --checkbox-checked-background-color: var(--primary-color);
-  --checkbox-checked-color: var(--secondary-color);
+  --checkbox-checked-color: var(--neutral-white);
   --checkbox-padding: 6px;
   --checkbox-border-radius: 4px;
   --checkbox-width: 24px;
@@ -44,6 +44,8 @@
 
   --label-color: var(--primary-color);
 
+  --tag-primary-color: var(--primary-color);
+  --tag-secondary-color: var(--neutral-white);
   --tag-height: 32px;
   --tag-border-radius: 16px;
   --tag-padding: 0 16px;
@@ -80,7 +82,7 @@
   --radio-button-border-color: var(--default-color);
   --radio-button-hover-color: var(--primary-color-light);
   --radio-button-checked-color: var(--primary-color);
-  --radio-button-background-color: var(--secondary-color);
+  --radio-button-background-color: var(--neutral-white);
   --radio-button-color: var(--primary-color);
   --radio-button-disabled-text-color: var(--text-disabled-color);
   --radio-button-disabled-color: var(--default-color);
@@ -147,8 +149,8 @@
   --button-primary-text-color: var(--text-secondary-color);
   --button-primary-text-color-hover: var(--text-secondary-color);
 
-  --button-secondary-background-color: var(--secondary-color);
-  --button-secondary-background-color-hover: var(--secondary-color);
+  --button-secondary-background-color: var(--neutral-white);
+  --button-secondary-background-color-hover: var(--neutral-white);
   --button-secondary-border-color: var(--primary-color);
   --button-secondary-border-color-hover: var(--primary-color-dark);
   --button-secondary-text-color: var(--text-primary-color);
@@ -166,7 +168,7 @@
   --date-picker-outside-day-color: var(--neutral-200);
   --date-picker-day-color: var(--neutral-900);
   --date-picker-month-color: var(--primary-color);
-  --date-picker-selected-month-color: var(--neutral-white);
+  --date-picker-selected-color: var(--neutral-white);
   --date-picker-border-radius: 5px;
 
   --slider-animation-duration: 0.1s;

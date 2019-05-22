@@ -21,5 +21,5 @@
   @mixin font-scale-5;
   background-color: var(--primary-color);
   border: 1px solid var(--primary-color);
-  color: var(--date-picker-selected-month-color);
+  color: var(--date-picker-selected-color);
 }
