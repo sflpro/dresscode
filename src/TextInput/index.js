@@ -13,14 +13,16 @@ export function TextInput({
   hasError,
   style,
   forwardedRef,
+  type,
   ...props
 }) {
   const inputWrapperClasses = classNames({
     [styles.inputWrapper]: true,
-    [className]: true,
     [styles.disabled]: disabled,
     [styles.successWrapper]: isValid,
     [styles.errorWrapper]: hasError,
+    [styles.hidden]: type === 'hidden',
+    [className]: true,
   });
   return (
     <div
@@ -36,6 +38,7 @@ export function TextInput({
         disabled={disabled}
         className={styles.input}
         ref={forwardedRef}
+        type={type}
         {...props}
       />
       {icon && (
