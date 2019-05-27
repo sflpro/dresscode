@@ -7,18 +7,25 @@ import styles from './controlsGroup.css';
 export function ControlsGroup({
   title,
   className,
+  titleClassName,
   style,
   children,
+  ...props
 }) {
   const groupClasses = classNames({
     [className]: true,
     [styles.wrapper]: true,
   });
 
+  const titleClasses = classNames({
+    [titleClassName]: true,
+    [styles.wrapper]: true,
+  });
+
   return (
-    <div>
+    <div {...props}>
       {title && (
-        <h6 className={styles.title}>
+        <h6 className={titleClasses}>
           {title}
         </h6>
       )}
@@ -44,10 +51,13 @@ ControlsGroup.propTypes = {
   style: PropTypes.any,
   /** String, classname that will be passed to wrapper div */
   className: PropTypes.string,
+  /** String, classname that will be passed to title */
+  titleClassName: PropTypes.string,
 };
 
 ControlsGroup.defaultProps = {
   title: '',
   style: undefined,
   className: '',
+  titleClassName: '',
 };

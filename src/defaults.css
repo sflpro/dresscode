@@ -146,8 +146,8 @@
   --button-primary-background-color-hover: var(--primary-color-dark);
   --button-primary-border-color: var(--primary-color);
   --button-primary-border-color-hover: var(--primary-color-dark);
-  --button-primary-text-color: var(--text-secondary-color);
-  --button-primary-text-color-hover: var(--text-secondary-color);
+  --button-primary-text-color: var(--neutral-white);
+  --button-primary-text-color-hover: var(--neutral-white);
 
   --button-secondary-background-color: var(--neutral-white);
   --button-secondary-background-color-hover: var(--neutral-white);
