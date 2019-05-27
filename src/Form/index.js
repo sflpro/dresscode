@@ -18,6 +18,7 @@ export function Form({
   validateOnChange,
   validationSchema,
   forwardedRef,
+  passEventOnSubmit,
   children,
   ...props
 }) {
@@ -36,20 +37,29 @@ export function Form({
       validateOnChange={validateOnChange}
       validationSchema={validationSchema}
     >
-      {formikProps => (
-        <form
-          {...props}
-          onSubmit={formikProps.handleSubmit}
-          onReset={formikProps.handleReset}
-          ref={forwardedRef}
-        >
-          <FormContext.Provider
-            value={formikProps}
+      {(formikProps) => {
+        const handleFormSubmit = (event) => {
+          if (passEventOnSubmit) {
+            return formikProps.handleSubmit(event);
+          }
+          return formikProps.handleSubmit();
+        };
+
+        return (
+          <form
+            {...props}
+            onSubmit={handleFormSubmit}
+            onReset={formikProps.handleReset}
+            ref={forwardedRef}
           >
-            {children}
-          </FormContext.Provider>
-        </form>
-      )}
+            <FormContext.Provider
+              value={formikProps}
+            >
+              {children}
+            </FormContext.Provider>
+          </form>
+        );
+      }}
     </Formik>
   );
 }
@@ -81,6 +91,8 @@ Form.propTypes = {
   validationSchema: PropTypes.any,
   /** Object, ref which will be passed to form tag */
   forwardedRef: PropTypes.object,
+  /** Boolean, pass Event object to Formik handleSubmit function if true */
+  passEventOnSubmit: PropTypes.object,
   /** String or JSX or Element, content of element */
   children: PropTypes.any,
 };
@@ -97,5 +109,6 @@ Form.defaultProps = {
   validateOnChange: true,
   validationSchema: undefined,
   forwardedRef: undefined,
+  passEventOnSubmit: false,
   children: undefined,
 };

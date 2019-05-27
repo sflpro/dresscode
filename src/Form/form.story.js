@@ -37,6 +37,7 @@ storiesOf('Form', module)
                   .email()
                   .required('Required'),
               })}
+              passEventOnSubmit
             >
               <Label>
                 Email
