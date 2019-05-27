@@ -60,6 +60,10 @@
   background-image: none !important;
 }
 
+.hidden {
+  display: none;
+}
+
 .disabled .input:-webkit-autofill {
   box-shadow: 0 0 0 30px var(--text-input-disabled-color) inset;
   color: var(--text-input-text-disabled-color) !important;
