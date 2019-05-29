@@ -139,6 +139,7 @@ export class TableColumn extends React.Component {
     children,
     visible,
     headColumn,
+    sortIconClasses,
     className,
     style,
     ...props
@@ -283,7 +284,7 @@ TableColumn.propTypes = {
   ]).isRequired,
   /** Number, specifies column priority in table */
   priority: PropTypes.number,
-  /** Number, specifies column visibility on collapsed wiew */
+  /** Boolean, specifies column visibility on collapsed wiew */
   visible: PropTypes.bool,
   /** Boolean, indicating element relation with table head */
   head: PropTypes.bool,

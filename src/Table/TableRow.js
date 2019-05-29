@@ -92,6 +92,13 @@ export class TableRow extends React.Component {
         className={tableRowWrapperClasses}
       >
         <div className={styles.tableRowOverlay} />
+        <div
+          ref={this.rowRef}
+          className={tableRowClasses}
+          {...props}
+        >
+          {children}
+        </div>
         {expandable && !head && (
           <Icon
             onClick={this.handleExpandedChange}
@@ -100,13 +107,6 @@ export class TableRow extends React.Component {
             size={iconSize}
           />
         )}
-        <div
-          ref={this.rowRef}
-          className={tableRowClasses}
-          {...props}
-        >
-          {children}
-        </div>
       </div>
     );
   }
