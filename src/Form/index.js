@@ -39,7 +39,7 @@ export function Form({
     >
       {(formikProps) => {
         const handleFormSubmit = (event) => {
-          if (preventAction) {
+          if (!formikProps.isValid || preventAction) {
             return formikProps.handleSubmit(event);
           }
           return formikProps.handleSubmit();
@@ -92,7 +92,7 @@ Form.propTypes = {
   /** Object, ref which will be passed to form tag */
   forwardedRef: PropTypes.object,
   /** Boolean, pass Event object to Formik handleSubmit function if true */
-  preventAction: PropTypes.object,
+  preventAction: PropTypes.bool,
   /** String or JSX or Element, content of element */
   children: PropTypes.any,
 };
