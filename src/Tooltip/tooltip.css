@@ -10,6 +10,7 @@
 .description {
   @mixin font-scale-7;
   color: var(--text-default-color);
+  white-space: initial;
 }
 
 .title {
