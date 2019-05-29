@@ -37,6 +37,7 @@ storiesOf('Form', module)
                   .email()
                   .required('Required'),
               })}
+              preventAction
             >
               <Label>
                 Email
