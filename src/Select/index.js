@@ -81,9 +81,10 @@ export class Select extends React.Component {
             onClick={this.handleCustomChange}
             iconClassName={styles.listIcon}
             value={value}
-            label={name}
             key={value}
-          />
+          >
+            {name}
+          </ListItem>
         )) : (
           <span className={styles.emptyState}>
             Ոչինչ չի գտնվել
