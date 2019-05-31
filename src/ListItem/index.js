@@ -26,7 +26,7 @@ export class ListItem extends React.Component {
   render() {
     const {
       value,
-      label,
+      children,
       icon,
       iconPos,
       iconStyle,
@@ -67,7 +67,7 @@ export class ListItem extends React.Component {
           />
         )}
         <span>
-          {label}
+          {children}
         </span>
         {icon && iconPos === 'right' && (
           <Icon
@@ -84,7 +84,7 @@ export class ListItem extends React.Component {
 
 ListItem.propTypes = {
   /** String or JSX element, text of list item */
-  label: PropTypes.any,
+  children: PropTypes.any,
   /** String, value that will be passed to onClick handler */
   value: PropTypes.string,
   /** String, name of icon of list item */
@@ -107,7 +107,7 @@ ListItem.propTypes = {
 
 ListItem.defaultProps = {
   value: '',
-  label: '',
+  children: '',
   icon: '',
   iconPos: 'right',
   iconStyle: undefined,
