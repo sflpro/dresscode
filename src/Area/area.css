@@ -1,0 +1,23 @@
+.area {
+  display: flex;
+}
+  
+.horizontal {
+  flex-flow: row nowrap;
+}
+
+.vertical {
+  flex-flow: column nowrap;
+}
+
+.area:not(.fit) {
+  flex-grow: 1;
+}
+  
+.fixed {
+  height: 100%;
+}
+
+.cover {
+  min-height: 100%;
+}
