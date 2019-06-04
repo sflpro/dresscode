@@ -241,4 +241,6 @@
   --table-pagination-selected-color: var(--primary-color-light);
   --table-pagination-border-radius: 4px;
   --table-border-radius: 8px;
+
+  --file-input-color: var(--primary-color);
 }

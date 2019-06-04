@@ -20,7 +20,11 @@ export function FileInput({
       className={inputWrapperClasses}
       style={style}
     >
-      <input type='file' className={styles.fileInput} {...props} />
+      <input
+        className={styles.fileInput}
+        type='file'
+        {...props}
+      />
       {children}
     </div>
   );
