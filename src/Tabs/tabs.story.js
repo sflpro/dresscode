@@ -13,9 +13,9 @@ storiesOf('Tabs', module)
       value: 'tab-1',
     });
 
-    function handleChange(index) {
+    function handleChange(uniqueKey) {
       store.set({
-        value: index,
+        value: uniqueKey,
       });
     }
 
