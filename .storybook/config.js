@@ -6,6 +6,7 @@ function loadStories() {
   require('../src/Button/button.story');
   require('../src/TextInput/textInput.story');
   require('../src/CardInput/cardInput.story');
+  require('../src/FileInput/fileInput.story');
   require('../src/Textarea/textarea.story');
   require('../src/DropDown/dropDown.story');
   require('../src/Select/select.story');
