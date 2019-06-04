@@ -46,7 +46,7 @@ export function Tabs({
       {children.map((tab, index) => {
         const contentClassNames = classNames({
           [styles.content]: true,
-          [styles.hide]: value !== tab.props.key,
+          [styles.hide]: value !== tab.props.uniqueKey,
         });
 
         return (
