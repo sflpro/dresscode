@@ -8,6 +8,7 @@ function loadStories() {
   require('../src/CardInput/cardInput.story');
   require('../src/FileInput/fileInput.story');
   require('../src/Textarea/textarea.story');
+  require('../src/Autocomplete/autocomplete.story');
   require('../src/DropDown/dropDown.story');
   require('../src/Select/select.story');
   require('../src/Checkbox/checkbox.story');
