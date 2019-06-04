@@ -5,6 +5,7 @@ import { State, Store } from '@sambego/storybook-state';
 import { TextInput } from '.';
 
 import { DateRangeInput } from '../DateRangeInput';
+import { Autocomplete } from '../Autocomplete';
 import { DateInput } from '../DateInput';
 import { CardInput } from '../CardInput';
 import { FileInput } from '../FileInput';
@@ -30,6 +31,7 @@ storiesOf('Form controls/Input', module)
       notDetected: '1234567891234567',
       masterCard: '5234567891234567',
       visa: '4234567891234567',
+      autocomplete: '',
       empty: '',
       from: new Date(),
       to: new Date(),
@@ -77,6 +79,12 @@ storiesOf('Form controls/Input', module)
         ...store.state,
         ...date,
       });
+    }
+
+    function filterAutocomplete(option) {
+      const filter = store.state.autocomplete.toLowerCase();
+
+      return option.name.toLowerCase().includes(filter) || option.value.toLowerCase().includes(filter);
     }
 
     return (
@@ -241,6 +249,47 @@ storiesOf('Form controls/Input', module)
                       hasError
                     />
                   </Label>
+                </Item>
+              </ItemRow>
+            </ItemGroup>
+            <ItemGroup
+              title='Autocomplete'
+            >
+              <ItemRow>
+                <Item>
+                  <Autocomplete
+                    onChange={handleInputChange}
+                    value={state.autocomplete}
+                    placeholder='Autocomplete'
+                    name='autocomplete'
+                    minCharsToSuggest={2}
+                    options={[
+                      {
+                        name: 'abcd 1',
+                        value: 'abcd1',
+                      },
+                      {
+                        name: 'adbc 2',
+                        value: 'adbc2',
+                      },
+                      {
+                        name: 'acdb 3',
+                        value: 'acdb3',
+                      },
+                      {
+                        name: 'abdc 4',
+                        value: 'abdc4',
+                      },
+                      {
+                        name: 'acbd 5',
+                        value: 'acbd 5',
+                      },
+                      {
+                        name: 'dabc 6',
+                        value: 'dabc 6',
+                      },
+                    ].filter(filterAutocomplete)}
+                  />
                 </Item>
               </ItemRow>
             </ItemGroup>
