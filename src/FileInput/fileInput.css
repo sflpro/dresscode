@@ -3,6 +3,6 @@
 }
 
 .inputWrapper {
+  color: var(--file-input-color);
   display: flex;
-  color: var(--primary-color);
 }
