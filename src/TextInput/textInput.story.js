@@ -7,6 +7,7 @@ import { TextInput } from '.';
 import { DateRangeInput } from '../DateRangeInput';
 import { DateInput } from '../DateInput';
 import { CardInput } from '../CardInput';
+import { FileInput } from '../FileInput';
 import { Label } from '../Label';
 import { Icon } from '../Icon';
 
@@ -291,6 +292,23 @@ storiesOf('Form controls/Input', module)
                       value={state.masterCard}
                       name='masterCard'
                     />
+                  </Label>
+                </Item>
+              </ItemRow>
+            </ItemGroup>
+            <ItemGroup
+              title='File input'
+            >
+              <ItemRow>
+                <Item>
+                  <Label>
+                    <FileInput>
+                      <Icon
+                        style={{ marginRight: '16px' }}
+                        name='download'
+                      />
+                      Փոփոխել
+                    </FileInput>
                   </Label>
                 </Item>
               </ItemRow>

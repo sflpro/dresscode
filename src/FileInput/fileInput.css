@@ -1,0 +1,8 @@
+.fileInput {
+  display: none;
+}
+
+.inputWrapper {
+  display: flex;
+  color: var(--primary-color);
+}
