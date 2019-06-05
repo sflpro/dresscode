@@ -1,2 +1,20 @@
 .tab {
+
+}
+
+.title {
+  @mixin font-scale-6;
+  padding: 20px 24px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.active {
+  border-bottom: 2px solid var(--primary-color);
+  color: var(--primary-color);
+}
+
+.disabled {
+  cursor: default;
+  color: var(--disabled-color);
 }

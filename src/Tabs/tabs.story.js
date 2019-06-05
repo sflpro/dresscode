@@ -4,18 +4,19 @@ import { State, Store } from '@sambego/storybook-state';
 
 import { Tabs } from '.';
 import { Tab } from '../Tab';
+import { TabContent } from '../TabContent';
 
 import { ItemGroup } from '../helpers/ItemGroup';
 
 storiesOf('Tabs', module)
   .add('Examples', () => {
     const store = new Store({
-      value: 'tab-1',
+      value: 0,
     });
 
-    function handleChange(uniqueKey) {
+    function handleChange(index) {
       store.set({
-        value: uniqueKey,
+        value: index,
       });
     }
 
@@ -30,30 +31,27 @@ storiesOf('Tabs', module)
               onChange={handleChange}
             >
               <Tab
-                title='Tab 1'
-                uniqueKey='tab-1'
-              >
-                Tab 1 Content
-              </Tab>
+                index={0}
+                title='Tab One'
+              />
               <Tab
-                title='Tab2'
-                uniqueKey='tab-2'
-              >
-                Tab 2 Content
-              </Tab>
+                index={1}
+                title='Tab Two'
+              />
               <Tab
-                title='Tab3'
-                uniqueKey='tab-3'
-              >
-                Tab 3 Content
-              </Tab>
+                index={2}
+                title='Tab Three'
+                disabled
+              />
               <Tab
-                title='Tab 4'
-                uniqueKey='tab-4'
-              >
-                Tab 4 Content
-              </Tab>
+                index={3}
+                title='Tab Four'
+              />
             </Tabs>
+            {state.value === 0 && <TabContent>Tab Content One</TabContent>}
+            {state.value === 1 && <TabContent>Tab Content Two</TabContent>}
+            {state.value === 2 && <TabContent>Tab Content Three</TabContent>}
+            {state.value === 3 && <TabContent>Tab Content Four</TabContent>}
           </ItemGroup>
         )}
       </State>

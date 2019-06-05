@@ -4,6 +4,8 @@ import classNames from 'classnames';
 
 import styles from './tabs.css';
 
+export const TabContext = React.createContext();
+
 export function Tabs({
   value,
   onChange,
@@ -21,50 +23,18 @@ export function Tabs({
       className={tabsClassNames}
       {...props}
     >
-      <div
-        className={styles.header}
+      <TabContext.Provider
+        value={{ value, onChange }}
       >
-        {children.map((tab, index) => {
-          const titleClassNames = classNames({
-            [styles.title]: true,
-            [styles.active]: value === tab.props.uniqueKey,
-          });
-
-          return (
-            <div
-              key={index}
-              className={titleClassNames}
-              onClick={() => onChange(tab.props.uniqueKey)}
-              role='presentation'
-            >
-              {tab.props.title}
-            </div>
-          );
-        })}
-      </div>
-
-      {children.map((tab, index) => {
-        const contentClassNames = classNames({
-          [styles.content]: true,
-          [styles.hide]: value !== tab.props.uniqueKey,
-        });
-
-        return (
-          <div
-            key={index}
-            className={contentClassNames}
-          >
-            {tab}
-          </div>
-        );
-      })}
+        {children}
+      </TabContext.Provider>
     </div>
   );
 }
 
 Tabs.propTypes = {
   /** String, value of selected tab */
-  value: PropTypes.string,
+  value: PropTypes.number,
   /** Function, will be called when clicked on tab */
   onChange: PropTypes.func,
   /** String, className that will be added to element */
@@ -76,7 +46,7 @@ Tabs.propTypes = {
 };
 
 Tabs.defaultProps = {
-  value: '',
+  value: 0,
   onChange: undefined,
   className: '',
   style: undefined,

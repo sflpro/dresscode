@@ -1,26 +1,3 @@
 .tabs {
-}
-
-.header {
   display: flex;
-}
-
-.title {
-  @mixin font-scale-6;
-  padding: 20px 24px;
-  text-align: center;
-  cursor: pointer;
-}
-
-.active {
-  border-bottom: 2px solid var(--primary-color);
-  color: var(--primary-color);
-}
-
-.content {
-  padding: 24px;
-}
-
-.hide {
-  display: none;
 }
