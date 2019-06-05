@@ -22,7 +22,7 @@ storiesOf('Area', module)
             <header
               style={{
                 height: 40,
-                backgroundColor: '#E6D2FF',
+                backgroundColor: '#F2F1FB',
                 width: '100%',
                 display: 'flex',
                 justifyContent: 'center',
@@ -70,7 +70,7 @@ storiesOf('Area', module)
               >
                 <footer
                   style={{
-                    backgroundColor: '#FFF8D6',
+                    backgroundColor: '#FFF2D7',
                     height: 80,
                     width: '100%',
                     display: 'flex',

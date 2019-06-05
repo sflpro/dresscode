@@ -23,6 +23,7 @@
 .neutral-white {
   background-color: var(--neutral-white);
   color: var(--neutral-900);
+  border: 1px solid var(--neutral-200);
 }
 .neutral-75 {
   background-color: var(--neutral-75);
@@ -132,32 +133,28 @@
   color: var(--neutral-white);
 }
 
-/*-----------Violet-----------*/
-.violet-50 {
-  background-color: var(--violet-50);
+/*-----------Blue-----------*/
+.blue-50 {
+  background-color: var(--blue-50);
+  color: var(--neutral-500);
+}
+.blue-75 {
+  background-color: var(--blue-75);
   color: var(--neutral-white);
 }
-.violet-75 {
-  background-color: var(--violet-75);
+.blue-100 {
+  background-color: var(--blue-100);
   color: var(--neutral-white);
 }
-.violet-100 {
-  background-color: var(--violet-100);
+.blue-300 {
+  background-color: var(--blue-300);
   color: var(--neutral-white);
 }
-.violet-300 {
-  background-color: var(--violet-300);
+.blue-400 {
+  background-color: var(--blue-400);
   color: var(--neutral-white);
 }
-.violet-400 {
-  background-color: var(--violet-400);
-  color: var(--neutral-white);
-}
-.violet-500 {
-  background-color: var(--violet-500);
-  color: var(--neutral-white);
-}
-.violet-300-gradient {
-  background: linear-gradient(248deg, var(--violet-300-gradient), var(--violet-300));
+.blue-500 {
+  background-color: var(--blue-500);
   color: var(--neutral-white);
 }
