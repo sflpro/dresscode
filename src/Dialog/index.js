@@ -13,7 +13,21 @@ import styles from './dialog.css';
 
 export class Dialog extends React.PureComponent {
   componentDidMount() {
-    document.addEventListener('keydown', this.escKeyDown, false);
+    const { open } = this.props;
+
+    if (open) {
+      document.addEventListener('keydown', this.escKeyDown, false);
+    }
+  }
+
+  componentDidUpdate({ open: prevOpen }) {
+    const { open } = this.props;
+
+    if (open && !prevOpen) {
+      document.addEventListener('keydown', this.escKeyDown, false);
+    } else if (!open && prevOpen) {
+      document.removeEventListener('keydown', this.escKeyDown, false);
+    }
   }
 
   componentWillUnmount() {
