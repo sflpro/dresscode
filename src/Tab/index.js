@@ -15,18 +15,17 @@ export function Tab({
   return (
     <TabContext.Consumer>
       {({ value, identifier, onChange }) => {
-        const propsIdentifier = props[identifier] !== undefined ? props[identifier] : false;
         const tabClassNames = classNames({
           [className]: true,
           [styles.tab]: true,
-          [styles.active]: value === propsIdentifier,
+          [styles.active]: value === props[identifier],
           [styles.disabled]: disabled,
         });
 
         return (
           <div
             className={tabClassNames}
-            onClick={disabled ? undefined : (() => onChange(propsIdentifier))}
+            onClick={disabled ? undefined : (() => onChange(props[identifier]))}
             role='presentation'
             {...props}
           >
