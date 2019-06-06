@@ -1,44 +1,36 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+
 import { TabContext } from '../Tabs';
 
 import styles from './tab.css';
 
 export function Tab({
-  index,
-  title,
   disabled,
   className,
   children,
   ...props
 }) {
-  const tabClassNames = classNames({
-    [className]: true,
-    [styles.tab]: true,
-  });
-
   return (
     <TabContext.Consumer>
-      {({ value, onChange }) => {
-        const titleClassNames = classNames({
-          [styles.title]: true,
-          [styles.active]: value === index,
+      {({ value, identifier, onChange }) => {
+        const propsIdentifier = props[identifier] !== undefined ? props[identifier] : false;
+        const tabClassNames = classNames({
+          [className]: true,
+          [styles.tab]: true,
+          [styles.active]: value === propsIdentifier,
           [styles.disabled]: disabled,
         });
 
         return (
           <div
             className={tabClassNames}
+            onClick={disabled ? undefined : (() => onChange(propsIdentifier))}
+            role='presentation'
             {...props}
           >
-            <div
-              className={titleClassNames}
-              onClick={disabled ? undefined : (() => onChange(index))}
-              role='presentation'
-            >
-              {title}
-            </div>
+            {children}
           </div>
         );
       }}
@@ -47,10 +39,6 @@ export function Tab({
 }
 
 Tab.propTypes = {
-  /** Number, index of tab */
-  index: PropTypes.number,
-  /** String, title of tab */
-  title: PropTypes.string,
   /** Boolean, whether tab is disabled */
   disabled: PropTypes.bool,
   /** String, className that will be added to element */
@@ -62,8 +50,6 @@ Tab.propTypes = {
 };
 
 Tab.defaultProps = {
-  index: 0,
-  title: '',
   disabled: false,
   className: '',
   style: undefined,

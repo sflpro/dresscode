@@ -8,6 +8,7 @@ export const TabContext = React.createContext();
 
 export function Tabs({
   value,
+  identifier,
   onChange,
   className,
   children,
@@ -24,7 +25,7 @@ export function Tabs({
       {...props}
     >
       <TabContext.Provider
-        value={{ value, onChange }}
+        value={{ value, identifier, onChange }}
       >
         {children}
       </TabContext.Provider>
@@ -33,8 +34,10 @@ export function Tabs({
 }
 
 Tabs.propTypes = {
-  /** String, value of selected tab */
-  value: PropTypes.number,
+  /** String, identifier that will be added to element */
+  identifier: PropTypes.string.isRequired,
+  /** Any, value of selected tab */
+  value: PropTypes.any.isRequired,
   /** Function, will be called when clicked on tab */
   onChange: PropTypes.func,
   /** String, className that will be added to element */
@@ -46,7 +49,6 @@ Tabs.propTypes = {
 };
 
 Tabs.defaultProps = {
-  value: 0,
   onChange: undefined,
   className: '',
   style: undefined,

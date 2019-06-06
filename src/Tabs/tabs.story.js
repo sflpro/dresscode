@@ -3,6 +3,7 @@ import { storiesOf } from '@storybook/react';
 import { State, Store } from '@sambego/storybook-state';
 
 import { Tabs } from '.';
+
 import { Tab } from '../Tab';
 import { TabContent } from '../TabContent';
 
@@ -28,25 +29,30 @@ storiesOf('Tabs', module)
           >
             <Tabs
               value={state.value}
+              identifier='index'
               onChange={handleChange}
             >
               <Tab
                 index={0}
-                title='Tab One'
-              />
+              >
+                Tab One
+              </Tab>
               <Tab
                 index={1}
-                title='Tab Two'
-              />
+              >
+                Tab Two
+              </Tab>
               <Tab
                 index={2}
-                title='Tab Three'
                 disabled
-              />
+              >
+                Tab Three
+              </Tab>
               <Tab
                 index={3}
-                title='Tab Four'
-              />
+              >
+                Tab Four
+              </Tab>
             </Tabs>
             {state.value === 0 && <TabContent>Tab Content One</TabContent>}
             {state.value === 1 && <TabContent>Tab Content Two</TabContent>}

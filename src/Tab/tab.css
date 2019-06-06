@@ -1,12 +1,12 @@
 .tab {
-
-}
-
-.title {
   @mixin font-scale-6;
-  padding: 20px 24px;
+  padding: 18px 16px;
   text-align: center;
   cursor: pointer;
+
+  @media (--small) {
+    padding: 20px 24px;
+  }
 }
 
 .active {
