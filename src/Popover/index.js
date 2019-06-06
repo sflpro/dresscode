@@ -19,6 +19,9 @@ export class Popover extends React.Component {
     this.targetRef = React.createRef();
     this.arrowRef = React.createRef();
 
+    this.targetElementPosition = {
+      coordinates: {},
+    };
     this.targetElementProps = {};
 
     if (typeof children !== 'function') {

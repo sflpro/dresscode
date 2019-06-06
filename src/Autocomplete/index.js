@@ -25,6 +25,22 @@ export function Autocomplete({
   });
   const [focused, setFocus] = useState(false);
 
+  function onBlur(event) {
+    setFocus(false);
+
+    if (props.onBlur) {
+      props.onBlur(event);
+    }
+  }
+
+  function onFocus(event) {
+    setFocus(false);
+
+    if (props.onBlur) {
+      props.onBlur(event);
+    }
+  }
+
   return (
     <div
       className={wrapperClasses}
@@ -34,18 +50,8 @@ export function Autocomplete({
         {...props}
         value={value}
         onChange={onChange}
-        onBlur={(event) => {
-          setFocus(false);
-          if (props.onBlur) {
-            props.onBlur(event);
-          }
-        }}
-        onFocus={(event) => {
-          setFocus(true);
-          if (props.onFocus) {
-            props.onFocus(event);
-          }
-        }}
+        onBlur={onBlur}
+        onFocus={onFocus}
         autocomplete='off'
       />
       {(focused && value.length >= minCharsToSuggest) && (
