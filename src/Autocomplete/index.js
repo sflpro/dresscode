@@ -34,7 +34,7 @@ export function Autocomplete({
   }
 
   function onFocus(event) {
-    setFocus(false);
+    setFocus(true);
 
     if (props.onBlur) {
       props.onBlur(event);
@@ -52,7 +52,7 @@ export function Autocomplete({
         onChange={onChange}
         onBlur={onBlur}
         onFocus={onFocus}
-        autocomplete='off'
+        autoComplete='off'
       />
       {(focused && value.length >= minCharsToSuggest) && (
         <List
