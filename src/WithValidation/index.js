@@ -19,6 +19,7 @@ export class WithValidation extends React.Component {
       handleBlur,
       values,
       errors,
+      touched,
       isSubmitting,
     } = this.context;
 
@@ -29,7 +30,7 @@ export class WithValidation extends React.Component {
         onBlur={handleBlur}
         value={values[name]}
         disabled={disabledWhileSubmitting ? isSubmitting : null}
-        hasError={!!errors[name]}
+        hasError={!!errors[name] && !!touched[name]}
         {...props}
       />
     );
