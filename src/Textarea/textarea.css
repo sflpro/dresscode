@@ -1,12 +1,13 @@
 .textarea {
-  @mixin font-scale-6;
   border-radius: var(--text-input-border-radius);
   border: var(--text-input-border-size) solid var(--text-input-border-color);
   background-color: var(--neutral-white);
   color: var(--text-input-color);
   padding: var(--textarea-padding);
-  box-sizing: border-box;
   margin-top: var(--input-margin-top);
+  font-size: var(--textarea-font-size);
+  font-family: var(--textarea-font-family);
+  box-sizing: border-box;
 }
 
 .textarea:focus {

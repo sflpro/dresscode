@@ -58,6 +58,8 @@
   --text-input-disabled-color: var(--disabled-color-light);
   --text-input-text-disabled-color: var(--disabled-color-dark);
   --text-input-prefix-color: var(--default-color-dark);
+  --text-input-prefix-font-family: var(--font-family);
+  --text-input-prefix-font-size: var(--font-size-scale-6);
   --text-input-background-color: var(--neutral-white);
 
   --text-input-height: 48px;
@@ -65,8 +67,15 @@
   --text-input-border-size: 1px;
   --text-input-padding: 0 16px;
   --text-input-font-weight: var(--base-font-weight);
+  --text-input-font-family: var(--font-family);
+  --text-input-font-size: var(--font-size-scale-6);
 
   --textarea-padding: 16px;
+  --textarea-font-family: var(--font-family);
+  --textarea-font-size: var(--font-size-scale-6);
+
+  --select-font-family: var(--font-family);
+  --select-font-size: var(--font-size-scale-6);
 
   --list-border-radius: 8px;
   --list-item-min-height: 24px;
@@ -141,6 +150,8 @@
   --button-border-radius: 5px;
   --button-padding: 0 24px;
   --button-circle-padding: 0 12px;
+  --button-font-family: var(--font-family);
+  --button-font-size: var(--font-size-scale-6);
 
   --button-primary-background-color: var(--primary-color);
   --button-primary-background-color-hover: var(--primary-color-dark);

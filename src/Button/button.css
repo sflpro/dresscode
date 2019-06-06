@@ -1,8 +1,9 @@
 .button {
-  @mixin font-scale-6;
   height: var(--button-height);
   border-radius: var(--button-border-radius);
   padding: var(--button-padding);
+  font-size: var(--button-font-size);
+  font-family: var(--button-font-family);
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -20,9 +21,10 @@
 }
 
 .link {
-  @mixin font-scale-6;
   height: var(--button-height);
   padding: var(--button-padding);
+  font-size: var(--button-font-size);
+  font-family: var(--button-font-family);
   background-color: transparent;
   border: none !important;
   display: inline-flex;
@@ -38,11 +40,12 @@
 }
 
 .circle {
-  @mixin font-scale-6;
   height: var(--button-height);
   width: var(--button-height);
   border-radius: var(--button-border-radius);
   padding: var(--button-circle-padding);
+  font-family: var(--button-font-family);
+  font-size: var(--button-font-size);
   display: inline-flex;
   align-items: center;
   justify-content: center;
