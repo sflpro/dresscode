@@ -39,9 +39,10 @@
 }
 
 .input {
-  @mixin font-scale-6;
   color: var(--text-input-color);
   border-radius: var(--text-input-border-radius);
+  font-size: var(--text-input-font-size);
+  font-family: var(--text-input-font-family);
   background-color: transparent;
   height: 100%;
   width: 100%;
@@ -80,7 +81,8 @@
 }
 
 .prefix {
-  @mixin font-scale-6;
+  font-family: var(--text-input-prefix-font-family);
+  font-size: var(--text-input-prefix-font-size);
   color: var(--text-input-prefix-color);
   padding-right: 8px;
 }
