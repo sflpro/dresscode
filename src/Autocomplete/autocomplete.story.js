@@ -1,29 +1,17 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 
+import { Autocomplete } from '.';
+
 import { ImportInstruction } from '../helpers/ImportInstruction';
 import { InfoStoryConfig } from '../configs';
-import { Autocomplete } from './index';
 
 storiesOf('Form controls/Input', module)
   .add('Autocomplete', () => (
     <Autocomplete
+      options={['test 1', 'test 2', 'test 3' ]}
       onChange={ev => console.dir(ev)}
       value='test'
-      options={[
-        {
-          name: 'test 1',
-          value: 'test 1',
-        },
-        {
-          name: 'test 2',
-          value: 'test 2',
-        },
-        {
-          name: 'test 3',
-          value: 'test 3',
-        },
-      ]}
     />
   ), {
     ...InfoStoryConfig,

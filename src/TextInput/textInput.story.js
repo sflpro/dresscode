@@ -34,6 +34,8 @@ storiesOf('Form controls/Input', module)
       masterCard: '5234567891234567',
       visa: '4234567891234567',
       autocomplete: '',
+      autocomplete2: '',
+      autocomplete3: '',
       empty: '',
       hasError: false,
       from: new Date(),
@@ -85,7 +87,7 @@ storiesOf('Form controls/Input', module)
     function filterAutocomplete(option) {
       const filter = store.state.autocomplete.toLowerCase();
 
-      return option.name.toLowerCase().includes(filter) || option.value.toLowerCase().includes(filter);
+      return option.toLowerCase().includes(filter);
     }
 
     return (
@@ -259,37 +261,33 @@ storiesOf('Form controls/Input', module)
               <ItemRow>
                 <Item>
                   <Autocomplete
+                    nothingFoundElement={<div style={{ padding: '16px' }}>Nothing found</div>}
                     onChange={handleInputChange}
                     value={state.autocomplete}
                     placeholder='Autocomplete'
                     name='autocomplete'
                     minCharsToSuggest={2}
                     options={[
-                      {
-                        name: 'abcd 1',
-                        value: 'abcd1',
-                      },
-                      {
-                        name: 'adbc 2',
-                        value: 'adbc2',
-                      },
-                      {
-                        name: 'acdb 3',
-                        value: 'acdb3',
-                      },
-                      {
-                        name: 'abdc 4',
-                        value: 'abdc4',
-                      },
-                      {
-                        name: 'acbd 5',
-                        value: 'acbd 5',
-                      },
-                      {
-                        name: 'dabc 6',
-                        value: 'dabc 6',
-                      },
+                      'abcd 1',
+                      'adbc 2',
+                      'acdb 3',
+                      'abdc 4',
+                      'acbd 5',
+                      'dabc 6',
                     ].filter(filterAutocomplete)}
+                  />
+                </Item>
+              </ItemRow>
+              <ItemRow>
+                <Item>
+                  <Autocomplete
+                    onChange={handleInputChange}
+                    value={state.autocomplete2}
+                    loading={<div style={{ padding: '16px' }}>Loading</div>}
+                    placeholder='Autocomplete'
+                    name='autocomplete2'
+                    minCharsToSuggest={2}
+                    options={[]}
                   />
                 </Item>
               </ItemRow>

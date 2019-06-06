@@ -14,8 +14,7 @@ export function Autocomplete({
   options,
   loading,
   value,
-  onChange,
-  nothingFoundText,
+  nothingFoundElement,
   minCharsToSuggest,
   ...props
 }) {
@@ -23,14 +22,22 @@ export function Autocomplete({
     [styles.wrapper]: true,
     [className]: true,
   });
+
   const [focused, setFocus] = useState(false);
 
-  function onBlur(event) {
+  function onListClick(optionValue) {
     setFocus(false);
 
-    if (props.onBlur) {
-      props.onBlur(event);
-    }
+    props.onChange({
+      currentTarget: {
+        value: optionValue,
+        name: props.name,
+      },
+      target: {
+        value: optionValue,
+        name: props.name,
+      },
+    });
   }
 
   function onFocus(event) {
@@ -49,8 +56,6 @@ export function Autocomplete({
       <TextInput
         {...props}
         value={value}
-        onChange={onChange}
-        onBlur={onBlur}
         onFocus={onFocus}
         autoComplete='off'
       />
@@ -58,20 +63,17 @@ export function Autocomplete({
         <List
           className={styles.list}
         >
-          {loading ? (
-            <span className={styles.emptyState}>Loading</span>
-          ) : options.length > 0 ? options.map(({ name, value: optionValue }) => (
-            <ListItem
-              className={styles.listItem}
-              value={optionValue}
-              key={optionValue}
-            >
-              {name}
-            </ListItem>
-          )) : (
-            <span className={styles.emptyState}>
-              {nothingFoundText}
-            </span>
+          {loading || (
+            options.length > 0 ? options.map(option => (
+              <ListItem
+                onClick={() => onListClick(option)}
+                className={styles.listItem}
+                value={option}
+                key={option}
+              >
+                {option}
+              </ListItem>
+            )) : nothingFoundElement
           )}
         </List>
       )}
@@ -86,28 +88,31 @@ Autocomplete.propTypes = {
   value: PropTypes.string.isRequired,
   /** Function, called when input value is changed */
   onChange: PropTypes.func.isRequired,
-  /** String, text that will be shown if there is no option */
-  nothingFoundText: PropTypes.string,
+  /** JSX or component, will be shown if there is no option */
+  nothingFoundElement: PropTypes.any,
   /** Number, number of chars, after which options will be suggested */
   minCharsToSuggest: PropTypes.number,
-  /** String, classname that will be added to select */
+  /** String, classname that will be added to wrapper div */
   className: PropTypes.string,
   /** Object, style that will be added to wrapper div */
   style: PropTypes.object,
-  /** Boolean, whether to show loading instead of options */
-  loading: PropTypes.bool,
+  /** JSX or component, to show loading instead of options */
+  loading: PropTypes.any,
   /** Function, called when input is blured */
   onBlur: PropTypes.func,
   /** Function, called when input is focused */
   onFocus: PropTypes.func,
+  /** String, name of input */
+  name: PropTypes.string,
 };
 
 Autocomplete.defaultProps = {
-  nothingFoundText: 'Nothing found',
+  nothingFoundElement: null,
   minCharsToSuggest: 3,
   className: undefined,
   style: undefined,
-  loading: false,
+  loading: null,
   onBlur: undefined,
   onFocus: undefined,
+  name: '',
 };

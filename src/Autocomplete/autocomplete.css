@@ -15,10 +15,3 @@
         background-color: var(--neutral-75);
     }
 }
-
-.emptyState {
-    @mixin font-scale-7;
-    padding: 16px;
-    display: block;
-    color: var(--neutral-500);
-}
