@@ -55,6 +55,7 @@ export function Autocomplete({
     >
       <TextInput
         {...props}
+        className={styles.input}
         value={value}
         onFocus={onFocus}
         autoComplete='off'
@@ -76,6 +77,13 @@ export function Autocomplete({
             )) : nothingFoundElement
           )}
         </List>
+      )}
+      {focused && (
+        <div
+          className={styles.overlay}
+          onClick={() => setFocus(false)}
+          role='presentation'
+        />
       )}
     </div>
   );

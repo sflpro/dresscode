@@ -33,7 +33,6 @@ storiesOf('Form controls/Input', module)
       visa: '4234567891234567',
       autocomplete: '',
       autocomplete2: '',
-      autocomplete3: '',
       empty: '',
       from: new Date(),
       to: new Date(),
@@ -283,7 +282,7 @@ storiesOf('Form controls/Input', module)
                     onChange={handleInputChange}
                     value={state.autocomplete2}
                     loading={<div style={{ padding: '16px' }}>Loading</div>}
-                    placeholder='Autocomplete'
+                    placeholder='Autocomplete Loading'
                     name='autocomplete2'
                     minCharsToSuggest={2}
                     options={[]}
