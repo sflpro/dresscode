@@ -2,7 +2,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { State, Store } from '@sambego/storybook-state';
 
-import { Table } from '.';
+import { Table } from './Table';
 import { COLUMNS, ROWS, SORTING_DIRECTIONS } from './storyData';
 import { TableHead } from './TableHead';
 import { TableColumn } from './TableColumn';
