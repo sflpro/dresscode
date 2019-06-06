@@ -1,9 +1,9 @@
 :root {
-  --primary-color: var(--violet-300);
-  --primary-color-light: var(--violet-100);
-  --primary-color-dark: var(--violet-400);
+  --primary-color: var(--blue-300);
+  --primary-color-light: var(--blue-100);
+  --primary-color-dark: var(--blue-400);
 
-  --secondary-color: var(--neutral-white);
+  --secondary-color: var(--green-300);
 
   --default-color: var(--neutral-100);
   --default-color-dark: var(--neutral-200);
@@ -20,7 +20,7 @@
   --text-default-color: var(--neutral-900);
   --text-primary-color: var(--primary-color);
   --text-primary-color-dark: var(--primary-color-dark);
-  --text-secondary-color:  var(--secondary-color);
+  --text-secondary-color:  var(--neutral-white);
 
   --text-disabled-color: var(--disabled-color);
   --text-disabled-color-dark: var(--disabled-color-dark);
@@ -61,7 +61,7 @@
   --text-input-background-color: var(--neutral-white);
 
   --text-input-height: 48px;
-  --text-input-border-radius: 6px;
+  --text-input-border-radius: 5px;
   --text-input-border-size: 1px;
   --text-input-padding: 0 16px;
   --text-input-font-weight: var(--base-font-weight);
@@ -125,20 +125,20 @@
 
   --notification-border-default-color: var(--neutral-100);
   --notification-information-color: var(--primary-color);
-  --notification-success-color: var(--green-300);
-  --notification-warning-color: var(--yellow-300);
+  --notification-success-color: var(--success-color);
+  --notification-warning-color: var(--warning-color);
   --notification-error-color: var(--error-color);
   --notification-title-color: var(--neutral-200);
   --notification-default-text-color: var(--neutral-900);
   --notification-light-text-color: var(--neutral-white);
-  --notification-information-light-background: var(--violet-50);
+  --notification-information-light-background: var(--blue-50);
   --notification-success-light-background: var(--green-50);
   --notification-error-light-background: var(--red-50);
   --notification-warning-light-background: var(--yellow-50);
 
   --button-disabled-color: var(--default-color);
   --button-height: 48px;
-  --button-border-radius: 24px;
+  --button-border-radius: 5px;
   --button-padding: 0 24px;
   --button-circle-padding: 0 12px;
 
@@ -225,7 +225,7 @@
   --table-column-color: var(--neutral-900);
   --table-column-border-color: var(--neutral-75);
   --table-row-odd-background-color: var(--neutral-75);
-  --table-row-hover-color: var(--violet-50);
+  --table-row-hover-color: var(--blue-50);
   --table-row-expanded-icon-background-color: var(--red-100);
   --table-row-icon-background-color: var(--primary-color);
   --table-row-icon-color: var(--neutral-white);

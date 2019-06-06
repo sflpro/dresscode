@@ -17,15 +17,15 @@ storiesOf('Color Scheme', module)
           <Item>
             <ColorScheme
               text='P1'
-              name='#6400DC'
-              bgClassName='violet-300'
+              name='#3228C6'
+              bgClassName='blue-300'
             />
           </Item>
           <Item>
             <ColorScheme
               text='P2'
-              name='#7F7F7F'
-              bgClassName='neutral-500'
+              name='#00A677'
+              bgClassName='green-300'
             />
           </Item>
           <Item>
@@ -33,20 +33,6 @@ storiesOf('Color Scheme', module)
               text='Neutral White'
               name='#FFFFFF'
               bgClassName='neutral-white'
-            />
-          </Item>
-        </ItemRow>
-      </ItemGroup>
-      <ItemGroup
-        title='Secondary Colors'
-      >
-        <ItemRow>
-          <Item>
-            <ColorScheme
-              text='S1'
-              name='#6400DC'
-              secondaryName='#8133E0'
-              secondaryClassName='violet-300-gradient'
             />
           </Item>
         </ItemRow>
@@ -65,14 +51,14 @@ storiesOf('Color Scheme', module)
           <Item>
             <ColorScheme
               text='Y300'
-              name='#F7D210'
+              name='#F8A90C'
               bgClassName='yellow-300'
             />
           </Item>
           <Item>
             <ColorScheme
               text='G300'
-              name='#32C86D'
+              name='#00A677'
               bgClassName='green-300'
             />
           </Item>
@@ -174,7 +160,7 @@ storiesOf('Color Scheme', module)
               <Item>
                 <ColorScheme
                   text='R75'
-                  name='#FFB3B3'
+                  name='#FFCCCC'
                   bgClassName='red-75'
                 />
               </Item>
@@ -223,7 +209,7 @@ storiesOf('Color Scheme', module)
               <Item>
                 <ColorScheme
                   text='G50'
-                  name='#EBFAF1'
+                  name='#DFFBF3'
                   bgClassName='green-50'
                 />
               </Item>
@@ -232,7 +218,7 @@ storiesOf('Color Scheme', module)
               <Item>
                 <ColorScheme
                   text='G75'
-                  name='#A7EFC2'
+                  name='#7FF0D0'
                   bgClassName='green-75'
                 />
               </Item>
@@ -241,7 +227,7 @@ storiesOf('Color Scheme', module)
               <Item>
                 <ColorScheme
                   text='G100'
-                  name='#6FDE9A'
+                  name='#00E1A1'
                   bgClassName='green-100'
                 />
               </Item>
@@ -250,7 +236,7 @@ storiesOf('Color Scheme', module)
               <Item>
                 <ColorScheme
                   text='G300'
-                  name='#32C86D'
+                  name='#00A677'
                   bgClassName='green-300'
                 />
               </Item>
@@ -259,7 +245,7 @@ storiesOf('Color Scheme', module)
               <Item>
                 <ColorScheme
                   text='G400'
-                  name='#28A057'
+                  name='#006649'
                   bgClassName='green-400'
                 />
               </Item>
@@ -268,7 +254,7 @@ storiesOf('Color Scheme', module)
               <Item>
                 <ColorScheme
                   text='G500'
-                  name='#0D7837'
+                  name='#003928'
                   bgClassName='green-500'
                 />
               </Item>
@@ -281,7 +267,7 @@ storiesOf('Color Scheme', module)
               <Item>
                 <ColorScheme
                   text='Y50'
-                  name='#FFF8D6'
+                  name='#FFF2D7'
                   bgClassName='yellow-50'
                 />
               </Item>
@@ -290,7 +276,7 @@ storiesOf('Color Scheme', module)
               <Item>
                 <ColorScheme
                   text='Y75'
-                  name='#FDEDA4'
+                  name='#FFDD99'
                   bgClassName='yellow-75'
                 />
               </Item>
@@ -299,7 +285,7 @@ storiesOf('Color Scheme', module)
               <Item>
                 <ColorScheme
                   text='Y100'
-                  name='#FBE277'
+                  name='#FFC34D'
                   bgClassName='yellow-100'
                 />
               </Item>
@@ -308,7 +294,7 @@ storiesOf('Color Scheme', module)
               <Item>
                 <ColorScheme
                   text='Y300'
-                  name='#F7D210'
+                  name='#F8A90C'
                   bgClassName='yellow-300'
                 />
               </Item>
@@ -317,7 +303,7 @@ storiesOf('Color Scheme', module)
               <Item>
                 <ColorScheme
                   text='Y400'
-                  name='#D5AD00'
+                  name='#CA8700'
                   bgClassName='yellow-400'
                 />
               </Item>
@@ -326,66 +312,66 @@ storiesOf('Color Scheme', module)
               <Item>
                 <ColorScheme
                   text='Y500'
-                  name='#B99600'
+                  name='#9B6800'
                   bgClassName='yellow-500'
                 />
               </Item>
             </ItemRow>
           </ItemGroup>
           <ItemGroup
-            title='Violet'
+            title='Blue'
           >
             <ItemRow>
               <Item>
                 <ColorScheme
-                  text='V50'
-                  name='#E6D2FF'
-                  bgClassName='violet-50'
+                  text='B50'
+                  name='#F2F1FB'
+                  bgClassName='blue-50'
                 />
               </Item>
             </ItemRow>
             <ItemRow>
               <Item>
                 <ColorScheme
-                  text='V75'
-                  name='#CDA5FF'
-                  bgClassName='violet-75'
+                  text='B75'
+                  name='#AEAAE9'
+                  bgClassName='blue-75'
                 />
               </Item>
             </ItemRow>
             <ItemRow>
               <Item>
                 <ColorScheme
-                  text='V100'
-                  name='#A266EA'
-                  bgClassName='violet-100'
+                  text='B100'
+                  name='#6F68D7'
+                  bgClassName='blue-100'
                 />
               </Item>
             </ItemRow>
             <ItemRow>
               <Item>
                 <ColorScheme
-                  text='V300'
-                  name='#6400DC'
-                  bgClassName='violet-300'
+                  text='B300'
+                  name='#3228C6'
+                  bgClassName='blue-300'
                 />
               </Item>
             </ItemRow>
             <ItemRow>
               <Item>
                 <ColorScheme
-                  text='V400'
-                  name='#46009A'
-                  bgClassName='violet-400'
+                  text='B400'
+                  name='#080081'
+                  bgClassName='blue-400'
                 />
               </Item>
             </ItemRow>
             <ItemRow>
               <Item>
                 <ColorScheme
-                  text='V500'
-                  name='#23004D'
-                  bgClassName='violet-500'
+                  text='B500'
+                  name='#040044'
+                  bgClassName='blue-500'
                 />
               </Item>
             </ItemRow>
