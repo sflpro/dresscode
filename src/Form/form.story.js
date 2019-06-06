@@ -25,7 +25,7 @@ storiesOf('Form', module)
         <ItemRow>
           <Item>
             <Form
-              initialValues={{ email: '' }}
+              initialValues={{ email: 'test@test.com', password: '' }}
               onSubmit={(values, { setSubmitting }) => {
                 setTimeout(() => {
                   alert(JSON.stringify(values, null, 2));
@@ -36,6 +36,12 @@ storiesOf('Form', module)
                 email: Yup.string()
                   .email()
                   .required('Required'),
+                password: Yup.string()
+                  .required('Required')
+                  .matches(
+                    /^(?=.*\d)(?=.*[^a-zA-Z0-9])(?!.*\\s).{6,20}$/,
+                    'Must Contain ...',
+                  ),
               })}
               preventAction
             >
@@ -50,8 +56,27 @@ storiesOf('Form', module)
               <WithErrorFeedback
                 name='email'
               >
-                {({ error }) => (
-                  error ? (
+                {({ error, touched }) => (
+                  error && touched ? (
+                    <Error>
+                      {error}
+                    </Error>
+                  ) : null)}
+              </WithErrorFeedback>
+              <Label>
+                Password
+                <WithValidation
+                  component={TextInput}
+                  name='password'
+                  type='password'
+                  disabledWhileSubmitting
+                />
+              </Label>
+              <WithErrorFeedback
+                name='password'
+              >
+                {({ error, touched }) => (
+                  error && touched ? (
                     <Error>
                       {error}
                     </Error>
