@@ -39,3 +39,6 @@ export { WithErrorFeedback } from './lib/WithErrorFeedback';
 export { WithFormFeedback } from './lib/WithFormFeedback';
 export { WithValidation } from './lib/WithValidation';
 export { YearPicker } from './lib/YearPicker';
+export { Tabs } from './lib/Tabs';
+export { Tab } from './lib/Tab';
+export { TabContent } from './lib/TabContent';
