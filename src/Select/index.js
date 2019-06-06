@@ -247,6 +247,7 @@ export class Select extends React.Component {
       children,
       button,
       buttonProps,
+      nothingFoundText,
       ...props
     } = this.props;
 
