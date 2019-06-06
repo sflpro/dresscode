@@ -1,0 +1,20 @@
+.tab {
+  @mixin font-scale-6;
+  padding: 18px 16px;
+  text-align: center;
+  cursor: pointer;
+
+  @media (--small) {
+    padding: 20px 24px;
+  }
+}
+
+.active {
+  border-bottom: 2px solid var(--primary-color);
+  color: var(--primary-color);
+}
+
+.disabled {
+  cursor: default;
+  color: var(--disabled-color);
+}

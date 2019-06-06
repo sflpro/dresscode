@@ -24,6 +24,7 @@ function loadStories() {
   require('../src/Table/table.story');
   require('../src/Form/form.story');
   require('../src/Area/area.story');
+  require('../src/Tabs/tabs.story');
   require('../src/helpers/Grid/grid.story');
   require('../src/helpers/Typography/typography.story');
 }
