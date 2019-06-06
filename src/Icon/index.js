@@ -2,12 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-import { svgPolyfill } from '../polyfills/svgPoyfill';
-
 import styles from './icon.css';
 import icons from './svgSprite.svg';
 
-const iconPath = svgPolyfill(document, icons);
+let alreadySet = false;
 
 export function Icon({
   name,
@@ -22,21 +20,32 @@ export function Icon({
     [className]: true,
   });
 
+  let svgIcons = '';
+
+  if (!alreadySet) {
+    alreadySet = true;
+
+    svgIcons = <span style={{ display: 'none' }} dangerouslySetInnerHTML={{ __html: icons }} />;
+  }
+
   return (
-    <span
-      className={iconWrapperClasses}
-      style={{
-        fontSize: `${size}px`,
-        color,
-        ...style,
-      }}
-      role='presentation'
-      {...props}
-    >
-      <svg className={styles.icon}>
-        <use xlinkHref={`${iconPath}#${name}`} />
-      </svg>
-    </span>
+    <>
+      {svgIcons}
+      <span
+        className={iconWrapperClasses}
+        style={{
+          fontSize: `${size}px`,
+          color,
+          ...style,
+        }}
+        role='presentation'
+        {...props}
+      >
+        <svg className={styles.icon}>
+          <use xlinkHref={`#${name}`} />
+        </svg>
+      </span>
+    </>
   );
 }
 

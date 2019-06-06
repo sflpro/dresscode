@@ -22,12 +22,8 @@ module.exports = {
       },
       {
         test: /\.svg$/,
-        loader: 'file-loader',
-        options: {
-          name: '[path][name].[ext]',
-          context: path.resolve(__dirname, 'src'),
-        },
-      },
+        loader: 'svg-inline-loader'
+      }
     ],
   },
 };
