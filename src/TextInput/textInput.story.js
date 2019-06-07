@@ -322,18 +322,18 @@ storiesOf('Form controls/Input', module)
   .add('Text Input', () => (
     <TextInput />
   ), {
-      ...InfoStoryConfig,
-      info: {
-        ...InfoStoryConfig.info,
-        text: <ImportInstruction componentName='TextInput' />,
-      },
-    })
+    ...InfoStoryConfig,
+    info: {
+      ...InfoStoryConfig.info,
+      text: <ImportInstruction componentName='TextInput' />,
+    },
+  })
   .add('Password Input', () => (
     <TextInput type='password' />
   ), {
-      ...InfoStoryConfig,
-      info: {
-        ...InfoStoryConfig.info,
-        text: <ImportInstruction componentName='TextInput' />,
-      },
-    });
+    ...InfoStoryConfig,
+    info: {
+      ...InfoStoryConfig.info,
+      text: <ImportInstruction componentName='TextInput' />,
+    },
+  });
