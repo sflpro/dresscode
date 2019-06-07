@@ -1,5 +1,6 @@
 .label {
   @mixin font-scale-6;
+  font-family: var(--label-font-family);
   color: var(--label-color);
   display: flex;
 
