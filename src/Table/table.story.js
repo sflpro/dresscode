@@ -28,7 +28,7 @@ const store = new Store({
 
 storiesOf('Data Table', module)
   .add('Examples', () => {
-    const pageCount = 10;
+    const itemsPerPage = 10;
     const total = ROWS.length;
 
     function handlePageClick(page) {
@@ -49,8 +49,8 @@ storiesOf('Data Table', module)
     return (
       <State store={store}>
         {(state) => {
-          const rows = state.sortedRows.slice(pageCount * (state.page - 1),
-            total < pageCount * state.page ? total : pageCount * state.page);
+          const rows = state.sortedRows.slice(itemsPerPage * (state.page - 1),
+            total < itemsPerPage * state.page ? total : itemsPerPage * state.page);
           return (
             <ItemGroup
               title='Data Table'
@@ -95,7 +95,7 @@ storiesOf('Data Table', module)
                   <Table.Footer>
                     <Table.Pagination
                       page={state.page}
-                      pageCount={pageCount}
+                      itemsPerPage={itemsPerPage}
                       total={total}
                       onPageClick={handlePageClick}
                     />
