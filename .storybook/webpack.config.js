@@ -20,14 +20,7 @@ module.exports = {
           'postcss-loader',
         ],
       },
-      {
-        test: /\.svg$/,
-        loader: 'file-loader',
-        options: {
-          name: '[path][name].[ext]',
-          context: path.resolve(__dirname, 'src'),
-        },
-      },
+      { test: /\.svg$/i, loader: 'inline-loader' }
     ],
   },
 };
