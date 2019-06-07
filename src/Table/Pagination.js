@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-import { TableContext } from '.';
+import { TableContext } from './TableContext';
 
 import { Icon } from '../Icon';
 
@@ -10,7 +10,7 @@ import styles from './table.css';
 
 const PAGES_GAP = '...';
 
-export class TablePagination extends React.Component {
+export class Pagination extends React.Component {
   static contextType = TableContext;
 
   createRange = (start, end) => {
@@ -21,38 +21,38 @@ export class TablePagination extends React.Component {
     return range;
   };
 
-  getPageRange = (page, pageCount, total) => (
-    `${(page - 1) * pageCount + 1} - ${page * pageCount > total ? total : (page * pageCount)}`
+  getPageRange = (page, itemsPerPage, total) => (
+    `${(page - 1) * itemsPerPage + 1} - ${page * itemsPerPage > total ? total : (page * itemsPerPage)}`
   );
 
-  renderPageRange = (page, pageCount, total) => (
+  renderPageRange = (page, itemsPerPage, total) => (
     <div className={styles.tablePageRange}>
-      {`${this.getPageRange(page, pageCount, total)} / ${total}`}
+      {`${this.getPageRange(page, itemsPerPage, total)} / ${total}`}
     </div>
   );
 
   renderPages = () => {
     const {
       page,
-      pageCount,
+      itemsPerPage,
       total,
-      pageSibilingCount,
+      pageSiblingCount,
       onPageClick,
     } = this.props;
 
-    const lastPage = Math.ceil(total / pageCount);
+    const lastPage = Math.ceil(total / itemsPerPage);
 
     let mainPageNumbers = [];
     let firstPageNumbers = [1];
     let lastPageNumbers = [lastPage];
-    if (lastPage < 5 + 2 * pageSibilingCount) {
+    if (lastPage < 5 + 2 * pageSiblingCount) {
       firstPageNumbers = [];
       mainPageNumbers = this.createRange(1, lastPage);
       lastPageNumbers = [];
     } else if (page < 4) {
       firstPageNumbers = this.createRange(1, 5);
       mainPageNumbers = [PAGES_GAP];
-    } else if (page > lastPage - (pageSibilingCount * 2 + 1)) {
+    } else if (page > lastPage - (pageSiblingCount * 2 + 1)) {
       mainPageNumbers = [PAGES_GAP];
       lastPageNumbers = this.createRange(lastPage - 4, lastPage);
     } else {
@@ -110,9 +110,9 @@ export class TablePagination extends React.Component {
   render() {
     const {
       page,
-      pageCount,
+      itemsPerPage,
       total,
-      pageSibilingCount,
+      pageSiblingCount,
       onPageClick,
       className,
       ...props
@@ -127,14 +127,14 @@ export class TablePagination extends React.Component {
         className={tablePaginationClasses}
         {...props}
       >
-        {this.renderPageRange(page, pageCount, total)}
+        {this.renderPageRange(page, itemsPerPage, total)}
         {this.renderPages()}
       </div>
     );
   }
 }
 
-TablePagination.propTypes = {
+Pagination.propTypes = {
   /** Number, selected page number */
   page: PropTypes.number.isRequired,
   /** Number, total count of items */
@@ -142,18 +142,18 @@ TablePagination.propTypes = {
   /** Function, the method to call when a page is clicked. */
   onPageClick: PropTypes.func.isRequired,
   /** Number, count of items per page */
-  pageCount: PropTypes.number,
-  /** Number, count of selected page sibilings which will be shown */
-  pageSibilingCount: PropTypes.number,
+  itemsPerPage: PropTypes.number,
+  /** Number, count of selected page siblings which will be shown */
+  pageSiblingCount: PropTypes.number,
   /** String, className that will be added to wrapper div */
   className: PropTypes.string,
   /** Object, styles that will be added to wrapper div */
   style: PropTypes.object,
 };
 
-TablePagination.defaultProps = {
-  pageCount: 10,
-  pageSibilingCount: 1,
+Pagination.defaultProps = {
+  itemsPerPage: 10,
+  pageSiblingCount: 1,
   className: '',
   style: undefined,
 };

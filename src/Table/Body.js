@@ -4,7 +4,7 @@ import classNames from 'classnames';
 
 import styles from './table.css';
 
-export function TableBody({
+export function Body({
   className,
   children,
   ...props
@@ -24,7 +24,7 @@ export function TableBody({
   );
 }
 
-TableBody.propTypes = {
+Body.propTypes = {
   /** String or JSX or Element, content of element */
   children: PropTypes.any.isRequired,
   /** String, className that will be added to table body div */
@@ -33,7 +33,7 @@ TableBody.propTypes = {
   style: PropTypes.object,
 };
 
-TableBody.defaultProps = {
+Body.defaultProps = {
   className: '',
   style: undefined,
 };

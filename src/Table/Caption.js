@@ -4,7 +4,7 @@ import classNames from 'classnames';
 
 import styles from './table.css';
 
-export function TableCaption({
+export function Caption({
   title,
   icon,
   className,
@@ -26,7 +26,7 @@ export function TableCaption({
   );
 }
 
-TableCaption.propTypes = {
+Caption.propTypes = {
   /** String, caption title */
   title: PropTypes.string.isRequired,
   /** String or JSX or Element, caption icon element */
@@ -37,7 +37,7 @@ TableCaption.propTypes = {
   style: PropTypes.object,
 };
 
-TableCaption.defaultProps = {
+Caption.defaultProps = {
   icon: null,
   className: '',
   style: undefined,
