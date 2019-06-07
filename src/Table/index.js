@@ -28,7 +28,7 @@ export class Table extends React.Component {
       column: 16,
     };
 
-    const tableHead = children.find(child => child.type.displayName === 'Head');
+    const tableHead = children.find(child => child.type.name === 'Head');
     const tableRow = tableHead.props.children;
 
     const headColumns = tableRow.props.children.map(child => ({
