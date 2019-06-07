@@ -1,0 +1,27 @@
+@font-face {
+  font-family: var(--font-face-primary);
+  font-style: normal;
+  font-weight: var(--font-weight-normal);
+  src: local(" "), url("../assets/fonts/SegoeUI/SegoeUI.woff2") format('woff2'), /* Super Modern Browsers */
+  url("../assets/fonts/SegoeUI/SegoeUI.woff") format('woff'), /* Modern Browsers */
+  url("../assets/fonts/SegoeUI/SegoeUI.ttf"), /* Safari, Android, iOS */
+  url("../assets/fonts/SegoeUI/SegoeUI.svg") format('svg'),
+  url("../assets/fonts/SegoeUI/SegoeUI.eot") format('embedded-opentype');
+  /* Legacy iOS */
+}
+
+@font-face {
+  font-family: var(--font-face-primary-bold);
+  font-style: normal;
+  font-weight: var(--font-weight-bold);
+  src: local(" "), url("../assets/fonts/SegoeUI/SegoeUI-Bold.woff2") format('woff2'), /* Super Modern Browsers */
+  url("../assets/fonts/SegoeUI/SegoeUI-Bold.woff") format('woff'), /* Modern Browsers */
+  url("../assets/fonts/SegoeUI/SegoeUI-Bold.ttf"), /* Safari, Android, iOS */
+  url("../assets/fonts/SegoeUI/SegoeUI-Bold.svg") format('svg'),
+  url("../assets/fonts/SegoeUI/SegoeUI-Bold.eot") format('embedded-opentype');
+  /* Legacy iOS */
+}
+
+body {
+  font-family: var(--font-face-primary);
+}
