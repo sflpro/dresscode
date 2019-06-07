@@ -21,14 +21,14 @@ export class Table extends React.Component {
   constructor(props) {
     super(props);
 
-    const { children, gutters: { column } } = this.props;
+    const { children, gutters: { column: columnGap } } = this.props;
 
     const tableHead = children.find(child => child.type.name === 'Head');
     const tableRow = tableHead.props.children;
 
     const headColumns = tableRow.props.children.map(child => ({
       ...child.props,
-      width: (child.props.width || child.props.minWidth) + 2 * column,
+      width: (child.props.width || child.props.minWidth) + 2 * columnGap,
     }));
 
     this.state = {
@@ -50,16 +50,16 @@ export class Table extends React.Component {
 
   handleResize = () => {
     const { columns } = this.state;
-    const { gutters: { row } } = this.props;
+    const { gutters: { row: rowGap } } = this.props;
     const updatedColumns = resizeTable({
-      width: this.tableHeadRef.current.getBoundingClientRect().width - 2 * row,
+      width: this.tableHeadRef.current.getBoundingClientRect().width - 2 * rowGap,
       columns,
     });
 
     this.setState({
       columns: updatedColumns,
     });
-  }
+  };
 
   render() {
     const {
