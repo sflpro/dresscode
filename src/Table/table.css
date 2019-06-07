@@ -37,7 +37,7 @@
 
 .tableRowOverlay {
   height: 48px;
-  background-color: transparent;
+  background-color: var(--table-row-background-color);
   position: absolute;
   width: 100%;
   z-index: 1;

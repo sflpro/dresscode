@@ -21,26 +21,26 @@ export class Pagination extends React.Component {
     return range;
   };
 
-  getPageRange = (page, pageCount, total) => (
-    `${(page - 1) * pageCount + 1} - ${page * pageCount > total ? total : (page * pageCount)}`
+  getPageRange = (page, itemsPerPage, total) => (
+    `${(page - 1) * itemsPerPage + 1} - ${page * itemsPerPage > total ? total : (page * itemsPerPage)}`
   );
 
-  renderPageRange = (page, pageCount, total) => (
+  renderPageRange = (page, itemsPerPage, total) => (
     <div className={styles.tablePageRange}>
-      {`${this.getPageRange(page, pageCount, total)} / ${total}`}
+      {`${this.getPageRange(page, itemsPerPage, total)} / ${total}`}
     </div>
   );
 
   renderPages = () => {
     const {
       page,
-      pageCount,
+      itemsPerPage,
       total,
       pageSiblingCount,
       onPageClick,
     } = this.props;
 
-    const lastPage = Math.ceil(total / pageCount);
+    const lastPage = Math.ceil(total / itemsPerPage);
 
     let mainPageNumbers = [];
     let firstPageNumbers = [1];
@@ -110,7 +110,7 @@ export class Pagination extends React.Component {
   render() {
     const {
       page,
-      pageCount,
+      itemsPerPage,
       total,
       pageSiblingCount,
       onPageClick,
@@ -127,7 +127,7 @@ export class Pagination extends React.Component {
         className={tablePaginationClasses}
         {...props}
       >
-        {this.renderPageRange(page, pageCount, total)}
+        {this.renderPageRange(page, itemsPerPage, total)}
         {this.renderPages()}
       </div>
     );
@@ -142,7 +142,7 @@ Pagination.propTypes = {
   /** Function, the method to call when a page is clicked. */
   onPageClick: PropTypes.func.isRequired,
   /** Number, count of items per page */
-  pageCount: PropTypes.number,
+  itemsPerPage: PropTypes.number,
   /** Number, count of selected page siblings which will be shown */
   pageSiblingCount: PropTypes.number,
   /** String, className that will be added to wrapper div */
@@ -152,7 +152,7 @@ Pagination.propTypes = {
 };
 
 Pagination.defaultProps = {
-  pageCount: 10,
+  itemsPerPage: 10,
   pageSiblingCount: 1,
   className: '',
   style: undefined,
