@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-import { TableContext } from '.';
+import { TableContext } from './TableContext';
 import { dynamicSort } from './ResizeTable';
 
 import { Icon } from '../Icon';
@@ -14,7 +14,7 @@ export const SORTING_DIRECTIONS = {
   ASC: 'asc',
   DESC: 'desc',
 };
-export class TableColumn extends React.Component {
+export class Column extends React.Component {
   static contextType = TableContext;
 
   state = {
@@ -276,7 +276,7 @@ export class TableColumn extends React.Component {
   }
 }
 
-TableColumn.propTypes = {
+Column.propTypes = {
   /**  String or Number, column unique identifier */
   id: PropTypes.oneOfType([
     PropTypes.number,
@@ -302,7 +302,7 @@ TableColumn.propTypes = {
   style: PropTypes.object,
 };
 
-TableColumn.defaultProps = {
+Column.defaultProps = {
   priority: undefined,
   visible: true,
   head: false,

@@ -4,13 +4,6 @@ import { State, Store } from '@sambego/storybook-state';
 
 import { Table } from '.';
 import { COLUMNS, ROWS, SORTING_DIRECTIONS } from './storyData';
-import { TableHead } from './TableHead';
-import { TableColumn } from './TableColumn';
-import { TableRow } from './TableRow';
-import { TableBody } from './TableBody';
-import { TableCaption } from './TableCaption';
-import { TableFooter } from './TableFooter';
-import { TablePagination } from './TablePagination';
 
 import { ItemGroup } from '../helpers/ItemGroup';
 import { Item } from '../helpers/Item';
@@ -68,45 +61,45 @@ storiesOf('Data Table', module)
                   sortOptions={state.sortOptions}
                   onTableSort={handleTableSorting}
                 >
-                  <TableCaption
+                  <Table.Caption
                     title='Title'
                   />
-                  <TableHead>
-                    <TableRow
+                  <Table.Head>
+                    <Table.Row
                       head
                       hover={false}
                     >
                       {COLUMNS.map(column => (
-                        <TableColumn
+                        <Table.Column
                           key={column.id}
                           {...column}
                           head
                         />
                       ))}
-                    </TableRow>
-                  </TableHead>
-                  <TableBody>
+                    </Table.Row>
+                  </Table.Head>
+                  <Table.Body>
                     {rows.map((row, rowIndex) => (
-                      <TableRow
+                      <Table.Row
                         key={rowIndex}
                       >
                         {Object.values(row.columns).map((column, columnIndex) => (
-                          <TableColumn
+                          <Table.Column
                             key={`${rowIndex}-${columnIndex}`}
                             {...column}
                           />
                         ))}
-                      </TableRow>
+                      </Table.Row>
                     ))}
-                  </TableBody>
-                  <TableFooter>
-                    <TablePagination
+                  </Table.Body>
+                  <Table.Footer>
+                    <Table.Pagination
                       page={state.page}
                       pageCount={pageCount}
                       total={total}
                       onPageClick={handlePageClick}
                     />
-                  </TableFooter>
+                  </Table.Footer>
                 </Table>
               </Item>
             </ItemGroup>

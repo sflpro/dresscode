@@ -32,7 +32,7 @@ export { Select } from './lib/Select';
 export { Slider, SliderContext } from './lib/Slider';
 export { Tab } from './lib/Tab';
 export { TabContent } from './lib/TabContent';
-export { Table, TableContext } from './lib/Table';
+export { Table } from './lib/Table';
 export { Tabs } from './lib/Tabs';
 export { Tag } from './lib/Tag';
 export { Textarea } from './lib/Textarea';

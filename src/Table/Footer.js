@@ -4,27 +4,28 @@ import classNames from 'classnames';
 
 import styles from './table.css';
 
-export function TableHead({
+export function Footer({
   className,
   children,
   ...props
 }) {
-  const tableHeadClasses = classNames({
-    [styles.tableHead]: true,
+  const tableFooterClasses = classNames({
+    [styles.tableFooter]: true,
     [className]: true,
   });
 
   return (
     <div
-      className={tableHeadClasses}
+      className={tableFooterClasses}
       {...props}
     >
+      <div className={styles.tableFooterOverlay} />
       {children}
     </div>
   );
 }
 
-TableHead.propTypes = {
+Footer.propTypes = {
   /** String or JSX or Element, content of element */
   children: PropTypes.any.isRequired,
   /** String, className that will be added to table head div */
@@ -33,7 +34,7 @@ TableHead.propTypes = {
   style: PropTypes.object,
 };
 
-TableHead.defaultProps = {
+Footer.defaultProps = {
   className: '',
   style: undefined,
 };

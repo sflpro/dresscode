@@ -6,7 +6,16 @@ import { resizeTable } from './ResizeTable';
 
 import styles from './table.css';
 
-export const TableContext = React.createContext();
+import { TableContext } from './TableContext';
+
+import { Body } from './Body';
+import { Caption } from './Caption';
+import { Column } from './Column';
+import { Footer } from './Footer';
+import { Head } from './Head';
+import { Pagination } from './Pagination';
+import { Row } from './Row';
+
 
 export class Table extends React.Component {
   constructor(props) {
@@ -19,7 +28,7 @@ export class Table extends React.Component {
       column: 16,
     };
 
-    const tableHead = children.find(child => child.type.displayName === 'TableHead');
+    const tableHead = children.find(child => child.type.displayName === 'Head');
     const tableRow = tableHead.props.children;
 
     const headColumns = tableRow.props.children.map(child => ({
@@ -119,3 +128,11 @@ Table.defaultProps = {
   className: '',
   style: undefined,
 };
+
+Table.Body = Body;
+Table.Caption = Caption;
+Table.Column = Column;
+Table.Footer = Footer;
+Table.Head = Head;
+Table.Pagination = Pagination;
+Table.Row = Row;
