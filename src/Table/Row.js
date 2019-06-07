@@ -2,13 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-import { TableContext } from '.';
+import { TableContext } from './TableContext';
 
 import { Icon } from '../Icon';
 
 import styles from './table.css';
 
-export class TableRow extends React.Component {
+export class Row extends React.Component {
   static contextType = TableContext;
 
   constructor(props, context) {
@@ -112,7 +112,7 @@ export class TableRow extends React.Component {
   }
 }
 
-TableRow.propTypes = {
+Row.propTypes = {
   /** String or JSX or Element, content of element */
   children: PropTypes.any.isRequired,
   /** Boolean, indicating element relation with table head */
@@ -125,7 +125,7 @@ TableRow.propTypes = {
   style: PropTypes.object,
 };
 
-TableRow.defaultProps = {
+Row.defaultProps = {
   head: false,
   hover: true,
   className: '',
