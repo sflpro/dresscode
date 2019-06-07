@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import formatDate from 'date-fns/format';
-import isValidDate from 'date-fns/is_valid';
 
 import { Icon } from '../Icon';
 import { Popover } from '../Popover';
@@ -13,7 +12,12 @@ import {
   DEFAULT_FORMAT,
   DEFAULT_LOCALE,
 } from '../DatePicker/constants';
-import { validateFormat } from '../DatePicker/helpers';
+import {
+  convertStringToDate,
+  isValidFormatType,
+  isValidFormat,
+  isValidDate,
+} from '../DatePicker/helpers';
 import { TextInput } from '../TextInput';
 import { isMobile } from '../utils';
 
@@ -23,17 +27,26 @@ export class DateInput extends React.Component {
   constructor(props) {
     super(props);
 
-    const { value, locale, format } = this.props;
+    const {
+      format,
+      value,
+    } = this.props;
+
+    if (!isValidFormatType(format)) {
+      console.error('Invalid format type');
+    }
+
+    if (value && !isValidFormat(value, format)) {
+      console.error('Invalid format');
+    }
+
+    if (value && !isValidDate(value, format)) {
+      console.error('Invalid date');
+    }
 
     this.state = {
       open: false,
-      currentValue: value ? isValidDate(value) ? formatDate(value, format, { locale }) : value : undefined,
-      hasError: false,
-      error: null,
     };
-
-    this.error = null;
-    this.hasError = false;
   }
 
   handleTargetEvent = (open) => {
@@ -43,76 +56,37 @@ export class DateInput extends React.Component {
   };
 
   handleDatePickerChange = (value) => {
-    const { onDatePickerChange } = this.props;
-    this.hasError = false;
-    this.error = null;
+    const { onChange, format, name } = this.props;
 
     this.setState(prevState => ({
       open: !prevState.open,
-      hasError: this.hasError,
-      error: this.error,
     }));
 
-    onDatePickerChange(value);
-  };
-
-  handleDateInputBlur = () => {
-    this.focused = false;
-    const { currentValue } = this.state;
-
-    if (!currentValue) {
-      this.hasError = false;
-      this.error = null;
-      this.setState({
-        hasError: this.hasError,
-        error: this.error,
-      });
-    } else {
-      this.setState({
-        hasError: this.hasError,
-        error: this.error,
-        open: false,
-      });
-    }
+    const formatedValue = formatDate(value, format);
+    const eventObj = {
+      target: {
+        name,
+        value: formatedValue,
+      },
+    };
+    onChange(eventObj);
   };
 
   handleDateInputFocus = event => (
     event.target.select()
   );
 
-  handleDateInputChange = (event) => {
-    const { onDateInputChange, format, view } = this.props;
-    const { value } = event.target;
-
-    this.focused = true;
-
-    const { valid, error, date: { y, d, m } } = validateFormat(value, format);
-
-    if (!valid) {
-      this.error = error;
-      this.hasError = true;
-
-      this.setState({
-        currentValue: value,
-      });
-    } else {
-      this.error = null;
-      this.hasError = false;
-
-      this.setState({
-        hasError: this.hasError,
-        error: this.error,
-        currentValue: value,
-      }, () => {
-        const date = view === 'month' ? `${y}-${m}-01` : `${y}-${m}-${d}`;
-        onDateInputChange(new Date(date));
-      });
-    }
-  };
-
   handleNativeDateInputChange = (event) => {
-    const { onDateInputChange } = this.props;
-    onDateInputChange(new Date(event.target.value));
+    const { onChange, format, name } = this.props;
+    const { value } = event.target;
+    const formatedDate = formatDate(new Date(value), format);
+    const eventObj = {
+      target: {
+        name,
+        value: formatedDate,
+      },
+    };
+    onChange(eventObj);
   };
 
   handleDatePickerIconClick = (event, onClick) => {
@@ -122,22 +96,19 @@ export class DateInput extends React.Component {
 
   render() {
     const {
-      onDatePickerChange,
-      onDateInputChange,
+      onChange,
       value,
       format,
       className,
       locale,
       trigger,
       view,
+      hasError,
       ...props
     } = this.props;
 
     const {
       open,
-      currentValue,
-      hasError,
-      error,
     } = this.state;
 
     const dateInputClasses = classNames({
@@ -146,6 +117,7 @@ export class DateInput extends React.Component {
     });
 
     const isNativeMode = isMobile();
+    const dateValue = !hasError ? convertStringToDate(value, format) : null;
 
     return (
       !isNativeMode ? (
@@ -153,7 +125,7 @@ export class DateInput extends React.Component {
           trigger={trigger}
           content={(
             <DatePicker
-              value={value}
+              value={dateValue}
               onChange={this.handleDatePickerChange}
               locale={locale}
               view={view}
@@ -166,29 +138,28 @@ export class DateInput extends React.Component {
         >
           {({ setOnClick }) => (
             <TextInput
-              onChange={this.handleDateInputChange}
+              {...props}
+              onChange={onChange}
               onFocus={this.handleDateInputFocus}
-              onBlur={this.handleDateInputBlur}
               className={dateInputClasses}
-              value={this.focused || this.hasError ? currentValue : value ? formatDate(value, format) : ''}
+              value={!hasError && dateValue ? formatDate(dateValue, format) : value}
               icon={(
                 <Icon
                   name='date'
                   size={24}
-                  onClick={e => this.handleDatePickerIconClick(e, setOnClick)}
+                  onClick={event => this.handleDatePickerIconClick(event, setOnClick)}
                 />
               )}
               hasError={hasError}
-              error={error}
-              {...props}
             />
           )}
         </Popover>
       ) : (
         <TextInput
+          {...props}
           onChange={this.handleNativeDateInputChange}
           className={dateInputClasses}
-          value={value ? formatDate(value, VALID_DATE_FORMAT) : ''}
+          value={!hasError ? formatDate(dateValue, VALID_DATE_FORMAT) : ''}
           type='date'
           icon={(
             <Icon
@@ -197,8 +168,6 @@ export class DateInput extends React.Component {
             />
           )}
           hasError={hasError}
-          error={error}
-          {...props}
         />
       )
     );
@@ -206,12 +175,14 @@ export class DateInput extends React.Component {
 }
 
 DateInput.propTypes = {
-  /** Function, will be called when date is selected */
-  onDatePickerChange: PropTypes.func.isRequired,
-  /** Function, will be called when input value is changed */
-  onDateInputChange: PropTypes.func.isRequired,
-  /** Instance of Date, input value */
-  value: PropTypes.instanceOf(Date),
+  /** Function, will be called when date value changed */
+  onChange: PropTypes.func.isRequired,
+  /** String, input value */
+  value: PropTypes.string,
+  /** String, name of input */
+  name: PropTypes.string,
+  /** Boolean, whether input must be rendered with error styles */
+  hasError: PropTypes.bool,
   /** String, format of date */
   format: PropTypes.oneOf(DATE_FORMATS),
   /** String, className that will be added to input */
@@ -227,6 +198,8 @@ DateInput.propTypes = {
 };
 
 DateInput.defaultProps = {
+  name: undefined,
+  hasError: false,
   format: DEFAULT_FORMAT,
   className: '',
   locale: DEFAULT_LOCALE,

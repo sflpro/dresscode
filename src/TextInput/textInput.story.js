@@ -10,6 +10,8 @@ import { CardInput } from '../CardInput';
 import { FileInput } from '../FileInput';
 import { Label } from '../Label';
 import { Icon } from '../Icon';
+import { isValidDate } from '../DatePicker/helpers';
+import { DEFAULT_FORMAT } from '../DatePicker/constants';
 
 import { ItemGroup } from '../helpers/ItemGroup';
 import { ItemRow } from '../helpers/ItemRow';
@@ -23,7 +25,7 @@ storiesOf('Form controls/Input', module)
     const store = new Store({
       default: 'Default text',
       disabled: 'Disabled text',
-      datePickerValue: new Date(),
+      datePickerValue: '',
       monthPickerValue: new Date(),
       prefix: '',
       success: '',
@@ -31,6 +33,7 @@ storiesOf('Form controls/Input', module)
       masterCard: '5234567891234567',
       visa: '4234567891234567',
       empty: '',
+      hasError: false,
       from: new Date(),
       to: new Date(),
     });
@@ -53,17 +56,15 @@ storiesOf('Form controls/Input', module)
       });
     }
 
-    function handleDatePickerChange(datePickerValue) {
+    function handleDatePickerChange(event) {
+      const { value } = event.target;
+      const hasError = !isValidDate(value, DEFAULT_FORMAT);
       store.set({
-        datePickerValue,
+        datePickerValue: value,
+        hasError,
       });
     }
 
-    function handleDateInputChange(datePickerValue) {
-      store.set({
-        datePickerValue,
-      });
-    }
 
     function handleDateRangePickerChange(date) {
       store.set({
@@ -161,8 +162,8 @@ storiesOf('Form controls/Input', module)
                     Date picker
                     <DateInput
                       value={state.datePickerValue}
-                      onDatePickerChange={handleDatePickerChange}
-                      onDateInputChange={handleDateInputChange}
+                      onChange={handleDatePickerChange}
+                      hasError={state.hasError}
                     />
                   </Label>
                 </Item>

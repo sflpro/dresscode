@@ -11,10 +11,15 @@ import { Label } from '../Label';
 import { WithValidation } from '../WithValidation';
 import { WithFormFeedback } from '../WithFormFeedback';
 import { WithErrorFeedback } from '../WithErrorFeedback';
+import { DateInput } from '../DateInput';
+import { isValidFormatType, isValidFormat, isValidDate } from '../DatePicker/helpers';
+import { DEFAULT_FORMAT } from '../DatePicker/constants';
 
 import { ItemGroup } from '../helpers/ItemGroup';
 import { ItemRow } from '../helpers/ItemRow';
 import { Item } from '../helpers/Item';
+
+const format = DEFAULT_FORMAT;
 
 storiesOf('Form', module)
   .add('Examples', () => (
@@ -25,7 +30,11 @@ storiesOf('Form', module)
         <ItemRow>
           <Item>
             <Form
-              initialValues={{ email: 'test@test.com', password: '' }}
+              initialValues={{
+                email: 'test@test.com',
+                password: '',
+                bday: '',
+              }}
               onSubmit={(values, { setSubmitting }) => {
                 setTimeout(() => {
                   alert(JSON.stringify(values, null, 2));
@@ -42,6 +51,17 @@ storiesOf('Form', module)
                     /^(?=.*\d)(?=.*[^a-zA-Z0-9])(?!.*\\s).{6,20}$/,
                     'Must Contain ...',
                   ),
+                bday: Yup.string()
+                  .required('Required')
+                  .test('format', 'Format type error', () => (
+                    isValidFormatType(format)
+                  ))
+                  .test('validateFormat', 'Invalid format', value => (
+                    value ? isValidFormat(value, format) : true
+                  ))
+                  .test('validateDate', 'Invalid date', value => (
+                    value ? isValidDate(value, format) : true
+                  )),
               })}
               preventAction
             >
@@ -77,6 +97,24 @@ storiesOf('Form', module)
               >
                 {({ error, touched }) => (
                   error && touched ? (
+                    <Error>
+                      {error}
+                    </Error>
+                  ) : null)}
+              </WithErrorFeedback>
+              <Label>
+                Birthday
+                <WithValidation
+                  component={DateInput}
+                  name='bday'
+                  disabledWhileSubmitting
+                />
+              </Label>
+              <WithErrorFeedback
+                name='bday'
+              >
+                {({ error }) => (
+                  error ? (
                     <Error>
                       {error}
                     </Error>
