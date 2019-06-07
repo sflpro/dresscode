@@ -3,9 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 import styles from './icon.css';
-import icons from './svgSprite.svg';
-
-let alreadySet = false;
+import './svgSprite.svg';
 
 export function Icon({
   name,
@@ -20,32 +18,21 @@ export function Icon({
     [className]: true,
   });
 
-  let svgIcons = '';
-
-  if (!alreadySet) {
-    alreadySet = true;
-
-    svgIcons = <span style={{ display: 'none' }} dangerouslySetInnerHTML={{ __html: icons }} />;
-  }
-
   return (
-    <>
-      {svgIcons}
-      <span
-        className={iconWrapperClasses}
-        style={{
-          fontSize: `${size}px`,
-          color,
-          ...style,
-        }}
-        role='presentation'
-        {...props}
-      >
-        <svg className={styles.icon}>
-          <use xlinkHref={`#${name}`} />
-        </svg>
-      </span>
-    </>
+    <span
+      className={iconWrapperClasses}
+      style={{
+        fontSize: `${size}px`,
+        color,
+        ...style,
+      }}
+      role='presentation'
+      {...props}
+    >
+      <svg className={styles.icon}>
+        <use xlinkHref={`#${name}`} />
+      </svg>
+    </span>
   );
 }
 
