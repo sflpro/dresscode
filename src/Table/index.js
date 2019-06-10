@@ -21,19 +21,14 @@ export class Table extends React.Component {
   constructor(props) {
     super(props);
 
-    const { children } = this.props;
+    const { children, gutters: { column: columnGap } } = this.props;
 
-    this.gutters = {
-      row: 8,
-      column: 16,
-    };
-
-    const tableHead = children.find(child => child.type.displayName === 'Head');
+    const tableHead = children.find(child => child.type.name === 'Head');
     const tableRow = tableHead.props.children;
 
     const headColumns = tableRow.props.children.map(child => ({
       ...child.props,
-      width: (child.props.width || child.props.minWidth) + 2 * this.gutters.column,
+      width: (child.props.width || child.props.minWidth) + 2 * columnGap,
     }));
 
     this.state = {
@@ -55,15 +50,16 @@ export class Table extends React.Component {
 
   handleResize = () => {
     const { columns } = this.state;
+    const { gutters: { row: rowGap } } = this.props;
     const updatedColumns = resizeTable({
-      width: this.tableHeadRef.current.getBoundingClientRect().width - 2 * this.gutters.row,
+      width: this.tableHeadRef.current.getBoundingClientRect().width - 2 * rowGap,
       columns,
     });
 
     this.setState({
       columns: updatedColumns,
     });
-  }
+  };
 
   render() {
     const {
@@ -71,6 +67,7 @@ export class Table extends React.Component {
       onTableSort,
       className,
       children,
+      gutters,
       ...props
     } = this.props;
     const { columns } = this.state;
@@ -94,7 +91,7 @@ export class Table extends React.Component {
         <TableContext.Provider
           value={{
             columns,
-            gutters: this.gutters,
+            gutters,
             sortOptions,
             onTableSort,
           }}
@@ -111,6 +108,11 @@ Table.propTypes = {
   children: PropTypes.any.isRequired,
   /** Object, table sorting direction and the column id which should be displayed as sorted */
   sortOptions: PropTypes.object,
+  /** Object, table gutters row and column */
+  gutters: PropTypes.shape({
+    row: PropTypes.number.isRequired,
+    column: PropTypes.number.isRequired,
+  }),
   /** Function, will be called when clicked on head sortable columns */
   onTableSort: PropTypes.func,
   /** String, className that will be added to table div */
@@ -123,6 +125,10 @@ Table.defaultProps = {
   sortOptions: {
     direction: 'DESC',
     prop: null,
+  },
+  gutters: {
+    row: 8,
+    column: 16,
   },
   onTableSort: undefined,
   className: '',
