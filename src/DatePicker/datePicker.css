@@ -1,4 +1,5 @@
 .datePicker {
+  font-family: inherit;
   border: 1px solid var(--date-picker-border-color);
   border-radius: var(--date-picker-border-radius);
   box-shadow: var(--box-shadow-100);
@@ -54,6 +55,11 @@
   width: 48px;
   margin: 0 1px;
   display: inline-block;
+  text-align: center;
+}
+
+abbr {
+  text-decoration: none;
 }
 
 .dayPickerDay {
@@ -65,6 +71,7 @@
   border-radius: 4px;
   margin: 1px;
   box-sizing: border-box;
+  padding: 12px 0;
 }
 
 .dayPickerDayOutside {
