@@ -131,7 +131,7 @@ Autocomplete.propTypes = {
   nothingFoundElement: PropTypes.any,
   /** Number, number of chars, after which options will be suggested */
   minCharsToSuggest: PropTypes.number,
-  /** Boolean, whether  */
+  /** Boolean, whether must show loading icon */
   loading: PropTypes.bool,
   /** String, classname that will be added to wrapper div */
   className: PropTypes.string,
