@@ -55,9 +55,7 @@ export const checkToAddColumns = ({ visibleColumnsWidth, width, columns }) => {
   let updatedcolumns = columns;
   while (columnsWidth <= width && hiddenColumns.length !== 0) {
     columnsWidth += hiddenColumns.shift().width;
-    if (columnsWidth <= width && hiddenColumns.length === 0) {
-      updatedcolumns = addColumn({ columns: updatedcolumns });
-    } else if (columnsWidth <= width) {
+    if (columnsWidth <= width) {
       updatedcolumns = addColumn({ columns: updatedcolumns });
     }
   }
