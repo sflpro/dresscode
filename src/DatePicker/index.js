@@ -11,7 +11,6 @@ import { DatePickerNavbar } from '../DatePickerNavbar';
 import { MonthPicker } from '../MonthPicker';
 import { YearPicker } from '../YearPicker';
 
-import '!style-loader!css-loader!react-day-picker/lib/style.css';
 import styles from './datePicker.css';
 
 export class DatePicker extends React.Component {
