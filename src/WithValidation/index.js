@@ -6,6 +6,16 @@ import { FormContext } from '../Form';
 export class WithValidation extends React.Component {
   static contextType = FormContext;
 
+  handleFieldChange = (args) => {
+    const {
+      handleChange,
+      handleBlur,
+    } = this.context;
+
+    handleChange({ ...args });
+    handleBlur({ ...args });
+  };
+
   render() {
     const {
       name,
@@ -15,7 +25,6 @@ export class WithValidation extends React.Component {
     } = this.props;
 
     const {
-      handleChange,
       handleBlur,
       values,
       errors,
@@ -26,7 +35,7 @@ export class WithValidation extends React.Component {
     return (
       <Component
         name={name}
-        onChange={handleChange}
+        onChange={this.handleFieldChange}
         onBlur={handleBlur}
         value={values[name]}
         disabled={disabledWhileSubmitting ? isSubmitting : null}
