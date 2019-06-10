@@ -75,7 +75,6 @@
 .tableColumn {
   @mixin font-scale-7;
   color: var(--table-column-color);
-  flex: 1;
   height: 48px;
   display: flex;
   align-items: center;

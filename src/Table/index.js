@@ -28,6 +28,7 @@ export class Table extends React.Component {
 
     const headColumns = tableRow.props.children.map(child => ({
       ...child.props,
+      hasDefaultWidth: !!child.props.width,
       width: (child.props.width || child.props.minWidth) + 2 * columnGap,
     }));
 
