@@ -20,8 +20,9 @@ module.exports = {
           'postcss-loader',
         ],
       },
+      { test: /\.icon\.svg$/, loader: 'inline-loader' },
       {
-        test: /\.(png|jpg|gif|woff|woff2|eot|ttf|otf|txt)$/,
+        test: /((^(?!.*\.icon\.svg).*svg.*$)|(\.(png|jpg|gif|woff|woff2|eot|ttf|otf|txt)$))/,
         use: [{
           loader: 'file-loader',
           options: {
@@ -30,7 +31,6 @@ module.exports = {
           },
         }],
       },
-      { test: /\.svg$/i, loader: 'inline-loader' }
     ],
   },
 };

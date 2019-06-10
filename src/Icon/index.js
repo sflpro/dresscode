@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 import styles from './icon.css';
-import './svgSprite.svg';
+
+import './svgSprite.icon.svg';
 
 export function Icon({
   name,

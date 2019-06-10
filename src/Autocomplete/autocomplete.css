@@ -6,7 +6,7 @@
 .list {
     background-color: var(--neutral-white);
     position: absolute;
-    z-index: 1;
+    z-index: 3;
     width: 100%;
 }
 
@@ -14,4 +14,17 @@
     &:hover {
         background-color: var(--neutral-75);
     }
+}
+
+.input {
+    z-index: 2;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
 }

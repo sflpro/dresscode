@@ -11,11 +11,12 @@ import styles from './autocomplete.css';
 export function Autocomplete({
   className,
   style,
-  options,
-  loading,
-  value,
+  getOptions,
+  loadingIcon,
+  value: propsValue,
   nothingFoundElement,
   minCharsToSuggest,
+  loading,
   ...props
 }) {
   const wrapperClasses = classNames({
@@ -23,10 +24,17 @@ export function Autocomplete({
     [className]: true,
   });
 
-  const [focused, setFocus] = useState(false);
+  const [focused, toggleFocus] = useState(false);
+  const [options, setOptions] = useState([]);
+  const [value, setValue] = useState(propsValue);
+
+  function filter(option) {
+    return option.toLowerCase().includes(value.toLowerCase());
+  }
 
   function onListClick(optionValue) {
-    setFocus(false);
+    toggleFocus(false);
+    setValue(optionValue);
 
     props.onChange({
       currentTarget: {
@@ -41,11 +49,34 @@ export function Autocomplete({
   }
 
   function onFocus(event) {
-    setFocus(true);
+    toggleFocus(true);
 
     if (props.onBlur) {
       props.onBlur(event);
     }
+  }
+
+  function onChange({ currentTarget: { value: onChangeValue } }) {
+    setValue(onChangeValue);
+
+    if (onChangeValue.length < minCharsToSuggest) {
+      if (options.length > 0) {
+        setOptions([]);
+      }
+      return;
+    }
+
+    const result = getOptions(onChangeValue);
+
+    if (Array.isArray(result)) {
+      setOptions(result.filter(filter));
+    } else {
+      result.then(promiseResult => setOptions(promiseResult.filter(filter)));
+    }
+  }
+
+  function handleOverlayClick() {
+    toggleFocus(false);
   }
 
   return (
@@ -57,14 +88,17 @@ export function Autocomplete({
         {...props}
         value={value}
         onFocus={onFocus}
+        onChange={onChange}
         autoComplete='off'
+        className={styles.input}
+        icon={loadingIcon}
       />
-      {(focused && value.length >= minCharsToSuggest) && (
-        <List
-          className={styles.list}
-        >
-          {loading || (
-            options.length > 0 ? options.map(option => (
+      {(focused && value.length >= minCharsToSuggest && !loading) && (
+        <>
+          <List
+            className={styles.list}
+          >
+            {options.length > 0 ? options.map(option => (
               <ListItem
                 onClick={() => onListClick(option)}
                 className={styles.listItem}
@@ -73,17 +107,22 @@ export function Autocomplete({
               >
                 {option}
               </ListItem>
-            )) : nothingFoundElement
-          )}
-        </List>
+            )) : nothingFoundElement}
+          </List>
+          <div
+            onClick={handleOverlayClick}
+            className={styles.overlay}
+            role='presentation'
+          />
+        </>
       )}
     </div>
   );
 }
 
 Autocomplete.propTypes = {
-  /** Array, options that will be suggested */
-  options: PropTypes.array.isRequired,
+  /** Function, will return options array or promise that will resolve to options array */
+  getOptions: PropTypes.func.isRequired,
   /** String, value of input */
   value: PropTypes.string.isRequired,
   /** Function, called when input value is changed */
@@ -92,12 +131,14 @@ Autocomplete.propTypes = {
   nothingFoundElement: PropTypes.any,
   /** Number, number of chars, after which options will be suggested */
   minCharsToSuggest: PropTypes.number,
+  /** Boolean, whether  */
+  loading: PropTypes.bool,
   /** String, classname that will be added to wrapper div */
   className: PropTypes.string,
   /** Object, style that will be added to wrapper div */
   style: PropTypes.object,
   /** JSX or component, to show loading instead of options */
-  loading: PropTypes.any,
+  loadingIcon: PropTypes.any,
   /** Function, called when input is blured */
   onBlur: PropTypes.func,
   /** Function, called when input is focused */
@@ -111,7 +152,8 @@ Autocomplete.defaultProps = {
   minCharsToSuggest: 3,
   className: undefined,
   style: undefined,
-  loading: null,
+  loadingIcon: null,
+  loading: false,
   onBlur: undefined,
   onFocus: undefined,
   name: '',
