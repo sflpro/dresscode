@@ -181,7 +181,7 @@ export class Column extends React.Component {
   render() {
     const {
       id,
-      width,
+      width: propsWidth,
       visible: propsVisible,
       priority: propsPriority,
       minWidth: propsMinWidth,
@@ -192,6 +192,7 @@ export class Column extends React.Component {
       ...props
     } = this.props;
 
+    let width = propsWidth;
     let visible = propsVisible;
     let priority = propsPriority;
     let minWidth = propsMinWidth;
@@ -210,10 +211,12 @@ export class Column extends React.Component {
         visible: headColumnVisible,
         priority: headColumnPriority,
         minWidth: headColumnMinWidth,
+        width: headColumnWidth,
       } = headColumn;
       visible = headColumnVisible;
       priority = headColumnPriority;
       minWidth = headColumnMinWidth;
+      width = headColumnWidth;
     }
 
     const visibleColumns = columns.filter(column => column.visible)
