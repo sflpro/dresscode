@@ -6,7 +6,6 @@
 
 ```sh
 // with npm
-
 // Associating a scope with a registry
 npm config set @sfl:registry https://npm.sflpro.com/repository/npm-default-registry/
 

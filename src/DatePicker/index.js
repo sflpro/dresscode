@@ -11,7 +11,6 @@ import { DatePickerNavbar } from '../DatePickerNavbar';
 import { MonthPicker } from '../MonthPicker';
 import { YearPicker } from '../YearPicker';
 
-import '!style-loader!css-loader!react-day-picker/lib/style.css';
 import styles from './datePicker.css';
 
 export class DatePicker extends React.Component {
@@ -198,7 +197,7 @@ export class DatePicker extends React.Component {
                 onNextClick={() => this.handleNextYearClick(this.year)}
               />
             )}
-            onClick={month => this.handleMonthClick(month, selectedDay)}
+            onClick={this.handleMonthClick}
             months={monthsShort}
             style={style}
           />
@@ -231,7 +230,7 @@ export class DatePicker extends React.Component {
 
 DatePicker.propTypes = {
   /** Instance of Date, value of date picker */
-  value: PropTypes.instanceOf(Date),
+  value: PropTypes.instanceOf(Date).isRequired,
   /** String, language of date picker */
   locale: PropTypes.string,
   /** Object, utils to format date value for given language */
@@ -265,5 +264,4 @@ DatePicker.defaultProps = {
   onChange: null,
   className: '',
   style: undefined,
-  value: undefined,
 };
