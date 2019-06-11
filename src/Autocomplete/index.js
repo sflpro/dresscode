@@ -16,6 +16,7 @@ export function Autocomplete({
   value: propsValue,
   minCharsToSuggest,
   nothingFoundText,
+  showLoadingAfter,
   ...props
 }) {
   const wrapperClasses = classNames({
@@ -57,6 +58,7 @@ export function Autocomplete({
   }
 
   function onChange({ currentTarget: { value: onChangeValue } }) {
+    let promiseIsResolved = false;
     setValue(onChangeValue);
 
     if (onChangeValue.length < minCharsToSuggest) {
@@ -66,14 +68,22 @@ export function Autocomplete({
       return;
     }
 
+    setTimeout(() => {
+      if (!promiseIsResolved) {
+        toggleLoading(true);
+      }
+    }, showLoadingAfter);
     const result = getOptions(onChangeValue);
 
     if (Array.isArray(result)) {
       setOptions(result.filter(filter));
     } else {
-      toggleLoading(true);
-
       result.then((promiseResult) => {
+        if (loading) {
+          toggleLoading(true);
+        }
+
+        promiseIsResolved = true;
         setOptions(promiseResult.filter(filter));
         toggleLoading(false);
       });
@@ -150,6 +160,8 @@ Autocomplete.propTypes = {
   name: PropTypes.string,
   /** String, will be shown if there is no option */
   nothingFoundText: PropTypes.string,
+  /** Number, after what time after sending request loading must be shown if promise is not resolved */
+  showLoadingAfter: PropTypes.number,
 };
 
 Autocomplete.defaultProps = {
@@ -160,4 +172,5 @@ Autocomplete.defaultProps = {
   onBlur: undefined,
   onFocus: undefined,
   name: '',
+  showLoadingAfter: 100,
 };
