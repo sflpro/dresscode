@@ -41,8 +41,6 @@ storiesOf('Form controls/Input', module)
       hasError: false,
       from: new Date(),
       to: new Date(),
-      autocomplete1Loading: false,
-      autocomplete2Loading: false,
     });
 
     function handleInputChange({ target }) {
@@ -88,21 +86,9 @@ storiesOf('Form controls/Input', module)
     }
 
     function getOptionsFromGithub(value) {
-      store.set({
-        ...store.state,
-        autocomplete2Loading: true,
-      });
-
       return fetch(`https://api.github.com/search/users?q=${value}+in:login&per_page=5`)
         .then(response => response.json())
-        .then((data) => {
-          store.set({
-            ...store.state,
-            autocomplete2Loading: false,
-          });
-
-          return data.items.map(user => user.login);
-        })
+        .then(data => data.items.map(user => user.login))
         .catch(() => []);
     }
 
@@ -277,9 +263,6 @@ storiesOf('Form controls/Input', module)
               <ItemRow>
                 <Item>
                   <Autocomplete
-                    loadingIcon={<Icon name='tracker' color={state.autocomplete1Loading ? '' : 'transparent'} />}
-                    nothingFoundElement={<div style={{ padding: '16px' }}>Nothing found</div>}
-                    loading={state.autocomplete1Loading}
                     onChange={handleInputChange}
                     value={state.autocomplete}
                     placeholder='Autocomplete'
@@ -300,9 +283,6 @@ storiesOf('Form controls/Input', module)
                 <Item>
                   <Item>
                     <Autocomplete
-                      loadingIcon={<Icon name='tracker' color={state.autocomplete2Loading ? '' : 'transparent'} />}
-                      nothingFoundElement={<div style={{ padding: '16px' }}>Nothing found</div>}
-                      loading={state.autocomplete2Loading}
                       getOptions={getOptionsFromGithub}
                       onChange={handleInputChange}
                       value={state.autocomplete2}

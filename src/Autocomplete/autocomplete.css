@@ -28,3 +28,10 @@
     height: 100%;
     z-index: 1;
 }
+
+.emptyState {
+    @mixin font-scale-7;
+    padding: 16px;
+    display: block;
+    color: var(--neutral-500);
+}
