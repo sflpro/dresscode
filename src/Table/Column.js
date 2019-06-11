@@ -181,7 +181,6 @@ export class Column extends React.Component {
   render() {
     const {
       id,
-      width: propsWidth,
       visible: propsVisible,
       priority: propsPriority,
       minWidth: propsMinWidth,
@@ -192,7 +191,8 @@ export class Column extends React.Component {
       ...props
     } = this.props;
 
-    let width = propsWidth;
+    let width;
+    let hasDefaultWidth;
     let visible = propsVisible;
     let priority = propsPriority;
     let minWidth = propsMinWidth;
@@ -212,11 +212,13 @@ export class Column extends React.Component {
         priority: headColumnPriority,
         minWidth: headColumnMinWidth,
         width: headColumnWidth,
+        hasDefaultWidth: headHasDefaultWidth,
       } = headColumn;
       visible = headColumnVisible;
       priority = headColumnPriority;
       minWidth = headColumnMinWidth;
       width = headColumnWidth;
+      hasDefaultWidth = headHasDefaultWidth;
     }
 
     const visibleColumns = columns.filter(column => column.visible)
@@ -249,12 +251,14 @@ export class Column extends React.Component {
       [styles.sortReverseIcon]: headColumn.sortable && sortOptions.direction === SORTING_DIRECTIONS.DESC,
     });
 
-    if (width) {
-      tableColumnStyle.width = width;
-    } else if (minWidth) {
-      tableColumnStyle.minWidth = minWidth;
+    if (hasDefaultWidth) {
+      tableColumnStyle.width = width - 2 * columnGutter;
     } else {
       tableColumnStyle.flex = 1;
+    }
+
+    if (minWidth) {
+      tableColumnStyle.minWidth = minWidth;
     }
 
     if (!visible && !head) {

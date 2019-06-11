@@ -3,27 +3,29 @@ export const SORTING_DIRECTIONS = {
   DESC: 'desc',
 };
 
-export const COLUMNS = [{
-  id: 'firstName',
-  children: 'First Name',
-  priority: 1,
-  minWidth: 150,
-  sortable: true,
-},
-{
-  id: 'lastName',
-  children: 'Last Name',
-  priority: 3,
-  minWidth: 100,
-  sortable: true,
-},
-{
-  id: 'age',
-  children: 'Age',
-  priority: 2,
-  minWidth: 200,
-  sortable: true,
-}];
+export const COLUMNS = [
+  {
+    id: 'firstName',
+    children: 'First Name',
+    priority: 1,
+    width: 150,
+    sortable: true,
+  },
+  {
+    id: 'lastName',
+    children: 'Last Name',
+    priority: 3,
+    width: 80,
+    sortable: true,
+  },
+  {
+    id: 'age',
+    children: 'Age',
+    priority: 2,
+    minWidth: 30,
+    sortable: true,
+  },
+];
 
 export const ROWS = [
   {
