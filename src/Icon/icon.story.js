@@ -41,6 +41,13 @@ storiesOf('Icons', module)
       'message',
       'bell',
       'pencil',
+      'history',
+      'coins',
+      'loan',
+      'cards',
+      'wallet',
+      'dashboard',
+      'plus',
     ];
 
     return (
