@@ -125,7 +125,7 @@ export class DateInput extends React.Component {
           trigger={trigger}
           content={(
             <DatePicker
-              value={dateValue}
+              value={dateValue || new Date()}
               onChange={this.handleDatePickerChange}
               locale={locale}
               view={view}
