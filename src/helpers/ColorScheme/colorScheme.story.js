@@ -111,7 +111,7 @@ storiesOf('Color Scheme', module)
               <Item>
                 <ColorScheme
                   text='Neutral 500'
-                  name='#7F7F7F'
+                  name='#999999'
                   bgClassName='neutral-500'
                 />
               </Item>
