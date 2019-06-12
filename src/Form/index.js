@@ -39,7 +39,7 @@ export function Form({
     >
       {(formikProps) => {
         const handleFormSubmit = (event) => {
-          if (!formikProps.isValid || preventAction) {
+          if ((validationSchema && !formikProps.isValid) || preventAction) {
             return formikProps.handleSubmit(event);
           }
           return formikProps.handleSubmit();
