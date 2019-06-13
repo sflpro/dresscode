@@ -1,7 +1,7 @@
 .tabContent {
-  padding: 24px 16px;
+  padding: var(--tab-content-padding);
 
   @media (--small) {
-    padding: 24px;
+    padding: var(--tab-content-small-padding);
   }
 }

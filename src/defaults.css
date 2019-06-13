@@ -263,4 +263,10 @@
   --table-border-radius: 8px;
 
   --file-input-color: var(--primary-color);
+
+  --tab-padding: 18px 16px;
+  --tab-small-padding: 20px 24px;
+  --tab-active-border-width: 2px;
+  --tab-content-padding: 24px 16px;
+  --tab-content-small-padding: 24px;
 }
