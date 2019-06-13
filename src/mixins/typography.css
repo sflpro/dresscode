@@ -35,7 +35,6 @@
 
 :global(.font-base) {
   font-size: var(--font-size);
-  font-family: var(--font-family);
 
   @media (--small) {
     font-size: var(--font-size-large);

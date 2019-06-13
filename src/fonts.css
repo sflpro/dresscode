@@ -21,7 +21,3 @@
   url("../assets/fonts/SegoeUI/SegoeUI-Bold.eot") format('embedded-opentype');
   /* Legacy iOS */
 }
-
-body {
-  font-family: var(--font-face-primary);
-}
