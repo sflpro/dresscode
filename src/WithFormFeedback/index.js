@@ -21,6 +21,7 @@ export class WithFormFeedback extends React.Component {
       handleSubmit,
       handleReset,
       status,
+      values,
     } = this.context;
 
     return (
@@ -34,6 +35,7 @@ export class WithFormFeedback extends React.Component {
         handleSubmit,
         handleReset,
         status,
+        values,
       })
     );
   }

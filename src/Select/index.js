@@ -57,6 +57,7 @@ export class Select extends React.Component {
       value: propValue,
       button,
       multiple,
+      nothingFoundText,
     } = this.props;
     const { search } = this.state;
 
@@ -87,7 +88,7 @@ export class Select extends React.Component {
           </ListItem>
         )) : (
           <span className={styles.emptyState}>
-            Ոչինչ չի գտնվել
+            {nothingFoundText}
           </span>
         )}
       </List>
@@ -246,6 +247,7 @@ export class Select extends React.Component {
       children,
       button,
       buttonProps,
+      nothingFoundText,
       ...props
     } = this.props;
 
@@ -368,9 +370,12 @@ Select.propTypes = {
   button: PropTypes.any,
   /** Element properties */
   buttonProps: PropTypes.object,
+  /** String, text that will be shown if there is no option */
+  nothingFoundText: PropTypes.string,
 };
 
 Select.defaultProps = {
+  nothingFoundText: 'Nothing found',
   value: '',
   onChange: undefined,
   onClick: undefined,

@@ -39,7 +39,7 @@ export function Form({
     >
       {(formikProps) => {
         const handleFormSubmit = (event) => {
-          if (!formikProps.isValid || preventAction) {
+          if ((validationSchema && !formikProps.isValid) || preventAction) {
             return formikProps.handleSubmit(event);
           }
           return formikProps.handleSubmit();
@@ -83,9 +83,9 @@ Form.propTypes = {
   onReset: PropTypes.func,
   /** Any, will be passed to Formik, for custom validation */
   validate: PropTypes.any,
-  /** Function, will be passed to Formik, use to run validations on blur events. */
+  /** Boolean, will be passed to Formik, use to run validations on blur events. */
   validateOnBlur: PropTypes.bool,
-  /** Function, will be passed to Formik, use to run validations on change events. */
+  /** Boolean, will be passed to Formik, use to run validations on change events. */
   validateOnChange: PropTypes.bool,
   /** Function or Yup Scema, A Yup schema or a function that returns a Yup schema. */
   validationSchema: PropTypes.any,

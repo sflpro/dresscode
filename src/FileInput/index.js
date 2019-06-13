@@ -31,8 +31,11 @@ export function FileInput({
 }
 
 FileInput.propTypes = {
+  /** Any, what will be shown as file input */
   children: PropTypes.any.isRequired,
+  /** String, classname that will be added to select */
   className: PropTypes.string,
+  /** Object, style that will be added to wrapper div */
   style: PropTypes.object,
 };
 

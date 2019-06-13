@@ -5,6 +5,7 @@ import { State, Store } from '@sambego/storybook-state';
 import { TextInput } from '.';
 
 import { DateRangeInput } from '../DateRangeInput';
+import { Autocomplete } from '../Autocomplete';
 import { DateInput } from '../DateInput';
 import { CardInput } from '../CardInput';
 import { FileInput } from '../FileInput';
@@ -27,11 +28,15 @@ storiesOf('Form controls/Input', module)
       disabled: 'Disabled text',
       datePickerValue: '',
       monthPickerValue: new Date(),
+      basic: '',
       prefix: '',
       success: '',
       notDetected: '1234567891234567',
       masterCard: '5234567891234567',
       visa: '4234567891234567',
+      autocomplete: '',
+      autocomplete2: '',
+      autocomplete3: '',
       empty: '',
       hasError: false,
       from: new Date(),
@@ -78,6 +83,13 @@ storiesOf('Form controls/Input', module)
         ...store.state,
         ...date,
       });
+    }
+
+    function getOptionsFromGithub(value) {
+      return fetch(`https://api.github.com/search/users?q=${value}+in:login&per_page=5`)
+        .then(response => response.json())
+        .then(data => data.items.map(user => user.login))
+        .catch(() => []);
     }
 
     return (
@@ -242,6 +254,43 @@ storiesOf('Form controls/Input', module)
                       hasError
                     />
                   </Label>
+                </Item>
+              </ItemRow>
+            </ItemGroup>
+            <ItemGroup
+              title='Autocomplete'
+            >
+              <ItemRow>
+                <Item>
+                  <Autocomplete
+                    onChange={handleInputChange}
+                    value={state.autocomplete}
+                    placeholder='Autocomplete'
+                    name='autocomplete'
+                    minCharsToSuggest={2}
+                    getOptions={() => [
+                      'abcd 1',
+                      'adbc 2',
+                      'acdb 3',
+                      'abdc 4',
+                      'acbd 5',
+                      'dabc 6',
+                    ]}
+                  />
+                </Item>
+              </ItemRow>
+              <ItemRow>
+                <Item>
+                  <Item>
+                    <Autocomplete
+                      getOptions={getOptionsFromGithub}
+                      onChange={handleInputChange}
+                      value={state.autocomplete2}
+                      placeholder='Autocomplete 2'
+                      name='autocomplete2'
+                      minCharsToSuggest={2}
+                    />
+                  </Item>
                 </Item>
               </ItemRow>
             </ItemGroup>
