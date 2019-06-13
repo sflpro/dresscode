@@ -22,10 +22,14 @@ export function Tab({
           [styles.disabled]: disabled,
         });
 
+        const onClick = (disabled || typeof onChange !== 'function')
+          ? undefined
+          : () => onChange(props[identifier]);
+
         return (
           <div
             className={tabClassNames}
-            onClick={disabled ? undefined : (() => onChange(props[identifier]))}
+            onClick={onClick}
             role='presentation'
             {...props}
           >
