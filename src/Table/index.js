@@ -23,7 +23,7 @@ export class Table extends React.Component {
 
     const { children, gutters: { column: columnGap } } = this.props;
 
-    const tableHead = children.find(child => child.type.name === 'Head');
+    const tableHead = children.find(child => child.type === Head);
     const tableRow = tableHead.props.children;
 
     const headColumns = tableRow.props.children.map(child => ({
