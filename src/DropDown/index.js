@@ -29,7 +29,7 @@ export class DropDown extends React.Component {
 
     const childElements = React.Children.map(children, (option) => {
       const { type: Component, props: optionProps } = option;
-      if (Component.name === 'DropDownList') {
+      if (Component === DropDownList) {
         return (open && (
           <Component {...optionProps}>
             {optionProps.children}
