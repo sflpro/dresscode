@@ -17,3 +17,8 @@
   display: flex;
   align-items: center;
 }
+
+[id$=".icon"],
+[id*=".icon "] {
+  display: none;
+}
