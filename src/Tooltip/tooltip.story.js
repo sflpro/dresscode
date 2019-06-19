@@ -11,6 +11,7 @@ import { Item } from '../helpers/Item';
 import { ImportInstruction } from '../helpers/ImportInstruction';
 
 import { InfoStoryConfig } from '../configs';
+import styles from './story.css';
 
 const longDescription = 'standard dummy text ever since the 1500s, when an unknown printer took a galley of type and'
   + 'scrambled it to make a type specimen book. It has survived not only five centuries, but also the l';
@@ -64,6 +65,30 @@ storiesOf('Tooltip', module)
             <Tooltip
               title='Position: top'
               description={longDescription}
+            >
+              <Icon
+                name='tracker'
+                style={trackerStyle}
+              />
+            </Tooltip>
+
+            <Tooltip
+              title='Position: left'
+              description={longDescription}
+              position='left'
+              popoverClassName={styles.centralizedPopover}
+            >
+              <Icon
+                name='tracker'
+                style={trackerStyle}
+              />
+            </Tooltip>
+
+            <Tooltip
+              title='Position: right'
+              description={longDescription}
+              position='right'
+              popoverClassName={styles.centralizedPopover}
             >
               <Icon
                 name='tracker'

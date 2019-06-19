@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-import { Popover } from '../Popover';
+import { Popover, POPOVER_POSITIONS } from '../Popover';
 
 import styles from './tooltip.css';
 
@@ -110,7 +110,7 @@ Tooltip.propTypes = {
   /** String, which action triggers tooltip to be shown */
   trigger: PropTypes.string,
   /** String, where tooltip must be shown */
-  position: PropTypes.oneOf(['top', 'bottom']),
+  position: PropTypes.oneOf(Object.values(POPOVER_POSITIONS)),
   /** Number, distance between arrow(popover) and target */
   gap: PropTypes.number,
   /** String, className that will be added to wrapper div */
@@ -130,7 +130,7 @@ Tooltip.defaultProps = {
   follow: false,
   arrow: true,
   trigger: 'hover',
-  position: 'top',
+  position: POPOVER_POSITIONS.TOP,
   gap: 0,
   className: '',
   popoverClassName: '',

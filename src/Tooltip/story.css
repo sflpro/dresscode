@@ -1,0 +1,6 @@
+.centralizedPopover {
+    justify-content: center;
+    & > div:first-child {
+        width: 40px;
+      }
+}
