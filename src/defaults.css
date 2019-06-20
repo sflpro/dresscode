@@ -45,9 +45,10 @@
 
   --input-margin-top: 8px;
 
-  --font-weight-light: light;
-  --font-weight-normal: normal;
-  --font-weight-bold: bold;
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-semi-bold: 600;
+  --font-weight-bold: 700;
   --base-font-weight: var(--font-weight-normal);
 
   --checkbox-background-color: var(--neutral-white);
@@ -193,6 +194,7 @@
   --button-neutral-text-color: var(--text-primary-color);
   --button-neutral-text-color-hover: var(--text-secondary-color);
 
+  --date-picker-background-color: var(--neutral-white);
   --date-picker-border-color: var(--default-color);
   --date-picker-weekday-color: var(--neutral-500);
   --date-picker-outside-day-color: var(--neutral-200);
