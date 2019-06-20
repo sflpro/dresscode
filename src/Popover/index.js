@@ -9,6 +9,13 @@ export const POPOVER_TRIGGER_OPTIONS = {
   HOVER: 'hover',
 };
 
+export const POPOVER_POSITIONS = {
+  TOP: 'top',
+  BOTTOM: 'bottom',
+  LEFT: 'left',
+  RIGHT: 'right',
+};
+
 export class Popover extends React.Component {
   constructor(props) {
     super(props);
@@ -110,29 +117,64 @@ export class Popover extends React.Component {
     contentRelative = false,
   ) => {
     let arrowWidth = 0;
+    let arrowGap = 0;
     let positionX = 'left';
 
     if (this.arrowRef.current) {
-      arrowWidth = this.arrowRef.current.offsetWidth;
+      // Arrow was rotated 90 deg in left and right cases, so we need to use arrow offsetHeight for set arrowWidth
+      const { offsetWidth, offsetHeight } = this.arrowRef.current;
+      arrowWidth = offsetHeight;
+      arrowGap = (offsetWidth - offsetHeight) / 2;
     }
 
     const { width, coordinates: { x: pLeft } } = targetElementPosition;
     const { popoverWidth } = popoverElementPosition;
-
+    const { follow, gap, position } = this.props;
+    let arrowX;
     let popoverX;
-    if (contentRelative) {
-      popoverX = pLeft;
+    let arrowClasses = '';
+
+    if (position === POPOVER_POSITIONS.RIGHT) {
+      arrowX = pLeft + width + gap + 1;
+      popoverX = arrowX + arrowWidth + arrowGap;
+      arrowClasses = styles.arrowLeft;
+      if (
+        window.innerWidth - popoverX < popoverWidth
+        && (pLeft - arrowWidth + gap - popoverWidth > 0)
+      ) {
+        arrowX = pLeft - (arrowWidth + gap) - 1;
+        popoverX = arrowX - popoverWidth + arrowGap;
+
+        if (!follow) {
+          arrowClasses = styles.arrowRight;
+        }
+      }
+    } else if (position === POPOVER_POSITIONS.LEFT) {
+      arrowX = pLeft - (arrowWidth + gap) - 1;
+      popoverX = arrowX - popoverWidth + arrowGap;
+      arrowClasses = styles.arrowLeft;
+
+      if (popoverX < 0) {
+        arrowX = pLeft + width + gap + 1;
+        popoverX = arrowX + arrowWidth + arrowGap;
+      } else if (!follow) {
+        arrowClasses = styles.arrowRight;
+      }
     } else {
-      popoverX = pLeft - ((popoverWidth - width) / 2);
-    }
+      if (contentRelative) {
+        popoverX = pLeft;
+      } else {
+        popoverX = pLeft - ((popoverWidth - width) / 2);
+      }
 
-    const arrowX = pLeft - ((arrowWidth - width) / 2);
+      arrowX = pLeft - ((arrowWidth - width) / 2);
 
-    if (popoverWidth + popoverX > window.innerWidth) {
-      popoverX = 0;
-      positionX = 'right';
+      if (popoverWidth + popoverX > window.innerWidth) {
+        popoverX = 0;
+        positionX = 'right';
+      }
+      popoverX = Math.max(popoverX, 0);
     }
-    popoverX = Math.max(popoverX, 0);
 
     return {
       popoverX: {
@@ -143,10 +185,11 @@ export class Popover extends React.Component {
         position: 'left',
         x: arrowX,
       },
+      arrowClasses,
     };
   };
 
-  computeVerticalPosition = (targetElementPosition, popoverElementPosition) => {
+  computeVerticalPosition = (targetElementPosition, popoverElementPosition, contentRelative = false) => {
     const { follow, gap, position } = this.props;
     let arrowHeight = 0;
 
@@ -161,7 +204,7 @@ export class Popover extends React.Component {
     let popoverY;
     let arrowClasses = '';
 
-    if (position === 'bottom') {
+    if (position === POPOVER_POSITIONS.BOTTOM) {
       arrowY = pTop + height + gap + 1;
       popoverY = arrowY + arrowHeight;
 
@@ -173,10 +216,10 @@ export class Popover extends React.Component {
         popoverY = arrowY - popoverHeight + 1;
 
         if (!follow) {
-          arrowClasses = styles.arrowY;
+          arrowClasses = styles.arrowTop;
         }
       }
-    } else {
+    } else if (position === POPOVER_POSITIONS.TOP) {
       arrowY = pTop - (arrowHeight + gap) - 1;
       popoverY = arrowY - popoverHeight + 1;
 
@@ -186,15 +229,22 @@ export class Popover extends React.Component {
       } else if (!follow) {
         arrowClasses = styles.arrowTop;
       }
+    } else {
+      if (contentRelative) {
+        popoverY = pTop;
+      } else {
+        popoverY = pTop - ((popoverHeight - height) / 2);
+      }
+      arrowY = pTop - ((arrowHeight - height) / 2);
     }
 
     return {
       popoverY: {
-        position: 'top',
+        position: POPOVER_POSITIONS.TOP,
         y: popoverY,
       },
       arrowY: {
-        position: 'top',
+        position: POPOVER_POSITIONS.TOP,
         y: arrowY,
       },
       arrowClasses,
@@ -215,13 +265,14 @@ export class Popover extends React.Component {
     const {
       popoverX,
       arrowX,
+      arrowClasses: horizontalArrowClasses,
     } = this.computeHorizontalPosition(targetElementPosition, popoverElementPosition, contentRelative);
     const {
       popoverY,
       arrowY,
-      arrowClasses,
-    } = this.computeVerticalPosition(targetElementPosition, popoverElementPosition);
-
+      arrowClasses: verticalArrowClasses,
+    } = this.computeVerticalPosition(targetElementPosition, popoverElementPosition, contentRelative);
+    const arrowClasses = horizontalArrowClasses || verticalArrowClasses;
     const popover = {
       x: popoverX,
       y: popoverY,
@@ -389,7 +440,7 @@ Popover.propTypes = {
   /** String or JSX or Element, content of popover */
   content: PropTypes.any.isRequired,
   /** String, position of popover related to target */
-  position: PropTypes.oneOf(['top', 'bottom']),
+  position: PropTypes.oneOf(Object.values(POPOVER_POSITIONS)),
   /** Boolean, whether popover has arrow */
   arrow: PropTypes.bool,
   /** Boolean, whether popover must move with mouse */
@@ -411,7 +462,7 @@ Popover.propTypes = {
 };
 
 Popover.defaultProps = {
-  position: 'bottom',
+  position: POPOVER_POSITIONS.BOTTOM,
   arrow: false,
   follow: false,
   gap: 0,

@@ -41,6 +41,14 @@
   transform: rotate(180deg);
 }
 
+.arrowLeft {
+    transform: rotate(-90deg);
+}
+
+.arrowRight {
+    transform: rotate(90deg);
+}
+
 .target {
   width: 100%;
 }
