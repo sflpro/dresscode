@@ -43,13 +43,20 @@
   --font-size-scale-6: 1rem;
   --font-size-scale-7: 0.8rem;
 
-  --input-margin-top: 8px;
+  --box-shadow-10: 0 2px 4px 0 var(--neutral-1000-opacity-15);
+  --box-shadow-50: 0 4px 8px 0 var(--neutral-1000-opacity-15);
+  --box-shadow-100: 0 8px 16px 0 var(--neutral-1000-opacity-15);
+  --box-shadow-300: 0 16px 24px 0 var(--neutral-1000-opacity-15);
+  --box-shadow-500: 0 48px 56px 0 var(--neutral-1000-opacity-15);
 
   --font-weight-light: 300;
   --font-weight-normal: 400;
   --font-weight-semi-bold: 600;
   --font-weight-bold: 700;
   --base-font-weight: var(--font-weight-normal);
+
+  --input-margin-top: 8px;
+  --input-label-distance: 16px;
 
   --checkbox-background-color: var(--neutral-white);
   --checkbox-border-color: var(--text-disabled-color);
@@ -99,14 +106,8 @@
 
   --list-border-radius: 8px;
   --list-item-min-height: 24px;
-
-  --box-shadow-10: 0 2px 4px 0 var(--neutral-1000-opacity-15);
-  --box-shadow-50: 0 4px 8px 0 var(--neutral-1000-opacity-15);
-  --box-shadow-100: 0 8px 16px 0 var(--neutral-1000-opacity-15);
-  --box-shadow-300: 0 16px 24px 0 var(--neutral-1000-opacity-15);
-  --box-shadow-500: 0 48px 56px 0 var(--neutral-1000-opacity-15);
-
-  --input-label-distance: 16px;
+  --list-background-color: var(--neutral-white);
+  --list-box-shadow: var(--box-shadow-100);
 
   --radio-button-border-color: var(--default-color);
   --radio-button-hover-color: var(--primary-color-light);
@@ -271,4 +272,6 @@
   --tab-active-border-width: 2px;
   --tab-content-padding: 24px 16px;
   --tab-content-small-padding: 24px;
+
+  --popover-content-border-radius: 5px;
 }
