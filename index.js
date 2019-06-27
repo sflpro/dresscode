@@ -34,6 +34,7 @@ export { Tab } from './lib/Tab';
 export { TabContent } from './lib/TabContent';
 export { Table } from './lib/Table';
 export { Tabs } from './lib/Tabs';
+export { TextInputWithPrefix } from './lib/TextInputWithPrefix';
 export { Tag } from './lib/Tag';
 export { Textarea } from './lib/Textarea';
 export { TextInput } from './lib/TextInput';
