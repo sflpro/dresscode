@@ -49,11 +49,8 @@ Button.propTypes = {
   ]),
   /** String, type of button */
   type: PropTypes.string,
-  /** String or function, valid html element or React component that will be used to create this element */
-  as: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.func,
-  ]),
+  /** Any valid element that can be used in JSX, element that will be used to create this component */
+  as: PropTypes.any,
   /** Boolean, indicating whether the element should render as disabled */
   disabled: PropTypes.bool,
   /** Boolean, indicating whether the element should render with primary color */
