@@ -19,7 +19,7 @@
   }
 }
 
-@define-mixin grid-column $size, $offset: 0 {
+@define-mixin grid-column $size: 1, $offset: 0 {
   width: calc(($size + $offset) * 100%);
   padding-left: calc($offset * 100% + var(--grid-column-padding));
   padding-right: var(--grid-column-padding);
