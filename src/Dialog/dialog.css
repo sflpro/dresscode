@@ -14,7 +14,7 @@
   background: var(--dialog-body-background);
   position: relative;
   padding-top: 16px;
-  width: 720px;
+  width: var(--dialog-width);
   display: flex;
   overflow-y: auto;
   border-radius: 8px;

@@ -152,6 +152,7 @@
   --dialog-body-background: var(--neutral-white);
   --dialog-title-color: var(--primary-color);
   --dialog-actions-background: var(--disabled-color);
+  --dialog-width: 720px;
 
   --notification-border-default-color: var(--neutral-100);
   --notification-information-color: var(--primary-color);
