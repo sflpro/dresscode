@@ -260,7 +260,7 @@ DatePicker.defaultProps = {
   localeUtils: null,
   months: MONTHS,
   monthsShort: MONTHS_SHORT,
-  showOutsideDays: false,
+  showOutsideDays: true,
   onChange: null,
   className: '',
   style: undefined,
