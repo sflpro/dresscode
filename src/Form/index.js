@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Formik } from 'formik';
 
@@ -8,7 +8,7 @@ export function Form({
   component,
   render,
   enableReinitialize,
-  isInitialValid,
+  isInitialValid: propIsInitialValid,
   initialStatus,
   initialValues,
   onReset,
@@ -22,6 +22,26 @@ export function Form({
   children,
   ...props
 }) {
+  const [isInitialValidIsSet, setIsInitialValidIsSet] = useState(propIsInitialValid);
+  const [isInitialValid, setIsInitialValid] = useState(propIsInitialValid);
+
+  useEffect(() => {
+    if (validationSchema && props.action && props.method && !propIsInitialValid) {
+      try {
+        validationSchema.validateSync(initialValues);
+        setIsInitialValid(true);
+      } catch (error) {
+        setIsInitialValid(false);
+      }
+    }
+
+    setIsInitialValidIsSet(true);
+  }, []);
+
+  if (!isInitialValidIsSet) {
+    return null;
+  }
+
   return (
     <Formik
       component={component}
@@ -95,6 +115,10 @@ Form.propTypes = {
   preventAction: PropTypes.bool,
   /** String or JSX or Element, content of element */
   children: PropTypes.any,
+  /** String, form action url */
+  action: PropTypes.string,
+  /** String, form action method */
+  method: PropTypes.string,
 };
 
 Form.defaultProps = {
@@ -111,4 +135,6 @@ Form.defaultProps = {
   forwardedRef: undefined,
   preventAction: false,
   children: undefined,
+  action: undefined,
+  method: undefined,
 };
