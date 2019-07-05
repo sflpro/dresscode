@@ -1,36 +1,26 @@
 .dialog {
+  width: calc(100% - var(--dialog-padding-left) - var(--dialog-padding-right));
+  max-height: calc(100% - 32px);
   position: fixed;
   z-index: 11;
-  align-items: center;
-  justify-content: center;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   flex: 0 1 auto;
-  max-height: calc(100% - 48px);
 }
 
 .container {
-  flex-direction: column;
   background: var(--dialog-body-background);
+  border-radius: var(--dialog-border-radius);
+  width: var(--dialog-width);
+  flex-direction: column;
   position: relative;
   padding-top: 16px;
-  width: var(--dialog-width);
   display: flex;
   overflow-y: auto;
-  border-radius: 8px;
   flex: 1 1 auto;
-}
-
-@media (max-width: 720px) {
-  .dialog {
-    width: calc(100% - 16px);
-    max-height: calc(100% - 32px);
-    margin: 0 auto;
-  }
-
-  .container {
-    max-width: 100%;
-  }
+  max-width: 100%;
 }
 
 .header {
@@ -42,6 +32,7 @@
 .title {
   color: var(--dialog-title-color);
   margin: 0;
+  font-weight: normal;
 }
 
 .closeBtn {
@@ -52,9 +43,9 @@
 }
 
 .content {
+  padding: var(--dialog-content-padding);
+  margin: var(--dialog-content-margin);
   flex: 1 1 auto;
-  padding: 0 24px;
-  margin: 24px 0;
   overflow-y: auto;
 }
 
@@ -63,9 +54,9 @@
 }
 
 .actions {
+  background: var(--dialog-actions-background);
   height: 48px;
   padding: 24px;
-  background: var(--dialog-actions-background);
   text-align: right;
   line-height: 48px;
   flex: 0 0 auto;
@@ -76,5 +67,5 @@
 
 .actions button {
   margin: 0 0 0 16px;
-  width: 147px;
+  min-width: 147px;
 }

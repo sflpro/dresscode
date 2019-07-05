@@ -71,6 +71,7 @@ export class Tooltip extends React.Component {
       gap = follow ? 10 : 0,
       popoverClassName,
       children,
+      popoverOpen,
       ...props
     } = this.props;
     const { open } = this.state;
