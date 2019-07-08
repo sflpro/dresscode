@@ -11,7 +11,7 @@ storiesOf('Form controls/Input', module)
     <FileInput>
       <Icon
         style={{ marginRight: '16px' }}
-        name='download'
+        name='upload'
       />
       Փոփոխել
     </FileInput>
