@@ -153,6 +153,11 @@
   --dialog-title-color: var(--primary-color);
   --dialog-actions-background: var(--disabled-color);
   --dialog-width: 720px;
+  --dialog-border-radius: 8px;
+  --dialog-padding-left: 16px;
+  --dialog-padding-right: 16px;
+  --dialog-content-padding: 0 24px;
+  --dialog-content-margin: 24px 0;
 
   --notification-border-default-color: var(--neutral-100);
   --notification-information-color: var(--primary-color);
