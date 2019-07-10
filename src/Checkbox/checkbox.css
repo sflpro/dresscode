@@ -49,5 +49,5 @@
 }
 
 .disabledLabel {
-  color: var(--text-disabled-color-dark);
+  color: var(--text-disabled-color);
 }

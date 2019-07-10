@@ -8,7 +8,7 @@
   --default-color: var(--neutral-100);
   --default-color-dark: var(--neutral-200);
 
-  --disabled-color: var(--neutral-100);
+  --disabled-color: var(--neutral-200);
   --disabled-color-light: var(--neutral-75);
   --disabled-color-dark: var(--neutral-200);
 
@@ -23,7 +23,6 @@
   --text-secondary-color:  var(--neutral-white);
 
   --text-disabled-color: var(--disabled-color);
-  --text-disabled-color-dark: var(--disabled-color-dark);
 
   --text-warning-color: var(--error-color);
   --text-warning-color-dark: var(--error-color-dark);
@@ -83,7 +82,7 @@
   --text-input-color: var(--text-default-color);
   --text-input-placeholder-color: var(--text-disabled-color);
   --text-input-disabled-color: var(--disabled-color-light);
-  --text-input-text-disabled-color: var(--disabled-color-dark);
+  --text-input-text-disabled-color: var(--disabled-color);
   --text-input-prefix-color: var(--default-color-dark);
   --text-input-prefix-font-family: var(--font-family);
   --text-input-prefix-font-size: var(--font-size-scale-6);
