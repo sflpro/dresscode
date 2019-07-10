@@ -5,6 +5,8 @@ import { State, Store } from '@sambego/storybook-state';
 import { Table } from '.';
 import { COLUMNS, ROWS, SORTING_DIRECTIONS } from './storyData';
 
+import { Icon } from '../Icon';
+import { Label } from '../Label';
 import { ItemGroup } from '../helpers/ItemGroup';
 import { Item } from '../helpers/Item';
 
@@ -22,19 +24,30 @@ const sortData = (a, b, { direction, prop }) => {
 
 const store = new Store({
   page: 1,
+  itemsPerPage: 10,
   sortOptions,
   sortedRows: ROWS.sort((a, b) => sortData(a, b, sortOptions)),
 });
 
 storiesOf('Data Table', module)
   .add('Examples', () => {
-    const itemsPerPage = 10;
+    const itemsPerPageOptions = [10, 20, 50, 100];
+
+    const pageSiblingCount = 1;
     const total = ROWS.length;
 
     function handlePageClick(page) {
       store.set({
         ...store.state,
         page,
+      });
+    }
+
+    function handleItemsPerPageChange(itemsPerPage) {
+      store.set({
+        ...store.state,
+        itemsPerPage,
+        page: 1,
       });
     }
 
@@ -49,8 +62,8 @@ storiesOf('Data Table', module)
     return (
       <State store={store}>
         {(state) => {
-          const rows = state.sortedRows.slice(itemsPerPage * (state.page - 1),
-            total < itemsPerPage * state.page ? total : itemsPerPage * state.page);
+          const rows = state.sortedRows.slice(state.itemsPerPage * (state.page - 1),
+            total < state.itemsPerPage * state.page ? total : state.itemsPerPage * state.page);
           return (
             <ItemGroup
               title='Data Table'
@@ -93,12 +106,57 @@ storiesOf('Data Table', module)
                     ))}
                   </Table.Body>
                   <Table.Footer>
-                    <Table.Pagination
-                      page={state.page}
-                      itemsPerPage={itemsPerPage}
-                      total={total}
-                      onPageClick={handlePageClick}
-                    />
+                    <div
+                      style={{
+                        display: 'flex',
+                        justifyContent: 'space-between',
+                        alignItems: 'center',
+                      }}
+                    >
+                      <Table.Pagination.Info
+                        page={state.page}
+                        itemsPerPage={state.itemsPerPage}
+                        total={total}
+                      />
+                      <div
+                        style={{
+                          display: 'flex',
+                          justifyContent: 'space-between',
+                          alignItems: 'center',
+                        }}
+                      >
+                        <Label display='col'>
+                          <span style={{ marginRight: 16, color: '#999999' }}>
+                            Items per page
+                          </span>
+                          <Table.Pagination.Select
+                            options={itemsPerPageOptions}
+                            value={state.itemsPerPage}
+                            onChange={handleItemsPerPageChange}
+                          />
+                        </Label>
+                        {total >= state.itemsPerPage && (
+                          <Table.Pagination
+                            page={state.page}
+                            itemsPerPage={state.itemsPerPage}
+                            total={total}
+                            onPageClick={handlePageClick}
+                            pageSiblingCount={pageSiblingCount}
+                            nextElem={(
+                              <Icon
+                                name='arrow-right'
+                              />
+                            )}
+                            previousElem={(
+                              <Icon
+                                name='arrow-left'
+                              />
+                            )}
+                            style={{ marginLeft: 24 }}
+                          />
+                        )}
+                      </div>
+                    </div>
                   </Table.Footer>
                 </Table>
               </Item>

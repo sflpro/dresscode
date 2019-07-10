@@ -27,8 +27,11 @@ export function Option({
 }
 
 Option.propTypes = {
-  /** String, value of option */
-  value: PropTypes.string,
+  /** String or Number, value of option */
+  value: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
+  ]),
   /** String, children of option */
   children: PropTypes.any,
   /** String, className that will be added to option */

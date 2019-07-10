@@ -44,7 +44,7 @@ Label.propTypes = {
   /** String, className that will be added to label */
   className: PropTypes.string,
   /** Object, styles that will be added to label */
-  style: PropTypes.string,
+  style: PropTypes.object,
   /** String or JSX or Element, content of label */
   children: PropTypes.any,
 };

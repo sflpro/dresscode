@@ -18,10 +18,10 @@
 }
 
 .tableRow {
+  height: var(--table-column-height);
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  height: 48px;
   overflow: hidden;
 }
 
@@ -36,7 +36,7 @@
 }
 
 .tableRowOverlay {
-  height: 48px;
+  height: var(--table-column-height);
   background-color: var(--table-row-background-color);
   position: absolute;
   width: 100%;
@@ -73,9 +73,9 @@
 }
 
 .tableColumn {
-  @mixin font-scale-7;
+  @mixin font-scale-6;
   color: var(--table-column-color);
-  height: 48px;
+  height: var(--table-column-height);
   display: flex;
   align-items: center;
   z-index: 2;
@@ -133,8 +133,8 @@
   border-top: var(--table-footer-border);
   border-bottom-right-radius: var(--table-border-radius);
   border-bottom-left-radius: var(--table-border-radius);
+  padding: var(--table-footer-padding);
   position: relative;
-  padding: 16px;
 }
 
 .tableFooterOverlay {
@@ -148,37 +148,21 @@
   z-index: 1;
 }
 
+.tablePaginationInfo {
+  @mixin font-scale-6;
+  color: var(--table-pagination-info-color);
+}
+
 .tablePagination {
-  text-align: center;
-  position: relative;
-  z-index: 2;
-
-  @media (--small) {
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: space-between;
-    align-items: center;
-  }
-}
-
-.tablePageRange {
-  @mixin font-scale-7;
-  color: var(--table-pagination-range-color);
-  margin-bottom: 16px;
-  @media (--small) {
-    margin-bottom: 0;
-  }
-}
-
-.tablePages {
   border: 1px solid var(--table-pagination-border-color);
   border-radius: var(--table-pagination-border-radius);
   display: inline-flex;
   justify-content: center;
   box-sizing: border-box;
+  z-index: 2;
 }
 
-.tablePageNumber {
+.paginationItem {
   border-right: 1px solid var(--table-pagination-border-color);
   background-color: var(--table-pagination-background-color);
   padding: 8px;
@@ -190,24 +174,30 @@
   justify-content: center;
 }
 
-.tablePageNumber:last-child {
+.paginationItem:last-child {
   border-right: none;
   border-top-right-radius: var(--table-pagination-border-radius);
   border-bottom-right-radius: var(--table-pagination-border-radius);
 }
 
-.tablePageNumber:first-child {
+.paginationItem:first-child {
   border-top-left-radius: var(--table-pagination-border-radius);
   border-bottom-left-radius: var(--table-pagination-border-radius);
 }
 
-.tablePageNumberSelected {
+.paginationItemSelected {
   font-weight: bold;
   color: var(--table-pagination-selected-color);
 }
 
-.tablePageNumberClickable {
+.paginationItemClickable {
   cursor: pointer;
+}
+
+.paginationSelect {
+  margin-top: 0;
+  min-width: 100px;
+  z-index: 2;
 }
 
 .ellipsisColumn,
