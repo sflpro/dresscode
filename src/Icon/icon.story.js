@@ -9,8 +9,6 @@ import { ImportInstruction } from '../helpers/ImportInstruction';
 
 import { InfoStoryConfig } from '../configs';
 
-import './svgSprite.icon.svg';
-
 storiesOf('Icons', module)
   .add('Examples', () => {
     const iconTypes = [

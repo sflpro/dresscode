@@ -29,6 +29,7 @@ function loadStories() {
   require('../src/helpers/Grid/grid.story');
   require('../src/helpers/Typography/typography.story');
   require('../src/fonts.css');
+  require('../src/Icon/svgSprite.icon.svg');
 }
 
 configure(loadStories, module);
