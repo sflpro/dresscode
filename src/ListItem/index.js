@@ -85,8 +85,11 @@ export class ListItem extends React.Component {
 ListItem.propTypes = {
   /** String or JSX element, text of list item */
   children: PropTypes.any,
-  /** String, value that will be passed to onClick handler */
-  value: PropTypes.string,
+  /** String or Number, value that will be passed to onClick handler */
+  value: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
+  ]),
   /** String, name of icon of list item */
   icon: PropTypes.string,
   /** String, position of icon related to text, left - before text, right - after text */

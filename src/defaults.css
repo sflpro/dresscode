@@ -251,6 +251,7 @@
   --table-header-column-color: var(--neutral-500);
   --table-column-color: var(--neutral-900);
   --table-column-border-color: var(--neutral-75);
+  --table-column-height: 56px;
   --table-row-background-color: transparent;
   --table-row-odd-background-color: var(--neutral-75);
   --table-row-hover-color: var(--blue-50);
@@ -263,9 +264,10 @@
   --table-footer-background-color: var(--neutral-white);
   --table-footer-overlay-background-color: var(--neutral-75);
   --table-footer-border: 1px solid var(--neutral-75);
+  --table-footer-padding: 16px;
   --table-pagination-border-color: var(--primary-color-light);
   --table-pagination-background-color: var(--neutral-white);
-  --table-pagination-range-color: var(--neutral-500);
+  --table-pagination-info-color: var(--neutral-500);
   --table-pagination-selected-color: var(--primary-color-light);
   --table-pagination-border-radius: 4px;
   --table-border-radius: 8px;

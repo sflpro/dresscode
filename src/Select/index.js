@@ -78,7 +78,7 @@ export class Select extends React.Component {
       <List className={listClasses}>
         {options.length > 0 ? options.map(({ name, value }) => (
           <ListItem
-            icon={propValue.includes(value) ? 'thick' : null}
+            icon={(Array.isArray(propValue) && propValue.includes(value)) || propValue === value ? 'thick' : null}
             onClick={this.handleCustomChange}
             iconClassName={styles.listIcon}
             value={value}
@@ -348,8 +348,12 @@ export class Select extends React.Component {
 }
 
 Select.propTypes = {
-  /** String or array, value of select */
-  value: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
+  /** String, Number or Array, value of select */
+  value: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
+    PropTypes.array,
+  ]),
   /** Function, called when select value is changed */
   onChange: PropTypes.func,
   /** Function, called when select is clicked or options are closed, input is focused and key is pressed */
@@ -375,7 +379,6 @@ Select.propTypes = {
 };
 
 Select.defaultProps = {
-  nothingFoundText: 'Nothing found',
   value: '',
   onChange: undefined,
   onClick: undefined,
@@ -387,4 +390,5 @@ Select.defaultProps = {
   button: undefined,
   buttonProps: undefined,
   className: '',
+  nothingFoundText: 'Nothing found',
 };

@@ -1,29 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 
 import styles from './table.css';
 
-export function Footer({
+export const Footer = ({
   className,
   children,
   ...props
-}) {
-  const tableFooterClasses = classNames({
-    [styles.tableFooter]: true,
-    [className]: true,
-  });
-
-  return (
-    <div
-      className={tableFooterClasses}
-      {...props}
-    >
-      <div className={styles.tableFooterOverlay} />
-      {children}
-    </div>
-  );
-}
+}) => (
+  <div
+    className={`${styles.tableFooter} ${className}`}
+    {...props}
+  >
+    <div className={styles.tableFooterOverlay} />
+    {children}
+  </div>
+);
 
 Footer.propTypes = {
   /** String or JSX or Element, content of element */

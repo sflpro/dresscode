@@ -13,8 +13,10 @@ import { Caption } from './Caption';
 import { Column } from './Column';
 import { Footer } from './Footer';
 import { Head } from './Head';
-import { Pagination } from './Pagination';
 import { Row } from './Row';
+import { Pagination } from './Pagination';
+import { PaginationInfo } from './PaginationInfo';
+import { PaginationSelect } from './PaginationSelect';
 
 
 export class Table extends React.Component {
@@ -138,8 +140,10 @@ Table.defaultProps = {
 
 Table.Body = Body;
 Table.Caption = Caption;
+Table.Row = Row;
 Table.Column = Column;
 Table.Footer = Footer;
 Table.Head = Head;
 Table.Pagination = Pagination;
-Table.Row = Row;
+Table.Pagination.Info = PaginationInfo;
+Table.Pagination.Select = PaginationSelect;

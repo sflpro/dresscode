@@ -2,18 +2,24 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-import { TableContext } from './TableContext';
-
-import { Icon } from '../Icon';
-
 import styles from './table.css';
 
 const PAGES_GAP = '...';
 
-export class Pagination extends React.Component {
-  static contextType = TableContext;
+export const Pagination = ({
+  page,
+  itemsPerPage,
+  total,
+  pageSiblingCount,
+  onPageClick,
+  className,
+  nextElem,
+  previousElem,
+  ...props
+}) => {
+  const lastPage = Math.ceil(total / itemsPerPage);
 
-  createRange = (start, end) => {
+  const createRange = (start, end) => {
     const range = [];
     for (let i = start; i <= end; i++) {
       range.push(i);
@@ -21,118 +27,73 @@ export class Pagination extends React.Component {
     return range;
   };
 
-  getPageRange = (page, itemsPerPage, total) => (
-    `${(page - 1) * itemsPerPage + 1} - ${page * itemsPerPage > total ? total : (page * itemsPerPage)}`
-  );
+  let mainPageNumbers = [];
+  let firstPageNumbers = [1];
+  let lastPageNumbers = [lastPage];
+  if (lastPage < 5 + 2 * pageSiblingCount) {
+    firstPageNumbers = [];
+    mainPageNumbers = createRange(1, lastPage);
+    lastPageNumbers = [];
+  } else if (page < 4) {
+    firstPageNumbers = createRange(1, 5);
+    mainPageNumbers = [PAGES_GAP];
+  } else if (page > lastPage - (pageSiblingCount * 2 + 1)) {
+    mainPageNumbers = [PAGES_GAP];
+    lastPageNumbers = createRange(lastPage - 4, lastPage);
+  } else {
+    mainPageNumbers = [PAGES_GAP, ...createRange(page - 1, page + 1), PAGES_GAP];
+  }
 
-  renderPageRange = (page, itemsPerPage, total) => (
-    <div className={styles.tablePageRange}>
-      {`${this.getPageRange(page, itemsPerPage, total)} / ${total}`}
-    </div>
-  );
+  const pageNumbers = [
+    ...firstPageNumbers,
+    ...mainPageNumbers,
+    ...lastPageNumbers,
+  ];
 
-  renderPages = () => {
-    const {
-      page,
-      itemsPerPage,
-      total,
-      pageSiblingCount,
-      onPageClick,
-    } = this.props;
-
-    const lastPage = Math.ceil(total / itemsPerPage);
-
-    let mainPageNumbers = [];
-    let firstPageNumbers = [1];
-    let lastPageNumbers = [lastPage];
-    if (lastPage < 5 + 2 * pageSiblingCount) {
-      firstPageNumbers = [];
-      mainPageNumbers = this.createRange(1, lastPage);
-      lastPageNumbers = [];
-    } else if (page < 4) {
-      firstPageNumbers = this.createRange(1, 5);
-      mainPageNumbers = [PAGES_GAP];
-    } else if (page > lastPage - (pageSiblingCount * 2 + 1)) {
-      mainPageNumbers = [PAGES_GAP];
-      lastPageNumbers = this.createRange(lastPage - 4, lastPage);
-    } else {
-      mainPageNumbers = [PAGES_GAP, ...this.createRange(page - 1, page + 1), PAGES_GAP];
-    }
-
-    const pageNumbers = [
-      ...firstPageNumbers,
-      ...mainPageNumbers,
-      ...lastPageNumbers,
-    ];
-
-    return (
-      <div className={styles.tablePages}>
+  return (
+    <div
+      className={`${styles.tablePagination} ${className}`}
+      {...props}
+    >
+      {nextElem && (
         <div
-          className={styles.tablePageNumber}
+          className={styles.paginationItem}
           onClick={page !== 1 ? () => onPageClick(page - 1) : null}
           role='presentation'
         >
-          <Icon
-            name='arrow-left'
-          />
+          {previousElem}
         </div>
-        {pageNumbers.map((pageNumber, index) => {
-          const selectedPageClasses = classNames({
-            [styles.tablePageNumber]: true,
-            [styles.tablePageNumberSelected]: pageNumber === page,
-            [styles.tablePageNumberClickable]: pageNumber !== PAGES_GAP,
-          });
+      )}
+      {pageNumbers.map((pageNumber, index) => {
+        const selectedPageClasses = classNames({
+          [styles.paginationItem]: true,
+          [styles.paginationItemSelected]: pageNumber === page,
+          [styles.paginationItemClickable]: pageNumber !== PAGES_GAP,
+        });
 
-          return (
-            <div
-              className={selectedPageClasses}
-              onClick={pageNumber !== PAGES_GAP ? () => onPageClick(pageNumber) : null}
-              role='presentation'
-              key={index}
-            >
-              {pageNumber}
-            </div>
-          );
-        })}
+        return (
+          <div
+            className={selectedPageClasses}
+            onClick={pageNumber !== PAGES_GAP ? () => onPageClick(pageNumber) : null}
+            role='presentation'
+            key={index}
+          >
+            {pageNumber}
+          </div>
+        );
+      })}
+      {nextElem && (
         <div
           onClick={page !== lastPage ? () => onPageClick(page + 1) : null}
-          className={styles.tablePageNumber}
+          className={styles.paginationItem}
           role='presentation'
         >
-          <Icon
-            name='arrow-right'
-          />
+          {nextElem}
         </div>
-      </div>
-    );
-  };
-
-  render() {
-    const {
-      page,
-      itemsPerPage,
-      total,
-      pageSiblingCount,
-      onPageClick,
-      className,
-      ...props
-    } = this.props;
-
-    const tablePaginationClasses = classNames({
-      [styles.tablePagination]: true,
-    });
-
-    return (
-      <div
-        className={tablePaginationClasses}
-        {...props}
-      >
-        {this.renderPageRange(page, itemsPerPage, total)}
-        {this.renderPages()}
-      </div>
-    );
-  }
-}
+      )}
+    </div>
+  );
+};
 
 Pagination.propTypes = {
   /** Number, selected page number */
@@ -145,10 +106,14 @@ Pagination.propTypes = {
   itemsPerPage: PropTypes.number,
   /** Number, count of selected page siblings which will be shown */
   pageSiblingCount: PropTypes.number,
-  /** String, className that will be added to wrapper div */
+  /** String, className that will be added to root div */
   className: PropTypes.string,
-  /** Object, styles that will be added to wrapper div */
+  /** Object, styles that will be added to root div */
   style: PropTypes.object,
+  /** String or JSX or Element, next page element */
+  nextElem: PropTypes.any,
+  /** String or JSX or Element, previous page element */
+  previousElem: PropTypes.any,
 };
 
 Pagination.defaultProps = {
@@ -156,4 +121,6 @@ Pagination.defaultProps = {
   pageSiblingCount: 1,
   className: '',
   style: undefined,
+  nextElem: null,
+  previousElem: null,
 };
