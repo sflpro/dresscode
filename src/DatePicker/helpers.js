@@ -199,11 +199,11 @@ export const isValidDate = (dateString, format) => {
         break;
       }
       case 'YY': {
-        valid = dateComponent.length === 2;
+        valid = dateComponent.length === 2 && /^[0-9]*$/.test(dateComponent);
         break;
       }
       case 'YYYY': {
-        valid = dateComponent.length === 4;
+        valid = dateComponent.length === 4 && /^[0-9]*$/.test(dateComponent);
         break;
       }
       default: {
