@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
@@ -17,25 +17,36 @@ export function Autocomplete({
   minCharsToSuggest,
   nothingFoundText,
   showLoadingAfter,
+  onBlur,
+  hasError,
+  errorHint,
   ...props
 }) {
+  const [loading, toggleLoading] = useState(false);
+  const [focused, toggleFocus] = useState(false);
+  const [options, setOptions] = useState([]);
+  const [value, setValue] = useState(propsValue.value || '');
+
   const wrapperClasses = classNames({
     [styles.wrapper]: true,
     [className]: true,
   });
 
-  const [loading, toggleLoading] = useState(false);
-  const [focused, toggleFocus] = useState(false);
-  const [options, setOptions] = useState([]);
-  const [value, setValue] = useState(propsValue);
+  useEffect(() => {
+    if (propsValue.value) {
+      setValue(propsValue.value);
+    }
+  }, [propsValue]);
 
-  function filter(option) {
-    return option.toLowerCase().includes(value.toLowerCase());
+  function onLostFocus() {
+    toggleFocus(false);
+    if (onBlur) {
+      onBlur(value);
+    }
   }
 
   function onListClick(optionValue) {
-    toggleFocus(false);
-    setValue(optionValue);
+    onLostFocus();
 
     props.onChange({
       currentTarget: {
@@ -51,9 +62,8 @@ export function Autocomplete({
 
   function onFocus(event) {
     toggleFocus(true);
-
-    if (props.onBlur) {
-      props.onBlur(event);
+    if (props.onFocus) {
+      props.onFocus(event);
     }
   }
 
@@ -68,32 +78,29 @@ export function Autocomplete({
       return;
     }
 
-    setTimeout(() => {
-      if (!promiseIsResolved) {
-        toggleLoading(true);
-      }
-    }, showLoadingAfter);
     const result = getOptions(onChangeValue);
 
     if (Array.isArray(result)) {
-      setOptions(result.filter(filter));
+      setOptions(result);
     } else {
-      result.then((promiseResult) => {
-        if (loading) {
+      setTimeout(() => {
+        if (!promiseIsResolved) {
           toggleLoading(true);
         }
-
+      }, showLoadingAfter);
+      result.then((promiseResult) => {
         promiseIsResolved = true;
-        setOptions(promiseResult.filter(filter));
+        setOptions(promiseResult);
         toggleLoading(false);
       });
     }
   }
 
   function handleOverlayClick() {
-    toggleFocus(false);
+    onLostFocus();
   }
 
+  const showError = hasError && !focused;
   return (
     <div
       className={wrapperClasses}
@@ -104,10 +111,18 @@ export function Autocomplete({
         value={value}
         onFocus={onFocus}
         onChange={onChange}
+        hasError={showError}
         autoComplete='off'
         className={styles.input}
         icon={<Icon name='tracker' color={loading ? '' : 'transparent'} />}
       />
+      {
+        showError && errorHint && (
+          <div className={styles.errorWrapper}>
+            {errorHint}
+          </div>
+        )
+      }
       {(focused && value.length >= minCharsToSuggest && !loading) && (
         <>
           <List
@@ -117,10 +132,10 @@ export function Autocomplete({
               <ListItem
                 onClick={() => onListClick(option)}
                 className={styles.listItem}
-                value={option}
-                key={option}
+                value={option.value}
+                key={option.value}
               >
-                {option}
+                {option.label}
               </ListItem>
             )) : (
               <div className={styles.emptyState}>
@@ -128,12 +143,14 @@ export function Autocomplete({
               </div>
             )}
           </List>
-          <div
-            onClick={handleOverlayClick}
-            className={styles.overlay}
-            role='presentation'
-          />
         </>
+      )}
+      {focused && (
+        <div
+          onClick={handleOverlayClick}
+          className={styles.overlay}
+          role='presentation'
+        />
       )}
     </div>
   );
@@ -143,7 +160,7 @@ Autocomplete.propTypes = {
   /** Function, will return options array or promise that will resolve to options array */
   getOptions: PropTypes.func.isRequired,
   /** String, value of input */
-  value: PropTypes.string.isRequired,
+  value: PropTypes.object.isRequired,
   /** Function, called when input value is changed */
   onChange: PropTypes.func.isRequired,
   /** Number, number of chars, after which options will be suggested */
@@ -156,6 +173,10 @@ Autocomplete.propTypes = {
   onBlur: PropTypes.func,
   /** Function, called when input is focused */
   onFocus: PropTypes.func,
+  /** Boolean, whether value of autocomplete input has error */
+  hasError: PropTypes.bool,
+  /** String, errorHint of input */
+  errorHint: PropTypes.string,
   /** String, name of input */
   name: PropTypes.string,
   /** String, will be shown if there is no option */
@@ -171,6 +192,8 @@ Autocomplete.defaultProps = {
   style: undefined,
   onBlur: undefined,
   onFocus: undefined,
+  hasError: false,
+  errorHint: '',
   name: '',
   showLoadingAfter: 100,
 };

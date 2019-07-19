@@ -34,14 +34,24 @@ storiesOf('Form controls/Input', module)
       notDetected: '1234567891234567',
       masterCard: '5234567891234567',
       visa: '4234567891234567',
-      autocomplete: '',
-      autocomplete2: '',
-      autocomplete3: '',
+      autocomplete: {},
+      autocomplete1: {},
+      autocomplete1Error: false,
+      autocomplete2: {},
       empty: '',
       hasError: false,
       from: new Date(),
       to: new Date(),
     });
+
+    const defaultOptions = [
+      { name: 'abcd 1', id: 1 },
+      { name: 'abcd 2', id: 2 },
+      { name: 'abcd 3', id: 3 },
+      { name: 'abcd 4', id: 4 },
+      { name: 'abcd 5', id: 5 },
+      { name: 'abcd 6', id: 6 },
+    ];
 
     function handleInputChange({ target }) {
       store.set({
@@ -50,6 +60,51 @@ storiesOf('Form controls/Input', module)
           [target.name]: target.value,
         },
       });
+    }
+
+    function handleAutocompleteInputChange({ target }) {
+      store.set({
+        ...store.state,
+        ...{
+          autocomplete1: target.value,
+          autocomplete1Error: false,
+        },
+      });
+    }
+
+    function handleInputBlur(value) {
+      const { state } = store;
+      const { autocomplete1 } = state;
+      if (!value) {
+        store.set({
+          ...state,
+          autocomplete1: {},
+          autocomplete1Error: false,
+        });
+      } else if (autocomplete1.value !== value) {
+        store.set({
+          ...state,
+          autocomplete1Error: true,
+        });
+      }
+    }
+
+    function handleGetOptions(value) {
+      return defaultOptions.filter(item => item.name.toLowerCase().includes(value.toLowerCase()))
+        .map(option => (
+          {
+            id: option.id,
+            value: option.name,
+            label: (
+              <div>
+                Option Id -
+                <span>{option.id}</span>
+                , Name -
+                <span>{option.name}</span>
+              </div>
+            ),
+          }
+        ));
     }
 
     function handleCardInputChange(target) {
@@ -88,7 +143,12 @@ storiesOf('Form controls/Input', module)
     function getOptionsFromGithub(value) {
       return fetch(`https://api.github.com/search/users?q=${value}+in:login&per_page=5`)
         .then(response => response.json())
-        .then(data => data.items.map(user => user.login))
+        .then(data => data.items.map(user => (
+          {
+            value: user.login,
+            label: user.login,
+          }
+        )))
         .catch(() => []);
     }
 
@@ -275,7 +335,25 @@ storiesOf('Form controls/Input', module)
                       'abdc 4',
                       'acbd 5',
                       'dabc 6',
-                    ]}
+                    ].map(item => ({
+                      value: item,
+                      label: item,
+                    }))}
+                  />
+                </Item>
+              </ItemRow>
+              <ItemRow>
+                <Item>
+                  <Autocomplete
+                    onChange={handleAutocompleteInputChange}
+                    onBlur={handleInputBlur}
+                    value={state.autocomplete1}
+                    hasError={state.autocomplete1Error}
+                    placeholder='Autocomplete with object options'
+                    name='autocompleteWithObject'
+                    errorHint='Please Select Option'
+                    minCharsToSuggest={2}
+                    getOptions={handleGetOptions}
                   />
                 </Item>
               </ItemRow>
