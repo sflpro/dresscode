@@ -35,3 +35,9 @@
     display: block;
     color: var(--neutral-500);
 }
+
+.errorWrapper {
+    color: var(--error-color);
+    @mixin font-scale-7;
+    padding: 6px;
+}
