@@ -100,6 +100,7 @@ export function Autocomplete({
     onLostFocus();
   }
 
+  const showError = hasError && !focused;
   return (
     <div
       className={wrapperClasses}
@@ -110,13 +111,13 @@ export function Autocomplete({
         value={value}
         onFocus={onFocus}
         onChange={onChange}
-        hasError={hasError && !focused}
+        hasError={showError}
         autoComplete='off'
         className={styles.input}
         icon={<Icon name='tracker' color={loading ? '' : 'transparent'} />}
       />
       {
-        hasError && !focused && errorHint && (
+        showError && errorHint && (
           <div className={styles.errorWrapper}>
             {errorHint}
           </div>
