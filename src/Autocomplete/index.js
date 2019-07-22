@@ -45,7 +45,8 @@ export function Autocomplete({
     }
   }
 
-  function onListClick(optionValue) {
+  function onListClick(optionValue, { event }) {
+    event.preventDefault();
     onLostFocus();
 
     props.onChange({
@@ -96,7 +97,8 @@ export function Autocomplete({
     }
   }
 
-  function handleOverlayClick() {
+  function handleOverlayClick(event) {
+    event.preventDefault();
     onLostFocus();
   }
 
@@ -130,7 +132,7 @@ export function Autocomplete({
           >
             {options.length > 0 ? options.map(option => (
               <ListItem
-                onClick={() => onListClick(option)}
+                onClick={event => onListClick(option, event)}
                 className={styles.listItem}
                 value={option.value}
                 key={option.value}

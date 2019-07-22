@@ -344,17 +344,20 @@ storiesOf('Form controls/Input', module)
               </ItemRow>
               <ItemRow>
                 <Item>
-                  <Autocomplete
-                    onChange={handleAutocompleteInputChange}
-                    onBlur={handleInputBlur}
-                    value={state.autocomplete1}
-                    hasError={state.autocomplete1Error}
-                    placeholder='Autocomplete with object options'
-                    name='autocompleteWithObject'
-                    errorHint='Please Select Option'
-                    minCharsToSuggest={2}
-                    getOptions={handleGetOptions}
-                  />
+                  <Label>
+                    Autocomplete with label
+                    <Autocomplete
+                      onChange={handleAutocompleteInputChange}
+                      onBlur={handleInputBlur}
+                      value={state.autocomplete1}
+                      hasError={state.autocomplete1Error}
+                      placeholder='Autocomplete with object options'
+                      name='autocompleteWithObject'
+                      errorHint='Please Select Option'
+                      minCharsToSuggest={2}
+                      getOptions={handleGetOptions}
+                    />
+                  </Label>
                 </Item>
               </ItemRow>
               <ItemRow>
