@@ -28,6 +28,7 @@ export class WithValidation extends React.Component {
       name,
       component: Component,
       disabledWhileSubmitting,
+      onChange,
       ...props
     } = this.props;
 
