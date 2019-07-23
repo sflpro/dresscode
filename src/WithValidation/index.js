@@ -61,11 +61,11 @@ WithValidation.propTypes = {
   component: PropTypes.any.isRequired,
   /** Boolean, if true add disabled property to component while submitting */
   disabledWhileSubmitting: PropTypes.bool,
-  /** Function, will be called when select value changed */
+  /** Function, will be called when component value changed */
   onChange: PropTypes.func,
 };
 
 WithValidation.defaultProps = {
   disabledWhileSubmitting: false,
-  onChange: null,
+  onChange: undefined,
 };
