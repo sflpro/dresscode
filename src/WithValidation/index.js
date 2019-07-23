@@ -11,9 +11,16 @@ export class WithValidation extends React.Component {
       handleChange,
       handleBlur,
     } = this.context;
+    const {
+      onChange,
+    } = this.props;
 
     handleChange({ ...args });
     handleBlur({ ...args });
+
+    if (onChange) {
+      onChange(args);
+    }
   };
 
   render() {
@@ -53,8 +60,11 @@ WithValidation.propTypes = {
   component: PropTypes.any.isRequired,
   /** Boolean, if true add disabled property to component while submitting */
   disabledWhileSubmitting: PropTypes.bool,
+  /** Function, will be called when select value changed */
+  onChange: PropTypes.func,
 };
 
 WithValidation.defaultProps = {
   disabledWhileSubmitting: false,
+  onChange: null,
 };

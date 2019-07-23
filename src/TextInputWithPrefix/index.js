@@ -55,6 +55,6 @@ export class TextInputWithPrefix extends React.Component {
 TextInputWithPrefix.propTypes = {
   prefix: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
-  onChange: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
   value: PropTypes.isRequired,
 };
