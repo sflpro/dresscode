@@ -16,8 +16,8 @@
   position: absolute;
   width: var(--horizontall-scroll-wrapper-arrow-width);
   height: 100%;
-  background-image: linear-gradient(to left, rgba(255, 255, 255, 0.3), var(--neutral-white));
-  color: var(--primary-color);
+  background-image: linear-gradient(to left, rgba(255, 255, 255, 0.3), var(--horizontall-scroll-wrapper-gradient-color));
+  color: var(--horizontall-scroll-wrapper-arrow-color);
   display: flex;
   justify-content: center;
   cursor: pointer;

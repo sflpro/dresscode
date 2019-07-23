@@ -286,4 +286,6 @@
 
   --horizontall-scroll-wrapper-arrow-width: 40px;
   --horizontall-scroll-wrapper-small-arrow-width: 48px;
+  --horizontall-scroll-wrapper-gradient-color: var(--neutral-white);
+  --horizontall-scroll-wrapper-arrow-color: var(--primary-color);
 }
