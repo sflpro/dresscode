@@ -28,6 +28,7 @@ function loadStories() {
   require('../src/Tabs/tabs.story');
   require('../src/helpers/Grid/grid.story');
   require('../src/helpers/Typography/typography.story');
+  require('../src/HorizontalScrollWrapper/horizontalScrollWrapper.story');
   require('../src/fonts.css');
   require('../src/Icon/svgSprite.icon.svg');
 }

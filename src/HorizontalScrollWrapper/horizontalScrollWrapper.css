@@ -1,0 +1,42 @@
+.main {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+}
+
+.wrapper {
+  overflow-x: auto;
+  overflow-y: hidden;
+  height: 100%;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 24px;
+}
+
+.arrow {
+  position: absolute;
+  width: var(--horizontall-scroll-wrapper-arrow-width);
+  height: 100%;
+  background-image: linear-gradient(to left, rgba(255, 255, 255, 0.3), var(--neutral-white));
+  color: var(--primary-color);
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+
+  & > * {
+    visibility: hidden;
+  }
+
+  @media (--small) {
+    width: var(--horizontall-scroll-wrapper-small-arrow-width);
+
+    & > * {
+      visibility: visible;
+    }
+  }
+}
+
+.arrowReverse {
+  transform: rotate(180deg);
+  right: 0;
+  top: 0;
+}
