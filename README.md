@@ -35,3 +35,7 @@ import { Button } from '@sfl/ui-library/lib/Button';
 3. npm run build
 4. npm run storybook
 ```
+
+Releasing the package:
+
+TODO
