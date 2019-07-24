@@ -171,6 +171,7 @@
   --notification-success-light-background: var(--green-50);
   --notification-error-light-background: var(--red-50);
   --notification-warning-light-background: var(--yellow-50);
+  --notification-warning-border-radius: 5px;
 
   --button-disabled-color: var(--default-color);
   --button-height: 48px;
