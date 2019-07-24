@@ -6,7 +6,7 @@
     "@semantic-release/github",
     "@semantic-release/npm",
     ["@semantic-release/git", {
-      "assets": ["package.json"]
+      "assets": ["package.json", "package-lock.json"]
     }]
   ]
 }
