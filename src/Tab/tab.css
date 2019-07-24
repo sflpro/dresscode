@@ -3,9 +3,11 @@
   padding: var(--tab-padding);
   text-align: center;
   cursor: pointer;
+  min-width: var(--tab-min-width);
 
   @media (--small) {
     padding: var(--tab-small-padding);
+    min-width: var(--tab-small-min-width);
   }
 }
 

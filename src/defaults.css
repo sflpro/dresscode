@@ -276,9 +276,16 @@
 
   --tab-padding: 18px 16px;
   --tab-small-padding: 20px 24px;
+  --tab-min-width: 100px;
+  --tab-small-min-width: 126px;
   --tab-active-border-width: 2px;
   --tab-content-padding: 24px 16px;
   --tab-content-small-padding: 24px;
 
   --popover-content-border-radius: 5px;
+
+  --horizontall-scroll-wrapper-arrow-width: 40px;
+  --horizontall-scroll-wrapper-small-arrow-width: 48px;
+  --horizontall-scroll-wrapper-gradient-color: var(--neutral-white);
+  --horizontall-scroll-wrapper-arrow-color: var(--primary-color);
 }

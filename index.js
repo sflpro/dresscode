@@ -44,3 +44,4 @@ export { WithErrorFeedback } from './lib/WithErrorFeedback';
 export { WithFormFeedback } from './lib/WithFormFeedback';
 export { WithValidation } from './lib/WithValidation';
 export { YearPicker } from './lib/YearPicker';
+export { HorizontalScrollWrapper } from './lib/HorizontalScrollWrapper';
