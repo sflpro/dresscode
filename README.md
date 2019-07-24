@@ -34,4 +34,4 @@ import { Button } from '@sfl/ui-library/lib/Button';
 
 Releasing the package:
 
-TODO: please add documentation
+TODO: please add documentation as soon as possible
