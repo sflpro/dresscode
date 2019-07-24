@@ -1,6 +1,5 @@
 .notification {
-  border-radius: 5px;
-  margin-top: 8px;
+  border-radius: var(--notification-border-radius);
   border-width: 1px;
   border-style: solid;
   position: relative;
@@ -23,10 +22,10 @@
 }
 
 .title {
+  color: var(--notification-title-color);
   @mixin font-scale-7;
   display: block;
   padding-bottom: 8px;
-  color: var(--notification-title-color);
 }
 
 .message {
