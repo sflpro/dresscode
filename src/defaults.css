@@ -23,6 +23,7 @@
   --text-secondary-color:  var(--neutral-white);
 
   --text-disabled-color: var(--disabled-color);
+  --text-disabled-color-dark: var(--disabled-color-dark);
 
   --text-warning-color: var(--error-color);
   --text-warning-color-dark: var(--error-color-dark);
