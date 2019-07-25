@@ -147,6 +147,7 @@ export class NotificationStack extends React.Component {
     this.setNotificationItems();
     this.getDomElem();
     const { getNotificationItems } = this;
+    const { className } = this.props;
 
     if (this.container && this.domChild && this.domWrapper) {
       return ReactDOM.createPortal(
@@ -156,7 +157,7 @@ export class NotificationStack extends React.Component {
     }
     return ReactDOM.createPortal(
       (
-        <div className={`${styles['notification-list']} notification-list`}>
+        <div className={`${styles['notification-list']} notification-list ${className}`}>
           {getNotificationItems()}
         </div>
       ),
@@ -170,9 +171,12 @@ NotificationStack.propTypes = {
   children: PropTypes.any,
   /** Number of seconds to display notification duration */
   duration: PropTypes.number,
+  /** String, className that will be added to stack container */
+  className: PropTypes.string,
 };
 
 NotificationStack.defaultProps = {
   children: null,
   duration: undefined,
+  className: '',
 };
