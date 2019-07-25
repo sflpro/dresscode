@@ -387,6 +387,7 @@ export class Popover extends React.Component {
       onTargetEvent,
       contentRelative,
       children,
+      gap,
       ...props
     } = this.props;
 

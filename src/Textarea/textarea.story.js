@@ -75,23 +75,6 @@ storiesOf('Form controls/Textarea', module)
                 </Label>
               </Item>
             </ItemRow>
-            <ItemRow>
-              <Item>
-                <Label
-                  hasError
-                >
-                  Error
-                  <Textarea
-                    name='error'
-                    value={state.error}
-                    icon='warning'
-                    error='Error text'
-                    onChange={handleTextareaChange}
-                    hasError
-                  />
-                </Label>
-              </Item>
-            </ItemRow>
           </ItemGroup>
         )}
       </State>

@@ -9,7 +9,6 @@ export function Textarea({
   className,
   isValid,
   hasError,
-  error,
   name,
   ...props
 }) {
@@ -22,19 +21,12 @@ export function Textarea({
   });
 
   return (
-    <React.Fragment>
-      <textarea
-        disabled={disabled}
-        className={textareaClasses}
-        name={name}
-        {...props}
-      />
-      {hasError && error && (
-        <div className={styles.error}>
-          {error}
-        </div>
-      )}
-    </React.Fragment>
+    <textarea
+      disabled={disabled}
+      className={textareaClasses}
+      name={name}
+      {...props}
+    />
   );
 }
 
@@ -51,8 +43,6 @@ Textarea.propTypes = {
   isValid: PropTypes.bool,
   /** Boolean, whether value of textarea has error */
   hasError: PropTypes.bool,
-  /** String, error message that will be shown if textarea has error */
-  error: PropTypes.string,
   /** String, placeholder of textarea */
   placeholder: PropTypes.string,
   /** String, name of textarea */
@@ -74,7 +64,6 @@ Textarea.defaultProps = {
   cols: 40,
   isValid: false,
   hasError: false,
-  error: '',
   name: '',
   onChange: undefined,
   style: undefined,

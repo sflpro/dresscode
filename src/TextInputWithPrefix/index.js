@@ -2,54 +2,45 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { TextInput } from '../TextInput';
 
-export class TextInputWithPrefix extends React.Component {
-  handleChange = ({ target: { value } }) => {
-    const {
-      prefix,
-      name,
-      onChange,
-    } = this.props;
-
+export function TextInputWithPrefix({
+  onChange,
+  prefix,
+  name,
+  value,
+  ...props
+}) {
+  function handleChange({ target: { value: nextValue } }) {
     const eventObj = {
       target: {
         name,
-        value: `${prefix}${value}`,
+        value: `${prefix}${nextValue}`,
       },
     };
 
     onChange(eventObj);
-  };
-
-  render() {
-    const {
-      prefix,
-      name,
-      value,
-      ...props
-    } = this.props;
-
-    let textInputValue = value;
-    if (value && value.indexOf(prefix) === 0) {
-      textInputValue = value.substr(prefix.length);
-    }
-    return (
-      <React.Fragment>
-        <TextInput
-          {...props}
-          component={TextInput}
-          prefix={prefix}
-          name={`${name}-withoutPrefix`}
-          value={textInputValue}
-          onChange={this.handleChange}
-        />
-        <input
-          type='hidden'
-          name={name}
-          value={value}
-        />
-      </React.Fragment>
-    );
   }
+
+  let textInputValue = value;
+  if (value && value.indexOf(prefix) === 0) {
+    textInputValue = value.substr(prefix.length);
+  }
+
+  return (
+    <React.Fragment>
+      <TextInput
+        {...props}
+        prefix={prefix}
+        name={`${name}-withoutPrefix`}
+        value={textInputValue}
+        onChange={handleChange}
+      />
+      <input
+        type='hidden'
+        name={name}
+        value={value}
+      />
+    </React.Fragment>
+  );
 }
 
 TextInputWithPrefix.propTypes = {

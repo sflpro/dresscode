@@ -6,6 +6,7 @@ import styles from './radioButton.css';
 
 export function RadioButton({
   className,
+  hasError,
   disabled,
   checked,
   style,
@@ -38,6 +39,8 @@ export function RadioButton({
   );
 }
 
+RadioButton.displayName = 'RadioButton';
+
 RadioButton.propTypes = {
   /** Function, called when input value is changed */
   onChange: PropTypes.func,
@@ -54,6 +57,8 @@ RadioButton.propTypes = {
   checked: PropTypes.bool,
   /** Object, style that will be added to wrapper span element */
   style: PropTypes.object,
+  /** Boolean, whether value of checkbox has error */
+  hasError: PropTypes.bool,
 };
 
 RadioButton.defaultProps = {
@@ -64,4 +69,5 @@ RadioButton.defaultProps = {
   disabled: false,
   checked: false,
   style: undefined,
+  hasError: false,
 };

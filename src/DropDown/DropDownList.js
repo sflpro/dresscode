@@ -6,33 +6,32 @@ import { List } from '../List';
 
 import styles from './dropDown.css';
 
-export class DropDownList extends React.PureComponent {
-  render() {
-    const {
-      children,
-    } = this.props;
-    const listClasses = classNames({
-      [styles.dropDownList]: true,
-    });
+export function DropDownList({ children }) {
+  const listClasses = classNames({
+    [styles.dropDownList]: true,
+  });
 
-    const childOptions = React.Children.map(children, (option) => {
-      const { type: Component, props: optionProps } = option;
-      return (<Component {...optionProps}>{optionProps.children}</Component>);
-    });
-
+  const childOptions = React.Children.map(children, (option) => {
+    const { type: Component, props: optionProps } = option;
     return (
-      <List className={listClasses}>
-        {childOptions.map((child, index) => (
-          <div
-            className={styles.dropDownListItem}
-            key={index}
-          >
-            {child}
-          </div>
-        ))}
-      </List>
-    ) || null;
-  }
+      <Component {...optionProps}>
+        {optionProps.children}
+      </Component>
+    );
+  });
+
+  return (
+    <List className={listClasses}>
+      {childOptions.map((child, index) => (
+        <div
+          className={styles.dropDownListItem}
+          key={index}
+        >
+          {child}
+        </div>
+      ))}
+    </List>
+  ) || null;
 }
 
 DropDownList.propTypes = {
