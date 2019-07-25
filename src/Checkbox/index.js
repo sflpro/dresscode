@@ -7,6 +7,7 @@ import { Icon } from '../Icon';
 import styles from './checkbox.css';
 
 export function Checkbox({
+  hasError,
   disabled,
   checked,
   className,
@@ -27,21 +28,23 @@ export function Checkbox({
         style={style}
       >
         <Icon
+          className={styles.icon}
           name='checked'
           size={12}
-          className={styles.icon}
         />
         <input
           className={styles.checkbox}
-          type='checkbox'
           disabled={disabled}
           checked={checked}
+          type='checkbox'
           {...props}
         />
       </span>
     </React.Fragment>
   );
 }
+
+Checkbox.displayName = 'Checkbox';
 
 Checkbox.propTypes = {
   /** Function, will be called when checkbox value changed */
@@ -58,6 +61,8 @@ Checkbox.propTypes = {
   className: PropTypes.string,
   /** Object, style that will be added to wrapper span element */
   style: PropTypes.bool,
+  /** Boolean, whether value of checkbox has error */
+  hasError: PropTypes.bool,
 };
 
 Checkbox.defaultProps = {
@@ -68,4 +73,5 @@ Checkbox.defaultProps = {
   checked: false,
   className: '',
   style: undefined,
+  hasError: false,
 };

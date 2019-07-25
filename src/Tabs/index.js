@@ -4,7 +4,7 @@ import classNames from 'classnames';
 
 import styles from './tabs.css';
 
-export const TabContext = React.createContext();
+export const TabContext = React.createContext({});
 
 export function Tabs({
   value,

@@ -18,6 +18,7 @@ export function Autocomplete({
   nothingFoundText,
   showLoadingAfter,
   onBlur,
+  onFocus,
   hasError,
   errorHint,
   ...props
@@ -40,6 +41,7 @@ export function Autocomplete({
 
   function onLostFocus() {
     toggleFocus(false);
+
     if (onBlur) {
       onBlur(value);
     }
@@ -61,10 +63,11 @@ export function Autocomplete({
     });
   }
 
-  function onFocus(event) {
+  function handleFocus(event) {
     toggleFocus(true);
-    if (props.onFocus) {
-      props.onFocus(event);
+
+    if (onFocus) {
+      onFocus(event);
     }
   }
 
@@ -103,6 +106,7 @@ export function Autocomplete({
   }
 
   const showError = hasError && !focused;
+
   return (
     <div
       className={wrapperClasses}
@@ -111,7 +115,7 @@ export function Autocomplete({
       <TextInput
         {...props}
         value={value}
-        onFocus={onFocus}
+        onFocus={handleFocus}
         onChange={onChange}
         hasError={showError}
         autoComplete='off'

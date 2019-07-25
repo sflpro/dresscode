@@ -15,8 +15,8 @@ export class WithValidation extends React.Component {
       onChange,
     } = this.props;
 
-    handleChange({ ...args });
-    handleBlur({ ...args });
+    handleChange(args);
+    handleBlur(args);
 
     if (onChange) {
       onChange(args);
@@ -25,10 +25,11 @@ export class WithValidation extends React.Component {
 
   render() {
     const {
-      name,
-      component: Component,
       disabledWhileSubmitting,
+      component: Component,
       onChange,
+      value,
+      name,
       ...props
     } = this.props;
 
@@ -40,14 +41,17 @@ export class WithValidation extends React.Component {
       isSubmitting,
     } = this.context;
 
+    const passChecked = ['Checkbox', 'RadioButton'].includes(Component.displayName);
+
     return (
       <Component
-        name={name}
-        onChange={this.handleFieldChange}
-        onBlur={handleBlur}
-        value={values[name]}
+        checked={passChecked ? values[name] === value : undefined}
         disabled={disabledWhileSubmitting ? isSubmitting : null}
         hasError={!!errors[name] && !!touched[name]}
+        value={passChecked ? value : values[name]}
+        onChange={this.handleFieldChange}
+        onBlur={handleBlur}
+        name={name}
         {...props}
       />
     );
@@ -63,9 +67,12 @@ WithValidation.propTypes = {
   disabledWhileSubmitting: PropTypes.bool,
   /** Function, will be called when component value changed */
   onChange: PropTypes.func,
+  /** Any, input value (for radio button and checkbox) */
+  value: PropTypes.string,
 };
 
 WithValidation.defaultProps = {
   disabledWhileSubmitting: false,
   onChange: undefined,
+  value: undefined,
 };

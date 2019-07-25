@@ -36,15 +36,3 @@
 .successWrapper {
   border: var(--text-input-border-size) solid var(--success-color);
 }
-
-.errorWrapper,
-.errorWrapper:focus,
-.errorWrapper:hover {
-  border: var(--text-input-border-size) solid var(--error-color);
-}
-
-.error {
-  @mixin font-scale-7;
-  color: var(--error-color);
-  margin-top: 8px;
-}

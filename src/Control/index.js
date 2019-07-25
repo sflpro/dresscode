@@ -163,11 +163,15 @@ export class Control extends React.Component {
 
   render() {
     const {
+      onDragStart,
+      onDragEnd,
       className,
       value,
       name,
       icon,
       style,
+      min,
+      max,
       ...props
     } = this.props;
     const { left } = this.state;
@@ -187,7 +191,6 @@ export class Control extends React.Component {
 
     return (
       <span
-        {...props}
         className={classNames(controlClassNames)}
         onTouchStart={this.onMouseDown}
         onMouseDown={this.onMouseDown}
@@ -196,7 +199,12 @@ export class Control extends React.Component {
         role='presentation'
       >
         {icon}
-        <input type='hidden' name={name} value={value} />
+        <input
+          type='hidden'
+          value={value}
+          name={name}
+          {...props}
+        />
       </span>
     );
   }
