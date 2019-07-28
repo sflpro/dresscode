@@ -7,7 +7,7 @@
   margin-top: var(--input-margin-top);
   font-family: var(--select-font-family);
   font-size: var(--select-font-size);
-  min-width: 200px;
+  min-width: 100px;
   box-sizing: border-box;
   cursor: pointer;
   display: flex;
