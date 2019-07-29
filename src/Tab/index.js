@@ -10,15 +10,18 @@ export function Tab({
   disabled,
   className,
   children,
+  matchPartially,
   ...props
 }) {
   return (
     <TabContext.Consumer>
       {({ value, identifier, onChange }) => {
+        const isActive = (matchPartially && typeof value === 'string') ? value.indexOf(props[identifier]) === 0
+          : value === props[identifier];
         const tabClassNames = classNames({
           [className]: true,
           [styles.tab]: true,
-          [styles.active]: value === props[identifier],
+          [styles.active]: isActive,
           [styles.disabled]: disabled,
         });
 
@@ -44,6 +47,8 @@ export function Tab({
 Tab.propTypes = {
   /** Boolean, whether tab is disabled */
   disabled: PropTypes.bool,
+  /** Boolean, whether value partially match  */
+  matchPartially: PropTypes.bool,
   /** String, className that will be added to element */
   className: PropTypes.string,
   /** Object, style that will be added to element */
@@ -54,6 +59,7 @@ Tab.propTypes = {
 
 Tab.defaultProps = {
   disabled: false,
+  matchPartially: false,
   className: '',
   style: undefined,
   children: null,

@@ -68,7 +68,11 @@ WithValidation.propTypes = {
   /** Function, will be called when component value changed */
   onChange: PropTypes.func,
   /** Any, input value (for radio button and checkbox) */
-  value: PropTypes.string,
+  value: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
+    PropTypes.bool,
+  ]),
 };
 
 WithValidation.defaultProps = {
