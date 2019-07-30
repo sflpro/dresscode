@@ -210,7 +210,7 @@ export class Select extends React.Component {
   };
 
   handleSelectChange(optionValue, closeOptions = true) {
-    const { multiple, value, onChange } = this.props;
+    const { multiple, value, onChange, name } = this.props;
     const { selected } = this.state;
 
     let selectedValue = optionValue;
@@ -256,7 +256,16 @@ export class Select extends React.Component {
       search: '',
       isOpen: closeOptions && multiple,
     }, () => {
-      onChange(selectedValue);
+      onChange({
+        currentTarget: {
+          value: selectedValue,
+          name,
+        },
+        target: {
+          value: selectedValue,
+          name,
+        },
+      });
     });
   }
 

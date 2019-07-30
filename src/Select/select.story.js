@@ -24,21 +24,21 @@ storiesOf('Form controls/Select', module)
       value3: 'option3',
     });
 
-    function handleSelectChange1(value1) {
+    function handleSelectChange1({ target }) {
       store.set({
-        value1,
+        value1: target.value,
       });
     }
 
-    function handleSelectChange2(value2) {
+    function handleSelectChange2({ target }) {
       store.set({
-        value2,
+        value2: target.value,
       });
     }
 
-    function handleSelectChange3(value3) {
+    function handleSelectChange3({ target }) {
       store.set({
-        value3,
+        value3: target.value,
       });
     }
 

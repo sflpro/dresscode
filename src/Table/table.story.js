@@ -43,10 +43,10 @@ storiesOf('Data Table', module)
       });
     }
 
-    function handleItemsPerPageChange(itemsPerPage) {
+    function handleItemsPerPageChange({ target }) {
       store.set({
         ...store.state,
-        itemsPerPage,
+        itemsPerPage: target.value,
         page: 1,
       });
     }
