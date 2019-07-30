@@ -20,44 +20,26 @@ storiesOf('Form controls/Select', module)
   .add('Examples', () => {
     const store = new Store({
       value1: 'option1',
-      isOpen1: false,
       value2: ['option1', 'option2', 'option4'],
-      isOpen2: false,
       value3: 'option3',
-      isOpen3: false,
     });
 
-    function handleSelectChange1(value1, isOpen1) {
+    function handleSelectChange1(value1) {
       store.set({
-        isOpen1,
         value1,
       });
     }
 
-    function handleSelectClick1() {
-      store.set({ isOpen1: !store.state.isOpen1 });
-    }
-
-    function handleSelectChange2(value2, isOpen2) {
+    function handleSelectChange2(value2) {
       store.set({
-        isOpen2,
         value2,
       });
     }
 
-    function handleSelectClick2() {
-      store.set({ isOpen2: !store.state.isOpen2 });
-    }
-
-    function handleSelectChange3(value3, isOpen3) {
+    function handleSelectChange3(value3) {
       store.set({
-        isOpen3,
         value3,
       });
-    }
-
-    function handleSelectClick3() {
-      store.set({ isOpen3: !store.state.isOpen3 });
     }
 
     return (
@@ -73,9 +55,7 @@ storiesOf('Form controls/Select', module)
                     Label 1
                     <Select
                       onChange={handleSelectChange1}
-                      onClick={handleSelectClick1}
                       value={state.value1}
-                      open={state.isOpen1}
                     >
                       <Option value='option1'>
                         Lorem Ipsum is simply dummy text of the printing and typesetting
@@ -98,9 +78,7 @@ storiesOf('Form controls/Select', module)
                     Label 2
                     <Select
                       onChange={handleSelectChange3}
-                      onClick={handleSelectClick3}
                       value={state.value3}
-                      open={state.isOpen3}
                       button={Button}
                       buttonProps={{
                         secondary: true,
@@ -128,9 +106,7 @@ storiesOf('Form controls/Select', module)
                   MultiSelect Label
                   <Select
                     onChange={handleSelectChange2}
-                    onClick={handleSelectClick2}
                     value={state.value2}
-                    open={state.isOpen2}
                     placeholder='Type Option'
                     multiple
                   >

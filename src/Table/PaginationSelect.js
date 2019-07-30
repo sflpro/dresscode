@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 import { Select } from '../Select';
@@ -12,40 +12,23 @@ export const PaginationSelect = ({
   className,
   value,
   ...props
-}) => {
-  const [open, setOpen] = useState(false);
-
-  const handleSelectClick = () => {
-    setOpen(!open);
-  };
-
-  const handleSelectChange = (newValue) => {
-    if (value !== newValue) {
-      handleSelectClick();
-    }
-    onChange(newValue);
-  };
-
-  return (
-    <Select
-      onClick={handleSelectClick}
-      onChange={handleSelectChange}
-      open={open}
-      value={value}
-      className={`${styles.paginationSelect} ${className}`}
-      {...props}
-    >
-      {options.map(option => (
-        <Option
-          value={option}
-          key={option}
-        >
-          {option}
-        </Option>
-      ))}
-    </Select>
-  );
-};
+}) => (
+  <Select
+    onChange={onChange}
+    value={value}
+    className={`${styles.paginationSelect} ${className}`}
+    {...props}
+  >
+    {options.map(option => (
+      <Option
+        value={option}
+        key={option}
+      >
+        {option}
+      </Option>
+    ))}
+  </Select>
+);
 
 PaginationSelect.propTypes = {
   /** Number or string, items count to show per page */

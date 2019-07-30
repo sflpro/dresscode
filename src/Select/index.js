@@ -36,7 +36,11 @@ export class Select extends React.Component {
       selected = this.childOptions.find(option => option.value === value);
     }
 
-    this.state = { selected, search: '' };
+    this.state = {
+      selected,
+      search: '',
+      isOpen: false,
+    };
   }
 
   componentDidUpdate() {
@@ -96,8 +100,8 @@ export class Select extends React.Component {
   }
 
   getContent() {
-    const { multiple, value, placeholder, open } = this.props;
-    const { selected, search } = this.state;
+    const { multiple, value, placeholder } = this.props;
+    const { selected, search, isOpen } = this.state;
 
     if (multiple) {
       return (
@@ -107,7 +111,7 @@ export class Select extends React.Component {
               <Tag
                 onClose={(event) => {
                   event.preventDefault();
-                  this.handleSelectChange(option.value, open);
+                  this.handleSelectChange(option.value, isOpen);
                 }}
                 onClick={event => event.preventDefault()}
                 className={styles.tag}
@@ -131,12 +135,17 @@ export class Select extends React.Component {
     return selected ? selected.name : (value || placeholder);
   }
 
-  hideOptions = (event) => {
-    const { open, onClick } = this.props;
+  isOpenChange = (event) => {
+    const { onClick } = this.props;
+    const { isOpen } = this.state;
+
     event.stopPropagation();
     event.preventDefault();
 
-    if (open) {
+    this.setState({
+      isOpen: !isOpen,
+    });
+    if (onClick) {
       onClick();
     }
   };
@@ -162,10 +171,16 @@ export class Select extends React.Component {
   };
 
   handleInputKeyPress = () => {
-    const { open, onClick } = this.props;
+    const { onClick } = this.props;
+    const { isOpen } = this.state;
 
-    if (!open) {
-      onClick();
+    if (!isOpen) {
+      this.setState({
+        isOpen: true,
+      });
+      if (onClick) {
+        onClick();
+      }
     }
   };
 
@@ -178,6 +193,13 @@ export class Select extends React.Component {
     if (multiple) {
       this.input.focus();
     } else {
+      const { isOpen } = this.state;
+      this.setState({
+        isOpen: !isOpen,
+      });
+    }
+
+    if (onClick) {
       onClick();
     }
   };
@@ -229,8 +251,12 @@ export class Select extends React.Component {
       nextSelected = this.childOptions.find(option => option.value === optionValue);
     }
 
-    this.setState({ selected: nextSelected, search: '' }, () => {
-      onChange(selectedValue, closeOptions && multiple);
+    this.setState({
+      selected: nextSelected,
+      search: '',
+      isOpen: closeOptions && multiple,
+    }, () => {
+      onChange(selectedValue);
     });
   }
 
@@ -238,7 +264,6 @@ export class Select extends React.Component {
     const {
       placeholder,
       multiple,
-      open,
       value,
       name,
       onClick,
@@ -250,6 +275,7 @@ export class Select extends React.Component {
       nothingFoundText,
       ...props
     } = this.props;
+    const { isOpen } = this.state;
 
     const isNativeMode = isMobile() && !multiple;
 
@@ -263,11 +289,11 @@ export class Select extends React.Component {
       [className]: true,
       [styles.select]: !button || multiple,
       [styles.selectElem]: !!button && !multiple,
-      [styles.active]: open,
+      [styles.active]: isOpen,
     });
     const iconClasses = classNames({
       [styles.icon]: true,
-      [styles.reverseIcon]: open,
+      [styles.reverseIcon]: isOpen,
     });
     const nativeIconClasses = classNames({
       [styles.icon]: true,
@@ -275,7 +301,7 @@ export class Select extends React.Component {
     });
     const labelClasses = classNames({
       [styles.label]: true,
-      [styles.labelOpen]: open,
+      [styles.labelOpen]: isOpen,
     });
 
     const contentWrapperClasses = classNames({
@@ -323,22 +349,22 @@ export class Select extends React.Component {
                   {this.getContent()}
                 </div>
                 <Icon
-                  onClick={multiple ? onClick : undefined}
+                  onClick={multiple ? this.isOpenChange : undefined}
                   className={iconClasses}
                   name='arrow-down'
                   size={24}
                 />
               </SelectingElement>
               <div>
-                {open && this.getOptions()}
+                {isOpen && this.getOptions()}
               </div>
             </React.Fragment>
           )}
         </div>
-        {open && (
+        {isOpen && (
           <div
             className={styles.overlay}
-            onClick={this.hideOptions}
+            onClick={this.isOpenChange}
             role='presentation'
           />
         )}
@@ -362,8 +388,6 @@ Select.propTypes = {
   placeholder: PropTypes.string,
   /** Boolean, whether multiple options can be selected */
   multiple: PropTypes.bool,
-  /** Boolean, whether options are shown */
-  open: PropTypes.bool,
   /** Elements, content of select tag */
   children: PropTypes.any,
   /** String, name of select */
@@ -384,7 +408,6 @@ Select.defaultProps = {
   onClick: undefined,
   placeholder: '',
   multiple: false,
-  open: false,
   children: null,
   name: '',
   button: undefined,
