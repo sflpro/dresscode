@@ -111,6 +111,7 @@ export class Column extends React.Component {
     sortIconClasses,
     setRef = true,
     children,
+    visible,
     ...props
   }) => {
     const {
@@ -181,6 +182,7 @@ export class Column extends React.Component {
   render() {
     const {
       id,
+      alwaysVisible,
       visible: propsVisible,
       priority: propsPriority,
       minWidth: propsMinWidth,
@@ -291,7 +293,9 @@ Column.propTypes = {
   ]).isRequired,
   /** Number, specifies column priority in table */
   priority: PropTypes.number,
-  /** Boolean, specifies column visibility on collapsed wiew */
+  /** Boolean, specifies if column is always visible */
+  alwaysVisible: PropTypes.bool,
+  /** Boolean, specifies column visibility on collapsed view */
   visible: PropTypes.bool,
   /** Boolean, indicating element relation with table head */
   head: PropTypes.bool,
@@ -311,6 +315,7 @@ Column.propTypes = {
 
 Column.defaultProps = {
   priority: undefined,
+  alwaysVisible: false,
   visible: true,
   head: false,
   minWidth: 1,

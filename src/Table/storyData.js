@@ -8,8 +8,9 @@ export const COLUMNS = [
     id: 'firstName',
     children: 'First Name',
     priority: 1,
-    width: 150,
+    width: 80,
     sortable: true,
+    alwaysVisible: true,
   },
   {
     id: 'lastName',
@@ -24,6 +25,21 @@ export const COLUMNS = [
     priority: 2,
     minWidth: 30,
     sortable: true,
+  },
+  {
+    id: 'profession',
+    children: 'Profession',
+    priority: 4,
+    width: 150,
+    sortable: true,
+  },
+  {
+    id: 'salary',
+    children: 'Salary',
+    priority: 5,
+    width: 80,
+    sortable: true,
+    alwaysVisible: true,
   },
 ];
 
@@ -42,6 +58,14 @@ export const ROWS = [
         id: 'age',
         children: '19',
       },
+      profession: {
+        id: 'profession',
+        children: 'Programmer',
+      },
+      salary: {
+        id: 'salary',
+        children: 50000,
+      },
     },
   },
   {
@@ -57,6 +81,14 @@ export const ROWS = [
       age: {
         id: 'age',
         children: '34',
+      },
+      profession: {
+        id: 'profession',
+        children: 'Doctor',
+      },
+      salary: {
+        id: 'salary',
+        children: 650000,
       },
     },
   },
@@ -74,6 +106,14 @@ export const ROWS = [
         id: 'age',
         children: '24',
       },
+      profession: {
+        id: 'profession',
+        children: 'Nurse',
+      },
+      salary: {
+        id: 'salary',
+        children: 150000,
+      },
     },
   },
   {
@@ -89,6 +129,14 @@ export const ROWS = [
       age: {
         id: 'age',
         children: '56',
+      },
+      profession: {
+        id: 'profession',
+        children: 'Lawyer',
+      },
+      salary: {
+        id: 'salary',
+        children: 500000,
       },
     },
   },
@@ -106,21 +154,13 @@ export const ROWS = [
         id: 'age',
         children: '56',
       },
-    },
-  },
-  {
-    columns: {
-      firstName: {
-        id: 'firstName',
-        children: 'asery',
+      profession: {
+        id: 'profession',
+        children: 'Administrator',
       },
-      lastName: {
-        id: 'lastName',
-        children: 'deret',
-      },
-      age: {
-        id: 'age',
-        children: '56',
+      salary: {
+        id: 'salary',
+        children: 400000,
       },
     },
   },
@@ -138,21 +178,13 @@ export const ROWS = [
         id: 'age',
         children: '56',
       },
-    },
-  },
-  {
-    columns: {
-      firstName: {
-        id: 'firstName',
-        children: 'asery',
+      profession: {
+        id: 'profession',
+        children: 'Driver',
       },
-      lastName: {
-        id: 'lastName',
-        children: 'deret',
-      },
-      age: {
-        id: 'age',
-        children: '56',
+      salary: {
+        id: 'salary',
+        children: 100000,
       },
     },
   },
@@ -170,21 +202,13 @@ export const ROWS = [
         id: 'age',
         children: '56',
       },
-    },
-  },
-  {
-    columns: {
-      firstName: {
-        id: 'firstName',
-        children: 'asery',
+      profession: {
+        id: 'profession',
+        children: 'Tester',
       },
-      lastName: {
-        id: 'lastName',
-        children: 'deret',
-      },
-      age: {
-        id: 'age',
-        children: '56',
+      salary: {
+        id: 'salary',
+        children: 300000,
       },
     },
   },
@@ -202,21 +226,13 @@ export const ROWS = [
         id: 'age',
         children: '56',
       },
-    },
-  },
-  {
-    columns: {
-      firstName: {
-        id: 'firstName',
-        children: 'asery',
+      profession: {
+        id: 'profession',
+        children: 'Dentist',
       },
-      lastName: {
-        id: 'lastName',
-        children: 'deret',
-      },
-      age: {
-        id: 'age',
-        children: '56',
+      salary: {
+        id: 'salary',
+        children: 650000,
       },
     },
   },
@@ -234,21 +250,13 @@ export const ROWS = [
         id: 'age',
         children: '56',
       },
-    },
-  },
-  {
-    columns: {
-      firstName: {
-        id: 'firstName',
-        children: 'asery',
+      profession: {
+        id: 'profession',
+        children: 'Economist',
       },
-      lastName: {
-        id: 'lastName',
-        children: 'deret',
-      },
-      age: {
-        id: 'age',
-        children: '56',
+      salary: {
+        id: 'salary',
+        children: 1000000,
       },
     },
   },
@@ -266,21 +274,13 @@ export const ROWS = [
         id: 'age',
         children: '56',
       },
-    },
-  },
-  {
-    columns: {
-      firstName: {
-        id: 'firstName',
-        children: 'asery',
+      profession: {
+        id: 'profession',
+        children: 'Singer',
       },
-      lastName: {
-        id: 'lastName',
-        children: 'deret',
-      },
-      age: {
-        id: 'age',
-        children: '56',
+      salary: {
+        id: 'salary',
+        children: 350000,
       },
     },
   },
@@ -298,21 +298,13 @@ export const ROWS = [
         id: 'age',
         children: '56',
       },
-    },
-  },
-  {
-    columns: {
-      firstName: {
-        id: 'firstName',
-        children: 'asery',
+      profession: {
+        id: 'profession',
+        children: 'Dancer',
       },
-      lastName: {
-        id: 'lastName',
-        children: 'deret',
-      },
-      age: {
-        id: 'age',
-        children: '56',
+      salary: {
+        id: 'salary',
+        children: 280000,
       },
     },
   },
@@ -330,21 +322,13 @@ export const ROWS = [
         id: 'age',
         children: '56',
       },
-    },
-  },
-  {
-    columns: {
-      firstName: {
-        id: 'firstName',
-        children: 'asery',
+      profession: {
+        id: 'profession',
+        children: 'Programmer',
       },
-      lastName: {
-        id: 'lastName',
-        children: 'deret',
-      },
-      age: {
-        id: 'age',
-        children: '56',
+      salary: {
+        id: 'salary',
+        children: 650000,
       },
     },
   },
@@ -362,21 +346,13 @@ export const ROWS = [
         id: 'age',
         children: '56',
       },
-    },
-  },
-  {
-    columns: {
-      firstName: {
-        id: 'firstName',
-        children: 'asery',
+      profession: {
+        id: 'profession',
+        children: 'Programmer',
       },
-      lastName: {
-        id: 'lastName',
-        children: 'deret',
-      },
-      age: {
-        id: 'age',
-        children: '56',
+      salary: {
+        id: 'salary',
+        children: 1000000,
       },
     },
   },
@@ -394,21 +370,13 @@ export const ROWS = [
         id: 'age',
         children: '56',
       },
-    },
-  },
-  {
-    columns: {
-      firstName: {
-        id: 'firstName',
-        children: 'asery',
+      profession: {
+        id: 'profession',
+        children: 'Programmer',
       },
-      lastName: {
-        id: 'lastName',
-        children: 'deret',
-      },
-      age: {
-        id: 'age',
-        children: '56',
+      salary: {
+        id: 'salary',
+        children: 1000000,
       },
     },
   },
@@ -425,6 +393,254 @@ export const ROWS = [
       age: {
         id: 'age',
         children: '56',
+      },
+      profession: {
+        id: 'profession',
+        children: 'Programmer',
+      },
+      salary: {
+        id: 'salary',
+        children: 1000000,
+      },
+    },
+  },
+  {
+    columns: {
+      firstName: {
+        id: 'firstName',
+        children: 'asery',
+      },
+      lastName: {
+        id: 'lastName',
+        children: 'deret',
+      },
+      age: {
+        id: 'age',
+        children: '56',
+      },
+      profession: {
+        id: 'profession',
+        children: 'Programmer',
+      },
+      salary: {
+        id: 'salary',
+        children: 1000000,
+      },
+    },
+  },
+  {
+    columns: {
+      firstName: {
+        id: 'firstName',
+        children: 'asery',
+      },
+      lastName: {
+        id: 'lastName',
+        children: 'deret',
+      },
+      age: {
+        id: 'age',
+        children: '56',
+      },
+      profession: {
+        id: 'profession',
+        children: 'Programmer',
+      },
+      salary: {
+        id: 'salary',
+        children: 1000000,
+      },
+    },
+  },
+  {
+    columns: {
+      firstName: {
+        id: 'firstName',
+        children: 'asery',
+      },
+      lastName: {
+        id: 'lastName',
+        children: 'deret',
+      },
+      age: {
+        id: 'age',
+        children: '56',
+      },
+      profession: {
+        id: 'profession',
+        children: 'Programmer',
+      },
+      salary: {
+        id: 'salary',
+        children: 1000000,
+      },
+    },
+  },
+  {
+    columns: {
+      firstName: {
+        id: 'firstName',
+        children: 'asery',
+      },
+      lastName: {
+        id: 'lastName',
+        children: 'deret',
+      },
+      age: {
+        id: 'age',
+        children: '56',
+      },
+      profession: {
+        id: 'profession',
+        children: 'Programmer',
+      },
+      salary: {
+        id: 'salary',
+        children: 1000000,
+      },
+    },
+  },
+  {
+    columns: {
+      firstName: {
+        id: 'firstName',
+        children: 'asery',
+      },
+      lastName: {
+        id: 'lastName',
+        children: 'deret',
+      },
+      age: {
+        id: 'age',
+        children: '56',
+      },
+      profession: {
+        id: 'profession',
+        children: 'Programmer',
+      },
+      salary: {
+        id: 'salary',
+        children: 1000000,
+      },
+    },
+  },
+  {
+    columns: {
+      firstName: {
+        id: 'firstName',
+        children: 'asery',
+      },
+      lastName: {
+        id: 'lastName',
+        children: 'deret',
+      },
+      age: {
+        id: 'age',
+        children: '56',
+      },
+      profession: {
+        id: 'profession',
+        children: 'Programmer',
+      },
+      salary: {
+        id: 'salary',
+        children: 1000000,
+      },
+    },
+  },
+  {
+    columns: {
+      firstName: {
+        id: 'firstName',
+        children: 'asery',
+      },
+      lastName: {
+        id: 'lastName',
+        children: 'deret',
+      },
+      age: {
+        id: 'age',
+        children: '56',
+      },
+      profession: {
+        id: 'profession',
+        children: 'Programmer',
+      },
+      salary: {
+        id: 'salary',
+        children: 1000000,
+      },
+    },
+  },
+  {
+    columns: {
+      firstName: {
+        id: 'firstName',
+        children: 'asery',
+      },
+      lastName: {
+        id: 'lastName',
+        children: 'deret',
+      },
+      age: {
+        id: 'age',
+        children: '56',
+      },
+      profession: {
+        id: 'profession',
+        children: 'Programmer',
+      },
+      salary: {
+        id: 'salary',
+        children: 1000000,
+      },
+    },
+  },
+  {
+    columns: {
+      firstName: {
+        id: 'firstName',
+        children: 'asery',
+      },
+      lastName: {
+        id: 'lastName',
+        children: 'deret',
+      },
+      age: {
+        id: 'age',
+        children: '56',
+      },
+      profession: {
+        id: 'profession',
+        children: 'Programmer',
+      },
+      salary: {
+        id: 'salary',
+        children: 1000000,
+      },
+    },
+  },
+  {
+    columns: {
+      firstName: {
+        id: 'firstName',
+        children: 'asery',
+      },
+      lastName: {
+        id: 'lastName',
+        children: 'deret',
+      },
+      age: {
+        id: 'age',
+        children: '56',
+      },
+      profession: {
+        id: 'profession',
+        children: 'Programmer',
+      },
+      salary: {
+        id: 'salary',
+        children: 1000000,
       },
     },
   },
