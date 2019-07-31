@@ -34,7 +34,7 @@ export function Autocomplete({
   });
 
   useEffect(() => {
-    if (propsValue.value) {
+    if (typeof propsValue.value !== 'undefined') {
       setValue(propsValue.value);
     }
   }, [propsValue]);
