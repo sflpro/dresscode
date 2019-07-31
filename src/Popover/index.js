@@ -294,12 +294,13 @@ export class Popover extends React.Component {
 
   handleClick = (event) => {
     this.handleMouseEnter(event);
-    document.addEventListener('mousedown', this.handleClickLeave);
+    document.addEventListener('click', this.handleClickLeave);
   };
 
   handleClickLeave = (event) => {
+    event.stopPropagation();
     this.handleMouseLeave(event);
-    document.removeEventListener('mousedown', this.handleClickLeave);
+    document.removeEventListener('click', this.handleClickLeave);
   };
 
   handleMouseEnter = (event) => {

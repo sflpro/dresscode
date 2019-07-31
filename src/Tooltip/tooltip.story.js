@@ -42,16 +42,18 @@ storiesOf('Tooltip', module)
         <Item>
           <div>
             Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-            <Tooltip
-              title='Position: top, trigger: click'
-              description={longDescription}
-              trigger='click'
-            >
-              <Icon
-                name='tracker'
-                style={trackerStyle}
-              />
-            </Tooltip>
+            <div style={{ width: '36px' }}>
+              <Tooltip
+                title='Position: top, trigger: click'
+                description={longDescription}
+                trigger='click'
+              >
+                <Icon
+                  name='tracker'
+                  style={trackerStyle}
+                />
+              </Tooltip>
+            </div>
           </div>
         </Item>
         <Item>
@@ -62,15 +64,17 @@ storiesOf('Tooltip', module)
             leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with
             the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing
             software like Aldus PageMaker including versions of Lorem Ipsum.
-            <Tooltip
-              title='Position: top'
-              description={longDescription}
-            >
-              <Icon
-                name='tracker'
-                style={trackerStyle}
-              />
-            </Tooltip>
+            <div style={{ width: '36px' }}>
+              <Tooltip
+                title='Position: top'
+                description={longDescription}
+              >
+                <Icon
+                  name='tracker'
+                  style={trackerStyle}
+                />
+              </Tooltip>
+            </div>
 
             <Tooltip
               title='Position: left'
@@ -149,16 +153,18 @@ storiesOf('Tooltip', module)
             leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with
             the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing
             software like Aldus PageMaker including versions of Lorem Ipsum.
-            <Tooltip
-              title='Follow: true'
-              description={longDescription}
-              follow
-            >
-              <Icon
-                name='tracker'
-                style={trackerStyle}
-              />
-            </Tooltip>
+            <div style={{ width: '36px' }}>
+              <Tooltip
+                title='Follow: true'
+                description={longDescription}
+                follow
+              >
+                <Icon
+                  name='tracker'
+                  style={trackerStyle}
+                />
+              </Tooltip>
+            </div>
           </div>
         </Item>
       </ItemGroup>
