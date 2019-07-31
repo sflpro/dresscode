@@ -2,6 +2,7 @@
   position: fixed;
   top:40px;
   right: 24px;
+  z-index: 999;
 }
 
 .notificationItem {
