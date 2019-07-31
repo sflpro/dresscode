@@ -1,104 +1,186 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { State, Store } from '@sambego/storybook-state';
 
 import { DropDown } from '.';
 
+import { ImportInstruction } from '../helpers/ImportInstruction';
 import { ItemGroup } from '../helpers/ItemGroup';
 import { ItemRow } from '../helpers/ItemRow';
 import { Item } from '../helpers/Item';
-import { ImportInstruction } from '../helpers/ImportInstruction';
-import { Button } from '../Button';
 import { Icon } from '../Icon';
 
 import { InfoStoryConfig } from '../configs';
+import { Button } from '../Button';
 
-storiesOf('Drop Down', module)
-  .add('Examples', () => {
-    const store = new Store({
-      isOpen: false,
-    });
+function onClickTest() {
+  console.log('onClickTest');
+}
 
-    function handleSelectClick() {
-      store.set({ isOpen: !store.state.isOpen });
-    }
-
-    function onClickTest() {
-      console.log('onClickTest');
-    }
-
-    return (
-      <State store={store}>
-        {state => (
-          <ItemGroup
-            title='Select'
+storiesOf('DropDown', module)
+  .add('Examples', () => (
+    <ItemGroup
+      title='DropDown'
+      style={{ height: '90vh' }}
+    >
+      <ItemRow style={{ justifyContent: 'space-between' }}>
+        <Item>
+          <DropDown
+            options={(
+              <DropDown.Options>
+                <span>
+                  Option 1
+                </span>
+                <span
+                  role='presentation'
+                  onClick={onClickTest}
+                >
+                  Option 2 - onClick handler
+                </span>
+                <a
+                  href='/#'
+                  target='_blank'
+                >
+                  Option 3
+                </a>
+              </DropDown.Options>
+            )}
           >
-            <ItemRow>
-              <Item>
-                <div style={{ width: '250px' }}>
-                  <DropDown
-                    onClick={handleSelectClick}
-                    open={state.isOpen}
-                  >
-                    <DropDown.Toggle>
-                      <Button>
-                        Toggle
-                        <Icon
-                          name='arrow-down'
-                          size={24}
-                        />
-                      </Button>
-                    </DropDown.Toggle>
-
-                    <DropDown.List>
-                      <span>
-                        Option 1
-                      </span>
-                      <span
-                        role='presentation'
-                        onClick={onClickTest}
-                      >
-                      Option 2 - onClick handler
-                      </span>
-                      <a
-                        href='/#'
-                        target='_blank'
-                      >
-                        Option 3
-                      </a>
-                    </DropDown.List>
-                  </DropDown>
-                </div>
-              </Item>
-            </ItemRow>
-          </ItemGroup>
-        )}
-      </State>
-    );
-  })
+            <Button>
+              Toggle L.
+              <Icon
+                name='arrow-down'
+                size={24}
+              />
+            </Button>
+          </DropDown>
+        </Item>
+        <Item>
+          <DropDown
+            options={(
+              <DropDown.Options>
+                <span>
+                  Option 1
+                </span>
+                <span
+                  role='presentation'
+                  onClick={onClickTest}
+                >
+                  Option 2 - onClick handler
+                </span>
+                <a
+                  href='/#'
+                  target='_blank'
+                >
+                  Option 3
+                </a>
+              </DropDown.Options>
+            )}
+          >
+            <Button>
+              Toggle R.
+              <Icon
+                name='arrow-down'
+                size={24}
+              />
+            </Button>
+          </DropDown>
+        </Item>
+      </ItemRow>
+      <ItemRow style={{ justifyContent: 'space-between', marginTop: 'auto' }}>
+        <Item>
+          <DropDown
+            options={(
+              <DropDown.Options>
+                <span>
+                  Option 1
+                </span>
+                <span
+                  role='presentation'
+                  onClick={onClickTest}
+                >
+                  Option 2 - onClick handler
+                </span>
+                <a
+                  href='/#'
+                  target='_blank'
+                >
+                  Option 3
+                </a>
+              </DropDown.Options>
+            )}
+          >
+            <Button>
+              Toggle L. T.
+              <Icon
+                name='arrow-down'
+                size={24}
+              />
+            </Button>
+          </DropDown>
+        </Item>
+        <Item>
+          <DropDown
+            options={(
+              <DropDown.Options>
+                <span>
+                  Option 1
+                </span>
+                <span
+                  role='presentation'
+                  onClick={onClickTest}
+                >
+                  Option 2 - onClick handler
+                </span>
+                <a
+                  href='/#'
+                  target='_blank'
+                >
+                  Option 3
+                </a>
+              </DropDown.Options>
+            )}
+          >
+            <Button>
+              Toggle R. T.
+              <Icon
+                name='arrow-down'
+                size={24}
+              />
+            </Button>
+          </DropDown>
+        </Item>
+      </ItemRow>
+    </ItemGroup>
+  ))
   .add('Drop Down', () => (
-    <DropDown>
-      <DropDown.Toggle>
-        <Button>
-          Toggle
-          <Icon
-            name='arrow-down'
-            size={24}
-          />
-        </Button>
-      </DropDown.Toggle>
-
-      <DropDown.List>
-        <span>
-          Option 1
-        </span>
-        <span>
-          Option 2
-        </span>
-        <span>
-          Option 3
-        </span>
-      </DropDown.List>
+    <DropDown
+      options={(
+        <DropDown.Options>
+          <span>
+            Option 1
+          </span>
+          <span
+            role='presentation'
+            onClick={onClickTest}
+          >
+            Option 2 - onClick handler
+          </span>
+          <a
+            href='/#'
+            target='_blank'
+          >
+            Option 3
+          </a>
+        </DropDown.Options>
+      )}
+    >
+      <Button>
+        Toggle
+        <Icon
+          name='arrow-down'
+          size={24}
+        />
+      </Button>
     </DropDown>
   ), {
     ...InfoStoryConfig,

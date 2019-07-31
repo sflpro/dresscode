@@ -1,11 +1,13 @@
 .popover {
   display: flex;
+  width: 100%;
 }
 
 .content {
   position: fixed;
   z-index: 99;
   border-radius: var(--popover-content-border-radius);
+  left: 0;
 }
 
 .arrow {

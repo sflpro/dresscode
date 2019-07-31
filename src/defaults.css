@@ -290,4 +290,9 @@
   --horizontall-scroll-wrapper-small-arrow-width: 48px;
   --horizontall-scroll-wrapper-gradient-color: var(--neutral-white);
   --horizontall-scroll-wrapper-arrow-color: var(--primary-color);
+
+  --drop-down-list-item-min-height: var(--list-item-min-height);
+  --drop-down-list-item-color: var(--text-input-color);
+  --drop-down-list-item-padding: 12px 16px;
+  --drop-down-list-item-hover-color: var(--neutral-75);
 }

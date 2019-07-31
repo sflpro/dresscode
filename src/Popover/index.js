@@ -74,6 +74,7 @@ export class Popover extends React.Component {
 
     this.contentRef.current.style[popoverY.position] = `${popoverY.y}px`;
     this.contentRef.current.style[popoverX.position] = `${popoverX.x}px`;
+    this.contentRef.current.style[popoverX.resetPosition] = 'auto';
 
     if (popoverPosition) {
       this.contentRef.current.style.position = popoverPosition;
@@ -118,7 +119,8 @@ export class Popover extends React.Component {
   ) => {
     let arrowWidth = 0;
     let arrowGap = 0;
-    let positionX = 'left';
+    let resetPositionX = 'right';
+    let setPositionX = 'left';
 
     if (this.arrowRef.current) {
       // Arrow was rotated 90 deg in left and right cases, so we need to use arrow offsetHeight for set arrowWidth
@@ -171,14 +173,25 @@ export class Popover extends React.Component {
 
       if (popoverWidth + popoverX > window.innerWidth) {
         popoverX = 0;
-        positionX = 'right';
+        setPositionX = 'right';
+        resetPositionX = 'left';
       }
+
+      const rightOffset = window.innerWidth - pLeft - width;
+
+      if (rightOffset + width < popoverWidth && rightOffset < pLeft) {
+        popoverX = rightOffset;
+        setPositionX = 'right';
+        resetPositionX = 'left';
+      }
+
       popoverX = Math.max(popoverX, 0);
     }
 
     return {
       popoverX: {
-        position: positionX,
+        resetPosition: resetPositionX,
+        position: setPositionX,
         x: popoverX,
       },
       arrowX: {
