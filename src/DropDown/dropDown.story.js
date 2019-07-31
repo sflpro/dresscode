@@ -16,10 +16,10 @@ function onClickTest() {
   console.log('onClickTest');
 }
 
-storiesOf('Drop Down Button', module)
+storiesOf('DropDown', module)
   .add('Examples', () => (
     <ItemGroup
-      title='DropDown Button'
+      title='DropDown'
       style={{ height: '90vh' }}
     >
       <ItemRow style={{ justifyContent: 'space-between' }}>
@@ -152,7 +152,7 @@ storiesOf('Drop Down Button', module)
       </ItemRow>
     </ItemGroup>
   ))
-  .add('Drop Down Button', () => (
+  .add('Drop Down', () => (
     <DropDown
       options={(
         <DropDown.Options>
