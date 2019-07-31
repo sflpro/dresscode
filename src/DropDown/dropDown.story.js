@@ -58,9 +58,9 @@ storiesOf('DropDown', module)
           <DropDown
             options={(
               <DropDown.Options>
-                  <span>
-                    Option 1
-                  </span>
+                <span>
+                  Option 1
+                </span>
                 <span
                   role='presentation'
                   onClick={onClickTest}
