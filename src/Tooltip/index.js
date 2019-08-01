@@ -5,6 +5,7 @@ import classNames from 'classnames';
 import { Popover, POPOVER_POSITIONS } from '../Popover';
 
 import styles from './tooltip.css';
+import { Toggle } from '../Toggle';
 
 const TooltipContent = ({
   description,
@@ -51,51 +52,40 @@ TooltipContent.defaultProps = {
   style: undefined,
 };
 
-export class Tooltip extends React.Component {
-  state = {
-    open: false,
-  };
-
-  handleTargetEvent = (open) => {
-    this.setState({
-      open,
-    });
-  };
-
-  render() {
-    const {
-      trigger,
-      position,
-      follow,
-      arrow,
-      gap = follow ? 10 : 0,
-      popoverClassName,
-      children,
-      popoverOpen,
-      ...props
-    } = this.props;
-    const { open } = this.state;
-
-    return (
-      <Popover
-        onTargetEvent={this.handleTargetEvent}
-        className={popoverClassName}
-        position={position}
-        trigger={trigger}
-        gap={gap}
-        content={(
-          <TooltipContent
-            {...props}
-          />
-        )}
-        follow={follow}
-        arrow={arrow}
-        open={open}
-      >
-        {children}
-      </Popover>
-    );
-  }
+export function Tooltip({
+  trigger,
+  position,
+  follow,
+  arrow,
+  gap,
+  popoverClassName,
+  children,
+  popoverOpen,
+  ...props
+}) {
+  return (
+    <Toggle>
+      {({ state: isOpen, changeState }) => (
+        <Popover
+          gap={gap === 0 && follow ? 10 : gap}
+          className={popoverClassName}
+          onTargetEvent={changeState}
+          position={position}
+          trigger={trigger}
+          content={(
+            <TooltipContent
+              {...props}
+            />
+          )}
+          follow={follow}
+          open={isOpen}
+          arrow={arrow}
+        >
+          {children}
+        </Popover>
+      )}
+    </Toggle>
+  );
 }
 
 Tooltip.propTypes = {

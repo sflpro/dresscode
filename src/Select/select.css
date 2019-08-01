@@ -4,7 +4,6 @@
   border: var(--text-input-border-size) solid var(--text-input-border-color);
   background-color: var(--neutral-white);
   color: var(--text-input-color);
-  margin-top: var(--input-margin-top);
   font-family: var(--select-font-family);
   font-size: var(--select-font-size);
   min-width: 100px;
@@ -38,6 +37,11 @@
 
 .nativeSelectWrapper {
   position: relative;
+  margin-top: 8px;
+}
+
+html {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
 .nativeCustomSelect {
@@ -48,7 +52,8 @@
   @mixin font-scale-4;
   position: absolute;
   right: 16px;
-  top: 14px;
+  top: 0;
+  height: 100%;
 }
 
 .active,
@@ -70,24 +75,6 @@
 
 .reverseIcon {
   transform: rotate(180deg);
-}
-
-.wrapper {
-  position: relative;
-  width: inherit;
-}
-
-.label {
-  width: 100%;
-}
-
-.labelOpen {
-  position: relative;
-  z-index: 10;
-
-  & .list {
-    z-index: 4;
-  }
 }
 
 .listIcon {
@@ -136,14 +123,8 @@
 
 .list {
   background-color: var(--neutral-white);
-  position: absolute;
+  margin-top: 0;
   width: 100%;
-
-  &.selectListFullWidth {
-    min-width: 100%;
-    width: auto;
-    white-space: nowrap;
-  }
 }
 
 .emptyState {
@@ -151,19 +132,4 @@
   padding: 16px;
   display: block;
   color: var(--text-input-placeholder-color);
-}
-
-.selectElem {
-  width: 100%;
-  & .contentWrapper {
-    display: block;
-    margin: 0;
-    flex-wrap: nowrap;
-    padding-right: 16px;
-    text-align: left;
-  }
-
-  & .icon {
-    color: inherit;
-  }
 }

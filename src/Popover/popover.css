@@ -8,6 +8,7 @@
   z-index: 99;
   border-radius: var(--popover-content-border-radius);
   left: 0;
+  top: 0;
 }
 
 .arrow {

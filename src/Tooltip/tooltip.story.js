@@ -153,15 +153,15 @@ storiesOf('Tooltip', module)
             leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with
             the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing
             software like Aldus PageMaker including versions of Lorem Ipsum.
-            <div style={{ width: '36px' }}>
+            <div style={{ width: '150px' }}>
               <Tooltip
-                title='Follow: true'
                 description={longDescription}
+                title='Follow: true'
                 follow
               >
                 <Icon
+                  style={{ ...trackerStyle, height: '150px', width: '150px' }}
                   name='tracker'
-                  style={trackerStyle}
                 />
               </Tooltip>
             </div>
