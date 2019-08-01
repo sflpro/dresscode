@@ -66,7 +66,7 @@ export const removeColumn = ({ columns, removeItemIndex }) => {
 };
 
 export const checkToRemoveColumns = ({ visibleColumnsWidth, width, columns }) => {
-  const hiddenColumns = columns.filter(column => !column.visible).sort(dynamicSort({ column: 'priority' }));
+  let hiddenColumns = columns.filter(column => !column.visible).sort(dynamicSort({ column: 'priority' }));
   let visibleColumns = columns.filter(column => column.visible).sort(dynamicSort({ column: 'priority' }));
 
   let columnsWidth = visibleColumnsWidth;
@@ -98,7 +98,9 @@ export const checkToRemoveColumns = ({ visibleColumnsWidth, width, columns }) =>
       allColumnsMustBeVisible = true;
     } else {
       updatedColumns = removeColumn({ columns: updatedColumns, removeItemIndex: i });
+
       visibleColumns = updatedColumns.filter(column => column.visible).sort(dynamicSort({ column: 'priority' }));
+      hiddenColumns = updatedColumns.filter(column => !column.visible).sort(dynamicSort({ column: 'priority' }));
     }
   }
 
