@@ -27,8 +27,11 @@ export function Caption({
 }
 
 Caption.propTypes = {
-  /** String, caption title */
-  title: PropTypes.string.isRequired,
+  /** String | ReactNode, caption title */
+  title: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.node,
+  ]).isRequired,
   /** String or JSX or Element, caption icon element */
   icon: PropTypes.any,
   /** String, className that will be added to table div */
