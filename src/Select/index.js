@@ -4,6 +4,7 @@ import classNames from 'classnames';
 
 import { TextInput } from '../TextInput';
 import { ListItem } from '../ListItem';
+import { Popover } from '../Popover';
 import { List } from '../List';
 import { Icon } from '../Icon';
 import { Tag } from '../Tag';
@@ -37,9 +38,9 @@ export class Select extends React.Component {
     }
 
     this.state = {
-      selected,
-      search: '',
       isOpen: false,
+      search: '',
+      selected,
     };
   }
 
@@ -57,12 +58,7 @@ export class Select extends React.Component {
   };
 
   getOptions() {
-    const {
-      value: propValue,
-      button,
-      multiple,
-      nothingFoundText,
-    } = this.props;
+    const { value: propValue, nothingFoundText } = this.props;
     const { search } = this.state;
 
     let options = this.childOptions;
@@ -73,13 +69,8 @@ export class Select extends React.Component {
       options = options.filter(({ name }) => name.toLowerCase().includes(lowerCaseSearch));
     }
 
-    const listClasses = classNames({
-      [styles.list]: true,
-      [styles.selectListFullWidth]: button && !multiple,
-    });
-
     return (
-      <List className={listClasses}>
+      <List className={styles.list}>
         {options.length > 0 ? options.map(({ name, value }) => (
           <ListItem
             icon={(Array.isArray(propValue) && propValue.includes(value)) || propValue === value ? 'thick' : null}
@@ -135,16 +126,12 @@ export class Select extends React.Component {
     return selected ? selected.name : (value || placeholder);
   }
 
-  isOpenChange = (event) => {
+  isOpenChange = () => {
     const { onClick } = this.props;
     const { isOpen } = this.state;
 
-    event.stopPropagation();
-    event.preventDefault();
+    this.setState({ isOpen: !isOpen });
 
-    this.setState({
-      isOpen: !isOpen,
-    });
     if (onClick) {
       onClick();
     }
@@ -158,15 +145,14 @@ export class Select extends React.Component {
     const { search } = this.state;
 
     if (search !== value) {
-      this.setState({
-        search: value,
-      });
+      this.setState({ search: value });
     }
   };
 
   handleCustomChange = ({ value, event }) => {
     event.preventDefault();
     event.stopPropagation();
+
     this.handleSelectChange(value);
   };
 
@@ -175,38 +161,32 @@ export class Select extends React.Component {
     const { isOpen } = this.state;
 
     if (!isOpen) {
-      this.setState({
-        isOpen: true,
-      });
+      this.setState({ isOpen: true });
+
       if (onClick) {
         onClick();
       }
     }
   };
 
-  onClick = (event) => {
-    const { multiple, onClick } = this.props;
-
-    event.preventDefault();
-    event.stopPropagation();
+  onClick = (isOpen) => {
+    const { onClick, multiple } = this.props;
 
     if (multiple) {
-      this.input.focus();
+      if (this.input && !isMobile()) {
+        this.input.focus();
+      }
+
+      if (!isOpen) {
+        this.setState({ isOpen });
+      }
     } else {
-      const { isOpen } = this.state;
-      this.setState({
-        isOpen: !isOpen,
-      });
+      this.setState({ isOpen });
     }
 
     if (onClick) {
       onClick();
     }
-  };
-
-  selectingElement = () => {
-    const { button, multiple } = this.props;
-    return button && !multiple ? button : 'div';
   };
 
   handleSelectChange(optionValue, closeOptions = true) {
@@ -279,8 +259,6 @@ export class Select extends React.Component {
       onChange,
       className,
       children,
-      button,
-      buttonProps,
       nothingFoundText,
       ...props
     } = this.props;
@@ -291,26 +269,23 @@ export class Select extends React.Component {
     const nativeSelectClasses = classNames({
       [className]: true,
       [styles.select]: true,
-      [styles.nativeSelect]: !isNativeMode || button,
+      [styles.nativeSelect]: !isNativeMode,
       [styles.nativeCustomSelect]: isNativeMode,
     });
+
     const selectClasses = classNames({
       [className]: true,
-      [styles.select]: !button || multiple,
-      [styles.selectElem]: !!button && !multiple,
+      [styles.select]: true,
       [styles.active]: isOpen,
     });
+
     const iconClasses = classNames({
       [styles.icon]: true,
       [styles.reverseIcon]: isOpen,
     });
+
     const nativeIconClasses = classNames({
-      [styles.icon]: true,
       [styles.nativeIcon]: true,
-    });
-    const labelClasses = classNames({
-      [styles.label]: true,
-      [styles.labelOpen]: isOpen,
     });
 
     const contentWrapperClasses = classNames({
@@ -318,66 +293,53 @@ export class Select extends React.Component {
       [styles.contentWrapperSingle]: !multiple,
     });
 
-    const SelectingElement = this.selectingElement();
-
     return (
-      <div className={styles.wrapper}>
-        <div
-          className={labelClasses}
-          role='presentation'
-          onClick={this.onClick}
-        >
-          <div className={styles.nativeSelectWrapper}>
-            <select
-              onChange={this.handleNativeChange}
-              className={nativeSelectClasses}
-              multiple={multiple}
-              value={value}
-              name={name}
-              {...props}
-            >
-              {children}
-            </select>
-            {isNativeMode && !button && (
-              <Icon
-                className={nativeIconClasses}
-                name='arrow-down'
-              />
-            )}
-          </div>
-          {(!isNativeMode || button) && (
-            <React.Fragment>
-              <SelectingElement
-                onClick={!multiple ? this.onClick : undefined}
-                className={selectClasses}
-                role='presentation'
-                {...buttonProps}
-                {...props}
-              >
-                <div className={contentWrapperClasses}>
-                  {this.getContent()}
-                </div>
-                <Icon
-                  onClick={multiple ? this.isOpenChange : undefined}
-                  className={iconClasses}
-                  name='arrow-down'
-                  size={24}
-                />
-              </SelectingElement>
-              <div>
-                {isOpen && this.getOptions()}
-              </div>
-            </React.Fragment>
+      <React.Fragment>
+        <div className={styles.nativeSelectWrapper}>
+          <select
+            onChange={this.handleNativeChange}
+            className={nativeSelectClasses}
+            multiple={multiple}
+            value={value}
+            name={name}
+            {...props}
+          >
+            {children}
+          </select>
+          {isNativeMode && (
+            <Icon
+              className={nativeIconClasses}
+              name='arrow-down'
+            />
           )}
         </div>
-        {isOpen && (
-          <div
-            className={styles.overlay}
-            onClick={this.isOpenChange}
-            role='presentation'
-          />
+        {!isNativeMode && (
+          <Popover
+            onTargetEvent={this.onClick}
+            content={this.getOptions()}
+            watchTargetDimensions
+            contentEqualToTarget
+            contentRelative
+            trigger='click'
+            open={isOpen}
+            gap={8}
+          >
+            <div
+              className={selectClasses}
+            >
+              <div className={contentWrapperClasses}>
+                {this.getContent()}
+              </div>
+              <Icon
+                onClick={multiple ? this.isOpenChange : undefined}
+                className={iconClasses}
+                name='arrow-down'
+                size={24}
+              />
+            </div>
+          </Popover>
         )}
-      </div>
+      </React.Fragment>
     );
   }
 }
@@ -403,10 +365,6 @@ Select.propTypes = {
   name: PropTypes.string,
   /** String, classname that will be added to select */
   className: PropTypes.string,
-  /** Element for showing select */
-  button: PropTypes.any,
-  /** Element properties */
-  buttonProps: PropTypes.object,
   /** String, text that will be shown if there is no option */
   nothingFoundText: PropTypes.string,
 };
@@ -419,8 +377,6 @@ Select.defaultProps = {
   multiple: false,
   children: null,
   name: '',
-  button: undefined,
-  buttonProps: undefined,
   className: '',
   nothingFoundText: 'Nothing found',
 };
