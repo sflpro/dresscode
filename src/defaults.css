@@ -258,6 +258,12 @@
   --table-row-odd-background-color: var(--neutral-75);
   --table-row-hover-color: var(--blue-50);
   --table-row-expanded-icon-background-color: var(--red-100);
+  --table-row-icon-border-radius: 12px;
+  --table-row-icon-container-padding: 16px 0;
+  --table-row-icon-translateX: -50%;
+  --table-row-icon-container-width: 0;
+  --table-row-icon-width: 24px;
+  --table-row-icon-height: 24px;
   --table-row-icon-background-color: var(--primary-color);
   --table-row-icon-color: var(--neutral-white);
   --table-caption-color: var(--neutral-900);

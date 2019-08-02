@@ -61,6 +61,10 @@ export class Row extends React.Component {
       head,
       className,
       children,
+      iconSize,
+      expendOpenIconName,
+      expendCloseIconName,
+      expendIconClassName,
       ...props
     } = this.props;
 
@@ -80,33 +84,43 @@ export class Row extends React.Component {
       [styles.tableRowWrapperHover]: hover,
     });
 
-    const iconName = expanded ? 'arrow-up' : 'arrow-down';
+    const iconName = expanded ? expendCloseIconName : expendOpenIconName;
     const iconClasses = classNames({
       [styles.tableRowIcon]: true,
-      [styles[iconName]]: true,
+      [styles.tableRowExpendedIcon]: expanded,
+      [expendIconClassName]: true,
     });
-    const iconSize = 16;
+
+    const tableRowContentClasses = classNames({
+      [styles.tableRowContent]: expandable,
+    });
 
     return (
       <div
         className={tableRowWrapperClasses}
       >
         <div className={styles.tableRowOverlay} />
-        <div
-          ref={this.rowRef}
-          className={tableRowClasses}
-          {...props}
-        >
-          {children}
+        <div className={tableRowContentClasses}>
+          {expandable && (
+            <div className={styles.iconContainer}>
+              { !head && (
+                <Icon
+                  onClick={this.handleExpandedChange}
+                  className={iconClasses}
+                  name={iconName}
+                  size={iconSize}
+                />
+              )}
+            </div>
+          )}
+          <div
+            ref={this.rowRef}
+            className={tableRowClasses}
+            {...props}
+          >
+            {children}
+          </div>
         </div>
-        {expandable && !head && (
-          <Icon
-            onClick={this.handleExpandedChange}
-            className={iconClasses}
-            name={iconName}
-            size={iconSize}
-          />
-        )}
       </div>
     );
   }
@@ -119,6 +133,14 @@ Row.propTypes = {
   head: PropTypes.bool,
   /** Boolean, indicating the element highlighting possibility on hover */
   hover: PropTypes.bool,
+  /** Number, size that will be passed to expend icon */
+  iconSize: PropTypes.number,
+  /** String, IconName that will be passed to table row icon when table expended */
+  expendOpenIconName: PropTypes.string,
+  /** String, IconName that will be passed to table row icon when table collapsed */
+  expendCloseIconName: PropTypes.string,
+  /** String, className that will be passed to expend icon */
+  expendIconClassName: PropTypes.string,
   /** String, className that will be added to table div */
   className: PropTypes.string,
   /** Object, styles that will be added to table div */
@@ -128,6 +150,10 @@ Row.propTypes = {
 Row.defaultProps = {
   head: false,
   hover: true,
+  iconSize: 16,
+  expendOpenIconName: 'arrow-down',
+  expendCloseIconName: 'arrow-up',
+  expendIconClassName: '',
   className: '',
   style: undefined,
 };
