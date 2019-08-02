@@ -51,25 +51,29 @@
   background-color: var(--table-row-hover-color) !important;
 }
 
+.tableRowContent {
+  display: flex;
+}
+
+.iconContainer {
+  padding: var(--table-row-icon-container-padding);
+  width: var(--table-row-icon-container-width);
+  z-index: 3;
+}
+
 .tableRowIcon {
   color: var(--table-row-icon-color);
-  position: absolute;
-  width: 24px;
-  height: 24px;
-  border-radius: 12px;
+  background-color: var(--table-row-icon-background-color);
+  border-radius: var(--table-row-icon-border-radius);
+  transform: translateX(var(--table-row-icon-translateX));
+  width: var(--table-row-icon-width);
+  height: var(--table-row-icon-height);
   justify-content: center;
-  left: -11px;
-  top: 12px;
-  z-index: 2;
   cursor: pointer;
 }
 
-.arrow-up {
+.tableRowExpendedIcon {
   background-color: var(--table-row-expanded-icon-background-color);
-}
-
-.arrow-down {
-  background-color: var(--table-row-icon-background-color);
 }
 
 .tableColumn {
