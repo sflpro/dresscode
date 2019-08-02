@@ -48,6 +48,7 @@ storiesOf('Icons', module)
       'wallet',
       'dashboard',
       'plus',
+      'minus',
       'download',
     ];
 
