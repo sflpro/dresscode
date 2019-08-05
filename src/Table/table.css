@@ -23,6 +23,7 @@
   flex-wrap: wrap;
   align-items: center;
   overflow: hidden;
+  width: 100%;
 }
 
 .tableRowExpanded {
