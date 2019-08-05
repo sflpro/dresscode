@@ -1,6 +1,5 @@
 .popover {
   display: flex;
-  width: 100%;
 }
 
 .content {
@@ -49,7 +48,7 @@
 }
 
 .arrowRight {
-    transform: rotate(90deg);
+  transform: rotate(90deg);
 }
 
 .target {
