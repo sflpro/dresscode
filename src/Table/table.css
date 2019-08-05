@@ -163,7 +163,6 @@
   display: inline-flex;
   justify-content: center;
   box-sizing: border-box;
-  z-index: 2;
 }
 
 .paginationItem {
@@ -201,7 +200,6 @@
 .paginationSelect {
   margin-top: 0;
   min-width: 100px;
-  z-index: 2;
 }
 
 .ellipsisColumn,
