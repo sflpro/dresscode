@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { getIn } from 'formik';
 
 import { FormContext } from '../Form';
 
@@ -45,10 +46,10 @@ export class WithValidation extends React.Component {
 
     return (
       <Component
-        checked={passChecked ? values[name] === value : undefined}
+        checked={passChecked ? getIn(values, name) === value : undefined}
         disabled={disabledWhileSubmitting ? isSubmitting : null}
-        hasError={!!errors[name] && !!touched[name]}
-        value={passChecked ? value : values[name]}
+        hasError={!!getIn(errors, name) && !!getIn(touched, name)}
+        value={passChecked ? value : getIn(values, name)}
         onChange={this.handleFieldChange}
         onBlur={handleBlur}
         name={name}
