@@ -209,18 +209,13 @@ export class Column extends React.Component {
 
     const headColumn = columns.find(column => column.id === id);
     if (headColumn) {
-      const {
-        visible: headColumnVisible,
-        priority: headColumnPriority,
-        minWidth: headColumnMinWidth,
-        width: headColumnWidth,
-        hasDefaultWidth: headHasDefaultWidth,
-      } = headColumn;
-      visible = headColumnVisible;
-      priority = headColumnPriority;
-      minWidth = headColumnMinWidth;
-      width = headColumnWidth;
-      hasDefaultWidth = headHasDefaultWidth;
+      ({
+        visible,
+        priority,
+        minWidth,
+        width,
+        hasDefaultWidth,
+      } = headColumn);
     }
 
     const visibleColumns = columns.filter(column => column.visible)
@@ -263,8 +258,12 @@ export class Column extends React.Component {
       tableColumnStyle.minWidth = minWidth;
     }
 
-    if (!visible && !head) {
-      tableColumnStyle.flex = `0 0 calc(100% - ${2 * columnGutter}px)`;
+    if (!visible) {
+      if (head) {
+        tableColumnStyle.display = 'none';
+      } else {
+        tableColumnStyle.flex = `0 0 calc(100% - ${2 * columnGutter}px)`;
+      }
     }
 
     const columnProps = {
