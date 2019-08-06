@@ -158,6 +158,7 @@
   --dialog-padding-right: 16px;
   --dialog-content-padding: 0 24px;
   --dialog-content-margin: 24px 0;
+  --dialog-z-index: 11;
 
   --notification-border-default-color: var(--neutral-100);
   --notification-information-color: var(--primary-color);
