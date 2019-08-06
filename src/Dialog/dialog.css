@@ -2,7 +2,7 @@
   width: calc(100% - var(--dialog-padding-left) - var(--dialog-padding-right));
   max-height: calc(100% - 32px);
   position: fixed;
-  z-index: 11;
+  z-index: var(--dialog-z-index);
   display: flex;
   flex-direction: column;
   justify-content: center;
