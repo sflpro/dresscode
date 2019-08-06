@@ -15,6 +15,7 @@ export { DropDown } from './lib/DropDown';
 export { Error } from './lib/Error';
 export { FileInput } from './lib/FileInput';
 export { Form } from './lib/Form';
+export { FormArrayField } from './lib/FormArrayField';
 export { Icon } from './lib/Icon';
 export { InputSlider } from './lib/InputSlider';
 export { Label } from './lib/Label';
