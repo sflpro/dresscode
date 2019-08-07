@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { getIn } from 'formik';
 
 import { FormContext } from '../Form';
 
@@ -20,9 +21,9 @@ export class WithErrorFeedback extends React.Component {
 
     return (
       children({
-        error: errors[name],
-        touched: touched[name],
-        value: values[name],
+        error: getIn(errors, name),
+        touched: getIn(touched, name),
+        value: getIn(values, name),
       })
     );
   }

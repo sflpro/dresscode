@@ -12,6 +12,7 @@ export function HorizontalScrollWrapper({
   scrollPos,
   children,
   icon,
+  overflowIndicatorClassName,
   ...props
 }) {
   const [showRightArrow, toggleRightArrow] = useState(false);
@@ -101,7 +102,10 @@ export function HorizontalScrollWrapper({
     >
       {showLeftArrow && (
         <div
-          className={styles.arrow}
+          className={classNames({
+            [styles.arrow]: true,
+            [overflowIndicatorClassName]: true,
+          })}
           onClick={scrollLeft}
           role='presentation'
         >
@@ -123,6 +127,7 @@ export function HorizontalScrollWrapper({
           className={classNames({
             [styles.arrow]: true,
             [styles.arrowReverse]: true,
+            [overflowIndicatorClassName]: true,
           })}
           onClick={scrollRight}
           role='presentation'
@@ -135,6 +140,8 @@ export function HorizontalScrollWrapper({
 }
 
 HorizontalScrollWrapper.propTypes = {
+  /** String, classname that will be passed to gradient div */
+  overflowIndicatorClassName: PropTypes.string,
   /** String, classname that will be passed to child wrapper element */
   childWrapperClassName: PropTypes.string,
   /** String, classname that will be passed to wrapper main element */
@@ -151,6 +158,7 @@ HorizontalScrollWrapper.propTypes = {
 
 HorizontalScrollWrapper.defaultProps = {
   childWrapperClassName: '',
+  overflowIndicatorClassName: '',
   scrollStepWidth: 100,
   className: '',
   scrollPos: 0,
