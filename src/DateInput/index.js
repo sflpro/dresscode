@@ -155,20 +155,28 @@ export class DateInput extends React.Component {
           )}
         </Popover>
       ) : (
-        <TextInput
-          {...props}
-          onChange={this.handleNativeDateInputChange}
-          className={dateInputClasses}
-          value={!hasError ? formatDate(dateValue, VALID_DATE_FORMAT) : ''}
-          type='date'
-          icon={(
-            <Icon
-              name='date'
-              size={24}
-            />
-          )}
-          hasError={hasError}
-        />
+        <React.Fragment>
+          <TextInput
+            {...props}
+            name={`native-${props.name || ''}`}
+            onChange={this.handleNativeDateInputChange}
+            className={dateInputClasses}
+            value={!hasError ? formatDate(dateValue, VALID_DATE_FORMAT) : ''}
+            type='date'
+            icon={(
+              <Icon
+                name='date'
+                size={24}
+              />
+            )}
+            hasError={hasError}
+          />
+          <input
+            value={dateValue || ''}
+            name={props.name}
+            type='hidden'
+          />
+        </React.Fragment>
       )
     );
   }
