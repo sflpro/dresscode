@@ -172,7 +172,7 @@ export class DateInput extends React.Component {
             hasError={hasError}
           />
           <input
-            value={dateValue || ''}
+            value={formatDate(dateValue, DEFAULT_FORMAT) || ''}
             name={props.name}
             type='hidden'
           />
