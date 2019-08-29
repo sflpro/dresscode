@@ -142,7 +142,7 @@ export class DateInput extends React.Component {
               onChange={onChange}
               onFocus={this.handleDateInputFocus}
               className={dateInputClasses}
-              value={!hasError && dateValue ? formatDate(dateValue, format) : value}
+              value={value}
               icon={(
                 <Icon
                   name='date'
