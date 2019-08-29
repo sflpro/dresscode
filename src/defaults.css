@@ -88,6 +88,7 @@
   --text-input-prefix-font-family: var(--font-family);
   --text-input-prefix-font-size: var(--font-size-scale-6);
   --text-input-background-color: var(--neutral-white);
+  --text-input-min-width: 200px;
 
   --text-input-height: 48px;
   --text-input-border-radius: 5px;
@@ -270,8 +271,7 @@
   --table-caption-color: var(--neutral-900);
   --table-caption-icon-color: var(--neutral-500);
   --table-caption-background-color: var(--neutral-white);
-  --table-footer-background-color: var(--neutral-white);
-  --table-footer-overlay-background-color: var(--neutral-75);
+  --table-footer-background-color: #fbfbfb;
   --table-footer-border: 1px solid var(--neutral-75);
   --table-footer-padding: 16px;
   --table-pagination-border-color: var(--primary-color-light);

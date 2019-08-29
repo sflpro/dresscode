@@ -5,9 +5,9 @@
   background-color: var(--text-input-background-color);
   padding: var(--text-input-padding);
   margin-top: var(--input-margin-top);
+  min-width: var(--text-input-min-width);
   display: flex;
   align-items: center;
-  min-width: 200px;
   box-sizing: border-box;
   position: relative;
   width: 100%;

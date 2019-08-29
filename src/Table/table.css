@@ -142,16 +142,6 @@
   position: relative;
 }
 
-.tableFooterOverlay {
-  background-color: var(--table-footer-overlay-background-color);
-  position: absolute;
-  opacity: 0.28;
-  left: 0;
-  top: 0;
-  right: 0;
-  bottom: 0;
-}
-
 .tablePaginationInfo {
   @mixin font-scale-6;
   color: var(--table-pagination-info-color);

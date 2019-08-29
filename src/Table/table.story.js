@@ -33,7 +33,7 @@ storiesOf('Data Table', module)
   .add('Examples', () => {
     const itemsPerPageOptions = [10, 20, 50, 100];
 
-    const pageSiblingCount = 1;
+    const pageSiblingCount = 2;
     const total = ROWS.length;
 
     function handlePageClick(page) {
