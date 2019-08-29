@@ -12,7 +12,6 @@ export const Footer = ({
     className={`${styles.tableFooter} ${className}`}
     {...props}
   >
-    <div className={styles.tableFooterOverlay} />
     {children}
   </div>
 );

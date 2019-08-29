@@ -11,6 +11,7 @@ export const Pagination = ({
   itemsPerPage,
   total,
   pageSiblingCount,
+  paginationControlsCount,
   onPageClick,
   className,
   nextElem,
@@ -30,16 +31,16 @@ export const Pagination = ({
   let mainPageNumbers = [];
   let firstPageNumbers = [1];
   let lastPageNumbers = [lastPage];
-  if (lastPage < 5 + 2 * pageSiblingCount) {
+  if (lastPage < paginationControlsCount) {
     firstPageNumbers = [];
     mainPageNumbers = createRange(1, lastPage);
     lastPageNumbers = [];
   } else if (page < 4) {
-    firstPageNumbers = createRange(1, 5);
+    firstPageNumbers = createRange(1, paginationControlsCount - 2);
     mainPageNumbers = [PAGES_GAP];
   } else if (page > lastPage - (pageSiblingCount * 2 + 1)) {
     mainPageNumbers = [PAGES_GAP];
-    lastPageNumbers = createRange(lastPage - 4, lastPage);
+    lastPageNumbers = createRange(lastPage - (paginationControlsCount - 3), lastPage);
   } else {
     mainPageNumbers = [PAGES_GAP, ...createRange(page - 1, page + 1), PAGES_GAP];
   }
@@ -106,6 +107,8 @@ Pagination.propTypes = {
   itemsPerPage: PropTypes.number,
   /** Number, count of selected page siblings which will be shown */
   pageSiblingCount: PropTypes.number,
+  /** Number, count of pagination controls which will be shown */
+  paginationControlsCount: PropTypes.number,
   /** String, className that will be added to root div */
   className: PropTypes.string,
   /** Object, styles that will be added to root div */
@@ -119,6 +122,7 @@ Pagination.propTypes = {
 Pagination.defaultProps = {
   itemsPerPage: 10,
   pageSiblingCount: 1,
+  paginationControlsCount: 5,
   className: '',
   style: undefined,
   nextElem: null,
