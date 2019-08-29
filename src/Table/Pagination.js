@@ -31,18 +31,33 @@ export const Pagination = ({
   let mainPageNumbers = [];
   let firstPageNumbers = [1];
   let lastPageNumbers = [lastPage];
+
   if (lastPage < paginationControlsCount) {
     firstPageNumbers = [];
     mainPageNumbers = createRange(1, lastPage);
     lastPageNumbers = [];
-  } else if (page < 4) {
+  } else if (page < paginationControlsCount - 2) {
     firstPageNumbers = createRange(1, paginationControlsCount - 2);
     mainPageNumbers = [PAGES_GAP];
-  } else if (page > lastPage - (pageSiblingCount * 2 + 1)) {
+  } else if (page > lastPage - (paginationControlsCount - 2)) {
     mainPageNumbers = [PAGES_GAP];
     lastPageNumbers = createRange(lastPage - (paginationControlsCount - 3), lastPage);
+  } else if (paginationControlsCount - 5 >= pageSiblingCount * 2) {
+    mainPageNumbers = [PAGES_GAP, createRange(page - pageSiblingCount, page + pageSiblingCount), PAGES_GAP];
+  } else if (paginationControlsCount % 2 === 0) {
+    mainPageNumbers = [
+      PAGES_GAP,
+      ...createRange(
+        page - ((paginationControlsCount - 4) / 2),
+        page + Math.floor(((paginationControlsCount - 5) / 2)),
+      ),
+      PAGES_GAP,
+    ];
   } else {
-    mainPageNumbers = [PAGES_GAP, ...createRange(page - 1, page + 1), PAGES_GAP];
+    mainPageNumbers = [
+      PAGES_GAP,
+      ...createRange(page - ((paginationControlsCount - 5) / 2), page + ((paginationControlsCount - 5) / 2)),
+      PAGES_GAP];
   }
 
   const pageNumbers = [
