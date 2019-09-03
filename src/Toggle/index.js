@@ -1,8 +1,12 @@
-import React from 'react';
+import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 
 export function Toggle({ children, defaultState = false }) {
-  const [state, setState] = React.useState(defaultState);
+  const [state, setState] = useState(defaultState);
+
+  useEffect(() => {
+    setState(defaultState);
+  }, [defaultState]);
 
   return children({
     toggle: () => setState(prevState => !prevState),

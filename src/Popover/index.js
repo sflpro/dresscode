@@ -80,6 +80,8 @@ export class Popover extends React.Component {
     if (!prevOpen && open) {
       this.setPopoverPosition(this.targetElementPosition);
       this.contentRef.current.addEventListener('mousedown', this.handleContentClick);
+    } else if (!open && prevOpen) {
+      document.removeEventListener('click', this.handleClickLeave, true);
     }
   }
 
@@ -88,7 +90,7 @@ export class Popover extends React.Component {
       this.observer.unobserve(this.targetRef.current);
     }
 
-    document.removeEventListener('click', this.handleClickLeave);
+    document.removeEventListener('click', this.handleClickLeave, true);
     document.removeEventListener('scroll', this.handleMouseLeave);
   }
 
@@ -347,13 +349,15 @@ export class Popover extends React.Component {
 
   handleClick = (event) => {
     this.handleMouseEnter(event);
-    document.addEventListener('click', this.handleClickLeave);
+    document.addEventListener('click', this.handleClickLeave, true);
   };
 
   handleClickLeave = (event) => {
-    event.stopPropagation();
-    this.handleMouseLeave(event);
-    document.removeEventListener('click', this.handleClickLeave);
+    if (!(this.contentRef.current && this.contentRef.current.contains(event.target))) {
+      event.stopPropagation();
+      this.handleMouseLeave(event);
+      document.removeEventListener('click', this.handleClickLeave, true);
+    }
   };
 
   handleMouseEnter = (event) => {
