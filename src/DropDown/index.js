@@ -7,20 +7,21 @@ import { Popover } from '../Popover';
 import { Toggle } from '../Toggle';
 
 export function DropDown({
-  onClick,
+  onStateChange,
   options,
   children,
+  open,
   ...props
 }) {
   return (
-    <Toggle>
+    <Toggle defaultState={open}>
       {({ state: isOpen, changeState }) => (
         <Popover
           onTargetEvent={(nextIsOpen) => {
             changeState(nextIsOpen);
 
-            if (onClick) {
-              onClick();
+            if (onStateChange) {
+              onStateChange(nextIsOpen);
             }
           }}
           content={options}
@@ -40,14 +41,17 @@ export function DropDown({
 DropDown.propTypes = {
   /** JSX, content that will shown under button */
   options: PropTypes.any.isRequired,
-  /** Function, called when dropdown is clicked or items are closed */
-  onClick: PropTypes.func,
+  /** Function, called when dropdown state changed */
+  onStateChange: PropTypes.func,
+  /** Boolean, whether dropdown must be displayed */
+  open: PropTypes.bool,
   /** Elements, content of dropdown tag */
   children: PropTypes.any.isRequired,
 };
 
 DropDown.defaultProps = {
-  onClick: undefined,
+  onStateChange: undefined,
+  open: false,
 };
 
 DropDown.Options = DropDownOptions;
