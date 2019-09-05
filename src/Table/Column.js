@@ -86,7 +86,7 @@ export class Column extends React.Component {
     this.columnChildrenRef = ref;
   };
 
-  renderColumnContent = ({ children }) => {
+  renderColumnContent = ({ children, contentClassName = '' }) => {
     const { didOverflow, renderTooltip } = this.state;
     return (
       renderTooltip && didOverflow ? (
@@ -98,7 +98,7 @@ export class Column extends React.Component {
           {children}
         </Tooltip>
       ) : (
-        <span ref={this.setChildrenRef}>
+        <span className={contentClassName} ref={this.setChildrenRef}>
           {children}
         </span>
       )
@@ -112,6 +112,7 @@ export class Column extends React.Component {
     setRef = true,
     children,
     visible,
+    contentClassName,
     ...props
   }) => {
     const {
@@ -131,7 +132,7 @@ export class Column extends React.Component {
             className={sortIconClasses}
           />
         )}
-        {this.renderColumnContent({ children })}
+        {this.renderColumnContent({ children, contentClassName })}
       </div>
     );
   };
@@ -142,6 +143,7 @@ export class Column extends React.Component {
     headColumn,
     sortIconClasses,
     className,
+    contentClassName,
     style,
     ...props
   }) => {
@@ -153,6 +155,12 @@ export class Column extends React.Component {
     const invisibleHeadColumnClasses = classNames({
       [className]: true,
       [styles.tableHeadColumnForInvisibleColumn]: !visible,
+    });
+
+    const contentClasses = classNames({
+      [contentClassName]: !!contentClassName,
+      [styles.limitedInvisibleColumn]: !visible,
+      [styles.invisibleColumnChildren]: !visible,
     });
 
     return (
@@ -171,10 +179,11 @@ export class Column extends React.Component {
             setRef: false,
             headColumn,
             className: invisibleHeadColumnClasses,
+            contentClassName: styles.limitedInvisibleColumn,
             ...props,
           })
         )}
-        {this.renderColumnContent({ children })}
+        {this.renderColumnContent({ children, contentClassName: contentClasses })}
       </div>
     );
   };
@@ -189,6 +198,7 @@ export class Column extends React.Component {
       sortable,
       head,
       className,
+      contentClassName,
       style,
       ...props
     } = this.props;
@@ -269,6 +279,7 @@ export class Column extends React.Component {
     const columnProps = {
       className: tableColumnClasses,
       style: tableColumnStyle,
+      contentClassName,
       id,
       sortIconClasses,
       headColumn,
@@ -306,8 +317,10 @@ Column.propTypes = {
   sortable: PropTypes.bool,
   /** String or JSX or Element, content of element */
   children: PropTypes.any,
-  /** String, className that will be added to table div */
+  /** String, className that will be added to table column div */
   className: PropTypes.string,
+  /** String, className that will be added to table column content */
+  contentClassName: PropTypes.string,
   /** Object, styles that will be added to table div */
   style: PropTypes.object,
 };
@@ -322,5 +335,6 @@ Column.defaultProps = {
   sortable: false,
   children: '',
   className: '',
+  contentClassName: '',
   style: undefined,
 };
