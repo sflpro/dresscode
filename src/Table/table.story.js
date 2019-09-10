@@ -114,21 +114,29 @@ storiesOf('Data Table', module)
                         display: 'flex',
                         justifyContent: 'space-between',
                         alignItems: 'center',
+                        flexWrap: 'wrap',
                       }}
                     >
                       <Table.Pagination.Info
                         page={state.page}
                         itemsPerPage={state.itemsPerPage}
                         total={total}
+                        style={{ minWidth: 100 }}
                       />
                       <div
                         style={{
                           display: 'flex',
                           justifyContent: 'space-between',
                           alignItems: 'center',
+                          flexWrap: 'wrap',
                         }}
                       >
-                        <Label display='col'>
+                        <Label
+                          display='col'
+                          style={{
+                            margin: 4,
+                          }}
+                        >
                           <span style={{ marginRight: 16, color: '#999999' }}>
                             Items per page
                           </span>
@@ -155,7 +163,7 @@ storiesOf('Data Table', module)
                                 name='arrow-left'
                               />
                             )}
-                            style={{ marginLeft: 24 }}
+                            style={{ margin: 4 }}
                           />
                         )}
                       </div>

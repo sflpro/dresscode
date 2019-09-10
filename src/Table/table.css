@@ -93,6 +93,9 @@
 .tableHeadColumnForInvisibleColumn {
   color: var(--table-header-column-color);
   font-weight: bold;
+  max-width: 50%;
+  margin-right: 16px;
+  min-width: 100px;
 }
 
 .tableHeadColumn.invisibleColumn {
@@ -110,10 +113,6 @@
   min-height: 56px;
   padding-top: 8px;
   padding-bottom: 8px;
-}
-
-.invisibleColumnChildren, .tableHeadColumnForInvisibleColumn {
-  flex: 0 0 50%;
 }
 
 .invisibleColumnChildren {
