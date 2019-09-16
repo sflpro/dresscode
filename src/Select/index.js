@@ -17,14 +17,39 @@ export class Select extends React.Component {
   constructor(props) {
     super(props);
 
-    const { multiple, value, children } = this.props;
-    let selected = [];
+    const { children } = this.props;
 
     this.childOptions = React.Children.map(children, option => ({
       value: option.props.value,
       name: option.props.children,
     }));
 
+    const selected = this.getSelected();
+
+    this.state = {
+      isOpen: false,
+      search: '',
+      selected,
+    };
+  }
+
+  componentDidUpdate(prevProps) {
+    const { children, value } = this.props;
+
+    this.childOptions = React.Children.map(children, option => ({
+      value: option.props.value,
+      name: option.props.children,
+    }));
+
+    if (prevProps.value !== value) {
+      this.handleSelectChange(value);
+    }
+  }
+
+  getSelected() {
+    const { multiple, value } = this.props;
+
+    let selected = [];
     if (multiple) {
       this.childOptions.forEach((option) => {
         if (value.includes(option.value)) {
@@ -37,20 +62,7 @@ export class Select extends React.Component {
       selected = this.childOptions.find(option => option.value === value);
     }
 
-    this.state = {
-      isOpen: false,
-      search: '',
-      selected,
-    };
-  }
-
-  componentDidUpdate() {
-    const { children } = this.props;
-
-    this.childOptions = React.Children.map(children, option => ({
-      value: option.props.value,
-      name: option.props.children,
-    }));
+    return selected;
   }
 
   setInputRef = (ref) => {
