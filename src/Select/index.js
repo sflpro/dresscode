@@ -35,13 +35,14 @@ export class Select extends React.Component {
 
   componentDidUpdate(prevProps) {
     const { children, value } = this.props;
+    const { selected } = this.state;
 
     this.childOptions = React.Children.map(children, option => ({
       value: option.props.value,
       name: option.props.children,
     }));
 
-    if (prevProps.value !== value) {
+    if (prevProps.value !== value && selected.value !== value) {
       this.handleSelectChange(value);
     }
   }

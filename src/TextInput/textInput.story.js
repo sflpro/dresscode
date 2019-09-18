@@ -53,6 +53,8 @@ storiesOf('Form controls/Input', module)
       { name: 'abcd 6', id: 6 },
     ];
 
+    const format = 'DD.MM.YYYY';
+
     function handleInputChange({ target }) {
       store.set({
         ...store.state,
@@ -118,7 +120,8 @@ storiesOf('Form controls/Input', module)
 
     function handleDatePickerChange(event) {
       const { value } = event.target;
-      const hasError = !isValidDate(value, DEFAULT_FORMAT);
+
+      const hasError = !isValidDate(value, format);
       store.set({
         datePickerValue: value,
         hasError,
@@ -233,6 +236,8 @@ storiesOf('Form controls/Input', module)
                   <Label>
                     Date picker
                     <DateInput
+                      name='dateInput'
+                      format={format}
                       value={state.datePickerValue}
                       onChange={handleDatePickerChange}
                       hasError={state.hasError}

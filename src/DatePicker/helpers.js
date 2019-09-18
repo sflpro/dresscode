@@ -184,17 +184,17 @@ export const isValidDate = (dateString, format) => {
 
     switch (formatComponent) {
       case 'DD': {
-        valid = (dateComponent.length === 2 || (dateComponent.length === 1 && Number(dateComponent) < 9))
+        valid = (dateComponent.length === 2 || (dateComponent.length === 1 && Number(dateComponent) <= 9))
           && Number(dateComponent) <= 31;
         break;
       }
       case 'D': {
-        valid = (dateComponent.length === 2 || (dateComponent.length === 1 && Number(dateComponent) < 9))
+        valid = (dateComponent.length === 2 || (dateComponent.length === 1 && Number(dateComponent) <= 9))
           && Number(dateComponent) <= 31;
         break;
       }
       case 'MM': {
-        valid = (dateComponent.length === 2 || (dateComponent.length === 1 && Number(dateComponent) < 9))
+        valid = (dateComponent.length === 2 || (dateComponent.length === 1 && Number(dateComponent) <= 9))
           && Number(dateComponent) >= 1 && Number(dateComponent) <= 12;
         break;
       }
