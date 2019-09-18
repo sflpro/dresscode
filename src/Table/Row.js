@@ -65,6 +65,8 @@ export class Row extends React.Component {
       expendOpenIconName,
       expendCloseIconName,
       expendIconClassName,
+      wrapperClassName,
+      overlayClassName,
       ...props
     } = this.props;
 
@@ -82,6 +84,7 @@ export class Row extends React.Component {
     const tableRowWrapperClasses = classNames({
       [styles.tableRowWrapper]: true,
       [styles.tableRowWrapperHover]: hover,
+      [wrapperClassName]: wrapperClassName,
     });
 
     const iconName = expanded ? expendCloseIconName : expendOpenIconName;
@@ -95,11 +98,16 @@ export class Row extends React.Component {
       [styles.tableRowContent]: expandable,
     });
 
+    const tableRowOverlayClasses = classNames({
+      [styles.tableRowOverlay]: true,
+      [overlayClassName]: overlayClassName,
+    });
+
     return (
       <div
         className={tableRowWrapperClasses}
       >
-        <div className={styles.tableRowOverlay} />
+        <div className={tableRowOverlayClasses} />
         <div className={tableRowContentClasses}>
           {expandable && (
             <div className={styles.iconContainer}>
@@ -141,6 +149,10 @@ Row.propTypes = {
   expendCloseIconName: PropTypes.string,
   /** String, className that will be passed to expend icon */
   expendIconClassName: PropTypes.string,
+  /** String, className that will be passed to table row wrapper */
+  wrapperClassName: PropTypes.string,
+  /** String, className that will be passed to table row overlay */
+  overlayClassName: PropTypes.string,
   /** String, className that will be added to table div */
   className: PropTypes.string,
   /** Object, styles that will be added to table div */
@@ -154,6 +166,8 @@ Row.defaultProps = {
   expendOpenIconName: 'arrow-down',
   expendCloseIconName: 'arrow-up',
   expendIconClassName: '',
+  overlayClassName: '',
+  wrapperClassName: '',
   className: '',
   style: undefined,
 };
