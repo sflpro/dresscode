@@ -12,7 +12,6 @@ import { FileInput } from '../FileInput';
 import { Label } from '../Label';
 import { Icon } from '../Icon';
 import { isValidDate } from '../DatePicker/helpers';
-import { DEFAULT_FORMAT } from '../DatePicker/constants';
 
 import { ItemGroup } from '../helpers/ItemGroup';
 import { ItemRow } from '../helpers/ItemRow';
@@ -52,6 +51,8 @@ storiesOf('Form controls/Input', module)
       { name: 'abcd 5', id: 5 },
       { name: 'abcd 6', id: 6 },
     ];
+
+    const format = 'DD.MM.YYYY';
 
     function handleInputChange({ target }) {
       store.set({
@@ -118,7 +119,8 @@ storiesOf('Form controls/Input', module)
 
     function handleDatePickerChange(event) {
       const { value } = event.target;
-      const hasError = !isValidDate(value, DEFAULT_FORMAT);
+
+      const hasError = !isValidDate(value, format);
       store.set({
         datePickerValue: value,
         hasError,
@@ -233,6 +235,8 @@ storiesOf('Form controls/Input', module)
                   <Label>
                     Date picker
                     <DateInput
+                      name='dateInput'
+                      format={format}
                       value={state.datePickerValue}
                       onChange={handleDatePickerChange}
                       hasError={state.hasError}

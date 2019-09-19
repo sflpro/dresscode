@@ -76,6 +76,22 @@ export class DateInput extends React.Component {
     event.target.select()
   );
 
+  handleDateInputBlur = () => {
+    const { value, hasError, format, name, onChange } = this.props;
+    if (!hasError) {
+      const date = convertStringToDate(value, format);
+      const formatedValue = formatDate(date, format);
+
+      const eventObj = {
+        target: {
+          name,
+          value: formatedValue,
+        },
+      };
+      onChange(eventObj);
+    }
+  }
+
   handleNativeDateInputChange = (event) => {
     const { onChange, format, name } = this.props;
     const { value } = event.target;
@@ -141,6 +157,7 @@ export class DateInput extends React.Component {
               {...props}
               onChange={onChange}
               onFocus={this.handleDateInputFocus}
+              onBlur={this.handleDateInputBlur}
               className={dateInputClasses}
               value={value}
               icon={(
@@ -161,7 +178,7 @@ export class DateInput extends React.Component {
             name={`native-${props.name || ''}`}
             onChange={this.handleNativeDateInputChange}
             className={dateInputClasses}
-            value={!hasError ? formatDate(dateValue, VALID_DATE_FORMAT) : ''}
+            value={!hasError && dateValue ? formatDate(dateValue, VALID_DATE_FORMAT) : ''}
             type='date'
             icon={(
               <Icon
