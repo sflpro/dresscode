@@ -12,7 +12,6 @@ import { FileInput } from '../FileInput';
 import { Label } from '../Label';
 import { Icon } from '../Icon';
 import { isValidDate } from '../DatePicker/helpers';
-import { DEFAULT_FORMAT } from '../DatePicker/constants';
 
 import { ItemGroup } from '../helpers/ItemGroup';
 import { ItemRow } from '../helpers/ItemRow';
