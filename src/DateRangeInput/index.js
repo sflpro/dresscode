@@ -4,6 +4,7 @@ import formatDate from 'date-fns/format';
 
 import { Icon } from '../Icon';
 import { Popover } from '../Popover';
+import { Label } from '../Label';
 import { DateRangePicker } from '../DateRangePicker';
 import {
   DATE_FORMATS,
@@ -188,6 +189,7 @@ export class DateRangeInput extends React.Component {
       style,
       hasError,
       separator,
+      label,
       ...props
     } = this.props;
     const { open, currentValues } = this.state;
@@ -218,7 +220,8 @@ export class DateRangeInput extends React.Component {
         >
           {({ setOnClick }) => (
             <div className={`${styles.dateRangeInputWrapper} ${className}`}>
-              <div>
+              <Label>
+                {label.from}
                 <TextInput
                   name={name.from}
                   onChange={event => this.handleDateInputChange(event, 'from')}
@@ -236,11 +239,12 @@ export class DateRangeInput extends React.Component {
                   hasError={hasError.from}
                   {...props}
                 />
-              </div>
+              </Label>
               <span className={`${styles.seperator} ${separatorClassName}`}>
                 {separator}
               </span>
-              <div>
+              <Label>
+                {label.to}
                 <TextInput
                   name={name.to}
                   onChange={event => this.handleDateInputChange(event, 'to')}
@@ -258,13 +262,14 @@ export class DateRangeInput extends React.Component {
                   hasError={hasError.to}
                   {...props}
                 />
-              </div>
+              </Label>
             </div>
           )}
         </Popover>
       ) : (
         <div className={`${styles.dateRangeInputWrapper} ${className}`}>
-          <div>
+          <Label>
+            {label.from}
             <TextInput
               name={`native-${name.from || ''}`}
               onChange={event => this.handleNativeDateInputChange(event, 'from')}
@@ -282,11 +287,12 @@ export class DateRangeInput extends React.Component {
               forwardedRef={ref => this.setNativeInputRef(ref, 'from')}
               {...props}
             />
-          </div>
+          </Label>
           <span className={`${styles.seperator} ${separatorClassName}`}>
             {separator}
           </span>
-          <div>
+          <Label>
+            {label.to}
             <TextInput
               name={`native-${name.to || ''}`}
               onChange={event => this.handleNativeDateInputChange(event, 'to')}
@@ -304,7 +310,7 @@ export class DateRangeInput extends React.Component {
               forwardedRef={ref => this.setNativeInputRef(ref, 'to')}
               {...props}
             />
-          </div>
+          </Label>
         </div>
       )
     );
@@ -318,8 +324,10 @@ DateRangeInput.propTypes = {
   from: PropTypes.string.isRequired,
   /** String, date range picker to value */
   to: PropTypes.string.isRequired,
-  /** Object, names of range date picker elements */
+  /** Object, names of range date input elements */
   name: PropTypes.object,
+  /** Object, labels of range date input elements */
+  label: PropTypes.object,
   /** Object, whether  date range picker inputs must be rendered with error styles */
   hasError: PropTypes.object,
   /** String, separator element */
@@ -344,7 +352,7 @@ DateRangeInput.defaultProps = {
   format: DEFAULT_FORMAT,
   locale: DEFAULT_LOCALE,
   trigger: 'click',
-  separator: '-',
+  separator: '',
   className: '',
   inputClassName: '',
   separatorClassName: '',
@@ -356,5 +364,9 @@ DateRangeInput.defaultProps = {
   name: {
     from: 'from',
     to: 'to',
+  },
+  label: {
+    from: '',
+    to: '',
   },
 };

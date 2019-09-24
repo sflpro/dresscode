@@ -262,16 +262,16 @@ storiesOf('Form controls/Input', module)
               </ItemRow>
               <ItemRow>
                 <Item>
-                  <Label
-                    text='Date range picker'
-                  >
-                    <DateRangeInput
-                      onChange={handleDateRangePickerChange}
-                      from={state.from}
-                      to={state.to}
-                      hasError={state.rangeHasError}
-                    />
-                  </Label>
+                  <DateRangeInput
+                    onChange={handleDateRangePickerChange}
+                    from={state.from}
+                    to={state.to}
+                    hasError={state.rangeHasError}
+                    // label={{
+                    //   from: 'From',
+                    //   to: 'To',
+                    // }}
+                  />
                 </Item>
               </ItemRow>
             </ItemGroup>
