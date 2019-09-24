@@ -19,6 +19,7 @@ import { Item } from '../helpers/Item';
 import { ImportInstruction } from '../helpers/ImportInstruction';
 
 import { InfoStoryConfig } from '../configs';
+import { DEFAULT_FORMAT } from '../DatePicker/constants';
 
 storiesOf('Form controls/Input', module)
   .add('Examples', () => {
@@ -39,8 +40,12 @@ storiesOf('Form controls/Input', module)
       autocomplete2: {},
       empty: '',
       hasError: false,
-      from: new Date(),
-      to: new Date(),
+      from: '',
+      to: '',
+      rangeHasError: {
+        from: false,
+        to: false,
+      },
     });
 
     const defaultOptions = [
@@ -129,17 +134,28 @@ storiesOf('Form controls/Input', module)
 
 
     function handleDateRangePickerChange(date) {
-      store.set({
-        ...store.state,
-        ...date,
-      });
-    }
+      const { from, to } = date;
+      const rangeHasError = {};
+      if (from) {
+        rangeHasError.from = !isValidDate(from, DEFAULT_FORMAT);
+      }
 
-    function handleDateRangeInputChange(date) {
-      store.set({
+      if (to) {
+        rangeHasError.to = !isValidDate(to, DEFAULT_FORMAT);
+      }
+      const nextState = {
         ...store.state,
         ...date,
-      });
+      };
+
+      if (Object.keys(rangeHasError).length) {
+        nextState.rangeHasError = {
+          ...store.state.rangeHasError,
+          ...rangeHasError,
+        };
+      }
+
+      store.set(nextState);
     }
 
     function getOptionsFromGithub(value) {
@@ -250,10 +266,10 @@ storiesOf('Form controls/Input', module)
                     text='Date range picker'
                   >
                     <DateRangeInput
-                      onDatePickerChange={handleDateRangePickerChange}
-                      onDateInputChange={handleDateRangeInputChange}
+                      onChange={handleDateRangePickerChange}
                       from={state.from}
                       to={state.to}
+                      hasError={state.rangeHasError}
                     />
                   </Label>
                 </Item>

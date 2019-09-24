@@ -1,11 +1,11 @@
 .datePicker {
-  font-family: inherit;
   border: 1px solid var(--date-picker-border-color);
   border-radius: var(--date-picker-border-radius);
   box-shadow: var(--box-shadow-100);
   background-color: var(--date-picker-background-color);
   width: 364px;
   padding-top: 16px;
+  font-family: inherit;
 }
 
 .dayPicker {

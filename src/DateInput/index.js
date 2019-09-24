@@ -133,7 +133,7 @@ export class DateInput extends React.Component {
     });
 
     const isNativeMode = isMobile();
-    const dateValue = value && isValidDate(value, format) ? convertStringToDate(value, format) : null;
+    const dateValue = value && isValidDate(value, format) ? convertStringToDate(value, format) : undefined;
 
     return (
       !isNativeMode ? (
