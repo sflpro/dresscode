@@ -353,7 +353,7 @@ export class DateRangePicker extends React.Component {
 
 DateRangePicker.propTypes = {
   /** Instance of Date, date range picker from value */
-  from: PropTypes.instanceOf(Date).isRequired,
+  from: PropTypes.instanceOf(Date),
   /** Instance of Date, date range picker to value */
   to: PropTypes.instanceOf(Date),
   /** String, language of date picker */
@@ -381,6 +381,7 @@ DateRangePicker.propTypes = {
 };
 
 DateRangePicker.defaultProps = {
+  from: undefined,
   to: undefined,
   locale: 'en',
   localeUtils: null,

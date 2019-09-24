@@ -1,9 +1,11 @@
 .rangeDatePicker {
   border: 1px solid var(--date-picker-border-color);
   box-shadow: var(--box-shadow-100);
+  background-color: var(--date-picker-background-color);
   width: 728px;
   padding-top: 16px;
   position: relative;
+  font-family: inherit;
 }
 
 .disabled {
@@ -28,6 +30,7 @@
 }
 
 .dayPickerMonths {
+  display: flex;
   flex-wrap: nowrap;
 }
 
@@ -63,16 +66,23 @@
   width: 48px;
   margin: 0 1px;
   display: inline-block;
+  text-align: center;
+}
+
+abbr {
+  text-decoration: none;
 }
 
 .dayPickerDay {
   @mixin font-scale-6;
   color: var(--date-picker-day-color);
   width: 48px;
+  text-align: center;
   border: 1px solid transparent;
   border-radius: 4px;
   margin: 1px;
   box-sizing: border-box;
+  padding: 12px 0;
 }
 
 .dayPickerDayOutside {
@@ -97,20 +107,6 @@
 
 .dayPickerDay:focus {
   outline: none;
-}
-
-.dayPickerDayOutside,
-.dayPickerSelectedDay.dayPickerDayOutside,
-.dayPickerSelectedDay.dayPickerDayOutside:hover {
-  background-color: transparent !important;
-  cursor: default;
-  border: none !important;
-}
-
-.dayPickerSelectedDay:not(.dayPickerDayOutside):not(.start):not(.end),
-.dayPickerSelectedDay:not(.dayPickerDayOutside):not(.start):not(.end):hover {
-  border: 1px solid var(--primary-color-light);
-  background-color: var(--primary-color-light) !important;
 }
 
 .picker {
