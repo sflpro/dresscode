@@ -29,8 +29,8 @@ export class DateRangeInput extends React.Component {
     this.state = {
       open: false,
       currentValues: {
-        from: from && isValidDate(from) ? convertStringToDate(from, format) : undefined,
-        to: to && isValidDate(to) ? convertStringToDate(to, format) : undefined,
+        from: from && isValidDate(from, format) ? convertStringToDate(from, format) : undefined,
+        to: to && isValidDate(to, format) ? convertStringToDate(to, format) : undefined,
       },
     };
 
