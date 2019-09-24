@@ -267,10 +267,10 @@ storiesOf('Form controls/Input', module)
                     from={state.from}
                     to={state.to}
                     hasError={state.rangeHasError}
-                    // label={{
-                    //   from: 'From',
-                    //   to: 'To',
-                    // }}
+                    label={{
+                      from: 'From',
+                      to: 'To',
+                    }}
                   />
                 </Item>
               </ItemRow>
