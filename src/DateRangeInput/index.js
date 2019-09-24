@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import formatDate from 'date-fns/format';
 
 import { Icon } from '../Icon';
@@ -181,19 +180,17 @@ export class DateRangeInput extends React.Component {
       from,
       to,
       format,
-      className,
+      className = '',
+      inputClassName = '',
+      separatorClassName = '',
       locale,
       trigger,
       style,
       hasError,
+      separator,
       ...props
     } = this.props;
     const { open, currentValues } = this.state;
-
-    const dateRangeInputClasses = classNames({
-      [styles.dateRangeInput]: true,
-      [className]: true,
-    });
 
     const isNativeMode = isMobile();
     const inputValues = {
@@ -220,14 +217,14 @@ export class DateRangeInput extends React.Component {
           contentRelative
         >
           {({ setOnClick }) => (
-            <div className={styles.dateRangeInputWrapper}>
+            <div className={`${styles.dateRangeInputWrapper} ${className}`}>
               <div>
                 <TextInput
                   name={name.from}
                   onChange={event => this.handleDateInputChange(event, 'from')}
                   onFocus={event => this.handleDateInputFocus(event, 'from')}
                   onBlur={() => this.handleDateInputBlur('from')}
-                  className={dateRangeInputClasses}
+                  className={inputClassName}
                   value={from}
                   icon={(
                     <Icon
@@ -240,8 +237,8 @@ export class DateRangeInput extends React.Component {
                   {...props}
                 />
               </div>
-              <span className={styles.seperator}>
-                -
+              <span className={`${styles.seperator} ${separatorClassName}`}>
+                {separator}
               </span>
               <div>
                 <TextInput
@@ -249,7 +246,7 @@ export class DateRangeInput extends React.Component {
                   onChange={event => this.handleDateInputChange(event, 'to')}
                   onFocus={event => this.handleDateInputFocus(event, 'to')}
                   onBlur={() => this.handleDateInputBlur('to')}
-                  className={dateRangeInputClasses}
+                  className={inputClassName}
                   value={to}
                   icon={(
                     <Icon
@@ -266,13 +263,13 @@ export class DateRangeInput extends React.Component {
           )}
         </Popover>
       ) : (
-        <div className={styles.dateRangeInputWrapper}>
+        <div className={`${styles.dateRangeInputWrapper} ${className}`}>
           <div>
             <TextInput
               name={`native-${name.from || ''}`}
               onChange={event => this.handleNativeDateInputChange(event, 'from')}
               onBlur={() => this.handleNativeDateInputBlur('from')}
-              className={dateRangeInputClasses}
+              className={inputClassName}
               value={!hasError.from && inputValues.from ? formatDate(inputValues.from, VALID_DATE_FORMAT) : ''}
               type='date'
               icon={(
@@ -286,15 +283,15 @@ export class DateRangeInput extends React.Component {
               {...props}
             />
           </div>
-          <span className={styles.seperator}>
-            -
+          <span className={`${styles.seperator} ${separatorClassName}`}>
+            {separator}
           </span>
           <div>
             <TextInput
               name={`native-${name.to || ''}`}
               onChange={event => this.handleNativeDateInputChange(event, 'to')}
               onBlur={() => this.handleNativeDateInputBlur('to')}
-              className={dateRangeInputClasses}
+              className={inputClassName}
               value={!hasError.to && inputValues.to ? formatDate(inputValues.to, VALID_DATE_FORMAT) : ''}
               type='date'
               icon={(
@@ -325,10 +322,16 @@ DateRangeInput.propTypes = {
   name: PropTypes.object,
   /** Object, whether  date range picker inputs must be rendered with error styles */
   hasError: PropTypes.object,
+  /** String, separator element */
+  separator: PropTypes.any,
   /** String, format of date */
   format: PropTypes.oneOf(DATE_FORMATS),
-  /** String, className that will be added to input */
+  /** String, className that will be added to input wrapper */
   className: PropTypes.string,
+  /** String, className that will be added to input */
+  inputClassName: PropTypes.string,
+  /** String, className that will be added to separator */
+  separatorClassName: PropTypes.string,
   /** String, language of input */
   locale: PropTypes.string,
   /** String, action that is opening date picker */
@@ -339,9 +342,12 @@ DateRangeInput.propTypes = {
 
 DateRangeInput.defaultProps = {
   format: DEFAULT_FORMAT,
-  className: '',
   locale: DEFAULT_LOCALE,
   trigger: 'click',
+  separator: '-',
+  className: '',
+  inputClassName: '',
+  separatorClassName: '',
   style: undefined,
   hasError: {
     from: false,
