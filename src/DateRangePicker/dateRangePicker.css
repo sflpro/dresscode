@@ -89,7 +89,7 @@ abbr {
   color: var(--date-picker-outside-day-color);
 }
 
-.dayPickerSelectedDay {
+.dayPickerSelectedDay:not(.dayPickerDayOutside) {
   background-color: var(--primary-color);
   color: var(--date-picker-selected-color);
 }
