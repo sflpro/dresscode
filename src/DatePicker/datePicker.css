@@ -29,6 +29,7 @@
   margin: 0;
   display: flex;
   flex-flow: column nowrap;
+  min-height: 426px;
 }
 
 .dayPickerWeekdays {
