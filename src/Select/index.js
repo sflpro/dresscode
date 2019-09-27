@@ -34,7 +34,7 @@ export class Select extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    const { children, value } = this.props;
+    const { children, value, multiple } = this.props;
     const { selected } = this.state;
 
     this.childOptions = React.Children.map(children, option => ({
@@ -42,8 +42,15 @@ export class Select extends React.Component {
       name: option.props.children,
     }));
 
-    if (prevProps.value !== value && selected.value !== value) {
-      this.handleSelectChange(value);
+    if (!multiple) {
+      if (prevProps.value !== value && selected.value !== value) {
+        this.handleSelectChange(value);
+      }
+    } else if (
+      JSON.stringify(prevProps.value) !== JSON.stringify(value)
+      && JSON.stringify(selected.map(option => option.value)) !== JSON.stringify(value)
+    ) {
+      this.updateSelected();
     }
   }
 
@@ -201,6 +208,10 @@ export class Select extends React.Component {
       onClick();
     }
   };
+
+  updateSelected() {
+    this.setState({ selected: this.getSelected() });
+  }
 
   handleSelectChange(optionValue, closeOptions = true) {
     const { multiple, value, onChange, name } = this.props;
