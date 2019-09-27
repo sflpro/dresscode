@@ -6,6 +6,7 @@ import { object } from '@storybook/addon-knobs';
 import { Select } from '.';
 
 import { Option } from '../Option';
+import { Button } from '../Button';
 import { Label } from '../Label';
 
 import { ItemGroup } from '../helpers/ItemGroup';
@@ -20,6 +21,8 @@ storiesOf('Form controls/Select', module)
     const store = new Store({
       value1: 'option1',
       value2: ['option1', 'option2', 'option4'],
+      value3: 'option1',
+      value4: ['option1', 'option3', 'option4'],
     });
 
     function handleSelectChange1({ target }) {
@@ -31,6 +34,24 @@ storiesOf('Form controls/Select', module)
     function handleSelectChange2({ target }) {
       store.set({
         value2: target.value,
+      });
+    }
+
+    function handleSelectChange4({ target }) {
+      store.set({
+        value2: target.value,
+      });
+    }
+
+    function handleSelectChange3({ target }) {
+      store.set({
+        value3: target.value,
+      });
+    }
+
+    function handleReset() {
+      store.set({
+        value2: ['option2'],
       });
     }
 
@@ -94,6 +115,12 @@ storiesOf('Form controls/Select', module)
                     </Option>
                   </Select>
                 </Label>
+                <Button
+                  style={{ marginTop: '8px' }}
+                  onClick={handleReset}
+                >
+                  Reset
+                </Button>
               </Item>
             </ItemRow>
             <ItemRow
@@ -104,7 +131,7 @@ storiesOf('Form controls/Select', module)
                   <Label>
                     Label 2
                     <Select
-                      onChange={handleSelectChange1}
+                      onChange={handleSelectChange3}
                       value={state.value1}
                     >
                       <Option value='option1'>
@@ -124,8 +151,8 @@ storiesOf('Form controls/Select', module)
                 <Label>
                   MultiSelect Label 2
                   <Select
-                    onChange={handleSelectChange2}
-                    value={state.value2}
+                    onChange={handleSelectChange4}
+                    value={state.value4}
                     placeholder='Type Option'
                     multiple
                   >
