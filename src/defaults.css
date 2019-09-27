@@ -211,6 +211,7 @@
   --date-picker-day-color: var(--neutral-900);
   --date-picker-month-color: var(--primary-color);
   --date-picker-selected-color: var(--neutral-white);
+  --date-picker-selected-background-color-hover: var(--primary-color-dark);
   --date-picker-border-radius: 5px;
 
   --slider-animation-duration: 0.1s;
