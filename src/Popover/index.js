@@ -395,6 +395,10 @@ export class Popover extends React.Component {
     };
 
     if (!follow || (follow && !open)) {
+      if (!open) {
+        document.addEventListener('scroll', this.handleMouseLeave);
+      }
+
       onTargetEvent(!open);
     } else {
       this.setPopoverPosition(this.targetElementPosition);
