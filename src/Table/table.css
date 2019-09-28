@@ -59,7 +59,7 @@
 .iconContainer {
   padding: var(--table-row-icon-container-padding);
   width: var(--table-row-icon-container-width);
-  z-index: 3;
+  z-index: 2;
 }
 
 .tableRowIcon {

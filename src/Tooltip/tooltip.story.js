@@ -68,7 +68,6 @@ storiesOf('Tooltip', module)
               <Tooltip
                 title='Position: top'
                 description={longDescription}
-                closeOnScroll
               >
                 <Icon
                   name='tracker'
@@ -82,7 +81,6 @@ storiesOf('Tooltip', module)
               description={longDescription}
               position='left'
               popoverClassName={styles.centralizedPopover}
-              closeOnScroll
             >
               <Icon
                 name='tracker'
@@ -95,7 +93,6 @@ storiesOf('Tooltip', module)
               description={longDescription}
               position='right'
               popoverClassName={styles.centralizedPopover}
-              closeOnScroll
             >
               <Icon
                 name='tracker'
@@ -116,7 +113,6 @@ storiesOf('Tooltip', module)
               title='Target position: fixed, left: 20%'
               description={description}
               position='bottom'
-              closeOnScroll
             >
               <Icon
                 name='tracker'
@@ -141,7 +137,6 @@ storiesOf('Tooltip', module)
             <Tooltip
               title='Target position: absolute, right: 0'
               description={description}
-              closeOnScroll
             >
               <Icon
                 name='tracker'
@@ -162,7 +157,6 @@ storiesOf('Tooltip', module)
               <Tooltip
                 description={longDescription}
                 title='Follow: true'
-                closeOnScroll
                 follow
               >
                 <Icon
