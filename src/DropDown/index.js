@@ -29,6 +29,7 @@ export function DropDown({
               onStateChange(nextIsOpen);
             }
           }}
+          closeOnScroll={false}
           content={options}
           contentRelative
           trigger='click'

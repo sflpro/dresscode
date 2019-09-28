@@ -54,3 +54,7 @@
 .target {
   width: 100%;
 }
+
+.absoluteElement {
+  position: absolute;
+}

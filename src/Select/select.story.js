@@ -178,6 +178,7 @@ storiesOf('Form controls/Select', module)
                 </Label>
               </Item>
             </ItemRow>
+            <div style={{ minHeight: '500px' }} />
           </ItemGroup>
         )}
       </State>
