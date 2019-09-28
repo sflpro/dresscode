@@ -61,7 +61,6 @@ export function Tooltip({
   popoverClassName,
   children,
   popoverOpen,
-  closeOnScroll,
   ...props
 }) {
   return (
@@ -69,7 +68,6 @@ export function Tooltip({
       {({ state: isOpen, changeState }) => (
         <Popover
           gap={gap === 0 && follow ? 10 : gap}
-          closeOnScroll={closeOnScroll}
           className={popoverClassName}
           onTargetEvent={changeState}
           position={position}
@@ -116,8 +114,6 @@ Tooltip.propTypes = {
   popoverOpen: PropTypes.bool,
   /** JSX or Element, target */
   children: PropTypes.any,
-  /** boolean, whether to close tooltip on scroll */
-  closeOnScroll: PropTypes.any,
 };
 
 Tooltip.defaultProps = {
@@ -132,5 +128,4 @@ Tooltip.defaultProps = {
   popoverOpen: undefined,
   style: undefined,
   children: null,
-  closeOnScroll: false,
 };
