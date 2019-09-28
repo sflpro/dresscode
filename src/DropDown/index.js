@@ -8,6 +8,7 @@ import { Toggle } from '../Toggle';
 
 export function DropDown({
   onStateChange,
+  disabled,
   options,
   children,
   open,
@@ -18,6 +19,10 @@ export function DropDown({
       {({ state: isOpen, changeState }) => (
         <Popover
           onTargetEvent={(nextIsOpen) => {
+            if (disabled) {
+              return;
+            }
+
             changeState(nextIsOpen);
 
             if (onStateChange) {
@@ -45,12 +50,15 @@ DropDown.propTypes = {
   onStateChange: PropTypes.func,
   /** Boolean, whether dropdown must be displayed */
   open: PropTypes.bool,
+  /** Boolean, whether dropdown is disabled */
+  disabled: PropTypes.bool,
   /** Elements, content of dropdown tag */
   children: PropTypes.any.isRequired,
 };
 
 DropDown.defaultProps = {
   onStateChange: undefined,
+  disabled: false,
   open: false,
 };
 
