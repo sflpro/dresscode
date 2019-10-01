@@ -70,7 +70,9 @@ export class Popover extends React.Component {
       this.observer.observe(this.targetRef.current);
     }
 
-    document.addEventListener('scroll', this.handleMouseLeave);
+    if (open) {
+      document.addEventListener('scroll', this.handleMouseLeave);
+    }
   }
 
   componentDidUpdate(prevProps) {
@@ -171,7 +173,8 @@ export class Popover extends React.Component {
     let arrowX;
     let popoverX;
     let arrowClasses = '';
-    const windowWidth = document.body.clientWidth;
+    const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
+    const windowWidth = document.body.clientWidth - scrollLeft;
 
     if (position === POPOVER_POSITIONS.RIGHT) {
       arrowX = pLeft + width + gap + 1;
@@ -255,7 +258,8 @@ export class Popover extends React.Component {
     let arrowY;
     let popoverY;
     let arrowClasses = '';
-    const windowHeight = document.body.clientHeight;
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    const windowHeight = document.body.clientHeight - scrollTop;
 
     if (position === POPOVER_POSITIONS.BOTTOM) {
       arrowY = pTop + height + gap + 1;
@@ -394,7 +398,7 @@ export class Popover extends React.Component {
       },
     };
 
-    if (!follow || (follow && !open)) {
+    if (!(follow && open)) {
       if (!open) {
         document.addEventListener('scroll', this.handleMouseLeave);
       }
