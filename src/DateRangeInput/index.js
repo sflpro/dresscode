@@ -105,7 +105,7 @@ export class DateRangeInput extends React.Component {
 
     this.focused[selectedPicker] = false;
 
-    if (!hasError[selectedPicker]) {
+    if (!hasError[selectedPicker] && selectedPickerValue) {
       const date = convertStringToDate(selectedPickerValue, format);
       const formatedValue = formatDate(date, format);
 
@@ -185,6 +185,8 @@ export class DateRangeInput extends React.Component {
       inputClassName = '',
       separatorClassName = '',
       locale,
+      localeUtils,
+      monthsShort,
       trigger,
       style,
       hasError,
@@ -211,6 +213,8 @@ export class DateRangeInput extends React.Component {
               from={inputValues.from}
               to={inputValues.to}
               locale={locale}
+              localeUtils={localeUtils}
+              monthsShort={monthsShort}
             />
           )}
           onTargetEvent={this.handleTargetEvent}
@@ -342,6 +346,16 @@ DateRangeInput.propTypes = {
   separatorClassName: PropTypes.string,
   /** String, language of input */
   locale: PropTypes.string,
+  /** Object, utils to format date value for given language */
+  localeUtils: PropTypes.shape({
+    formatDay: PropTypes.func.isRequired,
+    formatMonthTitle: PropTypes.func.isRequired,
+    formatWeekdayLong: PropTypes.func.isRequired,
+    formatWeekdayShort: PropTypes.func.isRequired,
+    getFirstDayOfWeek: PropTypes.func.isRequired,
+  }),
+  /** Array of strings, months short names */
+  monthsShort: PropTypes.array,
   /** String, action that is opening date picker */
   trigger: PropTypes.string,
   /** Object, styles that will be passed to input */
@@ -351,6 +365,8 @@ DateRangeInput.propTypes = {
 DateRangeInput.defaultProps = {
   format: DEFAULT_FORMAT,
   locale: DEFAULT_LOCALE,
+  localeUtils: undefined,
+  monthsShort: undefined,
   trigger: 'click',
   separator: '',
   className: '',
