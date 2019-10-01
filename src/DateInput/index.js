@@ -117,6 +117,8 @@ export class DateInput extends React.Component {
       format,
       className,
       locale,
+      localeUtils,
+      monthsShort,
       trigger,
       view,
       hasError,
@@ -144,6 +146,8 @@ export class DateInput extends React.Component {
               value={dateValue || new Date()}
               onChange={this.handleDatePickerChange}
               locale={locale}
+              localeUtils={localeUtils}
+              monthsShort={monthsShort}
               view={view}
             />
           )}
@@ -214,6 +218,16 @@ DateInput.propTypes = {
   className: PropTypes.string,
   /** String, language of input */
   locale: PropTypes.string,
+  /** Object, utils to format date value for given language */
+  localeUtils: PropTypes.shape({
+    formatDay: PropTypes.func.isRequired,
+    formatMonthTitle: PropTypes.func.isRequired,
+    formatWeekdayLong: PropTypes.func.isRequired,
+    formatWeekdayShort: PropTypes.func.isRequired,
+    getFirstDayOfWeek: PropTypes.func.isRequired,
+  }),
+  /** Array of strings, months short names */
+  monthsShort: PropTypes.array,
   /** String, action that is opening date picker */
   trigger: PropTypes.string,
   /** String, decide which view of date picker must be shown(day, month, year) */
@@ -228,6 +242,8 @@ DateInput.defaultProps = {
   format: DEFAULT_FORMAT,
   className: '',
   locale: DEFAULT_LOCALE,
+  localeUtils: undefined,
+  monthsShort: undefined,
   trigger: 'click',
   view: 'day',
   style: undefined,

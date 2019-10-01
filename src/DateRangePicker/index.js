@@ -43,8 +43,7 @@ export class DateRangePicker extends React.Component {
     this.year = this.day.getFullYear();
   }
 
-  handleDayCaptionClick = (event, view) => {
-    const date = new Date(event.target.textContent);
+  handleDayCaptionClick = (date, view) => {
     const selectedMonth = date.getMonth();
 
     if (selectedMonth === this.day.getMonth()) {
@@ -160,7 +159,7 @@ export class DateRangePicker extends React.Component {
     this.day = new Date(nextDay);
     this.selectedPicker = null;
 
-    this.handleDayClick();
+    this.handleDayClick(this.day);
     this.handleViewChange(VIEW_TYPES.DAY);
   };
 
@@ -274,7 +273,7 @@ export class DateRangePicker extends React.Component {
           classNames={dayPickerClasses}
           captionElement={({ date }) => (
             <DatePickerCaption
-              onClick={event => this.handleDayCaptionClick(event, VIEW_TYPES.YEAR)}
+              onClick={() => this.handleDayCaptionClick(date, VIEW_TYPES.YEAR)}
             >
               {formatMonthTitle({ date, locale, localeUtils, months })}
             </DatePickerCaption>

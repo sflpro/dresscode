@@ -20,6 +20,14 @@ import { ImportInstruction } from '../helpers/ImportInstruction';
 
 import { InfoStoryConfig } from '../configs';
 import { DEFAULT_FORMAT } from '../DatePicker/constants';
+import {
+  formatDay,
+  formatMonthTitle,
+  formatWeekdayLong,
+  formatWeekdayShort,
+  getFirstDayOfWeek,
+  MONTHS_SHORT,
+} from '../DatePicker/locale-example';
 
 storiesOf('Form controls/Input', module)
   .add('Examples', () => {
@@ -256,6 +264,15 @@ storiesOf('Form controls/Input', module)
                       value={state.datePickerValue}
                       onChange={handleDatePickerChange}
                       hasError={state.hasError}
+                      locale='hy'
+                      localeUtils={{
+                        formatDay,
+                        formatMonthTitle,
+                        formatWeekdayLong,
+                        formatWeekdayShort,
+                        getFirstDayOfWeek,
+                      }}
+                      monthsShort={MONTHS_SHORT.hy}
                     />
                   </Label>
                 </Item>
@@ -271,6 +288,15 @@ storiesOf('Form controls/Input', module)
                       from: 'From',
                       to: 'To',
                     }}
+                    locale='hy'
+                    localeUtils={{
+                      formatDay,
+                      formatMonthTitle,
+                      formatWeekdayLong,
+                      formatWeekdayShort,
+                      getFirstDayOfWeek,
+                    }}
+                    monthsShort={MONTHS_SHORT.hy}
                   />
                 </Item>
               </ItemRow>
