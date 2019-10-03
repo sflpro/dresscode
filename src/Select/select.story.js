@@ -59,7 +59,7 @@ storiesOf('Form controls/Select', module)
       <State store={store}>
         {state => (
           <ItemGroup
-            style={{ height: '90vh' }}
+            style={{ height: '100%' }}
             title='Select'
           >
             <ItemRow>
