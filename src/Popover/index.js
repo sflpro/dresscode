@@ -370,12 +370,10 @@ export class Popover extends React.Component {
     const {
       follow,
       open,
-      trigger,
       onTargetEvent,
       contentRelative,
     } = this.props;
-    let target = trigger === POPOVER_TRIGGER_OPTIONS.HOVER ? event.target : event.currentTarget;
-
+    let target = event.currentTarget;
     if (contentRelative) {
       target = this.targetRef.current;
     }
