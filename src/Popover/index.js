@@ -23,7 +23,7 @@ export class Popover extends React.Component {
     super(props);
     this.domBody = document.querySelector('body');
 
-    const { trigger, children } = this.props;
+    const { trigger, children, closeOnScroll, follow } = this.props;
 
     this.contentRef = React.createRef();
     this.targetRef = React.createRef();
@@ -33,6 +33,7 @@ export class Popover extends React.Component {
       coordinates: {},
     };
     this.targetElementProps = {};
+    this.closeOnScroll = closeOnScroll || follow;
 
     if (typeof children !== 'function') {
       this.targetElementProps = this.getTargetElementProps(trigger);
@@ -40,7 +41,7 @@ export class Popover extends React.Component {
   }
 
   componentDidMount() {
-    const { open, watchTargetDimensions, closeOnScroll, follow } = this.props;
+    const { open, watchTargetDimensions } = this.props;
 
     if (open) {
       this.setPopoverPosition(this.targetElementPosition);
@@ -72,7 +73,7 @@ export class Popover extends React.Component {
       this.observer.observe(this.targetRef.current);
     }
 
-    if (open && (closeOnScroll || follow)) {
+    if (open && this.closeOnScroll) {
       document.addEventListener('scroll', this.handleMouseLeave);
     }
   }
@@ -90,14 +91,13 @@ export class Popover extends React.Component {
   }
 
   componentWillUnmount() {
-    const { closeOnScroll, follow } = this.props;
     if (this.observer && this.targetRef.current) {
       this.observer.unobserve(this.targetRef.current);
     }
 
     document.removeEventListener('click', this.handleClickLeave, true);
 
-    if (closeOnScroll || follow) {
+    if (this.closeOnScroll) {
       document.removeEventListener('scroll', this.handleMouseLeave);
     }
   }
@@ -175,12 +175,12 @@ export class Popover extends React.Component {
 
     const { width, coordinates: { x: pLeft } } = targetElementPosition;
     const { popoverWidth } = popoverElementPosition;
-    const { follow, gap, position, closeOnScroll } = this.props;
+    const { follow, gap, position } = this.props;
     let arrowX;
     let popoverX;
     let arrowClasses = '';
     const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
-    const windowWidth = document.documentElement.clientWidth;
+    const windowWidth = document.body.clientWidth;
 
     if (position === POPOVER_POSITIONS.RIGHT) {
       arrowX = pLeft + width + gap + 1;
@@ -234,7 +234,7 @@ export class Popover extends React.Component {
       popoverX = Math.max(popoverX, 0);
     }
 
-    if (!(closeOnScroll || follow)) {
+    if (!this.closeOnScroll) {
       popoverX += scrollLeft;
       arrowX += scrollLeft;
     }
@@ -254,7 +254,7 @@ export class Popover extends React.Component {
   };
 
   computeVerticalPosition = (targetElementPosition, popoverElementPosition, contentRelative = false) => {
-    const { follow, gap, position, closeOnScroll } = this.props;
+    const { follow, gap, position } = this.props;
     const resetPositionY = 'bottom';
     const setPositionY = 'top';
     let arrowHeight = 0;
@@ -306,7 +306,7 @@ export class Popover extends React.Component {
       arrowY = pTop - ((arrowHeight - height) / 2);
     }
 
-    if (!(closeOnScroll || follow)) {
+    if (!this.closeOnScroll) {
       popoverY += scrollTop;
       arrowY += scrollTop;
     }
@@ -385,7 +385,6 @@ export class Popover extends React.Component {
       open,
       onTargetEvent,
       contentRelative,
-      closeOnScroll,
     } = this.props;
     let target = event.currentTarget;
     if (contentRelative) {
@@ -411,7 +410,7 @@ export class Popover extends React.Component {
     };
 
     if (!(follow && open)) {
-      if (!open && closeOnScroll) {
+      if (!open && this.closeOnScroll) {
         document.addEventListener('scroll', this.handleMouseLeave);
       }
 
@@ -422,10 +421,10 @@ export class Popover extends React.Component {
   };
 
   handleMouseLeave = () => {
-    const { onTargetEvent, closeOnScroll, follow } = this.props;
+    const { onTargetEvent } = this.props;
 
     onTargetEvent(false);
-    if (closeOnScroll || follow) {
+    if (this.closeOnScroll) {
       document.removeEventListener('scroll', this.handleMouseLeave);
     }
   };
@@ -483,12 +482,12 @@ export class Popover extends React.Component {
 
     const popoverContentStyles = classNames({
       [styles.content]: true,
-      [styles.absoluteElement]: !closeOnScroll,
+      [styles.absoluteElement]: !this.closeOnScroll,
     });
 
     const popoverArrowStyles = classNames({
       [styles.arrow]: true,
-      [styles.absoluteElement]: !closeOnScroll,
+      [styles.absoluteElement]: !this.closeOnScroll,
     });
 
     return (
@@ -510,42 +509,26 @@ export class Popover extends React.Component {
           }) : children}
         </div>
         {open && (
-          (closeOnScroll || follow) ? (
-            <React.Fragment>
-              {arrow && !follow && (
-                <span
-                  ref={this.arrowRef}
-                  className={styles.arrow}
-                />
-              )}
-              <div
-                className={styles.content}
-                ref={this.contentRef}
-              >
-                {ContentComponent}
-              </div>
-            </React.Fragment>
-          ) : (
-            ReactDOM.createPortal(
-              (
-                <React.Fragment>
-                  {arrow && (
-                    <span
-                      ref={this.arrowRef}
-                      className={popoverArrowStyles}
-                    />
-                  )}
-                  <div
-                    className={popoverContentStyles}
-                    ref={this.contentRef}
-                  >
-                    {ContentComponent}
-                  </div>
-                </React.Fragment>
-              ),
-              this.domBody,
-            )
-          ))}
+          ReactDOM.createPortal(
+            (
+              <React.Fragment>
+                {arrow && !follow && (
+                  <span
+                    ref={this.arrowRef}
+                    className={popoverArrowStyles}
+                  />
+                )}
+                <div
+                  className={popoverContentStyles}
+                  ref={this.contentRef}
+                >
+                  {ContentComponent}
+                </div>
+              </React.Fragment>
+            ),
+            this.domBody,
+          )
+        )}
       </div>
     );
   }
