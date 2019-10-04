@@ -30,6 +30,7 @@ export function DropDown({
             }
           }}
           content={options}
+          closeOnScroll={false}
           contentRelative
           trigger='click'
           open={isOpen}

@@ -61,6 +61,7 @@ export function Tooltip({
   popoverClassName,
   children,
   popoverOpen,
+  closeOnScroll,
   ...props
 }) {
   return (
@@ -72,6 +73,7 @@ export function Tooltip({
           onTargetEvent={changeState}
           position={position}
           trigger={trigger}
+          closeOnScroll={closeOnScroll}
           content={(
             <TooltipContent
               {...props}
@@ -114,6 +116,8 @@ Tooltip.propTypes = {
   popoverOpen: PropTypes.bool,
   /** JSX or Element, target */
   children: PropTypes.any,
+  /** boolean, whether to close tooltip on scroll */
+  closeOnScroll: PropTypes.bool,
 };
 
 Tooltip.defaultProps = {
@@ -128,4 +132,5 @@ Tooltip.defaultProps = {
   popoverOpen: undefined,
   style: undefined,
   children: null,
+  closeOnScroll: true,
 };

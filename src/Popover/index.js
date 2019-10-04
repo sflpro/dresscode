@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import ResizeObserver from 'resize-observer-polyfill';
@@ -20,8 +21,9 @@ export const POPOVER_POSITIONS = {
 export class Popover extends React.Component {
   constructor(props) {
     super(props);
+    this.domBody = document.querySelector('body');
 
-    const { trigger, children } = this.props;
+    const { trigger, children, closeOnScroll, follow } = this.props;
 
     this.contentRef = React.createRef();
     this.targetRef = React.createRef();
@@ -31,6 +33,7 @@ export class Popover extends React.Component {
       coordinates: {},
     };
     this.targetElementProps = {};
+    this.closeOnScroll = closeOnScroll || follow;
 
     if (typeof children !== 'function') {
       this.targetElementProps = this.getTargetElementProps(trigger);
@@ -70,7 +73,7 @@ export class Popover extends React.Component {
       this.observer.observe(this.targetRef.current);
     }
 
-    if (open) {
+    if (open && this.closeOnScroll) {
       document.addEventListener('scroll', this.handleMouseLeave);
     }
   }
@@ -93,7 +96,10 @@ export class Popover extends React.Component {
     }
 
     document.removeEventListener('click', this.handleClickLeave, true);
-    document.removeEventListener('scroll', this.handleMouseLeave);
+
+    if (this.closeOnScroll) {
+      document.removeEventListener('scroll', this.handleMouseLeave);
+    }
   }
 
   setPopoverPosition = (targetElementPosition) => {
@@ -174,7 +180,7 @@ export class Popover extends React.Component {
     let popoverX;
     let arrowClasses = '';
     const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
-    const windowWidth = document.body.clientWidth - scrollLeft;
+    const windowWidth = document.body.clientWidth;
 
     if (position === POPOVER_POSITIONS.RIGHT) {
       arrowX = pLeft + width + gap + 1;
@@ -228,6 +234,11 @@ export class Popover extends React.Component {
       popoverX = Math.max(popoverX, 0);
     }
 
+    if (!this.closeOnScroll) {
+      popoverX += scrollLeft;
+      arrowX += scrollLeft;
+    }
+
     return {
       popoverX: {
         resetPosition: resetPositionX,
@@ -244,8 +255,8 @@ export class Popover extends React.Component {
 
   computeVerticalPosition = (targetElementPosition, popoverElementPosition, contentRelative = false) => {
     const { follow, gap, position } = this.props;
-    let resetPositionY = 'bottom';
-    let setPositionY = 'top';
+    const resetPositionY = 'bottom';
+    const setPositionY = 'top';
     let arrowHeight = 0;
 
     if (this.arrowRef.current) {
@@ -259,7 +270,7 @@ export class Popover extends React.Component {
     let popoverY;
     let arrowClasses = '';
     const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    const windowHeight = document.body.clientHeight - scrollTop;
+    const windowHeight = document.documentElement.clientHeight;
 
     if (position === POPOVER_POSITIONS.BOTTOM) {
       arrowY = pTop + height + gap + 1;
@@ -269,11 +280,8 @@ export class Popover extends React.Component {
         windowHeight - popoverY < popoverHeight
         && (pTop - arrowHeight + gap - popoverHeight > 0)
       ) {
-        resetPositionY = 'top';
-        setPositionY = 'bottom';
-
         arrowY = pTop - (arrowHeight + gap) - 1;
-        popoverY = windowHeight - pTop + gap;
+        popoverY = arrowY - popoverHeight + 1;
 
         if (!follow) {
           arrowClasses = styles.arrowTop;
@@ -296,6 +304,11 @@ export class Popover extends React.Component {
         popoverY = pTop - ((popoverHeight - height) / 2);
       }
       arrowY = pTop - ((arrowHeight - height) / 2);
+    }
+
+    if (!this.closeOnScroll) {
+      popoverY += scrollTop;
+      arrowY += scrollTop;
     }
 
     return {
@@ -397,7 +410,7 @@ export class Popover extends React.Component {
     };
 
     if (!(follow && open)) {
-      if (!open) {
+      if (!open && this.closeOnScroll) {
         document.addEventListener('scroll', this.handleMouseLeave);
       }
 
@@ -411,7 +424,9 @@ export class Popover extends React.Component {
     const { onTargetEvent } = this.props;
 
     onTargetEvent(false);
-    document.removeEventListener('scroll', this.handleMouseLeave);
+    if (this.closeOnScroll) {
+      document.removeEventListener('scroll', this.handleMouseLeave);
+    }
   };
 
   getTargetElementProps = (trigger) => {
@@ -456,12 +471,23 @@ export class Popover extends React.Component {
       contentRelative,
       children,
       gap,
+      closeOnScroll,
       ...props
     } = this.props;
 
     const popoverStyles = classNames({
       [styles.popover]: true,
       [className]: true,
+    });
+
+    const popoverContentStyles = classNames({
+      [styles.content]: true,
+      [styles.absoluteElement]: !this.closeOnScroll,
+    });
+
+    const popoverArrowStyles = classNames({
+      [styles.arrow]: true,
+      [styles.absoluteElement]: !this.closeOnScroll,
     });
 
     return (
@@ -483,20 +509,25 @@ export class Popover extends React.Component {
           }) : children}
         </div>
         {open && (
-          <React.Fragment>
-            {arrow && !follow && (
-              <span
-                ref={this.arrowRef}
-                className={styles.arrow}
-              />
-            )}
-            <div
-              className={styles.content}
-              ref={this.contentRef}
-            >
-              {ContentComponent}
-            </div>
-          </React.Fragment>
+          ReactDOM.createPortal(
+            (
+              <React.Fragment>
+                {arrow && !follow && (
+                  <span
+                    ref={this.arrowRef}
+                    className={popoverArrowStyles}
+                  />
+                )}
+                <div
+                  className={popoverContentStyles}
+                  ref={this.contentRef}
+                >
+                  {ContentComponent}
+                </div>
+              </React.Fragment>
+            ),
+            this.domBody,
+          )
         )}
       </div>
     );
@@ -532,6 +563,8 @@ Popover.propTypes = {
   contentEqualToTarget: PropTypes.bool,
   /** boolean, whether to update content positions on target height/width change */
   watchTargetDimensions: PropTypes.bool,
+  /** boolean, whether to close popover on scroll */
+  closeOnScroll: PropTypes.bool,
 };
 
 Popover.defaultProps = {
@@ -547,4 +580,5 @@ Popover.defaultProps = {
   children: null,
   contentEqualToTarget: false,
   watchTargetDimensions: false,
+  closeOnScroll: true,
 };
