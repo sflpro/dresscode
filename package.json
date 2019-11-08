@@ -71,5 +71,11 @@
     "last 1 version",
     "not dead",
     "> 1%"
-  ]
+  ],
+  "sideEffects": false,
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
 }
