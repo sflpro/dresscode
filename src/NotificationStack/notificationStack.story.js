@@ -61,27 +61,22 @@ storiesOf('Notification', module)
                   </Notification>
                 )}
               </NotificationStack>
-            )
-            }
-
+            )}
             <Item>
               <Button onClick={() => showNotification('information')}>
                 Information
               </Button>
             </Item>
-
             <Item>
               <Button onClick={() => showNotification('warning')}>
                 Warning
               </Button>
             </Item>
-
             <Item>
               <Button onClick={() => showNotification('error')}>
                 Error
               </Button>
             </Item>
-
           </ItemGroup>
         )}
       </State>

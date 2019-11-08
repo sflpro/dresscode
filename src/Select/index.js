@@ -20,8 +20,13 @@ export class Select extends React.Component {
     const { children } = this.props;
 
     this.childOptions = React.Children.map(children, option => ({
+      ...option.props,
       value: option.props.value,
       name: option.props.children,
+      className: option.props.className || '',
+      activeClassName: option.props.activeClassName || '',
+      style: option.props.style || {},
+      iconClassName: option.props.iconClassName || '',
     }));
 
     const selected = this.getSelected();
@@ -38,8 +43,11 @@ export class Select extends React.Component {
     const { selected } = this.state;
 
     this.childOptions = React.Children.map(children, option => ({
+      ...option.props,
       value: option.props.value,
       name: option.props.children,
+      className: option.props.className || '',
+      style: option.props.style || {},
     }));
 
     if (!multiple) {
@@ -78,7 +86,7 @@ export class Select extends React.Component {
   };
 
   getOptions() {
-    const { value: propValue, nothingFoundText } = this.props;
+    const { value: propValue, nothingFoundText, renderOption, icon } = this.props;
     const { search } = this.state;
 
     let options = this.childOptions;
@@ -90,18 +98,40 @@ export class Select extends React.Component {
     }
 
     return (
-      <List className={styles.list}>
-        {options.length > 0 ? options.map(({ name, value }) => (
-          <ListItem
-            icon={(Array.isArray(propValue) && propValue.includes(value)) || propValue === value ? 'thick' : null}
-            onClick={this.handleCustomChange}
-            iconClassName={styles.listIcon}
-            value={value}
-            key={value}
-          >
-            {name}
-          </ListItem>
-        )) : (
+      <List
+        className={styles.list}
+        maxHeight={350}
+      >
+        {options.length > 0 ? options.map((option) => {
+          const isSelected = (Array.isArray(propValue) && propValue.includes(option.value))
+            || propValue === option.value;
+
+          const itemClassNames = classNames({
+            [option.className]: true,
+            [option.activeClassName]: isSelected,
+            [styles.itemActive]: isSelected,
+          });
+
+          const iconClassNames = classNames({
+            [styles.listIcon]: true,
+            [option.iconClassName]: isSelected,
+          });
+
+          return (
+            <ListItem
+              style={option.style}
+              icon={isSelected ? icon : null}
+              onClick={this.handleCustomChange}
+              iconClassName={iconClassNames}
+              className={itemClassNames}
+              contentClassName={option.contentClassName}
+              value={option.value}
+              key={option.value}
+            >
+              {renderOption(option)}
+            </ListItem>
+          );
+        }) : (
           <span className={styles.emptyState}>
             {nothingFoundText}
           </span>
@@ -111,12 +141,12 @@ export class Select extends React.Component {
   }
 
   getContent() {
-    const { multiple, value, placeholder } = this.props;
+    const { multiple, value, placeholder, renderValue } = this.props;
     const { selected, search, isOpen } = this.state;
 
     if (multiple) {
       return (
-        <React.Fragment>
+        <>
           {selected
             .map(option => (
               <Tag
@@ -139,11 +169,11 @@ export class Select extends React.Component {
             className={styles.input}
             value={search}
           />
-        </React.Fragment>
+        </>
       );
     }
 
-    return selected ? selected.name : (value || placeholder);
+    return selected ? renderValue(selected.name) : renderValue(value || placeholder);
   }
 
   isOpenChange = () => {
@@ -284,6 +314,8 @@ export class Select extends React.Component {
       className,
       children,
       nothingFoundText,
+      renderOption,
+      renderValue,
       ...props
     } = this.props;
     const { isOpen } = this.state;
@@ -318,7 +350,7 @@ export class Select extends React.Component {
     });
 
     return (
-      <React.Fragment>
+      <>
         <div className={styles.nativeSelectWrapper}>
           <select
             onChange={this.handleNativeChange}
@@ -349,9 +381,7 @@ export class Select extends React.Component {
             open={isOpen}
             gap={8}
           >
-            <div
-              className={selectClasses}
-            >
+            <div className={selectClasses}>
               <div className={contentWrapperClasses}>
                 {this.getContent()}
               </div>
@@ -364,7 +394,7 @@ export class Select extends React.Component {
             </div>
           </Popover>
         )}
-      </React.Fragment>
+      </>
     );
   }
 }
@@ -392,6 +422,12 @@ Select.propTypes = {
   className: PropTypes.string,
   /** String, text that will be shown if there is no option */
   nothingFoundText: PropTypes.string,
+  /** Function, template to render option */
+  renderOption: PropTypes.func,
+  /** Function, template to render selected value */
+  renderValue: PropTypes.func,
+  /** String, checked icon selected value */
+  icon: PropTypes.string,
 };
 
 Select.defaultProps = {
@@ -404,4 +440,7 @@ Select.defaultProps = {
   name: '',
   className: '',
   nothingFoundText: 'Nothing found',
+  renderOption: option => option.name,
+  renderValue: value => value,
+  icon: 'thick',
 };

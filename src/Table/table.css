@@ -41,7 +41,7 @@
   background-color: var(--table-row-background-color);
   position: absolute;
   width: 100%;
-  z-index: 1;
+  z-index: var(--table-overlay-z-index);
 }
 
 .tableBody .tableRowWrapper:nth-child(2n+1) .tableRowOverlay {
@@ -59,7 +59,7 @@
 .iconContainer {
   padding: var(--table-row-icon-container-padding);
   width: var(--table-row-icon-container-width);
-  z-index: 2;
+  z-index: var(--table-icon-z-index);
 }
 
 .tableRowIcon {
@@ -93,9 +93,8 @@
 .tableHeadColumnForInvisibleColumn {
   color: var(--table-header-column-color);
   font-weight: bold;
-  max-width: 50%;
-  margin-right: 16px;
   min-width: 100px;
+  max-width: 50%;
 }
 
 .tableHeadColumn.invisibleColumn {

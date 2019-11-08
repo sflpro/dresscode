@@ -4,12 +4,12 @@
 }
 
 .wrapper > *:not(:last-child) {
-  margin-bottom: 16px;
+  margin: var(--controls-group-margin);
 }
 
 .title {
   @mixin font-scale-5;
   color: var(--text-default-color);
-  padding-bottom: 24px;
-  margin: 0;
+  padding: var(--controls-group-title-padding);
+  margin: var(--controls-group-title-margin);
 }

@@ -15,8 +15,6 @@ export const SORTING_DIRECTIONS = {
   DESC: 'desc',
 };
 export class Column extends React.Component {
-  static contextType = TableContext;
-
   state = {
     didOverflow: false,
     renderTooltip: false,
@@ -85,6 +83,8 @@ export class Column extends React.Component {
   setChildrenRef = (ref) => {
     this.columnChildrenRef = ref;
   };
+
+  static contextType = TableContext;
 
   renderColumnContent = ({ children, contentClassName = '' }) => {
     const { didOverflow, renderTooltip } = this.state;

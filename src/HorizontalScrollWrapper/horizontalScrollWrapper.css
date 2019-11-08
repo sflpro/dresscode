@@ -1,21 +1,22 @@
 .main {
   position: relative;
   overflow: hidden;
-  width: 100%;
+  width: var(--horizontall-scroll-wrapper-width);
 }
 
 .wrapper {
   overflow-x: auto;
   overflow-y: hidden;
-  height: 100%;
+  height: var(--horizontall-scroll-wrapper-height);
   -webkit-overflow-scrolling: touch;
-  padding-bottom: 24px;
+  padding: var(--horizontall-scroll-wrapper-padding);
 }
 
 .arrow {
+  z-index: var(--horizontall-scroll-wrapper-arrow-z-index);
   position: absolute;
   width: var(--horizontall-scroll-wrapper-arrow-width);
-  height: 100%;
+  height: var(--horizontall-scroll-wrapper-arrow-height);
   background-image: linear-gradient(to left, rgba(255, 255, 255, 0.3), var(--horizontall-scroll-wrapper-gradient-color));
   color: var(--horizontall-scroll-wrapper-arrow-color);
   display: flex;

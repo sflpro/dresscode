@@ -1,8 +1,8 @@
 .notification-list {
   position: fixed;
-  top:40px;
-  right: 24px;
-  z-index: 999;
+  top: var(--notification-list-top);
+  right: var(--notification-list-right);
+  z-index: var(--notification-list-z-index);
 }
 
 .notificationItem {

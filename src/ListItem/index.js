@@ -35,13 +35,13 @@ export class ListItem extends React.Component {
       iconClassName,
       onClick,
       className,
+      contentClassName,
       ...props
     } = this.props;
 
     const listItemClasses = classNames({
       [className]: true,
       [styles.listItem]: true,
-      [styles.disabled]: disabled,
       [styles.active]: active,
       [styles.clickable]: onClick,
       [styles.leftSpace]: !icon && iconPos === 'left',
@@ -66,7 +66,7 @@ export class ListItem extends React.Component {
             size={24}
           />
         )}
-        <span>
+        <span className={`${styles.content} ${contentClassName}`}>
           {children}
         </span>
         {icon && iconPos === 'right' && (
@@ -106,6 +106,8 @@ ListItem.propTypes = {
   active: PropTypes.bool,
   /** String, className that will be added to list item */
   className: PropTypes.string,
+  /** String, className that will be added to list item's content */
+  contentClassName: PropTypes.string,
 };
 
 ListItem.defaultProps = {
@@ -119,4 +121,5 @@ ListItem.defaultProps = {
   iconClassName: '',
   onClick: undefined,
   className: '',
+  contentClassName: '',
 };

@@ -3,7 +3,7 @@
 }
 
 .seperator {
-  margin: 8px 8px 0;
+  margin: var(--date-picker-range-separator-margin);
 }
 
 .dateRangeInput input {

@@ -21,6 +21,8 @@ export function RadioButton({
       style={style}
     >
       <span
+        onClick={e => e.currentTarget.firstChild.click()}
+        role='presentation'
         className={classNames({
           [styles.label]: true,
           [styles.checked]: checked,

@@ -42,10 +42,10 @@ storiesOf('Form controls/Input', module)
       notDetected: '1234567891234567',
       masterCard: '5234567891234567',
       visa: '4234567891234567',
-      autocomplete: {},
-      autocomplete1: {},
+      autocomplete: '',
+      autocomplete1: '',
       autocomplete1Error: false,
-      autocomplete2: {},
+      autocomplete2: '',
       empty: '',
       hasError: false,
       from: '',
@@ -372,19 +372,47 @@ storiesOf('Form controls/Input', module)
                     onChange={handleInputChange}
                     value={state.autocomplete}
                     placeholder='Autocomplete'
+                    minCharsToSuggest={0}
                     name='autocomplete'
-                    minCharsToSuggest={2}
-                    getOptions={() => [
-                      'abcd 1',
+                    getOptions={value => [
+                      'abcd 1 abcd 1 abcd 1 abcd 1 abcd 1 abcd 1 abcd 1 abcd 1',
                       'adbc 2',
                       'acdb 3',
                       'abdc 4',
                       'acbd 5',
                       'dabc 6',
-                    ].map(item => ({
-                      value: item,
-                      label: item,
-                    }))}
+                      'adbc 7',
+                      'acdb 8',
+                      'abdc 9',
+                      'acbd 10',
+                      'dabc 11',
+                      'adbc 12',
+                      'acdb 13',
+                      'abdc 14',
+                      'acbd 15',
+                      'dabc 16',
+                      'adbc 17',
+                      'acdb 18',
+                      'abdc 19',
+                      'acbd 20',
+                      'dabc 21',
+                      'adbc 22',
+                      'acdb 23',
+                      'abdc 24',
+                      'acbd 25',
+                      'dabc 26',
+                      'adbc 27',
+                      'acdb 28',
+                      'abdc 29',
+                      'acbd 30',
+                      'dabc 31',
+                    ]
+                      .filter(option => option.includes(value))
+                      .map(item => ({
+                        value: item,
+                        label: item,
+                      }))}
+                    haveArrowIcon
                   />
                 </Item>
               </ItemRow>

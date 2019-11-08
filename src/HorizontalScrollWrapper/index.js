@@ -149,7 +149,7 @@ HorizontalScrollWrapper.propTypes = {
   /** Number, arrow click scroll step width */
   scrollStepWidth: PropTypes.number,
   /** String or JSX or Element, icon that will scroll right and left */
-  icon: PropTypes.any.isRequired,
+  icon: PropTypes.any,
   /** String or JSX or Element, initial or externally changed scroll position */
   scrollPos: PropTypes.number,
   /** String or JSX or Element, content of element */
@@ -162,4 +162,5 @@ HorizontalScrollWrapper.defaultProps = {
   scrollStepWidth: 100,
   className: '',
   scrollPos: 0,
+  icon: null,
 };

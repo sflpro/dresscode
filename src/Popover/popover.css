@@ -4,7 +4,7 @@
 
 .content {
   position: fixed;
-  z-index: 99;
+  z-index: var(--popover-z-index);
   border-radius: var(--popover-content-border-radius);
   left: 0;
   top: 0;
@@ -21,7 +21,7 @@
   width: 0;
   left: 0;
   top: 0;
-  z-index: 100;
+  z-index: var(--popover-arrow-z-index);
 }
 
 .arrow:before {
@@ -36,7 +36,7 @@
   width: 0;
   left: -6px;
   top: 1px;
-  z-index: 100;
+  z-index: var(--popover-arrow-z-index);
 }
 
 .arrowTop {
@@ -52,7 +52,7 @@
 }
 
 .target {
-  width: 100%;
+  width: var(--popover-target-width);
 }
 
 .absoluteElement {

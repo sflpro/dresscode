@@ -75,7 +75,7 @@ storiesOf('Form controls/Select', module)
                         Lorem Ipsum is simply dummy text of the printing and typesetting
                       </Option>
                       <Option value='option2'>
-                        Option 2
+                        OptionOptionOptionOption123
                       </Option>
                       <Option value='option3'>
                         Option 3

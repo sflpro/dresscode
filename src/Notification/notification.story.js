@@ -9,7 +9,7 @@ import { Item } from '../helpers/Item';
 
 storiesOf('Notification', module)
   .add('Notifications Frame', () => (
-    <React.Fragment>
+    <>
       <ItemGroup
         title='Large Notification'
       >
@@ -236,6 +236,5 @@ storiesOf('Notification', module)
           </Item>
         </ItemGroup>
       </div>
-
-    </React.Fragment>
+    </>
   ));

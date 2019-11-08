@@ -1,28 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
-
-import styles from './option.css';
 
 export function Option({
-  value,
-  children,
-  className,
+  data,
   ...props
 }) {
-  const optionClassNames = classNames({
-    [styles.option]: true,
-    [className]: true,
-  });
-
   return (
-    <option
-      className={optionClassNames}
-      value={value}
-      {...props}
-    >
-      {children}
-    </option>
+    <option {...props} />
   );
 }
 
@@ -36,10 +20,16 @@ Option.propTypes = {
   children: PropTypes.any,
   /** String, className that will be added to option */
   className: PropTypes.string,
+  /** Object, style that will be added to option */
+  style: PropTypes.any,
+  /** Object, data that will be passed to option */
+  data: PropTypes.any,
 };
 
 Option.defaultProps = {
   value: '',
   children: null,
   className: '',
+  style: undefined,
+  data: undefined,
 };

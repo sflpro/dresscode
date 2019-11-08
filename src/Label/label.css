@@ -8,7 +8,7 @@
 }
 
 .labelText {
-  margin-bottom: 8px;
+  margin-bottom: var(--label-text-margin);
 }
 
 .error {

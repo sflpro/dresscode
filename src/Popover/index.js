@@ -511,7 +511,7 @@ export class Popover extends React.Component {
         {open && (
           ReactDOM.createPortal(
             (
-              <React.Fragment>
+              <>
                 {arrow && !follow && (
                   <span
                     ref={this.arrowRef}
@@ -524,7 +524,7 @@ export class Popover extends React.Component {
                 >
                   {ContentComponent}
                 </div>
-              </React.Fragment>
+              </>
             ),
             this.domBody,
           )

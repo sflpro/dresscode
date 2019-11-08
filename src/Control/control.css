@@ -5,5 +5,5 @@
     top: var(--slider-control-top);
     position: absolute;
     cursor: pointer;
-    z-index: 1;
+    z-index: var(--slider-control-z-index);
 }

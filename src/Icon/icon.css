@@ -3,14 +3,14 @@
   color: inherit;
   display: inline-block;
   fill: currentColor;
-  flex-shrink: 0;
+  flex-shrink: var(--icon-flex-shrink);
   font-size: 1em;
-  height: 1em;
-  width: 1em;
-  margin: 0;
+  height: var(--icon-height);
+  width: var(--icon-width);
+  margin: var(--icon-margin);
   overflow: hidden;
   user-select: none;
-  cursor: pointer;
+  cursor: var(--icon-cursor);
 }
 
 .iconWrapper {

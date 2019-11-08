@@ -7,8 +7,6 @@ import { SliderContext } from '../Slider';
 import styles from './control.css';
 
 export class Control extends React.Component {
-  static contextType = SliderContext;
-
   constructor(props, context) {
     super(props, context);
 
@@ -67,6 +65,10 @@ export class Control extends React.Component {
 
     return max || sliderMax;
   }
+
+  setControlRef = (ref) => {
+    this.control = ref;
+  };
 
   onMouseMove = (event) => {
     if (event.type === 'mousemove') {
@@ -135,10 +137,6 @@ export class Control extends React.Component {
     return getValueFromStep({ currentStep, min: this.min, max: this.max });
   }
 
-  setControlRef = (ref) => {
-    this.control = ref;
-  };
-
   emitChange() {
     const { setControlInfo } = this.context;
     const { value, name } = this.props;
@@ -160,6 +158,8 @@ export class Control extends React.Component {
     document.removeEventListener('touchend', this.onMouseUp, true);
     document.removeEventListener('mouseup', this.onMouseUp, true);
   }
+
+  static contextType = SliderContext;
 
   render() {
     const {

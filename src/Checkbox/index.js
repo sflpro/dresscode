@@ -12,6 +12,7 @@ export function Checkbox({
   checked,
   className,
   style,
+  preventAction,
   ...props
 }) {
   const checkboxClasses = classNames({
@@ -22,9 +23,11 @@ export function Checkbox({
   });
 
   return (
-    <React.Fragment>
+    <>
       <span
+        onClick={!preventAction ? e => e.currentTarget.lastChild.click() : undefined}
         className={checkboxClasses}
+        role='presentation'
         style={style}
       >
         <Icon
@@ -40,7 +43,7 @@ export function Checkbox({
           {...props}
         />
       </span>
-    </React.Fragment>
+    </>
   );
 }
 
@@ -61,6 +64,8 @@ Checkbox.propTypes = {
   style: PropTypes.bool,
   /** Boolean, whether value of checkbox has error */
   hasError: PropTypes.bool,
+  /** Boolean, whether prevent onClick */
+  preventAction: PropTypes.bool,
 };
 
 Checkbox.defaultProps = {
@@ -71,4 +76,5 @@ Checkbox.defaultProps = {
   className: '',
   style: undefined,
   hasError: false,
+  preventAction: true,
 };

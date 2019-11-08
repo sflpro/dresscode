@@ -35,6 +35,16 @@ storiesOf('Form controls/Radio Button', module)
         >
           <ItemRow>
             <Item>
+              <RadioButton
+                checked={state.radio === 'radio5'}
+                onChange={handler}
+                value='radio5'
+                name='radio'
+              />
+            </Item>
+          </ItemRow>
+          <ItemRow>
+            <Item>
               <Label
                 display='col'
               >

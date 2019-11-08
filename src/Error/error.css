@@ -1,5 +1,5 @@
 .error {
+  @mixin font-scale-7;
   color: var(--error-color);
-  margin-top: 8px;
-  font-size: 0.8em;
+  margin-top: var(--error-margin);
 }

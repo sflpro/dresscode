@@ -25,7 +25,7 @@
   color: var(--notification-title-color);
   @mixin font-scale-7;
   display: block;
-  padding-bottom: 8px;
+  padding: var(--notification-title-padding);
 }
 
 .message {
@@ -44,13 +44,13 @@
 .notification-message {
   &.theme-default {
     border-color: var(--notification-border-default-color);
-    border-left-width: 4px;
-    padding: 16px 16px 16px 24px;
-    background: #ffffff;
+    border-left-width: var(--notification-message-border-left-width);
+    padding: var(--notification-message-padding);
+    background: var(--notification-message-background);
     box-shadow: var(--box-shadow-300);
 
     & .icon {
-      padding-right: 24px;
+      padding: var(--notification-message-icon-padding);
     }
 
     &.information {
@@ -94,18 +94,18 @@
 
 .notification-alert {
   border-color: var(--notification-border-default-color);
-  padding: 12px;
+  padding: var(--notification-alert-padding);
   box-sizing: border-box;
-  width: 100%;
-  background: #ffffff;
-  min-height: 24px;
+  width: var(--notification-alert-width);
+  background: var(--notification-alert-background);
+  min-height: var(--notification-alert-min-height);
 
   & .title {
     display: none;
   }
 
   & .icon {
-    padding-right: 16px;
+    padding: var(--notification-alert-icon-padding);
   }
 
   &.information {

@@ -1,6 +1,6 @@
 .caption {
   @mixin font-scale-5;
-  color: var(--primary-color);
+  color: var(--date-picker-caption-color);
   text-align: center;
   font-weight: bold;
 }
@@ -8,10 +8,10 @@
 .captionWrapper {
   display: inline-block;
   cursor: pointer;
-  padding: 8px 16px;
+  padding: var(--date-picker-caption-wrapper-padding);
   border: 1px solid transparent;
   box-sizing: border-box;
-  border-radius: 4px;
+  border-radius: var(--date-picker-caption-wrapper-border-radius);
 }
 
 .captionWrapper:hover {

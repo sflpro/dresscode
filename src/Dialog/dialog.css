@@ -1,51 +1,51 @@
 .dialog {
-  width: calc(100% - var(--dialog-padding-left) - var(--dialog-padding-right));
-  max-height: calc(100% - 32px);
+  width: var(--dialog-width);
+  max-height: var(--dialog-max-height);
   position: fixed;
   z-index: var(--dialog-z-index);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  flex: 0 1 auto;
+  flex: var(--dialog-flex);
 }
 
 .container {
   background: var(--dialog-body-background);
   border-radius: var(--dialog-border-radius);
-  width: var(--dialog-width);
+  width: var(--dialog-container-width);
   flex-direction: column;
   position: relative;
-  padding-top: 16px;
+  padding: var(--dialog-container-padding);
   display: flex;
   overflow-y: auto;
-  flex: 1 1 auto;
-  max-width: 100%;
+  flex: var(--dialog-container-flex);
+  max-width: var(--dialog-container-max-width);
 }
 
 .header {
-  padding: 0 48px 0 24px;
-  line-height: 36px;
-  flex: 0 0 auto;
+  padding: var(--dialog-header-padding);
+  line-height: var(--dialog-header-line-height);
+  flex: var(--dialog-header-flex);
 }
 
 .title {
   color: var(--dialog-title-color);
-  margin: 0;
+  margin: var(--dialog-title-margin);
   font-weight: normal;
 }
 
 .closeBtn {
   position: absolute;
-  right: 24px;
-  top: 24px;
+  right: var(--dialog-close-btn-right);
+  top: var(--dialog-close-btn-top);
   cursor: pointer;
 }
 
 .content {
   padding: var(--dialog-content-padding);
   margin: var(--dialog-content-margin);
-  flex: 1 1 auto;
+  flex: var(--dialog-content-flex);
   overflow-y: auto;
 }
 
@@ -55,17 +55,17 @@
 
 .actions {
   background: var(--dialog-actions-background);
-  height: 48px;
-  padding: 24px;
-  text-align: right;
-  line-height: 48px;
-  flex: 0 0 auto;
+  height: var(--dialog-actions-height);
+  padding: var(--dialog-actions-padding);
+  text-align: var(--dialog-actions-text-align);
+  line-height: var(--dialog-actions-line-height);
+  flex: var(--dialog-actions-flex);
   display: flex;
   align-items: center;
   justify-content: flex-end;
 }
 
 .actions button {
-  margin: 0 0 0 16px;
-  min-width: 147px;
+  margin: var(--dialog-actions-button-margin);
+  min-width: var(--dialog-actions-button-min-width);
 }

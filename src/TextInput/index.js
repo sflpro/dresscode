@@ -78,7 +78,7 @@ TextInput.propTypes = {
   /** Function, will be called when input value will be changed */
   onChange: PropTypes.func,
   /** Function, will add ref to input */
-  forwardedRef: PropTypes.func,
+  forwardedRef: PropTypes.any,
 };
 
 TextInput.defaultProps = {

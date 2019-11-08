@@ -19,6 +19,7 @@ storiesOf('Form controls/Checkbox', module)
       active: true,
       hover: false,
       regular: false,
+      noLabel: false,
     });
 
     function handler({ target }) {
@@ -36,6 +37,16 @@ storiesOf('Form controls/Checkbox', module)
           <ItemGroup
             title='Checkbox'
           >
+            <ItemRow>
+              <Item>
+                <Checkbox
+                  value='noLabel'
+                  checked={state.noLabel}
+                  name='noLabel'
+                  onChange={handler}
+                />
+              </Item>
+            </ItemRow>
             <ItemRow>
               <Item>
                 <Label

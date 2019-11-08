@@ -16,6 +16,7 @@ export function Button({
   className,
   children,
   onClick,
+  forwardedRef,
   ...props
 }) {
   const buttonClasses = classNames({
@@ -27,11 +28,13 @@ export function Button({
     [styles.warning]: warning,
     [styles.disabled]: disabled,
   });
+
   return (
     <Component
       className={buttonClasses}
-      type={type}
       disabled={disabled}
+      ref={forwardedRef}
+      type={type}
       {...props}
       onClick={disabled ? undefined : onClick}
     >
@@ -69,6 +72,8 @@ Button.propTypes = {
   style: PropTypes.object,
   /** String or JSX or Element, content of element */
   children: PropTypes.any,
+  /** React Ref, ref of button */
+  forwardedRef: PropTypes.any,
 };
 
 Button.defaultProps = {
@@ -82,6 +87,7 @@ Button.defaultProps = {
   onClick: undefined,
   className: '',
   style: undefined,
+  forwardedRef: undefined,
   children: null,
   variant: 'button',
 };

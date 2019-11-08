@@ -21,12 +21,16 @@ export function Autocomplete({
   onFocus,
   hasError,
   errorHint,
+  haveArrowIcon,
+  onChange,
+  renderOption,
+  renderValue,
   ...props
 }) {
   const [loading, toggleLoading] = useState(false);
+  const [value, setValue] = useState(propsValue);
   const [focused, toggleFocus] = useState(false);
   const [options, setOptions] = useState([]);
-  const [value, setValue] = useState(propsValue.value || '');
 
   const wrapperClasses = classNames({
     [styles.wrapper]: true,
@@ -34,69 +38,108 @@ export function Autocomplete({
   });
 
   useEffect(() => {
-    if (typeof propsValue.value !== 'undefined') {
-      setValue(propsValue.value);
-    }
+    setValue(propsValue || '');
   }, [propsValue]);
 
   function onLostFocus() {
     toggleFocus(false);
 
     if (onBlur) {
-      onBlur(value);
+      onBlur({
+        currentTarget: {
+          name: props.name,
+          value,
+        },
+        target: {
+          name: props.name,
+          value,
+        },
+      });
     }
   }
 
-  function onListClick(optionValue, { event }) {
+  function onListClick(option, { event }) {
     event.preventDefault();
     onLostFocus();
 
-    props.onChange({
+    onChange({
       currentTarget: {
-        value: optionValue,
+        value: option.value,
         name: props.name,
+        option,
       },
       target: {
-        value: optionValue,
+        value: option.value,
         name: props.name,
+        option,
       },
     });
   }
 
-  function handleFocus(event) {
-    toggleFocus(true);
-
-    if (onFocus) {
-      onFocus(event);
-    }
-  }
-
-  function onChange({ currentTarget: { value: onChangeValue } }) {
+  function handleOptionChange(inputValue, callback) {
     let promiseIsResolved = false;
-    setValue(onChangeValue);
 
-    if (onChangeValue.length < minCharsToSuggest) {
+    if (inputValue.length < minCharsToSuggest) {
       if (options.length > 0) {
         setOptions([]);
+      }
+
+      if (callback && typeof callback === 'function') {
+        callback();
       }
       return;
     }
 
-    const result = getOptions(onChangeValue);
+    const result = getOptions(inputValue);
 
     if (Array.isArray(result)) {
       setOptions(result);
+
+      if (callback && typeof callback === 'function') {
+        callback();
+      }
     } else {
       setTimeout(() => {
         if (!promiseIsResolved) {
           toggleLoading(true);
         }
       }, showLoadingAfter);
+
       result.then((promiseResult) => {
         promiseIsResolved = true;
         setOptions(promiseResult);
         toggleLoading(false);
+
+        if (callback && typeof callback === 'function') {
+          callback();
+        }
       });
+    }
+  }
+
+  function handleChange({ currentTarget: { value: onChangeValue } }) {
+    setValue(onChangeValue);
+    onChange({
+      currentTarget: {
+        value: onChangeValue,
+        name: props.name,
+      },
+      target: {
+        value: onChangeValue,
+        name: props.name,
+      },
+    });
+
+    handleOptionChange(onChangeValue);
+  }
+
+  function handleFocus(event) {
+    handleOptionChange(value, () => {
+      toggleFocus(true);
+    });
+
+    if (onFocus) {
+      onFocus(event);
     }
   }
 
@@ -105,8 +148,6 @@ export function Autocomplete({
     onLostFocus();
   }
 
-  const showError = hasError && !focused;
-
   return (
     <div
       className={wrapperClasses}
@@ -114,42 +155,56 @@ export function Autocomplete({
     >
       <TextInput
         {...props}
-        value={value}
+        value={renderValue(value)}
+        onChange={handleChange}
         onFocus={handleFocus}
-        onChange={onChange}
-        hasError={showError}
+        hasError={hasError}
         autoComplete='off'
         className={styles.input}
-        icon={<Icon name='tracker' color={loading ? '' : 'transparent'} />}
+        icon={
+          haveArrowIcon ? (
+            <Icon
+              name={
+                loading
+                  ? 'tracker'
+                  : focused
+                    ? 'arrow-up'
+                    : 'arrow-down'
+              }
+            />
+          ) : (
+            <Icon
+              color={loading ? '' : 'transparent'}
+              name='tracker'
+            />
+          )
+        }
       />
-      {
-        showError && errorHint && (
-          <div className={styles.errorWrapper}>
-            {errorHint}
-          </div>
-        )
-      }
+      {hasError && errorHint && (
+        <div className={styles.errorWrapper}>
+          {errorHint}
+        </div>
+      )}
       {(focused && value.length >= minCharsToSuggest && !loading) && (
-        <>
-          <List
-            className={styles.list}
-          >
-            {options.length > 0 ? options.map(option => (
-              <ListItem
-                onClick={event => onListClick(option, event)}
-                className={styles.listItem}
-                value={option.value}
-                key={option.value}
-              >
-                {option.label}
-              </ListItem>
-            )) : (
-              <div className={styles.emptyState}>
-                {nothingFoundText}
-              </div>
-            )}
-          </List>
-        </>
+        <List
+          className={styles.list}
+          maxHeight={350}
+        >
+          {options.length > 0 ? options.map(option => (
+            <ListItem
+              onClick={event => onListClick(option, event)}
+              className={styles.listItem}
+              value={option.value}
+              key={option.value}
+            >
+              {renderOption(option)}
+            </ListItem>
+          )) : (
+            <div className={styles.emptyState}>
+              {nothingFoundText}
+            </div>
+          )}
+        </List>
       )}
       {focused && (
         <div
@@ -165,10 +220,10 @@ export function Autocomplete({
 Autocomplete.propTypes = {
   /** Function, will return options array or promise that will resolve to options array */
   getOptions: PropTypes.func.isRequired,
-  /** String, value of input */
-  value: PropTypes.object.isRequired,
   /** Function, called when input value is changed */
   onChange: PropTypes.func.isRequired,
+  /** String, value of input */
+  value: PropTypes.string,
   /** Number, number of chars, after which options will be suggested */
   minCharsToSuggest: PropTypes.number,
   /** String, classname that will be added to wrapper div */
@@ -189,6 +244,12 @@ Autocomplete.propTypes = {
   nothingFoundText: PropTypes.string,
   /** Number, after what time after sending request loading must be shown if promise is not resolved */
   showLoadingAfter: PropTypes.number,
+  /** Boolean, whether input must dropdown icon */
+  haveArrowIcon: PropTypes.bool,
+  /** Function, template to render option */
+  renderOption: PropTypes.func,
+  /** Function, template to render selected value */
+  renderValue: PropTypes.func,
 };
 
 Autocomplete.defaultProps = {
@@ -202,4 +263,8 @@ Autocomplete.defaultProps = {
   errorHint: '',
   name: '',
   showLoadingAfter: 100,
+  value: '',
+  haveArrowIcon: false,
+  renderOption: option => option.label,
+  renderValue: value => value,
 };

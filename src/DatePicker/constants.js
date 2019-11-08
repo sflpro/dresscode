@@ -37,6 +37,7 @@ export const VIEW_TYPES = {
 };
 
 export const DATE_FORMATS = [
+  'dd.MM.yyyy', /* TODO, discuss about this format */
   'DD.MM.YYYY',
   'DD.MM.YY',
   'D.MM.YYYY',

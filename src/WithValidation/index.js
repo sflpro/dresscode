@@ -5,8 +5,6 @@ import { getIn } from 'formik';
 import { FormContext } from '../Form';
 
 export class WithValidation extends React.Component {
-  static contextType = FormContext;
-
   handleFieldChange = (args) => {
     const {
       handleChange,
@@ -23,6 +21,8 @@ export class WithValidation extends React.Component {
       onChange(args);
     }
   };
+
+  static contextType = FormContext;
 
   render() {
     const {

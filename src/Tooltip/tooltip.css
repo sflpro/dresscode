@@ -2,9 +2,9 @@
   background: var(--neutral-white);
   box-shadow: var(--box-shadow-100);
   border: 1px solid var(--tooltip-border-color);
-  padding: 16px;
-  border-radius: 5px;
-  max-width: 320px;
+  padding: var(--tooltip-padding);
+  border-radius: var(--tooltip-border-radius);
+  max-width: var(--tooltip-max-width);
 }
 
 .description {
@@ -17,5 +17,5 @@
   @mixin font-scale-6;
   font-weight: bold;
   color: var(--primary-color);
-  padding-bottom: 16px;
+  padding-bottom: var(--tooltip-title-padding);
 }

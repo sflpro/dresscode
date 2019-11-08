@@ -1,11 +1,12 @@
 .listItem {
-  min-height: calc(var(--list-item-min-height) - 16px);
-  color: var(--text-input-color);
+  min-height: var(--list-item-min-height);
+  color: var(--list-item-color);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 12px 16px;
-  max-height: 100%;
+  padding: var(--list-item-padding);
+  max-height: var(--list-item-max-height);
+  width: var(--list-item-width);
 }
 
 .active,
@@ -14,9 +15,14 @@
 }
 
 .leftSpace {
-  padding-left: 48px;
+  padding-left: var(--list-item-left-padding);
 }
 
 .rightSpace {
-  padding-right: 48px;
+  padding-right: var(--list-item-right-padding);
+}
+
+.content {
+  overflow: hidden;
+  text-overflow: ellipsis;
 }

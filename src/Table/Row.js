@@ -9,8 +9,6 @@ import { Icon } from '../Icon';
 import styles from './table.css';
 
 export class Row extends React.Component {
-  static contextType = TableContext;
-
   constructor(props, context) {
     super(props, context);
 
@@ -54,6 +52,8 @@ export class Row extends React.Component {
       expanded: !prevState.expanded,
     }));
   };
+
+  static contextType = TableContext;
 
   render() {
     const {
@@ -111,7 +111,7 @@ export class Row extends React.Component {
         <div className={tableRowContentClasses}>
           {expandable && (
             <div className={styles.iconContainer}>
-              { !head && (
+              {!head && (
                 <Icon
                   onClick={this.handleExpandedChange}
                   className={iconClasses}

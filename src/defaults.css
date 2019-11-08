@@ -67,15 +67,18 @@
   --checkbox-border-radius: 4px;
   --checkbox-width: 24px;
   --checkbox-height: 24px;
+  --checkbox-icon-margin: 0 16px 0 0;
 
   --label-color: var(--primary-color);
   --label-font-family: var(--font-family);
+  --label-text-margin: 0 0 8px;
 
   --tag-primary-color: var(--primary-color);
   --tag-secondary-color: var(--neutral-white);
   --tag-height: 32px;
   --tag-border-radius: 16px;
   --tag-padding: 0 16px;
+  --tag-close-icon-margin: 0 0 0 8px;
 
   --text-input-border-color: var(--default-color);
   --text-input-border-color-hover: var(--primary-color-light);
@@ -104,11 +107,35 @@
 
   --select-font-family: var(--font-family);
   --select-font-size: var(--font-size-scale-6);
+  --select-min-width: 100px;
+  --select-width: 100%;
+  --select-padding: 0 48px 0 16px;
+  --select-native-icon-right: 16px;
+  --select-native-icon-top: 0;
+  --select-native-icon-height: 100%;
+  --select-icon-transition-seconds: 0.3s;
+  --select-icon-right: 12px;
+  --select-icon-top: 12px;
+  --select-list-icon-margin: 0 0 0 8px;
+  --select-input-min-width: 80px;
+  --select-input-margin: 4px 0 0;
+  --select-input-height: 32px;
+  --select-tag-margin: 4px;
+  --select-empty-state-padding: 16px;
 
   --list-border-radius: 8px;
-  --list-item-min-height: 24px;
+  --list-item-min-height: 8px;
   --list-background-color: var(--neutral-white);
   --list-box-shadow: var(--box-shadow-100);
+  --list-margin: 8px 0 0;
+  --list-item-color: var(--text-input-color);
+  --list-max-height-padding: 0 48px 0 0;
+  --list-max-height-width: 100%;
+  --list-item-padding: 12px 16px;
+  --list-item-max-height: 100%;
+  --list-item-width: calc(100% - 48px);
+  --list-item-left-padding: 48px;
+  --list-item-right-padding: 48px;
 
   --radio-button-border-color: var(--default-color);
   --radio-button-hover-color: var(--primary-color-light);
@@ -147,19 +174,44 @@
   --toggle-button-font-weight: var(--base-font-weight);
 
   --tooltip-border-color: var(--neutral-100);
+  --tooltip-padding: 16px;
+  --tooltip-border-radius: 5px;
+  --tooltip-max-width: 320px;
+  --tooltip-title-padding: 0 0 16px;
 
   --popup-overlay-background: var(--neutral-1000-opacity-50);
+  --popup-z-index: 10;
 
   --dialog-body-background: var(--neutral-white);
   --dialog-title-color: var(--primary-color);
   --dialog-actions-background: var(--disabled-color);
-  --dialog-width: 720px;
+  --dialog-container-width: 720px;
   --dialog-border-radius: 8px;
   --dialog-padding-left: 16px;
   --dialog-padding-right: 16px;
   --dialog-content-padding: 0 24px;
   --dialog-content-margin: 24px 0;
   --dialog-z-index: 11;
+  --dialog-max-height: calc(100% - 32px);
+  --dialog-width: calc(100% - var(--dialog-padding-left) - var(--dialog-padding-right));
+  --dialog-flex: 0 1 auto;
+  --dialog-container-padding: 16px 0 0;
+  --dialog-container-flex: 1 1 auto;
+  --dialog-container-max-width: 100%;
+  --dialog-header-padding: 0 48px 0 24px;
+  --dialog-header-line-height: 36px;
+  --dialog-header-flex: 0 0 auto;
+  --dialog-title-margin: 0;
+  --dialog-close-btn-right: 24px;
+  --dialog-close-btn-top: 24px;
+  --dialog-content-flex: 1 1 auto;
+  --dialog-actions-height: 48px;
+  --dialog-actions-padding: 24px;
+  --dialog-actions-text-align: right;
+  --dialog-actions-line-height: 48px;
+  --dialog-actions-flex: 0 0 auto;
+  --dialog-actions-button-margin: 0 0 0 16px;
+  --dialog-actions-button-min-width: 147px;
 
   --notification-border-default-color: var(--neutral-100);
   --notification-information-color: var(--primary-color);
@@ -173,13 +225,30 @@
   --notification-success-light-background: var(--green-50);
   --notification-error-light-background: var(--red-50);
   --notification-warning-light-background: var(--yellow-50);
-  --notification-warning-border-radius: 5px;
+  --notification-border-radius: 5px;
+  --notification-title-padding: 0 0 8px;
+  --notification-message-border-left-width: 4px;
+  --notification-message-padding: 16px 16px 16px 24px;
+  --notification-message-background: var(--neutral-white);
+  --notification-message-icon-padding: 0 24px 0 0;
+  --notification-alert-padding: 12px;
+  --notification-alert-width: 100%;
+  --notification-alert-background: var(--neutral-white);
+  --notification-alert-min-height: 24px;
+  --notification-alert-icon-padding: 0 16px 0 0;
+  --notification-list-top: 40px;
+  --notification-list-right: 24px;
+  --notification-list-z-index: 999;
 
   --button-disabled-color: var(--default-color);
   --button-height: 48px;
+  --button-link-height: 48px;
+  --button-circle-height: 48px;
   --button-border-radius: 5px;
   --button-padding: 0 24px;
+  --button-link-padding: 0 24px;
   --button-circle-padding: 0 12px;
+  --button-circle-border-radius: 50%;
   --button-font-family: var(--font-family);
   --button-font-size: var(--font-size-scale-6);
 
@@ -213,6 +282,31 @@
   --date-picker-selected-color: var(--neutral-white);
   --date-picker-selected-background-color-hover: var(--primary-color-dark);
   --date-picker-border-radius: 5px;
+  --date-picker-width: 364px;
+  --date-picker-day-picker-width: 100%;
+  --date-picker-day-picker-padding: 0 0 15px 0;
+  --date-picker-padding: 16px 0 0;
+  --date-picker-month-min-height: 426px;
+  --date-picker-month-margin: 0;
+  --date-picker-month-width: 100%;
+  --date-picker-weekdays-margin: 16px 0 7px;
+  --date-picker-weekdays-row-padding: 0 7px;
+  --date-picker-week-padding: 0 7px;
+  --date-picker-weekday-padding: 11px 0;
+  --date-picker-weekday-width: 48px;
+  --date-picker-weekday-margin: 0 1px;
+  --date-picker-day-width: 48px;
+  --date-picker-day-border-radius: 4px;
+  --date-picker-day-margin: 1px;
+  --date-picker-day-padding: 12px 0;
+  --date-picker-caption-color: var(--primary-color);
+  --date-picker-caption-wrapper-padding: 8px 16px;
+  --date-picker-caption-wrapper-border-radius: 4px;
+  --date-picker-navbar-icon-padding: 8px;
+  --date-picker-navbar-icon-border-radius: 4px;
+  --date-picker-navbar-icon-left: 16px;
+  --date-picker-navbar-icon-right: 16px;
+  --date-picker-range-separator-margin: 8px 8px 0;
 
   --slider-animation-duration: 0.1s;
   --slider-background-color: var(--default-color);
@@ -228,6 +322,10 @@
   --slider-control-color: var(--primary-color);
   --slider-control-size: 16px;
   --slider-control-top: 4px;
+  --slider-wrapper-min-width: 200px;
+  --slider-control-z-index: 1;
+
+  --input-slider-margin: -2px 0 0;
 
   --grid-container-max-size: 1200px;
   --grid-container-padding: 8px;
@@ -281,6 +379,8 @@
   --table-pagination-selected-color: var(--primary-color-light);
   --table-pagination-border-radius: 4px;
   --table-border-radius: 8px;
+  --table-overlay-z-index: 1;
+  --table-icon-z-index: 3;
 
   --file-input-color: var(--primary-color);
 
@@ -293,14 +393,49 @@
   --tab-content-small-padding: 24px;
 
   --popover-content-border-radius: 5px;
+  --popover-z-index: 99;
+  --popover-arrow-z-index: 100;
+  --popover-target-width: 100%;
 
   --horizontall-scroll-wrapper-arrow-width: 40px;
   --horizontall-scroll-wrapper-small-arrow-width: 48px;
   --horizontall-scroll-wrapper-gradient-color: var(--neutral-white);
   --horizontall-scroll-wrapper-arrow-color: var(--primary-color);
+  --horizontall-scroll-wrapper-arrow-z-index: 1;
+  --horizontall-scroll-wrapper-arrow-height: 100%;
+  --horizontall-scroll-wrapper-padding: 0 0 24px;
+  --horizontall-scroll-wrapper-height: 100%;
+  --horizontall-scroll-wrapper-width: 100%;
 
   --drop-down-list-item-min-height: var(--list-item-min-height);
   --drop-down-list-item-color: var(--text-input-color);
   --drop-down-list-item-padding: 12px 16px;
   --drop-down-list-item-hover-color: var(--neutral-75);
+  --drop-down-list-item-height: 100%;
+  --drop-down-list-item-width: 100%;
+
+  --autocomplete-wrapper-width: 100%;
+  --autocomplete-list-z-index: 3;
+  --autocomplete-input-z-index: 2;
+  --autocomplete-overlay-z-index: 1;
+  --autocomplete-empty-state-padding: 16px;
+  --autocomplete-error-wrapper-padding: 6px;
+
+  --controls-group-title-color: var(--text-default-color);
+  --controls-group-title-padding: 0 0 24px 0;
+  --controls-group-title-margin: 0;
+  --controls-group-margin: 0 0 16px 0;
+
+  --error-margin: 8px 0 0;
+
+  --icon-height: 1em;
+  --icon-width: 1em;
+  --icon-margin: 0;
+  --icon-cursor: pointer;
+  --icon-flex-shrink: 0;
+
+  --month-picker-height: 100px;
+  --month-picker-border-radius: 4px;
+  --month-picker-margin: 1px;
+  --month-picker-flex: 0 0 calc(25% - 2px);
 }

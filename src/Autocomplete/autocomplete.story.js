@@ -9,7 +9,10 @@ import { InfoStoryConfig } from '../configs';
 storiesOf('Form controls/Input', module)
   .add('Autocomplete', () => (
     <Autocomplete
-      getOptions={() => ['test 1', 'test 2', 'test 3']}
+      getOptions={() => ['test 1', 'test 2', 'test 3'].map(item => ({
+        value: item,
+        label: item,
+      }))}
       onChange={ev => console.dir(ev)}
       value='test'
     />

@@ -1,23 +1,25 @@
 .wrapper {
-    width: 100%;
+    width: var(--autocomplete-wrapper-width);
     position: relative;
 }
 
 .list {
     background-color: var(--neutral-white);
     position: absolute;
-    z-index: 3;
+    z-index: var(--autocomplete-list-z-index);
     width: 100%;
 }
 
 .listItem {
+    cursor: pointer;
+
     &:hover {
         background-color: var(--neutral-75);
     }
 }
 
 .input {
-    z-index: 2;
+    z-index: var(--autocomplete-input-z-index);
 }
 
 .overlay {
@@ -26,12 +28,12 @@
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: 1;
+    z-index: var(--autocomplete-overlay-z-index);
 }
 
 .emptyState {
     @mixin font-scale-7;
-    padding: 16px;
+    padding: var(--autocomplete-empty-state-padding);
     display: block;
     color: var(--neutral-500);
 }
@@ -39,5 +41,5 @@
 .errorWrapper {
     color: var(--error-color);
     @mixin font-scale-7;
-    padding: 6px;
+    padding: var(--autocomplete-error-wrapper-padding);
 }

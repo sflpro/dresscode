@@ -78,10 +78,9 @@ export class DateInput extends React.Component {
 
   handleDateInputBlur = () => {
     const { value, hasError, format, name, onChange } = this.props;
-    if (!hasError) {
+    if (!hasError && value) {
       const date = convertStringToDate(value, format);
       const formatedValue = formatDate(date, format);
-
       const eventObj = {
         target: {
           name,
@@ -176,7 +175,7 @@ export class DateInput extends React.Component {
           )}
         </Popover>
       ) : (
-        <React.Fragment>
+        <>
           <TextInput
             {...props}
             name={`native-${props.name || ''}`}
@@ -197,7 +196,7 @@ export class DateInput extends React.Component {
             name={props.name}
             type='hidden'
           />
-        </React.Fragment>
+        </>
       )
     );
   }

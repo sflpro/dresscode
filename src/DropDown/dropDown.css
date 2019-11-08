@@ -1,12 +1,12 @@
 .dropDownListItem {
   display: block;
-  min-height: calc(var(--drop-down-list-item-min-height) - 16px);
+  min-height: var(--drop-down-list-item-min-height);
   color: var(--drop-down-list-item-color);
 
   & > * {
     display: block;
-    width: 100%;
-    height: 100%;
+    width: var(--drop-down-list-item-width);
+    height: var(--drop-down-list-item-height);
     padding: var(--drop-down-list-item-padding);
     box-sizing: border-box;
     cursor: pointer;

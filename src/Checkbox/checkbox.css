@@ -10,7 +10,7 @@
   background-color: var(--checkbox-background-color);
   padding: var(--checkbox-padding);
   box-sizing: border-box;
-  margin-right: 16px;
+  margin: var(--checkbox-icon-margin);
   vertical-align: middle;
   display: flex;
   justify-content: center;

@@ -21,8 +21,8 @@
 }
 
 .link {
-  height: var(--button-height);
-  padding: var(--button-padding);
+  height: var(--button-link-height);
+  padding: var(--button-link-padding);
   font-size: var(--button-font-size);
   font-family: var(--button-font-family);
   background-color: transparent;
@@ -40,9 +40,9 @@
 }
 
 .circle {
-  height: var(--button-height);
-  width: var(--button-height);
-  border-radius: var(--button-border-radius);
+  height: var(--button-circle-height);
+  width: var(--button-circle-height);
+  border-radius: var(--button-circle-border-radius);
   padding: var(--button-circle-padding);
   font-family: var(--button-font-family);
   font-size: var(--button-font-size);

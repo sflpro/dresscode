@@ -26,7 +26,7 @@ export function TextInputWithPrefix({
   }
 
   return (
-    <React.Fragment>
+    <>
       <TextInput
         {...props}
         prefix={prefix}
@@ -39,7 +39,7 @@ export function TextInputWithPrefix({
         name={name}
         value={value}
       />
-    </React.Fragment>
+    </>
   );
 }
 

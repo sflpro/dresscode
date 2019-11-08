@@ -11,36 +11,8 @@ export class WithFormFeedback extends React.Component {
       children,
     } = this.props;
 
-    const {
-      dirty,
-      isSubmitting,
-      isValid,
-      isValidating,
-      touched,
-      errors,
-      setFieldValue,
-      handleSubmit,
-      handleReset,
-      status,
-      values,
-      resetForm,
-    } = this.context;
-
     return (
-      children({
-        dirty,
-        isSubmitting,
-        isValid,
-        isValidating,
-        touched,
-        errors,
-        setFieldValue,
-        handleSubmit,
-        handleReset,
-        status,
-        values,
-        resetForm,
-      })
+      children(this.context)
     );
   }
 }

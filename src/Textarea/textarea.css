@@ -15,7 +15,7 @@
   outline: none;
 }
 
-.textarea:placeholder {
+.textarea::placeholder {
   color: var(--text-input-placeholder-color);
 }
 
@@ -35,4 +35,10 @@
 
 .successWrapper {
   border: var(--text-input-border-size) solid var(--success-color);
+}
+
+.errorWrapper,
+.errorWrapper:focus,
+.errorWrapper:hover {
+  border: var(--text-input-border-size) solid var(--error-color);
 }

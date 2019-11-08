@@ -28,6 +28,6 @@
 }
 
 .closeIcon {
-  margin-left: 8px;
+  margin: var(--tag-close-icon-margin);
   cursor: pointer;
 }

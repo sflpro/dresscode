@@ -3,17 +3,17 @@
   border-radius: var(--date-picker-border-radius);
   box-shadow: var(--box-shadow-100);
   background-color: var(--date-picker-background-color);
-  width: 364px;
-  padding-top: 16px;
+  width: var(--date-picker-width);
+  padding: var(--date-picker-padding);
   font-family: inherit;
 }
 
 .dayPicker {
-  width: 100%;
+  width: var(--date-picker-day-picker-width);
 }
 
 .dayPickerWrapper {
-  padding-bottom: 15px;
+  padding-bottom: var(--date-picker-day-picker-padding);
 }
 
 .dayPickerWrapper:focus {
@@ -25,37 +25,36 @@
 }
 
 .dayPickerMonth {
-  width: 100%;
-  margin: 0;
+  width: var(--date-picker-month-width);
+  margin: var(--date-picker-month-margin);
   display: flex;
   flex-flow: column nowrap;
-  min-height: 426px;
+  min-height: var(--date-picker-month-min-height);
 }
 
 .dayPickerWeekdays {
   border-bottom: 1px solid var(--date-picker-border-color);
   border-top: 1px solid var(--date-picker-border-color);
-  margin-top: 16px;
-  margin-bottom: 7px;
+  margin: var(--date-picker-weekdays-margin);
 }
 
 .dayPickerWeekdaysRow {
   display: flex;
   justify-content: space-between;
-  padding: 0 7px;
+  padding: var(--date-picker-weekdays-row-padding);
 }
 
 .dayPickerWeek {
   display: flex;
-  padding: 0 7px;
+  padding: var(--date-picker-week-padding);
 }
 
 .dayPickerWeekday {
   @mixin font-scale-7;
   color: var(--date-picker-weekday-color);
-  padding: 11px 0;
-  width: 48px;
-  margin: 0 1px;
+  padding: var(--date-picker-weekday-padding);
+  width: var(--date-picker-weekday-width);
+  margin: var(--date-picker-weekday-margin);
   display: inline-block;
   text-align: center;
 }
@@ -68,12 +67,12 @@ abbr {
   @mixin font-scale-6;
   color: var(--date-picker-day-color);
   text-align: center;
-  width: 48px;
+  width: var(--date-picker-day-width);
   border: 1px solid transparent;
-  border-radius: 4px;
-  margin: 1px;
+  border-radius: var(--date-picker-day-border-radius);
+  margin: var(--date-picker-day-margin);
   box-sizing: border-box;
-  padding: 12px 0;
+  padding: var(--date-picker-day-padding);
 }
 
 .dayPickerDayOutside {
