@@ -41,6 +41,10 @@ module.exports = {
       'ignoreUrls': true,
       'ignoreComments': false
     }],
-    "import/no-webpack-loader-syntax": "off",
+    "import/no-webpack-loader-syntax": 0,
+    "react/jsx-props-no-spreading": 0,
+    "arrow-parens": [2, "as-needed", { "requireForBlockBody": true }],
+    "react/static-property-placement": [0],
+    "react/state-in-constructor": [0, 'never']
   }
 };
