@@ -4,9 +4,9 @@ import classNames from 'classnames';
 
 import { TableContext } from './TableContext';
 import { dynamicSort } from './ResizeTable';
-
-import { Icon } from '../Icon';
+import { getDebounce } from '../utils';
 import { Tooltip } from '../Tooltip';
+import { Icon } from '../Icon';
 
 import styles from './table.css';
 
@@ -21,6 +21,7 @@ export class Column extends React.Component {
   };
 
   componentDidMount() {
+    this.checkTextOverflowByDebounce = getDebounce(this.checkTextOverflow, 0);
     const { width } = this.columnChildrenRef.getBoundingClientRect();
     this.columnChildrenWidth = width;
 
@@ -32,7 +33,7 @@ export class Column extends React.Component {
   }
 
   componentDidUpdate() {
-    this.checkTextOverflow();
+    this.checkTextOverflowByDebounce();
   }
 
   checkTextOverflow = () => {
@@ -170,7 +171,7 @@ export class Column extends React.Component {
         className={tableColumnClasses}
         style={style}
         {...props}
-        onMouseOver={this.checkTextOverflow}
+        onMouseOver={this.checkTextOverflowByDebounce}
         onFocus={() => { }}
       >
         {!visible && (
