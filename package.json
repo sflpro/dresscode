@@ -26,7 +26,6 @@
   "homepage": "https://github.com/sflpro/dresscode#readme",
   "dependencies": {
     "classnames": "^2.2.6",
-    "date-fns": "^2.4.1",
     "formik": "^1.5.8",
     "lodash.throttle": "^4.1.1",
     "react": "^16.8.3",
