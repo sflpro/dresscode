@@ -173,7 +173,7 @@ export class Select extends React.Component {
       );
     }
 
-    return selected ? renderValue(selected.name) : renderValue(value || placeholder);
+    return selected ? renderValue(selected.value) : renderValue(value || placeholder);
   }
 
   isOpenChange = () => {
