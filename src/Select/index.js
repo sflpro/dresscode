@@ -173,7 +173,7 @@ export class Select extends React.Component {
       );
     }
 
-    return selected ? renderValue(selected.value) : renderValue(value || placeholder);
+    return selected ? renderValue(selected) : renderValue({ name: value || placeholder });
   }
 
   isOpenChange = () => {
@@ -441,6 +441,6 @@ Select.defaultProps = {
   className: '',
   nothingFoundText: 'Nothing found',
   renderOption: option => option.name,
-  renderValue: value => value,
+  renderValue: selected => selected.name,
   icon: 'thick',
 };
