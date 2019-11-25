@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import formatDate from 'date-fns/format';
 
 import { Icon } from '../Icon';
 import { Popover } from '../Popover';
@@ -15,6 +14,7 @@ import {
 import {
   convertStringToDate,
   isValidDate,
+  formatDate,
 } from '../DatePicker/helpers';
 import { TextInput } from '../TextInput';
 import { isMobile } from '../utils';

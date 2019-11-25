@@ -33,6 +33,19 @@ export const formatMonthTitle = ({
   );
 };
 
+export const getSeparator = (dateString) => {
+  let separator;
+  if (dateString.indexOf('/') > -1) {
+    separator = '/';
+  } else if (dateString.indexOf('-') > -1) {
+    separator = '-';
+  } else if (dateString.indexOf('.') > -1) {
+    separator = '.';
+  }
+
+  return separator;
+};
+
 export const validateFormat = (dateString, format) => {
   const date = {
     d: null,
@@ -48,25 +61,18 @@ export const validateFormat = (dateString, format) => {
     };
   }
 
-  let seperator;
-  if (dateString.indexOf('/') > -1) {
-    seperator = '/';
-  } else if (dateString.indexOf('-') > -1) {
-    seperator = '-';
-  } else if (dateString.indexOf('.') > -1) {
-    seperator = '.';
-  }
+  const separator = getSeparator(dateString);
 
-  if (!seperator || format.indexOf(seperator) === -1) {
+  if (!separator || format.indexOf(separator) === -1) {
     return {
       valid: false,
-      error: 'Wrong seperator',
+      error: 'Wrong separator',
       date,
     };
   }
 
-  const dateComponents = dateString.split(seperator);
-  const formatComponents = format.split(seperator);
+  const dateComponents = dateString.split(separator);
+  const formatComponents = format.split(separator);
 
   if (dateComponents.length !== formatComponents.length) {
     return {
@@ -133,21 +139,14 @@ export const isValidFormatType = format => (
 );
 
 export const isValidFormat = (dateString, format) => {
-  let seperator;
-  if (dateString.indexOf('/') > -1) {
-    seperator = '/';
-  } else if (dateString.indexOf('-') > -1) {
-    seperator = '-';
-  } else if (dateString.indexOf('.') > -1) {
-    seperator = '.';
-  }
+  const separator = getSeparator(dateString);
 
-  if (!seperator || format.indexOf(seperator) === -1) {
+  if (!separator || format.indexOf(separator) === -1) {
     return false;
   }
 
-  const dateComponents = dateString.split(seperator);
-  const formatComponents = format.split(seperator);
+  const dateComponents = dateString.split(separator);
+  const formatComponents = format.split(separator);
 
   if (dateComponents.length !== formatComponents.length) {
     return false;
@@ -157,21 +156,14 @@ export const isValidFormat = (dateString, format) => {
 };
 
 export const isValidDate = (dateString, format) => {
-  let seperator;
-  if (dateString.indexOf('/') > -1) {
-    seperator = '/';
-  } else if (dateString.indexOf('-') > -1) {
-    seperator = '-';
-  } else if (dateString.indexOf('.') > -1) {
-    seperator = '.';
-  }
+  const separator = getSeparator(dateString);
 
-  if (!seperator || format.indexOf(seperator) === -1) {
+  if (!separator || format.indexOf(separator) === -1) {
     return false;
   }
 
-  const dateComponents = dateString.split(seperator);
-  const formatComponents = format.split(seperator);
+  const dateComponents = dateString.split(separator);
+  const formatComponents = format.split(separator);
 
   if (dateComponents.length !== formatComponents.length) {
     return false;
@@ -225,17 +217,9 @@ export const convertStringToDate = (dateString, format) => {
     return null;
   }
 
-  let seperator;
-  if (dateString.indexOf('/') > -1) {
-    seperator = '/';
-  } else if (dateString.indexOf('-') > -1) {
-    seperator = '-';
-  } else if (dateString.indexOf('.') > -1) {
-    seperator = '.';
-  }
-
-  const dateComponents = dateString.split(seperator);
-  const formatComponents = format.split(seperator);
+  const separator = getSeparator(dateString);
+  const dateComponents = dateString.split(separator);
+  const formatComponents = format.split(separator);
 
   const date = {
     d: null,
@@ -247,14 +231,12 @@ export const convertStringToDate = (dateString, format) => {
     const dateComponent = dateComponents[i];
 
     switch (formatComponent) {
-      case 'DD': {
-        date.d = dateComponent;
-        break;
-      }
+      case 'DD':
       case 'D': {
         date.d = dateComponent;
         break;
       }
+
       case 'MM': {
         date.m = dateComponent;
         break;
@@ -278,4 +260,50 @@ export const convertStringToDate = (dateString, format) => {
   }
 
   return new Date(`${date.y}-${date.m}-${date.d}`);
+};
+
+export const formatDate = (date, format) => {
+  if (!(date instanceof Date)) {
+    return null;
+  }
+
+  const separator = getSeparator(format);
+  const formatComponents = format.split(separator);
+  const day = date.getDate();
+  const month = date.getMonth() + 1;
+  const year = date.getFullYear().toString();
+
+  const dateParts = [];
+  for (let i = 0; i < formatComponents.length; i++) {
+    const formatComponent = formatComponents[i];
+    switch (formatComponent) {
+      case 'DD': {
+        const d = day < 10 ? `0${day}` : day;
+        dateParts.push(d);
+        break;
+      }
+      case 'D': {
+        dateParts.push(day);
+        break;
+      }
+      case 'MM': {
+        const m = month < 10 ? `0${month}` : month;
+        dateParts.push(m);
+        break;
+      }
+      case 'YY': {
+        dateParts.push(year.substr(-2));
+        break;
+      }
+      case 'YYYY': {
+        dateParts.push(year);
+        break;
+      }
+      default: {
+        break;
+      }
+    }
+  }
+
+  return dateParts.join(separator);
 };
