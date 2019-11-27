@@ -194,6 +194,7 @@
   --dialog-z-index: 11;
   --dialog-max-height: calc(100% - 32px);
   --dialog-width: calc(100% - var(--dialog-padding-left) - var(--dialog-padding-right));
+  --dialog-max-width: 100%;
   --dialog-flex: 0 1 auto;
   --dialog-container-padding: 16px 0 0;
   --dialog-container-flex: 1 1 auto;

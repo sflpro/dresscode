@@ -1,4 +1,5 @@
 .dialog {
+  max-width: var(--dialog-max-width);
   width: var(--dialog-width);
   max-height: var(--dialog-max-height);
   position: fixed;
