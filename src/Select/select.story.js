@@ -80,6 +80,33 @@ storiesOf('Form controls/Select', module)
                       <Option value='option3'>
                         Option 3
                       </Option>
+                      <Option value='option4'>
+                        Option 4
+                      </Option>
+                      <Option value='option5'>
+                        Option 5
+                      </Option>
+                      <Option value='option6'>
+                        Option 6
+                      </Option>
+                      <Option value='option7'>
+                        Option 7
+                      </Option>
+                      <Option value='option8'>
+                        Option 8
+                      </Option>
+                      <Option value='option9'>
+                        Option 9
+                      </Option>
+                      <Option value='option10'>
+                        Option 10
+                      </Option>
+                      <Option value='option11'>
+                        Option 11
+                      </Option>
+                      <Option value='option12'>
+                        Option 12
+                      </Option>
                     </Select>
                   </Label>
                 </div>
