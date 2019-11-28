@@ -122,6 +122,7 @@
   --select-input-height: 32px;
   --select-tag-margin: 4px;
   --select-empty-state-padding: 16px;
+  --select-active-item-width: calc(100% - 16px);
 
   --list-border-radius: 8px;
   --list-item-min-height: 8px;
