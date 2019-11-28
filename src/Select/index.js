@@ -316,6 +316,7 @@ export class Select extends React.Component {
       nothingFoundText,
       renderOption,
       renderValue,
+      hasError,
       ...props
     } = this.props;
     const { isOpen } = this.state;
@@ -327,12 +328,14 @@ export class Select extends React.Component {
       [styles.select]: true,
       [styles.nativeSelect]: !isNativeMode,
       [styles.nativeCustomSelect]: isNativeMode,
+      [styles.error]: hasError,
     });
 
     const selectClasses = classNames({
       [className]: true,
       [styles.select]: true,
       [styles.active]: isOpen,
+      [styles.error]: hasError,
     });
 
     const iconClasses = classNames({
@@ -428,6 +431,8 @@ Select.propTypes = {
   renderValue: PropTypes.func,
   /** String, checked icon selected value */
   icon: PropTypes.string,
+  /** Boolean, whether select has error */
+  hasError: PropTypes.bool,
 };
 
 Select.defaultProps = {
@@ -443,4 +448,5 @@ Select.defaultProps = {
   renderOption: option => option.name,
   renderValue: selected => selected.name,
   icon: 'thick',
+  hasError: false,
 };

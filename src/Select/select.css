@@ -127,3 +127,11 @@ html {
   display: block;
   color: var(--text-input-placeholder-color);
 }
+
+.error {
+  border-color: var(--error-color);
+
+  &:hover {
+    border-color: var(--error-color);
+  }
+}
