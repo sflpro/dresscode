@@ -113,6 +113,8 @@
   --select-native-icon-right: 16px;
   --select-native-icon-top: 0;
   --select-native-icon-height: 100%;
+  --select-native-margin: 8px 0 0;
+  --select-list-margin: 0;
   --select-icon-transition-seconds: 0.3s;
   --select-icon-right: 12px;
   --select-icon-top: 12px;

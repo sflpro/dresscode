@@ -13,7 +13,7 @@
 }
 
 .dayPickerWrapper {
-  padding-bottom: var(--date-picker-day-picker-padding);
+  padding: var(--date-picker-day-picker-padding);
 }
 
 .dayPickerWrapper:focus {

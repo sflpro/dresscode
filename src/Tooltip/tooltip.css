@@ -17,5 +17,5 @@
   @mixin font-scale-6;
   font-weight: bold;
   color: var(--primary-color);
-  padding-bottom: var(--tooltip-title-padding);
+  padding: var(--tooltip-title-padding);
 }

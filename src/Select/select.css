@@ -41,7 +41,7 @@
 
 .nativeSelectWrapper {
   position: relative;
-  margin-top: 8px;
+  margin: var(--select-native-margin);
 }
 
 html {
@@ -87,7 +87,7 @@ html {
 
 .input {
   min-width: var(--select-input-min-width);
-  margin-top: var(--select-input-margin);
+  margin: var(--select-input-margin);
   height: var(--select-input-height);
   border: none;
   flex: 1;
@@ -117,7 +117,7 @@ html {
 
 .list {
   background-color: var(--neutral-white);
-  margin-top: 0;
+  margin: var(--select-list-margin);
   width: 100%;
 }
 
