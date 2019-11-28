@@ -148,6 +148,13 @@ export function Autocomplete({
     onLostFocus();
   }
 
+  const arrowOnClick = !loading && focused ? handleOverlayClick : handleFocus;
+  const arrowIcon = loading
+    ? 'tracker'
+    : focused
+      ? 'arrow-up'
+      : 'arrow-down';
+
   return (
     <div
       className={wrapperClasses}
@@ -164,13 +171,10 @@ export function Autocomplete({
         icon={
           haveArrowIcon ? (
             <Icon
-              name={
-                loading
-                  ? 'tracker'
-                  : focused
-                    ? 'arrow-up'
-                    : 'arrow-down'
-              }
+              onClick={arrowOnClick}
+              name={arrowIcon}
+              color='black'
+              size={24}
             />
           ) : (
             <Icon
