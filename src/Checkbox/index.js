@@ -61,7 +61,7 @@ Checkbox.propTypes = {
   /** String, classname that will be passed to wrapper span element */
   className: PropTypes.string,
   /** Object, style that will be added to wrapper span element */
-  style: PropTypes.bool,
+  style: PropTypes.object,
   /** Boolean, whether value of checkbox has error */
   hasError: PropTypes.bool,
   /** Boolean, whether prevent onClick */
