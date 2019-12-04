@@ -27,7 +27,7 @@ Actions.propTypes = {
   /** String, className that will be added to wrapper div */
   className: PropTypes.string,
   /** Object, styles that will be added to wrapper div */
-  style: PropTypes.string,
+  style: PropTypes.object,
   /** String or JSX or Element, content of actions */
   children: PropTypes.any,
 };

@@ -104,7 +104,7 @@ Dialog.propTypes = {
   /** String or JSX or Element, content of dialog */
   children: PropTypes.any,
   /** Object, styles that will be added to wrapper div */
-  style: PropTypes.any,
+  style: PropTypes.object,
 };
 
 Dialog.defaultProps = {

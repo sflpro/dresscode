@@ -21,7 +21,7 @@ Option.propTypes = {
   /** String, className that will be added to option */
   className: PropTypes.string,
   /** Object, style that will be added to option */
-  style: PropTypes.any,
+  style: PropTypes.object,
   /** Object, data that will be passed to option */
   data: PropTypes.any,
 };

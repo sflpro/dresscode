@@ -201,7 +201,7 @@ CardInput.propTypes = {
   /** String, className that will be passed to input */
   className: PropTypes.string,
   /** Object, style that will be passed to input */
-  style: PropTypes.string,
+  style: PropTypes.object,
 };
 
 CardInput.defaultProps = {
