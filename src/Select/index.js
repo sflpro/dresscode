@@ -51,7 +51,7 @@ export class Select extends React.Component {
     }));
 
     if (!multiple) {
-      if (prevProps.value !== value && selected.value !== value) {
+      if (prevProps.value !== value && (!selected || selected.value !== value)) {
         this.handleSelectChange(value);
       }
     } else if (
