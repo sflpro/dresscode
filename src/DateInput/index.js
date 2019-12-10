@@ -62,11 +62,11 @@ export class DateInput extends React.Component {
       open: !prevState.open,
     }));
 
-    const formatedValue = formatDate(value, format);
+    const formattedValue = formatDate(value, format);
     const eventObj = {
       target: {
         name,
-        value: formatedValue,
+        value: formattedValue,
       },
     };
     onChange(eventObj);
@@ -80,25 +80,25 @@ export class DateInput extends React.Component {
     const { value, hasError, format, name, onChange } = this.props;
     if (!hasError && value) {
       const date = convertStringToDate(value, format);
-      const formatedValue = formatDate(date, format);
+      const formattedValue = formatDate(date, format);
       const eventObj = {
         target: {
           name,
-          value: formatedValue,
+          value: formattedValue,
         },
       };
       onChange(eventObj);
     }
-  }
+  };
 
   handleNativeDateInputChange = (event) => {
     const { onChange, format, name } = this.props;
     const { value } = event.target;
-    const formatedDate = formatDate(new Date(value), format);
+    const formattedDate = formatDate(new Date(value), format);
     const eventObj = {
       target: {
         name,
-        value: formatedDate,
+        value: formattedDate,
       },
     };
     onChange(eventObj);
@@ -192,7 +192,7 @@ export class DateInput extends React.Component {
             hasError={hasError}
           />
           <input
-            value={formatDate(dateValue, DEFAULT_FORMAT) || ''}
+            value={(dateValue && formatDate(dateValue, DEFAULT_FORMAT)) || ''}
             name={props.name}
             type='hidden'
           />

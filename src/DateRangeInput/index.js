@@ -133,10 +133,10 @@ export class DateRangeInput extends React.Component {
     }
 
     if (isValidDate(value, format) && isValidDate(passivePickerValue, format)) {
-      const formatedDate = convertStringToDate(value, format);
+      const formattedDate = convertStringToDate(value, format);
       const rangeValues = this.getRangeUpdatedValues({
         picker: selectedPicker,
-        value: formatedDate,
+        value: formattedDate,
       });
       rangeValues[selectedPicker] = value;
       onChange(rangeValues);
@@ -151,14 +151,14 @@ export class DateRangeInput extends React.Component {
     const { onChange, format } = this.props;
     const { value } = event.target;
     if (value) {
-      const formatedDate = formatDate(new Date(value), format);
+      const formattedDate = formatDate(new Date(value), format);
 
       const rangeValues = this.getRangeUpdatedValues({
         picker: selectedPicker,
         value: new Date(value),
       });
 
-      rangeValues[selectedPicker] = formatedDate;
+      rangeValues[selectedPicker] = formattedDate;
       onChange(rangeValues);
     }
   };
