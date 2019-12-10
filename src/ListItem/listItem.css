@@ -12,7 +12,6 @@
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  word-break: break-word;
 }
 
 .active,
@@ -31,6 +30,7 @@
 .content {
   overflow: hidden;
   text-overflow: ellipsis;
+  max-width: var(--list-item-content-max-width);
 }
 
 .icon {

@@ -140,6 +140,7 @@
   --list-item-left-padding: 48px;
   --list-item-right-padding: 48px;
   --list-item-icon-right: 16px;
+  --list-item-content-max-width: calc(100% - 16px);
 
   --radio-button-border-color: var(--default-color);
   --radio-button-hover-color: var(--primary-color-light);
