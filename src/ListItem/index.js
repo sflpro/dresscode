@@ -34,23 +34,20 @@ export class ListItem extends React.Component {
       active,
       iconClassName,
       onClick,
+      wrapperClassName,
       className,
       contentClassName,
       ...props
     } = this.props;
 
     const listItemClasses = classNames({
-      [className]: true,
-      [styles.listItem]: true,
+      [wrapperClassName]: true,
+      [styles.listItemWrapper]: true,
       [styles.active]: active,
       [styles.clickable]: onClick,
       [styles.leftSpace]: !icon && iconPos === 'left',
       [styles.rightSpace]: !icon && iconPos === 'right',
     });
-    const listItemIconClasses = classNames({
-      [iconClassName]: true,
-    });
-
 
     return (
       <div
@@ -59,24 +56,26 @@ export class ListItem extends React.Component {
         role='presentation'
         {...props}
       >
-        {icon && iconPos === 'left' && (
-          <Icon
-            name={icon}
-            className={listItemIconClasses}
-            size={24}
-          />
-        )}
-        <span className={`${styles.content} ${contentClassName}`}>
-          {children}
-        </span>
-        {icon && iconPos === 'right' && (
-          <Icon
-            className={listItemIconClasses}
-            style={iconStyle}
-            name={icon}
-            size={24}
-          />
-        )}
+        <div className={`${styles.listItem} ${className}`}>
+          {icon && iconPos === 'left' && (
+            <Icon
+              name={icon}
+              className={`${iconClassName} ${styles.icon}`}
+              size={24}
+            />
+          )}
+          <span className={`${styles.content} ${contentClassName}`}>
+            {children}
+          </span>
+          {icon && iconPos === 'right' && (
+            <Icon
+              className={`${iconClassName} ${styles.icon}`}
+              style={iconStyle}
+              name={icon}
+              size={24}
+            />
+          )}
+        </div>
       </div>
     );
   }
@@ -104,6 +103,8 @@ ListItem.propTypes = {
   disabled: PropTypes.bool,
   /** Boolean, whether list item render as active */
   active: PropTypes.bool,
+  /** String, className that will be added to list item wrapper */
+  wrapperClassName: PropTypes.string,
   /** String, className that will be added to list item */
   className: PropTypes.string,
   /** String, className that will be added to list item's content */
@@ -120,6 +121,7 @@ ListItem.defaultProps = {
   active: false,
   iconClassName: '',
   onClick: undefined,
+  wrapperClassName: '',
   className: '',
   contentClassName: '',
 };
