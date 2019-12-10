@@ -1,12 +1,18 @@
-.listItem {
+.listItemWrapper {
   min-height: var(--list-item-min-height);
   color: var(--list-item-color);
+  max-height: var(--list-item-max-height);
+  width: var(--list-item-width);
+  display: flex;
+}
+
+.listItem {
+  padding: var(--list-item-padding);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: var(--list-item-padding);
-  max-height: var(--list-item-max-height);
-  width: var(--list-item-width);
+  width: 100%;
+  word-break: break-word;
 }
 
 .active,
@@ -25,4 +31,9 @@
 .content {
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.icon {
+  position: absolute;
+  right: var(--list-item-icon-right);
 }
