@@ -112,6 +112,7 @@ export class DatePicker extends React.Component {
       className,
       style,
       onChange,
+      disabledDays,
       ...props
     } = this.props;
     const { view, year } = this.state;
@@ -176,6 +177,7 @@ export class DatePicker extends React.Component {
             showOutsideDays={showOutsideDays}
             style={style}
             months={months}
+            disabledDays={disabledDays}
             {...otherProps}
           />
         )}
@@ -239,6 +241,12 @@ DatePicker.propTypes = {
     formatWeekdayShort: PropTypes.func.isRequired,
     getFirstDayOfWeek: PropTypes.func.isRequired,
   }),
+  /** Date | Array of dates | function, decide which days should be disabled */
+  disabledDays: PropTypes.oneOfType([
+    PropTypes.instanceOf(Date),
+    PropTypes.arrayOf(PropTypes.instanceOf(Date)),
+    PropTypes.func,
+  ]),
   /** Array of strings, months names */
   months: PropTypes.array,
   /** Array of strings, months short names */
@@ -262,4 +270,5 @@ DatePicker.defaultProps = {
   onChange: null,
   className: '',
   style: undefined,
+  disabledDays: undefined,
 };

@@ -121,6 +121,7 @@ export class DateInput extends React.Component {
       trigger,
       view,
       hasError,
+      disabledDays,
       ...props
     } = this.props;
 
@@ -148,6 +149,7 @@ export class DateInput extends React.Component {
               localeUtils={localeUtils}
               monthsShort={monthsShort}
               view={view}
+              disabledDays={disabledDays}
             />
           )}
           onTargetEvent={this.handleTargetEvent}
@@ -225,6 +227,12 @@ DateInput.propTypes = {
     formatWeekdayShort: PropTypes.func.isRequired,
     getFirstDayOfWeek: PropTypes.func.isRequired,
   }),
+  /** Date | Array of dates | function, decide which days should be disabled */
+  disabledDays: PropTypes.oneOfType([
+    PropTypes.instanceOf(Date),
+    PropTypes.arrayOf(PropTypes.instanceOf(Date)),
+    PropTypes.func,
+  ]),
   /** Array of strings, months short names */
   monthsShort: PropTypes.array,
   /** String, action that is opening date picker */
@@ -247,4 +255,5 @@ DateInput.defaultProps = {
   view: 'day',
   style: undefined,
   value: undefined,
+  disabledDays: undefined,
 };
