@@ -1,75 +1,58 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { Formik } from 'formik';
 
 export const FormContext = React.createContext();
 
 export function Form({
-  component,
-  render,
   enableReinitialize,
-  isInitialValid: propIsInitialValid,
-  initialStatus,
-  initialValues,
-  onReset,
-  onSubmit,
-  validate,
-  validateOnBlur,
   validateOnChange,
   validationSchema,
-  forwardedRef,
+  validateOnMount,
+  initialTouched,
+  initialValues,
+  initialErrors,
+  initialStatus,
+  validateOnBlur,
   preventAction,
+  forwardedRef,
+  component,
+  onSubmit,
+  validate,
   children,
+  onReset,
   ...props
 }) {
-  const [isInitialValidIsSet, setIsInitialValidIsSet] = useState(propIsInitialValid);
-  const [isInitialValid, setIsInitialValid] = useState(propIsInitialValid);
-
-  useEffect(() => {
-    if (validationSchema && props.action && props.method && !propIsInitialValid) {
-      try {
-        validationSchema.validateSync(initialValues);
-        setIsInitialValid(true);
-      } catch (error) {
-        setIsInitialValid(false);
-      }
-    }
-
-    setIsInitialValidIsSet(true);
-  }, []);
-
-  if (!isInitialValidIsSet) {
-    return null;
-  }
-
   return (
     <Formik
-      component={component}
-      render={render}
       enableReinitialize={enableReinitialize}
-      isInitialValid={isInitialValid}
-      initialStatus={initialStatus}
-      initialValues={initialValues}
-      onReset={onReset}
-      onSubmit={onSubmit}
-      validate={validate}
-      validateOnBlur={validateOnBlur}
       validateOnChange={validateOnChange}
       validationSchema={validationSchema}
+      validateOnMount={validateOnMount}
+      validateOnBlur={validateOnBlur}
+      initialTouched={initialTouched}
+      initialErrors={initialErrors}
+      initialStatus={initialStatus}
+      initialValues={initialValues}
+      component={component}
+      onSubmit={onSubmit}
+      validate={validate}
+      onReset={onReset}
     >
       {(formikProps) => {
         const handleFormSubmit = (event) => {
           if ((validationSchema && !formikProps.isValid) || preventAction) {
             return formikProps.handleSubmit(event);
           }
+
           return formikProps.handleSubmit();
         };
 
         return (
           <form
             {...props}
-            onSubmit={handleFormSubmit}
             onReset={formikProps.handleReset}
+            onSubmit={handleFormSubmit}
             ref={forwardedRef}
           >
             <FormContext.Provider
@@ -91,12 +74,12 @@ Form.propTypes = {
   onSubmit: PropTypes.func.isRequired,
   /** JSX or Element, will be passed to Formik */
   component: PropTypes.any,
-  /** Function, will be passed to Formik */
-  render: PropTypes.func,
   /** Boolean, will be passed to Formik, control whether Formik should reset the form if initialValues changes */
   enableReinitialize: PropTypes.bool,
-  /** Boolean, will be passed to Formik, control the initial value of isValid prop prior to mount. */
-  isInitialValid: PropTypes.bool,
+  /** Boolean, whether formik must validate inputs on mount. */
+  validateOnMount: PropTypes.bool,
+  /** Object, whether inputs are touched. */
+  initialTouched: PropTypes.object,
   /** Any, will be passed to Formik, an arbitrary value for the initial status of the form. */
   initialStatus: PropTypes.any,
   /** Function, will be passed to Formik, for reset handler */
@@ -119,13 +102,15 @@ Form.propTypes = {
   action: PropTypes.string,
   /** String, form action method */
   method: PropTypes.string,
+  /** Object, initial errors */
+  initialErrors: PropTypes.object,
 };
 
 Form.defaultProps = {
   component: null,
-  render: null,
   enableReinitialize: false,
-  isInitialValid: false,
+  validateOnMount: false,
+  initialTouched: undefined,
   initialStatus: false,
   onReset: undefined,
   validate: false,
@@ -137,4 +122,5 @@ Form.defaultProps = {
   children: undefined,
   action: undefined,
   method: undefined,
+  initialErrors: undefined,
 };
