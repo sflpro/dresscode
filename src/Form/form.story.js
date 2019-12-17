@@ -70,7 +70,13 @@ storiesOf('Form', module)
                   setSubmitting(false);
                 }, 500);
               }}
+              initialTouched={{
+                password: true,
+                email: true,
+                bday: true,
+              }}
               validationSchema={scheme}
+              validateOnMount
               preventAction
             >
               <Label>
@@ -149,7 +155,13 @@ storiesOf('Form', module)
               onSubmit={(values, { setSubmitting }) => {
                 setSubmitting(false);
               }}
+              initialTouched={{
+                password: true,
+                email: true,
+                bday: true,
+              }}
               validationSchema={scheme}
+              validateOnMount
             >
               <Label>
                 Email
@@ -227,7 +239,13 @@ storiesOf('Form', module)
               onSubmit={(values, { setSubmitting }) => {
                 setSubmitting(false);
               }}
+              initialTouched={{
+                password: true,
+                email: true,
+                bday: true,
+              }}
               validationSchema={scheme}
+              validateOnMount
             >
               <Label>
                 Email
