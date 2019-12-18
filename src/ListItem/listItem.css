@@ -12,6 +12,7 @@
   align-items: center;
   justify-content: space-between;
   width: 100%;
+  position: relative;
 }
 
 .active,
@@ -21,10 +22,6 @@
 
 .leftSpace {
   padding-left: var(--list-item-left-padding);
-}
-
-.rightSpace {
-  padding-right: var(--list-item-right-padding);
 }
 
 .content {

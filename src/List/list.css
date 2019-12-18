@@ -20,8 +20,8 @@
 }
 
 .maxHeight {
-  overflow: auto;
-  padding: var(--list-max-height-padding);
+  overflow-y: auto;
+  overflow-x: hidden;
   width: var(--list-max-height-width);
 }
 
