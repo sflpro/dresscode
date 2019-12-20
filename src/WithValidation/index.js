@@ -5,20 +5,14 @@ import { getIn } from 'formik';
 import { FormContext } from '../Form';
 
 export class WithValidation extends React.Component {
-  handleFieldChange = (args) => {
-    const {
-      handleChange,
-      handleBlur,
-    } = this.context;
-    const {
-      onChange,
-    } = this.props;
+  handleFieldChange = (event) => {
+    const { handleChange } = this.context;
+    const { onChange } = this.props;
 
-    handleChange(args);
-    handleBlur(args);
+    handleChange(event);
 
     if (onChange) {
-      onChange(args);
+      onChange(event);
     }
   };
 
@@ -35,11 +29,11 @@ export class WithValidation extends React.Component {
     } = this.props;
 
     const {
+      isSubmitting,
       handleBlur,
+      touched,
       values,
       errors,
-      touched,
-      isSubmitting,
     } = this.context;
 
     const passChecked = ['Checkbox', 'RadioButton'].includes(Component.displayName);
