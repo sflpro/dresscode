@@ -287,6 +287,7 @@
   --date-picker-month-color: var(--primary-color);
   --date-picker-selected-color: var(--neutral-white);
   --date-picker-selected-background-color-hover: var(--primary-color-dark);
+  --date-picker-disabled-color: var(--disabled-color);
   --date-picker-border-radius: 5px;
   --date-picker-width: 364px;
   --date-picker-day-picker-width: 100%;
@@ -296,6 +297,7 @@
   --date-picker-month-margin: 0;
   --date-picker-month-width: 100%;
   --date-picker-weekdays-margin: 16px 0 7px;
+  --date-picker-weekdays-row-padding: 0 7px;
   --date-picker-weekdays-row-padding: 0 7px;
   --date-picker-week-padding: 0 7px;
   --date-picker-weekday-padding: 11px 0;

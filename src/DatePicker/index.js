@@ -57,7 +57,12 @@ export class DatePicker extends React.Component {
     });
   };
 
-  handleDayClick = (day) => {
+  handleDayClick = (day, modifiers = {}) => {
+    const dayPickerDefaultClasses = DayPicker.defaultProps.classNames;
+    const key = `${dayPickerDefaultClasses.day} ${styles.disabled}`;
+    if (modifiers[key]) {
+      return;
+    }
     const { onChange } = this.props;
     onChange(day);
   };
@@ -142,6 +147,7 @@ export class DatePicker extends React.Component {
       weekdaysRow: `${dayPickerDefaultClasses.weekdaysRow} ${styles.dayPickerWeekdaysRow}`,
       week: `${dayPickerDefaultClasses.week} ${styles.dayPickerWeek}`,
       day: `${dayPickerDefaultClasses.day} ${styles.dayPickerDay}`,
+      disabled: `${dayPickerDefaultClasses.day} ${styles.disabled}`,
       outside: `${styles.dayPickerDayOutside}`,
       today: `${styles.dayPickerToday}`,
       selected: `${styles.dayPickerSelectedDay}`,

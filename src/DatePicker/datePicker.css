@@ -95,6 +95,12 @@ abbr {
   border: 1px solid transparent;
 }
 
+.disabled,
+.disabled:hover {
+  color: var(--date-picker-disabled-color);
+  border: 1px solid transparent !important;
+}
+
 .dayPickerDay:focus {
   outline: none;
 }
