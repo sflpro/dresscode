@@ -56,7 +56,7 @@ export function Form({
             ref={forwardedRef}
           >
             <FormContext.Provider
-              value={formikProps}
+              value={{ ...formikProps, validationSchema }}
             >
               {children}
             </FormContext.Provider>
