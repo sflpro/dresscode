@@ -135,3 +135,13 @@ html {
     border-color: var(--error-color);
   }
 }
+
+.disabled {
+  background-color: var(--neutral-75);
+  border-color: var(--neutral-75);
+  color: var(--neutral-500);
+
+  &:hover {
+    border-color: var(--neutral-75);
+  }
+}

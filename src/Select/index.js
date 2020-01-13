@@ -188,6 +188,12 @@ export class Select extends React.Component {
   };
 
   handleNativeChange = ({ currentTarget: { value } }) => {
+    const { disabled } = this.props;
+
+    if (disabled) {
+      return;
+    }
+
     this.handleSelectChange(value);
   };
 
@@ -220,7 +226,11 @@ export class Select extends React.Component {
   };
 
   onClick = (isOpen) => {
-    const { onClick, multiple } = this.props;
+    const { onClick, multiple, disabled } = this.props;
+
+    if (disabled) {
+      return;
+    }
 
     if (multiple) {
       if (this.input && !isMobile()) {
@@ -317,6 +327,7 @@ export class Select extends React.Component {
       renderOption,
       renderValue,
       hasError,
+      disabled,
       ...props
     } = this.props;
     const { isOpen } = this.state;
@@ -329,6 +340,7 @@ export class Select extends React.Component {
       [styles.nativeSelect]: !isNativeMode,
       [styles.nativeCustomSelect]: isNativeMode,
       [styles.error]: hasError,
+      [styles.disabled]: disabled,
     });
 
     const selectClasses = classNames({
@@ -336,6 +348,7 @@ export class Select extends React.Component {
       [styles.select]: true,
       [styles.active]: isOpen,
       [styles.error]: hasError,
+      [styles.disabled]: disabled,
     });
 
     const iconClasses = classNames({
@@ -358,6 +371,7 @@ export class Select extends React.Component {
           <select
             onChange={this.handleNativeChange}
             className={nativeSelectClasses}
+            disabled={disabled}
             multiple={multiple}
             value={value}
             name={name}
@@ -431,6 +445,8 @@ Select.propTypes = {
   renderValue: PropTypes.func,
   /** String, checked icon selected value */
   icon: PropTypes.string,
+  /** Boolean, whether select is disabled */
+  disabled: PropTypes.bool,
   /** Boolean, whether select has error */
   hasError: PropTypes.bool,
 };
@@ -449,4 +465,5 @@ Select.defaultProps = {
   renderValue: selected => selected.name,
   icon: 'thick',
   hasError: false,
+  disabled: false,
 };
