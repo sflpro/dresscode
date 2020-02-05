@@ -32,7 +32,7 @@ export function Drawer({
   const drawerStyles = classNames({
     [styles.drawer]: true,
     [styles[position]]: true,
-    [styles.className]: className,
+    [className]: true,
     [styles.visible]: !isInHidingProcess,
     [styles.hidden]: isInHidingProcess,
   });

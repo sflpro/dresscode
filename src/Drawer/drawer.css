@@ -2,11 +2,11 @@
   background-color: var(--drawer-content-bg-color);
   width: var(--drawer-width);
   height: var(--drawer-height);
+  z-index: var(--drawer-zindex);
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  z-index: 1200;
 }
 
 
