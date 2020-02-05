@@ -15,13 +15,6 @@ storiesOf('Drawer', module)
       open: false,
     });
 
-    function handleTargetClick(open) {
-      store.set({
-        ...store.state,
-        open,
-      });
-    }
-
     return (
       <State
         store={store}
@@ -44,7 +37,6 @@ storiesOf('Drawer', module)
                     </div>
                   )}
                   open={state.open}
-                  onTargetClick={handleTargetClick}
                 >
                   <Button>
                     Click
