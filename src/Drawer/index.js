@@ -16,18 +16,22 @@ export function Drawer({
   content: ContentComponent,
   onTargetClick,
   className,
+  targetWrapperClassName,
   position = DRAWER_POSITIONS.RIGHT,
   animationDuration,
   style,
   ...props
 }) {
-  const domBody = document.querySelector('body');
-
+  const domBody = useRef(null);
   const [visible, setVisible] = useState(false);
+
+  const [openState, setOpenState] = useState(open);
 
   const drawerRef = useRef(null);
 
-  const isInHidingProcess = visible && !open;
+  const isOpen = onTargetClick && typeof onTargetClick === 'function' ? open : openState;
+
+  const isInHidingProcess = visible && !isOpen;
 
   const drawerStyles = classNames({
     [styles.drawer]: true,
@@ -41,21 +45,24 @@ export function Drawer({
     event.stopPropagation();
   };
 
-  const handleTargetClick = (event) => {
+  const handleTargetClick = (event, nextOpen = !isOpen) => {
     event.stopPropagation();
-    onTargetClick(!open);
+    if (onTargetClick && typeof onTargetClick === 'function') {
+      onTargetClick(nextOpen);
+    } else {
+      setOpenState(nextOpen);
+    }
   };
 
   const handleOutsideClick = (event) => {
     if (drawerRef.current && !drawerRef.current.contains(event.target)) {
-      event.stopPropagation();
-      onTargetClick(false);
+      handleTargetClick(event, false);
     }
   };
 
   useEffect(() => {
     let timer;
-    if (!open) {
+    if (!isOpen) {
       if (visible) {
         timer = setTimeout(() => {
           setVisible(false);
@@ -70,9 +77,10 @@ export function Drawer({
         clearTimeout(timer);
       }
     };
-  }, [open, visible]);
+  }, [isOpen, visible]);
 
   useEffect(() => {
+    domBody.current = document.querySelector('body');
     document.addEventListener('click', handleOutsideClick, true);
     return () => {
       document.removeEventListener('click', handleOutsideClick, true);
@@ -83,9 +91,10 @@ export function Drawer({
     <div
       role='presentation'
       onClick={handleTargetClick}
+      className={targetWrapperClassName}
     >
       {children}
-      {(visible || open) && (
+      {(visible || isOpen) && domBody.current && (
         ReactDOM.createPortal(
           (
             <div
@@ -102,7 +111,7 @@ export function Drawer({
               {ContentComponent}
             </div>
           ),
-          domBody,
+          domBody.current,
         )
       )}
     </div>
@@ -114,12 +123,14 @@ Drawer.propTypes = {
   open: PropTypes.bool.isRequired,
   /** String or JSX or Element, drawer content */
   content: PropTypes.any.isRequired,
-  /** Function, will be called on target element click */
-  onTargetClick: PropTypes.func.isRequired,
   /** String or JSX or Element, target element */
   children: PropTypes.any.isRequired,
+  /** Function, will be called on target element click */
+  onTargetClick: PropTypes.func,
   /** String, className that will be added to drawer element */
   className: PropTypes.string,
+  /** String, className that will be added to target wrapper element */
+  targetWrapperClassName: PropTypes.string,
   /** String, decides drawer opening side */
   position: PropTypes.oneOf(Object.values(DRAWER_POSITIONS)),
   /** Number, drawer animation duration in milliseconds. */
@@ -129,7 +140,9 @@ Drawer.propTypes = {
 };
 
 Drawer.defaultProps = {
+  onTargetClick: undefined,
   className: '',
+  targetWrapperClassName: '',
   position: DRAWER_POSITIONS.RIGHT,
   animationDuration: 500,
   style: undefined,
