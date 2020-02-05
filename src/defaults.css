@@ -445,4 +445,9 @@
   --month-picker-border-radius: 4px;
   --month-picker-margin: 1px;
   --month-picker-flex: 0 0 calc(25% - 2px);
+
+  --drawer-content-bg-color: var(--neutral-white);
+  --drawer-width: auto;
+  --drawer-height: 100vh;
+  --drawer-zindex: 1200;
 }
