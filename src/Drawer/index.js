@@ -16,27 +16,34 @@ export function Drawer({
   content: ContentComponent,
   onTargetClick,
   className,
+  wrapperClassName,
   targetWrapperClassName,
+  overlayClassName,
   position = DRAWER_POSITIONS.RIGHT,
   animationDuration,
-  style,
   ...props
 }) {
   const domBody = useRef(null);
+
   const [visible, setVisible] = useState(false);
 
   const [openState, setOpenState] = useState(open);
-
-  const drawerRef = useRef(null);
 
   const isOpen = onTargetClick && typeof onTargetClick === 'function' ? open : openState;
 
   const isInHidingProcess = visible && !isOpen;
 
-  const drawerStyles = classNames({
+  const drawerClasses = classNames({
     [styles.drawer]: true,
     [styles[position]]: true,
     [className]: true,
+    [styles.visible]: !isInHidingProcess,
+    [styles.hidden]: isInHidingProcess,
+  });
+
+  const overlayClasses = classNames({
+    [styles.overlay]: true,
+    [overlayClassName]: true,
     [styles.visible]: !isInHidingProcess,
     [styles.hidden]: isInHidingProcess,
   });
@@ -55,9 +62,7 @@ export function Drawer({
   };
 
   const handleOutsideClick = (event) => {
-    if (drawerRef.current && !drawerRef.current.contains(event.target)) {
-      handleTargetClick(event, false);
-    }
+    handleTargetClick(event, false);
   };
 
   useEffect(() => {
@@ -81,10 +86,6 @@ export function Drawer({
 
   useEffect(() => {
     domBody.current = document.querySelector('body');
-    document.addEventListener('click', handleOutsideClick, true);
-    return () => {
-      document.removeEventListener('click', handleOutsideClick, true);
-    };
   }, []);
 
   return (
@@ -98,17 +99,27 @@ export function Drawer({
         ReactDOM.createPortal(
           (
             <div
-              className={drawerStyles}
-              style={{
-                ...style,
-                animationDuration: `${animationDuration}ms`,
-              }}
+              className={`${styles.drawerWrapper} ${wrapperClassName}`}
               onClick={handleDrawerClick}
               role='presentation'
-              ref={drawerRef}
               {...props}
             >
-              {ContentComponent}
+              <div
+                className={overlayClasses}
+                onClick={handleOutsideClick}
+                style={{
+                  animationDuration: `${animationDuration}ms`,
+                }}
+                role='presentation'
+              />
+              <div
+                style={{
+                  animationDuration: `${animationDuration}ms`,
+                }}
+                className={drawerClasses}
+              >
+                {ContentComponent}
+              </div>
             </div>
           ),
           domBody.current,
@@ -119,16 +130,20 @@ export function Drawer({
 }
 
 Drawer.propTypes = {
-  /** Boolean, whether drawer must be displayed */
-  open: PropTypes.bool.isRequired,
   /** String or JSX or Element, drawer content */
   content: PropTypes.any.isRequired,
   /** String or JSX or Element, target element */
   children: PropTypes.any.isRequired,
+  /** Boolean, whether drawer must be displayed */
+  open: PropTypes.bool,
   /** Function, will be called on target element click */
   onTargetClick: PropTypes.func,
   /** String, className that will be added to drawer element */
   className: PropTypes.string,
+  /** String, className that will be added to drawer wrapper element */
+  wrapperClassName: PropTypes.string,
+  /** String, className that will be added to drawer overlay element */
+  overlayClassName: PropTypes.string,
   /** String, className that will be added to target wrapper element */
   targetWrapperClassName: PropTypes.string,
   /** String, decides drawer opening side */
@@ -140,8 +155,11 @@ Drawer.propTypes = {
 };
 
 Drawer.defaultProps = {
+  open: false,
   onTargetClick: undefined,
   className: '',
+  wrapperClassName: '',
+  overlayClassName: '',
   targetWrapperClassName: '',
   position: DRAWER_POSITIONS.RIGHT,
   animationDuration: 500,

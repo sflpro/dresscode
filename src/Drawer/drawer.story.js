@@ -29,7 +29,6 @@ storiesOf('Drawer', module)
                   content={(
                     <div style={{
                       width: 200,
-                      backgroundColor: '#f1f1f1',
                       height: '100%',
                     }}
                     >
