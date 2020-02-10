@@ -12,6 +12,7 @@ export function Tag({
   clickable,
   onClose,
   className,
+  iconName,
   ...props
 }) {
   const tagClasses = classNames({
@@ -33,7 +34,7 @@ export function Tag({
         <Icon
           className={styles.closeIcon}
           onClick={onClose}
-          name='cross'
+          name={iconName}
         />
       )}
     </span>
@@ -53,6 +54,8 @@ Tag.propTypes = {
   onClick: PropTypes.func,
   /** String, text content of tag */
   name: PropTypes.string,
+  /** String, IconName that will be passed to Tag when Tag clickable */
+  iconName: PropTypes.string,
   /** Object, style that will be added to tag */
   style: PropTypes.object,
 };
@@ -65,4 +68,5 @@ Tag.defaultProps = {
   onClick: undefined,
   className: '',
   style: undefined,
+  iconName: 'cross',
 };
