@@ -42,6 +42,14 @@ export class Slider extends React.Component {
     return null;
   }
 
+  static getElementOffsetLeft = (element, offsetLeft = 0) => {
+    if (!element) {
+      return offsetLeft;
+    }
+
+    return Slider.getElementOffsetLeft(element.offsetParent, offsetLeft + element.offsetLeft);
+  };
+
   componentDidMount() {
     window.addEventListener('resize', this.onResizeThrottled);
 
@@ -146,7 +154,7 @@ export class Slider extends React.Component {
   setWrapperParams(wrapperElement) {
     this.setState({
       wrapperElementWidth: wrapperElement.clientWidth,
-      wrapperLeftOffset: wrapperElement.offsetLeft,
+      wrapperLeftOffset: Slider.getElementOffsetLeft(wrapperElement),
     });
   }
 

@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
 import { TextInput } from '../TextInput';
 import { Slider } from '../Slider';
@@ -195,7 +196,7 @@ export class InputSlider extends React.Component {
   };
 
   render() {
-    const { children, separator, style, inputProps, className, ...props } = this.props;
+    const { children, separator, style, inputProps, className, sliderClassName, ...props } = this.props;
     const { value, hasError } = this.state;
 
     return (
@@ -211,7 +212,7 @@ export class InputSlider extends React.Component {
         <Slider
           {...props}
           onControlChange={this.setMinMax}
-          className={styles.inputSlider}
+          className={classNames([styles.inputSlider, sliderClassName])}
         >
           {children}
         </Slider>
@@ -229,6 +230,8 @@ InputSlider.propTypes = {
   separator: PropTypes.string,
   /** String, className that will be added to wrapper div */
   className: PropTypes.string,
+  /** String, className that will be added to Slider component */
+  sliderClassName: PropTypes.string,
   /** Number, min difference of range input values */
   distance: PropTypes.number,
   /** Object, styles that will be added to wrapper div */
@@ -247,6 +250,7 @@ InputSlider.defaultProps = {
   separator: '-',
   inputProps: {},
   className: '',
+  sliderClassName: '',
   distance: 1,
   style: {},
   step: 1,
