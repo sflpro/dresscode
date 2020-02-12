@@ -33,5 +33,6 @@ export const isPassiveEventSupported = () => {
   } catch (e) {
     return false;
   }
+
   return passive;
 };

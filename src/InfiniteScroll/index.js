@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 
 import { isPassiveEventSupported } from '../utils';
 
-
 export class InfiniteScroll extends React.Component {
   componentDidMount() {
     this.options = this.eventListenerOptions();
@@ -25,14 +24,13 @@ export class InfiniteScroll extends React.Component {
 
   componentWillUnmount() {
     this.detachScrollListener();
-    this.detachMousewheelListener();
   }
 
   getParentElement(el) {
     const { getScrollParent } = this.props;
 
     if (typeof getScrollParent === 'function') {
-      getScrollParent();
+      return getScrollParent();
     }
 
     return el && el.parentNode;
@@ -67,6 +65,7 @@ export class InfiniteScroll extends React.Component {
     if (useWindow) {
       const doc = document.documentElement || document.body.parentNode || document.body;
       const scrollTop = scrollEl.pageYOffset !== undefined ? scrollEl.pageYOffset : doc.scrollTop;
+
       if (reverse) {
         offset = scrollTop;
       } else {
@@ -82,6 +81,7 @@ export class InfiniteScroll extends React.Component {
       this.detachScrollListener();
       this.beforeScrollHeight = parentNode.scrollHeight;
       this.beforeScrollTop = parentNode.scrollTop;
+
       if (typeof loadMore === 'function') {
         loadMore();
         this.loadMore = true;
@@ -106,45 +106,42 @@ export class InfiniteScroll extends React.Component {
     return options;
   };
 
-  detachMousewheelListener() {
-    let scrollEl = window;
-    const {
-      useWindow,
-      useCapture,
-    } = this.props;
+  getRef = (node) => {
+    const { ref } = this.props;
+    this.scrollComponent = node;
 
-    if (!useWindow) {
-      scrollEl = this.scrollComponent.parentNode;
+    if (ref) {
+      ref(node);
     }
-
-    scrollEl.removeEventListener(
-      'mousewheel',
-      this.mousewheelListener,
-      this.options ? this.options : useCapture,
-    );
-  }
+  };
 
   detachScrollListener() {
-    let scrollEl;
+    let scrollElement;
+
     const {
       useWindow,
       useCapture,
     } = this.props;
 
     if (useWindow) {
-      scrollEl = window;
+      scrollElement = window;
     } else {
-      scrollEl = this.getParentElement(this.scrollComponent);
+      scrollElement = this.getParentElement(this.scrollComponent);
     }
 
-    scrollEl.removeEventListener(
+    scrollElement.removeEventListener(
       'scroll',
       this.scrollListener,
       this.options ? this.options : useCapture,
     );
-    scrollEl.removeEventListener(
+    scrollElement.removeEventListener(
       'resize',
       this.scrollListener,
+      this.options ? this.options : useCapture,
+    );
+    scrollElement.removeEventListener(
+      'mousewheel',
+      this.mousewheelListener,
       this.options ? this.options : useCapture,
     );
   }
@@ -205,7 +202,7 @@ export class InfiniteScroll extends React.Component {
   render() {
     const {
       children,
-      element,
+      element: Element,
       hasMore,
       reverse,
       loadMore,
@@ -217,14 +214,14 @@ export class InfiniteScroll extends React.Component {
       ...props
     } = this.props;
 
-    props.ref = (node) => {
-      this.scrollComponent = node;
-      if (ref) {
-        ref(node);
-      }
-    };
-
-    return React.createElement(element, props, children);
+    return (
+      <Element
+        {...props}
+        ref={this.getRef}
+      >
+        {children}
+      </Element>
+    );
   }
 }
 
@@ -240,6 +237,8 @@ InfiniteScroll.propTypes = {
   hasMore: PropTypes.bool,
   /** Boolean, Whether new items should be loaded when user scrolls to the top of the scrollable area. */
   reverse: PropTypes.bool,
+  /** String, className that will be added to container element */
+  className: PropTypes.string,
   /** Function, Override method to return a different scroll listener
    *  if it's not the immediate parent of InfiniteScroll.
    */
@@ -258,6 +257,7 @@ InfiniteScroll.propTypes = {
 
 InfiniteScroll.defaultProps = {
   element: 'div',
+  className: '',
   hasMore: false,
   ref: null,
   threshold: 250,
