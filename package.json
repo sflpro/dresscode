@@ -1,6 +1,6 @@
 {
   "name": "@sflpro/dresscode",
-  "version": "1.73.2",
+  "version": "1.74.0",
   "description": "UI Framework developer at SFL",
   "main": "index.js",
   "scripts": {
