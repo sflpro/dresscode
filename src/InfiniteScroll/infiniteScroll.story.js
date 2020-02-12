@@ -79,10 +79,8 @@ storiesOf('Infinite Scroll', module)
                 }}
               >
                 <InfiniteScroll
-                  pageStart={0}
                   loadMore={loadItems}
                   hasMore={state.hasMoreItems}
-                  loader={loader}
                 >
                   <div>
                     {state.items.map(item => (
@@ -118,11 +116,8 @@ storiesOf('Infinite Scroll', module)
                 }}
               >
                 <InfiniteScroll
-                  pageStart={0}
                   loadMore={loadReverseItems}
                   hasMore={state.hasMoreItems}
-                  useWindow={false}
-                  loader={loader}
                   reverse
                 >
                   {state.isLoading && loader}
