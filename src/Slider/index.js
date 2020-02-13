@@ -146,7 +146,7 @@ export class Slider extends React.Component {
   setWrapperParams(wrapperElement) {
     this.setState({
       wrapperElementWidth: wrapperElement.clientWidth,
-      wrapperLeftOffset: wrapperElement.offsetLeft,
+      wrapperLeftOffset: wrapperElement.getBoundingClientRect().left,
     });
   }
 
