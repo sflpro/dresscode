@@ -23,6 +23,7 @@ export class WithValidation extends React.Component {
       disabledWhileSubmitting,
       component: Component,
       onChange,
+      disabled,
       value,
       name,
       ...props
@@ -41,7 +42,7 @@ export class WithValidation extends React.Component {
     return (
       <Component
         checked={passChecked ? getIn(values, name) === value : undefined}
-        disabled={disabledWhileSubmitting ? isSubmitting : null}
+        disabled={(disabledWhileSubmitting && isSubmitting) || disabled}
         hasError={!!getIn(errors, name) && !!getIn(touched, name)}
         value={passChecked ? value : getIn(values, name)}
         onChange={this.handleFieldChange}
@@ -60,6 +61,8 @@ WithValidation.propTypes = {
   component: PropTypes.any.isRequired,
   /** Boolean, if true add disabled property to component while submitting */
   disabledWhileSubmitting: PropTypes.bool,
+  /** Boolean, whether component is disabled */
+  disabled: PropTypes.bool,
   /** Function, will be called when component value changed */
   onChange: PropTypes.func,
   /** Any, input value (for radio button and checkbox) */
@@ -72,6 +75,7 @@ WithValidation.propTypes = {
 
 WithValidation.defaultProps = {
   disabledWhileSubmitting: false,
+  disabled: false,
   onChange: undefined,
   value: undefined,
 };
