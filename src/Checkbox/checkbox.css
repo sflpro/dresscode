@@ -9,8 +9,8 @@
   border: solid 2px var(--checkbox-border-color);
   background-color: var(--checkbox-background-color);
   padding: var(--checkbox-padding);
-  box-sizing: border-box;
   margin: var(--checkbox-icon-margin);
+  box-sizing: border-box;
   vertical-align: middle;
   display: flex;
   justify-content: center;
@@ -42,6 +42,10 @@
 
 .checked.disabled {
   background-color: var(--text-disabled-color);
+}
+
+.disabled > .icon {
+  cursor: default;
 }
 
 .label {
