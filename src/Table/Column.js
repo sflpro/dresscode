@@ -122,9 +122,11 @@ export class Column extends React.Component {
     invisibleColumnClassName,
     ...props
   }) => {
-    const {
-      sortOptions,
-    } = this.context;
+    const { defaultSortIcon, descSortIcon, ascSortIcon } = this.props;
+    const { sortOptions } = this.context;
+
+    const isDesc = sortOptions.direction === SORTING_DIRECTIONS.DESC;
+    const isSorted = sortable && sortOptions.prop === id;
 
     return (
       <div
@@ -133,12 +135,22 @@ export class Column extends React.Component {
         {...props}
         onClick={sortable ? () => this.handleSorting(id) : undefined}
       >
-        {sortable && sortOptions.prop === id && (
+        {(!isSorted && defaultSortIcon) ? defaultSortIcon : null}
+        {(isSorted && !isDesc) && (ascSortIcon || (
           <Icon
+            className={styles.sortIcon}
             name='sorting'
-            className={sortIconClasses}
           />
-        )}
+        ))}
+        {(isSorted && isDesc) && (descSortIcon || (
+          <Icon
+            className={classNames({
+              [styles.sortReverseIcon]: true,
+              [styles.sortIcon]: true,
+            })}
+            name='sorting'
+          />
+        ))}
         {this.renderColumnContent({ children, contentClassName })}
       </div>
     );
@@ -148,7 +160,6 @@ export class Column extends React.Component {
     children,
     visible,
     headColumn,
-    sortIconClasses,
     className,
     contentClassName,
     invisibleColumnClassName,
@@ -210,6 +221,9 @@ export class Column extends React.Component {
       contentClassName,
       style,
       invisibleColumnClassName,
+      defaultSortIcon,
+      descSortIcon,
+      ascSortIcon,
       ...props
     } = this.props;
 
@@ -224,7 +238,6 @@ export class Column extends React.Component {
         column: columnGutter,
         row: rowGutter,
       },
-      sortOptions,
     } = this.context;
 
     const headColumn = columns.find(column => column.id === id);
@@ -263,11 +276,6 @@ export class Column extends React.Component {
       tableColumnStyle.paddingRight += rowGutter;
     }
 
-    const sortIconClasses = classNames({
-      [styles.sortIcon]: true,
-      [styles.sortReverseIcon]: headColumn.sortable && sortOptions.direction === SORTING_DIRECTIONS.DESC,
-    });
-
     if (hasDefaultWidth) {
       tableColumnStyle.width = width - 2 * columnGutter;
     } else {
@@ -291,10 +299,9 @@ export class Column extends React.Component {
       invisibleColumnClassName,
       style: tableColumnStyle,
       contentClassName,
-      id,
-      sortIconClasses,
       headColumn,
       visible,
+      id,
       ...props,
     };
 
@@ -336,6 +343,12 @@ Column.propTypes = {
   invisibleColumnClassName: PropTypes.string,
   /** Object, styles that will be added to table div */
   style: PropTypes.object,
+  /** element, will be used as icon of not sorted sortable column */
+  defaultSortIcon: PropTypes.any,
+  /** element, will be used as icon of asc sortable column */
+  ascSortIcon: PropTypes.any,
+  /** element, will be used as icon of desc sortable column */
+  descSortIcon: PropTypes.any,
 };
 
 Column.defaultProps = {
@@ -351,4 +364,7 @@ Column.defaultProps = {
   contentClassName: '',
   style: undefined,
   invisibleColumnClassName: '',
+  defaultSortIcon: undefined,
+  ascSortIcon: undefined,
+  descSortIcon: undefined,
 };
