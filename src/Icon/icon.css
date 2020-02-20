@@ -1,19 +1,19 @@
 .icon {
+  flex-shrink: var(--icon-flex-shrink);
+  height: var(--icon-height);
+  width: var(--icon-width);
+  margin: var(--icon-margin);
   box-sizing: border-box;
   color: inherit;
   display: inline-block;
   fill: currentColor;
-  flex-shrink: var(--icon-flex-shrink);
   font-size: 1em;
-  height: var(--icon-height);
-  width: var(--icon-width);
-  margin: var(--icon-margin);
   overflow: hidden;
   user-select: none;
-  cursor: var(--icon-cursor);
 }
 
 .iconWrapper {
+  cursor: var(--icon-cursor);
   display: flex;
   align-items: center;
 }
