@@ -38,6 +38,11 @@ export class Column extends React.Component {
 
   checkTextOverflow = () => {
     const { didOverflow } = this.state;
+
+    if (!this.tableColumnRef) {
+      return;
+    }
+
     const { width } = this.tableColumnRef.getBoundingClientRect();
     const {
       gutters: {
@@ -114,6 +119,7 @@ export class Column extends React.Component {
     children,
     visible,
     contentClassName,
+    invisibleColumnClassName,
     ...props
   }) => {
     const {
