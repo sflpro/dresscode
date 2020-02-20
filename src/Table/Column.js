@@ -125,6 +125,9 @@ export class Column extends React.Component {
     const { defaultSortIcon, descSortIcon, ascSortIcon } = this.props;
     const { sortOptions } = this.context;
 
+    const isDesc = sortOptions.direction === SORTING_DIRECTIONS.DESC;
+    const isSorted = sortable && sortOptions.prop === id;
+
     return (
       <div
         ref={setRef ? this.setRef : undefined}
@@ -132,14 +135,14 @@ export class Column extends React.Component {
         {...props}
         onClick={sortable ? () => this.handleSorting(id) : undefined}
       >
-        {(sortable && sortOptions.prop !== id && defaultSortIcon) ? defaultSortIcon : null}
-        {(sortable && sortOptions.prop === id && sortOptions.direction === SORTING_DIRECTIONS.ASC) && (ascSortIcon || (
+        {(!isSorted && defaultSortIcon) ? defaultSortIcon : null}
+        {(isSorted && !isDesc) && (ascSortIcon || (
           <Icon
             className={styles.sortIcon}
             name='sorting'
           />
         ))}
-        {(sortable && sortOptions.prop === id && sortOptions.direction === SORTING_DIRECTIONS.DESC) && (descSortIcon || (
+        {(isSorted && isDesc) && (descSortIcon || (
           <Icon
             className={classNames({
               [styles.sortReverseIcon]: true,
