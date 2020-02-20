@@ -145,6 +145,7 @@ export class Column extends React.Component {
     sortIconClasses,
     className,
     contentClassName,
+    invisibleColumnClassName,
     style,
     ...props
   }) => {
@@ -156,6 +157,7 @@ export class Column extends React.Component {
     const invisibleHeadColumnClasses = classNames({
       [className]: true,
       [styles.tableHeadColumnForInvisibleColumn]: !visible,
+      [invisibleColumnClassName]: !visible,
     });
 
     const contentClasses = classNames({
@@ -201,6 +203,7 @@ export class Column extends React.Component {
       className,
       contentClassName,
       style,
+      invisibleColumnClassName,
       ...props
     } = this.props;
 
@@ -279,6 +282,7 @@ export class Column extends React.Component {
 
     const columnProps = {
       className: tableColumnClasses,
+      invisibleColumnClassName,
       style: tableColumnStyle,
       contentClassName,
       id,
@@ -322,6 +326,8 @@ Column.propTypes = {
   className: PropTypes.string,
   /** String, className that will be added to table column content */
   contentClassName: PropTypes.string,
+  /** String, className that will be added to invisible column */
+  invisibleColumnClassName: PropTypes.string,
   /** Object, styles that will be added to table div */
   style: PropTypes.object,
 };
@@ -338,4 +344,5 @@ Column.defaultProps = {
   className: '',
   contentClassName: '',
   style: undefined,
+  invisibleColumnClassName: '',
 };

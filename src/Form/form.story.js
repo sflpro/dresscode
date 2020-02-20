@@ -66,7 +66,7 @@ storiesOf('Form', module)
               }}
               onSubmit={(values, { setSubmitting }) => {
                 setTimeout(() => {
-                  alert(JSON.stringify(values, null, 2));
+                  console.dir(JSON.stringify(values, null, 2));
                   setSubmitting(false);
                 }, 500);
               }}
