@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 export function Option({
   data,
+  contentClassName,
   ...props
 }) {
   return (
@@ -20,6 +21,8 @@ Option.propTypes = {
   children: PropTypes.any,
   /** String, className that will be added to option */
   className: PropTypes.string,
+  /** String, className that will be added to option content */
+  contentClassName: PropTypes.string,
   /** Object, style that will be added to option */
   style: PropTypes.object,
   /** Object, data that will be passed to option */
