@@ -27,6 +27,7 @@
 .disabled,
 .disabled:hover {
   color: var(--text-disabled-color);
+  cursor: default;
 }
 
 .success {
