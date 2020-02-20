@@ -35,4 +35,5 @@ Option.defaultProps = {
   className: '',
   style: undefined,
   data: undefined,
+  contentClassName: '',
 };

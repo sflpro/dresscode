@@ -344,4 +344,5 @@ Column.defaultProps = {
   className: '',
   contentClassName: '',
   style: undefined,
+  invisibleColumnClassName: '',
 };
