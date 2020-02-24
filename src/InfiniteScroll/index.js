@@ -11,14 +11,6 @@ export class InfiniteScroll extends React.Component {
   }
 
   componentDidUpdate() {
-    const { reverse } = this.props;
-
-    if (reverse && this.loadMore) {
-      const parentElement = this.getParentElement(this.scrollComponent);
-      parentElement.scrollTop = parentElement.scrollHeight - this.beforeScrollHeight + this.beforeScrollTop;
-      this.loadMore = false;
-    }
-
     this.attachScrollListener();
   }
 
@@ -41,6 +33,15 @@ export class InfiniteScroll extends React.Component {
     // See: https://stackoverflow.com/questions/47524205/random-high-content-download-time-in-chrome/47684257#47684257
     if (e.deltaY === 1 && !isPassiveEventSupported()) {
       e.preventDefault();
+    }
+  };
+
+  calculateScrollPosition = () => {
+    const { reverse } = this.props;
+
+    if (reverse) {
+      const parentElement = this.getParentElement(this.scrollComponent);
+      parentElement.scrollTop = parentElement.scrollHeight - this.beforeScrollHeight + this.beforeScrollTop;
     }
   };
 
@@ -83,8 +84,16 @@ export class InfiniteScroll extends React.Component {
       this.beforeScrollTop = parentNode.scrollTop;
 
       if (typeof loadMore === 'function') {
-        loadMore();
-        this.loadMore = true;
+        if (this.isLoading) {
+          return;
+        }
+
+        this.isLoading = true;
+        loadMore()
+          .then(() => {
+            this.isLoading = false;
+            this.calculateScrollPosition();
+          });
       }
     }
   };
@@ -231,6 +240,7 @@ InfiniteScroll.propTypes = {
   /** Function, A callback when more items are requested by the user.
    *  Receives a single parameter specifying the page to load e.g.
    *  function handleLoadMore(page) { load more items here }
+   *  return Promise
    */
   loadMore: PropTypes.func.isRequired,
   /** Boolean, Whether there are more items to be loaded. Event listeners are removed if false. */

@@ -30,39 +30,37 @@ storiesOf('Infinite Scroll', module)
     }
 
     function loadItems() {
-      if (store1.state.isLoading) {
-        return;
-      }
-
-      store1.set({
-        isLoading: true,
-      });
-      setTimeout(() => {
+      return new Promise((resolve) => {
         store1.set({
-          items: [...store1.state.items, ...getRandomItems(store1.state.page)],
-          hasMoreItems: true,
-          isLoading: false,
-          page: store1.state.page + 1,
+          isLoading: true,
         });
-      }, 1000);
+        setTimeout(() => {
+          store1.set({
+            items: [...store1.state.items, ...getRandomItems(store1.state.page)],
+            hasMoreItems: true,
+            isLoading: false,
+            page: store1.state.page + 1,
+          });
+          resolve();
+        }, 1000);
+      });
     }
 
     function loadReverseItems() {
-      if (store2.state.isLoading) {
-        return;
-      }
-
-      store2.set({
-        isLoading: true,
-      });
-      setTimeout(() => {
+      return new Promise((resolve) => {
         store2.set({
-          items: [...getRandomItems(store2.state.page), ...store2.state.items],
-          hasMoreItems: true,
-          isLoading: false,
-          page: store2.state.page + 1,
+          isLoading: true,
         });
-      }, 3000);
+        setTimeout(() => {
+          store2.set({
+            items: [...getRandomItems(store2.state.page), ...store2.state.items],
+            hasMoreItems: true,
+            isLoading: false,
+            page: store2.state.page + 1,
+          });
+          resolve();
+        }, 3000);
+      });
     }
 
     const loader = <div>Loading ...</div>;
