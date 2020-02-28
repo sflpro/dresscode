@@ -18,6 +18,11 @@
   align-items: center;
 }
 
+.inactive {
+  color: var(--icon-inactive-color);
+  cursor: default;
+}
+
 [id$=".icon"],
 [id*=".icon "] {
   display: none;
