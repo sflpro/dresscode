@@ -440,6 +440,7 @@
   --icon-margin: 0;
   --icon-cursor: pointer;
   --icon-flex-shrink: 0;
+  --icon-inactive-color: var(--disabled-color);
 
   --month-picker-height: 100px;
   --month-picker-border-radius: 4px;

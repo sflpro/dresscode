@@ -9,11 +9,13 @@ export function Icon({
   size,
   className,
   color,
+  inactive,
   style,
   ...props
 }) {
   const iconWrapperClasses = classNames({
     [styles.iconWrapper]: true,
+    [styles.inactive]: inactive,
     [className]: true,
   });
 
@@ -44,6 +46,8 @@ Icon.propTypes = {
   className: PropTypes.string,
   /** String, color of icon */
   color: PropTypes.string,
+  /** Boolean, whether icon is inactive */
+  inactive: PropTypes.bool,
   /** Object, styles that will be added to wrapper span */
   style: PropTypes.object,
 };
@@ -52,5 +56,6 @@ Icon.defaultProps = {
   size: 16,
   className: '',
   color: '',
+  inactive: false,
   style: {},
 };

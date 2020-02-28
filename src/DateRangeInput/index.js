@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
 import { Icon } from '../Icon';
 import { Popover } from '../Popover';
@@ -170,8 +171,12 @@ export class DateRangeInput extends React.Component {
   };
 
   handleDatePickerIconClick = (event, onClick) => {
+    const { disabled } = this.props;
     event.preventDefault();
-    onClick(event);
+
+    if (!disabled) {
+      onClick(event);
+    }
   };
 
   render() {
@@ -192,6 +197,7 @@ export class DateRangeInput extends React.Component {
       hasError,
       separator,
       label,
+      disabled,
       ...props
     } = this.props;
     const { open, currentValues } = this.state;
@@ -201,6 +207,10 @@ export class DateRangeInput extends React.Component {
       from: from && isValidDate(from, format) ? convertStringToDate(from, format) : currentValues.from,
       to: to && isValidDate(to, format) ? convertStringToDate(to, format) : currentValues.to,
     };
+
+    const popoverClasses = classNames({
+      [styles.disabled]: disabled,
+    });
 
     return (
       !isNativeMode ? (
@@ -220,6 +230,7 @@ export class DateRangeInput extends React.Component {
           onTargetEvent={this.handleTargetEvent}
           open={open}
           gap={8}
+          className={popoverClasses}
           contentRelative
         >
           {({ setOnClick }) => (
@@ -238,9 +249,11 @@ export class DateRangeInput extends React.Component {
                       name='date'
                       size={24}
                       onClick={e => this.handleDatePickerIconClick(e, setOnClick)}
+                      inactive={disabled}
                     />
                   )}
                   hasError={hasError.from}
+                  disabled={disabled}
                   {...props}
                 />
               </Label>
@@ -261,9 +274,11 @@ export class DateRangeInput extends React.Component {
                       name='date'
                       size={24}
                       onClick={e => this.handleDatePickerIconClick(e, setOnClick)}
+                      inactive={disabled}
                     />
                   )}
                   hasError={hasError.to}
+                  disabled={disabled}
                   {...props}
                 />
               </Label>
@@ -285,10 +300,12 @@ export class DateRangeInput extends React.Component {
                 <Icon
                   name='date'
                   size={24}
+                  inactive={disabled}
                 />
               )}
               hasError={hasError.from}
               forwardedRef={ref => this.setNativeInputRef(ref, 'from')}
+              disabled={disabled}
               {...props}
             />
           </Label>
@@ -308,10 +325,12 @@ export class DateRangeInput extends React.Component {
                 <Icon
                   name='date'
                   size={24}
+                  inactive={disabled}
                 />
               )}
               hasError={hasError.to}
               forwardedRef={ref => this.setNativeInputRef(ref, 'to')}
+              disabled={disabled}
               {...props}
             />
           </Label>
@@ -332,7 +351,7 @@ DateRangeInput.propTypes = {
   name: PropTypes.object,
   /** Object, labels of range date input elements */
   label: PropTypes.object,
-  /** Object, whether  date range picker inputs must be rendered with error styles */
+  /** Object, whether date range picker inputs must be rendered with error styles */
   hasError: PropTypes.object,
   /** String, separator element */
   separator: PropTypes.any,
@@ -360,6 +379,8 @@ DateRangeInput.propTypes = {
   trigger: PropTypes.string,
   /** Object, styles that will be passed to input */
   style: PropTypes.object,
+  /** Boolean, whether date range picker inputs are disabled */
+  disabled: PropTypes.bool,
 };
 
 DateRangeInput.defaultProps = {
@@ -385,4 +406,5 @@ DateRangeInput.defaultProps = {
     from: '',
     to: '',
   },
+  disabled: false,
 };

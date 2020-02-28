@@ -105,8 +105,12 @@ export class DateInput extends React.Component {
   };
 
   handleDatePickerIconClick = (event, onClick) => {
+    const { disabled } = this.props;
     event.preventDefault();
-    onClick(event);
+
+    if (!disabled) {
+      onClick(event);
+    }
   };
 
   render() {
@@ -122,6 +126,7 @@ export class DateInput extends React.Component {
       view,
       hasError,
       disabledDays,
+      disabled,
       ...props
     } = this.props;
 
@@ -132,6 +137,10 @@ export class DateInput extends React.Component {
     const dateInputClasses = classNames({
       [styles.dateInput]: true,
       [className]: true,
+    });
+
+    const popoverClasses = classNames({
+      [styles.disabled]: disabled,
     });
 
     const isNativeMode = isMobile();
@@ -155,6 +164,7 @@ export class DateInput extends React.Component {
           onTargetEvent={this.handleTargetEvent}
           open={open}
           gap={8}
+          className={popoverClasses}
           contentRelative
         >
           {({ setOnClick }) => (
@@ -170,9 +180,11 @@ export class DateInput extends React.Component {
                   name='date'
                   size={24}
                   onClick={event => this.handleDatePickerIconClick(event, setOnClick)}
+                  inactive={disabled}
                 />
               )}
               hasError={hasError}
+              disabled={disabled}
             />
           )}
         </Popover>
@@ -189,9 +201,11 @@ export class DateInput extends React.Component {
               <Icon
                 name='date'
                 size={24}
+                inactive={disabled}
               />
             )}
             hasError={hasError}
+            disabled={disabled}
           />
           <input
             value={(dateValue && formatDate(dateValue, DEFAULT_FORMAT)) || ''}
@@ -241,6 +255,8 @@ DateInput.propTypes = {
   view: PropTypes.string,
   /** Object, styles that will be passed to input */
   style: PropTypes.object,
+  /** Boolean, whether date input is disabled */
+  disabled: PropTypes.bool,
 };
 
 DateInput.defaultProps = {
@@ -256,4 +272,5 @@ DateInput.defaultProps = {
   style: undefined,
   value: undefined,
   disabledDays: undefined,
+  disabled: false,
 };

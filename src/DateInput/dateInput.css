@@ -2,3 +2,7 @@
   -webkit-appearance: textfield;
   -moz-appearance: textfield;
 }
+
+.disabled {
+  cursor: default;
+}
