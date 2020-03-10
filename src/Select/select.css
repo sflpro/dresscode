@@ -93,6 +93,10 @@ html {
   flex: 1;
 }
 
+.customPlaceholder{
+  color: var(--text-input-placeholder-color);
+}
+
 .input:hover {
   border: none!important;
 }
