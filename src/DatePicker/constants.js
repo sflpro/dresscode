@@ -55,6 +55,7 @@ export const DATE_FORMATS = [
   'MM/YYYY',
   'MM-YY',
   'MM-YYYY',
+  'MM.DD.YYYY',
 ];
 
 export const VALID_DATE_FORMAT = 'YYYY-MM-DD';
