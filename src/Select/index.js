@@ -166,6 +166,13 @@ export class Select extends React.Component {
                 clickable={!disabled}
               />
             ))}
+
+          {!searchable && (!selected || !selected.length) ? (
+            <span className={styles.customPlaceholder}>
+              {placeholder}
+            </span>
+          ) : null}
+
           { (!disabled && searchable) ? (
             <TextInput
               onKeyPress={this.handleInputKeyPress}

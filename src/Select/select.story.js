@@ -428,6 +428,7 @@ storiesOf('Form controls/Select', module)
             value={state.value}
             onChange={handleSelectChange}
             searchable={false}
+            placeholder='Some placeholder'
           >
             <Option value='option1'>
               Option 1
