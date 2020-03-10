@@ -140,8 +140,13 @@ html {
   background-color: var(--neutral-75);
   border-color: var(--neutral-75);
   color: var(--neutral-500);
+  cursor: default;
 
   &:hover {
     border-color: var(--neutral-75);
   }
+}
+
+.disabled .icon {
+  cursor: default;
 }

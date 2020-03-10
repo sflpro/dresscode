@@ -1,7 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { State, Store } from '@sambego/storybook-state';
-import { object } from '@storybook/addon-knobs';
+import { text, boolean, withKnobs, select } from '@storybook/addon-knobs';
 
 import { Select } from '.';
 
@@ -12,9 +12,15 @@ import { Label } from '../Label';
 import { ItemGroup } from '../helpers/ItemGroup';
 import { ItemRow } from '../helpers/ItemRow';
 import { Item } from '../helpers/Item';
-import { ImportInstruction } from '../helpers/ImportInstruction';
 
 import { InfoStoryConfig } from '../configs';
+
+
+const selectedIcons = [
+  'thick',
+  'plus',
+  'checked',
+];
 
 storiesOf('Form controls/Select', module)
   .add('Examples', () => {
@@ -37,15 +43,15 @@ storiesOf('Form controls/Select', module)
       });
     }
 
-    function handleSelectChange4({ target }) {
-      store.set({
-        value2: target.value,
-      });
-    }
-
     function handleSelectChange3({ target }) {
       store.set({
         value3: target.value,
+      });
+    }
+
+    function handleSelectChange4({ target }) {
+      store.set({
+        value4: target.value,
       });
     }
 
@@ -210,29 +216,239 @@ storiesOf('Form controls/Select', module)
       </State>
     );
   })
-  .add('Select', () => (
-    <Select value={object('value')}>
-      <Option
-        value='option1'
-        name='Option 1'
-      />
-      <Option
-        value='option2'
-        name='Option 2'
-      />
-      <Option
-        value='option3'
-        name='Option 3'
-      />
-      <Option
-        value='option4'
-        name='Option 4'
-      />
+  .add('Single - not selected', () => (
+    <Select
+      value={text('value', '')}
+      onChange={() => null}
+      hasError={boolean('hasError', false)}
+      multiple={false}
+      className={text('className', 'my-class')}
+      disabled={boolean('disabled', false)}
+      icon={select('icon', selectedIcons, 'thick')}
+      placeholder={text('placeholder', 'no value selected')}
+      name={text('name', 'select-1')}
+    >
+      <Option value='option1'>
+        Option 1
+      </Option>
+      <Option value='option2'>
+        Option 2
+      </Option>
     </Select>
   ), {
     ...InfoStoryConfig,
-    info: {
-      ...InfoStoryConfig.info,
-      text: <ImportInstruction componentName='Select' />,
-    },
+    decorators: [withKnobs],
+  })
+  .add('Single - selected', () => (
+    <Select
+      value={text('value', 'option2')}
+      onChange={() => null}
+      hasError={boolean('hasError', false)}
+      multiple={false}
+      className={text('className', 'my-class')}
+      disabled={boolean('disabled', false)}
+      icon={select('icon', selectedIcons, 'thick')}
+      placeholder={text('placeholder', 'no value selected')}
+      name={text('name', 'select-1')}
+    >
+      <Option value='option1'>
+        Option 1
+      </Option>
+      <Option value='option2'>
+        Option 2
+      </Option>
+      <Option value='option3'>
+        Option 3
+      </Option>
+    </Select>
+  ), {
+    ...InfoStoryConfig,
+    decorators: [withKnobs],
+  })
+  .add('Multiple - not selected', () => {
+    const store = new Store({
+      value: [],
+    });
+    const handleSelectChange = ({ target }) => {
+      store.set({
+        value: target.value,
+      });
+    };
+
+    return (
+      <State store={store}>
+        {state => (
+          <Select
+            multiple
+            value={state.value}
+            onChange={handleSelectChange}
+            name={text('name', 'select-1')}
+            hasError={boolean('hasError', false)}
+            className={text('className', 'my-class')}
+            disabled={boolean('disabled', false)}
+            icon={select('icon', selectedIcons, 'thick')}
+            placeholder={text('placeholder', 'no value selected')}
+            nothingFoundText={text('nothingFoundText', 'nothing found ))))')}
+            searchable
+          >
+            <Option value='option1'>
+              Option 1
+            </Option>
+            <Option value='option2'>
+              Option 2
+            </Option>
+            <Option value='option3'>
+              Option 3
+            </Option>
+            <Option value='option4'>
+              Option 4
+            </Option>
+            <Option value='option5'>
+              Option 5
+            </Option>
+          </Select>
+        )}
+      </State>
+    );
+  }, {
+    ...InfoStoryConfig,
+    decorators: [withKnobs],
+  })
+  .add('Multiple - selected', () => {
+    const store = new Store({
+      value: ['option1', 'option2', 'option4'],
+    });
+
+    const handleSelectChange = ({ target }) => {
+      store.set({
+        value: target.value,
+      });
+    };
+
+    return (
+      <State store={store}>
+        {state => (
+          <Select
+            multiple
+            value={state.value}
+            onChange={handleSelectChange}
+            name={text('name', 'select-1')}
+            hasError={boolean('hasError', false)}
+            className={text('className', 'my-class')}
+            disabled={boolean('disabled', false)}
+            icon={select('icon', selectedIcons, 'thick')}
+            placeholder={text('placeholder', 'no value selected')}
+            nothingFoundText={text('nothingFoundText', 'nothing found ))))')}
+            searchable
+          >
+            <Option value='option1'>
+              Lorem Ipsum is simply dummy text of the printing and typesetting
+            </Option>
+            <Option value='option2'>
+              Option 2
+            </Option>
+            <Option value='option3'>
+              Option 3
+            </Option>
+            <Option value='option4'>
+              Option 4
+            </Option>
+            <Option value='option5'>
+              Option 5
+            </Option>
+            <Option value='option6'>
+              Option 6
+            </Option>
+          </Select>
+        )}
+      </State>
+    );
+  }, {
+    ...InfoStoryConfig,
+    decorators: [withKnobs],
+  })
+  .add('Multiple - selected and disabled', () => {
+    const store = new Store({
+      value: ['option1', 'option2', 'option4'],
+    });
+
+    return (
+      <State store={store}>
+        {state => (
+          <Select
+            multiple
+            value={state.value}
+            onChange={() => null}
+            name={text('name', 'select-1')}
+            disabled
+            searchable={false}
+          >
+            <Option value='option1'>
+              Lorem Ipsum is simply dummy text of the printing and typesetting
+            </Option>
+            <Option value='option2'>
+              Option 2
+            </Option>
+            <Option value='option3'>
+              Option 3
+            </Option>
+            <Option value='option4'>
+              Option 4
+            </Option>
+            <Option value='option5'>
+              Option 5
+            </Option>
+            <Option value='option6'>
+              Option 6
+            </Option>
+          </Select>
+        )}
+      </State>
+    );
+  }, {
+    ...InfoStoryConfig,
+    decorators: [withKnobs],
+  })
+  .add('Multiple - selected and not searchable', () => {
+    const store = new Store({
+      value: ['option1', 'option2', 'option4'],
+    });
+
+    const handleSelectChange = ({ target }) => {
+      store.set({
+        value: target.value,
+      });
+    };
+
+    return (
+      <State store={store}>
+        {state => (
+          <Select
+            multiple
+            value={state.value}
+            onChange={handleSelectChange}
+            searchable={false}
+          >
+            <Option value='option1'>
+              Option 1
+            </Option>
+            <Option value='option2'>
+              Option 2
+            </Option>
+            <Option value='option3'>
+              Option 3
+            </Option>
+            <Option value='option4'>
+              Option 4
+            </Option>
+            <Option value='option5'>
+              Option 5
+            </Option>
+          </Select>
+        )}
+      </State>
+    );
+  }, {
+    ...InfoStoryConfig,
+    decorators: [withKnobs],
   });

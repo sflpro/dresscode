@@ -86,8 +86,12 @@ export class Select extends React.Component {
   };
 
   getOptions() {
-    const { value: propValue, nothingFoundText, renderOption, icon } = this.props;
+    const { value: propValue, nothingFoundText, renderOption, icon, disabled } = this.props;
     const { search } = this.state;
+
+    if (disabled) {
+      return '';
+    }
 
     let options = this.childOptions;
 
@@ -141,7 +145,7 @@ export class Select extends React.Component {
   }
 
   getContent() {
-    const { multiple, value, placeholder, renderValue } = this.props;
+    const { multiple, value, placeholder, renderValue, disabled, searchable } = this.props;
     const { selected, search, isOpen } = this.state;
 
     if (multiple) {
@@ -151,6 +155,7 @@ export class Select extends React.Component {
             .map(option => (
               <Tag
                 onClose={(event) => {
+                  event.stopPropagation();
                   event.preventDefault();
                   this.handleSelectChange(option.value, isOpen);
                 }}
@@ -158,34 +163,25 @@ export class Select extends React.Component {
                 className={styles.tag}
                 name={option.name}
                 key={option.value}
-                clickable
+                clickable={!disabled}
               />
             ))}
-          <TextInput
-            onKeyPress={this.handleInputKeyPress}
-            onChange={this.handleSearchChange}
-            forwardedRef={this.setInputRef}
-            placeholder={placeholder}
-            className={styles.input}
-            value={search}
-          />
+          { (!disabled && searchable) ? (
+            <TextInput
+              onKeyPress={this.handleInputKeyPress}
+              onChange={this.handleSearchChange}
+              forwardedRef={this.setInputRef}
+              placeholder={placeholder}
+              className={styles.input}
+              value={search}
+            />
+          ) : null}
         </>
       );
     }
 
     return selected ? renderValue(selected) : renderValue({ name: value || placeholder });
   }
-
-  isOpenChange = () => {
-    const { onClick } = this.props;
-    const { isOpen } = this.state;
-
-    this.setState({ isOpen: !isOpen });
-
-    if (onClick) {
-      onClick();
-    }
-  };
 
   handleNativeChange = ({ currentTarget: { value } }) => {
     const { disabled } = this.props;
@@ -209,7 +205,13 @@ export class Select extends React.Component {
     event.preventDefault();
     event.stopPropagation();
 
+    const { searchable, multiple } = this.props;
+
     this.handleSelectChange(value);
+
+    if (multiple && searchable && this.input) {
+      this.input.focus();
+    }
   };
 
   handleInputKeyPress = () => {
@@ -225,24 +227,22 @@ export class Select extends React.Component {
     }
   };
 
-  onClick = (isOpen) => {
-    const { onClick, multiple, disabled } = this.props;
+  onPopoverToggle = (isOpen) => {
+    const { onClick, multiple, disabled, searchable } = this.props;
 
     if (disabled) {
       return;
     }
 
-    if (multiple) {
-      if (this.input && !isMobile()) {
+    if (multiple && this.input && !isMobile() && searchable) {
+      if (isOpen) {
         this.input.focus();
+      } else {
+        this.input.blur();
       }
-
-      if (!isOpen) {
-        this.setState({ isOpen });
-      }
-    } else {
-      this.setState({ isOpen });
     }
+
+    this.setState({ isOpen });
 
     if (onClick) {
       onClick();
@@ -328,6 +328,7 @@ export class Select extends React.Component {
       renderValue,
       hasError,
       disabled,
+      searchable,
       ...props
     } = this.props;
     const { isOpen } = this.state;
@@ -388,7 +389,7 @@ export class Select extends React.Component {
         </div>
         {!isNativeMode && (
           <Popover
-            onTargetEvent={this.onClick}
+            onTargetEvent={this.onPopoverToggle}
             content={this.getOptions()}
             closeOnScroll={false}
             watchTargetDimensions
@@ -403,7 +404,6 @@ export class Select extends React.Component {
                 {this.getContent()}
               </div>
               <Icon
-                onClick={multiple ? this.isOpenChange : undefined}
                 className={iconClasses}
                 name='arrow-down'
                 size={24}
@@ -443,6 +443,8 @@ Select.propTypes = {
   renderOption: PropTypes.func,
   /** Function, template to render selected value */
   renderValue: PropTypes.func,
+  /** Boolean: show text input for filtering options */
+  searchable: PropTypes.bool,
   /** String, checked icon selected value */
   icon: PropTypes.string,
   /** Boolean, whether select is disabled */
@@ -466,4 +468,5 @@ Select.defaultProps = {
   icon: 'thick',
   hasError: false,
   disabled: false,
+  searchable: true,
 };
