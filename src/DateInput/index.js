@@ -127,6 +127,7 @@ export class DateInput extends React.Component {
       hasError,
       disabledDays,
       disabled,
+      iconClassName,
       ...props
     } = this.props;
 
@@ -181,6 +182,7 @@ export class DateInput extends React.Component {
                   size={24}
                   onClick={event => this.handleDatePickerIconClick(event, setOnClick)}
                   inactive={disabled}
+                  className={iconClassName}
                 />
               )}
               hasError={hasError}
@@ -202,6 +204,7 @@ export class DateInput extends React.Component {
                 name='date'
                 size={24}
                 inactive={disabled}
+                className={iconClassName}
               />
             )}
             hasError={hasError}
@@ -257,6 +260,8 @@ DateInput.propTypes = {
   style: PropTypes.object,
   /** Boolean, whether date input is disabled */
   disabled: PropTypes.bool,
+  /** String, className that will be added to icon */
+  iconClassName: PropTypes.string,
 };
 
 DateInput.defaultProps = {
@@ -273,4 +278,5 @@ DateInput.defaultProps = {
   value: undefined,
   disabledDays: undefined,
   disabled: false,
+  iconClassName: '',
 };
