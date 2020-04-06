@@ -11,6 +11,7 @@
   box-sizing: border-box;
   position: relative;
   width: 100%;
+  justify-content: space-between;
 }
 
 .inputWrapper:not(.disabled):not(.errorWrapper):not(.successWrapper):hover {
@@ -93,7 +94,6 @@
 
 .icon {
   color: var(--primary-color);
-  padding-left: 16px;
 }
 
 .successWrapper,
