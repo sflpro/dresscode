@@ -117,7 +117,6 @@ export class DatePicker extends React.Component {
       className,
       style,
       onChange,
-      disabledDays,
       ...props
     } = this.props;
     const { view, year } = this.state;
@@ -183,7 +182,6 @@ export class DatePicker extends React.Component {
             showOutsideDays={showOutsideDays}
             style={style}
             months={months}
-            disabledDays={disabledDays}
             {...otherProps}
           />
         )}

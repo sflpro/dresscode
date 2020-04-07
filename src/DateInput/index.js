@@ -129,6 +129,7 @@ export class DateInput extends React.Component {
       disabled,
       iconClassName,
       closeOnScroll,
+      initialMonth,
       ...props
     } = this.props;
 
@@ -147,14 +148,14 @@ export class DateInput extends React.Component {
 
     const isNativeMode = isMobile();
     const dateValue = value && isValidDate(value, format) ? convertStringToDate(value, format) : undefined;
-
+    const datePickerValue = dateValue || initialMonth || new Date();
     return (
       !isNativeMode ? (
         <Popover
           trigger={trigger}
           content={(
             <DatePicker
-              value={dateValue || new Date()}
+              value={datePickerValue}
               onChange={this.handleDatePickerChange}
               locale={locale}
               localeUtils={localeUtils}
@@ -266,6 +267,8 @@ DateInput.propTypes = {
   iconClassName: PropTypes.string,
   /** boolean, whether to close DatePicker on scroll */
   closeOnScroll: PropTypes.bool,
+  /** Date, the month to display in the calendar at first render */
+  initialMonth: PropTypes.instanceOf(Date),
 };
 
 DateInput.defaultProps = {
@@ -284,4 +287,5 @@ DateInput.defaultProps = {
   disabled: false,
   iconClassName: '',
   closeOnScroll: true,
+  initialMonth: undefined,
 };
