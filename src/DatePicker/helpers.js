@@ -177,12 +177,12 @@ export const isValidDate = (dateString, format) => {
     switch (formatComponent) {
       case 'DD': {
         valid = (dateComponent.length === 2 || (dateComponent.length === 1 && Number(dateComponent) <= 9))
-          && Number(dateComponent) <= 31;
+          && Number(dateComponent) >= 1 && Number(dateComponent) <= 31;
         break;
       }
       case 'D': {
         valid = (dateComponent.length === 2 || (dateComponent.length === 1 && Number(dateComponent) <= 9))
-          && Number(dateComponent) <= 31;
+          && Number(dateComponent) >= 1 && Number(dateComponent) <= 31;
         break;
       }
       case 'MM': {
@@ -263,8 +263,8 @@ export const convertStringToDate = (dateString, format) => {
 };
 
 export const formatDate = (date, format) => {
-  if (!(date instanceof Date)) {
-    return null;
+  if (!(date instanceof Date) || Number.isNaN(date.getTime())) {
+    return '';
   }
 
   const separator = getSeparator(format);
