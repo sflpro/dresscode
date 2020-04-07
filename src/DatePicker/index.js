@@ -117,7 +117,6 @@ export class DatePicker extends React.Component {
       className,
       style,
       onChange,
-      initialMonth,
       ...props
     } = this.props;
     const { view, year } = this.state;
@@ -264,8 +263,6 @@ DatePicker.propTypes = {
   className: PropTypes.string,
   /** Object, styles that will be added to date picker */
   style: PropTypes.object,
-  /** Date, the month to display in the calendar at first render */
-  initialMonth: PropTypes.instanceOf(Date),
 };
 
 DatePicker.defaultProps = {
@@ -278,5 +275,4 @@ DatePicker.defaultProps = {
   className: '',
   style: undefined,
   disabledDays: undefined,
-  initialMonth: undefined,
 };

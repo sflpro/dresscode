@@ -162,7 +162,6 @@ export class DateInput extends React.Component {
               monthsShort={monthsShort}
               view={view}
               disabledDays={disabledDays}
-              initialMonth={initialMonth || datePickerValue}
             />
           )}
           onTargetEvent={this.handleTargetEvent}
