@@ -128,6 +128,7 @@ export class DateInput extends React.Component {
       disabledDays,
       disabled,
       iconClassName,
+      closeOnScroll,
       ...props
     } = this.props;
 
@@ -163,6 +164,7 @@ export class DateInput extends React.Component {
             />
           )}
           onTargetEvent={this.handleTargetEvent}
+          closeOnScroll={closeOnScroll}
           open={open}
           gap={8}
           className={popoverClasses}
@@ -262,6 +264,8 @@ DateInput.propTypes = {
   disabled: PropTypes.bool,
   /** String, className that will be added to icon */
   iconClassName: PropTypes.string,
+  /** boolean, whether to close DatePicker on scroll */
+  closeOnScroll: PropTypes.bool,
 };
 
 DateInput.defaultProps = {
@@ -279,4 +283,5 @@ DateInput.defaultProps = {
   disabledDays: undefined,
   disabled: false,
   iconClassName: '',
+  closeOnScroll: true,
 };
