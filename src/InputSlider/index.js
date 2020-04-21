@@ -195,17 +195,17 @@ export class InputSlider extends React.Component {
   };
 
   render() {
-    const { children, separator, style, inputProps, className, ...props } = this.props;
+    const { children, separator, style, inputProps, className, input: InputComponent, hasError: propHasError, ...props } = this.props;
     const { value, hasError } = this.state;
 
     return (
       <div style={style} className={className}>
-        <TextInput
+        <InputComponent
           {...inputProps}
+          hasError={hasError || propHasError}
           onKeyPress={this.onKeyPress}
           onChange={this.onChange}
           onBlur={this.onBlur}
-          hasError={hasError}
           value={value}
         />
         <Slider
@@ -239,11 +239,17 @@ InputSlider.propTypes = {
   min: PropTypes.number,
   /** Number, max value of input */
   max: PropTypes.number,
+  /** Boolean, shows if value is incorrect */
+  hasError: PropTypes.any,
+  /** Input element, input that will be shown with controls */
+  input: PropTypes.any,
   /** Control element(s), controls that will be added to slider */
   children: PropTypes.any,
 };
 
 InputSlider.defaultProps = {
+  input: TextInput,
+  hasError: false,
   separator: '-',
   inputProps: {},
   className: '',
