@@ -195,7 +195,16 @@ export class InputSlider extends React.Component {
   };
 
   render() {
-    const { children, separator, style, inputProps, className, input: InputComponent, hasError: propHasError, ...props } = this.props;
+    const {
+      hasError: propHasError,
+      input: InputComponent,
+      inputProps,
+      separator,
+      className,
+      children,
+      style,
+      ...props
+    } = this.props;
     const { value, hasError } = this.state;
 
     return (
