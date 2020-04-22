@@ -46,6 +46,7 @@ storiesOf('Form controls/Input Slider', module)
                   onChange={handler}
                   min={5}
                   step={5}
+                  hasError
                 >
                   <Control name='test1' value={state.test1} icon={<Icon name='tracker' />} />
                 </InputSlider>
