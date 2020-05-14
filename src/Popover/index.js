@@ -472,6 +472,7 @@ export class Popover extends React.Component {
       children,
       gap,
       closeOnScroll,
+      arrowClassName,
       ...props
     } = this.props;
 
@@ -488,6 +489,7 @@ export class Popover extends React.Component {
     const popoverArrowStyles = classNames({
       [styles.arrow]: true,
       [styles.absoluteElement]: !this.closeOnScroll,
+      [arrowClassName]: !!arrowClassName,
     });
 
     return (
@@ -565,6 +567,8 @@ Popover.propTypes = {
   watchTargetDimensions: PropTypes.bool,
   /** boolean, whether to close popover on scroll */
   closeOnScroll: PropTypes.bool,
+  /** string, className that will be passed to arrow */
+  arrowClassName: PropTypes.string,
 };
 
 Popover.defaultProps = {
@@ -581,4 +585,5 @@ Popover.defaultProps = {
   contentEqualToTarget: false,
   watchTargetDimensions: false,
   closeOnScroll: true,
+  arrowClassName: '',
 };
