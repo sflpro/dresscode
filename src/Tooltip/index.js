@@ -62,23 +62,25 @@ export function Tooltip({
   children,
   popoverOpen,
   closeOnScroll,
+  arrowClassName,
   ...props
 }) {
   return (
     <Toggle>
       {({ state: isOpen, changeState }) => (
         <Popover
-          gap={gap === 0 && follow ? 10 : gap}
-          className={popoverClassName}
-          onTargetEvent={changeState}
-          position={position}
-          trigger={trigger}
-          closeOnScroll={closeOnScroll}
           content={(
             <TooltipContent
               {...props}
             />
           )}
+          gap={gap === 0 && follow ? 10 : gap}
+          arrowClassName={arrowClassName}
+          closeOnScroll={closeOnScroll}
+          className={popoverClassName}
+          onTargetEvent={changeState}
+          position={position}
+          trigger={trigger}
           follow={follow}
           open={isOpen}
           arrow={arrow}
@@ -118,6 +120,8 @@ Tooltip.propTypes = {
   children: PropTypes.any,
   /** boolean, whether to close tooltip on scroll */
   closeOnScroll: PropTypes.bool,
+  /** string, className that will be passed to arrow */
+  arrowClassName: PropTypes.string,
 };
 
 Tooltip.defaultProps = {
@@ -133,4 +137,5 @@ Tooltip.defaultProps = {
   style: undefined,
   children: null,
   closeOnScroll: true,
+  arrowClassName: '',
 };
