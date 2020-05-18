@@ -47,12 +47,13 @@ List.propTypes = {
   maxHeight: PropTypes.number,
   /** String or JSX or Element, content of List */
   children: PropTypes.any,
-  /** String, className that will be added to wrapper div */
+  /** String, className that will be added to content div */
   contentClassName: PropTypes.string,
 };
 
 List.defaultProps = {
   className: '',
+  contentClassName: '',
   style: {},
   maxHeight: undefined,
   children: null,
