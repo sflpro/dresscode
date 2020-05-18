@@ -476,6 +476,7 @@ Select.propTypes = {
   listProps: PropTypes.shape({
     maxHeight: PropTypes.number,
     className: PropTypes.string,
+    contentClassName: PropTypes.string,
   }),
 };
 
@@ -498,5 +499,6 @@ Select.defaultProps = {
   listProps: {
     maxHeight: 350,
     className: '',
+    contentClassName: '',
   },
 };

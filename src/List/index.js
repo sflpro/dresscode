@@ -9,11 +9,17 @@ export function List({
   style,
   children,
   maxHeight,
+  contentClassName,
   ...props
 }) {
   const listClasses = classNames({
     [styles.list]: true,
     [className]: true,
+  });
+
+  const contentClasses = classNames({
+    [contentClassName]: contentClassName,
+    [styles.maxHeight]: maxHeight,
   });
 
   return (
@@ -24,7 +30,7 @@ export function List({
     >
       <div
         style={maxHeight ? { maxHeight: `${maxHeight}px` } : {}}
-        className={maxHeight ? styles.maxHeight : ''}
+        className={contentClasses}
       >
         {children}
       </div>
@@ -41,6 +47,8 @@ List.propTypes = {
   maxHeight: PropTypes.number,
   /** String or JSX or Element, content of List */
   children: PropTypes.any,
+  /** String, className that will be added to wrapper div */
+  contentClassName: PropTypes.string,
 };
 
 List.defaultProps = {
