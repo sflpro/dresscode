@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 
 import styles from './horizontalScrollWrapper.css';
 
-
 export function HorizontalScrollWrapper({
   childWrapperClassName,
   scrollStepWidth,
@@ -14,6 +13,10 @@ export function HorizontalScrollWrapper({
   icon,
   overflowIndicatorClassName,
   endIcon,
+  leftOverflowIndicatorClassName,
+  hiddenBlockClassName,
+  rightOverflowIndicatorClassName,
+  endIconWrapperClassName,
   ...props
 }) {
   const [showRightArrow, toggleRightArrow] = useState(false);
@@ -96,16 +99,16 @@ export function HorizontalScrollWrapper({
     <div
       className={classNames({
         [styles.main]: true,
-        [className]: true,
+        [className]: !!className,
       })}
-      style={{ height: `${height}px` }}
       {...props}
     >
       {showLeftArrow && (
         <div
           className={classNames({
-            [styles.arrow]: true,
-            [overflowIndicatorClassName]: true,
+            [styles.icon]: true,
+            [overflowIndicatorClassName]: !!overflowIndicatorClassName,
+            [leftOverflowIndicatorClassName]: !!leftOverflowIndicatorClassName,
           })}
           onClick={scrollLeft}
           role='presentation'
@@ -114,21 +117,30 @@ export function HorizontalScrollWrapper({
         </div>
       )}
       <div
+        style={{ height: `${height}px` }}
         className={classNames({
-          [styles.wrapper]: true,
-          [childWrapperClassName]: true,
+          [styles.hidden]: true,
+          [hiddenBlockClassName]: !!hiddenBlockClassName,
         })}
-        onScroll={handleScroll}
-        ref={wrapperRef}
       >
-        {children}
+        <div
+          className={classNames({
+            [styles.wrapper]: true,
+            [childWrapperClassName]: !!childWrapperClassName,
+          })}
+          onScroll={handleScroll}
+          ref={wrapperRef}
+        >
+          {children}
+        </div>
       </div>
       {showRightArrow ? (
         <div
           className={classNames({
-            [styles.arrow]: true,
-            [styles.arrowReverse]: true,
-            [overflowIndicatorClassName]: true,
+            [styles.icon]: true,
+            [styles.reverseIcon]: true,
+            [overflowIndicatorClassName]: !!overflowIndicatorClassName,
+            [rightOverflowIndicatorClassName]: !!rightOverflowIndicatorClassName,
           })}
           onClick={scrollRight}
           role='presentation'
@@ -138,9 +150,10 @@ export function HorizontalScrollWrapper({
       ) : (endIcon && showLeftArrow) ? (
         <div
           className={classNames({
-            [styles.arrow]: true,
-            [styles.endArrow]: true,
-            [overflowIndicatorClassName]: true,
+            [styles.icon]: true,
+            [styles.endIcon]: true,
+            [overflowIndicatorClassName]: !!overflowIndicatorClassName,
+            [endIconWrapperClassName]: !!endIconWrapperClassName,
           })}
           onClick={scrollRight}
           role='presentation'
@@ -169,6 +182,14 @@ HorizontalScrollWrapper.propTypes = {
   children: PropTypes.any.isRequired,
   /** String or JSX or Element, element that will be shown if no right scroll */
   endIcon: PropTypes.any,
+  /** String, classname that will be passed to end icon div */
+  endIconWrapperClassName: PropTypes.string,
+  /** String, classname that will be passed to right gradient div */
+  rightOverflowIndicatorClassName: PropTypes.string,
+  /** String, classname that will be passed to left gradient div */
+  leftOverflowIndicatorClassName: PropTypes.string,
+  /** String, classname that will be passed to overflow hidden div */
+  hiddenBlockClassName: PropTypes.string,
 };
 
 HorizontalScrollWrapper.defaultProps = {
@@ -179,4 +200,8 @@ HorizontalScrollWrapper.defaultProps = {
   scrollPos: 0,
   icon: null,
   endIcon: null,
+  endIconWrapperClassName: '',
+  rightOverflowIndicatorClassName: '',
+  leftOverflowIndicatorClassName: '',
+  hiddenBlockClassName: '',
 };
