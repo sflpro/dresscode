@@ -13,6 +13,7 @@ export function HorizontalScrollWrapper({
   children,
   icon,
   overflowIndicatorClassName,
+  endIcon,
   ...props
 }) {
   const [showRightArrow, toggleRightArrow] = useState(false);
@@ -122,7 +123,7 @@ export function HorizontalScrollWrapper({
       >
         {children}
       </div>
-      {showRightArrow && (
+      {showRightArrow ? (
         <div
           className={classNames({
             [styles.arrow]: true,
@@ -134,7 +135,19 @@ export function HorizontalScrollWrapper({
         >
           {icon}
         </div>
-      )}
+      ) : endIcon ? (
+        <div
+          className={classNames({
+            [styles.arrow]: true,
+            [styles.endArrow]: true,
+            [overflowIndicatorClassName]: true,
+          })}
+          onClick={scrollRight}
+          role='presentation'
+        >
+          {endIcon}
+        </div>
+      ) : null}
     </div>
   );
 }
@@ -154,6 +167,8 @@ HorizontalScrollWrapper.propTypes = {
   scrollPos: PropTypes.number,
   /** String or JSX or Element, content of element */
   children: PropTypes.any.isRequired,
+  /** String or JSX or Element, element that will be shown if no right scroll */
+  endIcon: PropTypes.any.isRequired,
 };
 
 HorizontalScrollWrapper.defaultProps = {
@@ -163,4 +178,5 @@ HorizontalScrollWrapper.defaultProps = {
   className: '',
   scrollPos: 0,
   icon: null,
+  endIcon: null,
 };

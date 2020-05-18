@@ -40,6 +40,7 @@ storiesOf('Horizontall Scroll', module)
         >
           <HorizontalScrollWrapper
             icon={<Icon name='arrow-left' size={24} />}
+            endIcon={<Icon name='warning' size={24} />}
           >
             <State store={store1}>
               {state => (
