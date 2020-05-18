@@ -14,6 +14,7 @@ export function HorizontalScrollWrapper({
   icon,
   overflowIndicatorClassName,
   endIcon,
+  showEndIcon
   ...props
 }) {
   const [showRightArrow, toggleRightArrow] = useState(false);
@@ -135,7 +136,7 @@ export function HorizontalScrollWrapper({
         >
           {icon}
         </div>
-      ) : endIcon ? (
+      ) : (endIcon && showLeftArrow) ? (
         <div
           className={classNames({
             [styles.arrow]: true,
