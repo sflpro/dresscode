@@ -37,6 +37,7 @@ export class ListItem extends React.Component {
       wrapperClassName,
       className,
       contentClassName,
+      iconSize,
       ...props
     } = this.props;
 
@@ -46,7 +47,6 @@ export class ListItem extends React.Component {
       [styles.active]: active,
       [styles.clickable]: onClick,
       [styles.leftSpace]: !icon && iconPos === 'left',
-      [styles.rightSpace]: !icon && iconPos === 'right',
     });
 
     return (
@@ -59,9 +59,9 @@ export class ListItem extends React.Component {
         <div className={`${styles.listItem} ${className}`}>
           {icon && iconPos === 'left' && (
             <Icon
-              name={icon}
               className={`${iconClassName} ${styles.icon}`}
-              size={24}
+              size={iconSize}
+              name={icon}
             />
           )}
           <span className={`${styles.content} ${contentClassName}`}>
@@ -71,8 +71,8 @@ export class ListItem extends React.Component {
             <Icon
               className={`${iconClassName} ${styles.icon}`}
               style={iconStyle}
+              size={iconSize}
               name={icon}
-              size={24}
             />
           )}
         </div>
@@ -109,6 +109,8 @@ ListItem.propTypes = {
   className: PropTypes.string,
   /** String, className that will be added to list item's content */
   contentClassName: PropTypes.string,
+  /** Number, size of icon */
+  iconSize: PropTypes.number,
 };
 
 ListItem.defaultProps = {
@@ -124,4 +126,5 @@ ListItem.defaultProps = {
   wrapperClassName: '',
   className: '',
   contentClassName: '',
+  iconSize: 24,
 };
