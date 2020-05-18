@@ -18,8 +18,8 @@ export function List({
   });
 
   const contentClasses = classNames({
-    [contentClassName]: contentClassName,
-    [styles.maxHeight]: maxHeight,
+    [contentClassName]: !!contentClassName,
+    [styles.maxHeight]: !!maxHeight,
   });
 
   return (
