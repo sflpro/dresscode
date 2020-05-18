@@ -168,7 +168,7 @@ HorizontalScrollWrapper.propTypes = {
   /** String or JSX or Element, content of element */
   children: PropTypes.any.isRequired,
   /** String or JSX or Element, element that will be shown if no right scroll */
-  endIcon: PropTypes.any.isRequired,
+  endIcon: PropTypes.any,
 };
 
 HorizontalScrollWrapper.defaultProps = {
