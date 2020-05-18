@@ -86,7 +86,18 @@ export class Select extends React.Component {
   };
 
   getOptions() {
-    const { value: propValue, nothingFoundText, renderOption, icon, disabled } = this.props;
+    const {
+      value: propValue,
+      nothingFoundText,
+      renderOption,
+      icon,
+      disabled,
+      listProps: {
+        maxHeight = 350,
+        className = '',
+        ...listProps
+      },
+    } = this.props;
     const { search } = this.state;
 
     if (disabled) {
@@ -103,8 +114,9 @@ export class Select extends React.Component {
 
     return (
       <List
-        className={styles.list}
-        maxHeight={350}
+        className={`${styles.list} ${className}`}
+        maxHeight={maxHeight}
+        {...listProps}
       >
         {options.length > 0 ? options.map((option) => {
           const isSelected = (Array.isArray(propValue) && propValue.includes(option.value))
@@ -173,7 +185,7 @@ export class Select extends React.Component {
             </span>
           ) : null}
 
-          { (!disabled && searchable) ? (
+          {(!disabled && searchable) ? (
             <TextInput
               onKeyPress={this.handleInputKeyPress}
               onChange={this.handleSearchChange}
@@ -336,6 +348,7 @@ export class Select extends React.Component {
       hasError,
       disabled,
       searchable,
+      listProps,
       ...props
     } = this.props;
     const { isOpen } = this.state;
@@ -458,6 +471,12 @@ Select.propTypes = {
   disabled: PropTypes.bool,
   /** Boolean, whether select has error */
   hasError: PropTypes.bool,
+
+  /** Object, whether list props */
+  listProps: PropTypes.shape({
+    maxHeight: PropTypes.number,
+    className: PropTypes.string,
+  }),
 };
 
 Select.defaultProps = {
@@ -476,4 +495,8 @@ Select.defaultProps = {
   hasError: false,
   disabled: false,
   searchable: true,
+  listProps: {
+    maxHeight: 350,
+    className: '',
+  },
 };
