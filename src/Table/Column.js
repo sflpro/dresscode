@@ -318,7 +318,7 @@ Column.propTypes = {
   id: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-  ]).isRequired,
+  ]),
   /** Number, specifies column priority in table */
   priority: PropTypes.number,
   /** Boolean, specifies if column is always visible */
