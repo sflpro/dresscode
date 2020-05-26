@@ -150,7 +150,6 @@ export function HorizontalScrollWrapper({
       ) : (endIcon && showLeftArrow) ? (
         <div
           className={classNames({
-            [styles.icon]: true,
             [styles.endIcon]: true,
             [overflowIndicatorClassName]: !!overflowIndicatorClassName,
             [endIconWrapperClassName]: !!endIconWrapperClassName,

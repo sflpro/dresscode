@@ -388,6 +388,7 @@
   --table-border-radius: 8px;
   --table-overlay-z-index: 1;
   --table-icon-z-index: 3;
+  --tab-active-color: var(--primary-color);
 
   --file-input-color: var(--primary-color);
 

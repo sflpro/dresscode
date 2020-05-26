@@ -12,8 +12,8 @@
 }
 
 .active {
-  border-bottom: var(--tab-active-border-width) solid var(--primary-color);
-  color: var(--primary-color);
+  border-bottom: var(--tab-active-border-width) solid var(--tab-active-color);
+  color: var(--tab-active-color);
 }
 
 .disabled {
