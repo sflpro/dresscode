@@ -352,6 +352,7 @@ Column.propTypes = {
 };
 
 Column.defaultProps = {
+  id: '',
   priority: undefined,
   alwaysVisible: false,
   visible: true,
