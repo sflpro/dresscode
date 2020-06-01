@@ -83,6 +83,8 @@ html {
 
 .listIcon {
   margin: var(--select-list-icon-margin);
+  top: 50%;
+  transform: translate(-12px, -12px);
 }
 
 .input {
@@ -107,17 +109,17 @@ html {
 }
 
 .contentWrapperSingle {
+  height: var(--text-input-height);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  align-items: center;
 }
 
 .contentWrapper {
-  height: var(--text-input-height);
   width: 100%;
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
 }
 
 .list {
