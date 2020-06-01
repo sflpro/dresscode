@@ -106,17 +106,18 @@ html {
   margin: var(--select-tag-margin);
 }
 
-.contentWrapper {
-  display: flex;
-  width: 100%;
-  flex-wrap: wrap;
-}
-
 .contentWrapperSingle {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  display: inline-block;
+}
+
+.contentWrapper {
+  height: var(--text-input-height);
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
 }
 
 .list {
