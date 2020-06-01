@@ -83,6 +83,8 @@ html {
 
 .listIcon {
   margin: var(--select-list-icon-margin);
+  top: 50%;
+  transform: translate(-12px, -12px);
 }
 
 .input {
@@ -106,17 +108,18 @@ html {
   margin: var(--select-tag-margin);
 }
 
-.contentWrapper {
-  display: flex;
-  width: 100%;
-  flex-wrap: wrap;
-}
-
 .contentWrapperSingle {
+  height: var(--text-input-height);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  display: inline-block;
+  align-items: center;
+}
+
+.contentWrapper {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .list {
