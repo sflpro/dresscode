@@ -5,7 +5,6 @@ import classNames from 'classnames';
 import { Popover, POPOVER_POSITIONS } from '../Popover';
 
 import styles from './tooltip.css';
-import { Toggle } from '../Toggle';
 
 const TooltipContent = ({
   description,
@@ -63,32 +62,48 @@ export function Tooltip({
   popoverOpen,
   closeOnScroll,
   arrowClassName,
+  closeAfter,
   ...props
 }) {
+  const [isOpen, setIsOpen] = React.useState(false);
+
+  React.useEffect(() => {
+    let timeoutId = null;
+
+    if (isOpen && typeof closeAfter !== 'undefined') {
+      timeoutId = setTimeout(() => {
+        setIsOpen(false);
+        timeoutId = null;
+      }, closeAfter);
+    }
+
+    return () => {
+      if (timeoutId) {
+        clearTimeout(timeoutId);
+      }
+    }
+  }, [isOpen]);
+
   return (
-    <Toggle>
-      {({ state: isOpen, changeState }) => (
-        <Popover
-          content={(
-            <TooltipContent
-              {...props}
-            />
-          )}
-          gap={gap === 0 && follow ? 10 : gap}
-          arrowClassName={arrowClassName}
-          closeOnScroll={closeOnScroll}
-          className={popoverClassName}
-          onTargetEvent={changeState}
-          position={position}
-          trigger={trigger}
-          follow={follow}
-          open={isOpen}
-          arrow={arrow}
-        >
-          {children}
-        </Popover>
+    <Popover
+      content={(
+        <TooltipContent
+          {...props}
+        />
       )}
-    </Toggle>
+      gap={gap === 0 && follow ? 10 : gap}
+      arrowClassName={arrowClassName}
+      closeOnScroll={closeOnScroll}
+      className={popoverClassName}
+      onTargetEvent={setIsOpen}
+      position={position}
+      trigger={trigger}
+      follow={follow}
+      open={isOpen}
+      arrow={arrow}
+    >
+      {children}
+    </Popover>
   );
 }
 
@@ -122,6 +137,8 @@ Tooltip.propTypes = {
   closeOnScroll: PropTypes.bool,
   /** string, className that will be passed to arrow */
   arrowClassName: PropTypes.string,
+  /** number, seconds, after when tooltip will be closed */
+  closeAfter: PropTypes.number,
 };
 
 Tooltip.defaultProps = {
@@ -138,4 +155,5 @@ Tooltip.defaultProps = {
   children: null,
   closeOnScroll: true,
   arrowClassName: '',
+  closeAfter: undefined,
 };
