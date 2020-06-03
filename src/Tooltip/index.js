@@ -81,7 +81,7 @@ export function Tooltip({
       if (timeoutId) {
         clearTimeout(timeoutId);
       }
-    }
+    };
   }, [isOpen]);
 
   return (
