@@ -13,6 +13,7 @@ export function Checkbox({
   className,
   style,
   preventAction,
+  iconSize,
   ...props
 }) {
   const checkboxClasses = classNames({
@@ -32,8 +33,8 @@ export function Checkbox({
       >
         <Icon
           className={styles.icon}
+          size={iconSize}
           name='checked'
-          size={12}
         />
         <input
           className={styles.checkbox}
@@ -66,6 +67,8 @@ Checkbox.propTypes = {
   hasError: PropTypes.bool,
   /** Boolean, whether prevent onClick */
   preventAction: PropTypes.bool,
+  /** String, that will be passed to checkbox checked icon size */
+  iconSize: PropTypes.string,
 };
 
 Checkbox.defaultProps = {
@@ -77,4 +80,5 @@ Checkbox.defaultProps = {
   style: undefined,
   hasError: false,
   preventAction: true,
+  iconSize: 12,
 };
