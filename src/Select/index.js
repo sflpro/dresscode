@@ -91,6 +91,7 @@ export class Select extends React.Component {
       nothingFoundText,
       renderOption,
       icon,
+      iconSize,
       disabled,
       listProps: {
         maxHeight = 350,
@@ -142,6 +143,7 @@ export class Select extends React.Component {
               className={itemClassNames}
               contentClassName={option.contentClassName}
               value={option.value}
+              iconSize={iconSize}
               key={option.value}
             >
               {renderOption(option)}
@@ -346,6 +348,7 @@ export class Select extends React.Component {
       renderOption,
       renderValue,
       hasError,
+      iconSize,
       disabled,
       searchable,
       listProps,
@@ -426,7 +429,7 @@ export class Select extends React.Component {
               <Icon
                 className={iconClasses}
                 name='arrow-down'
-                size={24}
+                size={iconSize}
               />
             </div>
           </Popover>
@@ -467,6 +470,8 @@ Select.propTypes = {
   searchable: PropTypes.bool,
   /** String, checked icon selected value */
   icon: PropTypes.string,
+  /** Number, size of icon */
+  iconSize: PropTypes.number,
   /** Boolean, whether select is disabled */
   disabled: PropTypes.bool,
   /** Boolean, whether select has error */
@@ -493,6 +498,7 @@ Select.defaultProps = {
   renderOption: option => option.name,
   renderValue: selected => selected.name,
   icon: 'thick',
+  iconSize: 24,
   hasError: false,
   disabled: false,
   searchable: true,
