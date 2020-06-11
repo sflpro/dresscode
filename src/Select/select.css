@@ -2,7 +2,7 @@
   min-height: var(--text-input-height);
   border-radius: var(--text-input-border-radius);
   border: var(--text-input-border-size) solid var(--text-input-border-color);
-  background-color: var(--neutral-white);
+  background-color: var(--text-input-background-color);
   color: var(--text-input-color);
   font-family: var(--select-font-family);
   font-size: var(--select-font-size);
