@@ -68,7 +68,7 @@ Checkbox.propTypes = {
   /** Boolean, whether prevent onClick */
   preventAction: PropTypes.bool,
   /** String, that will be passed to checkbox checked icon size */
-  iconSize: PropTypes.string,
+  iconSize: PropTypes.number,
 };
 
 Checkbox.defaultProps = {
