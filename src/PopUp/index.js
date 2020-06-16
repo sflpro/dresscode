@@ -10,7 +10,7 @@ export class PopUp extends React.Component {
     super(props);
     const { overlay } = this.props;
 
-    this.domBody = document.querySelector('body');
+    this.domBody = document.documentElement;
     this.domBodyOverflow = this.domBody.style.overflow;
 
     if (overlay) {
@@ -19,7 +19,7 @@ export class PopUp extends React.Component {
   }
 
   componentWillUnmount() {
-    this.domBody.style.overflow = this.domBodyOverflow || null;
+    this.domBody.style.overflow = this.domBodyOverflow || '';
   }
 
   onDismiss = () => {
