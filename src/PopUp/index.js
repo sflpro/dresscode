@@ -10,7 +10,7 @@ export class PopUp extends React.Component {
     super(props);
     const { overlay } = this.props;
 
-    this.domBody = document.documentElement;
+    this.domBody = document.body;
     this.domBodyOverflow = this.domBody.style.overflow;
 
     if (overlay) {
