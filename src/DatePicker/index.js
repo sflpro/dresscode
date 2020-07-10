@@ -17,13 +17,13 @@ export class DatePicker extends React.Component {
   constructor(props) {
     super(props);
 
-    const { value } = this.props;
+    const { value, view } = this.props;
     const yearDate = value || new Date();
 
     this.year = yearDate.getFullYear();
 
     this.state = {
-      view: VIEW_TYPES.DAY,
+      view,
       year: this.year,
     };
   }
@@ -263,6 +263,8 @@ DatePicker.propTypes = {
   className: PropTypes.string,
   /** Object, styles that will be added to date picker */
   style: PropTypes.object,
+  /** String, view type of date picker */
+  view: PropTypes.oneOf(['day', 'month', 'year']),
 };
 
 DatePicker.defaultProps = {
@@ -274,5 +276,6 @@ DatePicker.defaultProps = {
   onChange: null,
   className: '',
   style: undefined,
+  view: 'day',
   disabledDays: undefined,
 };
