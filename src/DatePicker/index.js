@@ -17,18 +17,20 @@ export class DatePicker extends React.Component {
   constructor(props) {
     super(props);
 
-    const { value } = this.props;
+    const { value, view } = this.props;
     const yearDate = value || new Date();
 
     this.year = yearDate.getFullYear();
+    this.month = yearDate.getMonth();
 
     this.state = {
-      view: VIEW_TYPES.DAY,
+      view,
       year: this.year,
     };
   }
 
   handleDayCaptionClick = (date, view) => {
+    this.month = date.getMonth();
     if (this.year !== date.getFullYear()) {
       this.year = date.getFullYear();
       this.handleYearClick(this.year, view);
@@ -68,10 +70,13 @@ export class DatePicker extends React.Component {
   };
 
   handleMonthClick = (month) => {
-    const { value: selectedDay } = this.props;
+    this.month = month;
+    const { value: selectedDay, view } = this.props;
     const { year } = this.state;
     const day = new Date(new Date(selectedDay).setMonth(month)).setFullYear(year);
-    this.handleDayClick(new Date(day));
+    if (view === VIEW_TYPES.DAY) {
+      this.handleDayClick(new Date(day));
+    }
     this.handleViewChange(VIEW_TYPES.DAY);
   };
 
@@ -153,6 +158,9 @@ export class DatePicker extends React.Component {
     };
 
     const years = getYearsRange(year);
+    const currentDay = new Date(selectedDay);
+    currentDay.setMonth(this.month);
+    currentDay.setFullYear(year);
 
     return (
       <div
@@ -176,8 +184,8 @@ export class DatePicker extends React.Component {
             )}
             onDayClick={this.handleDayClick}
             onDayMouseEnter={this.handleDayMouseEnter}
-            selectedDays={selectedDay}
-            month={selectedDay}
+            selectedDays={currentDay}
+            month={currentDay}
             locale={locale}
             showOutsideDays={showOutsideDays}
             style={style}
@@ -187,7 +195,7 @@ export class DatePicker extends React.Component {
         )}
         {view === VIEW_TYPES.MONTH && (
           <MonthPicker
-            selectedMonth={selectedDay.getMonth()}
+            selectedMonth={this.month}
             captionElement={(
               <DatePickerCaption
                 onClick={event => this.handleMonthCaptionClick(event, VIEW_TYPES.YEAR)}
@@ -263,6 +271,8 @@ DatePicker.propTypes = {
   className: PropTypes.string,
   /** Object, styles that will be added to date picker */
   style: PropTypes.object,
+  /** String, view type of date picker */
+  view: PropTypes.oneOf(['day', 'month', 'year']),
 };
 
 DatePicker.defaultProps = {
@@ -274,5 +284,6 @@ DatePicker.defaultProps = {
   onChange: null,
   className: '',
   style: undefined,
+  view: 'day',
   disabledDays: undefined,
 };

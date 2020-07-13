@@ -258,7 +258,7 @@ DateInput.propTypes = {
   /** String, action that is opening date picker */
   trigger: PropTypes.string,
   /** String, decide which view of date picker must be shown(day, month, year) */
-  view: PropTypes.string,
+  view: PropTypes.oneOf(['day', 'month', 'year']),
   /** Object, styles that will be passed to input */
   style: PropTypes.object,
   /** Boolean, whether date input is disabled */

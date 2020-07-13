@@ -30,6 +30,8 @@ function loadStories() {
   require('../src/helpers/Typography/typography.story');
   require('../src/HorizontalScrollWrapper/horizontalScrollWrapper.story');
   require('../src/InfiniteScroll/infiniteScroll.story');
+  require('../src/DatePicker/datePicker.story');
+  require('../src/DateInput/dateInput.story');
   require('../src/Drawer/drawer.story');
   require('../src/fonts.css');
   require('../src/Icon/svgSprite.icon.svg');
