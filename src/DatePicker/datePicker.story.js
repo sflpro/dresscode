@@ -10,26 +10,26 @@ import { InfoStoryConfig } from '../configs';
 
 
 const optionsView = [
-    'day',
-    'month',
-    'year',
+  'day',
+  'month',
+  'year',
 ];
 
 storiesOf('DatePicker', module)
-    .add('DatePicker', () => {
-        const view = select('view', optionsView, 'day');
+  .add('DatePicker', () => {
+    const view = select('view', optionsView, 'day');
 
-        return (
-            <DatePicker
-                key={view}
-                value={new Date(date('value'))}
-                view={view}
-            />
-        )
-    }, {
-        ...InfoStoryConfig,
-        info: {
-            ...InfoStoryConfig.info,
-            text: <ImportInstruction componentName='DatePicker' />,
-        },
-    });
+    return (
+      <DatePicker
+        key={view}
+        value={new Date(date('value'))}
+        view={view}
+      />
+    );
+  }, {
+    ...InfoStoryConfig,
+    info: {
+      ...InfoStoryConfig.info,
+      text: <ImportInstruction componentName='DatePicker' />,
+    },
+  });
