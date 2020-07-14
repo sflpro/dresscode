@@ -85,6 +85,7 @@ DropDown.propTypes = {
 
 DropDown.defaultProps = {
   onStateChange: undefined,
+  changeState: undefined,
   disabled: false,
   open: false,
 };
