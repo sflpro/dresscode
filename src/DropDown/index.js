@@ -7,15 +7,15 @@ import { Popover } from '../Popover';
 import { Toggle } from '../Toggle';
 
 export function DropDown({
-  changeState: propsChangeState,
   onStateChange,
+  setOpenState,
   disabled,
   options,
   children,
   open,
   ...props
 }) {
-  if (propsChangeState) {
+  if (setOpenState) {
     return (
       <Popover
         onTargetEvent={(nextIsOpen) => {
@@ -23,7 +23,7 @@ export function DropDown({
             return;
           }
 
-          propsChangeState(nextIsOpen);
+          setOpenState(nextIsOpen);
         }}
         content={options}
         closeOnScroll={false}
@@ -79,13 +79,13 @@ DropDown.propTypes = {
   disabled: PropTypes.bool,
   /** Elements, content of dropdown tag */
   children: PropTypes.any.isRequired,
-  /** Function, called when dropdown state changed */
-  changeState: PropTypes.func,
+  /** Function, called when popover target event called */
+  setOpenState: PropTypes.func,
 };
 
 DropDown.defaultProps = {
   onStateChange: undefined,
-  changeState: undefined,
+  setOpenState: undefined,
   disabled: false,
   open: false,
 };
