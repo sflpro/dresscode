@@ -10,14 +10,10 @@ export const addColumn = ({ columns }) => {
 
   if (hiddenColumns.length !== 0) {
     const addedColumn = hiddenColumns.shift();
-    const changedIndex = visibleColumns.length - 1;
 
-    if (addedColumn.lastPriorities && addedColumn.lastPriorities.length > 0) {
-      addedColumn.priority = addedColumn.lastPriorities.pop();
-    }
-
-    if (visibleColumns[changedIndex].lastPriorities && visibleColumns[changedIndex].lastPriorities.length > 0) {
-      visibleColumns[changedIndex].priority = visibleColumns[changedIndex].lastPriorities.pop();
+    if (typeof addedColumn.lastPriority === 'number') {
+      addedColumn.priority = addedColumn.lastPriority;
+      addedColumn.lastPriority = null;
     }
 
     visibleColumns.push({ ...addedColumn, visible: true });
@@ -35,21 +31,32 @@ export const removeColumn = ({ columns, removeItemIndex }) => {
 
   if (visibleColumns.length !== 0) {
     if (removeItemIndex !== visibleColumns.length - 1) {
-      if (!visibleColumns[visibleColumns.length - 1].lastPriorities) {
-        visibleColumns[visibleColumns.length - 1].lastPriorities = [];
-      }
-
-      if (!visibleColumns[removeItemIndex].lastPriorities) {
-        visibleColumns[removeItemIndex].lastPriorities = [];
-      }
-
+      let maxPriority = 1;
       const tempPriority = visibleColumns[removeItemIndex].priority;
 
-      visibleColumns[visibleColumns.length - 1].lastPriorities.push(visibleColumns[visibleColumns.length - 1].priority);
-      visibleColumns[removeItemIndex].lastPriorities.push(tempPriority);
+      visibleColumns.forEach(({ priority }) => {
+        if (priority > maxPriority) {
+          maxPriority = priority;
+        }
+      });
 
-      visibleColumns[removeItemIndex].priority = visibleColumns[visibleColumns.length - 1].priority;
-      visibleColumns[visibleColumns.length - 1].priority = tempPriority;
+      hiddenColumns.forEach(({ priority, lastPriority }) => {
+        let currentPriority;
+
+        if (typeof lastPriority === 'number') {
+          currentPriority = lastPriority;
+        } else {
+          currentPriority = priority;
+        }
+
+        if (currentPriority > maxPriority) {
+          maxPriority = currentPriority;
+        }
+      });
+
+      visibleColumns[removeItemIndex].lastPriority = tempPriority;
+
+      visibleColumns[removeItemIndex].priority = maxPriority + 1;
     }
 
     removedColumn = visibleColumns[removeItemIndex];
@@ -57,7 +64,10 @@ export const removeColumn = ({ columns, removeItemIndex }) => {
     visibleColumns.splice(removeItemIndex, 1);
 
     if (removedColumn) {
-      hiddenColumns.push({ ...removedColumn, visible: false });
+      hiddenColumns.push({
+        ...removedColumn,
+        visible: false,
+      });
       combinedColumns = [...visibleColumns, ...hiddenColumns];
     }
   }
