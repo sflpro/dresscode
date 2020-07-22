@@ -11,6 +11,7 @@ export function Button({
   disabled,
   primary,
   secondary,
+  withUnderline,
   neutral,
   warning,
   className,
@@ -27,6 +28,7 @@ export function Button({
     [styles.neutral]: neutral,
     [styles.warning]: warning,
     [styles.disabled]: disabled,
+    [styles.underline]: withUnderline,
   });
 
   return (
@@ -74,6 +76,8 @@ Button.propTypes = {
   children: PropTypes.any,
   /** React Ref, ref of button */
   forwardedRef: PropTypes.any,
+  /** Boolean, indicating whether the element should have underline on hover */
+  withUnderline: PropTypes.bool,
 };
 
 Button.defaultProps = {
@@ -90,6 +94,7 @@ Button.defaultProps = {
   forwardedRef: undefined,
   children: null,
   variant: 'button',
+  withUnderline: false,
 };
 
 export function LinkButton(props) {
