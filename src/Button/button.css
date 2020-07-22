@@ -128,8 +128,6 @@
 }
 
 .underline {
-  display: inline;
-  width: 100%;
   background-image: linear-gradient(transparent calc(100% - 1px), currentColor 1px);
   background-repeat: no-repeat;
   background-size: 0 100%;
