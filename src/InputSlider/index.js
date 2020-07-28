@@ -116,12 +116,11 @@ export class InputSlider extends React.Component {
         minControlValue = +valueWithoutSpaces.substring(0, separatorIndex);
         maxControlValue = +valueWithoutSpaces.substring(separatorIndex + 1);
       }
+    } else if (formatter) {
+      const re = new RegExp(formatter, 'g');
+      minControlValue = +(value.trim().replace(re, ''));
     } else {
       minControlValue = +value.trim();
-      if (formatter) {
-        const re = new RegExp(formatter, 'g');
-        minControlValue = +(minControlValue.replace(re, ''));
-      }
     }
 
     if (hasError || Number.isNaN(minControlValue) || (isRange && Number.isNaN(maxControlValue))) {
