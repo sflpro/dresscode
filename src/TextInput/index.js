@@ -7,6 +7,7 @@ import styles from './textInput.css';
 export function TextInput({
   disabled,
   className,
+  prefixClassName,
   icon,
   prefix,
   isValid,
@@ -24,13 +25,18 @@ export function TextInput({
     [styles.hidden]: type === 'hidden',
     [className]: true,
   });
+
+  const inputPrefixClasses = classNames({
+    [styles.prefix]: true,
+    [prefixClassName]: prefixClassName,
+  });
   return (
     <div
       className={inputWrapperClasses}
       style={style}
     >
       {prefix && (
-        <span className={styles.prefix}>
+        <span className={inputPrefixClasses}>
           {prefix}
         </span>
       )}
@@ -59,12 +65,14 @@ TextInput.propTypes = {
   readOnly: PropTypes.bool,
   /** String, className that will be added to wrapper div */
   className: PropTypes.string,
+  /** String, className that will be added to prefix div */
+  prefixClassName: PropTypes.string,
   /** Object, styles that will be added to wrapper div */
   style: PropTypes.object,
   /** String, JSX or Element, icon that will be shown on input */
   icon: PropTypes.any,
-  /** String, string that will be added at start of input */
-  prefix: PropTypes.string,
+  /** Any, element that will be added at start of input */
+  prefix: PropTypes.any,
   /** Boolean, whether value of text input is valid */
   isValid: PropTypes.bool,
   /** Boolean, whether value of text input has error */
@@ -87,8 +95,9 @@ TextInput.defaultProps = {
   disabled: false,
   readOnly: false,
   className: '',
+  prefixClassName: '',
   icon: null,
-  prefix: '',
+  prefix: null,
   isValid: false,
   hasError: false,
   type: 'text',
