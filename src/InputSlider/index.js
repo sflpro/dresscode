@@ -69,7 +69,7 @@ export class InputSlider extends React.Component {
   };
 
   onBlur = (event) => {
-    const { min, max, distance, inputProps: { onBlur, formatter = ',' }, separator, children } = this.props;
+    const { min, max, distance, inputProps: { onBlur, formatter = null }, separator, children } = this.props;
     const { minControl, maxControl, value } = this.state;
 
     const nextState = { minControl: { ...minControl }, maxControl: { ...maxControl }, hasError: false };
