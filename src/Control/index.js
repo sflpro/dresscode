@@ -100,7 +100,11 @@ export class Control extends React.Component {
   };
 
   onMouseDown = (event) => {
-    const { onDragStart, name } = this.props;
+    const { onDragStart, name, disabled } = this.props;
+    if (disabled) {
+      return;
+    }
+
     const { currentStep, left } = this.state;
 
     this.addListeners();
@@ -112,8 +116,10 @@ export class Control extends React.Component {
 
   onMouseUp = (event) => {
     const { currentStep, left } = this.state;
-    const { onDragEnd, name } = this.props;
-
+    const { onDragEnd, name, disabled } = this.props;
+    if (disabled) {
+      return;
+    }
     this.removeListeners();
 
     if (onDragEnd && typeof onDragEnd === 'function') {
@@ -172,17 +178,16 @@ export class Control extends React.Component {
       style,
       min,
       max,
+      disabled,
       ...props
     } = this.props;
     const { left } = this.state;
 
     const controlClassNames = {
       [styles.control]: true,
+      [styles.disabled]: disabled,
+      [className]: className,
     };
-
-    if (className) {
-      controlClassNames[className] = true;
-    }
 
     const sliderStyles = {
       ...style,
@@ -225,6 +230,8 @@ Control.propTypes = {
   min: PropTypes.number,
   /** Number, max value of control if not passed will get from Slider Component */
   max: PropTypes.number,
+  /** Boolean, whether control is disabled */
+  disabled: PropTypes.bool,
   /** String, classname that will be passed to wrapper span element */
   className: PropTypes.string,
   /** Object, style that will be added to wrapper span element */
@@ -236,6 +243,7 @@ Control.defaultProps = {
   onDragEnd: undefined,
   min: undefined,
   max: undefined,
+  disabled: false,
   className: '',
   style: undefined,
 };

@@ -319,6 +319,7 @@
 
   --slider-animation-duration: 0.1s;
   --slider-background-color: var(--default-color);
+  --slider-background-disabled-color: var(--disabled-color);
   --slider-line-color: var(--primary-color);
   --slider-height: 4px;
   --slider-width: 100%;
@@ -329,6 +330,7 @@
   --slider-line-animation-duration: var(--slider-animation-duration);
   --slider-control-border: 0 0 2px var(--neutral-1000-opacity-30);
   --slider-control-color: var(--primary-color);
+  --slider-control-disabled-color: var(--disabled-color);
   --slider-control-size: 16px;
   --slider-control-top: 4px;
   --slider-wrapper-min-width: 200px;

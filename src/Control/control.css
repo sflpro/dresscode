@@ -1,9 +1,13 @@
 .control {
-    @mixin font-scale-6;
-    transition: left var(--slider-animation-duration) ease-out;
-    color: var(--slider-control-color);
-    top: var(--slider-control-top);
-    position: absolute;
-    cursor: pointer;
-    z-index: var(--slider-control-z-index);
+  @mixin font-scale-6;
+  transition: left var(--slider-animation-duration) ease-out;
+  color: var(--slider-control-color);
+  top: var(--slider-control-top);
+  position: absolute;
+  cursor: pointer;
+  z-index: var(--slider-control-z-index);
+}
+
+.disabled {
+  color: var(--slider-control-disabled-color);
 }
