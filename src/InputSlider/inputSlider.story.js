@@ -57,8 +57,9 @@ storiesOf('Form controls/Input Slider', module)
                 <InputSlider
                   onChange={handler}
                   step={5}
+                  disabled
                 >
-                  <Control name='test3' value={state.test3} icon={<Icon name='cross' />} />
+                  <Control name='test3' value={state.test3} icon={<Icon name='cross' />} disabled />
                 </InputSlider>
               </Item>
             </ItemRow>

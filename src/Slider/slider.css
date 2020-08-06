@@ -1,24 +1,32 @@
 .wrapper {
-    display: flex;
-    align-items: center;
-    min-width: var(--slider-wrapper-min-width);
+  display: flex;
+  align-items: center;
+  min-width: var(--slider-wrapper-min-width);
 }
 
 .slider {
-    background-color: var(--slider-background-color);
-    display: inline-block;
-    position: relative;
-    border-radius: var(--slider-border-radius);
-    cursor: pointer;
-    margin: var(--slider-margin);
-    width: var(--slider-width);
-    height: var(--slider-height);
+  background-color: var(--slider-background-color);
+  display: inline-block;
+  position: relative;
+  border-radius: var(--slider-border-radius);
+  cursor: pointer;
+  margin: var(--slider-margin);
+  width: var(--slider-width);
+  height: var(--slider-height);
+}
+
+.disabled {
+  cursor: default;
 }
 
 .sliderLine {
-    position: absolute;
-    height: var(--slider-line-height);
-    border-radius: var(--slider-line-border-radius);
-    background-color: var(--slider-line-color);
-    transition: left var(--slider-line-animation-duration) ease-out, width var(--slider-line-animation-duration) ease-out;
+  position: absolute;
+  height: var(--slider-line-height);
+  border-radius: var(--slider-line-border-radius);
+  background-color: var(--slider-line-color);
+  transition: left var(--slider-line-animation-duration) ease-out, width var(--slider-line-animation-duration) ease-out;
+}
+
+.disabled .sliderLine {
+  background-color: var(--slider-background-disabled-color);
 }

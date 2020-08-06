@@ -203,6 +203,7 @@ export class InputSlider extends React.Component {
       input: InputComponent,
       inputProps,
       separator,
+      disabled,
       className,
       children,
       style,
@@ -218,11 +219,13 @@ export class InputSlider extends React.Component {
           onKeyPress={this.onKeyPress}
           onChange={this.onChange}
           onBlur={this.onBlur}
+          disabled={disabled}
           value={value}
         />
         <Slider
           {...props}
           onControlChange={this.setMinMax}
+          disabled={disabled}
           className={styles.inputSlider}
         >
           {children}
@@ -239,6 +242,8 @@ InputSlider.propTypes = {
   inputProps: PropTypes.object,
   /** String, character that will separate range input values */
   separator: PropTypes.string,
+  /** Boolean, whether slider input is disabled */
+  disabled: PropTypes.bool,
   /** String, className that will be added to wrapper div */
   className: PropTypes.string,
   /** Number, min difference of range input values */
@@ -262,6 +267,7 @@ InputSlider.propTypes = {
 InputSlider.defaultProps = {
   input: TextInput,
   hasError: false,
+  disabled: false,
   separator: '-',
   inputProps: {},
   className: '',

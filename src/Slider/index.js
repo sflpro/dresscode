@@ -57,7 +57,11 @@ export class Slider extends React.Component {
       event.preventDefault();
     }
 
-    const { onChange, step, min, max } = this.props;
+    const { onChange, step, min, max, disabled } = this.props;
+    if (disabled) {
+      return;
+    }
+
     const { maxStepsCount, controls } = this.state;
 
     const [minControlName, maxControlName] = Object.keys(controls);
@@ -174,6 +178,7 @@ export class Slider extends React.Component {
       min,
       max,
       distance,
+      disabled,
       ...props
     } = this.props;
 
@@ -186,6 +191,7 @@ export class Slider extends React.Component {
 
     const sliderClassName = classNames({
       [styles.slider]: true,
+      [styles.disabled]: disabled,
       [className]: true,
     });
 
@@ -234,6 +240,8 @@ Slider.propTypes = {
   distance: PropTypes.number,
   /** Number, amount of change per step */
   step: PropTypes.number,
+  /** Boolean, whether slider is disabled */
+  disabled: PropTypes.bool,
   /** Number, min value of input */
   min: PropTypes.number,
   /** Number, max value of input */
@@ -250,6 +258,7 @@ Slider.defaultProps = {
   onControlChange: undefined,
   distance: 1,
   step: 1,
+  disabled: false,
   min: 0,
   max: 100,
   className: '',
