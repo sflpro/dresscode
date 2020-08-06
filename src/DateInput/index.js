@@ -72,12 +72,18 @@ export class DateInput extends React.Component {
     onChange(eventObj);
   };
 
-  handleDateInputFocus = event => (
-    event.target.select()
-  );
+  handleDateInputFocus = (event) => {
+    const { onFocus } = this.props;
 
-  handleDateInputBlur = () => {
-    const { value, hasError, format, name, onChange } = this.props;
+    if (onFocus) {
+      onFocus(event);
+    }
+
+    return event.target.select();
+  };
+
+  handleDateInputBlur = (event) => {
+    const { value, hasError, format, name, onChange, onBlur } = this.props;
     if (!hasError && value) {
       const date = convertStringToDate(value, format);
       const formattedValue = formatDate(date, format);
@@ -88,6 +94,10 @@ export class DateInput extends React.Component {
         },
       };
       onChange(eventObj);
+    }
+
+    if (onBlur) {
+      onBlur(event);
     }
   };
 
@@ -269,6 +279,10 @@ DateInput.propTypes = {
   closeOnScroll: PropTypes.bool,
   /** Date, the month to display in the calendar at first render */
   initialMonth: PropTypes.instanceOf(Date),
+  /** Function, called when input is blured */
+  onBlur: PropTypes.func,
+  /** Function, called when input is focused */
+  onFocus: PropTypes.func,
 };
 
 DateInput.defaultProps = {
@@ -288,4 +302,6 @@ DateInput.defaultProps = {
   iconClassName: '',
   closeOnScroll: true,
   initialMonth: undefined,
+  onBlur: undefined,
+  onFocus: undefined,
 };
