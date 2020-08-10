@@ -125,6 +125,7 @@
   --select-tag-margin: 4px;
   --select-empty-state-padding: 16px;
   --select-active-item-width: 100%;
+  --select-line-height: 48px;
 
   --list-border-radius: 8px;
   --list-item-min-height: 8px;

@@ -7,12 +7,13 @@
   font-family: var(--select-font-family);
   font-size: var(--select-font-size);
   min-width: var(--select-min-width);
+  width: var(--select-width);
+  padding: var(--select-padding);
+  line-height: var(--select-line-height);
   box-sizing: border-box;
   cursor: pointer;
   display: flex;
   align-items: center;
-  width: var(--select-width);
-  padding: var(--select-padding);
   position: relative;
   flex-wrap: wrap;
 }
