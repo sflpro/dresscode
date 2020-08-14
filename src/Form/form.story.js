@@ -45,7 +45,7 @@ const scheme = Yup.object().shape({
 });
 
 const formValues = {
-  email: 'test@test.com',
+  email: '',
   password: 'as@#$@#$%4235df',
   bday: '14/11/1995',
 };
@@ -155,13 +155,7 @@ storiesOf('Form', module)
               onSubmit={(values, { setSubmitting }) => {
                 setSubmitting(false);
               }}
-              initialTouched={{
-                password: true,
-                email: true,
-                bday: true,
-              }}
               validationSchema={scheme}
-              validateOnMount
             >
               <Label>
                 Email

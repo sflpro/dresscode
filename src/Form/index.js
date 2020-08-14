@@ -23,6 +23,9 @@ export function Form({
   onReset,
   ...props
 }) {
+  const isInitialValid = !preventAction && validationSchema
+    ? validationSchema.isValidSync(initialValues) : true;
+
   return (
     <Formik
       enableReinitialize={enableReinitialize}
@@ -30,6 +33,7 @@ export function Form({
       validationSchema={validationSchema}
       validateOnMount={validateOnMount}
       validateOnBlur={validateOnBlur}
+      isInitialValid={isInitialValid}
       initialTouched={initialTouched}
       initialErrors={initialErrors}
       initialStatus={initialStatus}
