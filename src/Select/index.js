@@ -96,6 +96,7 @@ export class Select extends React.Component {
       listProps: {
         maxHeight = 350,
         className = '',
+        itemWrapperClassName = '',
         ...listProps
       },
     } = this.props;
@@ -142,6 +143,7 @@ export class Select extends React.Component {
               iconClassName={iconClassNames}
               className={itemClassNames}
               contentClassName={option.contentClassName}
+              wrapperClassName={itemWrapperClassName}
               value={option.value}
               iconSize={iconSize}
               key={option.value}
@@ -482,6 +484,7 @@ Select.propTypes = {
     maxHeight: PropTypes.number,
     className: PropTypes.string,
     contentClassName: PropTypes.string,
+    itemWrapperClassName: PropTypes.string,
   }),
 };
 
@@ -506,5 +509,6 @@ Select.defaultProps = {
     maxHeight: 350,
     className: '',
     contentClassName: '',
+    itemWrapperClassName: '',
   },
 };
