@@ -251,13 +251,13 @@ export class Select extends React.Component {
   };
 
   onPopoverToggle = (isOpen) => {
-    const { onClick, multiple, disabled, searchable } = this.props;
+    const { onClick, multiple, disabled, searchable, skipNativeMode } = this.props;
 
     if (disabled) {
       return;
     }
 
-    if (multiple && this.input && !isMobile() && searchable) {
+    if (multiple && this.input && (!isMobile() || skipNativeMode) && searchable) {
       if (isOpen) {
         this.input.focus();
       } else {
@@ -338,6 +338,7 @@ export class Select extends React.Component {
 
   render() {
     const {
+      skipNativeMode,
       placeholder,
       multiple,
       value,
@@ -358,7 +359,7 @@ export class Select extends React.Component {
     } = this.props;
     const { isOpen } = this.state;
 
-    const isNativeMode = isMobile() && !multiple;
+    const isNativeMode = isMobile() && !multiple && !skipNativeMode;
 
     const nativeSelectClasses = classNames({
       [className]: true,
@@ -478,7 +479,8 @@ Select.propTypes = {
   disabled: PropTypes.bool,
   /** Boolean, whether select has error */
   hasError: PropTypes.bool,
-
+  /** Boolean, whether select should be custom in mobile and tablet */
+  skipNativeMode: PropTypes.bool,
   /** Object, whether list props */
   listProps: PropTypes.shape({
     maxHeight: PropTypes.number,
@@ -505,6 +507,7 @@ Select.defaultProps = {
   hasError: false,
   disabled: false,
   searchable: true,
+  skipNativeMode: false,
   listProps: {
     maxHeight: 350,
     className: '',
