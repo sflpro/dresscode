@@ -105,6 +105,7 @@
   --textarea-font-family: var(--font-family);
   --textarea-font-size: var(--font-size-scale-6);
 
+  --select-height: var(--text-input-height);
   --select-font-family: var(--font-family);
   --select-font-size: var(--font-size-scale-6);
   --select-min-width: 100px;
@@ -145,6 +146,11 @@
   --list-item-icon-right: 25px;
   --list-item-content-max-width: calc(100% - 48px);
 
+  --radio-button-hover-border-color: var(--radio-button-checked-color);
+  --radio-button-checked-background-color: var(--radio-button-checked-color);
+  --radio-button-checked-border-color: var(--radio-button-checked-color);
+  --radio-button-shadow-width: var(--radio-button-white-background-width);
+  --radio-button-shadow-color: var(--radio-button-background-color);
   --radio-button-border-color: var(--default-color);
   --radio-button-hover-color: var(--primary-color-light);
   --radio-button-checked-color: var(--primary-color);

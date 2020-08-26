@@ -32,13 +32,13 @@
 }
 
 .checked:hover::before {
-    border-color: var(--radio-button-checked-color);
+    border-color: var(--radio-button-hover-border-color);
 }
 
 .checked::before {
-    border-color: var(--radio-button-checked-color);
-    background-color: var(--radio-button-checked-color);
-    box-shadow: 0 0 0 var(--radio-button-white-background-width) var(--radio-button-background-color) inset;
+    border-color: var(--radio-button-checked-border-color);
+    background-color: var(--radio-button-checked-background-color);
+    box-shadow: 0 0 0 var(--radio-button-shadow-width) var(--radio-button-shadow-color) inset;
 }
 
 .disabled {
