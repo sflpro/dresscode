@@ -110,7 +110,7 @@ html {
 }
 
 .contentWrapperSingle {
-  height: var(--text-input-height);
+  height: var(--select-height);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
