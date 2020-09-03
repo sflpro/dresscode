@@ -37,7 +37,7 @@ export class WithValidation extends React.Component {
       errors,
     } = this.context;
 
-    const passChecked = ['Checkbox', 'RadioButton'].includes(Component.displayName);
+    const passChecked = ['Checkbox', 'RadioButton', 'ToggleButton'].includes(Component.displayName);
 
     return (
       <Component
