@@ -41,6 +41,8 @@ export function ToggleButton({
   );
 }
 
+ToggleButton.displayName = 'ToggleButton';
+
 ToggleButton.propTypes = {
   /** Function, will be called when toggle value will be changed */
   onChange: PropTypes.func,
