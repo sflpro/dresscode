@@ -145,9 +145,9 @@ html {
 }
 
 .disabled {
-  background-color: var(--neutral-75);
-  border-color: var(--neutral-75);
-  color: var(--neutral-500);
+  background-color: var(--select-disabled-color);
+  border-color: var(--select-disabled-color);
+  color: var(--select-text-disabled-color);
   cursor: default;
 
   &:hover {
