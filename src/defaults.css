@@ -127,6 +127,8 @@
   --select-empty-state-padding: 16px;
   --select-active-item-width: 100%;
   --select-line-height: 48px;
+  --select-disabled-color: var(--neutral-75);
+  --select-text-disabled-color: var(--neutral-500);
 
   --list-border-radius: 8px;
   --list-item-min-height: 8px;
