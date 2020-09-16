@@ -130,6 +130,7 @@
   --select-line-height: 48px;
   --select-disabled-color: var(--neutral-75);
   --select-text-disabled-color: var(--neutral-500);
+  --select-border-disabled-color: var(--select-disabled-color);
 
   --list-border-radius: 8px;
   --list-item-min-height: 8px;

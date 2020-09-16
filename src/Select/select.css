@@ -145,8 +145,8 @@ html {
 }
 
 .disabled {
+  border-color: var(--select-border-disabled-color);
   background-color: var(--select-disabled-color);
-  border-color: var(--select-disabled-color);
   color: var(--select-text-disabled-color);
   cursor: default;
 
