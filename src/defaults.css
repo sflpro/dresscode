@@ -87,6 +87,7 @@
   --text-input-placeholder-color: var(--text-disabled-color);
   --text-input-disabled-color: var(--disabled-color-light);
   --text-input-text-disabled-color: var(--disabled-color);
+  --text-input-border-disabled-color: var(--text-input-disabled-color);
   --text-input-prefix-color: var(--default-color-dark);
   --text-input-prefix-font-family: var(--font-family);
   --text-input-prefix-font-size: var(--font-size-scale-6);
