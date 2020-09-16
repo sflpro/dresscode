@@ -87,6 +87,7 @@
   --text-input-placeholder-color: var(--text-disabled-color);
   --text-input-disabled-color: var(--disabled-color-light);
   --text-input-text-disabled-color: var(--disabled-color);
+  --text-input-border-disabled-color: var(--text-input-disabled-color);
   --text-input-prefix-color: var(--default-color-dark);
   --text-input-prefix-font-family: var(--font-family);
   --text-input-prefix-font-size: var(--font-size-scale-6);
@@ -129,6 +130,7 @@
   --select-line-height: 48px;
   --select-disabled-color: var(--neutral-75);
   --select-text-disabled-color: var(--neutral-500);
+  --select-border-disabled-color: var(--select-disabled-color);
 
   --list-border-radius: 8px;
   --list-item-min-height: 8px;
