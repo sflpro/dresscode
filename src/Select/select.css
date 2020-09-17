@@ -158,3 +158,8 @@ html {
 .disabled .icon {
   cursor: default;
 }
+
+.optionGroup {
+  background-color: var(--select-group-option-background-color);
+  color: var(--select-group-option-color)
+}

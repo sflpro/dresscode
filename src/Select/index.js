@@ -4,6 +4,7 @@ import classNames from 'classnames';
 
 import { TextInput } from '../TextInput';
 import { ListItem } from '../ListItem';
+import { OptGroup } from '../OptGroup';
 import { Popover } from '../Popover';
 import { List } from '../List';
 import { Icon } from '../Icon';
@@ -19,15 +20,7 @@ export class Select extends React.Component {
 
     const { children } = this.props;
 
-    this.childOptions = React.Children.map(children, option => ({
-      ...option.props,
-      value: option.props.value,
-      name: option.props.children,
-      className: option.props.className || '',
-      activeClassName: option.props.activeClassName || '',
-      style: option.props.style || {},
-      iconClassName: option.props.iconClassName || '',
-    }));
+    this.setChildOptions(children);
 
     const selected = this.getSelected();
 
@@ -42,13 +35,7 @@ export class Select extends React.Component {
     const { children, value, multiple } = this.props;
     const { selected } = this.state;
 
-    this.childOptions = React.Children.map(children, option => ({
-      ...option.props,
-      value: option.props.value,
-      name: option.props.children,
-      className: option.props.className || '',
-      style: option.props.style || {},
-    }));
+    this.setChildOptions(children);
 
     if (!multiple) {
       if (prevProps.value !== value && (!selected || selected.value !== value)) {
@@ -60,6 +47,27 @@ export class Select extends React.Component {
     ) {
       this.updateSelected();
     }
+  }
+
+  setChildOptions(children) {
+    const childOptions = [];
+    const groupOptions = [];
+
+    React.Children.forEach(children, (child) => {
+      if (child.type === OptGroup) {
+        const innerChildren = React.Children.map(child.props.children || [], this.mapOptionProps);
+        childOptions.push(...innerChildren);
+        groupOptions.push({
+          ...child,
+          innerChildren,
+        });
+      } else {
+        childOptions.push(this.mapOptionProps(child));
+      }
+    });
+
+    this.childOptions = childOptions;
+    this.groupOptions = groupOptions;
   }
 
   getSelected() {
@@ -87,31 +95,49 @@ export class Select extends React.Component {
 
   getOptions() {
     const {
-      value: propValue,
       nothingFoundText,
-      renderOption,
-      icon,
-      iconSize,
+      renderGroupOption,
       disabled,
       listProps: {
         maxHeight = 350,
         className = '',
-        itemWrapperClassName = '',
+        itemWrapperClassName,
         ...listProps
       },
     } = this.props;
-    const { search } = this.state;
 
     if (disabled) {
       return '';
     }
 
     let options = this.childOptions;
+    const groupItems = [];
 
-    if (search && search.trim() !== '') {
-      const lowerCaseSearch = search.toLowerCase();
+    if (this.groupOptions && this.groupOptions.length) {
+      this.groupOptions.forEach((option) => {
+        const innerChildren = this.getSearchedOptions(option.innerChildren || []);
 
-      options = options.filter(({ name }) => name.toLowerCase().includes(lowerCaseSearch));
+        const itemClassNames = classNames({
+          [styles.optionGroup]: true,
+          [option.props.className]: !!option.props.className,
+        });
+
+        groupItems.push(
+          (
+            <ListItem
+              style={option.props.style || {}}
+              className={itemClassNames}
+              key={option.props.label}
+              disabled
+            >
+              {renderGroupOption(option)}
+            </ListItem>
+          ),
+          ...innerChildren.map(this.getOptionView),
+        );
+      });
+    } else {
+      options = this.getSearchedOptions(options);
     }
 
     return (
@@ -120,44 +146,70 @@ export class Select extends React.Component {
         maxHeight={maxHeight}
         {...listProps}
       >
-        {options.length > 0 ? options.map((option) => {
-          const isSelected = (Array.isArray(propValue) && propValue.includes(option.value))
-            || propValue === option.value;
-
-          const itemClassNames = classNames({
-            [option.className]: true,
-            [option.activeClassName]: isSelected,
-            [styles.itemActive]: isSelected,
-          });
-
-          const iconClassNames = classNames({
-            [styles.listIcon]: true,
-            [option.iconClassName]: isSelected,
-          });
-
-          return (
-            <ListItem
-              style={option.style}
-              icon={isSelected ? icon : null}
-              onClick={this.handleCustomChange}
-              iconClassName={iconClassNames}
-              className={itemClassNames}
-              contentClassName={option.contentClassName}
-              wrapperClassName={itemWrapperClassName}
-              value={option.value}
-              iconSize={iconSize}
-              key={option.value}
-            >
-              {renderOption(option)}
-            </ListItem>
-          );
-        }) : (
-          <span className={styles.emptyState}>
-            {nothingFoundText}
-          </span>
+        {groupItems.length > 0 ? groupItems : (
+          options.length > 0 ? options.map(this.getOptionView) : (
+            <span className={styles.emptyState}>
+              {nothingFoundText}
+            </span>
+          )
         )}
       </List>
     );
+  }
+
+  getOptionView = (option) => {
+    const {
+      value: propValue,
+      renderOption,
+      iconSize,
+      icon,
+      listProps: {
+        itemWrapperClassName = '',
+      },
+    } = this.props;
+
+    const isSelected = (Array.isArray(propValue) && propValue.includes(option.value))
+      || propValue === option.value;
+
+    const itemClassNames = classNames({
+      [option.className]: true,
+      [option.activeClassName]: isSelected,
+      [styles.itemActive]: isSelected,
+    });
+
+    const iconClassNames = classNames({
+      [styles.listIcon]: true,
+      [option.iconClassName]: isSelected,
+    });
+
+    return (
+      <ListItem
+        style={option.style}
+        icon={isSelected ? icon : null}
+        onClick={this.handleCustomChange}
+        iconClassName={iconClassNames}
+        className={itemClassNames}
+        contentClassName={option.contentClassName}
+        wrapperClassName={itemWrapperClassName}
+        value={option.value}
+        iconSize={iconSize}
+        key={option.value}
+      >
+        {renderOption(option)}
+      </ListItem>
+    );
+  };
+
+  getSearchedOptions(options) {
+    const { search } = this.state;
+
+    if (search && search.trim() !== '') {
+      const lowerCaseSearch = search.toLowerCase();
+
+      return options.filter(({ name }) => name.toLowerCase().includes(lowerCaseSearch));
+    }
+
+    return options;
   }
 
   getContent() {
@@ -205,6 +257,16 @@ export class Select extends React.Component {
 
     return selected ? renderValue(selected) : renderValue({ name: value || placeholder });
   }
+
+  mapOptionProps = option => ({
+    ...option.props,
+    value: option.props.value,
+    name: option.props.children,
+    activeClassName: option.props.activeClassName || '',
+    className: option.props.className || '',
+    style: option.props.style || {},
+    iconClassName: option.props.iconClassName || '',
+  });
 
   handleNativeChange = ({ currentTarget: { value } }) => {
     const { disabled } = this.props;
@@ -348,6 +410,7 @@ export class Select extends React.Component {
       className,
       children,
       nothingFoundText,
+      renderGroupOption,
       renderOption,
       renderValue,
       hasError,
@@ -465,6 +528,8 @@ Select.propTypes = {
   className: PropTypes.string,
   /** String, text that will be shown if there is no option */
   nothingFoundText: PropTypes.string,
+  /** Function, template to render group option */
+  renderGroupOption: PropTypes.func,
   /** Function, template to render option */
   renderOption: PropTypes.func,
   /** Function, template to render selected value */
@@ -500,6 +565,7 @@ Select.defaultProps = {
   name: '',
   className: '',
   nothingFoundText: 'Nothing found',
+  renderGroupOption: option => option.props.label,
   renderOption: option => option.name,
   renderValue: selected => selected.name,
   icon: 'thick',
