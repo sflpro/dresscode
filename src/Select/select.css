@@ -151,7 +151,7 @@ html {
   cursor: default;
 
   &:hover {
-    border-color: var(--neutral-75);
+    border-color: var(--select-border-disabled-color);
   }
 }
 
