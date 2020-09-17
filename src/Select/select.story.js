@@ -5,6 +5,7 @@ import { text, boolean, withKnobs, select } from '@storybook/addon-knobs';
 
 import { Select } from '.';
 
+import { OptGroup } from '../OptGroup';
 import { Option } from '../Option';
 import { Button } from '../Button';
 import { Label } from '../Label';
@@ -128,24 +129,28 @@ storiesOf('Form controls/Select', module)
                     placeholder='Type Option'
                     multiple
                   >
-                    <Option value='option1'>
-                      Lorem Ipsum is simply dummy text of the printing and typesetting
-                    </Option>
-                    <Option value='option2'>
-                      Option 2
-                    </Option>
-                    <Option value='option3'>
-                      Option 3
-                    </Option>
-                    <Option value='option4'>
-                      Option 4
-                    </Option>
-                    <Option value='option5'>
-                      Option 5
-                    </Option>
-                    <Option value='option6'>
-                      Option 6
-                    </Option>
+                    <OptGroup label='Group1'>
+                      <Option value='option1'>
+                        Lorem Ipsum is simply dummy text of the printing and typesetting
+                      </Option>
+                      <Option value='option2'>
+                        Option 2
+                      </Option>
+                    </OptGroup>
+                    <OptGroup label='Group2'>
+                      <Option value='option3'>
+                        Option 3
+                      </Option>
+                      <Option value='option4'>
+                        Option 4
+                      </Option>
+                      <Option value='option5'>
+                        Option 5
+                      </Option>
+                      <Option value='option6'>
+                        Option 6
+                      </Option>
+                    </OptGroup>
                   </Select>
                 </Label>
                 <Button
@@ -167,15 +172,19 @@ storiesOf('Form controls/Select', module)
                       onChange={handleSelectChange3}
                       value={state.value1}
                     >
-                      <Option value='option1'>
-                        Lorem Ipsum is simply dummy text of the printing and typesetting
-                      </Option>
-                      <Option value='option2'>
-                        Option 2
-                      </Option>
-                      <Option value='option3'>
-                        Option 3
-                      </Option>
+                      <OptGroup label='Group1'>
+                        <Option value='option1'>
+                          Lorem Ipsum is simply dummy text of the printing and typesetting
+                        </Option>
+                      </OptGroup>
+                      <OptGroup label='Group2'>
+                        <Option value='option2'>
+                          Option 2
+                        </Option>
+                        <Option value='option3'>
+                          Option 3
+                        </Option>
+                      </OptGroup>
                     </Select>
                   </Label>
                 </div>
