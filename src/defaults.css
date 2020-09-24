@@ -58,6 +58,11 @@
   --input-margin-top: 8px;
   --input-label-distance: 16px;
 
+  --checkbox-disabled-background-color: var(--text-disabled-color);
+  --checkbox-disabled-border-color: var(--text-disabled-color);
+  --checkbox-label-color: var(--text-primary-color);
+  --checkbox-border-size: 2px;
+  --checkbox-disabled-label-color: var(--text-disabled-color);
   --checkbox-background-color: var(--neutral-white);
   --checkbox-border-color: var(--text-disabled-color);
   --checkbox-border-color-hover: var(--primary-color-light);
