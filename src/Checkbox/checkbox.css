@@ -6,7 +6,7 @@
   width: var(--checkbox-width);
   height: var(--checkbox-height);
   border-radius: var(--checkbox-border-radius);
-  border: solid 2px var(--checkbox-border-color);
+  border: solid var(--checkbox-border-size) var(--checkbox-border-color);
   background-color: var(--checkbox-background-color);
   padding: var(--checkbox-padding);
   margin: var(--checkbox-icon-margin);
@@ -36,11 +36,11 @@
 
 .disabled,
 .disabled:hover {
-  border-color: var(--text-disabled-color);
+  border-color: var(--checkbox-disabled-border-color);
 }
 
 .checked.disabled {
-  background-color: var(--text-disabled-color);
+  background-color: var(--checkbox-disabled-background-color);
 }
 
 .disabled > .icon {
@@ -48,9 +48,9 @@
 }
 
 .label {
-  color: var(--text-primary-color);
+  color: var(--checkbox-label-color);
 }
 
 .disabledLabel {
-  color: var(--text-disabled-color);
+  color: var(--checkbox-disabled-label-color);
 }
