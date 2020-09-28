@@ -5,13 +5,13 @@ import { Formik } from 'formik';
 export const FormContext = React.createContext();
 
 export function Form({
+  initialErrors: propInitialErrors,
   enableReinitialize,
   validateOnChange,
   validationSchema,
   validateOnMount,
   initialTouched,
   initialValues,
-  initialErrors,
   initialStatus,
   validateOnBlur,
   preventAction,
@@ -23,6 +23,20 @@ export function Form({
   onReset,
   ...props
 }) {
+  let initialErrors = propInitialErrors;
+
+  if ((!preventAction && validationSchema) && (!initialErrors || Object.keys(initialErrors || {}).length === 0)) {
+    try {
+      validationSchema.validateSync(initialValues);
+    } catch (e) {
+      initialErrors = e.inner.reduce((err, current) => {
+        err[current.path] = current.errors[0];
+
+        return err;
+      }, {});
+    }
+  }
+
   return (
     <Formik
       enableReinitialize={enableReinitialize}
