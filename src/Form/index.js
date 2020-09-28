@@ -30,7 +30,7 @@ export function Form({
       validationSchema.validateSync(initialValues);
     } catch (e) {
       initialErrors = e.inner.reduce((err, current) => {
-        err[current.path] = current.errors[0];
+        [err[current.path]] = current.errors;
 
         return err;
       }, {});
