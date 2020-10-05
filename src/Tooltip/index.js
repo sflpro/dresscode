@@ -154,6 +154,7 @@ Tooltip.defaultProps = {
   gap: 0,
   className: '',
   popoverClassName: '',
+  targetClassName: '',
   popoverOpen: undefined,
   style: undefined,
   children: null,
