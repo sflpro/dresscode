@@ -50,6 +50,7 @@ storiesOf('Icons', module)
       'plus',
       'minus',
       'download',
+      'time',
     ];
 
     return (

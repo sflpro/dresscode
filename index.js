@@ -5,6 +5,7 @@ export { Checkbox } from './lib/Checkbox';
 export { Control } from './lib/Control';
 export { ControlsGroup } from './lib/ControlsGroup';
 export { DateInput } from './lib/DateInput';
+export { TimeInput } from './lib/TimeInput';
 export { DatePicker } from './lib/DatePicker';
 export { DatePickerCaption } from './lib/DatePickerCaption';
 export { DatePickerNavbar } from './lib/DatePickerNavbar';
