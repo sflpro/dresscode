@@ -201,7 +201,7 @@ export class TimeInput extends React.Component {
             name={`native-${props.name || ''}`}
             onChange={this.handleNativeTimeInputChange}
             className={timeInputClasses}
-            value={(!hasError && timeValue && timeValue) || ''}
+            value={(!hasError && timeValue) || ''}
             type='time'
             hasError={hasError}
             disabled={disabled}
