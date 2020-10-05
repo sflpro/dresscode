@@ -7,9 +7,7 @@ import { TextInput } from '../TextInput';
 import { Popover } from '../Popover';
 import { Icon } from '../Icon';
 
-import {
-  isValidTime,
-} from '../TimePicker/helpers';
+import { isValidTime } from '../TimePicker/helpers';
 import { isMobile } from '../utils';
 
 import styles from './timeInput.css';
@@ -18,9 +16,7 @@ export class TimeInput extends React.Component {
   constructor(props) {
     super(props);
 
-    const {
-      value,
-    } = this.props;
+    const { value } = this.props;
 
     if (value && !isValidTime(value)) {
       console.error('Invalid time');
@@ -38,7 +34,10 @@ export class TimeInput extends React.Component {
   };
 
   handleTimePickerChange = (value) => {
-    const { onChange, name } = this.props;
+    const {
+      onChange,
+      name,
+    } = this.props;
 
     const eventObj = {
       target: {
@@ -60,19 +59,34 @@ export class TimeInput extends React.Component {
   };
 
   handleTimeInputBlur = (event) => {
-    const { value, hasError, name, onChange, onBlur } = this.props;
+    const {
+      value,
+      hasError,
+      name,
+      onChange,
+      onBlur,
+    } = this.props;
+
     if (!hasError && value) {
+      let newValue = '';
+
+      if (!isValidTime(value)) {
+        newValue = '00:00';
+      } else {
+        const [hour, minute] = value.split(':').map(item => item.trim());
+
+        const newHour = hour && hour.length === 1 ? `0${hour}` : hour;
+        const newMinute = minute && minute.length === 1 ? `0${minute}` : minute;
+
+        newValue = `${newHour}:${newMinute}`;
+      }
+
       const eventObj = {
         target: {
           name,
-          value,
+          value: newValue,
         },
       };
-
-      if (!isValidTime(value)) {
-        eventObj.target.value = '00:00';
-      }
-
       onChange(eventObj);
     }
 
@@ -82,8 +96,11 @@ export class TimeInput extends React.Component {
   };
 
   handleNativeTimeInputChange = (event) => {
-    const { onChange, name } = this.props;
     const { value } = event.target;
+    const {
+      onChange,
+      name,
+    } = this.props;
 
     const eventObj = {
       target: {
@@ -120,9 +137,7 @@ export class TimeInput extends React.Component {
       ...props
     } = this.props;
 
-    const {
-      open,
-    } = this.state;
+    const { open } = this.state;
 
     const timeInputClasses = classNames({
       [styles.timeInput]: true,

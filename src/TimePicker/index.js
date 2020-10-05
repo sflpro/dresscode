@@ -8,17 +8,23 @@ import styles from './timePicker.css';
 
 export class TimePicker extends React.Component {
   handleHourClick = (hour) => {
-    const { value, onChange } = this.props;
+    const {
+      value,
+      onChange,
+    } = this.props;
 
-    const [, minute] = value.split(':');
-    onChange(`${hour}:${minute}`);
+    const [, minute = ''] = value.split(':');
+    onChange(`${hour}:${minute.trim()}`);
   };
 
   handleMinuteClick = (minute) => {
-    const { value, onChange } = this.props;
+    const {
+      value,
+      onChange,
+    } = this.props;
 
-    const [hour] = value.split(':');
-    onChange(`${hour}:${minute}`);
+    const [hour = ''] = value.split(':');
+    onChange(`${hour.trim()}:${minute}`);
   };
 
   render() {
@@ -31,7 +37,7 @@ export class TimePicker extends React.Component {
       minuteItemClassName,
     } = this.props;
 
-    const [currentHour, currentMinute] = value.split(':');
+    const [currentHour, currentMinute] = value.split(':').map(item => item.trim());
 
     const timePickerClasses = classNames({
       [styles.timePicker]: true,
