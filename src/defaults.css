@@ -299,6 +299,18 @@
   --button-neutral-text-color: var(--text-primary-color);
   --button-neutral-text-color-hover: var(--text-secondary-color);
 
+  --time-picker-background-color: var(--neutral-white);
+  --time-picker-border-color: var(--default-color);
+  --time-picker-selected-background-color: var(--primary-color);
+  --time-picker-selected-color: var(--neutral-white);
+  --time-picker-list-item-color: var(--text-default-color);
+  --time-picker-max-height: 200px;
+  --time-picker-padding: 0;
+  --time-picker-border-radius: 5px;
+  --time-picker-width: 100px;
+  --time-picker-list-item-height: 50px;
+  --time-picker-list-item-padding: 6px;
+
   --date-picker-background-color: var(--neutral-white);
   --date-picker-border-color: var(--default-color);
   --date-picker-weekday-color: var(--neutral-500);

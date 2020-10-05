@@ -1,0 +1,46 @@
+.timePicker {
+  border: 1px solid var(--time-picker-border-color);
+  border-radius: var(--time-picker-border-radius);
+  box-shadow: var(--box-shadow-100);
+  background-color: var(--time-picker-background-color);
+  width: var(--time-picker-width);
+  padding: var(--time-picker-padding);
+  max-height: var(--time-picker-max-height);
+  font-family: inherit;
+  display: flex;
+}
+
+.hourBlock, .minuteBlock {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-y: auto;
+}
+
+.hourBlock {
+  border-right: 1px solid var(--time-picker-border-color);
+}
+
+.listItem {
+  @mixin font-scale-5;
+  border-bottom: 1px solid var(--time-picker-border-color);
+  height: var(--time-picker-list-item-height);
+  padding: var(--time-picker-list-item-padding);
+  color: var(--time-picker-list-item-color);
+  background-color: transparent;
+  width: 100%;
+  text-align: center;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+.listItem:hover {
+  border: 1px solid var(--primary-color-light);
+}
+
+.activeItem {
+  background-color: var(--time-picker-selected-background-color);
+  border: 1px solid var(--primary-color);
+  color: var(--time-picker-selected-color);
+}
