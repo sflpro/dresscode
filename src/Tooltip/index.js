@@ -62,6 +62,7 @@ export function Tooltip({
   popoverOpen,
   closeOnScroll,
   arrowClassName,
+  targetClassName,
   closeAfter,
   ...props
 }) {
@@ -92,6 +93,7 @@ export function Tooltip({
         />
       )}
       gap={gap === 0 && follow ? 10 : gap}
+      targetClassName={targetClassName}
       arrowClassName={arrowClassName}
       closeOnScroll={closeOnScroll}
       className={popoverClassName}
@@ -137,6 +139,8 @@ Tooltip.propTypes = {
   closeOnScroll: PropTypes.bool,
   /** string, className that will be passed to arrow */
   arrowClassName: PropTypes.string,
+  /** string, className that will be passed to target */
+  targetClassName: PropTypes.string,
   /** number, seconds, after when tooltip will be closed */
   closeAfter: PropTypes.number,
 };
@@ -150,6 +154,7 @@ Tooltip.defaultProps = {
   gap: 0,
   className: '',
   popoverClassName: '',
+  targetClassName: '',
   popoverOpen: undefined,
   style: undefined,
   children: null,
