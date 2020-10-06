@@ -27,7 +27,7 @@ export function Form({
 
   if ((!preventAction && validationSchema) && (!initialErrors || Object.keys(initialErrors || {}).length === 0)) {
     try {
-      validationSchema.validateSync(initialValues);
+      validationSchema.validateSync(initialValues, { abortEarly: false });
     } catch (e) {
       initialErrors = e.inner.reduce((err, current) => {
         [err[current.path]] = current.errors;
