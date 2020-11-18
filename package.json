@@ -62,7 +62,7 @@
     "postcss-mixins": "^6.2.1",
     "postcss-preset-env": "^6.5.0",
     "prop-types": "15.7.2",
-    "semantic-release": "^15.13.18",
+    "semantic-release": "^17.2.3",
     "storybook-addon-smart-knobs": "^4.1.2",
     "style-loader": "^0.23.1"
   },
