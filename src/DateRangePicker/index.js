@@ -213,6 +213,7 @@ export class DateRangePicker extends React.Component {
       localeUtils,
       showOutsideDays,
       className,
+      pickerClassName,
       style,
       onChange,
       ...props
@@ -235,7 +236,7 @@ export class DateRangePicker extends React.Component {
     const datePickerClasses = classNames({
       [styles.rangeDatePicker]: true,
       [styles.disabled]: view !== VIEW_TYPES.DAY,
-      [className]: true,
+      [className]: !!className,
     });
 
     const dayPickerDefaultClasses = DayPicker.defaultProps.classNames;
@@ -258,6 +259,7 @@ export class DateRangePicker extends React.Component {
     const pickerClasses = classNames({
       [styles.picker]: true,
       [styles[`${this.selectedPicker}`]]: true,
+      [pickerClassName]: !!pickerClassName,
     });
 
     const years = {
@@ -375,6 +377,8 @@ DateRangePicker.propTypes = {
   onChange: PropTypes.func,
   /** String, className that will be added to wrapper div element */
   className: PropTypes.string,
+  /** String, pickerClassName that will be added to picker  element */
+  pickerClassName: PropTypes.string,
   /** Object, styles that will be added to date picker */
   style: PropTypes.object,
 };
@@ -389,5 +393,6 @@ DateRangePicker.defaultProps = {
   showOutsideDays: false,
   onChange: null,
   className: '',
+  pickerClassName: '',
   style: undefined,
 };
