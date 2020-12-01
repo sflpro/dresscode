@@ -113,7 +113,7 @@ abbr {
 }
 
 .picker {
-  position: absolute;
+  position: absolute !important;
   top: 16px;
 }
 
