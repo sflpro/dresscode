@@ -98,7 +98,8 @@ export class Column extends React.Component {
       renderTooltip && didOverflow ? (
         <Tooltip
           description={children}
-          popoverClassName={styles.ellipsisColumn}
+          popoverClassName={styles.columnPopoverContainer}
+          targetClassName={styles.ellipsisColumn}
           trigger='hover'
         >
           {children}

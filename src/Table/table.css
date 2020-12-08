@@ -207,9 +207,12 @@
   min-width: 100px;
 }
 
-.ellipsisColumn,
-.ellipsisColumn > div {
+.ellipsisColumn {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.invisibleColumn > .columnPopoverContainer .ellipsisColumn {
+  white-space: normal;
 }
