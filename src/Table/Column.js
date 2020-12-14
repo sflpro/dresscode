@@ -280,7 +280,9 @@ export class Column extends React.Component {
     if (hasDefaultWidth) {
       tableColumnStyle.width = width - 2 * columnGutter;
     } else {
-      tableColumnStyle.flex = 1;
+      tableColumnStyle.flexGrow = 1;
+      tableColumnStyle.flexShrink = 1;
+      tableColumnStyle.flexBasis = '0%';
     }
 
     if (minWidth) {
@@ -291,9 +293,9 @@ export class Column extends React.Component {
       if (head) {
         tableColumnStyle.display = 'none';
       } else {
-        tableColumnStyle.flexBasis = `calc(100% - ${2 * columnGutter}px)`;
         tableColumnStyle.flexGrow = 0;
         tableColumnStyle.flexShrink = 0;
+        tableColumnStyle.flexBasis = `calc(100% - ${2 * columnGutter}px)`;
       }
     }
 
