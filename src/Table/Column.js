@@ -291,7 +291,9 @@ export class Column extends React.Component {
       if (head) {
         tableColumnStyle.display = 'none';
       } else {
-        tableColumnStyle.flex = `0 0 calc(100% - ${2 * columnGutter}px)`;
+        tableColumnStyle.flexBasis = `calc(100% - ${2 * columnGutter}px)`;
+        tableColumnStyle.flexGrow = 0;
+        tableColumnStyle.flexShrink = 0;
       }
     }
 
