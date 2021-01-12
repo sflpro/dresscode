@@ -422,6 +422,7 @@ storiesOf('Form controls/Input', module)
                     Autocomplete with label
                     <Autocomplete
                       onChange={handleAutocompleteInputChange}
+                      selectedOptionValue={state.autocomplete1}
                       onBlur={handleInputBlur}
                       value={state.autocomplete1}
                       hasError={state.autocomplete1Error}
@@ -438,6 +439,7 @@ storiesOf('Form controls/Input', module)
                 <Item>
                   <Item>
                     <Autocomplete
+                      selectedOptionValue={state.autocomplete2}
                       getOptions={getOptionsFromGithub}
                       onChange={handleInputChange}
                       value={state.autocomplete2}

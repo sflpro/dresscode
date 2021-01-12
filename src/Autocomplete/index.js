@@ -17,6 +17,7 @@ export function Autocomplete({
   minCharsToSuggest,
   nothingFoundText,
   showLoadingAfter,
+  selectedOptionValue,
   onBlur,
   onFocus,
   hasError,
@@ -134,7 +135,7 @@ export function Autocomplete({
   }
 
   function handleFocus(event) {
-    handleOptionChange(value, () => {
+    handleOptionChange(renderValue(value), () => {
       toggleFocus(true);
     });
 
@@ -197,6 +198,7 @@ export function Autocomplete({
           {options.length > 0 ? options.map(option => (
             <ListItem
               onClick={event => onListClick(option, event)}
+              active={selectedOptionValue === option.value}
               className={styles.listItem}
               value={option.value}
               key={option.value}
@@ -254,6 +256,8 @@ Autocomplete.propTypes = {
   renderOption: PropTypes.func,
   /** Function, template to render selected value */
   renderValue: PropTypes.func,
+  /** String, value of selected option */
+  selectedOptionValue: PropTypes.string,
 };
 
 Autocomplete.defaultProps = {
@@ -269,6 +273,7 @@ Autocomplete.defaultProps = {
   showLoadingAfter: 100,
   value: '',
   haveArrowIcon: false,
+  selectedOptionValue: '',
   renderOption: option => option.label,
   renderValue: value => value,
 };
