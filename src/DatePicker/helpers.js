@@ -7,7 +7,7 @@ export const getYearsRange = (
   const currentYear = new Date().getFullYear();
   let diff;
   if (selectedYear > currentYear) {
-    diff = currentYear - yearsCount - selectedYear;
+    diff = currentYear - selectedYear - yearsCount + 1;
   } else {
     diff = currentYear - selectedYear;
   }
