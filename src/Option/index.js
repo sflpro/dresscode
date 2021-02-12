@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 export function Option({
   data,
   contentClassName,
+  iconClassName,
   ...props
 }) {
   return (
@@ -23,6 +24,8 @@ Option.propTypes = {
   className: PropTypes.string,
   /** String, className that will be added to option content */
   contentClassName: PropTypes.string,
+  /** String, className that will be added to option icon in select */
+  iconClassName: PropTypes.string,
   /** Object, style that will be added to option */
   style: PropTypes.object,
   /** Object, data that will be passed to option */
@@ -36,4 +39,5 @@ Option.defaultProps = {
   style: undefined,
   data: undefined,
   contentClassName: '',
+  iconClassName: '',
 };
