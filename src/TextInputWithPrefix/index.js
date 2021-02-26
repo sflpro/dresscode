@@ -47,5 +47,5 @@ TextInputWithPrefix.propTypes = {
   prefix: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
-  value: PropTypes.isRequired,
+  value: PropTypes.string.isRequired,
 };
