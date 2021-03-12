@@ -68,6 +68,20 @@ export class InputSlider extends React.Component {
     }
   };
 
+  getStepValue = (value) => {
+    const { min, max, step } = this.props;
+
+    if (value && step) {
+      const newVal = +(Math.round(value / step)) * step;
+
+      if (!Number.isNaN(newVal) && newVal >= min && newVal <= max) {
+        return newVal;
+      }
+    }
+
+    return value;
+  };
+
   onBlur = (event) => {
     const { min, max, distance, inputProps: { onBlur, formatter = null }, separator, children } = this.props;
     const { minControl, maxControl, value } = this.state;
@@ -142,6 +156,9 @@ export class InputSlider extends React.Component {
       nextState.maxControl.value = max;
     }
 
+    nextState.minControl.value = this.getStepValue(nextState.minControl.value);
+    nextState.maxControl.value = this.getStepValue(nextState.maxControl.value);
+
     if (nextState.minControl.value < min) {
       nextState.minControl.value = min;
     }
@@ -150,22 +167,20 @@ export class InputSlider extends React.Component {
       nextState.minControl.value = max;
     }
 
-    if (nextState.maxControl) {
-      if (nextState.maxControl.value < min) {
-        nextState.maxControl.value = min;
-      }
+    if (nextState.maxControl.value < min) {
+      nextState.maxControl.value = min;
+    }
 
-      if (nextState.maxControl.value > max) {
-        nextState.maxControl.value = max;
-      }
+    if (nextState.maxControl.value > max) {
+      nextState.maxControl.value = max;
+    }
 
-      if (nextState.maxControl.value <= nextState.minControl.value) {
-        nextState.maxControl.value = nextState.minControl.value + distance;
-      }
+    if (nextState.maxControl.value <= nextState.minControl.value) {
+      nextState.maxControl.value = nextState.minControl.value + distance;
+    }
 
-      if (nextState.minControl.value >= nextState.maxControl.value) {
-        nextState.minControl.value = nextState.maxControl.value - distance;
-      }
+    if (nextState.minControl.value >= nextState.maxControl.value) {
+      nextState.minControl.value = nextState.maxControl.value - distance;
     }
 
     nextState.value = (nextState.maxControl && nextState.maxControl.value
