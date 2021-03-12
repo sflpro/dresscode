@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import styles from './toggleButton.css';
 
 export function ToggleButton({
+  hasError,
   disabled,
   checked,
   className,
@@ -52,6 +53,8 @@ ToggleButton.propTypes = {
   disabled: PropTypes.bool,
   /** Boolean, whether toggle is on */
   checked: PropTypes.bool,
+  /** Boolean, whether value of checkbox has error */
+  hasError: PropTypes.bool,
   /** String, className that will be added to wrapper div */
   className: PropTypes.string,
   /** Object, style that will be added to wrapper div */
@@ -63,6 +66,7 @@ ToggleButton.defaultProps = {
   name: '',
   disabled: false,
   checked: false,
+  hasError: false,
   className: '',
   style: undefined,
 };

@@ -29,6 +29,7 @@ export class Control extends React.Component {
     const { getStepFromValue } = this.context;
     const { left, currentStep } = this.state;
     const { value } = this.props;
+    const { value: oldValue } = prevProps;
 
     const nextStep = getStepFromValue({ value });
     const nextLeft = this.getLeftPosition();
@@ -36,6 +37,8 @@ export class Control extends React.Component {
     if (nextStep !== currentStep) {
       // eslint-disable-next-line react/no-did-update-set-state
       this.setState({ currentStep: nextStep, left: this.getLeftPosition(nextStep) });
+    } else if (oldValue !== value && left === prevState.left) {
+      this.emitChange();
     }
 
     if (nextLeft !== left) {
