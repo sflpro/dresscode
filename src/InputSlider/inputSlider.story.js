@@ -18,7 +18,7 @@ import { InfoStoryConfig } from '../configs';
 storiesOf('Form controls/Input Slider', module)
   .add('Examples', () => {
     const store = new Store({
-      test1: 75,
+      test1: 7500,
       test2: 36,
       test3: 55,
       min1: 25,
@@ -44,8 +44,9 @@ storiesOf('Form controls/Input Slider', module)
               <Item style={{ width: '40%' }}>
                 <InputSlider
                   onChange={handler}
-                  min={5}
-                  step={5}
+                  min={500}
+                  step={100}
+                  max={10000}
                   hasError
                 >
                   <Control name='test1' value={state.test1} icon={<Icon name='tracker' />} />
