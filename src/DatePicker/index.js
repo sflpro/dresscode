@@ -141,7 +141,7 @@ export class DatePicker extends React.Component {
     });
 
     const dayPickerDefaultClasses = DayPicker.defaultProps.classNames;
-    const dayPickerClassesNames = {
+    const dayPickerClassNames = {
       ...dayPickerDefaultClasses,
       container: `${dayPickerDefaultClasses.container} ${styles.dayPicker}`,
       wrapper: `${dayPickerDefaultClasses.wrapper} ${styles.dayPickerWrapper}`,
@@ -172,7 +172,7 @@ export class DatePicker extends React.Component {
       >
         {view === VIEW_TYPES.DAY && (
           <DayPicker
-            classNames={dayPickerClassesNames}
+            classNames={dayPickerClassNames}
             captionElement={({ date }) => (
               <DatePickerCaption
                 onClick={() => this.handleDayCaptionClick(date, VIEW_TYPES.YEAR)}
