@@ -104,3 +104,21 @@ abbr {
 .dayPickerDay:focus {
   outline: none;
 }
+
+.dayPickerToday {
+
+}
+
+.dayPickerTodayButton {
+  color: var(--date-picker-today-button-color);
+  font-size: var(--date-picker-today-button-font-size);
+  border: none;
+  background-color: transparent;
+  background-image: none;
+  box-shadow: none;
+  cursor: pointer;
+}
+
+.dayPickerFooter {
+  text-align: center;
+}

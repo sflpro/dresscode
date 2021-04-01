@@ -140,6 +140,7 @@ export class DateInput extends React.Component {
       iconClassName,
       closeOnScroll,
       initialMonth,
+      pickerProps,
       ...props
     } = this.props;
 
@@ -172,6 +173,7 @@ export class DateInput extends React.Component {
               monthsShort={monthsShort}
               view={view}
               disabledDays={disabledDays}
+              {...pickerProps}
             />
           )}
           onTargetEvent={this.handleTargetEvent}
@@ -283,6 +285,11 @@ DateInput.propTypes = {
   onBlur: PropTypes.func,
   /** Function, called when input is focused */
   onFocus: PropTypes.func,
+  /** Object, whether date picker props */
+  pickerProps: PropTypes.shape({
+    todayButton: PropTypes.string,
+    onTodayButtonClick: PropTypes.func,
+  }),
 };
 
 DateInput.defaultProps = {
@@ -304,4 +311,5 @@ DateInput.defaultProps = {
   initialMonth: undefined,
   onBlur: undefined,
   onFocus: undefined,
+  pickerProps: {},
 };

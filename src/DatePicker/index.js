@@ -122,6 +122,7 @@ export class DatePicker extends React.Component {
       className,
       style,
       onChange,
+      dayPickerClasses,
       ...props
     } = this.props;
     const { view, year } = this.state;
@@ -140,7 +141,7 @@ export class DatePicker extends React.Component {
     });
 
     const dayPickerDefaultClasses = DayPicker.defaultProps.classNames;
-    const dayPickerClasses = {
+    const dayPickerClassNames = {
       ...dayPickerDefaultClasses,
       container: `${dayPickerDefaultClasses.container} ${styles.dayPicker}`,
       wrapper: `${dayPickerDefaultClasses.wrapper} ${styles.dayPickerWrapper}`,
@@ -154,7 +155,10 @@ export class DatePicker extends React.Component {
       disabled: `${dayPickerDefaultClasses.day} ${styles.disabled}`,
       outside: `${styles.dayPickerDayOutside}`,
       today: `${styles.dayPickerToday}`,
+      todayButton: `${styles.dayPickerTodayButton}`,
       selected: `${styles.dayPickerSelectedDay}`,
+      footer: `${styles.dayPickerFooter}`,
+      ...dayPickerClasses,
     };
 
     const years = getYearsRange(year);
@@ -168,7 +172,7 @@ export class DatePicker extends React.Component {
       >
         {view === VIEW_TYPES.DAY && (
           <DayPicker
-            classNames={dayPickerClasses}
+            classNames={dayPickerClassNames}
             captionElement={({ date }) => (
               <DatePickerCaption
                 onClick={() => this.handleDayCaptionClick(date, VIEW_TYPES.YEAR)}
@@ -183,6 +187,7 @@ export class DatePicker extends React.Component {
               />
             )}
             onDayClick={this.handleDayClick}
+            onTodayButtonClick={this.handleDayClick}
             onDayMouseEnter={this.handleDayMouseEnter}
             selectedDays={currentDay}
             month={currentDay}
@@ -269,6 +274,8 @@ DatePicker.propTypes = {
   onChange: PropTypes.func,
   /** String, className that will be added to wrapper div element */
   className: PropTypes.string,
+  /** Object, classNames that will be added to dayPicker element */
+  dayPickerClasses: PropTypes.object,
   /** Object, styles that will be added to date picker */
   style: PropTypes.object,
   /** String, view type of date picker */
@@ -283,6 +290,7 @@ DatePicker.defaultProps = {
   showOutsideDays: true,
   onChange: null,
   className: '',
+  dayPickerClasses: {},
   style: undefined,
   view: 'day',
   disabledDays: undefined,
