@@ -339,6 +339,8 @@
   --date-picker-day-margin: 1px;
   --date-picker-day-padding: 12px 0;
   --date-picker-caption-color: var(--primary-color);
+  --date-picker-today-button-color: var(--primary-color);
+  --date-picker-today-button-font-size: var(--font-size);
   --date-picker-caption-wrapper-padding: 8px 16px;
   --date-picker-caption-wrapper-border-radius: 4px;
   --date-picker-navbar-icon-padding: 8px;

@@ -39,6 +39,9 @@ storiesOf('DateInput', module)
               onChange={handler}
               value={state.value}
               view={view}
+              pickerProps={{
+                todayButton: 'Today',
+              }}
             />
           );
         }}
