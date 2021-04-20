@@ -1,11 +1,11 @@
-
 .navbar {
   display: flex;
   justify-content: space-between;
+  position: relative;
 }
 
 .navbarIcon {
-  color: var(--primary-color);
+  color: var(--date-picker-navbar-icon-color);
   text-align: center;
   position: absolute;
   padding: var(--date-picker-navbar-icon-padding);

@@ -6,6 +6,7 @@
   width: var(--date-picker-width);
   padding: var(--date-picker-padding);
   font-family: inherit;
+  box-sizing: border-box;
 }
 
 .dayPicker {
@@ -33,8 +34,8 @@
 }
 
 .dayPickerWeekdays {
-  border-bottom: 1px solid var(--date-picker-border-color);
-  border-top: 1px solid var(--date-picker-border-color);
+  border-bottom: var(--date-picker-border);
+  border-top: var(--date-picker-border);
   margin: var(--date-picker-weekdays-margin);
 }
 
@@ -54,8 +55,11 @@
   color: var(--date-picker-weekday-color);
   padding: var(--date-picker-weekday-padding);
   width: var(--date-picker-weekday-width);
+  height: var(--date-picker-weekday-height);
   margin: var(--date-picker-weekday-margin);
-  display: inline-block;
+  display: var(--date-picker-weekday-display);
+  justify-content: center;
+  align-items: center;
   text-align: center;
 }
 
@@ -68,11 +72,16 @@ abbr {
   color: var(--date-picker-day-color);
   text-align: center;
   width: var(--date-picker-day-width);
+  height: var(--date-picker-day-height);
   border: 1px solid transparent;
   border-radius: var(--date-picker-day-border-radius);
   margin: var(--date-picker-day-margin);
   box-sizing: border-box;
   padding: var(--date-picker-day-padding);
+  display: var(--date-picker-day-display);
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
 }
 
 .dayPickerDayOutside {
@@ -85,8 +94,8 @@ abbr {
 }
 
 .dayPickerDay:not(.DayPicker-Day--disabled):hover {
-  background-color: transparent !important;
-  border: 1px solid var(--primary-color-light);
+  background-color: var(--date-picker-hover-background-color) !important;
+  border: var(--date-picker-hover-border);
 }
 
 .dayPickerDay.dayPickerSelectedDay:hover {
@@ -106,7 +115,8 @@ abbr {
 }
 
 .dayPickerToday {
-
+  background-color: var(--date-picker-today-background-color);
+  border: var(--date-picker-today-border);
 }
 
 .dayPickerTodayButton {

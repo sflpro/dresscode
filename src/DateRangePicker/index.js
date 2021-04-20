@@ -229,8 +229,8 @@ export class DateRangePicker extends React.Component {
     }
 
     const modifiers = {
-      [styles.start]: from,
-      [styles.end]: enteredTo,
+      [styles.dayPickerDayStart]: from,
+      [styles.dayPickerDayEnd]: enteredTo,
     };
 
     const datePickerClasses = classNames({
