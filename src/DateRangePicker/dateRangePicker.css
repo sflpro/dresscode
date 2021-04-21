@@ -6,6 +6,7 @@
   padding-top: 16px;
   position: relative;
   font-family: inherit;
+  box-sizing: border-box;
 }
 
 .disabled {
@@ -39,12 +40,12 @@
   margin: 0;
   display: flex;
   flex-flow: column nowrap;
-  min-height: 426px;
+  min-height: var(--date-picker-month-min-height);
 }
 
 .dayPickerWeekdays {
-  border-bottom: 1px solid var(--date-picker-border-color);
-  border-top: 1px solid var(--date-picker-border-color);
+  border-bottom: var(--date-picker-border);
+  border-top: var(--date-picker-border);
   margin-top: 16px;
   margin-bottom: 7px;
 }
@@ -98,14 +99,30 @@ abbr {
 }
 
 .dayPickerDay:not(.DayPicker-Day--disabled):not(.dayPickerDayOutside):hover {
-  background-color: transparent !important;
-  border: 1px solid var(--primary-color-light);
+  background-color: var(--date-picker-hover-background-color) !important;
+  border: var(--date-picker-hover-border);
 }
 
 .dayPickerDay.dayPickerSelectedDay:not(.dayPickerDayOutside):hover {
   background-color: var(--date-picker-selected-background-color-hover) !important;
   color: var(--date-picker-selected-color);
   border: 1px solid transparent;
+}
+
+.dayPickerDayStart {}
+
+.dayPickerDayEnd {}
+
+.dayPickerDay.dayPickerSelectedDay:not(.dayPickerDayStart):not(.dayPickerDayEnd):not(.dayPickerDayOutside) {
+  background-color: var(--date-picker-included-background-color) !important;
+  border: var(--date-picker-included-border);
+  color: var(--date-picker-included-color);
+  border-radius: 0 !important;
+}
+
+.dayPickerToday {
+  background-color: var(--date-picker-today-background-color);
+  border: var(--date-picker-today-border);
 }
 
 .dayPickerDay:focus {

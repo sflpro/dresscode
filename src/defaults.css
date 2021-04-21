@@ -318,7 +318,9 @@
   --date-picker-day-color: var(--neutral-900);
   --date-picker-month-color: var(--primary-color);
   --date-picker-selected-color: var(--neutral-white);
+  --date-picker-included-color: var(--neutral-white);
   --date-picker-selected-background-color-hover: var(--primary-color-dark);
+  --date-picker-included-background-color: var(--primary-color-dark);
   --date-picker-disabled-color: var(--disabled-color);
   --date-picker-border-radius: 5px;
   --date-picker-width: 364px;
@@ -335,6 +337,7 @@
   --date-picker-weekday-width: 48px;
   --date-picker-weekday-margin: 0 1px;
   --date-picker-day-width: 48px;
+  --date-picker-day-height: auto;
   --date-picker-day-border-radius: 4px;
   --date-picker-day-margin: 1px;
   --date-picker-day-padding: 12px 0;
@@ -348,6 +351,16 @@
   --date-picker-navbar-icon-left: 16px;
   --date-picker-navbar-icon-right: 16px;
   --date-picker-range-separator-margin: 8px 8px 0;
+  --date-picker-day-display: block;
+  --date-picker-border: 1px solid var(--date-picker-border-color);
+  --date-picker-weekday-display: inline-block;
+  --date-picker-weekday-height: auto;
+  --date-picker-navbar-icon-color: var(--primary-color);
+  --date-picker-today-background-color: var(--neutral-white);
+  --date-picker-today-border: none;
+  --date-picker-hover-background-color: transparent;
+  --date-picker-hover-border: 1px solid var(--primary-color-light);
+  --date-picker-included-border: none;
 
   --slider-animation-duration: 0.1s;
   --slider-background-color: var(--default-color);
