@@ -474,17 +474,18 @@ export class Popover extends React.Component {
       closeOnScroll,
       arrowClassName,
       targetClassName,
+      fixed,
       ...props
     } = this.props;
 
     const popoverContentStyles = classNames({
       [styles.content]: true,
-      [styles.absoluteElement]: !this.closeOnScroll,
+      [styles.absoluteElement]: !(this.closeOnScroll || fixed),
     });
 
     const popoverArrowStyles = classNames({
       [styles.arrow]: true,
-      [styles.absoluteElement]: !this.closeOnScroll,
+      [styles.absoluteElement]: !(this.closeOnScroll || fixed),
       [arrowClassName]: !!arrowClassName,
     });
 
@@ -571,6 +572,8 @@ Popover.propTypes = {
   contentEqualToTarget: PropTypes.bool,
   /** boolean, whether to update content positions on target height/width change */
   watchTargetDimensions: PropTypes.bool,
+  /** Boolean, the Popover content should be fixed if true */
+  fixed: PropTypes.bool,
   /** boolean, whether to close popover on scroll */
   closeOnScroll: PropTypes.bool,
   /** string, className that will be passed to arrow */
@@ -592,6 +595,7 @@ Popover.defaultProps = {
   children: null,
   contentEqualToTarget: false,
   watchTargetDimensions: false,
+  fixed: false,
   closeOnScroll: true,
   arrowClassName: '',
   targetClassName: '',
