@@ -32,7 +32,7 @@ export const Pagination = ({
   let firstPageNumbers = [1];
   let lastPageNumbers = [lastPage];
 
-  if (lastPage < paginationControlsCount) {
+  if (lastPage <= paginationControlsCount) {
     firstPageNumbers = [];
     mainPageNumbers = createRange(1, lastPage);
     lastPageNumbers = [];
