@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 import { TextInput } from '../TextInput';
 import { ListItem } from '../ListItem';
+import { getDebounce } from '../utils';
 import { List } from '../List';
 import { Icon } from '../Icon';
 
@@ -26,6 +27,8 @@ export function Autocomplete({
   onChange,
   renderOption,
   renderValue,
+  debounce,
+  loader,
   ...props
 }) {
   const [loading, toggleLoading] = useState(false);
@@ -118,6 +121,8 @@ export function Autocomplete({
     }
   }
 
+  const handleOptionChangeByDebounce = useCallback(getDebounce(handleOptionChange, debounce), []);
+
   function handleChange({ currentTarget: { value: onChangeValue } }) {
     setValue(onChangeValue);
     onChange({
@@ -131,7 +136,7 @@ export function Autocomplete({
       },
     });
 
-    handleOptionChange(onChangeValue);
+    handleOptionChangeByDebounce(onChangeValue);
   }
 
   function handleFocus(event) {
@@ -190,25 +195,29 @@ export function Autocomplete({
           {errorHint}
         </div>
       )}
-      {(focused && value.length >= minCharsToSuggest && !loading) && (
+      {(focused && value.length >= minCharsToSuggest) && (
         <List
           className={styles.list}
           maxHeight={350}
         >
-          {options.length > 0 ? options.map(option => (
-            <ListItem
-              onClick={event => onListClick(option, event)}
-              active={selectedOptionValue === option.value}
-              className={styles.listItem}
-              value={option.value}
-              key={option.value}
-            >
-              {renderOption(option)}
-            </ListItem>
-          )) : (
-            <div className={styles.emptyState}>
-              {nothingFoundText}
-            </div>
+          {loading ? (
+            loader
+          ) : (
+            options.length > 0 ? options.map(option => (
+              <ListItem
+                onClick={event => onListClick(option, event)}
+                active={selectedOptionValue === option.value}
+                className={styles.listItem}
+                value={option.value}
+                key={option.value}
+              >
+                {renderOption(option)}
+              </ListItem>
+            )) : (
+              <div className={styles.emptyState}>
+                {nothingFoundText}
+              </div>
+            )
           )}
         </List>
       )}
@@ -232,6 +241,8 @@ Autocomplete.propTypes = {
   value: PropTypes.string,
   /** Number, number of chars, after which options will be suggested */
   minCharsToSuggest: PropTypes.number,
+  /** Number, debounce, after which options will be requested */
+  debounce: PropTypes.number,
   /** String, classname that will be added to wrapper div */
   className: PropTypes.string,
   /** Object, style that will be added to wrapper div */
@@ -258,6 +269,8 @@ Autocomplete.propTypes = {
   renderValue: PropTypes.func,
   /** String, value of selected option */
   selectedOptionValue: PropTypes.string,
+  /** String or JSX or Element, content of loader */
+  loader: PropTypes.any,
 };
 
 Autocomplete.defaultProps = {
@@ -271,9 +284,11 @@ Autocomplete.defaultProps = {
   errorHint: '',
   name: '',
   showLoadingAfter: 100,
+  debounce: 300,
   value: '',
   haveArrowIcon: false,
   selectedOptionValue: '',
+  loader: 'Loading...',
   renderOption: option => option.label,
   renderValue: value => value,
 };
