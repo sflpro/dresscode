@@ -38,15 +38,8 @@ export function TextInput({
     [suffixClassName]: suffixClassName,
   });
   return (
-    <div
-      className={inputWrapperClasses}
-      style={style}
-    >
-      {prefix && (
-        <span className={inputPrefixClasses}>
-          {prefix}
-        </span>
-      )}
+    <div className={inputWrapperClasses} style={style}>
+      {prefix && <span className={inputPrefixClasses}>{prefix}</span>}
       <input
         disabled={disabled}
         className={styles.input}
@@ -54,16 +47,8 @@ export function TextInput({
         type={type}
         {...props}
       />
-      {suffix && (
-        <span className={inputSuffixClasses}>
-          {suffix}
-        </span>
-      )}
-      {icon && (
-        <div className={styles.icon}>
-          {icon}
-        </div>
-      )}
+      {suffix && <span className={inputSuffixClasses}>{suffix}</span>}
+      {icon && <div className={styles.icon}>{icon}</div>}
     </div>
   );
 }
