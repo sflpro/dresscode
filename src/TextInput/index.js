@@ -8,8 +8,10 @@ export function TextInput({
   disabled,
   className,
   prefixClassName,
+  suffixClassName,
   icon,
   prefix,
+  suffix,
   isValid,
   hasError,
   style,
@@ -30,6 +32,11 @@ export function TextInput({
     [styles.prefix]: true,
     [prefixClassName]: prefixClassName,
   });
+
+  const inputSuffixClasses = classNames({
+    [styles.suffix]: true,
+    [suffixClassName]: suffixClassName,
+  });
   return (
     <div
       className={inputWrapperClasses}
@@ -47,6 +54,11 @@ export function TextInput({
         type={type}
         {...props}
       />
+      {suffix && (
+        <span className={inputSuffixClasses}>
+          {suffix}
+        </span>
+      )}
       {icon && (
         <div className={styles.icon}>
           {icon}
@@ -65,14 +77,18 @@ TextInput.propTypes = {
   readOnly: PropTypes.bool,
   /** String, className that will be added to wrapper div */
   className: PropTypes.string,
-  /** String, className that will be added to prefix div */
+  /** String, className that will be added to prefix span */
   prefixClassName: PropTypes.string,
+  /** String, className that will be added to suffix span */
+  suffixClassName: PropTypes.string,
   /** Object, styles that will be added to wrapper div */
   style: PropTypes.object,
   /** String, JSX or Element, icon that will be shown on input */
   icon: PropTypes.any,
   /** Any, element that will be added at start of input */
   prefix: PropTypes.any,
+  /** Any, element that will be added at end of input */
+  suffix: PropTypes.any,
   /** Boolean, whether value of text input is valid */
   isValid: PropTypes.bool,
   /** Boolean, whether value of text input has error */
@@ -96,8 +112,10 @@ TextInput.defaultProps = {
   readOnly: false,
   className: '',
   prefixClassName: '',
+  suffixClassName: '',
   icon: null,
   prefix: null,
+  suffix: null,
   isValid: false,
   hasError: false,
   type: 'text',
