@@ -80,7 +80,8 @@
   color: var(--text-input-placeholder-color);
 }
 
-.prefix {
+.prefix,
+.sufix {
   font-family: var(--text-input-prefix-font-family);
   font-size: var(--text-input-prefix-font-size);
   color: var(--text-input-prefix-color);
