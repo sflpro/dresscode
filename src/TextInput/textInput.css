@@ -81,7 +81,7 @@
 }
 
 .prefix,
-.sufix {
+.suffix {
   font-family: var(--text-input-prefix-font-family);
   font-size: var(--text-input-prefix-font-size);
   color: var(--text-input-prefix-color);
