@@ -481,6 +481,7 @@ export class Select extends React.Component {
             onTargetEvent={this.onPopoverToggle}
             content={this.getOptions()}
             closeOnScroll={false}
+            closeOnResize={false}
             watchTargetDimensions
             contentEqualToTarget
             contentRelative

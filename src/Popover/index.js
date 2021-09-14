@@ -23,7 +23,7 @@ export class Popover extends React.Component {
     super(props);
     this.domBody = document.querySelector('body');
 
-    const { trigger, children, closeOnScroll, follow } = this.props;
+    const { trigger, children, closeOnScroll, closeOnResize, follow } = this.props;
 
     this.contentRef = React.createRef();
     this.targetRef = React.createRef();
@@ -34,6 +34,7 @@ export class Popover extends React.Component {
     };
     this.targetElementProps = {};
     this.closeOnScroll = closeOnScroll || follow;
+    this.closeOnResize = closeOnResize;
 
     if (typeof children !== 'function') {
       this.targetElementProps = this.getTargetElementProps(trigger);
@@ -76,6 +77,10 @@ export class Popover extends React.Component {
     if (open && this.closeOnScroll) {
       document.addEventListener('scroll', this.handleMouseLeave);
     }
+
+    if (open && this.closeOnResize) {
+      document.addEventListener('resize', this.handleMouseLeave);
+    }
   }
 
   componentDidUpdate(prevProps) {
@@ -99,6 +104,10 @@ export class Popover extends React.Component {
 
     if (this.closeOnScroll) {
       document.removeEventListener('scroll', this.handleMouseLeave);
+    }
+
+    if (this.closeOnResize) {
+      document.removeEventListener('resize', this.handleMouseLeave);
     }
   }
 
@@ -234,7 +243,7 @@ export class Popover extends React.Component {
       popoverX = Math.max(popoverX, 0);
     }
 
-    if (!(this.closeOnScroll || fixed)) {
+    if (!(this.closeOnScroll || this.closeOnResize || fixed)) {
       popoverX += scrollLeft;
       arrowX += scrollLeft;
     }
@@ -306,7 +315,7 @@ export class Popover extends React.Component {
       arrowY = pTop - ((arrowHeight - height) / 2);
     }
 
-    if (!(this.closeOnScroll || fixed)) {
+    if (!(this.closeOnScroll || this.closeOnResize || fixed)) {
       popoverY += scrollTop;
       arrowY += scrollTop;
     }
@@ -414,6 +423,10 @@ export class Popover extends React.Component {
         document.addEventListener('scroll', this.handleMouseLeave);
       }
 
+      if (!open && this.closeOnResize) {
+        document.addEventListener('resize', this.handleMouseLeave);
+      }
+
       onTargetEvent(!open);
     } else {
       this.setPopoverPosition(this.targetElementPosition);
@@ -426,6 +439,10 @@ export class Popover extends React.Component {
     onTargetEvent(false);
     if (this.closeOnScroll) {
       document.removeEventListener('scroll', this.handleMouseLeave);
+    }
+
+    if (this.closeOnResize) {
+      document.removeEventListener('resize', this.handleMouseLeave);
     }
   };
 
@@ -576,6 +593,8 @@ Popover.propTypes = {
   fixed: PropTypes.bool,
   /** boolean, whether to close popover on scroll */
   closeOnScroll: PropTypes.bool,
+  /** boolean, whether to close popover on resize */
+  closeOnResize: PropTypes.bool,
   /** string, className that will be passed to arrow */
   arrowClassName: PropTypes.string,
   /** string, className that will be passed to target div */
@@ -597,6 +616,7 @@ Popover.defaultProps = {
   watchTargetDimensions: false,
   fixed: false,
   closeOnScroll: true,
+  closeOnResize: false,
   arrowClassName: '',
   targetClassName: '',
 };
