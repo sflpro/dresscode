@@ -243,7 +243,7 @@ export class Popover extends React.Component {
       popoverX = Math.max(popoverX, 0);
     }
 
-    if (!(this.closeOnScroll || this.closeOnResize || fixed)) {
+    if (!(this.closeOnScroll || fixed)) {
       popoverX += scrollLeft;
       arrowX += scrollLeft;
     }
@@ -315,7 +315,7 @@ export class Popover extends React.Component {
       arrowY = pTop - ((arrowHeight - height) / 2);
     }
 
-    if (!(this.closeOnScroll || this.closeOnResize || fixed)) {
+    if (!(this.closeOnScroll || fixed)) {
       popoverY += scrollTop;
       arrowY += scrollTop;
     }
@@ -489,6 +489,7 @@ export class Popover extends React.Component {
       children,
       gap,
       closeOnScroll,
+      closeOnResize,
       arrowClassName,
       targetClassName,
       fixed,
