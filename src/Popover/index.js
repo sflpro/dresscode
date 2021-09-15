@@ -79,7 +79,7 @@ export class Popover extends React.Component {
     }
 
     if (open && this.closeOnResize) {
-      document.addEventListener('resize', this.handleMouseLeave);
+      window.addEventListener('resize', this.handleMouseLeave);
     }
   }
 
@@ -107,7 +107,7 @@ export class Popover extends React.Component {
     }
 
     if (this.closeOnResize) {
-      document.removeEventListener('resize', this.handleMouseLeave);
+      window.removeEventListener('resize', this.handleMouseLeave);
     }
   }
 
@@ -424,7 +424,7 @@ export class Popover extends React.Component {
       }
 
       if (!open && this.closeOnResize) {
-        document.addEventListener('resize', this.handleMouseLeave);
+        window.addEventListener('resize', this.handleMouseLeave);
       }
 
       onTargetEvent(!open);
@@ -442,7 +442,7 @@ export class Popover extends React.Component {
     }
 
     if (this.closeOnResize) {
-      document.removeEventListener('resize', this.handleMouseLeave);
+      window.removeEventListener('resize', this.handleMouseLeave);
     }
   };
 

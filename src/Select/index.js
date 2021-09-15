@@ -418,6 +418,7 @@ export class Select extends React.Component {
       disabled,
       searchable,
       listProps,
+      closeOnResize,
       ...props
     } = this.props;
     const { isOpen } = this.state;
@@ -481,7 +482,7 @@ export class Select extends React.Component {
             onTargetEvent={this.onPopoverToggle}
             content={this.getOptions()}
             closeOnScroll={false}
-            closeOnResize={false}
+            closeOnResize={closeOnResize}
             watchTargetDimensions
             contentEqualToTarget
             contentRelative
@@ -547,6 +548,8 @@ Select.propTypes = {
   hasError: PropTypes.bool,
   /** Boolean, whether select should be custom in mobile and tablet */
   skipNativeMode: PropTypes.bool,
+  /** boolean, whether to close popover on resize */
+  closeOnResize: PropTypes.bool,
   /** Object, whether list props */
   listProps: PropTypes.shape({
     maxHeight: PropTypes.number,
@@ -575,6 +578,7 @@ Select.defaultProps = {
   disabled: false,
   searchable: true,
   skipNativeMode: false,
+  closeOnResize: false,
   listProps: {
     maxHeight: 350,
     className: '',
