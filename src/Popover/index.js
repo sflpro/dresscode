@@ -489,6 +489,7 @@ export class Popover extends React.Component {
       children,
       gap,
       closeOnScroll,
+      closeOnResize,
       arrowClassName,
       targetClassName,
       fixed,
