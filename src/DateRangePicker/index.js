@@ -216,6 +216,7 @@ export class DateRangePicker extends React.Component {
       pickerClassName,
       style,
       onChange,
+      disabledDays,
       ...props
     } = this.props;
     const { view, year, enteredTo } = this.state;
@@ -299,6 +300,7 @@ export class DateRangePicker extends React.Component {
           style={style}
           months={months}
           showOutsideDays={showOutsideDays}
+          disabledDays={disabledDays}
           {...otherProps}
         />
         {view === VIEW_TYPES.MONTH && (
@@ -381,6 +383,8 @@ DateRangePicker.propTypes = {
   pickerClassName: PropTypes.string,
   /** Object, styles that will be added to date picker */
   style: PropTypes.object,
+  /** Array of the Date object, to disable days */
+  disabledDays: PropTypes.array,
 };
 
 DateRangePicker.defaultProps = {
@@ -395,4 +399,5 @@ DateRangePicker.defaultProps = {
   className: '',
   pickerClassName: '',
   style: undefined,
+  disabledDays: [],
 };
