@@ -17,8 +17,13 @@
   width: 100%;
 }
 
-.disabled .dayPicker,
-.DayPicker-Day .disabled {
+.disabled .dayPicker {
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+.disabled,
+.disabled:hover {
   opacity: 0.4;
   pointer-events: none;
 }
