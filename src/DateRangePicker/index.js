@@ -214,6 +214,7 @@ export class DateRangePicker extends React.Component {
       showOutsideDays,
       className,
       pickerClassName,
+      dayPickerClasses,
       style,
       onChange,
       disabledDays,
@@ -241,7 +242,7 @@ export class DateRangePicker extends React.Component {
     });
 
     const dayPickerDefaultClasses = DayPicker.defaultProps.classNames;
-    const dayPickerClasses = {
+    const dayPickerClassNames = {
       ...dayPickerDefaultClasses,
       container: `${dayPickerDefaultClasses.container} ${styles.dayPicker}`,
       wrapper: `${dayPickerDefaultClasses.wrapper} ${styles.dayPickerWrapper}`,
@@ -252,9 +253,11 @@ export class DateRangePicker extends React.Component {
       weekdaysRow: `${dayPickerDefaultClasses.weekdaysRow} ${styles.dayPickerWeekdaysRow}`,
       week: `${dayPickerDefaultClasses.week} ${styles.dayPickerWeek}`,
       day: `${dayPickerDefaultClasses.day} ${styles.dayPickerDay}`,
+      disabled: `${dayPickerDefaultClasses.day} ${styles.disabled}`,
       outside: `${styles.dayPickerDayOutside}`,
       today: `${styles.dayPickerToday}`,
       selected: `${styles.dayPickerSelectedDay}`,
+      ...dayPickerClasses,
     };
 
     const pickerClasses = classNames({
@@ -273,7 +276,7 @@ export class DateRangePicker extends React.Component {
         className={datePickerClasses}
       >
         <DayPicker
-          classNames={dayPickerClasses}
+          classNames={dayPickerClassNames}
           captionElement={({ date }) => (
             <DatePickerCaption
               onClick={() => this.handleDayCaptionClick(date, VIEW_TYPES.YEAR)}
@@ -381,6 +384,8 @@ DateRangePicker.propTypes = {
   className: PropTypes.string,
   /** String, pickerClassName that will be added to picker  element */
   pickerClassName: PropTypes.string,
+  /** Object, classNames that will be added to dayPicker element */
+  dayPickerClasses: PropTypes.object,
   /** Object, styles that will be added to date picker */
   style: PropTypes.object,
   /** Array of the Date object, to disable days */
@@ -398,6 +403,7 @@ DateRangePicker.defaultProps = {
   onChange: null,
   className: '',
   pickerClassName: '',
+  dayPickerClasses: {},
   style: undefined,
   disabledDays: [],
 };
