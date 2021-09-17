@@ -237,7 +237,7 @@ export class DateRangePicker extends React.Component {
 
     const datePickerClasses = classNames({
       [styles.rangeDatePicker]: true,
-      [styles.disabled]: view !== VIEW_TYPES.DAY,
+      [styles.disabledBlock]: view !== VIEW_TYPES.DAY,
       [className]: !!className,
     });
 
