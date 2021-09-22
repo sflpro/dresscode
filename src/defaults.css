@@ -203,6 +203,8 @@
   --tooltip-border-radius: 5px;
   --tooltip-max-width: 320px;
   --tooltip-title-padding: 0 0 16px;
+  --tooltip-title-color: var(--primary-color);
+  --tooltip-description-color: var(--text-default-color);
 
   --popup-overlay-background: var(--neutral-1000-opacity-50);
   --popup-z-index: 10;
