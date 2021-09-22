@@ -7,6 +7,8 @@ import { Popover, POPOVER_POSITIONS } from '../Popover';
 import styles from './tooltip.css';
 
 const TooltipContent = ({
+  titleClassName,
+  descriptionClassName,
   description,
   title,
   className,
@@ -17,17 +19,27 @@ const TooltipContent = ({
     [className]: true,
   });
 
+  const tooltipTitleClasses = classNames({
+    [styles.title]: true,
+    [titleClassName]: !!titleClassName,
+  });
+
+  const tooltipDescriptionClasses = classNames({
+    [styles.description]: true,
+    [descriptionClassName]: !!descriptionClassName,
+  });
+
   return (
     <div
       className={tooltipClasses}
       {...props}
     >
       {title && (
-        <div className={styles.title}>
+        <div className={tooltipTitleClasses}>
           {title}
         </div>
       )}
-      <div className={styles.description}>
+      <div className={tooltipDescriptionClasses}>
         {description}
       </div>
     </div>
@@ -43,12 +55,18 @@ TooltipContent.propTypes = {
   className: PropTypes.string,
   /** Object, styles that will be added to wrapper div */
   style: PropTypes.object,
+  /** String, className that will be added to title */
+  titleClassName: PropTypes.string,
+  /** String, className that will be added to description */
+  descriptionClassName: PropTypes.string,
 };
 
 TooltipContent.defaultProps = {
   title: '',
   className: '',
   style: undefined,
+  titleClassName: '',
+  descriptionClassName: '',
 };
 
 export function Tooltip({
@@ -143,6 +161,10 @@ Tooltip.propTypes = {
   targetClassName: PropTypes.string,
   /** number, seconds, after when tooltip will be closed */
   closeAfter: PropTypes.number,
+  /** String, className that will be added to content title */
+  titleClassName: PropTypes.string,
+  /** String, className that will be added to content description */
+  descriptionClassName: PropTypes.string,
 };
 
 Tooltip.defaultProps = {
@@ -161,4 +183,6 @@ Tooltip.defaultProps = {
   closeOnScroll: true,
   arrowClassName: '',
   closeAfter: undefined,
+  titleClassName: '',
+  descriptionClassName: '',
 };
