@@ -9,13 +9,13 @@
 
 .description {
   @mixin font-scale-7;
-  color: var(--text-default-color);
+  color: var(--tooltip-description-color);
   white-space: initial;
 }
 
 .title {
   @mixin font-scale-6;
   font-weight: bold;
-  color: var(--primary-color);
+  color: var(--tooltip-title-color);
   padding: var(--tooltip-title-padding);
 }
