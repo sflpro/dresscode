@@ -17,6 +17,7 @@ export function HorizontalScrollWrapper({
   hiddenBlockClassName,
   rightOverflowIndicatorClassName,
   endIconWrapperClassName,
+  gap,
   ...props
 }) {
   const [showRightArrow, toggleRightArrow] = useState(false);
@@ -33,7 +34,7 @@ export function HorizontalScrollWrapper({
         toggleLeftArrow(false);
       }
 
-      if (wrapperRef.current.clientWidth + wrapperRef.current.scrollLeft < wrapperRef.current.scrollWidth) {
+      if (wrapperRef.current.clientWidth + wrapperRef.current.scrollLeft + gap < wrapperRef.current.scrollWidth) {
         toggleRightArrow(true);
       } else if (showRightArrow) {
         toggleRightArrow(false);
@@ -49,7 +50,7 @@ export function HorizontalScrollWrapper({
     if (wrapperRef.current) {
       wrapperRef.current.scrollLeft += scrollStepWidth;
 
-      if (wrapperRef.current.clientWidth + wrapperRef.current.scrollLeft >= wrapperRef.current.scrollWidth) {
+      if (wrapperRef.current.clientWidth + wrapperRef.current.scrollLeft + gap >= wrapperRef.current.scrollWidth) {
         toggleRightArrow(false);
       }
 
@@ -63,7 +64,7 @@ export function HorizontalScrollWrapper({
     if (wrapperRef.current) {
       wrapperRef.current.scrollLeft -= scrollStepWidth;
 
-      if (wrapperRef.current.clientWidth + wrapperRef.current.scrollLeft < wrapperRef.current.scrollWidth) {
+      if (wrapperRef.current.clientWidth + wrapperRef.current.scrollLeft + gap < wrapperRef.current.scrollWidth) {
         toggleRightArrow(true);
       }
 
@@ -189,6 +190,9 @@ HorizontalScrollWrapper.propTypes = {
   leftOverflowIndicatorClassName: PropTypes.string,
   /** String, classname that will be passed to overflow hidden div */
   hiddenBlockClassName: PropTypes.string,
+  /** String, gap that will be added to correct chrome issue where scroll width is
+   not equal to the scroll max left + client width */
+  gap: PropTypes.string,
 };
 
 HorizontalScrollWrapper.defaultProps = {
@@ -203,4 +207,5 @@ HorizontalScrollWrapper.defaultProps = {
   rightOverflowIndicatorClassName: '',
   leftOverflowIndicatorClassName: '',
   hiddenBlockClassName: '',
+  gap: 0,
 };
