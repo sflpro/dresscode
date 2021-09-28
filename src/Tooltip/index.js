@@ -65,6 +65,8 @@ TooltipContent.defaultProps = {
   title: '',
   className: '',
   style: undefined,
+  titleClassName: '',
+  descriptionClassName: '',
 };
 
 export function Tooltip({
@@ -181,4 +183,6 @@ Tooltip.defaultProps = {
   closeOnScroll: true,
   arrowClassName: '',
   closeAfter: undefined,
+  titleClassName: '',
+  descriptionClassName: '',
 };
