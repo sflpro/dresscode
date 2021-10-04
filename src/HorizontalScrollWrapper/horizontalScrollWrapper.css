@@ -26,10 +26,6 @@
   justify-content: center;
   cursor: pointer;
 
-  & > * {
-    visibility: hidden;
-  }
-
   @media (--small) {
     width: var(--horizontall-scroll-wrapper-small-arrow-width);
 
