@@ -190,9 +190,9 @@ HorizontalScrollWrapper.propTypes = {
   leftOverflowIndicatorClassName: PropTypes.string,
   /** String, classname that will be passed to overflow hidden div */
   hiddenBlockClassName: PropTypes.string,
-  /** String, gap that will be added to correct chrome issue where scroll width is
+  /** Number, gap that will be added to correct chrome issue where scroll width is
    not equal to the scroll max left + client width */
-  gap: PropTypes.string,
+  gap: PropTypes.number,
 };
 
 HorizontalScrollWrapper.defaultProps = {
