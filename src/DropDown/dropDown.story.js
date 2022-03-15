@@ -111,6 +111,7 @@ storiesOf('DropDown', module)
             <ItemRow style={{ justifyContent: 'space-between', marginTop: 'auto' }}>
               <Item>
                 <DropDown
+                  watchTargetDimensions
                   options={(
                     <DropDown.Options>
                       <span>
@@ -142,6 +143,7 @@ storiesOf('DropDown', module)
               </Item>
               <Item>
                 <DropDown
+                  watchTargetDimensions
                   options={(
                     <DropDown.Options>
                       <span>
@@ -184,6 +186,7 @@ storiesOf('DropDown', module)
 
     return (
       <DropDown
+        watchTargetDimensions
         options={(
           <DropDown.Options>
             <span>

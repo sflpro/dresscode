@@ -49,6 +49,7 @@ export class Popover extends React.Component {
     }
 
     if (watchTargetDimensions && this.targetRef.current) {
+      this.containerObserver = new ResizeObserver(() => this.setPopoverPosition(this.targetElementPosition));
       this.observer = new ResizeObserver(() => {
         if (this.contentRef.current) {
           const {
@@ -88,9 +89,15 @@ export class Popover extends React.Component {
     const { open } = this.props;
 
     if (!prevOpen && open) {
+      if (this.contentRef.current && this.containerObserver) {
+        this.containerObserver.observe(this.contentRef.current);
+      }
       this.setPopoverPosition(this.targetElementPosition);
       this.contentRef.current.addEventListener('mousedown', this.handleContentClick);
     } else if (!open && prevOpen) {
+      if (this.containerObserver) {
+        this.containerObserver.disconnect();
+      }
       document.removeEventListener('click', this.handleClickLeave, true);
     }
   }
@@ -112,6 +119,7 @@ export class Popover extends React.Component {
   }
 
   setPopoverPosition = (targetElementPosition) => {
+    if (!this.contentRef.current) return;
     const { offsetWidth: popoverWidth, offsetHeight: popoverHeight } = this.contentRef.current;
     const { contentEqualToTarget, follow, gap } = this.props;
 
