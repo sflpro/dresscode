@@ -21,6 +21,7 @@ export function Form({
   validate,
   children,
   onReset,
+  formikProps,
   ...props
 }) {
   let initialErrors = propInitialErrors;
@@ -52,25 +53,26 @@ export function Form({
       onSubmit={onSubmit}
       validate={validate}
       onReset={onReset}
+      {...formikProps}
     >
-      {(formikProps) => {
+      {(formikPropsArg) => {
         const handleFormSubmit = (event) => {
-          if ((validationSchema && !formikProps.isValid) || preventAction) {
-            return formikProps.handleSubmit(event);
+          if ((validationSchema && !formikPropsArg.isValid) || preventAction) {
+            return formikPropsArg.handleSubmit(event);
           }
 
-          return formikProps.handleSubmit();
+          return formikPropsArg.handleSubmit();
         };
 
         return (
           <form
             {...props}
-            onReset={formikProps.handleReset}
+            onReset={formikPropsArg.handleReset}
             onSubmit={handleFormSubmit}
             ref={forwardedRef}
           >
             <FormContext.Provider
-              value={{ ...formikProps, validationSchema }}
+              value={{ ...formikPropsArg, validationSchema }}
             >
               {children}
             </FormContext.Provider>
@@ -118,6 +120,7 @@ Form.propTypes = {
   method: PropTypes.string,
   /** Object, initial errors */
   initialErrors: PropTypes.object,
+  formikProps: PropTypes.object,
 };
 
 Form.defaultProps = {
@@ -137,4 +140,5 @@ Form.defaultProps = {
   action: undefined,
   method: undefined,
   initialErrors: undefined,
+  formikProps: {},
 };
